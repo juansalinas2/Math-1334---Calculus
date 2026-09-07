@@ -1,0 +1,74 @@
+---
+title: "Sample lecture: Evaluating limits"
+description: "A worked example, a common pitfall, and a practice problem."
+order: 1
+---
+
+::: {.callout-note}
+This is an example page for the course website, not an assigned lecture.
+:::
+
+## Main idea
+
+A limit describes what $f(x)$ approaches as $x$ approaches a particular value. The function need not be defined at that value.
+
+The notation
+
+$$
+\lim_{x \to a} f(x)=L
+$$
+
+means that $f(x)$ approaches $L$ as $x$ approaches $a$.
+
+## Worked example
+
+Evaluate
+
+$$
+\lim_{x \to 2}\frac{x^2-4}{x-2}.
+$$
+
+Substituting $x=2$ gives the indeterminate form $0/0$, so we first simplify. For $x\ne2$,
+
+$$
+\begin{aligned}
+\frac{x^2-4}{x-2}
+&=\frac{(x-2)(x+2)}{x-2}\\
+&=x+2.
+\end{aligned}
+$$
+
+The two expressions agree for every $x$ near $2$, except at $2$ itself. Therefore,
+
+$$
+\boxed{\lim_{x \to 2}\frac{x^2-4}{x-2}
+=\lim_{x \to 2}(x+2)=4.}
+$$
+
+::: {.callout-important title="A limit is not always a function value"}
+The original expression is undefined at $x=2$. Its **limit** is still $4$ because a limit concerns values near the point.
+:::
+
+## Try it yourself
+
+Evaluate
+
+$$
+\lim_{x \to 3}\frac{x^2-9}{x-3}.
+$$
+
+::: {.callout-tip collapse="true" title="Show solution"}
+For $x\ne3$, factor the numerator and cancel:
+
+$$
+\frac{x^2-9}{x-3}
+=\frac{(x-3)(x+3)}{x-3}
+=x+3.
+$$
+
+Taking the limit gives $3+3=\boxed{6}$.
+:::
+
+## Takeaway
+
+When substitution gives $0/0$, try simplifying the expression before evaluating the limit. Cancel a factor only where that factor is nonzero.
