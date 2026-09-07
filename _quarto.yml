@@ -1,0 +1,33 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - lectures/*.qmd
+
+website:
+  title: "Math 1334"
+  description: "Calculus lecture notes for Math 1334 at Seattle University."
+  page-navigation: true
+  sidebar:
+    style: docked
+    background: "#f6f7f9"
+    search: true
+    contents:
+      - href: index.qmd
+        text: Course home
+      - section: Lecture notes
+        contents: lectures
+  page-footer: "Math 1334 · Seattle University"
+
+format:
+  html:
+    theme:
+      - cosmo
+      - custom.scss
+    toc: true
+    toc-title: On this page
+    html-math-method: mathjax
+    lang: en
+    link-external-newwindow: true
+

@@ -1,0 +1,20 @@
+---
+title: "Math 1334 — Calculus"
+subtitle: "Seattle University · Lecture notes"
+toc: false
+listing:
+  contents: lectures
+  type: default
+  sort: "order asc"
+  fields: [title, description]
+---
+
+Use these notes to revisit the ideas, definitions, and worked examples from class.
+
+## Lecture notes
+
+The lecture below is a **sample** showing the format of this site. Course lectures will be added here as they become available.
+
+::: {#listing}
+:::
+

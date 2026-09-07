@@ -1,0 +1,8 @@
+/.quarto/
+/_site/
+/.tools/
+/.cache/
+/.DS_Store
+
+
+**/*.quarto_ipynb
