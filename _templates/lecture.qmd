@@ -1,0 +1,31 @@
+---
+title: "Lecture 2: Your topic"
+description: "One sentence describing this lecture."
+order: 2
+---
+
+## Main idea
+
+Write your explanation here. Inline mathematics goes between dollar signs: $f(x)=x^2$.
+
+## Worked example
+
+Put a displayed equation between double dollar signs:
+
+$$
+\frac{d}{dx}x^2=2x.
+$$
+
+Explain each step in words.
+
+## Try it yourself
+
+Write a practice problem here.
+
+::: {.callout-tip collapse="true" title="Show solution"}
+Write the solution here.
+:::
+
+## Takeaway
+
+Summarize the key idea in one or two sentences.
