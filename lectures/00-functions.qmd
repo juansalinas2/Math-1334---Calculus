@@ -7,7 +7,11 @@ description: "A review of functions, domains, graphs, trigonometry, and logarith
 [Lecture PDF · September 25, 2026](../downloads/september-25-chapter-1-review.pdf)
 :::
 
-## Functions, domain, and range
+These notes follow the Chapter 1 review worksheet in order. Each numbered topic corresponds to the same numbered worksheet problem. The examples use different values and are intended for discussion.
+
+**Functions and representations**
+
+## 1. Functions, domain, and range
 
 A *function* assigns exactly one output to each input in its domain. The *domain* is the set of allowed inputs; the *range* is the set of outputs the function actually produces. The notation $f(x)$ means the output corresponding to input $x$. A point on its graph has coordinates $(x,f(x))$.
 
@@ -21,13 +25,13 @@ $$
 
 **Example.** A tank contains 6 liters of water. Water enters at 3 liters per minute for 4 minutes. Let $W(t)$ be the volume after $t$ minutes.
 
-1.  Make a table for $t=0,1,2,3,4$ and write a formula for $W(t)$.
+(a) Make a table for $t=0,1,2,3,4$ and write a formula for $W(t)$.
 
-2.  Sketch the graph with labeled axes and units. Find $W(2)$ and interpret it.
+(b) Sketch the graph with labeled axes and units. Find $W(2)$ and interpret it.
 
-3.  State the domain and range for this situation.
+(c) State the domain and range for this situation.
 
-## Evaluating functions and simplifying a difference quotient
+## 2. Evaluating functions and simplifying a difference quotient
 
 To evaluate a function, replace every occurrence of its input variable by the given number or expression. Use parentheses around the entire substituted input. In general, $f(a+h)$ is not equal to $f(a)+f(h)$.
 
@@ -41,7 +45,7 @@ $$
 
 **Example.** Let $f(x)=x^2-4x$. Find $f(-3)$ and expand $f(a+h)$. Then simplify $[f(a+h)-f(a)]/h$ for $h\ne0$, showing the factoring and cancellation step.
 
-## Composition of functions
+## 3. Composition of functions
 
 The *composition* $(g\circ h)(x)=g(h(x))$ applies $h$ first and then applies $g$ to the result. Read from the inside out. The order generally matters.
 
@@ -49,7 +53,9 @@ The *composition* $(g\circ h)(x)=g(h(x))$ applies $h$ first and then applies $g$
 
 *Review: OpenStax, Calculus Volume 1, §1.1; §1.2 for linear functions.*
 
-## Piecewise-defined functions
+**Graphs and domain**
+
+## 4. Piecewise-defined functions
 
 A *piecewise-defined function* uses different formulas on different parts of its domain. To evaluate it, first determine which condition the input satisfies; then use the corresponding rule.
 
@@ -65,13 +71,13 @@ r(x)=\begin{cases}
 \end{cases}
 $$
 
-1.  Find $r(1)$, $r(2)$, and $r(3)$. Identify the rule used for each input.
+(a) Find $r(1)$, $r(2)$, and $r(3)$. Identify the rule used for each input.
 
-2.  Sketch the graph with open and filled endpoints clearly marked.
+(b) Sketch the graph with open and filled endpoints clearly marked.
 
-3.  Which point is included at $x=2$? Explain how you know.
+(c) Which point is included at $x=2$? Explain how you know.
 
-## Finding real domains
+## 5. Finding real domains
 
 When no domain is stated, seek all real inputs for which the formula gives a defined real output. The main restrictions are 
 
@@ -95,7 +101,7 @@ $$
 \text{(c) }w(x)=\ln(x+2).
 $$
 
-## Simplification and excluded inputs
+## 6. Simplification and excluded inputs
 
 The domain is determined from the original expression. Canceling a common factor does not restore an input excluded by that expression. The identity 
 
@@ -111,7 +117,9 @@ If a simplified formula is defined at an originally excluded input, its graph mu
 
 *Review: OpenStax, Calculus Volume 1, §1.1; §1.2 for piecewise and rational functions; §1.5 for logarithms.*
 
-## Slope, average rate of change, and lines
+**Slope and trigonometry**
+
+## 7. Slope, average rate of change, and lines
 
 The slope of the line through two points $(x_1,y_1)$ and $(x_2,y_2)$ is 
 
@@ -131,13 +139,13 @@ $$
 
 **Example.** An object's position is $s(t)=t^2+1$ meters, with $t$ in seconds.
 
-1.  Find the slope between the points at $t=2$ and $t=3$. Interpret it with units.
+(a) Find the slope between the points at $t=2$ and $t=3$. Interpret it with units.
 
-2.  Repeat for $t=2$ and $t=2.5$. Compare the two slopes.
+(b) Repeat for $t=2$ and $t=2.5$. Compare the two slopes.
 
-3.  Write the equation of the line from part (a), using $t$ and $s$ as coordinates.
+(c) Write the equation of the line from part (a), using $t$ and $s$ as coordinates.
 
-## Radians and the unit circle
+## 8. Radians and the unit circle
 
 An angle in standard position is measured from the positive horizontal axis; positive angles turn counterclockwise. A full turn is $2\pi$ radians, so 
 
@@ -156,7 +164,7 @@ $$
 
 **Example.** Convert $\pi/3$, $\pi/4$, and $3\pi/2$ to degrees and give their unit-circle coordinates. Identify the sine and cosine in each pair. A unit-circle reference may be used.
 
-## Sine graphs, amplitude, and period
+## 9. Sine graphs, amplitude, and period
 
 The graph of $y=\sin x$ records the vertical coordinate on the unit circle. The *amplitude* is the distance from the midline to a peak. The *period* is the length of one complete repeating cycle.
 
@@ -166,7 +174,9 @@ For $y=A\sin x$ with $A\ne0$, the amplitude is $|A|$ and the period is $2\pi$. M
 
 *Review: OpenStax, Calculus Volume 1, §1.2 for slope, lines, and scaling; §1.3 for trigonometry.*
 
-## Inverse functions
+**Inverses, exponentials, and logarithms**
+
+## 10. Inverse functions
 
 An *inverse function* reverses the input-output relationship: if $f(a)=b$, then $f^{-1}(b)=a$. Its domain is the range of $f$, and its range is the domain of $f$. On the appropriate domains, 
 
@@ -180,7 +190,7 @@ The superscript in $f^{-1}$ denotes an inverse function, not a reciprocal. The e
 
 **Example.** Let $f(x)=4x-8$. Find $f^{-1}(x)$ and verify it by simplifying $f(f^{-1}(x))$. Write $1/f(x)$ as well, and explain how it differs from the inverse.
 
-## One-to-one functions and domain restrictions
+## 11. One-to-one functions and domain restrictions
 
 A function is *one-to-one* if different inputs always have different outputs. It has an inverse function on its range exactly when it is one-to-one. Graphically, this means that every horizontal line intersects the graph at most once (the *horizontal line test*).
 
@@ -188,13 +198,13 @@ If a function is not one-to-one, a suitable restriction of its domain may make i
 
 **Example.** Consider $q(x)=x^2+1$ on all real numbers.
 
-1.  Find two different inputs with the same output. Explain why there is no inverse function on the stated domain.
+(a) Find two different inputs with the same output. Explain why there is no inverse function on the stated domain.
 
-2.  Restrict the domain so that an inverse function exists. Find the inverse and state its domain.
+(b) Restrict the domain so that an inverse function exists. Find the inverse and state its domain.
 
-3.  What changes if you choose the other side of the parabola?
+(c) What changes if you choose the other side of the parabola?
 
-## Exponentials and logarithms
+## 12. Exponentials and logarithms
 
 A logarithm answers the question "What exponent produces this number?" For $b>0$, $b\ne1$, and $v>0$, 
 
@@ -220,10 +230,10 @@ $$
 
 **Example.** Work without a calculator.
 
-1.  Rewrite $3^4=81$ in logarithmic form. Evaluate $\log_2 8$ and $\ln(e^5)$.
+(a) Rewrite $3^4=81$ in logarithmic form. Evaluate $\log_2 8$ and $\ln(e^5)$.
 
-2.  Solve $e^x=11$ exactly.
+(b) Solve $e^x=11$ exactly.
 
-3.  Test the claim $\ln(a+b)=\ln a+\ln b$ using positive values of your choice.
+(c) Test the claim $\ln(a+b)=\ln a+\ln b$ using positive values of your choice.
 
 *Review: OpenStax, Calculus Volume 1, §1.4 for inverses; §1.5 for exponentials and logarithms.*

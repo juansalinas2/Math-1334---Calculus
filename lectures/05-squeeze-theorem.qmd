@@ -35,7 +35,7 @@ $$
 \lim_{x\to1}f(x)=5.
 $$
 
-![The functions 5 minus (x minus 1) squared and 5 plus (x minus 1) squared squeeze the shaded region to height 5 at x=1.](assets/squeeze-bounds.png){fig-alt="The functions 5 minus (x minus 1) squared and 5 plus (x minus 1) squared squeeze the shaded region to height 5 at x=1." width=411}
+![](assets/squeeze-bounds.png){fig-alt="The functions 5 minus (x minus 1) squared and 5 plus (x minus 1) squared squeeze the shaded region to height 5 at x=1." width=411}
 
 The shaded region contains all permitted values of $f(x)$.
 
@@ -51,7 +51,7 @@ $$
 \lim_{x\to0}x^2\sin(1/x)=0.
 $$
 
-![The oscillating function x squared times sine of one over x lies between negative x squared and x squared.](assets/squeeze-oscillation.png){fig-alt="The oscillating function x squared times sine of one over x lies between negative x squared and x squared." width=401}
+![](assets/squeeze-oscillation.png){fig-alt="The oscillating function x squared times sine of one over x lies between negative x squared and x squared." width=401}
 
 The oscillations remain between bounds that both approach $0$.
 
@@ -121,7 +121,7 @@ $$
 
 First suppose $0<\theta<\pi/2$. On the unit circle, let $O=(0,0)$, $A=(1,0)$, and $P=(\cos\theta,\sin\theta)$. The ray $OP$ meets the line $x=1$ at $T=(1,\tan\theta)$.
 
-![A triangle inside a unit-circle sector and a larger tangent triangle bound the sector area.](assets/unit-circle-squeeze.png){fig-alt="A triangle inside a unit-circle sector and a larger tangent triangle bound the sector area." width=352}
+![](assets/unit-circle-squeeze.png){fig-alt="A triangle inside a unit-circle sector and a larger tangent triangle bound the sector area." width=352}
 
 Comparing the areas of triangle $OAP$, sector $OAP$, and triangle $OAT$ gives 
 

@@ -26,7 +26,7 @@ $$
 
  The two-sided limit DNE. The line $x=-1$ is a vertical asymptote.
 
-![One over x plus 1 approaches negative infinity from the left of -1 and positive infinity from the right.](assets/vertical-reciprocal.png){fig-alt="One over x plus 1 approaches negative infinity from the left of -1 and positive infinity from the right." width=206}
+![](assets/vertical-reciprocal.png){fig-alt="One over x plus 1 approaches negative infinity from the left of -1 and positive infinity from the right." width=206}
 
 **Example 2.** $\displaystyle B(x)=\frac{-1}{(x+1)^2}.$ 
 
@@ -43,7 +43,7 @@ $$
 
  Again, $x=-1$ is a vertical asymptote.
 
-![Negative one over (x plus 1) squared approaches negative infinity from both sides of -1.](assets/vertical-negative-square.png){fig-alt="Negative one over (x plus 1) squared approaches negative infinity from both sides of -1." width=209}
+![](assets/vertical-negative-square.png){fig-alt="Negative one over (x plus 1) squared approaches negative infinity from both sides of -1." width=209}
 
 **Theorem.** For a positive even integer $n$, 
 
@@ -102,7 +102,7 @@ $$
 
  Both approach $0$, but $\sin(1/x_n)=1$ and $\sin(1/y_n)=-1$. Therefore the limit DNE.
 
-![Sine of one over x oscillates between -1 and 1 increasingly rapidly near zero.](assets/oscillating-limit.png){fig-alt="Sine of one over x oscillates between -1 and 1 increasingly rapidly near zero." width=379}
+![](assets/oscillating-limit.png){fig-alt="Sine of one over x oscillates between -1 and 1 increasingly rapidly near zero." width=379}
 
 ## Limits to graphs
 
@@ -120,7 +120,7 @@ $$
 
  One possible graph is shown. A hole at $x=-1$ is allowed but not required.
 
-![A curve approaches height 2 at x=-1 and height 1 from the left of x=3; the right branch approaches height 4 at x=3.](assets/graph-from-limits.png){fig-alt="A curve approaches height 2 at x=-1 and height 1 from the left of x=3; the right branch approaches height 4 at x=3." width=272}
+![](assets/graph-from-limits.png){fig-alt="A curve approaches height 2 at x=-1 and height 1 from the left of x=3; the right branch approaches height 4 at x=3." width=272}
 
 ## Practice
 
@@ -154,7 +154,7 @@ $$
 
 *Solution.* One possible graph is shown below. Its left branch approaches height $1$ at $x=2$; its right branch approaches height $3$. Neither endpoint at $x=2$ is included.
 
-![The graph approaches 2 at x=0, 1 from the left of x=2, and 3 from the right of x=2.](assets/graph-practice.png){fig-alt="The graph approaches 2 at x=0, 1 from the left of x=2, and 3 from the right of x=2." width=376}
+![](assets/graph-practice.png){fig-alt="The graph approaches 2 at x=0, 1 from the left of x=2, and 3 from the right of x=2." width=376}
 
 The hole at $(0,2)$ is optional: the condition at $0$ specifies a limit, not a function value.
 
@@ -168,4 +168,4 @@ $$
 
  At $a=0$, the left-hand limit is $-1$ and the right-hand limit is $1$. The two-sided limit DNE, yet the function remains bounded.
 
-![Two horizontal branches at heights -1 and 1 show a bounded function with no limit at zero.](assets/bounded-no-limit.png){fig-alt="Two horizontal branches at heights -1 and 1 show a bounded function with no limit at zero." width=235}
+![](assets/bounded-no-limit.png){fig-alt="Two horizontal branches at heights -1 and 1 show a bounded function with no limit at zero." width=235}

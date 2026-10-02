@@ -21,7 +21,7 @@ $$
 
 :::
 
-![A continuous graph reaches the intermediate height N at a point c between a and b.](assets/intermediate-value.png){fig-alt="A continuous graph reaches the intermediate height N at a point c between a and b." width=459}
+![](assets/intermediate-value.png){fig-alt="A continuous graph reaches the intermediate height N at a point c between a and b." width=459}
 
 **Idea:** Continuous functions achieve their intermediate values.
 

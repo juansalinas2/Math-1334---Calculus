@@ -49,3 +49,4 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 }
 #title-block-header .quarto-title-meta,
 #title-block-header .description { display: none; }
+.content p > img:only-child { display: block; margin: 1.5rem auto; max-width: 100%; height: auto; }

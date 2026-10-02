@@ -7,6 +7,26 @@ description: "Limit laws, direct substitution, and simplifying indeterminate for
 [Lecture PDF · September 30, 2026](../downloads/september-30-revised-class-notes.pdf)
 :::
 
+## Recap: limits
+
+$$
+\lim_{x\to a}f(x),\qquad\lim_{x\to a^-}f(x),\qquad\lim_{x\to a^+}f(x).
+$$
+
+ Table method Graph method Case method
+
+*Example.* For $\displaystyle f(x)=\frac{x^2-4}{|x-2|}$, use cases: 
+
+$$
+f(x)=\begin{cases}-(x+2),&x<2,\\x+2,&x>2.\end{cases}
+$$
+
+ Thus $\displaystyle\lim_{x\to2^-}f(x)=-4$ and $\displaystyle\lim_{x\to2^+}f(x)=4$, so the two-sided limit DNE.
+
+*Issues.* These approaches can be slow; tables and sketches may be imprecise and do not by themselves prove a general limit.
+
+**Question.** How do we systematically compute limits?
+
 ## The limit laws
 
 ::: {.statement}

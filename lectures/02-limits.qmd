@@ -11,7 +11,7 @@ description: "Approaching a value, reading graphs and tables, and one-sided limi
 
 A *secant line* passes through two points on the graph. Its slope is the average rate of change. A *tangent line* gives the instantaneous rate of change at a point (instantaneous velocity for a position function).
 
-![A secant joins two points on a curve; the tangent touches the curve at the first point.](assets/secant-tangent.png){fig-alt="A secant joins two points on a curve; the tangent touches the curve at the first point." width=502}
+![](assets/secant-tangent.png){fig-alt="A secant joins two points on a curve; the tangent touches the curve at the first point." width=502}
 
 Secant slope: 
 
@@ -49,7 +49,7 @@ $$
 
 :::
 
-![The constant function approaches c; the identity function approaches a as x approaches a.](assets/constant-identity.png){fig-alt="The constant function approaches c; the identity function approaches a as x approaches a." width=507}
+![](assets/constant-identity.png){fig-alt="The constant function approaches c; the identity function approaches a as x approaches a." width=507}
 
 ## Limits and function values
 
@@ -63,7 +63,7 @@ $$
 
  The graph is the line $y=x+2$ with a hole at $(2,4)$. From either side of $2$, the graph approaches height $4$.
 
-![The line y equals x plus 2 has an open circle at (2,4).](assets/limit-hole.png){fig-alt="The line y equals x plus 2 has an open circle at (2,4)." width=311}
+![](assets/limit-hole.png){fig-alt="The line y equals x plus 2 has an open circle at (2,4)." width=311}
 
 *Table method.* Choose inputs approaching $2$ from both sides; do not substitute $x=2$ into the original fraction. 
 
@@ -90,7 +90,7 @@ $$
 
  A limit describes nearby values, not necessarily the value at the point.
 
-![The line has a hole at (2,4) and a filled point at (2,7).](assets/limit-value.png){fig-alt="The line has a hole at (2,4) and a filled point at (2,7)." width=241}
+![](assets/limit-value.png){fig-alt="The line has a hole at (2,4) and a filled point at (2,7)." width=241}
 
 ## One-sided limits
 
@@ -119,7 +119,7 @@ $$
 
  *Graph method.* The branches approach different heights. The one-sided limits differ, so $\displaystyle\lim_{x\to0}f(x)$ DNE.
 
-![A line approaches height 2 from the left; a parabola approaches height negative 3 from the right.](assets/different-sides.png){fig-alt="A line approaches height 2 from the left; a parabola approaches height negative 3 from the right." width=197}
+![](assets/different-sides.png){fig-alt="A line approaches height 2 from the left; a parabola approaches height negative 3 from the right." width=197}
 
 **Example 2.** $\displaystyle g(x)=\begin{cases}-x^2,&x<0,\\2,&x=0,\\\sqrt{x},&x>0.\end{cases}$ *Case method.* Use $-x^2$ on the left and $\sqrt{x}$ on the right: 
 
@@ -129,7 +129,7 @@ $$
 
  *Graph method.* Both branches approach height $0$. Thus $\displaystyle\lim_{x\to0}g(x)=0$, although $g(0)=2$.
 
-![Both branches approach the hole at the origin, while the function value at zero is 2.](assets/same-sides.png){fig-alt="Both branches approach the hole at the origin, while the function value at zero is 2." width=196}
+![](assets/same-sides.png){fig-alt="Both branches approach the hole at the origin, while the function value at zero is 2." width=196}
 
 **Example 3.** Find $\displaystyle\lim_{x\to2}h(x)$ for $\displaystyle h(x)=\frac{x^2-4}{|x-2|}$.
 
@@ -160,7 +160,7 @@ $$
 r(x)=\begin{cases}x+1,&x<2,\\-1,&x=2,\\5-x,&x>2.\end{cases}
 $$
 
-![Both line segments approach the open point (2,3); a filled point is at (2,-1).](assets/piecewise-practice.png){fig-alt="Both line segments approach the open point (2,3); a filled point is at (2,-1)." width=384}
+![](assets/piecewise-practice.png){fig-alt="Both line segments approach the open point (2,3); a filled point is at (2,-1)." width=384}
 
 *Graph method.* The filled point gives $r(2)=-1$. Both branches approach the open point at height $3$, so 
 

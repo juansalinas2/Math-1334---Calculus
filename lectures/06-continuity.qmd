@@ -31,11 +31,11 @@ Check three things:
 
 Graphically: the graph has no break at $a$.
 
-![A continuous curve passes through the filled point (a,f(a)).](assets/continuous-graph.png){fig-alt="A continuous curve passes through the filled point (a,f(a))." width=216}
+![](assets/continuous-graph.png){fig-alt="A continuous curve passes through the filled point (a,f(a))." width=216}
 
 Algebraically: the plug-in rule works at $a$.
 
-![As x approaches a, f(x) approaches f(a).](assets/continuous-map.png){fig-alt="As x approaches a, f(x) approaches f(a)." width=177}
+![](assets/continuous-map.png){fig-alt="As x approaches a, f(x) approaches f(a)." width=177}
 
 **Example 1.** Is $f$ continuous at $a=-\tfrac12$? 
 
@@ -104,7 +104,7 @@ An *infinite discontinuity* at $a$ occurs when at least one one-sided limit is $
 
 **Example 2.** Classify the discontinuities in the graph.
 
-![A removable discontinuity at x=0, a jump at x=2, and an infinite discontinuity at x=4.](assets/discontinuities.png){fig-alt="A removable discontinuity at x=0, a jump at x=2, and an infinite discontinuity at x=4." width=493}
+![](assets/discontinuities.png){fig-alt="A removable discontinuity at x=0, a jump at x=2, and an infinite discontinuity at x=4." width=493}
 
    $x$  **Type**
   ----- -----------
