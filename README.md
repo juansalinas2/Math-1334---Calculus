@@ -5,7 +5,7 @@ A searchable Quarto book by Juan Salinas, with topic-based chapters and an archi
 ## After each lecture
 
 1. Finish and check the lecture PDF first.
-2. Copy only that student-facing PDF into `downloads/`.
+2. Identify the completed student-facing version from its contents and revision history, not its modification time alone. Exclude rough notes, teacher outlines, and superseded versions. Copy only that PDF into `downloads/` and verify the copy matches the original exactly.
 3. Adapt the corresponding material into the relevant files in `lectures/`. Keep equations as text and give diagrams meaningful alternative text. Preserve the PDF's examples and results; organize the web version by topic.
 4. Add the date, PDF link, and topic links to `lecture-pdfs.qmd`.
 5. Run `quarto render`, review the affected pages, and check the search and PDF links.
