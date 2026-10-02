@@ -11,3 +11,7 @@ Download the original lecture notes for printing or annotation, or follow the to
 | September 28, 2026 | [Limits](downloads/september-28-limits-class-notes.pdf) | [Limits](lectures/02-limits.qmd) · [Infinite limits](lectures/03-infinite-limits.qmd) |
 | September 25, 2026 | [Functions and Graphs — Precalculus Review](downloads/september-25-chapter-1-review.pdf) | [Appendix: Precalculus review](lectures/00-functions.qmd) |
 | September 23, 2026 | [An Introduction to Calculus](downloads/september-23-course-introduction.pdf) | [An introduction to calculus](lectures/01-introduction.qmd) |
+
+## Worksheets
+
+The original [precalculus and Week 2 worksheets](supplements/worksheets.qmd) are collected separately, with links to the corresponding notes.

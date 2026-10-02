@@ -1,0 +1,26 @@
+# Worksheets {.unnumbered}
+
+::: {.source-note}
+Supplement · Original student handouts, ready to download and print. These worksheets provide longer practice alongside the lecture notes.
+:::
+
+## Precalculus review
+
+[Download the precalculus worksheet](../downloads/precalculus-review-worksheet.pdf){.start-link}
+
+Four pages with 12 problems on functions, domains, graphs, slope, trigonometry, inverses, exponentials, and logarithms.
+
+The numbered topics in [Appendix A: Precalculus review](../lectures/00-functions.qmd) follow this worksheet, using different values for the discussion examples. The [review lecture PDF](../downloads/september-25-chapter-1-review.pdf) is also available.
+
+## Week 2 · Limits
+
+[Download the Week 2 worksheet](../downloads/week-2-worksheet.pdf){.start-link}
+
+Four pages with two investigations:
+
+- **A tangent line on the unit circle:** follow its horizontal intercept as the point of tangency moves toward the top of the circle.
+- **When can a graph mislead us?** Compare graphical evidence, exact values, a change of scale, and limit laws.
+
+Related notes: [Limits](../lectures/02-limits.qmd), [Infinite limits](../lectures/03-infinite-limits.qmd), and [Limit laws](../lectures/04-limit-laws.qmd).
+
+**Note on page 4.** The original PDF is preserved as distributed. Its final physical-scale aside is inaccurate: approximately $1.6\times10^{-35}$ meters is the *Planck length* ([NIST](https://physics.nist.gov/cuu/Constants/codata.pdf)). The “10 billion times” comparison should be disregarded. For this function, the relevant horizontal scale is $10^{-1013}$, as in part (c), because $(10^{-1013})^2=10^{-2026}$. The graph's coordinates have no physical units unless a scale is explicitly assigned.

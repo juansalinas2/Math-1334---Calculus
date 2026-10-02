@@ -29,6 +29,7 @@ book:
         - lectures/07-intermediate-value.qmd
     - part: "Supplements"
       chapters:
+        - supplements/worksheets.qmd
         - supplements/glossary.qmd
         - supplements/self-checks.qmd
         - supplements/explore.qmd

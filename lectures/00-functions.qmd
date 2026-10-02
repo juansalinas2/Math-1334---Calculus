@@ -6,6 +6,8 @@ description: "A review of functions, domains, graphs, trigonometry, and logarith
 
 ::: {.source-note}
 [Precalculus review PDF · September 25, 2026](../downloads/september-25-chapter-1-review.pdf)
+
+[Precalculus worksheet PDF · 12 problems](../downloads/precalculus-review-worksheet.pdf)
 :::
 
 These notes follow the Chapter 1 review worksheet in order. Each numbered topic corresponds to the same numbered worksheet problem. The examples use different values and are intended for discussion.
