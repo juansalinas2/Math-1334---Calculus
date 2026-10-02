@@ -1,0 +1,28 @@
+---
+title: "Calculus notes"
+subtitle: "Ideas, examples, and the mathematics of change."
+---
+
+These notes introduce differential calculus: limits, continuity, derivatives, and their applications. They grow alongside the lectures, with explanations, graphs, and worked examples organized by topic.
+
+[Start reading](lectures/01-introduction.qmd){.start-link}
+
+## Find a topic
+
+[**Functions and graphs**](lectures/00-functions.qmd)  
+Review functions, domains, trigonometry, and logarithms.
+
+[**Limits**](lectures/02-limits.qmd) · [Infinite limits](lectures/03-infinite-limits.qmd)  
+Understand approaching values through graphs, tables, and one-sided limits.
+
+[**Limit laws**](lectures/04-limit-laws.qmd) · [Squeeze theorem](lectures/05-squeeze-theorem.qmd)  
+Compute limits with algebra, bounds, and trigonometric identities.
+
+[**Continuity**](lectures/06-continuity.qmd) · [Intermediate Value Theorem](lectures/07-intermediate-value.qmd)  
+Connect limits to function values and prove that solutions exist.
+
+## Following a lecture?
+
+The [lecture PDF archive](lecture-pdfs.qmd) lists the notes by date, alongside links to the corresponding book sections. PDFs preserve the lecture handouts; the book brings the material together by topic.
+
+Use the sidebar search to find a definition, theorem, or example across the notes.

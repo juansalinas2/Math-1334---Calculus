@@ -1,0 +1,14 @@
+/.quarto/
+/_site/
+/_book/
+/.tools/
+/.cache/
+**/.DS_Store
+**/*.quarto_ipynb
+# Private course planning, exams, grading, drafts, and original source material.
+/AGENTS.md
+/input/
+/output/
+/tmp/
+/limits-cleaned.qmd
+/limits-original-paste.qmd

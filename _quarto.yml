@@ -1,0 +1,50 @@
+project:
+  type: book
+  output-dir: _site
+  resources:
+    - downloads/*.pdf
+
+book:
+  title: "Calculus notes"
+  author: "Juan Salinas"
+  description: "Notes, worked examples, and lecture PDFs for introductory differential calculus."
+  site-url: https://juansalinas2.github.io/Math-1334---Calculus/
+  search: true
+  page-navigation: true
+  sidebar:
+    style: docked
+    background: "#fafaf8"
+    collapse-level: 1
+  chapters:
+    - index.qmd
+    - lectures/01-introduction.qmd
+    - lectures/00-functions.qmd
+    - part: "Limits and continuity"
+      chapters:
+        - lectures/02-limits.qmd
+        - lectures/03-infinite-limits.qmd
+        - lectures/04-limit-laws.qmd
+        - lectures/05-squeeze-theorem.qmd
+        - lectures/06-continuity.qmd
+        - lectures/07-intermediate-value.qmd
+    - lecture-pdfs.qmd
+  page-footer:
+    left: "Calculus notes · Juan Salinas"
+    right: "[Lecture PDFs](/lecture-pdfs.qmd)"
+
+format:
+  html:
+    theme:
+      - cosmo
+      - custom.scss
+    toc: false
+    number-sections: false
+    html-math-method: mathjax
+    lang: en
+    smooth-scroll: true
+    link-external-newwindow: true
+    grid:
+      sidebar-width: 250px
+      body-width: 760px
+      margin-width: 40px
+    include-after-body: assets/page-contents.html

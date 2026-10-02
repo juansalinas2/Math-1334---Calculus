@@ -1,0 +1,32 @@
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const main = document.querySelector('main.content');
+  const headings = [...(main?.querySelectorAll('section.level2 > h2') || [])];
+  if (!main || headings.length < 3 || !location.pathname.includes('/lectures/')) return;
+  const details = document.createElement('details');
+  details.className = 'page-contents';
+  const summary = document.createElement('summary');
+  summary.textContent = 'On this page';
+  const list = document.createElement('ul');
+  for (const heading of headings) {
+    const item = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = '#' + heading.parentElement.id;
+    link.textContent = heading.textContent.trim();
+    item.append(link); list.append(item);
+  }
+  details.append(summary, list);
+  const source = main.querySelector('.source-note');
+  if (source) source.after(details);
+  else main.querySelector('header')?.after(details);
+  // A linked proof should open automatically, including when reached from search.
+});
+function openLinkedProof() {
+  const id = decodeURIComponent(location.hash.slice(1));
+  if (!id) return;
+  const target = document.getElementById(id);
+  for (let el = target; el; el = el.parentElement) if (el.tagName === 'DETAILS') el.open = true;
+}
+window.addEventListener('hashchange', openLinkedProof);
+window.addEventListener('load', openLinkedProof);
+</script>

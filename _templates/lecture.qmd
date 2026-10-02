@@ -1,0 +1,31 @@
+---
+title: "Topic title"
+description: "A short description of the mathematical topic."
+---
+
+::: {.source-note}
+[Lecture PDF · Month D, YYYY](../downloads/lecture-name.pdf)
+:::
+
+## Main idea
+
+Introduce the idea in plain language.
+
+::: {.statement}
+
+**Definition or theorem**
+
+State the mathematical result and its assumptions.
+
+:::
+
+## Worked example
+
+State the problem, then show the solution.
+
+<details class="proof">
+<summary>Proof</summary>
+
+Include a proof here when appropriate.
+
+</details>

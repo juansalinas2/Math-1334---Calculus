@@ -1,0 +1,15 @@
+---
+title: "Lecture PDFs"
+---
+
+Math 1334 · Seattle University · Fall 2026
+
+Download the original lecture notes for printing or annotation, or follow the topic links to read the material online.
+
+| Lecture | PDF | Read online |
+|:--|:--|:--|
+| October 2, 2026 | [Continuity and the Intermediate Value Theorem](downloads/october-2-continuity-class-notes.pdf) | [Continuity](lectures/06-continuity.qmd) · [Intermediate Value Theorem](lectures/07-intermediate-value.qmd) |
+| September 30, 2026 | [Limit Laws and the Squeeze Theorem](downloads/september-30-revised-class-notes.pdf) | [Limit laws](lectures/04-limit-laws.qmd) · [Squeeze theorem and trigonometric limits](lectures/05-squeeze-theorem.qmd) |
+| September 28, 2026 | [Limits](downloads/september-28-limits-class-notes.pdf) | [Limits](lectures/02-limits.qmd) · [Infinite limits](lectures/03-infinite-limits.qmd) |
+| September 25, 2026 | [Functions and Graphs](downloads/september-25-chapter-1-review.pdf) | [Functions and graphs](lectures/00-functions.qmd) |
+| September 23, 2026 | [An Introduction to Calculus](downloads/september-23-course-introduction.pdf) | [An introduction to calculus](lectures/01-introduction.qmd) |
