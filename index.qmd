@@ -1,6 +1,6 @@
 ---
 title: "# Calculus notes {.unnumbered}"
-subtitle: "Ideas, examples, and the mathematics of change."
+subtitle: "Notes for Calculus 1"
 page-navigation: false
 ---
 
@@ -13,3 +13,11 @@ Read the numbered chapters in order, or use the contents and search to return to
 For the original handouts, visit the [lecture PDF archive](lecture-pdfs.qmd), organized by date.
 
 The [precalculus review](lectures/00-functions.qmd) is **Appendix A**, with its original [review PDF](downloads/september-25-chapter-1-review.pdf).
+
+## References
+
+These notes draw on the exposition, examples, and ideas in the following texts, adapted to the sequence and emphasis of this course:
+
+- Gilbert Strang and Edwin “Jed” Herman, [*Calculus Volume 1*](https://openstax.org/details/books/calculus-volume-1). OpenStax.
+- James Stewart, [*Calculus*](https://www.stewartcalculus.com/). Cengage.
+- Michael Spivak, [*Calculus*](https://mathpop.com/products/calculus-4th-edition-digital-edition). Publish or Perish.
