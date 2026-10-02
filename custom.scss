@@ -49,3 +49,11 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 #title-block-header .quarto-title-meta { display: none !important; }
 #title-block-header .description { display: none; }
 .content p > img:only-child { display: block; margin: 1.5rem auto; max-width: 100%; height: auto; }
+.graph-explorer { margin: 1.4rem 0; padding: 1rem; border: 1px solid #dce4e4; border-radius: 5px; }
+.graph-explorer label { display: block; font-weight: 500; }
+.graph-explorer input[type="range"] { display: block; width: 100%; margin: .8rem 0; accent-color: #245a67; }
+.graph-explorer input:focus-visible { outline: 3px solid #78999e; outline-offset: 4px; }
+.graph-explorer svg { display: block; width: 100%; height: auto; }
+.graph-explorer svg text { font: 15px system-ui, sans-serif; fill: #293137; }
+.graph-readout { min-height: 3em; font-size: .9rem; font-variant-numeric: tabular-nums; }
+.graph-key { font-size: .83rem; color: #626e74; margin-bottom: 0; }

@@ -1,0 +1,81 @@
+# Interactive graphs {.unnumbered}
+
+::: {.source-note}
+Supplement · Three small explorations of ideas from the lectures. Use the sliders or the arrow keys after selecting a slider. Graphs illustrate behavior; the algebra explains why it happens.
+:::
+
+## Approaching a hole
+
+[Related lecture: limits and function values](../lectures/02-limits.qmd#limits-and-function-values)
+
+For $f(x)=(x^2-4)/(x-2)$, move $x=2+h$ toward $2$ from either side. What happens to $f(x)$? What happens at $h=0$?
+
+```{=html}
+<div class="graph-explorer" data-explorer="limit">
+  <label for="limit-h">Distance from 2: h</label>
+  <input id="limit-h" type="range" min="-1.5" max="1.5" step="0.01" value="1" disabled>
+  <p class="graph-readout" role="status" aria-live="polite"></p>
+  <svg viewBox="0 0 640 360" role="img" aria-labelledby="limit-title limit-desc">
+    <title id="limit-title">A line with a hole at (2, 4)</title>
+    <desc id="limit-desc">The graph follows y equals x plus 2, except at x equals 2 where the function is undefined. A moving point approaches the hole from either side.</desc>
+  </svg>
+  <noscript><p>Enable JavaScript to move the point. The explanation below gives the same mathematical result.</p></noscript>
+</div>
+```
+
+For $x\ne2$, factoring gives $f(x)=x+2$, so $f(2+h)=4+h$ when $h\ne0$. Thus $f(x)\to4$ as $x\to2$. The original fraction remains undefined at $2$.
+
+## Repairing continuity
+
+[Related lecture: continuity at a point](../lectures/06-continuity.qmd#continuity-at-a-point)
+
+Keep the nearby graph fixed and move only the value at $2$:
+
+$$g_c(x)=\begin{cases}x+2,&x\ne2,\\c,&x=2.\end{cases}$$
+
+Which value of $c$ makes the function continuous? Does moving the filled point change the limit?
+
+```{=html}
+<div class="graph-explorer" data-explorer="continuity">
+  <label for="continuity-c">Function value at 2: c</label>
+  <input id="continuity-c" type="range" min="0" max="8" step="0.1" value="7" disabled>
+  <p class="graph-readout" role="status" aria-live="polite"></p>
+  <svg viewBox="0 0 640 360" role="img" aria-labelledby="continuity-title continuity-desc">
+    <title id="continuity-title">Moving the function value at x equals 2</title>
+    <desc id="continuity-desc">The line y equals x plus 2 has a hole at (2, 4). A filled point at (2, c) moves vertically. When c equals 4, the filled point closes the hole.</desc>
+  </svg>
+  <noscript><p>Enable JavaScript to move the filled point. The explanation below gives the continuity condition.</p></noscript>
+</div>
+```
+
+The limit at $2$ stays $4$ for every $c$. Continuity requires $g_c(2)=4$, so **$c=4$** is the only choice that closes the hole. Every other choice gives a removable discontinuity.
+
+## From secant to tangent
+
+[Related lecture: secants and the difference quotient](../lectures/02-limits.qmd)
+
+On $f(x)=x^2$, fix $P=(1,1)$ and move $Q=(1+h,(1+h)^2)$. Compare the secant through $P$ and $Q$ with the tangent at $P$.
+
+```{=html}
+<div class="graph-explorer" data-explorer="secant">
+  <label for="secant-h">Separation of the inputs: h</label>
+  <input id="secant-h" type="range" min="-1" max="1" step="0.01" value="0.8" disabled>
+  <p class="graph-readout" role="status" aria-live="polite"></p>
+  <svg viewBox="0 0 640 360" role="img" aria-labelledby="secant-title secant-desc">
+    <title id="secant-title">A secant approaching the tangent to y equals x squared</title>
+    <desc id="secant-desc">The solid parabola passes through P at (1, 1). A dashed secant joins P and the moving point Q. The dotted tangent has slope 2. When h is zero, Q coincides with P and the secant is undefined.</desc>
+  </svg>
+  <p class="graph-key">Solid curve: y = x² · Dashed line: secant · Dotted line: tangent</p>
+  <noscript><p>Enable JavaScript to move the secant. The calculation below explains its limiting slope.</p></noscript>
+</div>
+```
+
+For $h\ne0$, the secant slope is
+
+$$\frac{(1+h)^2-1}{h}=2+h.$$
+
+As $h\to0$, the slopes approach $2$, the slope of the tangent $y=2x-1$. At $h=0$, the difference quotient is undefined; the tangent slope comes from its **limit**.
+
+```{=html}
+<script src="../assets/explorers.js" defer></script>
+```

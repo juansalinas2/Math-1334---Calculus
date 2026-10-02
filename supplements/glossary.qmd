@@ -1,0 +1,51 @@
+# Glossary {.unnumbered}
+
+::: {.source-note}
+Supplement · A quick reference to ideas in the lectures. Follow each term to its original explanation and examples.
+:::
+
+## Change and limits
+
+**[Tangent line and derivative](../lectures/01-introduction.qmd#what-is-calculus).** The tangent line describes the local direction of a smooth curve; its slope is the derivative $f'(a)$.
+
+**[Secant line and difference quotient](../lectures/02-limits.qmd).** A secant joins two points on a graph. Its slope, $[f(a+h)-f(a)]/h$ for $h\ne0$, measures average rate of change.
+
+**[Limit](../lectures/02-limits.qmd).** The value $f(x)$ approaches as all inputs $x\ne a$ become sufficiently close to $a$. The limit need not equal $f(a)$.
+
+**[One-sided limits](../lectures/02-limits.qmd#one-sided-limits).** Limits taken through inputs to the left or right of $a$. A finite two-sided limit exists exactly when both one-sided limits exist and agree.
+
+**[Infinite limit](../lectures/03-infinite-limits.qmd#infinite-limits-and-vertical-asymptotes).** Outputs grow beyond every positive bound, or fall below every negative bound, near the input. Infinity describes behavior; it is not a real-number limit.
+
+**[Vertical asymptote](../lectures/03-infinite-limits.qmd#infinite-limits-and-vertical-asymptotes).** The line $x=a$ when at least one one-sided limit there is $+\infty$ or $-\infty$.
+
+## Computing limits
+
+**[Limit laws](../lectures/04-limit-laws.qmd#the-limit-laws).** Rules for limits of sums, products, quotients, and other combinations, subject to the stated hypotheses. In particular, the quotient law requires a nonzero denominator limit.
+
+**[Indeterminate form](../lectures/04-limit-laws.qmd#indeterminate-forms-and-simplifying).** An expression such as $0/0$ obtained by substitution that does not determine the limit. Further analysis is needed.
+
+**[Squeeze theorem](../lectures/05-squeeze-theorem.qmd#the-squeeze-theorem).** If a function lies between two bounds near a point, and both bounds approach the same value, the function approaches that value too.
+
+**[Fundamental trigonometric limit](../lectures/05-squeeze-theorem.qmd#the-fundamental-trigonometric-limit).** $\lim_{\theta\to0}\sin\theta/\theta=1$, with angles measured in radians.
+
+## Continuity
+
+**[Continuity at a point](../lectures/06-continuity.qmd#continuity-at-a-point).** The function value is defined, the finite limit exists, and the two agree: $\lim_{x\to a}f(x)=f(a)$.
+
+**[Removable discontinuity](../lectures/06-continuity.qmd#types-of-discontinuities).** The finite limit exists, but the function value is missing or differs from that limit.
+
+**[Jump discontinuity](../lectures/06-continuity.qmd#types-of-discontinuities).** The one-sided limits are finite and unequal.
+
+**[Infinite discontinuity](../lectures/06-continuity.qmd#types-of-discontinuities).** At least one one-sided limit is $+\infty$ or $-\infty$.
+
+**[One-sided continuity](../lectures/06-continuity.qmd#one-sided-continuity).** The limit from the relevant side equals the function value. This is the continuity condition used at an included endpoint of an interval.
+
+**[Intermediate Value Theorem](../lectures/07-intermediate-value.qmd#the-intermediate-value-theorem).** A function continuous on $[a,b]$ takes every value between $f(a)$ and $f(b)$ somewhere on that interval.
+
+## Precalculus reference
+
+**[Function, domain, and range](../lectures/00-functions.qmd#functions-domain-and-range).** A function assigns exactly one output to each allowed input. Its domain is the set of allowed inputs; its range is the set of outputs it attains.
+
+**[Composition](../lectures/00-functions.qmd#composition-of-functions).** Applying one function to the output of another: $(g\circ h)(x)=g(h(x))$.
+
+**[Inverse function](../lectures/00-functions.qmd#inverse-functions).** A function that reverses the input-output assignment. The notation $f^{-1}$ means an inverse function, not the reciprocal $1/f$.

@@ -17,6 +17,10 @@ Do not upload the entire local course folder. `input/`, `output/`, `tmp/`, `AGEN
 
 Treat each finished lecture PDF as the source of truth. Preserve its explanations, definitions, hypotheses, examples, numbers, solution steps, proofs, recaps, and diagrams. Keep worksheet-corresponding topic numbers and lettered subparts. Topic pages may split a lecture, but should retain its internal teaching sequence. Changes for the web should concern layout, navigation, accessibility, and replacing page references with links. Do not silently shorten repeated material, add new examples, or revise mathematics; flag any proposed substantive correction for the instructor.
 
+## Supplements
+
+The `supplements/` pages contain an instructor-approved glossary, optional self-checks with hints and answers, and interactive graphs. They are explicitly labeled as supplements, separate from the faithful lecture transcriptions. Keep new questions and explorations here; do not blend them into the PDF-derived content. The graphs use local JavaScript and SVG, with no account, API key, or paid service required.
+
 ## Local preview
 
 On the original Mac, open `Preview.command`; it uses the existing local Quarto runtime. Elsewhere, install Quarto and run `quarto preview`. The project uses Quarto 1.10.18 in GitHub Actions and has no executable notebook dependencies.
@@ -26,6 +30,8 @@ On the original Mac, open `Preview.command`; it uses the existing local Quarto r
 - `_quarto.yml`: chapter order, search, and book settings.
 - `index.qmd`: book home.
 - `lectures/`: topic chapters and their images.
+- `supplements/`: glossary, self-checks, and interactive explorations.
+- `assets/explorers.js`: local interactive graph controls.
 - `lecture-pdfs.qmd`: chronological lecture archive.
 - `downloads/`: explicitly selected student-facing PDFs.
 - `custom.scss`: shared typography and styling.

@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const main = document.querySelector('main.content');
   const headings = [...(main?.querySelectorAll('section.level2 > h2') || [])];
-  if (!main || headings.length < 3 || !location.pathname.includes('/lectures/')) return;
+  if (!main || headings.length < 3 || !/\/(lectures|supplements)\//.test(location.pathname)) return;
   const details = document.createElement('details');
   details.className = 'page-contents';
   const summary = document.createElement('summary');
