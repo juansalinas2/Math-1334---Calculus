@@ -14,9 +14,10 @@ book:
   sidebar:
     style: docked
     background: "#fafaf8"
-    collapse-level: 1
+    collapse-level: 2
   chapters:
-    - index.qmd
+    - href: index.qmd
+      text: Overview
     - lectures/01-introduction.qmd
     - part: "Limits and continuity"
       chapters:
@@ -39,7 +40,8 @@ format:
       - cosmo
       - custom.scss
     toc: false
-    number-sections: false
+    number-sections: true
+    number-depth: 0
     html-math-method: mathjax
     lang: en
     smooth-scroll: true

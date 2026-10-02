@@ -1,6 +1,6 @@
 ---
 title: "Precalculus review"
-subtitle: "Appendix · Functions and graphs"
+subtitle: "Functions and graphs"
 description: "A review of functions, domains, graphs, trigonometry, and logarithms."
 ---
 

@@ -1,6 +1,4 @@
----
-title: "Lecture PDFs"
----
+# Lecture PDFs {.unnumbered}
 
 Math 1334 · Seattle University · Fall 2026
 
