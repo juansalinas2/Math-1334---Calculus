@@ -18,7 +18,6 @@ book:
   chapters:
     - index.qmd
     - lectures/01-introduction.qmd
-    - lectures/00-functions.qmd
     - part: "Limits and continuity"
       chapters:
         - lectures/02-limits.qmd
@@ -28,6 +27,8 @@ book:
         - lectures/06-continuity.qmd
         - lectures/07-intermediate-value.qmd
     - lecture-pdfs.qmd
+  appendices:
+    - lectures/00-functions.qmd
   page-footer:
     left: "Calculus notes · Juan Salinas"
     right: "[Lecture PDFs](/lecture-pdfs.qmd)"
