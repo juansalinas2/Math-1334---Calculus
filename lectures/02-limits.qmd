@@ -109,6 +109,8 @@ $$
 \lim_{x\to a^-}f(x)=\lim_{x\to a^+}f(x)=L.
 $$
 
+:::
+
 **Example 1.** $\displaystyle f(x)=\begin{cases}2-x,&x<0,\\x^2-3,&x\ge0.\end{cases}$ *Case method.* Use $2-x$ on the left and $x^2-3$ on the right: 
 
 $$
@@ -116,8 +118,6 @@ $$
 $$
 
  *Graph method.* The branches approach different heights. The one-sided limits differ, so $\displaystyle\lim_{x\to0}f(x)$ DNE.
-
-:::
 
 ![A line approaches height 2 from the left; a parabola approaches height negative 3 from the right.](assets/different-sides.png){fig-alt="A line approaches height 2 from the left; a parabola approaches height negative 3 from the right." width=197}
 
