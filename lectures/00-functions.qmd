@@ -18,13 +18,13 @@ These notes follow the Chapter 1 review worksheet in order. Each numbered topic 
 
 A *function* assigns exactly one output to each input in its domain. The *domain* is the set of allowed inputs; the *range* is the set of outputs the function actually produces. The notation $f(x)$ means the output corresponding to input $x$. A point on its graph has coordinates $(x,f(x))$.
 
-A function may be represented by a verbal description, table, formula, or graph. For a quantity changing at a constant rate, 
+A function may be represented by a verbal description, table, formula, or graph. For a quantity changing at a constant rate,
 
 $$
 \text{amount}=\text{initial amount}+(\text{rate})(\text{elapsed time}).
 $$
 
- Identify the input and output, label their units, and use the situation to decide which inputs are allowed. A formula alone may allow more inputs than the situation does.
+Identify the input and output, label their units, and use the situation to decide which inputs are allowed. A formula alone may allow more inputs than the situation does.
 
 **Example.** A tank contains 6 liters of water. Water enters at 3 liters per minute for 4 minutes. Let $W(t)$ be the volume after $t$ minutes.
 
@@ -38,13 +38,13 @@ $$
 
 To evaluate a function, replace every occurrence of its input variable by the given number or expression. Use parentheses around the entire substituted input. In general, $f(a+h)$ is not equal to $f(a)+f(h)$.
 
-A *difference quotient* has the form 
+A *difference quotient* has the form
 
 $$
 \frac{f(a+h)-f(a)}{h},\qquad h\ne0.
 $$
 
- Substitute first, expand, subtract all of $f(a)$, and then collect terms and factor. Remember $(a+h)^2=a^2+2ah+h^2$. Cancel common *factors*, not individual terms in a sum, and retain the restriction $h\ne0$.
+Substitute first, expand, subtract all of $f(a)$, and then collect terms and factor. Remember $(a+h)^2=a^2+2ah+h^2$. Cancel common *factors*, not individual terms in a sum, and retain the restriction $h\ne0$.
 
 **Example.** Let $f(x)=x^2-4x$. Find $f(-3)$ and expand $f(a+h)$. Then simplify $[f(a+h)-f(a)]/h$ for $h\ne0$, showing the factoring and cancellation step.
 
@@ -64,7 +64,7 @@ A *piecewise-defined function* uses different formulas on different parts of its
 
 To graph it, draw each formula only for the inputs covered by its condition. An open endpoint means that branch excludes the point; a filled endpoint means the point belongs to the graph. An equality condition may specify a single point. When branches meet, check whether any rule includes that point in the whole function.
 
-**Example.** Consider 
+**Example.** Consider
 
 $$
 r(x)=\begin{cases}
@@ -82,7 +82,7 @@ $$
 
 ## 5. Finding real domains
 
-When no domain is stated, seek all real inputs for which the formula gives a defined real output. The main restrictions are 
+When no domain is stated, seek all real inputs for which the formula gives a defined real output. The main restrictions are
 
 $$
 \begin{array}{ll}
@@ -92,27 +92,29 @@ $$
 \end{array}
 $$
 
- If a formula has more than one restriction, satisfy all of them simultaneously.
+If a formula has more than one restriction, satisfy all of them simultaneously.
 
 In interval notation, brackets include a finite endpoint and parentheses exclude it. Always use parentheses with $\infty$ and $-\infty$. The union symbol $\cup$ joins separate intervals. For example, $(a,b]$ means $a<x\le b$.
 
-**Example.** Find each real domain. Explain the restriction before writing interval notation. 
+**Example.** Find each real domain. Explain the restriction before writing interval notation.
 
 $$
-\text{(a) }u(x)=\sqrt{x-3},\qquad
-\text{(b) }v(x)=\frac{1}{x^2-16},\qquad
-\text{(c) }w(x)=\ln(x+2).
+\begin{aligned}
+\text{(a) }u(x)&=\sqrt{x-3},\\[0.5em]
+\text{(b) }v(x)&=\frac{1}{x^2-16},\\[0.5em]
+\text{(c) }w(x)&=\ln(x+2).
+\end{aligned}
 $$
 
 ## 6. Simplification and excluded inputs
 
-The domain is determined from the original expression. Canceling a common factor does not restore an input excluded by that expression. The identity 
+The domain is determined from the original expression. Canceling a common factor does not restore an input excluded by that expression. The identity
 
 $$
 x^2-c^2=(x-c)(x+c)
 $$
 
- is useful for factoring a difference of squares. After cancellation, keep the original restrictions alongside the simplified formula.
+is useful for factoring a difference of squares. After cancellation, keep the original restrictions alongside the simplified formula.
 
 If a simplified formula is defined at an originally excluded input, its graph must have that point removed to represent the original function. Mark the missing point with an open circle; use the simplified formula to locate its height.
 
@@ -124,21 +126,21 @@ If a simplified formula is defined at an originally excluded input, its graph mu
 
 ## 7. Slope, average rate of change, and lines
 
-The slope of the line through two points $(x_1,y_1)$ and $(x_2,y_2)$ is 
+The slope of the line through two points $(x_1,y_1)$ and $(x_2,y_2)$ is
 
 $$
 m=\frac{y_2-y_1}{x_2-x_1},\qquad x_1\ne x_2.
 $$
 
- Subtract in the same order in the numerator and denominator. Slope has units of output units per input unit. For points on $y=f(x)$, this is the *average rate of change* over the interval between the inputs.
+Subtract in the same order in the numerator and denominator. Slope has units of output units per input unit. For points on $y=f(x)$, this is the *average rate of change* over the interval between the inputs.
 
-A *secant line* passes through two distinct points on a graph. Use point-slope form to write its equation: 
+A *secant line* passes through two distinct points on a graph. Use point-slope form to write its equation:
 
 $$
 y-y_1=m(x-x_1).
 $$
 
- For a position function $s(t)$, the slope between two points is average velocity. The secant line need not coincide with the position graph between those points.
+For a position function $s(t)$, the slope between two points is average velocity. The secant line need not coincide with the position graph between those points.
 
 **Example.** An object's position is $s(t)=t^2+1$ meters, with $t$ in seconds.
 
@@ -150,20 +152,22 @@ $$
 
 ## 8. Radians and the unit circle
 
-An angle in standard position is measured from the positive horizontal axis; positive angles turn counterclockwise. A full turn is $2\pi$ radians, so 
+An angle in standard position is measured from the positive horizontal axis; positive angles turn counterclockwise. A full turn is $2\pi$ radians, so
 
 $$
-\pi\text{ radians}=180^\circ,\qquad
+\begin{gathered}
+\pi\text{ radians}=180^\circ,\\[0.4em]
 \text{degrees}=\text{radians}\cdot\frac{180^\circ}{\pi}.
+\end{gathered}
 $$
 
- The point at angle $\theta$ on the unit circle has coordinates 
+The point at angle $\theta$ on the unit circle has coordinates
 
 $$
 (\cos\theta,\sin\theta).
 $$
 
- Cosine is the horizontal coordinate and sine is the vertical coordinate. Use the quadrant to determine signs. The special right triangles give exact values: a $30^\circ$--$60^\circ$--$90^\circ$ triangle has side ratios $1:\sqrt3:2$; a $45^\circ$--$45^\circ$--$90^\circ$ triangle has ratios $1:1:\sqrt2$.
+Cosine is the horizontal coordinate and sine is the vertical coordinate. Use the quadrant to determine signs. The special right triangles give exact values: a $30^\circ$--$60^\circ$--$90^\circ$ triangle has side ratios $1:\sqrt3:2$; a $45^\circ$--$45^\circ$--$90^\circ$ triangle has ratios $1:1:\sqrt2$.
 
 **Example.** Convert $\pi/3$, $\pi/4$, and $3\pi/2$ to degrees and give their unit-circle coordinates. Identify the sine and cosine in each pair. A unit-circle reference may be used.
 
@@ -181,13 +185,13 @@ For $y=A\sin x$ with $A\ne0$, the amplitude is $|A|$ and the period is $2\pi$. M
 
 ## 10. Inverse functions
 
-An *inverse function* reverses the input-output relationship: if $f(a)=b$, then $f^{-1}(b)=a$. Its domain is the range of $f$, and its range is the domain of $f$. On the appropriate domains, 
+An *inverse function* reverses the input-output relationship: if $f(a)=b$, then $f^{-1}(b)=a$. Its domain is the range of $f$, and its range is the domain of $f$. On the appropriate domains,
 
 $$
 f^{-1}(f(x))=x,\qquad f(f^{-1}(x))=x.
 $$
 
- To find an inverse formula, write $y=f(x)$, solve for $x$ in terms of $y$, and then use $x$ as the input variable in the inverse formula. Equivalently, interchange $x$ and $y$ and solve for $y$. Check the result by composition.
+To find an inverse formula, write $y=f(x)$, solve for $x$ in terms of $y$, and then use $x$ as the input variable in the inverse formula. Equivalently, interchange $x$ and $y$ and solve for $y$. Check the result by composition.
 
 The superscript in $f^{-1}$ denotes an inverse function, not a reciprocal. The expression $1/f(x)$ means the reciprocal of the output and requires $f(x)\ne0$.
 
@@ -209,27 +213,29 @@ If a function is not one-to-one, a suitable restriction of its domain may make i
 
 ## 12. Exponentials and logarithms
 
-A logarithm answers the question "What exponent produces this number?" For $b>0$, $b\ne1$, and $v>0$, 
+A logarithm answers the question "What exponent produces this number?" For $b>0$, $b\ne1$, and $v>0$,
 
 $$
 b^u=v\quad\Longleftrightarrow\quad\log_b v=u.
 $$
 
- The *natural logarithm* is $\ln x=\log_e x$. Exponential and logarithmic functions with the same base undo each other: 
+The *natural logarithm* is $\ln x=\log_e x$. Exponential and logarithmic functions with the same base undo each other:
 
 $$
 \log_b(b^u)=u\quad(u\in\mathbb R),\qquad b^{\log_b v}=v\quad(v>0).
 $$
 
- To solve an exponential equation, apply a logarithm to both sides. For positive $a,b$ and real $r$, the natural-logarithm rules include 
+To solve an exponential equation, apply a logarithm to both sides. For positive $a,b$ and real $r$, the natural-logarithm rules include
 
 $$
-\ln(ab)=\ln a+\ln b,\qquad
-\ln(a/b)=\ln a-\ln b,\qquad
-\ln(a^r)=r\ln a.
+\begin{aligned}
+\ln(ab)&=\ln a+\ln b,\\[0.4em]
+\ln(a/b)&=\ln a-\ln b,\\[0.4em]
+\ln(a^r)&=r\ln a.
+\end{aligned}
 $$
 
- The product rule applies to multiplication inside the logarithm. It does not give a rule for splitting the logarithm of a sum. One counterexample disproves a claim that an identity always holds.
+The product rule applies to multiplication inside the logarithm. It does not give a rule for splitting the logarithm of a sum. One counterexample disproves a claim that an identity always holds.
 
 **Example.** Work without a calculator.
 

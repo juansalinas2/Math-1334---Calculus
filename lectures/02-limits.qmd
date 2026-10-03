@@ -13,19 +13,19 @@ A *secant line* passes through two points on the graph. Its slope is the average
 
 ![](assets/secant-tangent.png){fig-alt="A secant joins two points on a curve; the tangent touches the curve at the first point." width=502}
 
-Secant slope: 
+Secant slope:
 
 $$
 \frac{f(1+h)-f(1)}{h},\qquad h\ne0.
 $$
 
- More generally, the *difference quotient* is 
+More generally, the *difference quotient* is
 
 $$
 \frac{f(a+h)-f(a)}{h}.
 $$
 
- As $h\to0$, the second point approaches the first. We study limits to describe what the secant slope approaches.
+As $h\to0$, the second point approaches the first. We study limits to describe what the secant slope approaches.
 
 ::: {.statement}
 
@@ -41,7 +41,7 @@ $$
 
 ::: {.statement}
 
-**Theorem.** For real constants $a$ and $c$, 
+**Theorem.** For real constants $a$ and $c$,
 
 $$
 \lim_{x\to a}c=c,\qquad \lim_{x\to a}x=a.
@@ -55,17 +55,17 @@ $$
 
 **Example 1.** Let $\displaystyle f(x)=\frac{x^2-4}{x-2}$ and $a=2$.
 
-*Graph method.* For $x\ne2$, factoring gives 
+*Graph method.* For $x\ne2$, factoring gives
 
 $$
 f(x)=\frac{(x-2)(x+2)}{x-2}=x+2.
 $$
 
- The graph is the line $y=x+2$ with a hole at $(2,4)$. From either side of $2$, the graph approaches height $4$.
+The graph is the line $y=x+2$ with a hole at $(2,4)$. From either side of $2$, the graph approaches height $4$.
 
 ![](assets/limit-hole.png){fig-alt="The line y equals x plus 2 has an open circle at (2,4)." width=311}
 
-*Table method.* Choose inputs approaching $2$ from both sides; do not substitute $x=2$ into the original fraction. 
+*Table method.* Choose inputs approaching $2$ from both sides; do not substitute $x=2$ into the original fraction.
 
 $$
 \begin{array}{c|cccc|ccc}
@@ -74,21 +74,25 @@ f(x)&3.9&3.99&3.999&f(x)&4.1&4.01&4.001
 \end{array}
 $$
 
- The table suggests the same limit. A table is evidence, not a proof; the identity $f(x)=x+2$ for $x\ne2$ justifies the conclusion: 
+The table suggests the same limit. A table is evidence, not a proof; the identity $f(x)=x+2$ for $x\ne2$ justifies the conclusion:
 
 $$
 \lim_{x\to2}f(x)=4,\qquad f(2)\text{ is undefined}.
 $$
 
-**Example 2.** Let $\displaystyle g(x)=\begin{cases}x+2,&x\ne2,\\7,&x=2.\end{cases}$
+**Example 2.** Let
 
-*Graph method.* The nearby graph is still the line $y=x+2$. The filled point at $(2,7)$ changes only the value at $2$: 
+$$
+\displaystyle g(x)=\begin{cases}x+2,&x\ne2,\\7,&x=2.\end{cases}
+$$
+
+*Graph method.* The nearby graph is still the line $y=x+2$. The filled point at $(2,7)$ changes only the value at $2$:
 
 $$
 \lim_{x\to2}g(x)=4,\qquad g(2)=7\ne4.
 $$
 
- A limit describes nearby values, not necessarily the value at the point.
+A limit describes nearby values, not necessarily the value at the point.
 
 ![](assets/limit-value.png){fig-alt="The line has a hole at (2,4) and a filled point at (2,7)." width=241}
 
@@ -102,7 +106,7 @@ $$
 
 ::: {.statement}
 
-**Theorem.** The two-sided limit exists and equals $L$ exactly when both one-sided limits equal $L$: 
+**Theorem.** The two-sided limit exists and equals $L$ exactly when both one-sided limits equal $L$:
 
 $$
 \lim_{x\to a}f(x)=L\quad\Longleftrightarrow\quad
@@ -111,29 +115,41 @@ $$
 
 :::
 
-**Example 1.** $\displaystyle f(x)=\begin{cases}2-x,&x<0,\\x^2-3,&x\ge0.\end{cases}$ *Case method.* Use $2-x$ on the left and $x^2-3$ on the right: 
+**Example 1.**
+
+$$
+\displaystyle f(x)=\begin{cases}2-x,&x<0,\\x^2-3,&x\ge0.\end{cases}
+$$
+
+*Case method.* Use $2-x$ on the left and $x^2-3$ on the right:
 
 $$
 \lim_{x\to0^-}f(x)=2,\qquad \lim_{x\to0^+}f(x)=-3.
 $$
 
- *Graph method.* The branches approach different heights. The one-sided limits differ, so $\displaystyle\lim_{x\to0}f(x)$ DNE.
+*Graph method.* The branches approach different heights. The one-sided limits differ, so $\displaystyle\lim_{x\to0}f(x)$ DNE.
 
 ![](assets/different-sides.png){fig-alt="A line approaches height 2 from the left; a parabola approaches height negative 3 from the right." width=197}
 
-**Example 2.** $\displaystyle g(x)=\begin{cases}-x^2,&x<0,\\2,&x=0,\\\sqrt{x},&x>0.\end{cases}$ *Case method.* Use $-x^2$ on the left and $\sqrt{x}$ on the right: 
+**Example 2.**
+
+$$
+\displaystyle g(x)=\begin{cases}-x^2,&x<0,\\2,&x=0,\\\sqrt{x},&x>0.\end{cases}
+$$
+
+*Case method.* Use $-x^2$ on the left and $\sqrt{x}$ on the right:
 
 $$
 \lim_{x\to0^-}g(x)=\lim_{x\to0^+}g(x)=0.
 $$
 
- *Graph method.* Both branches approach height $0$. Thus $\displaystyle\lim_{x\to0}g(x)=0$, although $g(0)=2$.
+*Graph method.* Both branches approach height $0$. Thus $\displaystyle\lim_{x\to0}g(x)=0$, although $g(0)=2$.
 
 ![](assets/same-sides.png){fig-alt="Both branches approach the hole at the origin, while the function value at zero is 2." width=196}
 
 **Example 3.** Find $\displaystyle\lim_{x\to2}h(x)$ for $\displaystyle h(x)=\frac{x^2-4}{|x-2|}$.
 
-*Table method.* This second table illustrates why checking both sides matters. 
+*Table method.* This second table illustrates why checking both sides matters.
 
 $$
 \begin{array}{c|cccc|ccc}
@@ -142,19 +158,21 @@ h(x)&-3.9&-3.99&-3.999&h(x)&4.1&4.01&4.001
 \end{array}
 $$
 
- *Case method.* Since $|x-2|=-(x-2)$ for $x<2$ and $|x-2|=x-2$ for $x>2$, 
+*Case method.* Since $|x-2|=-(x-2)$ for $x<2$ and $|x-2|=x-2$ for $x>2$,
 
 $$
-h(x)=\begin{cases}-(x+2),&x<2,\\x+2,&x>2,\end{cases}
-\quad
-\lim_{x\to2^-}h(x)=-4,\qquad\lim_{x\to2^+}h(x)=4.
+\begin{gathered}
+h(x)=\begin{cases}-(x+2),&x<2,\\x+2,&x>2,\end{cases}\\[0.6em]
+\lim_{x\to2^-}h(x)=-4,\\[0.4em]
+\lim_{x\to2^+}h(x)=4.
+\end{gathered}
 $$
 
- Therefore $\displaystyle\lim_{x\to2}h(x)$ DNE.
+Therefore $\displaystyle\lim_{x\to2}h(x)$ DNE.
 
 ## Practice
 
-**1.** Compute $r(2)$, $\displaystyle\lim_{x\to2^-}r(x)$, $\displaystyle\lim_{x\to2^+}r(x)$, and $\displaystyle\lim_{x\to2}r(x)$, where 
+**1.** Compute $r(2)$, $\displaystyle\lim_{x\to2^-}r(x)$, $\displaystyle\lim_{x\to2^+}r(x)$, and $\displaystyle\lim_{x\to2}r(x)$, where
 
 $$
 r(x)=\begin{cases}x+1,&x<2,\\-1,&x=2,\\5-x,&x>2.\end{cases}
@@ -162,21 +180,23 @@ $$
 
 ![](assets/piecewise-practice.png){fig-alt="Both line segments approach the open point (2,3); a filled point is at (2,-1)." width=384}
 
-*Graph method.* The filled point gives $r(2)=-1$. Both branches approach the open point at height $3$, so 
+*Graph method.* The filled point gives $r(2)=-1$. Both branches approach the open point at height $3$, so
 
 $$
-\lim_{x\to2^-}r(x)=3,\qquad
-\lim_{x\to2^+}r(x)=3,\qquad
+\begin{gathered}
+\lim_{x\to2^-}r(x)=3,\\[0.4em]
+\lim_{x\to2^+}r(x)=3,\\[0.4em]
 \lim_{x\to2}r(x)=3.
+\end{gathered}
 $$
 
-**2.** Compute $\displaystyle\lim_{x\to3^-}s(x)$, $\displaystyle\lim_{x\to3^+}s(x)$, and $\displaystyle\lim_{x\to3}s(x)$ for 
+**2.** Compute $\displaystyle\lim_{x\to3^-}s(x)$, $\displaystyle\lim_{x\to3^+}s(x)$, and $\displaystyle\lim_{x\to3}s(x)$ for
 
 $$
 s(x)=\frac{x^2-9}{|x-3|}.
 $$
 
- *Case method.* Absolute values require cases: 
+*Case method.* Absolute values require cases:
 
 $$
 \begin{array}{ll}
@@ -185,21 +205,21 @@ x>3:&\displaystyle s(x)=\frac{(x-3)(x+3)}{x-3}=x+3.
 \end{array}
 $$
 
- Thus 
+Thus
 
 $$
 \lim_{x\to3^-}s(x)=-6,\qquad\lim_{x\to3^+}s(x)=6,
 $$
 
- and the two-sided limit DNE.
+and the two-sided limit DNE.
 
 **3. True or false.** If $f(a)$ is undefined, then $\displaystyle\lim_{x\to a}f(x)$ DNE.
 
-*Solution.* False. In [the first example](#limits-and-function-values), 
+*Solution.* False. In [the first example](#limits-and-function-values),
 
 $$
 f(x)=\frac{x^2-4}{x-2}
 $$
 
- is undefined at $2$, but $\displaystyle\lim_{x\to2}f(x)=4$.
+is undefined at $2$, but $\displaystyle\lim_{x\to2}f(x)=4$.
 

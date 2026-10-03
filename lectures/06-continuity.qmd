@@ -13,7 +13,7 @@ description: "Continuity at a point, discontinuities, and operations on continuo
 
 **Definition**
 
-A function $f$ is *continuous at $a$* if 
+A function $f$ is *continuous at $a$* if
 
 $$
 \lim_{x\to a}f(x)=f(a).
@@ -37,7 +37,7 @@ Algebraically: the plug-in rule works at $a$.
 
 ![](assets/continuous-map.png){fig-alt="As x approaches a, f(x) approaches f(a)." width=177}
 
-**Example 1.** Is $f$ continuous at $a=-\tfrac12$? 
+**Example 1.** Is $f$ continuous at $a=-\tfrac12$?
 
 $$
 f(x)=\begin{cases}
@@ -46,20 +46,22 @@ f(x)=\begin{cases}
 \end{cases}
 $$
 
- *Check the value and the limit.* We have $f(-\tfrac12)=-3$. For $x\ne-\tfrac12$, 
+*Check the value and the limit.* We have $f(-\tfrac12)=-3$. For $x\ne-\tfrac12$,
 
 $$
+\begin{aligned}
 \frac{6x^2-x-2}{2x+1}
-=\frac{(2x+1)(3x-2)}{2x+1}=3x-2.
+&=\frac{(2x+1)(3x-2)}{2x+1}=3x-2.
+\end{aligned}
 $$
 
- Hence 
+Hence
 
 $$
 \lim_{x\to-1/2}f(x)=3\left(-\frac12\right)-2=-\frac72\ne-3.
 $$
 
- Therefore $f$ is not continuous at $x=-\tfrac12$.
+Therefore $f$ is not continuous at $x=-\tfrac12$.
 
 ::: {.statement}
 
@@ -126,17 +128,17 @@ A function is continuous on an interval when it is continuous at every interior 
 
 **Example 3.** The function $f(x)=\sqrt{x}$ is continuous on $[0,\infty)$.
 
-For $a>0$, the root law gives $\displaystyle\lim_{x\to a}\sqrt{x}=\sqrt{a}$. At the endpoint, 
+For $a>0$, the root law gives $\displaystyle\lim_{x\to a}\sqrt{x}=\sqrt{a}$. At the endpoint,
 
 $$
 \lim_{x\to0^+}\sqrt{x}=0=f(0),
 $$
 
- so $f$ is right-continuous at $0$.
+so $f$ is right-continuous at $0$.
 
 ## Problems: choosing constants for continuity
 
-**1.** Find every $k\le5$ such that $H$ is continuous on $(-\infty,5]$: 
+**1.** Find every $k\le5$ such that $H$ is continuous on $(-\infty,5]$:
 
 $$
 H(x)=\begin{cases}
@@ -145,14 +147,14 @@ x-3,&k\le x\le5.
 \end{cases}
 $$
 
- *Match the pieces.* Each formula is continuous on its interval. At the joining point, 
+*Match the pieces.* Each formula is continuous on its interval. At the joining point,
 
 $$
 \lim_{x\to k^-}H(x)=3k+1,
 \qquad H(k)=k-3.
 $$
 
- For $k<5$, the right-hand limit is also $k-3$. Thus continuity requires 
+For $k<5$, the right-hand limit is also $k-3$. Thus continuity requires
 
 $$
 \begin{aligned}
@@ -162,9 +164,9 @@ k&=-2.
 \end{aligned}
 $$
 
- The endpoint case $k=5$ would require the same equality for left-continuity, and does not satisfy it. With $k=-2$, the pieces match and $H$ is also left-continuous at $5$. Therefore the answer is $k=-2$.
+The endpoint case $k=5$ would require the same equality for left-continuity, and does not satisfy it. With $k=-2$, the pieces match and $H$ is also left-continuous at $5$. Therefore the answer is $k=-2$.
 
-**2.** Find all $m$ and $b$ that make $P$ continuous everywhere: 
+**2.** Find all $m$ and $b$ that make $P$ continuous everywhere:
 
 $$
 P(x)=\begin{cases}
@@ -174,7 +176,7 @@ mx-1,&x>2.
 \end{cases}
 $$
 
- *Match both limits and the value.* The only joining point is $x=2$. 
+*Match both limits and the value.* The only joining point is $x=2$.
 
 $$
 \begin{aligned}
@@ -186,19 +188,19 @@ P(2)&=b.
 \end{aligned}
 $$
 
- Continuity requires all three quantities to agree: 
+Continuity requires all three quantities to agree:
 
 $$
 4=2m-1=b.
 $$
 
- Consequently, 
+Consequently,
 
 $$
 b=4,\qquad m=\frac52.
 $$
 
- With these choices, $P$ is continuous at $2$ and on each side of $2$.
+With these choices, $P$ is continuous at $2$ and on each side of $2$.
 
 ## Operations that preserve continuity
 
@@ -206,21 +208,23 @@ $$
 
 **Proposition**
 
-Suppose $f$ and $g$ are continuous on their domains. Then the following functions are continuous wherever they are defined: 
+Suppose $f$ and $g$ are continuous on their domains. Then the following functions are continuous wherever they are defined:
 
 $$
-f+g,\qquad f-g,\qquad cf,\qquad fg,\qquad
+\begin{gathered}
+f+g,\qquad f-g,\qquad cf,\qquad fg,\\[0.4em]
 \frac fg,\qquad f^n,\qquad\sqrt[n]{f},
+\end{gathered}
 $$
 
- where $c$ is a constant and $n$ is a positive integer. For a quotient, require $g(x)\ne0$; for an even root, require $f(x)\ge0$.
+where $c$ is a constant and $n$ is a positive integer. For a quotient, require $g(x)\ne0$; for an even root, require $f(x)\ge0$.
 
 :::
 
 <details class="proof">
 <summary>Proof</summary>
 
-For the sum, at a point $a$ in the common domain, 
+For the sum, at a point $a$ in the common domain,
 
 $$
 \begin{aligned}
@@ -230,7 +234,7 @@ $$
 \end{aligned}
 $$
 
- The other statements follow from the corresponding limit laws, with limits taken within the domain.
+The other statements follow from the corresponding limit laws, with limits taken within the domain.
 
 </details>
 
@@ -240,18 +244,22 @@ $$
 
 **Proposition**
 
-Suppose $\displaystyle\lim_{x\to a}g(x)=L$ and $F$ is continuous at $L$. If $F(g(x))$ is defined for the nearby inputs under consideration, then 
+Suppose $\displaystyle\lim_{x\to a}g(x)=L$ and $F$ is continuous at $L$. If $F(g(x))$ is defined for the nearby inputs under consideration, then
 
 $$
+\begin{aligned}
 \lim_{x\to a}F(g(x))
-=F\left(\lim_{x\to a}g(x)\right)=F(L).
+&=F\left(\lim_{x\to a}g(x)\right)=F(L).
+\end{aligned}
 $$
 
 :::
 
 In particular, if $g$ is continuous at $a$ and $F$ is continuous at $g(a)$, then $F\circ g$ is continuous at $a$.
 
-**Example 4.** Let $\displaystyle\lim_{x\to0}g(x)=-1$ and $F(x)=x^2-2x+1$. *Composition.* Since $F$ is a polynomial, it is continuous at $-1$. Therefore 
+**Example 4.** Let $\displaystyle\lim_{x\to0}g(x)=-1$ and $F(x)=x^2-2x+1$.
+
+*Composition.* Since $F$ is a polynomial, it is continuous at $-1$. Therefore
 
 $$
 \begin{aligned}
@@ -276,12 +284,14 @@ The functions $\sin x$, $\cos x$, and $\tan x$ are continuous on their domains.
 
 **Lemma**
 
-For angles measured in radians, 
+For angles measured in radians,
 
 $$
+\begin{gathered}
 \lim_{h\to0}\sin h=0,
-\qquad
+\\[0.4em]
 \lim_{h\to0}\cos h=1.
+\end{gathered}
 $$
 
 :::
@@ -289,18 +299,22 @@ $$
 <details class="proof">
 <summary>Proof of the lemma</summary>
 
-Using the limit $\displaystyle\lim_{h\to0}\frac{\sin h}{h}=1$ established previously, 
+Using the limit $\displaystyle\lim_{h\to0}\frac{\sin h}{h}=1$ established previously,
 
 $$
+\begin{aligned}
 \lim_{h\to0}\sin h
-=\lim_{h\to0}\left(h\frac{\sin h}{h}\right)=0\cdot1=0.
+&=\lim_{h\to0}\left(h\frac{\sin h}{h}\right)=0\cdot1=0.
+\end{aligned}
 $$
 
- Near $0$, cosine is positive. The identity $\cos^2h=1-\sin^2h$ and the root law give 
+Near $0$, cosine is positive. The identity $\cos^2h=1-\sin^2h$ and the root law give
 
 $$
+\begin{aligned}
 \lim_{h\to0}\cos h
-=\lim_{h\to0}\sqrt{1-\sin^2h}=1.
+&=\lim_{h\to0}\sqrt{1-\sin^2h}=1.
+\end{aligned}
 $$
 
 </details>
@@ -308,7 +322,7 @@ $$
 <details class="proof">
 <summary>Proof of the theorem</summary>
 
-**(i) Sine.** Fix $a\in\mathbb R$. Write $h=x-a$, so $h\to0$ as $x\to a$. By the angle-addition identity, 
+**(i) Sine.** Fix $a\in\mathbb R$. Write $h=x-a$, so $h\to0$ as $x\to a$. By the angle-addition identity,
 
 $$
 \begin{aligned}
@@ -320,27 +334,31 @@ $$
 \end{aligned}
 $$
 
- Thus sine is continuous at every real number $a$.
+Thus sine is continuous at every real number $a$.
 
-**(ii) Cosine.** Since $\cos x=\sin(x+\pi/2)$, sine continuity and composition give 
+**(ii) Cosine.** Since $\cos x=\sin(x+\pi/2)$, sine continuity and composition give
 
 $$
+\begin{aligned}
 \lim_{x\to a}\cos x
-=\lim_{x\to a}\sin(x+\pi/2)
-=\sin(a+\pi/2)=\cos a.
+&=\lim_{x\to a}\sin(x+\pi/2)\\
+&=\sin(a+\pi/2)=\cos a.
+\end{aligned}
 $$
 
- Thus cosine is continuous at every real number $a$.
+Thus cosine is continuous at every real number $a$.
 
-**(iii) Tangent.** If $a$ is in the domain of tangent, then $\cos a\ne0$. By the quotient law, 
+**(iii) Tangent.** If $a$ is in the domain of tangent, then $\cos a\ne0$. By the quotient law,
 
 $$
+\begin{aligned}
 \lim_{x\to a}\tan x
-=\lim_{x\to a}\frac{\sin x}{\cos x}
-=\frac{\sin a}{\cos a}=\tan a.
+&=\lim_{x\to a}\frac{\sin x}{\cos x}\\
+&=\frac{\sin a}{\cos a}=\tan a.
+\end{aligned}
 $$
 
- Thus tangent is continuous wherever it is defined.
+Thus tangent is continuous wherever it is defined.
 
 </details>
 

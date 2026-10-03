@@ -23,6 +23,8 @@ The `supplements/` pages contain an instructor-approved glossary, optional self-
 
 ## Local preview
 
+Use blank lines between paragraphs and between an example's question and its solution. A single source newline is only a soft wrap in Markdown. Put independent items in lists, use display math for piecewise formulas, and use `aligned` with explicit `\\` row breaks for multi-line calculations. Do not rely on blank lines inside math to create visible spacing. Keep the original wording, formula order, numbering, and hypotheses when adjusting layout.
+
 On the original Mac, open `Preview.command`; it uses the existing local Quarto runtime. Elsewhere, install Quarto and run `quarto preview`. The project uses Quarto 1.10.18 in GitHub Actions and has no executable notebook dependencies.
 
 ## Structure
