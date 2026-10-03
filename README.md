@@ -23,6 +23,10 @@ The `supplements/` pages contain an instructor-approved glossary, optional self-
 
 ## Local preview
 
+The reading controls offer Light, Paper, and Dark themes, plus a System setting and larger text. Preferences are stored only in the reader's browser and persist between pages. Original figures retain their colors; printing uses a light background. The controls are in `assets/reading-preferences.html`, with colors in `custom.scss`.
+
+MathJax 4.1.3 and its New Computer Modern fonts are hosted with the book under `assets/mathjax-4.1.3` (the upstream licenses are included). This follows [MathJax's self-hosting instructions](https://docs.mathjax.org/en/latest/web/hosting.html) and avoids third-party requests while reading. `scripts/finish-site.py` removes the obsolete external polyfill, retains the previous published stylesheet for cached pages, and creates a stable stylesheet fallback. When changing themes again, preserve the currently published hashed stylesheet in `assets/legacy-styles` before deployment.
+
 Use blank lines between paragraphs and between an example's question and its solution. A single source newline is only a soft wrap in Markdown. Put independent items in lists, use display math for piecewise formulas, and use `aligned` with explicit `\\` row breaks for multi-line calculations. Do not rely on blank lines inside math to create visible spacing. Keep the original wording, formula order, numbering, and hypotheses when adjusting layout.
 
 On the original Mac, open `Preview.command`; it uses the existing local Quarto runtime. Elsewhere, install Quarto and run `quarto preview`. The project uses Quarto 1.10.18 in GitHub Actions and has no executable notebook dependencies.

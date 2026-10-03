@@ -1,0 +1,57 @@
+<script>
+// Serve the renderer and font data together; no external math-font requests.
+window.MathJax = {
+  output: {
+    font: 'mathjax-newcm',
+    fontPath: new URL((document.querySelector('meta[name="quarto:offset"]')?.content || './') + 'assets/mathjax-4.1.3/mathjax-newcm-font', location.href).href
+  }
+};
+(() => {
+  const root = document.documentElement;
+  const system = window.matchMedia('(prefers-color-scheme: dark)');
+  const key = 'calculus-notes-reading';
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(key)) || {}; } catch (_) {}
+  let theme = ['system', 'light', 'paper', 'dark'].includes(saved.theme) ? saved.theme : 'system';
+  let size = saved.size === 'large' ? 'large' : 'standard';
+  function apply() {
+    root.dataset.readingTheme = theme === 'system' ? (system.matches ? 'dark' : 'light') : theme;
+    root.dataset.readingSize = size;
+  }
+  function save() {
+    apply();
+    try { localStorage.setItem(key, JSON.stringify({theme, size})); } catch (_) {}
+  }
+  apply();
+  system.addEventListener('change', apply);
+  const stylesheet = document.querySelector('#quarto-bootstrap');
+  function recoverStyles() {
+    if (!stylesheet || getComputedStyle(root).getPropertyValue('--reading-bg').trim()) return;
+    stylesheet.href = new URL((document.querySelector('meta[name="quarto:offset"]')?.content || './') + 'site_libs/bootstrap/reading-theme.css', location.href).href;
+  }
+  stylesheet?.addEventListener('error', recoverStyles, {once: true});
+  window.addEventListener('load', recoverStyles, {once: true});
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('main.content > header');
+    if (!header) return;
+    const controls = document.createElement('div');
+    controls.className = 'reading-controls';
+    controls.setAttribute('role', 'group');
+    controls.setAttribute('aria-label', 'Reading preferences');
+    function select(labelText, values, current, onChange) {
+      const label = document.createElement('label');
+      label.textContent = labelText;
+      const input = document.createElement('select');
+      input.setAttribute('aria-label', labelText);
+      for (const [value, text] of values) input.add(new Option(text, value));
+      input.value = current;
+      input.addEventListener('change', () => { onChange(input.value); save(); });
+      label.append(input);
+      controls.append(label);
+    }
+    select('Theme', [['system', 'System'], ['light', 'Light'], ['paper', 'Paper'], ['dark', 'Dark']], theme, value => { theme = value; });
+    select('Text', [['standard', 'Standard'], ['large', 'Larger']], size, value => { size = value; });
+    header.before(controls);
+  });
+})();
+</script>

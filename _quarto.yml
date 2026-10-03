@@ -1,8 +1,10 @@
 project:
   type: book
   output-dir: _site
+  post-render: scripts/finish-site.py
   resources:
     - downloads/*.pdf
+    - assets/mathjax-4.1.3/**
 
 book:
   title: "Calculus notes"
@@ -48,7 +50,9 @@ format:
     toc: false
     number-sections: true
     number-depth: 0
-    html-math-method: mathjax
+    html-math-method:
+      method: mathjax
+      url: /assets/mathjax-4.1.3/tex-chtml.js
     lang: en
     smooth-scroll: true
     link-external-newwindow: true
@@ -57,3 +61,4 @@ format:
       body-width: 760px
       margin-width: 40px
     include-after-body: assets/page-contents.html
+    include-in-header: assets/reading-preferences.html
