@@ -82,6 +82,9 @@ $$
 \lim_{x\to0}\frac{1-\cos x}{x}
 $$
 
+<details class="proof practice-solution">
+<summary>Show solution</summary>
+
 *Conjugate.* Multiply by $(1+\cos x)/(1+\cos x)$:
 
 $$
@@ -105,6 +108,8 @@ Therefore
 $$
 \lim_{x\to0}\frac{1-\cos x}{x}=1\cdot\frac02=0.
 $$
+
+</details>
 
 ## The fundamental trigonometric limit
 

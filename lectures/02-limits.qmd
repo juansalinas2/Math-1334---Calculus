@@ -180,6 +180,9 @@ $$
 
 ![](assets/piecewise-practice.png){fig-alt="Both line segments approach the open point (2,3); a filled point is at (2,-1)." width=384}
 
+<details class="proof practice-solution">
+<summary>Show solution</summary>
+
 *Graph method.* The filled point gives $r(2)=-1$. Both branches approach the open point at height $3$, so
 
 $$
@@ -190,11 +193,16 @@ $$
 \end{gathered}
 $$
 
+</details>
+
 **2.** Compute $\displaystyle\lim_{x\to3^-}s(x)$, $\displaystyle\lim_{x\to3^+}s(x)$, and $\displaystyle\lim_{x\to3}s(x)$ for
 
 $$
 s(x)=\frac{x^2-9}{|x-3|}.
 $$
+
+<details class="proof practice-solution">
+<summary>Show solution</summary>
 
 *Case method.* Absolute values require cases:
 
@@ -213,7 +221,12 @@ $$
 
 and the two-sided limit DNE.
 
+</details>
+
 **3. True or false.** If $f(a)$ is undefined, then $\displaystyle\lim_{x\to a}f(x)$ DNE.
+
+<details class="proof practice-solution">
+<summary>Show solution</summary>
 
 *Solution.* False. In [the first example](#limits-and-function-values),
 
@@ -222,4 +235,6 @@ f(x)=\frac{x^2-4}{x-2}
 $$
 
 is undefined at $2$, but $\displaystyle\lim_{x\to2}f(x)=4$.
+
+</details>
 

@@ -208,6 +208,9 @@ $$
 
 **1.** Find $\displaystyle\lim_{x\to1}r(x)$.
 
+<details class="proof practice-solution">
+<summary>Show solution</summary>
+
 *Plug in.*
 
 $$
@@ -217,7 +220,12 @@ $$
 \end{aligned}
 $$
 
+</details>
+
 **2.** Find $\displaystyle\lim_{x\to-2}r(x)$.
+
+<details class="proof practice-solution">
+<summary>Show solution</summary>
 
 *Case method.* The numerator tends to $4>0$. Factor the denominator as $(x-2)(x+2)$:
 
@@ -232,7 +240,12 @@ $$
 
 Therefore the two-sided limit DNE.
 
+</details>
+
 **3.** Find $\displaystyle\lim_{x\to2}r(x)$.
+
+<details class="proof practice-solution">
+<summary>Show solution</summary>
 
 *Factor and cancel.* Substitution gives $0/0$. For $x\ne2,-2$,
 
@@ -252,6 +265,8 @@ $$
 &=\frac{2+1}{2+2}=\frac34.
 \end{aligned}
 $$
+
+</details>
 
 ## Indeterminate forms and simplifying
 
@@ -316,6 +331,9 @@ The small-angle limits used here are justified in [the proof of the fundamental 
 
 Find $\displaystyle\lim_{x\to0}\frac{\sqrt{9+x}-3}{x}$.
 
+<details class="proof practice-solution">
+<summary>Show solution</summary>
+
 *Conjugate.* For nearby $x\ne0$,
 
 $$
@@ -331,4 +349,6 @@ Therefore
 $$
 \lim_{x\to0}\frac{\sqrt{9+x}-3}{x}=\frac16.
 $$
+
+</details>
 

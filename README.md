@@ -19,6 +19,8 @@ Treat each finished lecture PDF as the source of truth. Preserve its explanation
 
 ## Supplements
 
+Practice and challenge solutions in the lecture pages start collapsed behind a native “Show solution” control. Keep each question and its given information visible; put all answer steps and solution-only diagrams inside the control. Preserve the original content and numbering. Worked teaching examples remain visible. Optional self-checks have separate collapsed hints and answers.
+
 The `supplements/` pages contain an instructor-approved glossary, optional self-checks with hints and answers, and interactive graphs. They are explicitly labeled as supplements, separate from the faithful lecture transcriptions. Keep new questions and explorations here; do not blend them into the PDF-derived content. The graphs use local JavaScript and SVG, with no account, API key, or paid service required.
 
 ## Local preview

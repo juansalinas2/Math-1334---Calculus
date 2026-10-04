@@ -147,6 +147,9 @@ x-3,&k\le x\le5.
 \end{cases}
 $$
 
+<details class="proof practice-solution">
+<summary>Show solution</summary>
+
 *Match the pieces.* Each formula is continuous on its interval. At the joining point,
 
 $$
@@ -166,6 +169,8 @@ $$
 
 The endpoint case $k=5$ would require the same equality for left-continuity, and does not satisfy it. With $k=-2$, the pieces match and $H$ is also left-continuous at $5$. Therefore the answer is $k=-2$.
 
+</details>
+
 **2.** Find all $m$ and $b$ that make $P$ continuous everywhere:
 
 $$
@@ -175,6 +180,9 @@ b,&x=2,\\
 mx-1,&x>2.
 \end{cases}
 $$
+
+<details class="proof practice-solution">
+<summary>Show solution</summary>
 
 *Match both limits and the value.* The only joining point is $x=2$.
 
@@ -201,6 +209,8 @@ b=4,\qquad m=\frac52.
 $$
 
 With these choices, $P$ is continuous at $2$ and on each side of $2$.
+
+</details>
 
 ## Operations that preserve continuity
 
