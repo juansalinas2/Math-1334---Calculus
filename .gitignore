@@ -5,6 +5,7 @@
 /.cache/
 **/.DS_Store
 **/*.quarto_ipynb
+**/__pycache__/
 # Private course planning, exams, grading, drafts, and original source material.
 /AGENTS.md
 /input/

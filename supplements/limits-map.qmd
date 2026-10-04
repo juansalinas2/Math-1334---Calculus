@@ -1,0 +1,100 @@
+# Limits concept map {.unnumbered}
+
+::: {.source-note}
+Supplement · A visual guide to the connections in Chapter 2. Select a concept to see the connection, its conditions, and a link to the notes. Use Tab and Enter on a keyboard.
+:::
+
+```{=html}
+<div class="concept-map" role="group" aria-label="Limits and continuity concept map">
+  <svg class="concept-connections" viewBox="0 0 900 540" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M450 205 L180 80 M450 205 L720 80 M450 205 L160 280 M450 205 L740 280 M450 205 L450 405 M450 405 L740 490" />
+  </svg>
+  <button type="button" class="concept-node concept-root" data-concept="limits" aria-controls="concept-limits" style="--x:50%;--y:38%"><strong>Limits</strong><span>Nearby behavior</span></button>
+  <button type="button" class="concept-node" data-concept="sides" aria-controls="concept-sides" style="--x:20%;--y:15%"><span>Compare both sides</span><strong>One-sided limits</strong></button>
+  <button type="button" class="concept-node" data-concept="infinite" aria-controls="concept-infinite" style="--x:80%;--y:15%"><span>Recognize unbounded behavior</span><strong>Infinite limits</strong></button>
+  <button type="button" class="concept-node" data-concept="laws" aria-controls="concept-laws" style="--x:18%;--y:52%"><span>Compute using</span><strong>Limit laws</strong></button>
+  <button type="button" class="concept-node" data-concept="squeeze" aria-controls="concept-squeeze" style="--x:82%;--y:52%"><span>Compare with bounds</span><strong>Squeeze theorem</strong></button>
+  <button type="button" class="concept-node" data-concept="continuity" aria-controls="concept-continuity" style="--x:50%;--y:75%"><span>Match the limit to the value</span><strong>Continuity</strong></button>
+  <button type="button" class="concept-node" data-concept="ivt" aria-controls="concept-ivt" style="--x:82%;--y:91%"><span>On an interval, guarantees</span><strong>Intermediate values</strong></button>
+</div>
+<div class="concept-explanations" aria-live="polite" aria-atomic="true">
+```
+
+::: {#concept-limits .concept-detail}
+### Limits: nearby behavior
+
+A limit describes what the outputs approach as the inputs approach a point. The value at the point may differ from the limit—or may be undefined.
+
+**Connection:** One-sided limits examine the approach from each side. Limit laws and the squeeze theorem help justify computations. Continuity compares the limit with the function value.
+
+[Read Section 2.1](../lectures/02-limits.qmd#limits-and-function-values) · [Explore a hole in a graph](explore.qmd#approaching-a-hole)
+:::
+
+::: {#concept-sides .concept-detail}
+### One-sided limits: compare the approaches
+
+A finite two-sided limit exists exactly when the left-hand and right-hand limits both exist as real numbers and agree.
+
+**Keep in mind:** Checking just one side is not enough. The value at the point does not decide either one-sided limit.
+
+[Read Section 2.1](../lectures/02-limits.qmd#one-sided-limits) · [Try the self-checks](self-checks.qmd#chapter-2-limits)
+:::
+
+::: {#concept-infinite .concept-detail}
+### Infinite limits: unbounded behavior
+
+An infinite limit describes outputs that grow beyond every positive bound or fall below every negative bound. Infinity is not a real-number limit.
+
+**Connection:** A line $x=a$ is a vertical asymptote when at least one one-sided limit at $a$ is $+\infty$ or $-\infty$.
+
+[Read Section 2.2](../lectures/03-infinite-limits.qmd#infinite-limits-and-vertical-asymptotes) · [Try the self-checks](self-checks.qmd#chapter-3-infinite-limits)
+:::
+
+::: {#concept-laws .concept-detail}
+### Limit laws: compute with conditions
+
+The limit laws let us combine known limits through sums, products, quotients, and other operations, subject to their hypotheses.
+
+**Keep in mind:** The quotient law requires a nonzero denominator limit. Substitution that produces $0/0$ does not determine the limit; the expression needs further analysis.
+
+[Read Section 2.3](../lectures/04-limit-laws.qmd#the-limit-laws) · [Simplifying indeterminate forms](../lectures/04-limit-laws.qmd#indeterminate-forms-and-simplifying)
+:::
+
+::: {#concept-squeeze .concept-detail}
+### Squeeze theorem: compare with bounds
+
+If a function stays between two bounds for all sufficiently nearby inputs, and both bounds approach the same limit, the function approaches that limit too.
+
+**Connection:** The notes use bounds to control oscillation and to prove the fundamental trigonometric limit. Angles in that limit are measured in radians.
+
+[Read Section 2.4](../lectures/05-squeeze-theorem.qmd#the-squeeze-theorem) · [Open the trigonometric-limit proof](../lectures/05-squeeze-theorem.qmd#the-fundamental-trigonometric-limit)
+:::
+
+::: {#concept-continuity .concept-detail}
+### Continuity: connect the limit and the value
+
+At $a$, check that $f(a)$ is defined, that a finite limit exists, and that
+
+$$\lim_{x\to a}f(x)=f(a).$$
+
+**Connection:** At an included endpoint of an interval, use the appropriate one-sided limit. Continuity throughout a closed interval is the hypothesis needed for the Intermediate Value Theorem.
+
+[Read Section 2.5](../lectures/06-continuity.qmd#continuity-at-a-point) · [Explore repairing continuity](explore.qmd#repairing-continuity)
+:::
+
+::: {#concept-ivt .concept-detail}
+### Intermediate values: what continuity guarantees
+
+If $f$ is continuous on $[a,b]$, it takes every value between $f(a)$ and $f(b)$ somewhere on that interval.
+
+**Keep in mind:** The theorem guarantees existence. It does not by itself locate the point or guarantee that there is only one.
+
+[Read Section 2.6](../lectures/07-intermediate-value.qmd#the-intermediate-value-theorem) · [Try the self-checks](self-checks.qmd#chapter-7-intermediate-value-theorem)
+:::
+
+```{=html}
+</div>
+<script src="../assets/limits-map.js" defer></script>
+```
+
+[Return to Chapter 2](../lectures/limits-and-continuity.qmd)

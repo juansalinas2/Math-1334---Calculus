@@ -1,0 +1,17 @@
+---
+title: "Limits and continuity"
+description: "Chapter 2: limits, methods of computation, continuity, and the Intermediate Value Theorem."
+---
+
+The sections below follow the lecture sequence. Each section includes its original lecture PDF.
+
+- [**2.1 Limits**](02-limits.qmd) — Secants, function values, and one-sided limits.
+- [**2.2 Infinite limits**](03-infinite-limits.qmd) — Unbounded behavior and vertical asymptotes.
+- [**2.3 Limit laws**](04-limit-laws.qmd) — Computing limits and simplifying indeterminate forms.
+- [**2.4 Squeeze theorem and trigonometric limits**](05-squeeze-theorem.qmd) — Bounds and the fundamental trigonometric limit.
+- [**2.5 Continuity**](06-continuity.qmd) — Limits, function values, and discontinuities.
+- [**2.6 Intermediate Value Theorem**](07-intermediate-value.qmd) — Intermediate values and the existence of solutions.
+
+[Start Section 2.1](02-limits.qmd){.start-link}
+
+For an optional visual overview, explore the [Limits concept map](../supplements/limits-map.qmd). [Self-checks](../supplements/self-checks.qmd#chapter-2-limits) and the [Week 2 worksheet](../supplements/worksheets.qmd#week-2-limits) are under Supplements.

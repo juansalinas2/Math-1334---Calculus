@@ -33,6 +33,12 @@ On the original Mac, open `Preview.command`; it uses the existing local Quarto r
 
 ## Structure
 
+Chapter 1 is the introduction. Chapter 2, Limits and continuity, has a short overview and six separate reading pages numbered 2.1–2.6. Their existing URLs and example numbering are preserved. Precalculus remains Appendix A. Section titles use Quarto's unnumbered title syntax with explicit 2.x prefixes so each page does not become another chapter.
+
+After rendering, `scripts/book_navigation.py` groups the existing book links into native expandable sidebar groups, all initially closed. Quarto books generate their own sidebar contents, so the grouping is applied by `scripts/finish-site.py`. When adding a section or supplement, update both `_quarto.yml` and the corresponding navigation list.
+
+The optional limits concept map lives in `supplements/limits-map.qmd`, with local controls in `assets/limits-map.js`. It connects concepts to the existing lecture sections. Its explanations remain readable without JavaScript; on phones, the map becomes a compact grid of selectable concepts.
+
 - `_quarto.yml`: chapter order, search, and book settings.
 - `index.qmd`: book home.
 - `lectures/`: topic chapters and their images.

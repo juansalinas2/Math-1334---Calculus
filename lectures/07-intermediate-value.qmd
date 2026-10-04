@@ -1,5 +1,5 @@
 ---
-title: "Intermediate Value Theorem"
+title: "# 2.6 Intermediate Value Theorem {.unnumbered}"
 description: "Intermediate values and the existence of solutions."
 ---
 

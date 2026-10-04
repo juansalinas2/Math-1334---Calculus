@@ -4,6 +4,7 @@ from pathlib import Path
 import os
 import re
 import shutil
+from book_navigation import rebuild_sidebar
 
 site = Path(os.environ.get('QUARTO_PROJECT_OUTPUT_DIR', '_site'))
 # Older cached HTML still points at its original, hashed stylesheet.
@@ -16,4 +17,5 @@ shutil.copy2(site / style, site / 'site_libs/bootstrap/reading-theme.css')
 for page in site.rglob('*.html'):
     html = page.read_text()
     html = re.sub(r'\s*<script src="https://cdnjs.cloudflare.com/polyfill/[^\"]+"></script>', '', html)
+    html = rebuild_sidebar(html, page.name)
     page.write_text(html)

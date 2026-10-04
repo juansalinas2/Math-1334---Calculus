@@ -1,5 +1,5 @@
 ---
-title: "Infinite limits"
+title: "# 2.2 Infinite limits {.unnumbered}"
 description: "Vertical asymptotes, sign analysis, and limits that do not exist."
 ---
 

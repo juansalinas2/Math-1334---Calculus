@@ -1,5 +1,5 @@
 ---
-title: "Continuity"
+title: "# 2.5 Continuity {.unnumbered}"
 description: "Continuity at a point, discontinuities, and operations on continuous functions."
 ---
 

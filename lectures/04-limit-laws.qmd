@@ -1,5 +1,5 @@
 ---
-title: "Limit laws"
+title: "# 2.3 Limit laws {.unnumbered}"
 description: "Limit laws, direct substitution, and simplifying indeterminate forms."
 ---
 

@@ -34,9 +34,9 @@ It represents the derivative $f'(a)$, the instantaneous rate of change at $a$.
 
 </details>
 
-## Chapter 2 · Limits
+## Section 2.1 · Limits {#chapter-2-limits}
 
-[Return to the chapter](../lectures/02-limits.qmd)
+[Return to the section](../lectures/02-limits.qmd)
 
 **Check 1.** Let $f(x)=x+2$ for $x\ne2$, and let $f(2)=7$. Find $\lim_{x\to2}f(x)$. Would changing $f(2)$ change the limit?
 
@@ -64,9 +64,9 @@ No. The one-sided limits are unequal, regardless of $g(0)$.
 
 </details>
 
-## Chapter 3 · Infinite limits
+## Section 2.2 · Infinite limits {#chapter-3-infinite-limits}
 
-[Return to the chapter](../lectures/03-infinite-limits.qmd)
+[Return to the section](../lectures/03-infinite-limits.qmd)
 
 **Check 1.** Find the left-hand and right-hand limits of $1/(x-2)$ as $x\to2$. Is $x=2$ a vertical asymptote?
 
@@ -94,9 +94,9 @@ Yes. Set $g(x)=-1$ for $x<0$ and $g(x)=1$ for $x\ge0$. It stays between $-1$ and
 
 </details>
 
-## Chapter 4 · Limit laws
+## Section 2.3 · Limit laws {#chapter-4-limit-laws}
 
-[Return to the chapter](../lectures/04-limit-laws.qmd)
+[Return to the section](../lectures/04-limit-laws.qmd)
 
 **Check 1.** Evaluate $\displaystyle\lim_{x\to3}\frac{x^2-9}{x-3}$. Explain why the quotient law cannot be applied directly to the original fraction.
 
@@ -124,9 +124,9 @@ The limit is $3(2)+(-1)^2=7$.
 
 </details>
 
-## Chapter 5 · Squeeze theorem and trigonometric limits
+## Section 2.4 · Squeeze theorem and trigonometric limits {#chapter-5-squeeze-theorem-and-trigonometric-limits}
 
-[Return to the chapter](../lectures/05-squeeze-theorem.qmd)
+[Return to the section](../lectures/05-squeeze-theorem.qmd)
 
 **Check 1.** Suppose $2-x^2\le f(x)\le2+x^2$ for all sufficiently small nonzero $x$. What is $\lim_{x\to0}f(x)$?
 
@@ -154,9 +154,9 @@ Since $\sin(3x)/(2x)=\frac32\,\sin(3x)/(3x)$ for $x\ne0$, the limit is $\frac32$
 
 </details>
 
-## Chapter 6 · Continuity
+## Section 2.5 · Continuity {#chapter-6-continuity}
 
-[Return to the chapter](../lectures/06-continuity.qmd)
+[Return to the section](../lectures/06-continuity.qmd)
 
 **Check 1.** Define $g(x)=(x^2-4)/(x-2)$ for $x\ne2$ and $g(2)=c$. Which $c$ makes $g$ continuous at $2$?
 
@@ -184,9 +184,9 @@ It is a removable discontinuity. Redefine $f(a)=5$ to make the function continuo
 
 </details>
 
-## Chapter 7 · Intermediate Value Theorem
+## Section 2.6 · Intermediate Value Theorem {#chapter-7-intermediate-value-theorem}
 
-[Return to the chapter](../lectures/07-intermediate-value.qmd)
+[Return to the section](../lectures/07-intermediate-value.qmd)
 
 **Check 1.** A continuous function on $[1,4]$ satisfies $f(1)=-2$ and $f(4)=3$. Must it have a zero in $(1,4)$? Does the IVT alone guarantee exactly one zero?
 

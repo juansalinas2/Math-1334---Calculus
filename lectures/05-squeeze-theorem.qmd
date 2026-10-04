@@ -1,5 +1,5 @@
 ---
-title: "Squeeze theorem and trigonometric limits"
+title: "# 2.4 Squeeze theorem and trigonometric limits {.unnumbered}"
 description: "Bounds, oscillation, and the fundamental trigonometric limit."
 ---
 

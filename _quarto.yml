@@ -16,25 +16,23 @@ book:
   sidebar:
     style: docked
     background: "#fafaf8"
-    collapse-level: 2
+    collapse-level: 1
   chapters:
     - href: index.qmd
       text: Overview
     - lectures/01-introduction.qmd
-    - part: "Limits and continuity"
-      chapters:
-        - lectures/02-limits.qmd
-        - lectures/03-infinite-limits.qmd
-        - lectures/04-limit-laws.qmd
-        - lectures/05-squeeze-theorem.qmd
-        - lectures/06-continuity.qmd
-        - lectures/07-intermediate-value.qmd
-    - part: "Supplements"
-      chapters:
-        - supplements/worksheets.qmd
-        - supplements/glossary.qmd
-        - supplements/self-checks.qmd
-        - supplements/explore.qmd
+    - lectures/limits-and-continuity.qmd
+    - lectures/02-limits.qmd
+    - lectures/03-infinite-limits.qmd
+    - lectures/04-limit-laws.qmd
+    - lectures/05-squeeze-theorem.qmd
+    - lectures/06-continuity.qmd
+    - lectures/07-intermediate-value.qmd
+    - supplements/limits-map.qmd
+    - supplements/worksheets.qmd
+    - supplements/glossary.qmd
+    - supplements/self-checks.qmd
+    - supplements/explore.qmd
     - lecture-pdfs.qmd
   appendices:
     - lectures/00-functions.qmd
