@@ -11,6 +11,7 @@ The sections below follow the lecture sequence. Each section includes its origin
 - [**2.4 Squeeze theorem and trigonometric limits**](05-squeeze-theorem.qmd) — Bounds and the fundamental trigonometric limit.
 - [**2.5 Continuity**](06-continuity.qmd) — Limits, function values, and discontinuities.
 - [**2.6 Intermediate Value Theorem**](07-intermediate-value.qmd) — Intermediate values and the existence of solutions.
+- [**2.7 Exam practice**](08-exam-practice.qmd) — Ten problems from the October 5 in-class handout, without answers.
 
 [Start Section 2.1](02-limits.qmd){.start-link}
 

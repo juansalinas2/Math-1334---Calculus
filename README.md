@@ -35,7 +35,7 @@ On the original Mac, open `Preview.command`; it uses the existing local Quarto r
 
 ## Structure
 
-Chapter 1 is the introduction. Chapter 2, Limits and continuity, has a short overview and six separate reading pages numbered 2.1–2.6. Their existing URLs and example numbering are preserved. Precalculus remains Appendix A. Section titles use Quarto's unnumbered title syntax with explicit 2.x prefixes so each page does not become another chapter.
+Chapter 1 is the introduction. Chapter 2, Limits and continuity, has a short overview, six separate reading pages numbered 2.1–2.6, and the October 5 exam practice in Section 2.7. The practice preserves all ten questions, their subparts, and both original diagrams; it includes the original PDF and no answers. Existing URLs and example numbering are preserved. Precalculus remains Appendix A. Section titles use Quarto's unnumbered title syntax with explicit 2.x prefixes so each page does not become another chapter.
 
 After rendering, `scripts/book_navigation.py` groups the existing book links into native expandable sidebar groups, all initially closed. Quarto books generate their own sidebar contents, so the grouping is applied by `scripts/finish-site.py`. When adding a section or supplement, update both `_quarto.yml` and the corresponding navigation list.
 

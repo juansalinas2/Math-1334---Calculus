@@ -28,6 +28,7 @@ book:
     - lectures/05-squeeze-theorem.qmd
     - lectures/06-continuity.qmd
     - lectures/07-intermediate-value.qmd
+    - lectures/08-exam-practice.qmd
     - supplements/limits-map.qmd
     - supplements/worksheets.qmd
     - supplements/glossary.qmd

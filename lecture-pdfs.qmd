@@ -14,4 +14,6 @@ Download the original lecture notes for printing or annotation, or follow the to
 
 ## Worksheets
 
+The October 5 [exam-practice handout](downloads/october-5-exam-practice.pdf) is also available [online at the end of Chapter 2](lectures/08-exam-practice.qmd). It contains questions only, with no answers.
+
 The original [precalculus and Week 2 worksheets](supplements/worksheets.qmd) are collected separately, with links to the corresponding notes.

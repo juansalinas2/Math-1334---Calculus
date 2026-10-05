@@ -10,6 +10,7 @@ from urllib.parse import urlsplit
 SECTIONS = [
     '02-limits.html', '03-infinite-limits.html', '04-limit-laws.html',
     '05-squeeze-theorem.html', '06-continuity.html', '07-intermediate-value.html',
+    '08-exam-practice.html',
 ]
 SUPPLEMENTS = ['limits-map.html', 'worksheets.html', 'glossary.html', 'self-checks.html', 'explore.html']
 
