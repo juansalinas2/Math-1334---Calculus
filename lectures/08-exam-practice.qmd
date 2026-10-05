@@ -124,4 +124,26 @@ Subtract the two circle equations before solving for the positive $y$-coordinate
 
 **(c)** Find $\displaystyle\lim_{r\to0^+}a(r)$ and justify your answer algebraically. Compare with your prediction. Why can you not determine the intercept by setting $r=0$ in the geometric construction at the outset?
 
+<details class="proof" id="problem-10-diagram">
+<summary>Interactive diagram</summary>
+
+Supplement · After making your prediction, move the radius slider to explore the construction. Use the arrow keys when the slider is selected.
+
+```{=html}
+<div class="graph-explorer" id="circle-intercept-explorer">
+  <label for="circle-radius">Radius of the shrinking circle: r</label>
+  <input id="circle-radius" type="range" min="0.02" max="0.98" step="0.01" value="0.8" disabled>
+  <p class="graph-readout" role="status" aria-live="polite"></p>
+  <svg viewBox="0 0 640 360" role="img" aria-labelledby="circle-intercept-title circle-intercept-desc">
+    <title id="circle-intercept-title">Two circles and the line through P and Q</title>
+    <desc id="circle-intercept-desc">The fixed circle has center (1,0) and radius 1. The shrinking circle has center O and radius r. P is its top point, Q is the upper intersection of the two circles, and R is where the line through P and Q meets the x-axis. Adjust the slider to see the construction change.</desc>
+  </svg>
+  <p class="graph-key">Blue: fixed circle · Orange: shrinking circle · Green: line through P and Q</p>
+  <noscript><p>Enable JavaScript to use the radius slider. The original diagram above remains available.</p></noscript>
+</div>
+<script src="../assets/circle-intercept.js" defer></script>
+```
+
+</details>
+
 *Review:* Circle equations, [slopes and intercepts](00-functions.qmd#slope-average-rate-of-change-and-lines); [conjugates and indeterminate forms](04-limit-laws.qmd#indeterminate-forms-and-simplifying).
