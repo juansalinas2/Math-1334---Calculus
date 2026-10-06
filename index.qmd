@@ -6,7 +6,11 @@ page-navigation: false
 
 These notes introduce differential calculus: limits, continuity, derivatives, and their applications. They grow alongside the lectures, with explanations, graphs, and worked examples organized by topic.
 
-[Begin with Chapter 1](lectures/01-introduction.qmd){.start-link}
+[See the latest class](lectures/08-exam-practice.qmd){.start-link}
+
+**October 5:** Limits and continuity — exam practice.
+
+New here? [Begin with Chapter 1](lectures/01-introduction.qmd).
 
 Read the numbered chapters in order, or use the contents and search to return to a particular idea.
 

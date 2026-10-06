@@ -7,7 +7,7 @@ A searchable Quarto book by Juan Salinas, with topic-based chapters and an archi
 1. Finish and check the lecture PDF first.
 2. Identify the completed student-facing version from its contents and revision history, not its modification time alone. Exclude rough notes, teacher outlines, and superseded versions. Copy only that PDF into `downloads/` and verify the copy matches the original exactly.
 3. Adapt the corresponding material into the relevant files in `lectures/`. Keep equations as text and give diagrams meaningful alternative text. Preserve the PDF's examples and results; organize the web version by topic.
-4. Add the date, PDF link, and topic links to `lecture-pdfs.qmd`.
+4. Add the date, PDF link, and topic links to `lecture-pdfs.qmd`. Update the “See the latest class” button in `index.qmd` to the newest published class material, along with its displayed date and topic. A review or practice session counts as the latest class; use the class date, not a file's modification date.
 5. Run `quarto render`, review the affected pages, and check the search and PDF links.
 6. Commit the public files and push to `main`. The GitHub Actions workflow rebuilds and publishes the book once GitHub Pages is configured to use **GitHub Actions**.
 
