@@ -1,0 +1,13 @@
+---
+title: "Derivatives"
+description: "Chapter 3: derivatives, tangent lines, and rates of change."
+---
+
+The sections below follow the lecture sequence. Each section includes its original lecture PDF.
+
+- [**3.1 The derivative at a point**](09-derivative-at-a-point.qmd) — Instantaneous velocity, tangent lines, and the limit definition.
+- [**3.2 The derivative function**](10-derivative-function.qmd) — Higher-order derivatives, notation, differentiability and continuity, and practice.
+
+[Start Section 3.1](09-derivative-at-a-point.qmd){.start-link}
+
+The [Week 4 worksheet](../supplements/worksheets.qmd#week-4-derivatives) is available under Supplements.

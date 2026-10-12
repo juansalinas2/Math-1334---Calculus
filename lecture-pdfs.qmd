@@ -6,6 +6,7 @@ Download the original lecture notes for printing or annotation, or follow the to
 
 | Lecture | PDF | Read online |
 |:--|:--|:--|
+| October 12, 2026 | [Derivatives](downloads/october-12-derivatives-class-notes.pdf) | [The derivative at a point](lectures/09-derivative-at-a-point.qmd) · [The derivative function](lectures/10-derivative-function.qmd) |
 | October 2, 2026 | [Continuity and the Intermediate Value Theorem](downloads/october-2-continuity-class-notes.pdf) | [Continuity](lectures/06-continuity.qmd) · [Intermediate Value Theorem](lectures/07-intermediate-value.qmd) |
 | September 30, 2026 | [Limit Laws and the Squeeze Theorem](downloads/september-30-revised-class-notes.pdf) | [Limit laws](lectures/04-limit-laws.qmd) · [Squeeze theorem and trigonometric limits](lectures/05-squeeze-theorem.qmd) |
 | September 28, 2026 | [Limits](downloads/september-28-limits-class-notes.pdf) | [Limits](lectures/02-limits.qmd) · [Infinite limits](lectures/03-infinite-limits.qmd) |
@@ -16,4 +17,4 @@ Download the original lecture notes for printing or annotation, or follow the to
 
 The October 5 [exam-practice handout](downloads/october-5-exam-practice.pdf) is also available [online at the end of Chapter 2](lectures/08-exam-practice.qmd). It contains questions only, with no answers.
 
-The original [precalculus and Week 2 worksheets](supplements/worksheets.qmd) are collected separately, with links to the corresponding notes.
+The original [precalculus, Week 2, and Week 4 worksheets](supplements/worksheets.qmd) are collected separately, with links to the corresponding notes.

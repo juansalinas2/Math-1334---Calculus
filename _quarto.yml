@@ -29,6 +29,9 @@ book:
     - lectures/06-continuity.qmd
     - lectures/07-intermediate-value.qmd
     - lectures/08-exam-practice.qmd
+    - lectures/derivatives.qmd
+    - lectures/09-derivative-at-a-point.qmd
+    - lectures/10-derivative-function.qmd
     - supplements/limits-map.qmd
     - supplements/worksheets.qmd
     - supplements/glossary.qmd

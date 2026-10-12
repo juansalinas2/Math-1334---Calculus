@@ -39,6 +39,8 @@ Chapter 1 is the introduction. Chapter 2, Limits and continuity, has a short ove
 
 After rendering, `scripts/book_navigation.py` groups the existing book links into native expandable sidebar groups, all initially closed. Quarto books generate their own sidebar contents, so the grouping is applied by `scripts/finish-site.py`. When adding a section or supplement, update both `_quarto.yml` and the corresponding navigation list.
 
+Chapter 3, Derivatives, begins with the October 12 lecture in Sections 3.1–3.2: the derivative at a point and the derivative function. The complete lecture includes its original diagrams, higher-order derivatives, notation, the continuity theorem and proofs, and three practice problems with collapsed solutions. The four-page Week 4 worksheet is linked under Supplements and from the homepage.
+
 The optional limits concept map lives in `supplements/limits-map.qmd`, with local controls in `assets/limits-map.js`. It connects concepts to the existing lecture sections. Its explanations remain readable without JavaScript; on phones, the map becomes a compact grid of selectable concepts.
 
 - `_quarto.yml`: chapter order, search, and book settings.

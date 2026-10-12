@@ -6,9 +6,11 @@ page-navigation: false
 
 These notes introduce differential calculus: limits, continuity, derivatives, and their applications. They grow alongside the lectures, with explanations, graphs, and worked examples organized by topic.
 
-[See the latest class](lectures/08-exam-practice.qmd){.start-link}
+[See the latest class](lectures/09-derivative-at-a-point.qmd){.start-link}
 
-**October 5:** Limits and continuity — exam practice.
+**October 12:** Derivatives — tangent lines, the derivative function, and differentiability.
+
+[Week 4 worksheet](supplements/worksheets.qmd#week-4-derivatives)
 
 New here? [Begin with Chapter 1](lectures/01-introduction.qmd).
 

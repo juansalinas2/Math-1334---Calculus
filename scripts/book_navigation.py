@@ -13,6 +13,7 @@ SECTIONS = [
     '08-exam-practice.html',
 ]
 SUPPLEMENTS = ['limits-map.html', 'worksheets.html', 'glossary.html', 'self-checks.html', 'explore.html']
+DERIVATIVE_SECTIONS = ['09-derivative-at-a-point.html', '10-derivative-function.html']
 
 
 def rebuild_sidebar(html, page_name):
@@ -56,6 +57,7 @@ def rebuild_sidebar(html, page_name):
         leaves['index.html']
         + group('Chapter 1', intro_children, intro)
         + group('Chapter 2', SECTIONS, 'limits-and-continuity.html')
+        + group('Chapter 3', DERIVATIVE_SECTIONS, 'derivatives.html')
         + group('Supplements', SUPPLEMENTS)
         + leaves['lecture-pdfs.html']
         + group('Appendices', ['00-functions.html'])
@@ -63,5 +65,8 @@ def rebuild_sidebar(html, page_name):
     html = html[:match.start()] + '<div class="sidebar-menu-container"><ul class="list-unstyled mt-1">' + menu + '</ul></div></nav>' + html[match.end():]
     if page_name in SECTIONS:
         context = '<p class="chapter-context"><a href="' + hrefs['limits-and-continuity.html'] + '">Chapter 2 · Limits and continuity</a></p>'
+        html = html.replace('<div class="quarto-title">', context + '<div class="quarto-title">', 1)
+    if page_name in DERIVATIVE_SECTIONS:
+        context = '<p class="chapter-context"><a href="' + hrefs['derivatives.html'] + '">Chapter 3 · Derivatives</a></p>'
         html = html.replace('<div class="quarto-title">', context + '<div class="quarto-title">', 1)
     return html

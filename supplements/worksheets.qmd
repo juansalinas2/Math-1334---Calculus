@@ -24,3 +24,14 @@ Four pages with two investigations:
 Related notes: [Limits](../lectures/02-limits.qmd), [Infinite limits](../lectures/03-infinite-limits.qmd), and [Limit laws](../lectures/04-limit-laws.qmd).
 
 **Note on page 4.** The original PDF is preserved as distributed. Its final physical-scale aside is inaccurate: approximately $1.6\times10^{-35}$ meters is the *Planck length* ([NIST](https://physics.nist.gov/cuu/Constants/codata.pdf)). The “10 billion times” comparison should be disregarded. For this function, the relevant horizontal scale is $10^{-1013}$, as in part (c), because $(10^{-1013})^2=10^{-2026}$. The graph's coordinates have no physical units unless a scale is explicitly assigned.
+
+## Week 4 · Derivatives {#week-4-derivatives}
+
+[Download the Week 4 worksheet](../downloads/week-4-worksheet.pdf){.start-link}
+
+Four pages with two investigations:
+
+- **Problem 1. A tangent line and a limiting area** — Monday, Sections 3.1–3.2. Use the derivative definition for $f(x)=1/x$, find tangent-line intercepts, and investigate the triangle's area and perimeter as $a\to0^+$.
+- **Problem 2. Is the fish population recovering?** — Wednesday, Sections 3.3–3.4. Interpret the graph of a population's rate of change, sketch the population, and consider possible future fishing restrictions.
+
+Related notes: [The derivative at a point](../lectures/09-derivative-at-a-point.qmd) and [The derivative function](../lectures/10-derivative-function.qmd).
