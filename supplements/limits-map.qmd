@@ -163,7 +163,7 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
     <g data-edge="bounds-limit"><path marker-end="url(#concept-arrow)" d="M100 392 V302"/><text x="112" y="356">bound</text></g>
     <g data-edge="limit-continuity"><path marker-end="url(#concept-arrow)" d="M190 260 H240 V70 H350"/><text x="240" y="131" text-anchor="middle"><tspan x="240">limit =</tspan><tspan x="240" dy="18">point value</tspan></text></g>
     <g data-edge="continuity-ivt"><path marker-end="url(#concept-arrow)" d="M530 70 H700"/><text x="615" y="51" text-anchor="middle">continuous on [a,b]</text></g>
-    <g data-edge="limit-derivative"><path marker-end="url(#concept-arrow)" d="M190 260 H350"/><text x="270" y="207" text-anchor="middle"><tspan x="270">difference</tspan><tspan x="270" dy="18">quotient</tspan></text></g>
+    <g data-edge="limit-derivative"><path marker-end="url(#concept-arrow)" d="M190 260 H350"/><text x="270" y="322" text-anchor="middle"><tspan x="270">difference</tspan><tspan x="270" dy="18">quotient</tspan></text></g>
     <g data-edge="derivative-continuity"><path marker-end="url(#concept-arrow)" d="M440 222 V108"/><text x="452" y="166">implies</text></g>
     <g data-edge="derivative-rules"><path marker-end="url(#concept-arrow)" d="M530 260 H700"/><text x="615" y="207" text-anchor="middle">compute efficiently</text></g>
     <g data-edge="rules-tangent"><path marker-end="url(#concept-arrow)" d="M790 302 V392"/><text x="775" y="350" text-anchor="end">slope + point</text></g>
