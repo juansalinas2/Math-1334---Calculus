@@ -32,6 +32,7 @@ book:
     - lectures/derivatives.qmd
     - lectures/09-derivative-at-a-point.qmd
     - lectures/10-derivative-function.qmd
+    - lectures/11-differentiation-rules.qmd
     - supplements/limits-map.qmd
     - supplements/worksheets.qmd
     - supplements/glossary.qmd

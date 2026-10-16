@@ -6,6 +6,7 @@ Download the original lecture notes for printing or annotation, or follow the to
 
 | Lecture | PDF | Read online |
 |:--|:--|:--|
+| October 14, 2026 | [Differentiation rules](downloads/october-14-differentiation-rules.pdf) | [Differentiation rules](lectures/11-differentiation-rules.qmd) |
 | October 12, 2026 | [Derivatives](downloads/october-12-derivatives-class-notes.pdf) | [The derivative at a point](lectures/09-derivative-at-a-point.qmd) · [The derivative function](lectures/10-derivative-function.qmd) |
 | October 2, 2026 | [Continuity and the Intermediate Value Theorem](downloads/october-2-continuity-class-notes.pdf) | [Continuity](lectures/06-continuity.qmd) · [Intermediate Value Theorem](lectures/07-intermediate-value.qmd) |
 | September 30, 2026 | [Limit Laws and the Squeeze Theorem](downloads/september-30-revised-class-notes.pdf) | [Limit laws](lectures/04-limit-laws.qmd) · [Squeeze theorem and trigonometric limits](lectures/05-squeeze-theorem.qmd) |

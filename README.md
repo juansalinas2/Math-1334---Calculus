@@ -41,6 +41,8 @@ After rendering, `scripts/book_navigation.py` groups the existing book links int
 
 Chapter 3, Derivatives, begins with the October 12 lecture in Sections 3.1–3.2: the derivative at a point and the derivative function. The complete lecture includes its original diagrams, higher-order derivatives, notation, the continuity theorem and proofs, and three practice problems with collapsed solutions. The four-page Week 4 worksheet is linked under Supplements and from the homepage.
 
+The October 14 lecture adds Section 3.3, Differentiation rules, faithfully matching the final six-page PDF with Examples 1–11 and both original diagrams.
+
 The optional limits concept map lives in `supplements/limits-map.qmd`, with local controls in `assets/limits-map.js`. It connects concepts to the existing lecture sections. Its explanations remain readable without JavaScript; on phones, the map becomes a compact grid of selectable concepts.
 
 - `_quarto.yml`: chapter order, search, and book settings.
