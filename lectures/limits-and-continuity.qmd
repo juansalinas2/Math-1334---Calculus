@@ -15,4 +15,4 @@ The sections below follow the lecture sequence. Each section includes its origin
 
 [Start Section 2.1](02-limits.qmd){.start-link}
 
-For an optional visual overview, explore the [Limits concept map](../supplements/limits-map.qmd). [Self-checks](../supplements/self-checks.qmd#chapter-2-limits) and the [Week 2 worksheet](../supplements/worksheets.qmd#week-2-limits) are under Supplements.
+For help choosing a method, explore the [Calculus concept map](../supplements/limits-map.qmd). [Self-checks](../supplements/self-checks.qmd#chapter-2-limits) and the [Week 2 worksheet](../supplements/worksheets.qmd#week-2-limits) are under Supplements.

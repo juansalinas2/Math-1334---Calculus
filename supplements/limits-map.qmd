@@ -1,100 +1,192 @@
-# Limits concept map {.unnumbered}
+---
+title: "# Calculus concept map {.unnumbered}"
+description: "Choose a method, see why it applies, and connect limits to derivatives and their applications."
+---
 
 ::: {.source-note}
-Supplement · A visual guide to the connections in Chapter 2. Select a concept to see the connection, its conditions, and a link to the notes. Use Tab and Enter on a keyboard.
+Supplement · Through Section 3.3. Choose a question for a method, a worked example, and links to the notes.
 :::
 
 ```{=html}
-<div class="concept-map" role="group" aria-label="Limits and continuity concept map">
-  <svg class="concept-connections" viewBox="0 0 900 540" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M450 205 L180 80 M450 205 L720 80 M450 205 L160 280 M450 205 L740 280 M450 205 L450 405 M450 405 L740 490" />
-  </svg>
-  <button type="button" class="concept-node concept-root" data-concept="limits" aria-controls="concept-limits" style="--x:50%;--y:38%"><strong>Limits</strong><span>Nearby behavior</span></button>
-  <button type="button" class="concept-node" data-concept="sides" aria-controls="concept-sides" style="--x:20%;--y:15%"><span>Compare both sides</span><strong>One-sided limits</strong></button>
-  <button type="button" class="concept-node" data-concept="infinite" aria-controls="concept-infinite" style="--x:80%;--y:15%"><span>Recognize unbounded behavior</span><strong>Infinite limits</strong></button>
-  <button type="button" class="concept-node" data-concept="laws" aria-controls="concept-laws" style="--x:18%;--y:52%"><span>Compute using</span><strong>Limit laws</strong></button>
-  <button type="button" class="concept-node" data-concept="squeeze" aria-controls="concept-squeeze" style="--x:82%;--y:52%"><span>Compare with bounds</span><strong>Squeeze theorem</strong></button>
-  <button type="button" class="concept-node" data-concept="continuity" aria-controls="concept-continuity" style="--x:50%;--y:75%"><span>Match the limit to the value</span><strong>Continuity</strong></button>
-  <button type="button" class="concept-node" data-concept="ivt" aria-controls="concept-ivt" style="--x:82%;--y:91%"><span>On an interval, guarantees</span><strong>Intermediate values</strong></button>
+<div class="concept-workbench">
+<div class="concept-choices concept-choices-five" role="group" aria-label="What are you trying to find?">
+  <button type="button" data-route="derivative" aria-controls="route-derivative">Find a derivative</button>
+  <button type="button" data-route="tangent" aria-controls="route-tangent">Find a tangent line</button>
+  <button type="button" data-route="limit" aria-controls="route-limit">Find a limit</button>
+  <button type="button" data-route="continuity" aria-controls="route-continuity">Check continuity</button>
+  <button type="button" data-route="existence" aria-controls="route-existence">Show a value is reached</button>
 </div>
-<div class="concept-explanations" aria-live="polite" aria-atomic="true">
+<p class="concept-status visually-hidden" role="status" aria-live="polite"></p>
+<p class="concept-jump"><a href="#connections">See how the concepts connect ↓</a></p>
+<div class="concept-guides">
 ```
 
-::: {#concept-limits .concept-detail}
-### Limits: nearby behavior
+::: {#route-derivative .concept-guide}
+### Find a derivative
 
-A limit describes what the outputs approach as the inputs approach a point. The value at the point may differ from the limit—or may be undefined.
-
-**Connection:** One-sided limits examine the approach from each side. Limit laws and the squeeze theorem help justify computations. Continuity compares the limit with the function value.
-
-[Read Section 2.1](../lectures/02-limits.qmd#limits-and-function-values) · [Explore a hole in a graph](explore.qmd#approaching-a-hole)
+::: {.concept-route}
+Limit of a difference quotient → derivative → calculation rules
 :::
 
-::: {#concept-sides .concept-detail}
-### One-sided limits: compare the approaches
+**Identify the outermost operation.** The definition explains the derivative; the rules calculate it.
 
-A finite two-sided limit exists exactly when the left-hand and right-hand limits both exist as real numbers and agree.
+| Form you see | Start with |
+|:--|:--|
+| A sum or difference | Differentiate term by term. |
+| A power $x^n$ | Use $nx^{n-1}$ where the rule applies. |
+| A product $u(x)v(x)$ | Write $u'v+uv'$. |
+| A quotient $u(x)/v(x)$ | Write $(vu'-uv')/v^2$, with $v(x)\ne0$. |
 
-**Keep in mind:** Checking just one side is not enough. The value at the point does not decide either one-sided limit.
+**Example.** For $y=(x-1)(3x^2+2)$, differentiate one factor at a time:
 
-[Read Section 2.1](../lectures/02-limits.qmd#one-sided-limits) · [Try the self-checks](self-checks.qmd#chapter-2-limits)
+$$
+y'=1(3x^2+2)+(x-1)(6x)=9x^2-6x+2.
+$$
+
+**Remember:** A product needs both terms. A quotient needs the numerator subtraction and the squared denominator; retain the original domain.
+
+[Review the rules](../lectures/11-differentiation-rules.qmd#section-3.3-the-rules-we-will-use) · [See the product examples](../lectures/11-differentiation-rules.qmd#products-one-derivative-at-a-time)
 :::
 
-::: {#concept-infinite .concept-detail}
-### Infinite limits: unbounded behavior
+::: {#route-tangent .concept-guide}
+### Find a tangent line
 
-An infinite limit describes outputs that grow beyond every positive bound or fall below every negative bound. Infinity is not a real-number limit.
-
-**Connection:** A line $x=a$ is a vertical asymptote when at least one one-sided limit at $a$ is $+\infty$ or $-\infty$.
-
-[Read Section 2.2](../lectures/03-infinite-limits.qmd#infinite-limits-and-vertical-asymptotes) · [Try the self-checks](self-checks.qmd#chapter-3-infinite-limits)
+::: {.concept-route}
+Derivative rules → slope at the point → line equation
 :::
 
-::: {#concept-laws .concept-detail}
-### Limit laws: compute with conditions
+1. Find the point: $(a,f(a))$.
+2. Find the slope: compute $f'(x)$, then evaluate $f'(a)$.
+3. Write $y-f(a)=f'(a)(x-a)$.
 
-The limit laws let us combine known limits through sums, products, quotients, and other operations, subject to their hypotheses.
+**Example.** For $f(x)=3/x^2+1$ at $a=1$,
 
-**Keep in mind:** The quotient law requires a nonzero denominator limit. Substitution that produces $0/0$ does not determine the limit; the expression needs further analysis.
+$$
+f(1)=4,\qquad f'(x)=-6x^{-3},\qquad f'(1)=-6.
+$$
 
-[Read Section 2.3](../lectures/04-limit-laws.qmd#the-limit-laws) · [Simplifying indeterminate forms](../lectures/04-limit-laws.qmd#indeterminate-forms-and-simplifying)
+So the tangent is $y-4=-6(x-1)$, or $y=-6x+10$.
+
+**Given a slope instead?** Solve $f'(x)=m$, then evaluate $f(x)$ for the heights. Use the derivative for slopes and the original function for points.
+
+[Review tangent lines and prescribed slopes](../lectures/11-differentiation-rules.qmd#tangent-lines-and-prescribed-slopes)
 :::
 
-::: {#concept-squeeze .concept-detail}
-### Squeeze theorem: compare with bounds
+::: {#route-limit .concept-guide}
+### Find a limit
 
-If a function stays between two bounds for all sufficiently nearby inputs, and both bounds approach the same limit, the function approaches that limit too.
-
-**Connection:** The notes use bounds to control oscillation and to prove the fundamental trigonometric limit. Angles in that limit are measured in radians.
-
-[Read Section 2.4](../lectures/05-squeeze-theorem.qmd#the-squeeze-theorem) · [Open the trigonometric-limit proof](../lectures/05-squeeze-theorem.qmd#the-fundamental-trigonometric-limit)
+::: {.concept-route}
+Nearby behavior → choose a method → compare both sides
 :::
 
-::: {#concept-continuity .concept-detail}
-### Continuity: connect the limit and the value
+**Substitute first, then choose the next step.**
 
-At $a$, check that $f(a)$ is defined, that a finite limit exists, and that
+| What happens | Next move |
+|:--|:--|
+| The limit laws apply; denominator limit is nonzero | Evaluate using the laws. |
+| Substitution gives $0/0$ | Factor or rationalize, then simplify for nearby inputs. |
+| Numerator → nonzero; denominator → zero | Check signs on each side; the outputs may be unbounded. |
+| A bounded factor oscillates; another tends to zero | Use bounds with the same limit (squeeze theorem). |
+| Different formulas apply on the two sides | Compute the one-sided limits separately. |
 
-$$\lim_{x\to a}f(x)=f(a).$$
+**Example.** As $x\to1$, substitution gives $0/0$. Factor:
 
-**Connection:** At an included endpoint of an interval, use the appropriate one-sided limit. Continuity throughout a closed interval is the hypothesis needed for the Intermediate Value Theorem.
+$$
+\begin{gathered}
+\frac{x^2-2x+1}{x^2-1}=\frac{x-1}{x+1}\quad(x\ne1,-1),\\
+\lim_{x\to1}\frac{x-1}{x+1}=0.
+\end{gathered}
+$$
 
-[Read Section 2.5](../lectures/06-continuity.qmd#continuity-at-a-point) · [Explore repairing continuity](explore.qmd#repairing-continuity)
+**Remember:** $0/0$ is indeterminate. A finite two-sided limit requires equal finite one-sided limits. The value at the missing point does not affect the limit.
+
+[Review substitution and its three outcomes](../lectures/04-limit-laws.qmd#three-possibilities-when-we-substitute) · [Review the squeeze theorem](../lectures/05-squeeze-theorem.qmd#the-squeeze-theorem) · [Review infinite limits](../lectures/03-infinite-limits.qmd#infinite-limits-and-vertical-asymptotes)
 :::
 
-::: {#concept-ivt .concept-detail}
-### Intermediate values: what continuity guarantees
+::: {#route-continuity .concept-guide}
+### Check continuity
 
-If $f$ is continuous on $[a,b]$, it takes every value between $f(a)$ and $f(b)$ somewhere on that interval.
+::: {.concept-route}
+Function value + finite limit → compare them
+:::
 
-**Keep in mind:** The theorem guarantees existence. It does not by itself locate the point or guarantee that there is only one.
+At $a$, check these in order:
 
-[Read Section 2.6](../lectures/07-intermediate-value.qmd#the-intermediate-value-theorem) · [Try the self-checks](self-checks.qmd#chapter-7-intermediate-value-theorem)
+1. Is $f(a)$ defined?
+2. Does a finite limit $L=\lim_{x\to a}f(x)$ exist?
+3. Does $L=f(a)$?
+
+**Example.** For $f(x)=|x|$ at $0$,
+
+$$
+f(0)=0,\qquad \lim_{x\to0}|x|=0.
+$$
+
+The limit equals the value, so $f$ is continuous at $0$. But the left and right slopes are $-1$ and $1$: there is **no derivative** at $0$.
+
+**Remember:** Differentiability implies continuity, not the reverse. At an included endpoint, use the appropriate one-sided limit.
+[Review the three continuity conditions](../lectures/06-continuity.qmd#continuity-at-a-point) · [Review differentiability and continuity](../lectures/10-derivative-function.qmd#differentiability-implies-continuity)
+:::
+
+::: {#route-existence .concept-guide}
+### Show a value is reached
+
+::: {.concept-route}
+Continuity on a closed interval + endpoint values → Intermediate Value Theorem
+:::
+
+1. Identify the target value $N$.
+2. Verify continuity on the **whole** closed interval $[a,b]$.
+3. Check that $N$ lies between $f(a)$ and $f(b)$.
+
+**Example.** For $f(x)=4x^3-6x^2+3x-2$, a polynomial,
+
+$$
+f(0)=-2<0<12=f(2).
+$$
+
+Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)=0$.
+
+**Remember:** The theorem gives existence, not a location or uniqueness. A sign change across a discontinuity is not enough.
+
+[Review the Intermediate Value Theorem and its example](../lectures/07-intermediate-value.qmd#the-intermediate-value-theorem)
 :::
 
 ```{=html}
+</div>
+<h2 id="connections">How the ideas connect</h2>
+<p class="concept-key">Follow the highlighted arrows for your selected question. Select a concept to open its notes.</p>
+<div class="concept-map" aria-label="Connections between limits, continuity, and derivatives">
+  <svg class="concept-connections" viewBox="0 0 900 510" aria-hidden="true">
+    <defs><marker id="concept-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L7 4 L1 7" /></marker></defs>
+    <g data-edge="laws-limit"><path marker-end="url(#concept-arrow)" d="M100 108 V218"/><text x="112" y="166">compute</text></g>
+    <g data-edge="bounds-limit"><path marker-end="url(#concept-arrow)" d="M100 392 V302"/><text x="112" y="356">bound</text></g>
+    <g data-edge="limit-continuity"><path marker-end="url(#concept-arrow)" d="M190 260 H240 V70 H350"/><text x="240" y="131" text-anchor="middle"><tspan x="240">limit =</tspan><tspan x="240" dy="18">point value</tspan></text></g>
+    <g data-edge="continuity-ivt"><path marker-end="url(#concept-arrow)" d="M530 70 H700"/><text x="615" y="51" text-anchor="middle">continuous on [a,b]</text></g>
+    <g data-edge="limit-derivative"><path marker-end="url(#concept-arrow)" d="M190 260 H350"/><text x="270" y="207" text-anchor="middle"><tspan x="270">difference</tspan><tspan x="270" dy="18">quotient</tspan></text></g>
+    <g data-edge="derivative-continuity"><path marker-end="url(#concept-arrow)" d="M440 222 V108"/><text x="452" y="166">implies</text></g>
+    <g data-edge="derivative-rules"><path marker-end="url(#concept-arrow)" d="M530 260 H700"/><text x="615" y="207" text-anchor="middle">compute efficiently</text></g>
+    <g data-edge="rules-tangent"><path marker-end="url(#concept-arrow)" d="M790 302 V392"/><text x="775" y="350" text-anchor="end">slope + point</text></g>
+  </svg>
+  <a class="concept-node" data-node="laws" href="../lectures/04-limit-laws.qmd" style="--x:11.11%;--y:13.73%"><strong>Limit laws</strong><span>Combine known limits</span></a>
+  <a class="concept-node" data-node="continuity" href="../lectures/06-continuity.qmd" style="--x:48.89%;--y:13.73%"><strong>Continuity</strong><span>Limit equals value</span></a>
+  <a class="concept-node" data-node="ivt" href="../lectures/07-intermediate-value.qmd" style="--x:87.78%;--y:13.73%"><strong>Intermediate values</strong><span>Guarantee existence</span></a>
+  <a class="concept-node" data-node="limits" href="../lectures/02-limits.qmd" style="--x:11.11%;--y:50.98%"><strong>Limits</strong><span>Nearby behavior</span></a>
+  <a class="concept-node" data-node="derivative" href="../lectures/09-derivative-at-a-point.qmd" style="--x:48.89%;--y:50.98%"><strong>Derivative</strong><span>Instantaneous rate</span></a>
+  <a class="concept-node" data-node="rules" href="../lectures/11-differentiation-rules.qmd" style="--x:87.78%;--y:50.98%"><strong>Derivative rules</strong><span>Power · product · quotient</span></a>
+  <a class="concept-node" data-node="tangent" href="../lectures/11-differentiation-rules.qmd#tangent-lines-and-prescribed-slopes" style="--x:87.78%;--y:84.31%"><strong>Tangent lines</strong><span>Point and slope</span></a>
+  <a class="concept-node" data-node="bounds" href="../lectures/05-squeeze-theorem.qmd" style="--x:11.11%;--y:84.31%"><strong>Squeeze theorem</strong><span>Compare with bounds</span></a>
+</div>
+<div class="concept-mobile-links">
+<p><strong>The connections in words</strong></p>
+<ul>
+<li>Limit laws and bounds help compute limits.</li>
+<li>Continuity compares a limit with the function value; continuity on a closed interval gives the Intermediate Value Theorem.</li>
+<li>A limit of difference quotients defines the derivative. Differentiability implies continuity, but continuity does not imply differentiability.</li>
+<li>Derivative rules calculate derivatives; evaluating the derivative at a point gives a tangent slope.</li>
+</ul>
+</div>
+<p class="concept-caution"><strong>One-way connection:</strong> differentiability implies continuity. Continuity does not guarantee a derivative: |x| has a corner at 0.</p>
 </div>
 <script src="../assets/limits-map.js" defer></script>
 ```
-
-[Return to Chapter 2](../lectures/limits-and-continuity.qmd)

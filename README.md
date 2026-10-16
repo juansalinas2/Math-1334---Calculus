@@ -43,7 +43,7 @@ Chapter 3, Derivatives, begins with the October 12 lecture in Sections 3.1–3.2
 
 The October 14 lecture adds Section 3.3, Differentiation rules, faithfully matching the final six-page PDF with Examples 1–11 and both original diagrams.
 
-The optional limits concept map lives in `supplements/limits-map.qmd`, with local controls in `assets/limits-map.js`. It connects concepts to the existing lecture sections. Its explanations remain readable without JavaScript; on phones, the map becomes a compact grid of selectable concepts.
+The optional calculus concept map remains at `supplements/limits-map.qmd` to preserve its URL. It covers the published material through Section 3.3: five question-based paths give a method, a class example, conditions, and lecture links. `assets/limits-map.js` highlights directed connections. All guides remain readable without JavaScript and when printing; phones show linked concepts and the relationships in words.
 
 - `_quarto.yml`: chapter order, search, and book settings.
 - `index.qmd`: book home.
