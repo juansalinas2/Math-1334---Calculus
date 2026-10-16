@@ -43,6 +43,8 @@ Chapter 3, Derivatives, begins with the October 12 lecture in Sections 3.1–3.2
 
 The October 14 lecture adds Section 3.3, Differentiation rules, faithfully matching the final six-page PDF with Examples 1–11 and both original diagrams.
 
+The October 16 lecture adds Sections 3.4–3.5, matching the revised eight-page PDF with Examples 1–13, four original diagrams, and three practice problems together at the end of Section 3.5. Practice solutions start collapsed. The force example and force practice problem were removed at the instructor’s request.
+
 The optional calculus concept map remains at `supplements/limits-map.qmd` to preserve its URL. It covers the published material through Section 3.3: five question-based paths give a method, a class example, conditions, and lecture links. `assets/limits-map.js` highlights directed connections. All guides remain readable without JavaScript and when printing; phones show linked concepts and the relationships in words.
 
 - `_quarto.yml`: chapter order, search, and book settings.

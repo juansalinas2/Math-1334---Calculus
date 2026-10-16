@@ -6,9 +6,9 @@ page-navigation: false
 
 These notes introduce differential calculus: limits, continuity, derivatives, and their applications. They grow alongside the lectures, with explanations, graphs, and worked examples organized by topic.
 
-[See the latest class](lectures/11-differentiation-rules.qmd){.start-link}
+[See the latest class](lectures/12-rates-of-change.qmd){.start-link}
 
-**October 14:** Differentiation rules — power, product, and quotient rules, higher-order derivatives, and tangent lines.
+**October 16:** Rates of change and trigonometric derivatives — motion, sign graphs, derivative rules, and practice.
 
 [Week 4 worksheet](supplements/worksheets.qmd#week-4-derivatives)
 

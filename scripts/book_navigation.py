@@ -13,7 +13,7 @@ SECTIONS = [
     '08-exam-practice.html',
 ]
 SUPPLEMENTS = ['limits-map.html', 'worksheets.html', 'glossary.html', 'self-checks.html', 'explore.html']
-DERIVATIVE_SECTIONS = ['09-derivative-at-a-point.html', '10-derivative-function.html', '11-differentiation-rules.html']
+DERIVATIVE_SECTIONS = ['09-derivative-at-a-point.html', '10-derivative-function.html', '11-differentiation-rules.html', '12-rates-of-change.html', '13-trigonometric-derivatives.html']
 
 
 def rebuild_sidebar(html, page_name):

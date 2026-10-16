@@ -34,6 +34,8 @@ book:
     - lectures/09-derivative-at-a-point.qmd
     - lectures/10-derivative-function.qmd
     - lectures/11-differentiation-rules.qmd
+    - lectures/12-rates-of-change.qmd
+    - lectures/13-trigonometric-derivatives.qmd
     - supplements/limits-map.qmd
     - supplements/worksheets.qmd
     - supplements/glossary.qmd
