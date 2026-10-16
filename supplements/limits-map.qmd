@@ -188,5 +188,5 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
 </div>
 <p class="concept-caution"><strong>One-way connection:</strong> differentiability implies continuity. Continuity does not guarantee a derivative: |x| has a corner at 0.</p>
 </div>
-<script src="../assets/limits-map.js" defer></script>
+<script src="../assets/limits-map.js?v=20261015" defer></script>
 ```
