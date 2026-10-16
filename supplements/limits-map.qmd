@@ -4,13 +4,14 @@ description: "Choose a method, see why it applies, and connect limits to derivat
 ---
 
 ::: {.source-note}
-Supplement · Through Section 3.3. Choose a question for a method, a worked example, and links to the notes.
+Supplement · Through Section 3.5. Choose a question for a method, a worked example, and links to the notes.
 :::
 
 ```{=html}
 <div class="concept-workbench">
-<div class="concept-choices concept-choices-five" role="group" aria-label="What are you trying to find?">
+<div class="concept-choices" role="group" aria-label="What are you trying to find?">
   <button type="button" data-route="derivative" aria-controls="route-derivative">Find a derivative</button>
+  <button type="button" data-route="motion" aria-controls="route-motion">Describe motion</button>
   <button type="button" data-route="tangent" aria-controls="route-tangent">Find a tangent line</button>
   <button type="button" data-route="limit" aria-controls="route-limit">Find a limit</button>
   <button type="button" data-route="continuity" aria-controls="route-continuity">Check continuity</button>
@@ -34,18 +35,50 @@ Limit of a difference quotient → derivative → calculation rules
 |:--|:--|
 | A sum or difference | Differentiate term by term. |
 | A power $x^n$ | Use $nx^{n-1}$ where the rule applies. |
+| Sine or cosine | $(\sin x)'=\cos x$; $(\cos x)'=-\sin x$. |
+| Tangent or cotangent | $(\tan x)'=\sec^2x$; $(\cot x)'=-\csc^2x$. |
+| Secant or cosecant | $(\sec x)'=\sec x\tan x$; $(\csc x)'=-\csc x\cot x$. |
 | A product $u(x)v(x)$ | Write $u'v+uv'$. |
 | A quotient $u(x)/v(x)$ | Write $(vu'-uv')/v^2$, with $v(x)\ne0$. |
 
-**Example.** For $y=(x-1)(3x^2+2)$, differentiate one factor at a time:
+**Example.** For $y=x\sin x$, combine the product rule with a trig derivative:
 
 $$
-y'=1(3x^2+2)+(x-1)(6x)=9x^2-6x+2.
+y'=1\cdot\sin x+x\cos x.
 $$
 
-**Remember:** A product needs both terms. A quotient needs the numerator subtraction and the squared denominator; retain the original domain.
+Differentiate again: $y''=2\cos x-x\sin x$.
 
-[Review the rules](../lectures/11-differentiation-rules.qmd#section-3.3-the-rules-we-will-use) · [See the product examples](../lectures/11-differentiation-rules.qmd#products-one-derivative-at-a-time)
+**Remember:** Trig formulas use radians and apply where the function is defined. A product needs both terms. A quotient needs the numerator subtraction and the squared denominator; retain the original domain.
+
+[Review the rules](../lectures/11-differentiation-rules.qmd#section-3.3-the-rules-we-will-use) · [Review trig derivatives](../lectures/13-trigonometric-derivatives.qmd)
+:::
+
+::: {#route-motion .concept-guide}
+### Describe motion
+
+::: {.concept-route}
+Position → velocity → acceleration → compare signs
+:::
+
+Compute $v=s'$ and $a=v'$. Mark the zeros of **both** on aligned sign graphs.
+Velocity gives direction; speed is $|v|$. Matching signs of $v$ and $a$ mean speeding up; opposite signs mean slowing down.
+
+**Example.** For $s(t)=t^3-6t^2+9t+2$, $0\le t\le4$,
+
+$$
+v(t)=3(t-1)(t-3),\qquad a(t)=6(t-2).
+$$
+
+![](../lectures/assets/motion-example-signs.png){fig-alt="Velocity has signs positive, negative, negative, positive on intervals divided by 1, 2, and 3. Acceleration is negative before 2 and positive afterward. Velocity is zero at 1 and 3; acceleration is zero at 2." width=600}
+
+The particle is at rest at $t=1,3$. It moves in the positive direction on $(0,1)$ and $(3,4)$ and in the negative direction on $(1,3)$. It speeds up on $(1,2)$ and $(3,4)$ and slows down on $(0,1)$ and $(2,3)$.
+
+**For a spring:** $s(t)=\cos t$ gives $v(t)=-\sin t$ and $a(t)=-\cos t$. The same sign comparison works; the trig rules supply the derivatives.
+
+**Given an event?** If the question specifies a position or impact, solve for the time first, then evaluate velocity.
+
+[Review motion and sign graphs](../lectures/12-rates-of-change.qmd) · [Try the motion practice](../lectures/12-rates-of-change.qmd#practice) · [See the spring](../lectures/13-trigonometric-derivatives.qmd)
 :::
 
 ::: {#route-tangent .concept-guide}
@@ -157,7 +190,7 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
 <h2 id="connections">How the ideas connect</h2>
 <p class="concept-key">Follow the highlighted arrows for your selected question. Select a concept to open its notes.</p>
 <div class="concept-map" aria-label="Connections between limits, continuity, and derivatives">
-  <svg class="concept-connections" viewBox="0 0 900 510" aria-hidden="true">
+  <svg class="concept-connections" viewBox="0 0 900 690" aria-hidden="true">
     <defs><marker id="concept-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L7 4 L1 7" /></marker></defs>
     <g data-edge="laws-limit"><path marker-end="url(#concept-arrow)" d="M100 108 V218"/><text x="112" y="166">compute</text></g>
     <g data-edge="bounds-limit"><path marker-end="url(#concept-arrow)" d="M100 392 V302"/><text x="112" y="356">bound</text></g>
@@ -167,15 +200,20 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
     <g data-edge="derivative-continuity"><path marker-end="url(#concept-arrow)" d="M440 222 V108"/><text x="452" y="166">implies</text></g>
     <g data-edge="derivative-rules"><path marker-end="url(#concept-arrow)" d="M530 260 H700"/><text x="615" y="207" text-anchor="middle">compute efficiently</text></g>
     <g data-edge="rules-tangent"><path marker-end="url(#concept-arrow)" d="M790 302 V392"/><text x="775" y="350" text-anchor="end">slope + point</text></g>
+    <g data-edge="derivative-motion"><path marker-end="url(#concept-arrow)" d="M440 302 V380"/><text x="452" y="356">motion</text></g>
+    <g data-edge="rules-trig"><path marker-end="url(#concept-arrow)" d="M790 302 V335 H615 V610 H530"/><text x="630" y="525">trig formulas</text></g>
+    <g data-edge="trig-motion"><path marker-end="url(#concept-arrow)" d="M440 560 V480"/><text x="452" y="525">spring motion</text></g>
   </svg>
-  <a class="concept-node" data-node="laws" href="../lectures/04-limit-laws.qmd" style="--x:11.11%;--y:13.73%"><strong>Limit laws</strong><span>Combine known limits</span></a>
-  <a class="concept-node" data-node="continuity" href="../lectures/06-continuity.qmd" style="--x:48.89%;--y:13.73%"><strong>Continuity</strong><span>Limit equals value</span></a>
-  <a class="concept-node" data-node="ivt" href="../lectures/07-intermediate-value.qmd" style="--x:87.78%;--y:13.73%"><strong>Intermediate values</strong><span>Guarantee existence</span></a>
-  <a class="concept-node" data-node="limits" href="../lectures/02-limits.qmd" style="--x:11.11%;--y:50.98%"><strong>Limits</strong><span>Nearby behavior</span></a>
-  <a class="concept-node" data-node="derivative" href="../lectures/09-derivative-at-a-point.qmd" style="--x:48.89%;--y:50.98%"><strong>Derivative</strong><span>Instantaneous rate</span></a>
-  <a class="concept-node" data-node="rules" href="../lectures/11-differentiation-rules.qmd" style="--x:87.78%;--y:50.98%"><strong>Derivative rules</strong><span>Power · product · quotient</span></a>
-  <a class="concept-node" data-node="tangent" href="../lectures/11-differentiation-rules.qmd#tangent-lines-and-prescribed-slopes" style="--x:87.78%;--y:84.31%"><strong>Tangent lines</strong><span>Point and slope</span></a>
-  <a class="concept-node" data-node="bounds" href="../lectures/05-squeeze-theorem.qmd" style="--x:11.11%;--y:84.31%"><strong>Squeeze theorem</strong><span>Compare with bounds</span></a>
+  <a class="concept-node" data-node="laws" href="../lectures/04-limit-laws.qmd" style="--x:11.11%;--y:10.14%"><strong>Limit laws</strong><span>Combine known limits</span></a>
+  <a class="concept-node" data-node="continuity" href="../lectures/06-continuity.qmd" style="--x:48.89%;--y:10.14%"><strong>Continuity</strong><span>Limit equals value</span></a>
+  <a class="concept-node" data-node="ivt" href="../lectures/07-intermediate-value.qmd" style="--x:87.78%;--y:10.14%"><strong>Intermediate values</strong><span>Guarantee existence</span></a>
+  <a class="concept-node" data-node="limits" href="../lectures/02-limits.qmd" style="--x:11.11%;--y:37.68%"><strong>Limits</strong><span>Nearby behavior</span></a>
+  <a class="concept-node" data-node="derivative" href="../lectures/09-derivative-at-a-point.qmd" style="--x:48.89%;--y:37.68%"><strong>Derivative</strong><span>Instantaneous rate</span></a>
+  <a class="concept-node" data-node="rules" href="../lectures/11-differentiation-rules.qmd" style="--x:87.78%;--y:37.68%"><strong>Derivative rules</strong><span>Power · product · quotient</span></a>
+  <a class="concept-node" data-node="tangent" href="../lectures/11-differentiation-rules.qmd#tangent-lines-and-prescribed-slopes" style="--x:87.78%;--y:62.32%"><strong>Tangent lines</strong><span>Point and slope</span></a>
+  <a class="concept-node" data-node="bounds" href="../lectures/05-squeeze-theorem.qmd" style="--x:11.11%;--y:62.32%"><strong>Squeeze theorem</strong><span>Compare with bounds</span></a>
+  <a class="concept-node" data-node="motion" href="../lectures/12-rates-of-change.qmd" style="--x:48.89%;--y:62.32%"><strong>Motion</strong><span>Velocity · acceleration · speed</span></a>
+  <a class="concept-node" data-node="trig" href="../lectures/13-trigonometric-derivatives.qmd" style="--x:48.89%;--y:88.41%"><strong>Trig derivatives</strong><span>Radian formulas · spring motion</span></a>
 </div>
 <div class="concept-mobile-links">
 <p><strong>The connections in words</strong></p>
@@ -184,9 +222,11 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
 <li>Continuity compares a limit with the function value; continuity on a closed interval gives the Intermediate Value Theorem.</li>
 <li>A limit of difference quotients defines the derivative. Differentiability implies continuity, but continuity does not imply differentiability.</li>
 <li>Derivative rules calculate derivatives; evaluating the derivative at a point gives a tangent slope.</li>
+<li>For motion, the first derivative is velocity and the second is acceleration. Their signs determine direction and changes in speed.</li>
+<li>Trigonometric derivative formulas extend the calculation rules to sine, cosine, and related functions; they also describe spring motion.</li>
 </ul>
 </div>
 <p class="concept-caution"><strong>One-way connection:</strong> differentiability implies continuity. Continuity does not guarantee a derivative: |x| has a corner at 0.</p>
 </div>
-<script src="../assets/limits-map.js?v=20261015" defer></script>
+<script src="../assets/limits-map.js?v=20261016" defer></script>
 ```

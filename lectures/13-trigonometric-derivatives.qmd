@@ -1,6 +1,6 @@
 ---
 title: "# 3.5 Trigonometric derivatives {.unnumbered}"
-description: "Spring motion, trigonometric derivative formulas, worked examples, and three practice problems."
+description: "Spring motion, trigonometric derivative formulas, worked examples, and trigonometric practice."
 ---
 
 ::: {.source-note}
@@ -244,36 +244,7 @@ write $f'(x)=m$, solve the resulting equation, and keep every admissible solutio
 
 ## Practice
 
-State the rule you use, and include units in the applications.
-
-**1.** A particle has position
-
-$$
-s(t)=-t^3+9t^2-24t+5,\qquad 0\le t\le5,
-$$
-
-with position in meters and time in seconds. Use sign graphs for velocity and
-acceleration to find when the particle is at rest, its direction of motion,
-and when it speeds up or slows down.
-
-<details class="proof practice-solution">
-<summary>Show solution</summary>
-
-Factor the velocity and mark the zeros of both derivatives:
-
-$$
-v(t)=-3t^2+18t-24=-3(t-2)(t-4),\qquad a(t)=18-6t=-6(t-3).
-$$
-
-Velocity is zero at $t=2,4$; acceleration is zero at $t=3$.
-
-![](assets/motion-practice-signs.png){fig-alt="Practice 1: velocity has signs −, +, +, − on intervals divided by 2, 3, and 4, with zeros at 2 and 4. Acceleration has signs +, +, −, −, with a zero at 3." width=500}
-
-At rest at $t=2,4$. Motion is in the positive direction on $(2,4)$ and
-in the negative direction on $(0,2)$ and $(4,5)$. Matching signs: speeding up
-on $(2,3)$ and $(4,5)$. Opposite signs: slowing down on $(0,2)$ and $(3,4)$.
-
-</details>
+State the rule you use.
 
 **2.** Find $y'$ and $y''$ if $y=x\sin x$.
 
