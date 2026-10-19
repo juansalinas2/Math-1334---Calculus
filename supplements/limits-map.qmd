@@ -1,16 +1,18 @@
 ---
-title: "# Calculus concept map {.unnumbered}"
+title: "# Calculus concept map (optional) {.unnumbered}"
+css: ../assets/chain-rule.css
 description: "Choose a method, see why it applies, and connect limits to derivatives and their applications."
 ---
 
 ::: {.source-note}
-Supplement · Through Section 3.5. Choose a question for a method, a worked example, and links to the notes.
+**Optional computational strategies · Through Section 3.6.** This guide suggests ways to organize your work; you do not need to follow a particular strategy. Choose a question for a method, a worked example, and links to the notes.
 :::
 
 ```{=html}
 <div class="concept-workbench">
 <div class="concept-choices" role="group" aria-label="What are you trying to find?">
   <button type="button" data-route="derivative" aria-controls="route-derivative">Find a derivative</button>
+  <button type="button" data-route="chain" aria-controls="route-chain">Differentiate a composition</button>
   <button type="button" data-route="motion" aria-controls="route-motion">Describe motion</button>
   <button type="button" data-route="tangent" aria-controls="route-tangent">Find a tangent line</button>
   <button type="button" data-route="limit" aria-controls="route-limit">Find a limit</button>
@@ -38,6 +40,7 @@ Limit of a difference quotient → derivative → calculation rules
 | Sine or cosine | $(\sin x)'=\cos x$; $(\cos x)'=-\sin x$. |
 | Tangent or cotangent | $(\tan x)'=\sec^2x$; $(\cot x)'=-\csc^2x$. |
 | Secant or cosecant | $(\sec x)'=\sec x\tan x$; $(\csc x)'=-\csc x\cot x$. |
+| A composition $f(g(x))$ | Differentiate the outer function, keep its input, then multiply by $g'(x)$. |
 | A product $u(x)v(x)$ | Write $u'v+uv'$. |
 | A quotient $u(x)/v(x)$ | Write $(vu'-uv')/v^2$, with $v(x)\ne0$. |
 
@@ -51,7 +54,40 @@ Differentiate again: $y''=2\cos x-x\sin x$.
 
 **Remember:** Trig formulas use radians and apply where the function is defined. A product needs both terms. A quotient needs the numerator subtraction and the squared denominator; retain the original domain.
 
-[Review the rules](../lectures/11-differentiation-rules.qmd#section-3.3-the-rules-we-will-use) · [Review trig derivatives](../lectures/13-trigonometric-derivatives.qmd)
+[Review the rules](../lectures/11-differentiation-rules.qmd#section-3.3-the-rules-we-will-use) · [Review trig derivatives](../lectures/13-trigonometric-derivatives.qmd) · [Review the chain rule](../lectures/14-chain-rule.qmd)
+:::
+
+::: {#route-chain .concept-guide}
+### Differentiate a composition
+
+::: {.concept-route}
+Identify the layers → differentiate from the outside inward → multiply the factors
+:::
+
+A composition has one function inside another: $F(x)=f(g(x))$.
+The chain rule gives
+
+$$
+F'(x)=\textcolor{#0072B2}{f'(g(x))}\,\textcolor{#B44D00}{g'(x)}.
+$$
+
+**Example.** For $y=\cos^4x=(\cos x)^4$, the outer function raises its input to the fourth power; the inner function is cosine.
+
+$$
+\begin{aligned}
+y'&=\underbrace{\textcolor{#0072B2}{4\cos^3x}}_{\text{outer derivative}}
+\,\underbrace{\textcolor{#B44D00}{(-\sin x)}}_{\text{inner derivative}}\\
+&=-4\cos^3x\sin x.
+\end{aligned}
+$$
+
+**For more layers:** repeat the chain rule until every layer has contributed its derivative. The colors run from outside inward: <span class="chain-first">first</span>, <span class="chain-second">second</span>, <span class="chain-third">third</span>, <span class="chain-fourth">fourth</span>.
+
+**Combine rules when needed.** For $x^3\cos^2x$, start with the product rule, then use the chain rule on $\cos^2x$. To find a tangent line, evaluate the resulting derivative at the given point.
+
+**Remember:** Keep the inner expression unchanged when differentiating the outer function. Include the innermost derivative. Naming the layers with letters is optional; the derivative factors are required.
+
+[Review the chain rule](../lectures/14-chain-rule.qmd#the-chain-rule) · [See several layers](../lectures/14-chain-rule.qmd#three-or-more-layers) · [Try the practice](../lectures/14-chain-rule.qmd#practice-1)
 :::
 
 ::: {#route-motion .concept-guide}
@@ -203,6 +239,8 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
     <g data-edge="derivative-motion"><path marker-end="url(#concept-arrow)" d="M440 302 V380"/><text x="452" y="356">motion</text></g>
     <g data-edge="rules-trig"><path marker-end="url(#concept-arrow)" d="M790 302 V335 H615 V610 H530"/><text x="630" y="525">trig formulas</text></g>
     <g data-edge="trig-motion"><path marker-end="url(#concept-arrow)" d="M440 560 V480"/><text x="452" y="525">spring motion</text></g>
+    <g data-edge="rules-chain"><path marker-end="url(#concept-arrow)" d="M880 260 H895 V610 H880"/><text x="880" y="550" text-anchor="end">compositions</text></g>
+    <g data-edge="chain-tangent"><path marker-end="url(#concept-arrow)" d="M790 570 V475"/><text x="777" y="496" text-anchor="end">evaluate slope</text></g>
   </svg>
   <a class="concept-node" data-node="laws" href="../lectures/04-limit-laws.qmd" style="--x:11.11%;--y:10.14%"><strong>Limit laws</strong><span>Combine known limits</span></a>
   <a class="concept-node" data-node="continuity" href="../lectures/06-continuity.qmd" style="--x:48.89%;--y:10.14%"><strong>Continuity</strong><span>Limit equals value</span></a>
@@ -214,6 +252,7 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
   <a class="concept-node" data-node="bounds" href="../lectures/05-squeeze-theorem.qmd" style="--x:11.11%;--y:62.32%"><strong>Squeeze theorem</strong><span>Compare with bounds</span></a>
   <a class="concept-node" data-node="motion" href="../lectures/12-rates-of-change.qmd" style="--x:48.89%;--y:62.32%"><strong>Motion</strong><span>Velocity · acceleration · speed</span></a>
   <a class="concept-node" data-node="trig" href="../lectures/13-trigonometric-derivatives.qmd" style="--x:48.89%;--y:88.41%"><strong>Trig derivatives</strong><span>Radian formulas · spring motion</span></a>
+  <a class="concept-node" data-node="chain" href="../lectures/14-chain-rule.qmd" style="--x:87.78%;--y:88.41%"><strong>Chain rule</strong><span>One factor from each layer</span></a>
 </div>
 <div class="concept-mobile-links">
 <p><strong>The connections in words</strong></p>
@@ -222,11 +261,12 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
 <li>Continuity compares a limit with the function value; continuity on a closed interval gives the Intermediate Value Theorem.</li>
 <li>A limit of difference quotients defines the derivative. Differentiability implies continuity, but continuity does not imply differentiability.</li>
 <li>Derivative rules calculate derivatives; evaluating the derivative at a point gives a tangent slope.</li>
+<li>The chain rule differentiates composite functions, with one factor from each layer. Combine it with the product, quotient, or trig rules when needed; evaluating the result gives a tangent slope.</li>
 <li>For motion, the first derivative is velocity and the second is acceleration. Their signs determine direction and changes in speed.</li>
 <li>Trigonometric derivative formulas extend the calculation rules to sine, cosine, and related functions; they also describe spring motion.</li>
 </ul>
 </div>
 <p class="concept-caution"><strong>One-way connection:</strong> differentiability implies continuity. Continuity does not guarantee a derivative: |x| has a corner at 0.</p>
 </div>
-<script src="../assets/limits-map.js?v=20261016" defer></script>
+<script src="../assets/limits-map.js?v=20261019" defer></script>
 ```
