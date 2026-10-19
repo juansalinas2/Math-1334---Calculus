@@ -1,0 +1,471 @@
+---
+title: "# 3.6 The chain rule {.unnumbered}"
+css: ../assets/chain-rule.css
+description: "Composite functions, the chain rule, powers of functions, and worked examples with colored derivative factors."
+---
+
+::: {.source-note}
+[Lecture PDF · October 19, 2026](../downloads/october-19-chain-rule-class-notes.pdf)
+:::
+
+## Differentiating composite functions
+
+**Question.** How do we differentiate a composite function?
+
+$$
+F(x)=(f\circ g)(x)=f(g(x)).
+$$
+
+Identify the <span class="chain-first">outer function $f$</span> and the <span class="chain-second">inner function $g$</span>. Here $u$ stands for the input to the outer function.
+
+**1.** $F(x)=\sin(2x)$.
+
+$$
+\textcolor{#245A81}{f(u)=\sin u},\qquad \textcolor{#247467}{g(x)=2x},\qquad
+f(g(x))=\sin(2x).
+$$
+
+**2.** $F(x)=\sqrt{1+x^2}$.
+
+$$
+\textcolor{#245A81}{f(u)=\sqrt{u}},\qquad \textcolor{#247467}{g(x)=1+x^2},\qquad
+f(g(x))=\sqrt{1+x^2}.
+$$
+
+**3.** $F(x)=\sin\sqrt{x}$.
+
+$$
+\textcolor{#245A81}{f(u)=\sin u},\qquad \textcolor{#247467}{g(x)=\sqrt{x}},\qquad
+f(g(x))=\sin(\sqrt{x}).
+$$
+
+**4.** $F(x)=\cos^4x$.
+
+$$
+\textcolor{#245A81}{f(u)=u^4},\qquad \textcolor{#247467}{g(x)=\cos x},\qquad
+f(g(x))=(\cos x)^4.
+$$
+
+In particular, $\cos^4x$ means $(\cos x)^4$.
+
+
+## The chain rule
+
+::: {.statement}
+
+**Theorem (Chain rule).**
+
+Suppose $g$ is differentiable at $a$ and $f$ is differentiable at $g(a)$. Then $F=f\circ g$ is differentiable at $a$, and
+
+$$
+F'(a)=f'(g(a))\,g'(a).
+$$
+
+Equivalently,
+
+$$
+\frac{d}{dx}f(g(x))=\textcolor{#245A81}{f'(g(x))}\,\textcolor{#247467}{g'(x)}.
+$$
+
+
+:::
+
+**Idea:** Differentiate the outer function, keeping its input unchanged; then multiply by the derivative of the inner function.
+
+**Leibniz notation.** If $u=g(x)$ and $F=f(u)$, then
+
+$$
+\frac{dF}{dx}=\frac{df}{du}\,\frac{du}{dx}
+=\frac{df}{dg}\,\frac{dg}{dx}.
+$$
+
+Here the outer derivative is evaluated at $u=g(x)$. Trigonometric derivatives use radian measure.
+
+**Color key:** Factors are colored from the outside inward:
+<span class="chain-first">first layer</span>, <span class="chain-second">second</span>, <span class="chain-third">third</span>, <span class="chain-fourth">fourth</span>.
+Combined final results use the regular text color.
+
+
+## Using the chain rule with a table
+
+
+**Example 1.** Use the following values to compute the derivatives below.
+
+::: {.chain-table}
+
+| $x$ | $f(x)$ | $f'(x)$ | $g(x)$ | $g'(x)$ |
+|:--:|:--:|:--:|:--:|:--:|
+| $0$ | $2$ | $3$ | $1$ | $-2$ |
+| $1$ | $4$ | $5$ | $0$ | $6$ |
+| $2$ | $1$ | $-1$ | $3$ | $4$ |
+| $3$ | $2$ | $-2$ | $1$ | $5$ |
+
+:::
+
+
+**(i)** Find $(f\circ g)'(0)$.
+
+
+*Evaluate the inner function first.* The table gives $g(0)=1$, so
+
+$$
+\begin{aligned}
+(f\circ g)'(0)
+ &=\textcolor{#245A81}{f'(g(0))}\,\textcolor{#247467}{g'(0)}\\
+ &=\textcolor{#245A81}{f'(1)}\,\textcolor{#247467}{(-2)}\\
+ &=\textcolor{#245A81}{5}\,\textcolor{#247467}{(-2)}=-10.
+\end{aligned}
+$$
+
+
+**(ii)** Find $(g\circ f)'(0)$.
+
+
+*Reverse the roles.* Now $f$ is the inner function. Since $f(0)=2$,
+
+$$
+\begin{aligned}
+(g\circ f)'(0)
+ &=\textcolor{#245A81}{g'(f(0))}\,\textcolor{#247467}{f'(0)}\\
+ &=\textcolor{#245A81}{g'(2)}\,\textcolor{#247467}{(3)}\\
+ &=\textcolor{#245A81}{4}\,\textcolor{#247467}{(3)}=12.
+\end{aligned}
+$$
+
+
+## Practice
+
+**(iii)** Find $(f\circ g)'(2)$.
+
+<details class="proof practice-solution">
+<summary>Show solution</summary>
+
+$$
+\begin{aligned}
+(f\circ g)'(2)
+ &=\textcolor{#245A81}{f'(g(2))}\,\textcolor{#247467}{g'(2)}\\
+ &=\textcolor{#245A81}{f'(3)}\,\textcolor{#247467}{(4)}=\textcolor{#245A81}{(-2)}\,\textcolor{#247467}{(4)}=-8.
+\end{aligned}
+$$
+
+</details>
+
+**(iv)** Find $(g\circ f)'(2)$.
+
+<details class="proof practice-solution">
+<summary>Show solution</summary>
+
+$$
+\begin{aligned}
+(g\circ f)'(2)
+ &=\textcolor{#245A81}{g'(f(2))}\,\textcolor{#247467}{f'(2)}\\
+ &=\textcolor{#245A81}{g'(1)}\,\textcolor{#247467}{(-1)}=\textcolor{#245A81}{6}\,\textcolor{#247467}{(-1)}=-6.
+\end{aligned}
+$$
+
+</details>
+
+The outer derivative is evaluated at the *output of the inner function*.
+
+
+## Powers of functions
+
+**Question.** How do we differentiate $(g(x))^n$?
+
+
+**Example 0.** Recall the power rule:
+
+$$
+\frac{d}{dx}(x^4)=4x^3.
+$$
+
+
+**Example 1.** Differentiate $(x+10)^4$.
+
+$$
+\begin{aligned}
+\frac{d}{dx}(x+10)^4
+ &=\textcolor{#245A81}{4(x+10)^3}\,\frac{d}{dx}(x+10)\\
+ &=\textcolor{#245A81}{4(x+10)^3}\cdot\textcolor{#247467}{1}=4(x+10)^3.
+\end{aligned}
+$$
+
+Here $f(u)=u^4$ and $g(x)=x+10$.
+
+
+**Example 2.** Differentiate $\cos^4x$.
+
+$$
+\frac{d}{dx}(\cos x)^4
+=\textcolor{#245A81}{4\cos^3x}\,\textcolor{#247467}{(-\sin x)}
+=-4\cos^3x\sin x.
+$$
+
+
+**Example 3.** Differentiate $\sin^2x$.
+
+$$
+\frac{d}{dx}(\sin x)^2
+=\textcolor{#245A81}{2\sin x}\,\textcolor{#247467}{\cos x}.
+$$
+
+
+**Example 4.** Differentiate $\sqrt{1+x^2}$.
+
+$$
+\begin{aligned}
+\frac{d}{dx}(1+x^2)^{1/2}
+ &=\textcolor{#245A81}{\frac12(1+x^2)^{-1/2}}\,\textcolor{#247467}{(2x)}\\
+ &=\frac{x}{\sqrt{1+x^2}}.
+\end{aligned}
+$$
+
+
+::: {.statement}
+
+**Corollary (Power rule for a function).**
+
+If $g$ is differentiable, then
+
+$$
+\frac{d}{dx}(g(x))^n=\textcolor{#245A81}{n(g(x))^{n-1}}\,\textcolor{#247467}{g'(x)},
+$$
+
+wherever the power function is differentiable at $g(x)$.
+
+:::
+
+**Proof.**
+Apply the chain rule with outer function $f(u)=u^n$.
+ $\square$
+
+
+**Practice.** Suppose $y=(g(x))^2$, $g'(2)=3$, and $y'(2)=24$. Find $g(2)$.
+
+<details class="proof practice-solution">
+<summary>Show solution</summary>
+
+*Use the chain rule.*
+
+$$
+y'=\textcolor{#245A81}{2g(x)}\,\textcolor{#247467}{g'(x)},\qquad
+24=\textcolor{#245A81}{2g(2)}\cdot\textcolor{#247467}{3}=6g(2).
+$$
+
+Therefore $g(2)=4$.
+
+</details>
+
+## Combining differentiation rules
+
+
+**Example 1.** Differentiate $y=x^3\cos^2x$.
+
+
+*Product rule, then chain rule.*
+
+$$
+\begin{aligned}
+y'
+ &=3x^2\cos^2x+x^3\frac{d}{dx}(\cos^2x).
+\end{aligned}
+$$
+
+For the second factor,
+
+$$
+\begin{aligned}
+\frac{d}{dx}(\cos^2x)
+ &=\textcolor{#245A81}{2\cos x}\,\frac{d}{dx}(\cos x)\\
+ &=\textcolor{#245A81}{2\cos x}\,\textcolor{#247467}{(-\sin x)}=-2\sin x\cos x.
+\end{aligned}
+$$
+
+Substituting gives
+
+$$
+\begin{aligned}
+y'
+ &=3x^2\cos^2x+x^3\bigl[\textcolor{#245A81}{2\cos x}\,\textcolor{#247467}{(-\sin x)}\bigr]\\
+ &=3x^2\cos^2x-2x^3\sin x\cos x.
+\end{aligned}
+$$
+
+
+**Example 2.** Differentiate $\displaystyle y=\left(\frac{x+1}{2x-1}\right)^2$.
+
+
+*Chain rule, then quotient rule.* The outer function squares its input, so
+
+$$
+y'=\textcolor{#245A81}{2\left(\frac{x+1}{2x-1}\right)}
+\frac{d}{dx}\left(\frac{x+1}{2x-1}\right).
+$$
+
+Differentiate the inner quotient:
+
+$$
+\begin{aligned}
+\frac{d}{dx}\left(\frac{x+1}{2x-1}\right)
+ &=\frac{(2x-1)(1)-(x+1)(2)}{(2x-1)^2}\\
+ &=\frac{2x-1-2x-2}{(2x-1)^2}\\
+ &=\frac{-3}{(2x-1)^2}.
+\end{aligned}
+$$
+
+Therefore
+
+$$
+\begin{aligned}
+y'
+ &=\textcolor{#245A81}{2\left(\frac{x+1}{2x-1}\right)}
+   \textcolor{#247467}{\left(\frac{-3}{(2x-1)^2}\right)}\\
+ &=-\frac{6(x+1)}{(2x-1)^3},\qquad x\ne\frac12.
+\end{aligned}
+$$
+
+
+## Three or more layers
+
+**Question.** What happens when there are three or more layers?
+Apply the chain rule repeatedly, working from the outside inward.
+
+**1.** Differentiate $y=\sin^3(\cos(2x))$.
+
+Read the expression as $[\sin(\cos(2x))]^3$.
+From outside inward: <span class="chain-first">cube</span>, <span class="chain-second">sine</span>, <span class="chain-third">cosine</span>, <span class="chain-fourth">$2x$</span>.
+Its layers are
+
+$$
+x\ \longmapsto\ 2x\ \longmapsto\ \cos(2x)
+\ \longmapsto\ \sin(\cos(2x))
+\ \longmapsto\ [\sin(\cos(2x))]^3.
+$$
+
+
+*Differentiate one layer at a time.*
+
+$$
+\begin{aligned}
+y'
+ &=\textcolor{#245A81}{3\sin^2(\cos(2x))}\,
+   \frac{d}{dx}\bigl[\sin(\cos(2x))\bigr]\\[5pt]
+ &=\textcolor{#245A81}{3\sin^2(\cos(2x))}\,
+   \textcolor{#247467}{\cos(\cos(2x))}\,
+   \frac{d}{dx}\bigl[\cos(2x)\bigr]\\[5pt]
+ &=\textcolor{#245A81}{3\sin^2(\cos(2x))}\,
+   \textcolor{#247467}{\cos(\cos(2x))}\,
+   \textcolor{#74528C}{(-\sin(2x))}\,
+   \frac{d}{dx}(2x)\\[5pt]
+ &=\textcolor{#245A81}{3\sin^2(\cos(2x))}\,
+   \textcolor{#247467}{\cos(\cos(2x))}\,
+   \textcolor{#74528C}{(-\sin(2x))}\,\textcolor{#A35422}{2}\\[5pt]
+ &=-6\sin^2(\cos(2x))\cos(\cos(2x))\sin(2x).
+\end{aligned}
+$$
+
+Each layer contributes one factor, including the innermost derivative $\frac{d}{dx}(2x)=2$.
+
+
+**2.** Differentiate $y=\sin(\cos(\tan x))$.
+
+From outside inward: <span class="chain-first">sine</span>, <span class="chain-second">cosine</span>, <span class="chain-third">tangent</span>.
+The layers are
+
+$$
+x\ \longmapsto\ \tan x\ \longmapsto\ \cos(\tan x)
+\ \longmapsto\ \sin(\cos(\tan x)).
+$$
+
+
+*Differentiate one layer at a time.*
+
+$$
+\begin{aligned}
+y'
+ &=\textcolor{#245A81}{\cos(\cos(\tan x))}\,
+   \frac{d}{dx}\bigl[\cos(\tan x)\bigr]\\[5pt]
+ &=\textcolor{#245A81}{\cos(\cos(\tan x))}\,
+   \textcolor{#247467}{(-\sin(\tan x))}\,
+   \frac{d}{dx}(\tan x)\\[5pt]
+ &=\textcolor{#245A81}{\cos(\cos(\tan x))}\,
+   \textcolor{#247467}{(-\sin(\tan x))}\,\textcolor{#74528C}{\sec^2x}\\[5pt]
+ &=-\cos(\cos(\tan x))\sin(\tan x)\sec^2x.
+\end{aligned}
+$$
+
+The formula applies wherever $\tan x$ is defined.
+
+
+## Practice
+
+**1.** Differentiate $y=x^2\sin^3(2x)$.
+
+<details class="proof practice-solution">
+<summary>Show solution</summary>
+
+*Product rule and chain rule.*
+
+$$
+\begin{aligned}
+y'
+ &=2x\sin^3(2x)+x^2\frac{d}{dx}\bigl[\sin^3(2x)\bigr]\\
+ &=2x\sin^3(2x)+x^2\bigl[\textcolor{#245A81}{3\sin^2(2x)}\,\textcolor{#247467}{\cos(2x)}\cdot\textcolor{#74528C}{2}\bigr]\\
+ &=2x\sin^3(2x)+6x^2\sin^2(2x)\cos(2x).
+\end{aligned}
+$$
+
+</details>
+
+**2.** Differentiate $\displaystyle y=\frac1{\tan^2(2x)+1}$.
+
+<details class="proof practice-solution">
+<summary>Show solution</summary>
+
+*Write the reciprocal as a power.*
+
+$$
+y=\bigl[\tan^2(2x)+1\bigr]^{-1}.
+$$
+
+Then
+
+$$
+\begin{aligned}
+y'
+ &=\textcolor{#245A81}{-\bigl[\tan^2(2x)+1\bigr]^{-2}}
+   \frac{d}{dx}\bigl[\tan^2(2x)+1\bigr]\\
+ &=\textcolor{#245A81}{-\bigl[\tan^2(2x)+1\bigr]^{-2}}
+   \bigl[\textcolor{#247467}{2\tan(2x)}\,\textcolor{#74528C}{\sec^2(2x)}\cdot\textcolor{#A35422}{2}\bigr]\\
+ &=-\frac{4\tan(2x)\sec^2(2x)}{\bigl[\tan^2(2x)+1\bigr]^2}.
+\end{aligned}
+$$
+
+This formula is valid where the original function is defined, namely where $\cos(2x)\ne0$.
+
+</details>
+
+**3.** Find the tangent line to $f(x)=\sqrt{1+3x^2}$ at $x=1$.
+
+<details class="proof practice-solution">
+<summary>Show solution</summary>
+
+*Find the point and the slope.* First, $f(1)=\sqrt4=2$. By the chain rule,
+
+$$
+\begin{aligned}
+f'(x)
+ &=\textcolor{#245A81}{\frac12(1+3x^2)^{-1/2}}\,\textcolor{#247467}{(6x)}\\
+ &=\frac{3x}{\sqrt{1+3x^2}}.
+\end{aligned}
+$$
+
+Thus $f'(1)=\frac32$. The tangent line is
+
+$$
+y-2=\frac32(x-1),
+\qquad\text{or}\qquad
+y=\frac32x+\frac12.
+$$
+
+</details>

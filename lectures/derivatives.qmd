@@ -12,6 +12,8 @@ The sections below follow the lecture sequence. Each section includes its origin
 - [**3.4 Rates of change**](12-rates-of-change.qmd) — Velocity, acceleration, sign graphs, and finding the time of an event.
 - [**3.5 Trigonometric derivatives**](13-trigonometric-derivatives.qmd) — Spring motion, trigonometric rules, worked examples, and practice.
 
+- [**3.6 The chain rule**](14-chain-rule.qmd) — Composite functions, powers of functions, and worked examples with colored derivative factors.
+
 [Start Section 3.1](09-derivative-at-a-point.qmd){.start-link}
 
 The [Week 4 worksheet](../supplements/worksheets.qmd#week-4-derivatives) is available under Supplements.
