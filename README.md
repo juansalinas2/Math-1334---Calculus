@@ -47,7 +47,7 @@ The October 16 lecture adds Sections 3.4–3.5, matching the revised eight-page 
 
 The October 19 lecture adds Section 3.6, The chain rule, matching the final six-page PDF with its complete examples, table, corollary proof, and practice solutions. Derivative factors retain the PDF’s colors from the outside inward; practice solutions start collapsed.
 
-The optional calculus concept map remains at `supplements/limits-map.qmd` to preserve its URL. It covers the published material through Section 3.5: six question-based paths give a method, a class example, conditions, and lecture links. `assets/limits-map.js` highlights directed connections. All guides remain readable without JavaScript and when printing; phones show linked concepts and the relationships in words.
+The optional calculus concept map remains at `supplements/limits-map.qmd` to preserve its URL. It covers the published material through Section 3.6: seven optional question-based paths give a method, a class example, conditions, and lecture links. `assets/limits-map.js` highlights directed connections. All guides remain readable without JavaScript and when printing; phones show linked concepts and the relationships in words.
 
 - `_quarto.yml`: chapter order, search, and book settings.
 - `index.qmd`: book home.
