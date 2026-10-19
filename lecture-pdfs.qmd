@@ -6,6 +6,7 @@ Download the original lecture notes for printing or annotation, or follow the to
 
 | Lecture | PDF | Read online |
 |:--|:--|:--|
+| October 19, 2026 | [The chain rule](downloads/october-19-chain-rule-class-notes.pdf) | [The chain rule](lectures/14-chain-rule.qmd) |
 | October 16, 2026 | [Rates of change and trigonometric derivatives](downloads/october-16-rates-and-trig-class-notes.pdf) | [Rates of change](lectures/12-rates-of-change.qmd) · [Trigonometric derivatives](lectures/13-trigonometric-derivatives.qmd) |
 | October 14, 2026 | [Differentiation rules](downloads/october-14-differentiation-rules.pdf) | [Differentiation rules](lectures/11-differentiation-rules.qmd) |
 | October 12, 2026 | [Derivatives](downloads/october-12-derivatives-class-notes.pdf) | [The derivative at a point](lectures/09-derivative-at-a-point.qmd) · [The derivative function](lectures/10-derivative-function.qmd) |

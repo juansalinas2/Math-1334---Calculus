@@ -45,6 +45,8 @@ The October 14 lecture adds Section 3.3, Differentiation rules, faithfully match
 
 The October 16 lecture adds Sections 3.4–3.5, matching the revised eight-page PDF with Examples 1–13, four original diagrams, and three practice problems: motion at the end of Section 3.4 and trigonometric differentiation at the end of Section 3.5, preserving the shared PDF numbering. Practice solutions start collapsed. The force example and force practice problem were removed at the instructor’s request.
 
+The October 19 lecture adds Section 3.6, The chain rule, matching the final six-page PDF with its complete examples, table, corollary proof, and practice solutions. Derivative factors retain the PDF’s colors from the outside inward; practice solutions start collapsed.
+
 The optional calculus concept map remains at `supplements/limits-map.qmd` to preserve its URL. It covers the published material through Section 3.5: six question-based paths give a method, a class example, conditions, and lecture links. `assets/limits-map.js` highlights directed connections. All guides remain readable without JavaScript and when printing; phones show linked concepts and the relationships in words.
 
 - `_quarto.yml`: chapter order, search, and book settings.

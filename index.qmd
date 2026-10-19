@@ -6,9 +6,9 @@ page-navigation: false
 
 These notes introduce differential calculus: limits, continuity, derivatives, and their applications. They grow alongside the lectures, with explanations, graphs, and worked examples organized by topic.
 
-[See the latest class](lectures/12-rates-of-change.qmd){.start-link}
+[See the latest class](lectures/14-chain-rule.qmd){.start-link}
 
-**October 16:** Rates of change and trigonometric derivatives — motion, sign graphs, derivative rules, and practice.
+**October 19:** The chain rule — composite functions, colored derivative factors, and worked practice.
 
 [Week 4 worksheet](supplements/worksheets.qmd#week-4-derivatives)
 

@@ -36,6 +36,7 @@ book:
     - lectures/11-differentiation-rules.qmd
     - lectures/12-rates-of-change.qmd
     - lectures/13-trigonometric-derivatives.qmd
+    - lectures/14-chain-rule.qmd
     - supplements/limits-map.qmd
     - supplements/worksheets.qmd
     - supplements/glossary.qmd
