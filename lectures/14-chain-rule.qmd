@@ -21,28 +21,28 @@ Identify the <span class="chain-first">outer function $f$</span> and the <span c
 **1.** $F(x)=\sin(2x)$.
 
 $$
-\textcolor{#245A81}{f(u)=\sin u},\qquad \textcolor{#247467}{g(x)=2x},\qquad
+\textcolor{#0072B2}{f(u)=\sin u},\qquad \textcolor{#B44D00}{g(x)=2x},\qquad
 f(g(x))=\sin(2x).
 $$
 
 **2.** $F(x)=\sqrt{1+x^2}$.
 
 $$
-\textcolor{#245A81}{f(u)=\sqrt{u}},\qquad \textcolor{#247467}{g(x)=1+x^2},\qquad
+\textcolor{#0072B2}{f(u)=\sqrt{u}},\qquad \textcolor{#B44D00}{g(x)=1+x^2},\qquad
 f(g(x))=\sqrt{1+x^2}.
 $$
 
 **3.** $F(x)=\sin\sqrt{x}$.
 
 $$
-\textcolor{#245A81}{f(u)=\sin u},\qquad \textcolor{#247467}{g(x)=\sqrt{x}},\qquad
+\textcolor{#0072B2}{f(u)=\sin u},\qquad \textcolor{#B44D00}{g(x)=\sqrt{x}},\qquad
 f(g(x))=\sin(\sqrt{x}).
 $$
 
 **4.** $F(x)=\cos^4x$.
 
 $$
-\textcolor{#245A81}{f(u)=u^4},\qquad \textcolor{#247467}{g(x)=\cos x},\qquad
+\textcolor{#0072B2}{f(u)=u^4},\qquad \textcolor{#B44D00}{g(x)=\cos x},\qquad
 f(g(x))=(\cos x)^4.
 $$
 
@@ -64,7 +64,7 @@ $$
 Equivalently,
 
 $$
-\frac{d}{dx}f(g(x))=\textcolor{#245A81}{f'(g(x))}\,\textcolor{#247467}{g'(x)}.
+\frac{d}{dx}f(g(x))=\textcolor{#0072B2}{f'(g(x))}\,\textcolor{#B44D00}{g'(x)}.
 $$
 
 
@@ -111,9 +111,9 @@ Combined final results use the regular text color.
 $$
 \begin{aligned}
 (f\circ g)'(0)
- &=\textcolor{#245A81}{f'(g(0))}\,\textcolor{#247467}{g'(0)}\\
- &=\textcolor{#245A81}{f'(1)}\,\textcolor{#247467}{(-2)}\\
- &=\textcolor{#245A81}{5}\,\textcolor{#247467}{(-2)}=-10.
+ &=\textcolor{#0072B2}{f'(g(0))}\,\textcolor{#B44D00}{g'(0)}\\
+ &=\textcolor{#0072B2}{f'(1)}\,\textcolor{#B44D00}{(-2)}\\
+ &=\textcolor{#0072B2}{5}\,\textcolor{#B44D00}{(-2)}=-10.
 \end{aligned}
 $$
 
@@ -126,9 +126,9 @@ $$
 $$
 \begin{aligned}
 (g\circ f)'(0)
- &=\textcolor{#245A81}{g'(f(0))}\,\textcolor{#247467}{f'(0)}\\
- &=\textcolor{#245A81}{g'(2)}\,\textcolor{#247467}{(3)}\\
- &=\textcolor{#245A81}{4}\,\textcolor{#247467}{(3)}=12.
+ &=\textcolor{#0072B2}{g'(f(0))}\,\textcolor{#B44D00}{f'(0)}\\
+ &=\textcolor{#0072B2}{g'(2)}\,\textcolor{#B44D00}{(3)}\\
+ &=\textcolor{#0072B2}{4}\,\textcolor{#B44D00}{(3)}=12.
 \end{aligned}
 $$
 
@@ -143,8 +143,8 @@ $$
 $$
 \begin{aligned}
 (f\circ g)'(2)
- &=\textcolor{#245A81}{f'(g(2))}\,\textcolor{#247467}{g'(2)}\\
- &=\textcolor{#245A81}{f'(3)}\,\textcolor{#247467}{(4)}=\textcolor{#245A81}{(-2)}\,\textcolor{#247467}{(4)}=-8.
+ &=\textcolor{#0072B2}{f'(g(2))}\,\textcolor{#B44D00}{g'(2)}\\
+ &=\textcolor{#0072B2}{f'(3)}\,\textcolor{#B44D00}{(4)}=\textcolor{#0072B2}{(-2)}\,\textcolor{#B44D00}{(4)}=-8.
 \end{aligned}
 $$
 
@@ -158,8 +158,8 @@ $$
 $$
 \begin{aligned}
 (g\circ f)'(2)
- &=\textcolor{#245A81}{g'(f(2))}\,\textcolor{#247467}{f'(2)}\\
- &=\textcolor{#245A81}{g'(1)}\,\textcolor{#247467}{(-1)}=\textcolor{#245A81}{6}\,\textcolor{#247467}{(-1)}=-6.
+ &=\textcolor{#0072B2}{g'(f(2))}\,\textcolor{#B44D00}{f'(2)}\\
+ &=\textcolor{#0072B2}{g'(1)}\,\textcolor{#B44D00}{(-1)}=\textcolor{#0072B2}{6}\,\textcolor{#B44D00}{(-1)}=-6.
 \end{aligned}
 $$
 
@@ -185,8 +185,8 @@ $$
 $$
 \begin{aligned}
 \frac{d}{dx}(x+10)^4
- &=\textcolor{#245A81}{4(x+10)^3}\,\frac{d}{dx}(x+10)\\
- &=\textcolor{#245A81}{4(x+10)^3}\cdot\textcolor{#247467}{1}=4(x+10)^3.
+ &=\textcolor{#0072B2}{4(x+10)^3}\,\frac{d}{dx}(x+10)\\
+ &=\textcolor{#0072B2}{4(x+10)^3}\cdot\textcolor{#B44D00}{1}=4(x+10)^3.
 \end{aligned}
 $$
 
@@ -197,7 +197,7 @@ Here $f(u)=u^4$ and $g(x)=x+10$.
 
 $$
 \frac{d}{dx}(\cos x)^4
-=\textcolor{#245A81}{4\cos^3x}\,\textcolor{#247467}{(-\sin x)}
+=\textcolor{#0072B2}{4\cos^3x}\,\textcolor{#B44D00}{(-\sin x)}
 =-4\cos^3x\sin x.
 $$
 
@@ -206,7 +206,7 @@ $$
 
 $$
 \frac{d}{dx}(\sin x)^2
-=\textcolor{#245A81}{2\sin x}\,\textcolor{#247467}{\cos x}.
+=\textcolor{#0072B2}{2\sin x}\,\textcolor{#B44D00}{\cos x}.
 $$
 
 
@@ -215,7 +215,7 @@ $$
 $$
 \begin{aligned}
 \frac{d}{dx}(1+x^2)^{1/2}
- &=\textcolor{#245A81}{\frac12(1+x^2)^{-1/2}}\,\textcolor{#247467}{(2x)}\\
+ &=\textcolor{#0072B2}{\frac12(1+x^2)^{-1/2}}\,\textcolor{#B44D00}{(2x)}\\
  &=\frac{x}{\sqrt{1+x^2}}.
 \end{aligned}
 $$
@@ -228,7 +228,7 @@ $$
 If $g$ is differentiable, then
 
 $$
-\frac{d}{dx}(g(x))^n=\textcolor{#245A81}{n(g(x))^{n-1}}\,\textcolor{#247467}{g'(x)},
+\frac{d}{dx}(g(x))^n=\textcolor{#0072B2}{n(g(x))^{n-1}}\,\textcolor{#B44D00}{g'(x)},
 $$
 
 wherever the power function is differentiable at $g(x)$.
@@ -248,8 +248,8 @@ Apply the chain rule with outer function $f(u)=u^n$.
 *Use the chain rule.*
 
 $$
-y'=\textcolor{#245A81}{2g(x)}\,\textcolor{#247467}{g'(x)},\qquad
-24=\textcolor{#245A81}{2g(2)}\cdot\textcolor{#247467}{3}=6g(2).
+y'=\textcolor{#0072B2}{2g(x)}\,\textcolor{#B44D00}{g'(x)},\qquad
+24=\textcolor{#0072B2}{2g(2)}\cdot\textcolor{#B44D00}{3}=6g(2).
 $$
 
 Therefore $g(2)=4$.
@@ -276,8 +276,8 @@ For the second factor,
 $$
 \begin{aligned}
 \frac{d}{dx}(\cos^2x)
- &=\textcolor{#245A81}{2\cos x}\,\frac{d}{dx}(\cos x)\\
- &=\textcolor{#245A81}{2\cos x}\,\textcolor{#247467}{(-\sin x)}=-2\sin x\cos x.
+ &=\textcolor{#0072B2}{2\cos x}\,\frac{d}{dx}(\cos x)\\
+ &=\textcolor{#0072B2}{2\cos x}\,\textcolor{#B44D00}{(-\sin x)}=-2\sin x\cos x.
 \end{aligned}
 $$
 
@@ -286,7 +286,7 @@ Substituting gives
 $$
 \begin{aligned}
 y'
- &=3x^2\cos^2x+x^3\bigl[\textcolor{#245A81}{2\cos x}\,\textcolor{#247467}{(-\sin x)}\bigr]\\
+ &=3x^2\cos^2x+x^3\bigl[\textcolor{#0072B2}{2\cos x}\,\textcolor{#B44D00}{(-\sin x)}\bigr]\\
  &=3x^2\cos^2x-2x^3\sin x\cos x.
 \end{aligned}
 $$
@@ -298,7 +298,7 @@ $$
 *Chain rule, then quotient rule.* The outer function squares its input, so
 
 $$
-y'=\textcolor{#245A81}{2\left(\frac{x+1}{2x-1}\right)}
+y'=\textcolor{#0072B2}{2\left(\frac{x+1}{2x-1}\right)}
 \frac{d}{dx}\left(\frac{x+1}{2x-1}\right).
 $$
 
@@ -318,8 +318,8 @@ Therefore
 $$
 \begin{aligned}
 y'
- &=\textcolor{#245A81}{2\left(\frac{x+1}{2x-1}\right)}
-   \textcolor{#247467}{\left(\frac{-3}{(2x-1)^2}\right)}\\
+ &=\textcolor{#0072B2}{2\left(\frac{x+1}{2x-1}\right)}
+   \textcolor{#B44D00}{\left(\frac{-3}{(2x-1)^2}\right)}\\
  &=-\frac{6(x+1)}{(2x-1)^3},\qquad x\ne\frac12.
 \end{aligned}
 $$
@@ -348,18 +348,18 @@ $$
 $$
 \begin{aligned}
 y'
- &=\textcolor{#245A81}{3\sin^2(\cos(2x))}\,
+ &=\textcolor{#0072B2}{3\sin^2(\cos(2x))}\,
    \frac{d}{dx}\bigl[\sin(\cos(2x))\bigr]\\[5pt]
- &=\textcolor{#245A81}{3\sin^2(\cos(2x))}\,
-   \textcolor{#247467}{\cos(\cos(2x))}\,
+ &=\textcolor{#0072B2}{3\sin^2(\cos(2x))}\,
+   \textcolor{#B44D00}{\cos(\cos(2x))}\,
    \frac{d}{dx}\bigl[\cos(2x)\bigr]\\[5pt]
- &=\textcolor{#245A81}{3\sin^2(\cos(2x))}\,
-   \textcolor{#247467}{\cos(\cos(2x))}\,
-   \textcolor{#74528C}{(-\sin(2x))}\,
+ &=\textcolor{#0072B2}{3\sin^2(\cos(2x))}\,
+   \textcolor{#B44D00}{\cos(\cos(2x))}\,
+   \textcolor{#9C2B79}{(-\sin(2x))}\,
    \frac{d}{dx}(2x)\\[5pt]
- &=\textcolor{#245A81}{3\sin^2(\cos(2x))}\,
-   \textcolor{#247467}{\cos(\cos(2x))}\,
-   \textcolor{#74528C}{(-\sin(2x))}\,\textcolor{#A35422}{2}\\[5pt]
+ &=\textcolor{#0072B2}{3\sin^2(\cos(2x))}\,
+   \textcolor{#B44D00}{\cos(\cos(2x))}\,
+   \textcolor{#9C2B79}{(-\sin(2x))}\,\textcolor{#007A3D}{2}\\[5pt]
  &=-6\sin^2(\cos(2x))\cos(\cos(2x))\sin(2x).
 \end{aligned}
 $$
@@ -383,13 +383,13 @@ $$
 $$
 \begin{aligned}
 y'
- &=\textcolor{#245A81}{\cos(\cos(\tan x))}\,
+ &=\textcolor{#0072B2}{\cos(\cos(\tan x))}\,
    \frac{d}{dx}\bigl[\cos(\tan x)\bigr]\\[5pt]
- &=\textcolor{#245A81}{\cos(\cos(\tan x))}\,
-   \textcolor{#247467}{(-\sin(\tan x))}\,
+ &=\textcolor{#0072B2}{\cos(\cos(\tan x))}\,
+   \textcolor{#B44D00}{(-\sin(\tan x))}\,
    \frac{d}{dx}(\tan x)\\[5pt]
- &=\textcolor{#245A81}{\cos(\cos(\tan x))}\,
-   \textcolor{#247467}{(-\sin(\tan x))}\,\textcolor{#74528C}{\sec^2x}\\[5pt]
+ &=\textcolor{#0072B2}{\cos(\cos(\tan x))}\,
+   \textcolor{#B44D00}{(-\sin(\tan x))}\,\textcolor{#9C2B79}{\sec^2x}\\[5pt]
  &=-\cos(\cos(\tan x))\sin(\tan x)\sec^2x.
 \end{aligned}
 $$
@@ -410,7 +410,7 @@ $$
 \begin{aligned}
 y'
  &=2x\sin^3(2x)+x^2\frac{d}{dx}\bigl[\sin^3(2x)\bigr]\\
- &=2x\sin^3(2x)+x^2\bigl[\textcolor{#245A81}{3\sin^2(2x)}\,\textcolor{#247467}{\cos(2x)}\cdot\textcolor{#74528C}{2}\bigr]\\
+ &=2x\sin^3(2x)+x^2\bigl[\textcolor{#0072B2}{3\sin^2(2x)}\,\textcolor{#B44D00}{\cos(2x)}\cdot\textcolor{#9C2B79}{2}\bigr]\\
  &=2x\sin^3(2x)+6x^2\sin^2(2x)\cos(2x).
 \end{aligned}
 $$
@@ -433,10 +433,10 @@ Then
 $$
 \begin{aligned}
 y'
- &=\textcolor{#245A81}{-\bigl[\tan^2(2x)+1\bigr]^{-2}}
+ &=\textcolor{#0072B2}{-\bigl[\tan^2(2x)+1\bigr]^{-2}}
    \frac{d}{dx}\bigl[\tan^2(2x)+1\bigr]\\
- &=\textcolor{#245A81}{-\bigl[\tan^2(2x)+1\bigr]^{-2}}
-   \bigl[\textcolor{#247467}{2\tan(2x)}\,\textcolor{#74528C}{\sec^2(2x)}\cdot\textcolor{#A35422}{2}\bigr]\\
+ &=\textcolor{#0072B2}{-\bigl[\tan^2(2x)+1\bigr]^{-2}}
+   \bigl[\textcolor{#B44D00}{2\tan(2x)}\,\textcolor{#9C2B79}{\sec^2(2x)}\cdot\textcolor{#007A3D}{2}\bigr]\\
  &=-\frac{4\tan(2x)\sec^2(2x)}{\bigl[\tan^2(2x)+1\bigr]^2}.
 \end{aligned}
 $$
@@ -455,7 +455,7 @@ This formula is valid where the original function is defined, namely where $\cos
 $$
 \begin{aligned}
 f'(x)
- &=\textcolor{#245A81}{\frac12(1+3x^2)^{-1/2}}\,\textcolor{#247467}{(6x)}\\
+ &=\textcolor{#0072B2}{\frac12(1+3x^2)^{-1/2}}\,\textcolor{#B44D00}{(6x)}\\
  &=\frac{3x}{\sqrt{1+3x^2}}.
 \end{aligned}
 $$
