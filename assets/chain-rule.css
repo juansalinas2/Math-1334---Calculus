@@ -1,0 +1,21 @@
+/* Match the printed layer colors, with lighter equivalents for dark reading. */
+.chain-first { color: #245a81; }
+.chain-second { color: #247467; }
+.chain-third { color: #74528c; }
+.chain-fourth { color: #a35422; }
+.chain-table th, .chain-table td { border: 1px solid var(--reading-border); padding: .55rem 1rem; }
+.chain-table table { width: auto; margin: 1rem auto; }
+@media screen {
+  html[data-reading-theme="dark"] .chain-first,
+  html[data-reading-theme="dark"] mjx-mstyle[style*="color: rgb(36, 90, 129)"],
+  html[data-reading-theme="dark"] mjx-mstyle[style*="color: #245A81"] { color: #8bc5ef !important; }
+  html[data-reading-theme="dark"] .chain-second,
+  html[data-reading-theme="dark"] mjx-mstyle[style*="color: rgb(36, 116, 103)"],
+  html[data-reading-theme="dark"] mjx-mstyle[style*="color: #247467"] { color: #85d3bf !important; }
+  html[data-reading-theme="dark"] .chain-third,
+  html[data-reading-theme="dark"] mjx-mstyle[style*="color: rgb(116, 82, 140)"],
+  html[data-reading-theme="dark"] mjx-mstyle[style*="color: #74528C"] { color: #c8a9e7 !important; }
+  html[data-reading-theme="dark"] .chain-fourth,
+  html[data-reading-theme="dark"] mjx-mstyle[style*="color: rgb(163, 84, 34)"],
+  html[data-reading-theme="dark"] mjx-mstyle[style*="color: #A35422"] { color: #efb586 !important; }
+}
