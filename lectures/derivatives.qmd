@@ -14,6 +14,9 @@ The sections below follow the lecture sequence. Each section includes its origin
 
 - [**3.6 The chain rule**](14-chain-rule.qmd) — Composite functions, powers of functions, and worked examples with colored derivative factors.
 
+- [**3.7 Derivatives of inverse functions**](15-inverse-functions.qmd) — Inverse derivatives, inverse trigonometric functions, and proofs.
+- [**3.8 Implicit differentiation**](16-implicit-differentiation.qmd) — Tangent slopes, horizontal and vertical tangents, and worked practice.
+
 [Start Section 3.1](09-derivative-at-a-point.qmd){.start-link}
 
 The [Week 4 worksheet](../supplements/worksheets.qmd#week-4-derivatives) is available under Supplements.
