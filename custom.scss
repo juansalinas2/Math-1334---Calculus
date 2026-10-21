@@ -173,7 +173,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .concept-guide table { font-size: .9rem; }
 .concept-guide td, .concept-guide th { padding: .55rem .7rem; }
 .concept-guide td:first-child { width: 43%; }
-.concept-map { position: relative; aspect-ratio: 900 / 690; margin: 1rem 0; }
+.concept-map { position: relative; aspect-ratio: 900 / 880; margin: 1rem 0; }
 .concept-connections { position: absolute; width: 100%; height: 100%; inset: 0; overflow: visible; }
 .concept-connections g { color: var(--reading-muted); }
 .concept-connections g > path { stroke: currentColor; stroke-width: 1.5; fill: none; }
