@@ -7,8 +7,10 @@
   const nodes = [...root.querySelectorAll('[data-node]')];
   const edges = [...root.querySelectorAll('[data-edge]')];
   const paths = {
-    derivative: ['limit-derivative', 'derivative-rules', 'rules-trig', 'rules-chain'],
+    derivative: ['limit-derivative', 'derivative-rules', 'rules-trig', 'rules-chain', 'chain-inverse', 'chain-implicit'],
     chain: ['derivative-rules', 'rules-chain', 'chain-tangent'],
+    inverse: ['rules-chain', 'chain-inverse'],
+    implicit: ['rules-chain', 'chain-implicit'],
     motion: ['derivative-motion', 'rules-trig', 'trig-motion'],
     tangent: ['limit-derivative', 'derivative-rules', 'rules-tangent', 'rules-chain', 'chain-tangent'],
     limit: ['laws-limit', 'bounds-limit'],
@@ -20,6 +22,7 @@
     'limit-continuity': ['limits', 'continuity'], 'continuity-ivt': ['continuity', 'ivt'],
     'limit-derivative': ['limits', 'derivative'], 'derivative-continuity': ['derivative', 'continuity'],
     'derivative-motion': ['derivative', 'motion'],
+    'chain-inverse': ['chain', 'inverse'], 'chain-implicit': ['chain', 'implicit'],
     'rules-chain': ['rules', 'chain'], 'chain-tangent': ['chain', 'tangent'],
     'rules-trig': ['rules', 'trig'], 'trig-motion': ['trig', 'motion'],
     'derivative-rules': ['derivative', 'rules'], 'rules-tangent': ['rules', 'tangent'],
