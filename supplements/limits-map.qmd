@@ -5,7 +5,7 @@ description: "Choose a method, see why it applies, and connect limits to derivat
 ---
 
 ::: {.source-note}
-**Optional computational strategies · Through Section 3.6.** This guide suggests ways to organize your work; you do not need to follow a particular strategy. Choose a question for a method, a worked example, and links to the notes.
+**Optional computational strategies · Through Section 3.8.** This guide suggests ways to organize your work; you do not need to follow a particular strategy. Choose a question for a method, a worked example, and links to the notes.
 :::
 
 ```{=html}
@@ -13,6 +13,8 @@ description: "Choose a method, see why it applies, and connect limits to derivat
 <div class="concept-choices" role="group" aria-label="What are you trying to find?">
   <button type="button" data-route="derivative" aria-controls="route-derivative">Find a derivative</button>
   <button type="button" data-route="chain" aria-controls="route-chain">Differentiate a composition</button>
+  <button type="button" data-route="inverse" aria-controls="route-inverse">Differentiate an inverse</button>
+  <button type="button" data-route="implicit" aria-controls="route-implicit">Differentiate an equation</button>
   <button type="button" data-route="motion" aria-controls="route-motion">Describe motion</button>
   <button type="button" data-route="tangent" aria-controls="route-tangent">Find a tangent line</button>
   <button type="button" data-route="limit" aria-controls="route-limit">Find a limit</button>
@@ -41,6 +43,8 @@ Limit of a difference quotient → derivative → calculation rules
 | Tangent or cotangent | $(\tan x)'=\sec^2x$; $(\cot x)'=-\csc^2x$. |
 | Secant or cosecant | $(\sec x)'=\sec x\tan x$; $(\csc x)'=-\csc x\cot x$. |
 | A composition $f(g(x))$ | Differentiate the outer function, keep its input, then multiply by $g'(x)$. |
+| An inverse function | Find the corresponding input of the original function, then use the inverse-function derivative theorem. |
+| An equation relating $x$ and $y$ | Differentiate implicitly, treating $y$ as a function of $x$. |
 | A product $u(x)v(x)$ | Write $u'v+uv'$. |
 | A quotient $u(x)/v(x)$ | Write $(vu'-uv')/v^2$, with $v(x)\ne0$. |
 
@@ -90,6 +94,77 @@ $$
 [Review the chain rule](../lectures/14-chain-rule.qmd#the-chain-rule) · [See several layers](../lectures/14-chain-rule.qmd#three-or-more-layers) · [Try the practice](../lectures/14-chain-rule.qmd#practice-1)
 :::
 
+::: {#route-inverse .concept-guide}
+### Differentiate an inverse
+
+::: {.concept-route}
+Inverse identity → chain rule → reciprocal derivative at the corresponding point
+:::
+
+**Find the original input first.** To compute $(f^{-1})'(b)$, find $a$ with $f(a)=b$.
+If $f$ is one-to-one and continuous on an open interval containing $a$, is differentiable at $a$, and $f'(a)\ne0$, then
+
+$$
+(f^{-1})'(b)=\frac{1}{f'(a)},\qquad b=f(a).
+$$
+
+The chain rule applied to $f^{-1}(f(x))=x$ gives
+$(f^{-1})'(f(x))f'(x)=1$.
+
+**Example.** Suppose $f(2)=5$, $f'(2)=-3$, and the theorem's hypotheses hold. The original input corresponding to $5$ is $2$, so
+
+$$
+(f^{-1})'(5)=\frac{1}{f'(2)}=-\frac13.
+$$
+
+**For inverse trig functions:** use the appropriate inverse-trig derivative, then the chain rule if its input is another function. For example,
+
+$$
+\frac{d}{dx}\arctan\sqrt{x}
+=\textcolor{#0072B2}{\frac{1}{1+(\sqrt{x})^2}}
+\,\textcolor{#B44D00}{\frac{1}{2\sqrt{x}}}
+=\frac{1}{2\sqrt{x}(1+x)},\qquad x>0.
+$$
+
+**Remember:** $f^{-1}$ means the inverse function, not $1/f$. Evaluate $f'$ at $a$, not at $b$, and check the theorem's hypotheses. Inverse-trig formulas have domain and branch restrictions.
+
+[Review the inverse-function derivative](../lectures/15-inverse-functions.qmd#the-inverse-function-derivative) · [Review inverse-trig derivatives](../lectures/15-inverse-functions.qmd#derivatives-of-inverse-trigonometric-functions)
+:::
+
+::: {#route-implicit .concept-guide}
+### Differentiate an equation
+
+::: {.concept-route}
+Equation relating $x$ and $y$ → chain rule with $y=y(x)$ → solve for $y'$
+:::
+
+**Differentiate both sides with respect to $x$.** Treat $y$ as a function of $x$: for example, $(y^2)'=2yy'$ and $(xy)'=y+xy'$. Collect the terms containing $y'$, factor, and solve where the coefficient is nonzero.
+
+**Example.** On $x^2+xy+y^2=13$,
+
+$$
+\begin{aligned}
+2x+y+xy'+2yy'&=0,\\
+(x+2y)y'&=-2x-y,\\
+y'&=-\frac{2x+y}{x+2y},\qquad x+2y\ne0.
+\end{aligned}
+$$
+
+At $(1,3)$, the slope is $-(2+3)/(1+6)=-5/7$. Thus the tangent line is
+
+$$
+y-3=-\frac57(x-1).
+$$
+
+**For horizontal tangents:** set the numerator of $y'$ equal to zero and check that the denominator is nonzero. Solve this condition together with the **original equation** to find the points. If one coordinate has two possible values, substitute each separately to find the other coordinate.
+
+**For vertical tangents:** a zero denominator is a candidate, not a complete conclusion. Check the point on the curve and use $dx/dy$ when appropriate; the lecture examples verify $dx/dy=0$ with a nonzero denominator.
+
+**Remember:** Every derivative of a $y$-expression needs the chain rule. Use the original equation for coordinates and the derivative for slopes.
+
+[Review implicit differentiation](../lectures/16-implicit-differentiation.qmd) · [See horizontal and vertical tangents](../lectures/16-implicit-differentiation.qmd#example-the-curve-x2xyy23) · [Try the practice](../lectures/16-implicit-differentiation.qmd#practice-the-curve-x2-xyy212)
+:::
+
 ::: {#route-motion .concept-guide}
 ### Describe motion
 
@@ -137,6 +212,8 @@ $$
 So the tangent is $y-4=-6(x-1)$, or $y=-6x+10$.
 
 **Given a slope instead?** Solve $f'(x)=m$, then evaluate $f(x)$ for the heights. Use the derivative for slopes and the original function for points.
+
+**For a curve given by an equation:** use [implicit differentiation](#route-implicit) to find the slope. A vertical tangent has equation $x=a$.
 
 [Review tangent lines and prescribed slopes](../lectures/11-differentiation-rules.qmd#tangent-lines-and-prescribed-slopes)
 :::
@@ -226,7 +303,7 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
 <h2 id="connections">How the ideas connect</h2>
 <p class="concept-key">Follow the highlighted arrows for your selected question. Select a concept to open its notes.</p>
 <div class="concept-map" aria-label="Connections between limits, continuity, and derivatives">
-  <svg class="concept-connections" viewBox="0 0 900 690" aria-hidden="true">
+  <svg class="concept-connections" viewBox="0 0 900 880" aria-hidden="true">
     <defs><marker id="concept-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L7 4 L1 7" /></marker></defs>
     <g data-edge="laws-limit"><path marker-end="url(#concept-arrow)" d="M100 108 V218"/><text x="112" y="166">compute</text></g>
     <g data-edge="bounds-limit"><path marker-end="url(#concept-arrow)" d="M100 392 V302"/><text x="112" y="356">bound</text></g>
@@ -241,18 +318,22 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
     <g data-edge="trig-motion"><path marker-end="url(#concept-arrow)" d="M440 560 V480"/><text x="452" y="525">spring motion</text></g>
     <g data-edge="rules-chain"><path marker-end="url(#concept-arrow)" d="M880 260 H895 V610 H880"/><text x="880" y="550" text-anchor="end">compositions</text></g>
     <g data-edge="chain-tangent"><path marker-end="url(#concept-arrow)" d="M790 570 V475"/><text x="777" y="496" text-anchor="end">evaluate slope</text></g>
+    <g data-edge="chain-inverse"><path marker-end="url(#concept-arrow)" d="M750 660 V690 H615 V800 H530"/><text x="600" y="730" text-anchor="end"><tspan x="600">differentiate</tspan><tspan x="600" dy="18">the inverse identity</tspan></text></g>
+    <g data-edge="chain-implicit"><path marker-end="url(#concept-arrow)" d="M790 660 V750"/><text x="777" y="704" text-anchor="end">treat y as y(x)</text></g>
   </svg>
-  <a class="concept-node" data-node="laws" href="../lectures/04-limit-laws.qmd" style="--x:11.11%;--y:10.14%"><strong>Limit laws</strong><span>Combine known limits</span></a>
-  <a class="concept-node" data-node="continuity" href="../lectures/06-continuity.qmd" style="--x:48.89%;--y:10.14%"><strong>Continuity</strong><span>Limit equals value</span></a>
-  <a class="concept-node" data-node="ivt" href="../lectures/07-intermediate-value.qmd" style="--x:87.78%;--y:10.14%"><strong>Intermediate values</strong><span>Guarantee existence</span></a>
-  <a class="concept-node" data-node="limits" href="../lectures/02-limits.qmd" style="--x:11.11%;--y:37.68%"><strong>Limits</strong><span>Nearby behavior</span></a>
-  <a class="concept-node" data-node="derivative" href="../lectures/09-derivative-at-a-point.qmd" style="--x:48.89%;--y:37.68%"><strong>Derivative</strong><span>Instantaneous rate</span></a>
-  <a class="concept-node" data-node="rules" href="../lectures/11-differentiation-rules.qmd" style="--x:87.78%;--y:37.68%"><strong>Derivative rules</strong><span>Power · product · quotient</span></a>
-  <a class="concept-node" data-node="tangent" href="../lectures/11-differentiation-rules.qmd#tangent-lines-and-prescribed-slopes" style="--x:87.78%;--y:62.32%"><strong>Tangent lines</strong><span>Point and slope</span></a>
-  <a class="concept-node" data-node="bounds" href="../lectures/05-squeeze-theorem.qmd" style="--x:11.11%;--y:62.32%"><strong>Squeeze theorem</strong><span>Compare with bounds</span></a>
-  <a class="concept-node" data-node="motion" href="../lectures/12-rates-of-change.qmd" style="--x:48.89%;--y:62.32%"><strong>Motion</strong><span>Velocity · acceleration · speed</span></a>
-  <a class="concept-node" data-node="trig" href="../lectures/13-trigonometric-derivatives.qmd" style="--x:48.89%;--y:88.41%"><strong>Trig derivatives</strong><span>Radian formulas · spring motion</span></a>
-  <a class="concept-node" data-node="chain" href="../lectures/14-chain-rule.qmd" style="--x:87.78%;--y:88.41%"><strong>Chain rule</strong><span>One factor from each layer</span></a>
+  <a class="concept-node" data-node="laws" href="../lectures/04-limit-laws.qmd" style="--x:11.11%;--y:7.95%"><strong>Limit laws</strong><span>Combine known limits</span></a>
+  <a class="concept-node" data-node="continuity" href="../lectures/06-continuity.qmd" style="--x:48.89%;--y:7.95%"><strong>Continuity</strong><span>Limit equals value</span></a>
+  <a class="concept-node" data-node="ivt" href="../lectures/07-intermediate-value.qmd" style="--x:87.78%;--y:7.95%"><strong>Intermediate values</strong><span>Guarantee existence</span></a>
+  <a class="concept-node" data-node="limits" href="../lectures/02-limits.qmd" style="--x:11.11%;--y:29.54%"><strong>Limits</strong><span>Nearby behavior</span></a>
+  <a class="concept-node" data-node="derivative" href="../lectures/09-derivative-at-a-point.qmd" style="--x:48.89%;--y:29.54%"><strong>Derivative</strong><span>Instantaneous rate</span></a>
+  <a class="concept-node" data-node="rules" href="../lectures/11-differentiation-rules.qmd" style="--x:87.78%;--y:29.54%"><strong>Derivative rules</strong><span>Power · product · quotient</span></a>
+  <a class="concept-node" data-node="tangent" href="../lectures/11-differentiation-rules.qmd#tangent-lines-and-prescribed-slopes" style="--x:87.78%;--y:48.86%"><strong>Tangent lines</strong><span>Point and slope</span></a>
+  <a class="concept-node" data-node="bounds" href="../lectures/05-squeeze-theorem.qmd" style="--x:11.11%;--y:48.86%"><strong>Squeeze theorem</strong><span>Compare with bounds</span></a>
+  <a class="concept-node" data-node="motion" href="../lectures/12-rates-of-change.qmd" style="--x:48.89%;--y:48.86%"><strong>Motion</strong><span>Velocity · acceleration · speed</span></a>
+  <a class="concept-node" data-node="trig" href="../lectures/13-trigonometric-derivatives.qmd" style="--x:48.89%;--y:69.32%"><strong>Trig derivatives</strong><span>Radian formulas · spring motion</span></a>
+  <a class="concept-node" data-node="chain" href="../lectures/14-chain-rule.qmd" style="--x:87.78%;--y:69.32%"><strong>Chain rule</strong><span>One factor from each layer</span></a>
+  <a class="concept-node" data-node="inverse" href="../lectures/15-inverse-functions.qmd" style="--x:48.89%;--y:90.91%"><strong>Inverse functions</strong><span>Reciprocal slope · inverse trig</span></a>
+  <a class="concept-node" data-node="implicit" href="../lectures/16-implicit-differentiation.qmd" style="--x:87.78%;--y:90.91%"><strong>Implicit differentiation</strong><span>Equations · tangent slopes</span></a>
 </div>
 <div class="concept-mobile-links">
 <p><strong>The connections in words</strong></p>
@@ -262,11 +343,13 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
 <li>A limit of difference quotients defines the derivative. Differentiability implies continuity, but continuity does not imply differentiability.</li>
 <li>Derivative rules calculate derivatives; evaluating the derivative at a point gives a tangent slope.</li>
 <li>The chain rule differentiates composite functions, with one factor from each layer. Combine it with the product, quotient, or trig rules when needed; evaluating the result gives a tangent slope.</li>
+<li>The chain rule applied to the inverse identity gives the inverse-function derivative formula; inverse-trig derivatives follow from it.</li>
+<li>Implicit differentiation uses the chain rule with y as a function of x. The derivative gives tangent slopes; the original equation gives the points.</li>
 <li>For motion, the first derivative is velocity and the second is acceleration. Their signs determine direction and changes in speed.</li>
 <li>Trigonometric derivative formulas extend the calculation rules to sine, cosine, and related functions; they also describe spring motion.</li>
 </ul>
 </div>
 <p class="concept-caution"><strong>One-way connection:</strong> differentiability implies continuity. Continuity does not guarantee a derivative: |x| has a corner at 0.</p>
 </div>
-<script src="../assets/limits-map.js?v=20261019" defer></script>
+<script src="../assets/limits-map.js?v=20261021" defer></script>
 ```
