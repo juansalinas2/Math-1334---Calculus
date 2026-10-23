@@ -6,9 +6,9 @@ page-navigation: false
 
 These notes introduce differential calculus: limits, continuity, derivatives, and their applications. They grow alongside the lectures, with explanations, graphs, and worked examples organized by topic.
 
-[See the latest class](lectures/15-inverse-functions.qmd){.start-link}
+[See the latest class](lectures/17-exponential-logarithmic.qmd){.start-link}
 
-**October 21:** [Inverse functions](lectures/15-inverse-functions.qmd) and [implicit differentiation](lectures/16-implicit-differentiation.qmd) — proofs, tangent slopes, and worked practice.
+**October 23:** [Exponential and logarithmic derivatives](lectures/17-exponential-logarithmic.qmd) — Euler’s number, logarithmic differentiation, and worked practice.
 
 [Week 4 worksheet](supplements/worksheets.qmd#week-4-derivatives)
 

@@ -39,6 +39,7 @@ book:
     - lectures/14-chain-rule.qmd
     - lectures/15-inverse-functions.qmd
     - lectures/16-implicit-differentiation.qmd
+    - lectures/17-exponential-logarithmic.qmd
     - supplements/limits-map.qmd
     - supplements/worksheets.qmd
     - supplements/glossary.qmd
