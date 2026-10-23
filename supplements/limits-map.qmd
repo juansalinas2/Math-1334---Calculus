@@ -5,16 +5,21 @@ description: "Choose a method, see why it applies, and connect limits to derivat
 ---
 
 ::: {.source-note}
-**Optional computational strategies · Through Section 3.8.** This guide suggests ways to organize your work; you do not need to follow a particular strategy. Choose a question for a method, a worked example, and links to the notes.
+**Optional computational strategies · Through Section 3.9.** This guide suggests ways to organize your work; you do not need to follow a particular strategy. Choose a question for a method, a worked example, and links to the notes.
 :::
 
 ```{=html}
+<style>
+@media (min-width: 651px) { .concept-map { aspect-ratio: 900 / 1070; } }
+</style>
 <div class="concept-workbench">
 <div class="concept-choices" role="group" aria-label="What are you trying to find?">
   <button type="button" data-route="derivative" aria-controls="route-derivative">Find a derivative</button>
   <button type="button" data-route="chain" aria-controls="route-chain">Differentiate a composition</button>
   <button type="button" data-route="inverse" aria-controls="route-inverse">Differentiate an inverse</button>
   <button type="button" data-route="implicit" aria-controls="route-implicit">Differentiate an equation</button>
+  <button type="button" data-route="exponential" aria-controls="route-exponential">Differentiate exponentials and logs</button>
+  <button type="button" data-route="logarithmic" aria-controls="route-logarithmic">Differentiate a variable power</button>
   <button type="button" data-route="motion" aria-controls="route-motion">Describe motion</button>
   <button type="button" data-route="tangent" aria-controls="route-tangent">Find a tangent line</button>
   <button type="button" data-route="limit" aria-controls="route-limit">Find a limit</button>
@@ -42,6 +47,9 @@ Limit of a difference quotient → derivative → calculation rules
 | Sine or cosine | $(\sin x)'=\cos x$; $(\cos x)'=-\sin x$. |
 | Tangent or cotangent | $(\tan x)'=\sec^2x$; $(\cot x)'=-\csc^2x$. |
 | Secant or cosecant | $(\sec x)'=\sec x\tan x$; $(\csc x)'=-\csc x\cot x$. |
+| An exponential $e^x$ or $a^x$ | Use $e^x$ or $a^x\ln a$, respectively. |
+| A logarithm $\ln x$ or $\log_a x$ | Use $1/x$ or $1/(x\ln a)$, respectively. |
+| A variable power $f(x)^{g(x)}$ | Take logarithms and differentiate implicitly, or rewrite using $e$. |
 | A composition $f(g(x))$ | Differentiate the outer function, keep its input, then multiply by $g'(x)$. |
 | An inverse function | Find the corresponding input of the original function, then use the inverse-function derivative theorem. |
 | An equation relating $x$ and $y$ | Differentiate implicitly, treating $y$ as a function of $x$. |
@@ -58,7 +66,7 @@ Differentiate again: $y''=2\cos x-x\sin x$.
 
 **Remember:** Trig formulas use radians and apply where the function is defined. A product needs both terms. A quotient needs the numerator subtraction and the squared denominator; retain the original domain.
 
-[Review the rules](../lectures/11-differentiation-rules.qmd#section-3.3-the-rules-we-will-use) · [Review trig derivatives](../lectures/13-trigonometric-derivatives.qmd) · [Review the chain rule](../lectures/14-chain-rule.qmd)
+[Review the rules](../lectures/11-differentiation-rules.qmd#section-3.3-the-rules-we-will-use) · [Review trig derivatives](../lectures/13-trigonometric-derivatives.qmd) · [Review the chain rule](../lectures/14-chain-rule.qmd) · [Review exponentials and logarithms](../lectures/17-exponential-logarithmic.qmd)
 :::
 
 ::: {#route-chain .concept-guide}
@@ -163,6 +171,81 @@ $$
 **Remember:** Every derivative of a $y$-expression needs the chain rule. Use the original equation for coordinates and the derivative for slopes.
 
 [Review implicit differentiation](../lectures/16-implicit-differentiation.qmd) · [See horizontal and vertical tangents](../lectures/16-implicit-differentiation.qmd#example-the-curve-x2xyy23) · [Try the practice](../lectures/16-implicit-differentiation.qmd#practice-the-curve-x2-xyy212)
+:::
+
+::: {#route-exponential .concept-guide}
+### Differentiate exponentials and logs
+
+::: {.concept-route}
+Identify the base → choose the derivative formula → apply the chain rule to the input
+:::
+
+**Keep powers and exponentials distinct.** In $x^n$, the exponent is constant; in $a^x$, the base is constant.
+
+| Function | Derivative |
+|:--|:--|
+| $x^n$, with $n$ constant | $nx^{n-1}$ |
+| $e^x$ | $e^x$ |
+| $a^x$ | $a^x\ln a$ |
+| $\ln x$ | $1/x$ |
+| $\log_a x$ | $1/(x\ln a)$ |
+
+For arbitrary real $n$, the power rule holds for $x>0$. Exponential bases satisfy $a>0$; logarithms require a positive input and a base other than $1$.
+
+**Example.** For $y=2^{3x}$, the exponential derivative supplies the first factor and the inner derivative supplies the second:
+
+$$
+y'=\textcolor{#0072B2}{2^{3x}\ln2}\cdot\textcolor{#B44D00}{3}
+=3(\ln2)2^{3x}.
+$$
+
+For $y=\ln(2x^3+7)$,
+
+$$
+y'=\textcolor{#0072B2}{\frac1{2x^3+7}}\,\textcolor{#B44D00}{6x^2}
+=\frac{6x^2}{2x^3+7}.
+$$
+
+**Why these formulas connect:** the defining limit for $e$ gives $(e^x)'=e^x$. Since $\ln x$ is the inverse of $e^x$, the inverse-function derivative theorem gives $(\ln x)'=1/x$. Rewriting $a^x=e^{x\ln a}$ and changing the logarithm's base give the other formulas.
+
+**For relative growth:** if $P(t)=P_0e^{kt}$, then $P'=kP$, so $P'/P=k$ is constant.
+
+[Review the natural exponential and logarithm](../lectures/17-exponential-logarithmic.qmd#the-natural-exponential-and-logarithm) · [Review other bases](../lectures/17-exponential-logarithmic.qmd#other-bases) · [See the power-rule proof](../lectures/17-exponential-logarithmic.qmd#the-power-rule-for-real-exponents)
+:::
+
+::: {#route-logarithmic .concept-guide}
+### Differentiate a variable power
+
+::: {.concept-route}
+Take logarithms → use product and chain rules → solve for the derivative
+:::
+
+When both the base and exponent depend on $x$, as in $x^x$, neither the constant-exponent power rule nor the constant-base exponential rule applies by itself.
+
+**Example.** Let $y=x^x$. Taking natural logarithms turns the power into a product:
+
+$$
+\begin{aligned}
+\ln y&=x\ln x,\\
+\frac{y'}y&=\ln x+1,\\
+y'&=y(\ln x+1)=x^x(\ln x+1).
+\end{aligned}
+$$
+
+The factor $y'$ appears because $y$ depends on $x$: this is implicit differentiation and the chain rule.
+
+**Another option:** write $x^x=e^{x\ln x}$ and apply the chain rule. Both methods give the same derivative.
+
+For differentiable $f,g$ with $f(x)>0$, the same calculation gives
+
+$$
+\frac{d}{dx}f(x)^{g(x)}
+=f(x)^{g(x)}\left(g'(x)\ln f(x)+g(x)\frac{f'(x)}{f(x)}\right).
+$$
+
+**Remember:** substitute the original expression for $y$ after solving for $y'$. Logarithm laws can also simplify products and quotients before differentiation. Taking logarithms is an optional computational strategy; choose the approach that makes the expression easiest to handle.
+
+[Compare both methods for $x^x$](../lectures/17-exponential-logarithmic.qmd#logarithmic-differentiation) · [See the general calculation](../lectures/17-exponential-logarithmic.qmd#the-general-calculation) · [Try the practice](../lectures/17-exponential-logarithmic.qmd#practice-2)
 :::
 
 ::: {#route-motion .concept-guide}
@@ -303,7 +386,7 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
 <h2 id="connections">How the ideas connect</h2>
 <p class="concept-key">Follow the highlighted arrows for your selected question. Select a concept to open its notes.</p>
 <div class="concept-map" aria-label="Connections between limits, continuity, and derivatives">
-  <svg class="concept-connections" viewBox="0 0 900 880" aria-hidden="true">
+  <svg class="concept-connections" viewBox="0 0 900 1070" aria-hidden="true">
     <defs><marker id="concept-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L7 4 L1 7" /></marker></defs>
     <g data-edge="laws-limit"><path marker-end="url(#concept-arrow)" d="M100 108 V218"/><text x="112" y="166">compute</text></g>
     <g data-edge="bounds-limit"><path marker-end="url(#concept-arrow)" d="M100 392 V302"/><text x="112" y="356">bound</text></g>
@@ -320,20 +403,25 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
     <g data-edge="chain-tangent"><path marker-end="url(#concept-arrow)" d="M790 570 V475"/><text x="777" y="496" text-anchor="end">evaluate slope</text></g>
     <g data-edge="chain-inverse"><path marker-end="url(#concept-arrow)" d="M750 660 V690 H615 V800 H530"/><text x="600" y="730" text-anchor="end"><tspan x="600">differentiate</tspan><tspan x="600" dy="18">the inverse identity</tspan></text></g>
     <g data-edge="chain-implicit"><path marker-end="url(#concept-arrow)" d="M790 660 V750"/><text x="777" y="704" text-anchor="end">treat y as y(x)</text></g>
+    <g data-edge="inverse-exponential"><path marker-end="url(#concept-arrow)" d="M440 850 V940"/><text x="452" y="890"><tspan x="452">exponential and</tspan><tspan x="452" dy="18">logarithm are inverses</tspan></text></g>
+    <g data-edge="implicit-logarithmic"><path marker-end="url(#concept-arrow)" d="M790 850 V940"/><text x="777" y="890" text-anchor="end"><tspan x="777">differentiate</tspan><tspan x="777" dy="18">after taking logs</tspan></text></g>
+    <g data-edge="exponential-logarithmic"><path marker-end="url(#concept-arrow)" d="M530 990 H700"/><text x="615" y="1040" text-anchor="middle">use logarithm laws</text></g>
   </svg>
-  <a class="concept-node" data-node="laws" href="../lectures/04-limit-laws.qmd" style="--x:11.11%;--y:7.95%"><strong>Limit laws</strong><span>Combine known limits</span></a>
-  <a class="concept-node" data-node="continuity" href="../lectures/06-continuity.qmd" style="--x:48.89%;--y:7.95%"><strong>Continuity</strong><span>Limit equals value</span></a>
-  <a class="concept-node" data-node="ivt" href="../lectures/07-intermediate-value.qmd" style="--x:87.78%;--y:7.95%"><strong>Intermediate values</strong><span>Guarantee existence</span></a>
-  <a class="concept-node" data-node="limits" href="../lectures/02-limits.qmd" style="--x:11.11%;--y:29.54%"><strong>Limits</strong><span>Nearby behavior</span></a>
-  <a class="concept-node" data-node="derivative" href="../lectures/09-derivative-at-a-point.qmd" style="--x:48.89%;--y:29.54%"><strong>Derivative</strong><span>Instantaneous rate</span></a>
-  <a class="concept-node" data-node="rules" href="../lectures/11-differentiation-rules.qmd" style="--x:87.78%;--y:29.54%"><strong>Derivative rules</strong><span>Power · product · quotient</span></a>
-  <a class="concept-node" data-node="tangent" href="../lectures/11-differentiation-rules.qmd#tangent-lines-and-prescribed-slopes" style="--x:87.78%;--y:48.86%"><strong>Tangent lines</strong><span>Point and slope</span></a>
-  <a class="concept-node" data-node="bounds" href="../lectures/05-squeeze-theorem.qmd" style="--x:11.11%;--y:48.86%"><strong>Squeeze theorem</strong><span>Compare with bounds</span></a>
-  <a class="concept-node" data-node="motion" href="../lectures/12-rates-of-change.qmd" style="--x:48.89%;--y:48.86%"><strong>Motion</strong><span>Velocity · acceleration · speed</span></a>
-  <a class="concept-node" data-node="trig" href="../lectures/13-trigonometric-derivatives.qmd" style="--x:48.89%;--y:69.32%"><strong>Trig derivatives</strong><span>Radian formulas · spring motion</span></a>
-  <a class="concept-node" data-node="chain" href="../lectures/14-chain-rule.qmd" style="--x:87.78%;--y:69.32%"><strong>Chain rule</strong><span>One factor from each layer</span></a>
-  <a class="concept-node" data-node="inverse" href="../lectures/15-inverse-functions.qmd" style="--x:48.89%;--y:90.91%"><strong>Inverse functions</strong><span>Reciprocal slope · inverse trig</span></a>
-  <a class="concept-node" data-node="implicit" href="../lectures/16-implicit-differentiation.qmd" style="--x:87.78%;--y:90.91%"><strong>Implicit differentiation</strong><span>Equations · tangent slopes</span></a>
+  <a class="concept-node" data-node="laws" href="../lectures/04-limit-laws.qmd" style="--x:11.11%;--y:6.54%"><strong>Limit laws</strong><span>Combine known limits</span></a>
+  <a class="concept-node" data-node="continuity" href="../lectures/06-continuity.qmd" style="--x:48.89%;--y:6.54%"><strong>Continuity</strong><span>Limit equals value</span></a>
+  <a class="concept-node" data-node="ivt" href="../lectures/07-intermediate-value.qmd" style="--x:87.78%;--y:6.54%"><strong>Intermediate values</strong><span>Guarantee existence</span></a>
+  <a class="concept-node" data-node="limits" href="../lectures/02-limits.qmd" style="--x:11.11%;--y:24.29%"><strong>Limits</strong><span>Nearby behavior</span></a>
+  <a class="concept-node" data-node="derivative" href="../lectures/09-derivative-at-a-point.qmd" style="--x:48.89%;--y:24.29%"><strong>Derivative</strong><span>Instantaneous rate</span></a>
+  <a class="concept-node" data-node="rules" href="../lectures/11-differentiation-rules.qmd" style="--x:87.78%;--y:24.29%"><strong>Derivative rules</strong><span>Power · product · quotient</span></a>
+  <a class="concept-node" data-node="tangent" href="../lectures/11-differentiation-rules.qmd#tangent-lines-and-prescribed-slopes" style="--x:87.78%;--y:40.18%"><strong>Tangent lines</strong><span>Point and slope</span></a>
+  <a class="concept-node" data-node="bounds" href="../lectures/05-squeeze-theorem.qmd" style="--x:11.11%;--y:40.18%"><strong>Squeeze theorem</strong><span>Compare with bounds</span></a>
+  <a class="concept-node" data-node="motion" href="../lectures/12-rates-of-change.qmd" style="--x:48.89%;--y:40.18%"><strong>Motion</strong><span>Velocity · acceleration · speed</span></a>
+  <a class="concept-node" data-node="trig" href="../lectures/13-trigonometric-derivatives.qmd" style="--x:48.89%;--y:57.01%"><strong>Trig derivatives</strong><span>Radian formulas · spring motion</span></a>
+  <a class="concept-node" data-node="chain" href="../lectures/14-chain-rule.qmd" style="--x:87.78%;--y:57.01%"><strong>Chain rule</strong><span>One factor from each layer</span></a>
+  <a class="concept-node" data-node="inverse" href="../lectures/15-inverse-functions.qmd" style="--x:48.89%;--y:74.77%"><strong>Inverse functions</strong><span>Reciprocal slope · inverse trig</span></a>
+  <a class="concept-node" data-node="implicit" href="../lectures/16-implicit-differentiation.qmd" style="--x:87.78%;--y:74.77%"><strong>Implicit differentiation</strong><span>Equations · tangent slopes</span></a>
+  <a class="concept-node" data-node="exponential" href="../lectures/17-exponential-logarithmic.qmd#the-natural-exponential-and-logarithm" style="--x:48.89%;--y:92.52%"><strong>Exponentials and logs</strong><span>Natural and other bases</span></a>
+  <a class="concept-node" data-node="logarithmic" href="../lectures/17-exponential-logarithmic.qmd#logarithmic-differentiation" style="--x:87.78%;--y:92.52%"><strong>Logarithmic differentiation</strong><span>Variable powers · products</span></a>
 </div>
 <div class="concept-mobile-links">
 <p><strong>The connections in words</strong></p>
@@ -345,11 +433,13 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
 <li>The chain rule differentiates composite functions, with one factor from each layer. Combine it with the product, quotient, or trig rules when needed; evaluating the result gives a tangent slope.</li>
 <li>The chain rule applied to the inverse identity gives the inverse-function derivative formula; inverse-trig derivatives follow from it.</li>
 <li>Implicit differentiation uses the chain rule with y as a function of x. The derivative gives tangent slopes; the original equation gives the points.</li>
+<li>The natural exponential and logarithm are inverses. Their derivatives, together with the chain rule, give the formulas for other bases and composite inputs.</li>
+<li>Logarithmic differentiation combines logarithm laws with implicit differentiation. It handles variable powers and proves the power rule for real exponents.</li>
 <li>For motion, the first derivative is velocity and the second is acceleration. Their signs determine direction and changes in speed.</li>
 <li>Trigonometric derivative formulas extend the calculation rules to sine, cosine, and related functions; they also describe spring motion.</li>
 </ul>
 </div>
 <p class="concept-caution"><strong>One-way connection:</strong> differentiability implies continuity. Continuity does not guarantee a derivative: |x| has a corner at 0.</p>
 </div>
-<script src="../assets/limits-map.js?v=20261021" defer></script>
+<script src="../assets/limits-map.js?v=20261023" defer></script>
 ```
