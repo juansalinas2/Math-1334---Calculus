@@ -119,6 +119,43 @@ $$
 
 **Note.** Another standard, equivalent definition is $\displaystyle e=\lim_{n\to\infty}\left(1+\frac1n\right)^n$.
 
+<details class="proof" id="exponential-tangent-interactive">
+<summary>Interactive graph (optional): the exponential and its tangent</summary>
+
+**Supplement.** Change the base $a$ to compare $y=a^x$ with its tangent at $(0,1)$. The axes stay fixed. Use the slider or its arrow keys; select **Set $a=e$** to return to the base whose tangent slope is $1$.
+
+The tangent is $y=1+(\ln a)x$, using the derivative formula proved in [Other bases](#other-bases).
+
+```{=html}
+<style>
+#exponential-tangent-explorer .exponential-scale { position: relative; height: 1.7rem; margin: -.35rem 8px .5rem; font-size: .85rem; color: var(--reading-muted); }
+#exponential-tangent-explorer .exponential-scale span { position: absolute; top: .25rem; }
+#exponential-tangent-explorer .exponential-scale .e-mark { left: 26.4473%; transform: translateX(-50%); font-style: italic; font-weight: 700; color: var(--reading-text); }
+#exponential-tangent-explorer .e-mark::before { content: ''; position: absolute; height: .4rem; top: -.45rem; left: 50%; border-left: 2px solid currentColor; }
+#exponential-tangent-explorer button { font: inherit; padding: .35rem .8rem; color: var(--reading-text); background: var(--reading-bg); border: 1px solid var(--reading-border); border-radius: 4px; }
+#exponential-tangent-explorer button[aria-pressed="true"] { border-color: var(--reading-link); background: var(--reading-panel); }
+#exponential-tangent-explorer button:focus-visible { outline: 3px solid var(--reading-link); outline-offset: 3px; }
+#exponential-tangent-explorer .graph-readout { font-variant-numeric: tabular-nums; margin: .7rem 0; }
+#exponential-tangent-explorer .exponential-observation { min-height: 3em; margin-bottom: 0; }
+</style>
+<div class="graph-explorer" id="exponential-tangent-explorer">
+  <label for="exponential-base">Base a</label>
+  <input id="exponential-base" type="range" min="0.1" max="10" step="any" value="2.718281828459045" disabled>
+  <div class="exponential-scale" aria-hidden="true"><span style="left:0">0.1</span><span class="e-mark">e</span><span style="right:0">10</span></div>
+  <button type="button" disabled>Set a = e</button>
+  <p class="graph-readout" role="status" aria-live="polite" aria-atomic="true"></p>
+  <svg viewBox="0 0 740 408" role="img" aria-labelledby="exponential-tangent-title exponential-tangent-desc">
+    <title id="exponential-tangent-title">The exponential and its tangent at x equals zero</title>
+    <desc id="exponential-tangent-desc">Change the base from 0.1 to 10. The solid exponential and dashed tangent both pass through (0,1). At base e, the tangent has slope 1.</desc>
+  </svg>
+  <p class="exponential-observation"></p>
+  <noscript><p>Enable JavaScript to move the slider. At a = e, the graph is y = eˣ and its tangent at (0,1) is y = 1 + x.</p></noscript>
+</div>
+<script src="../assets/exponential-tangent.js" defer></script>
+```
+
+</details>
+
 ## The natural exponential and logarithm
 
 **Theorem.**
