@@ -17,6 +17,8 @@ The sections below follow the lecture sequence. Each section includes its origin
 - [**3.7 Derivatives of inverse functions**](15-inverse-functions.qmd) — Inverse derivatives, inverse trigonometric functions, and proofs.
 - [**3.8 Implicit differentiation**](16-implicit-differentiation.qmd) — Tangent slopes, horizontal and vertical tangents, and worked practice.
 
+- [**3.9 Exponential and logarithmic derivatives**](17-exponential-logarithmic.qmd) — Euler’s number, derivative rules and proofs, logarithmic differentiation, and worked practice.
+
 [Start Section 3.1](09-derivative-at-a-point.qmd){.start-link}
 
 The [Week 4 worksheet](../supplements/worksheets.qmd#week-4-derivatives) is available under Supplements.
