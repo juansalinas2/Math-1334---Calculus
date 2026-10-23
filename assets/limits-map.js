@@ -7,10 +7,12 @@
   const nodes = [...root.querySelectorAll('[data-node]')];
   const edges = [...root.querySelectorAll('[data-edge]')];
   const paths = {
-    derivative: ['limit-derivative', 'derivative-rules', 'rules-trig', 'rules-chain', 'chain-inverse', 'chain-implicit'],
+    derivative: ['limit-derivative', 'derivative-rules', 'rules-trig', 'rules-chain', 'chain-inverse', 'chain-implicit', 'inverse-exponential', 'exponential-logarithmic'],
     chain: ['derivative-rules', 'rules-chain', 'chain-tangent'],
     inverse: ['rules-chain', 'chain-inverse'],
     implicit: ['rules-chain', 'chain-implicit'],
+    exponential: ['rules-chain', 'chain-inverse', 'inverse-exponential'],
+    logarithmic: ['chain-inverse', 'chain-implicit', 'implicit-logarithmic', 'inverse-exponential', 'exponential-logarithmic'],
     motion: ['derivative-motion', 'rules-trig', 'trig-motion'],
     tangent: ['limit-derivative', 'derivative-rules', 'rules-tangent', 'rules-chain', 'chain-tangent'],
     limit: ['laws-limit', 'bounds-limit'],
@@ -18,6 +20,9 @@
     existence: ['limit-continuity', 'continuity-ivt'],
   };
   const endpoints = {
+    'inverse-exponential': ['inverse', 'exponential'],
+    'implicit-logarithmic': ['implicit', 'logarithmic'],
+    'exponential-logarithmic': ['exponential', 'logarithmic'],
     'laws-limit': ['laws', 'limits'], 'bounds-limit': ['bounds', 'limits'],
     'limit-continuity': ['limits', 'continuity'], 'continuity-ivt': ['continuity', 'ivt'],
     'limit-derivative': ['limits', 'derivative'], 'derivative-continuity': ['derivative', 'continuity'],
