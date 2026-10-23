@@ -51,7 +51,7 @@ The October 21 lecture adds Sections 3.7–3.8, matching the revised eight-page 
 
 The October 23 lecture adds Section 3.9, matching the approved eight-page PDF. It preserves all five diagrams, the geometric sketch for F(a) with bases 2 and 10, every worked example and practice solution, and the real-exponent power rule at the end. Practice solutions start collapsed.
 
-The optional calculus concept map remains at `supplements/limits-map.qmd` to preserve its URL. It covers the published material through Section 3.8: nine optional question-based paths give a method, a class example, conditions, and lecture links. `assets/limits-map.js` highlights directed connections. All guides remain readable without JavaScript and when printing; phones show linked concepts and the relationships in words.
+The optional calculus concept map remains at `supplements/limits-map.qmd` to preserve its URL. It covers the published material through Section 3.9: eleven optional question-based paths give a method, a class example, conditions, and lecture links. `assets/limits-map.js` highlights directed connections. All guides remain readable without JavaScript and when printing; phones show linked concepts and the relationships in words.
 
 - `_quarto.yml`: chapter order, search, and book settings.
 - `index.qmd`: book home.
