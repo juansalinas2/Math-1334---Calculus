@@ -1,0 +1,92 @@
+/* Reference pages share the book's theme and use a compact lookup layout. */
+#title-block-header { margin-bottom: 1rem; }
+.source-note { margin-bottom: 1rem; }
+.reference-switcher {
+  display: flex;
+  gap: .25rem;
+  border-bottom: 1px solid var(--reading-border);
+  margin-bottom: 1rem;
+}
+.reference-switcher p { margin: 0; }
+.reference-switcher a {
+  display: block;
+  padding: .55rem .9rem;
+  text-decoration: none;
+  color: var(--reading-muted);
+  border-bottom: 3px solid transparent;
+}
+.reference-switcher .current-reference {
+  color: var(--reading-link);
+  border-bottom-color: var(--reading-link);
+  font-weight: 650;
+}
+.reference-topics { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1.8rem; }
+.reference-topics p { margin: 0; }
+.reference-topics a {
+  display: block;
+  padding: .25rem .7rem;
+  border: 1px solid var(--reading-border);
+  border-radius: 1rem;
+  font-size: .85rem;
+  text-decoration: none;
+  color: var(--reading-link);
+}
+.reference-topics a:hover { background: var(--reading-panel); }
+.reference-index h2 { font-size: 1.55rem; margin: 2.2rem 0 .9rem; }
+.reference-index section.level3 {
+  margin: .8rem 0;
+  padding: 1rem 1.2rem .8rem;
+  border: 1px solid var(--reading-border);
+  border-left: 3px solid var(--reading-link);
+  border-radius: 0 6px 6px 0;
+  background: var(--reading-panel);
+}
+.reference-index h3 {
+  margin: 0 0 .65rem;
+  padding: 0;
+  border: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.reference-index section.level3 p { margin-bottom: .65rem; }
+.reference-index section.level3 > p:last-child {
+  margin: .75rem 0 0;
+  padding-top: .55rem;
+  border-top: 1px solid var(--reading-border);
+  font-size: .82rem;
+  line-height: 1.6;
+}
+.reference-index section.level3 > p:last-child a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.reference-index .statement { margin: 0; padding: 0; border: 0; background: transparent; }
+.reference-index section.level4 {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: .25rem 1rem;
+  align-items: center;
+  border-top: 1px solid var(--reading-border);
+  padding: .65rem 0;
+}
+.reference-index h4 { font-family: inherit; font-size: .9rem; font-weight: 600; margin: 0; }
+.reference-index section.level4 > p { margin: 0; grid-column: 2; }
+.reference-index section.level4 > p:not(:nth-child(2)) { font-size: .9rem; }
+.reference-index .math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: .25rem 0;
+}
+.reference-index mjx-container[display="true"] { margin: .45em 0; }
+.reference-index section.level4 mjx-container[display="true"] { text-align: left; }
+@media (max-width: 600px) {
+  .reference-index section.level3 { padding: .85rem .8rem .65rem; }
+  .reference-index section.level4 { display: block; }
+  .reference-index h4 { margin-bottom: .35rem; }
+  .reference-switcher a { padding: .5rem .65rem; }
+}
+@media print {
+  .reference-switcher, .reference-topics { display: none; }
+  .reference-index section.level3 { background: transparent; }
+  .reference-index h3, .reference-index h4 { break-after: avoid; }
+  .reference-index .math.display { overflow: visible; }
+}

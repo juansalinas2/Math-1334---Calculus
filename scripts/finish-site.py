@@ -15,7 +15,11 @@ index = (site / 'index.html').read_text()
 style = re.search(r'<link href="([^\"]+)"[^>]+id="quarto-bootstrap"', index).group(1)
 shutil.copy2(site / style, site / 'site_libs/bootstrap/reading-theme.css')
 for page in site.rglob('*.html'):
+    if page == site / 'supplements/glossary.html':
+        continue
     html = page.read_text()
     html = re.sub(r'\s*<script src="https://cdnjs.cloudflare.com/polyfill/[^\"]+"></script>', '', html)
     html = rebuild_sidebar(html, page.name)
     page.write_text(html)
+# Preserve the old glossary URL without keeping a competing reference page.
+shutil.copy2('assets/glossary-redirect.html', site / 'supplements/glossary.html')

@@ -1,0 +1,284 @@
+---
+title: "# Definitions {.unnumbered}"
+description: "Key calculus definitions, notation, and links to the course lectures."
+css: ../assets/reference-pages.css
+---
+
+::: {.source-note}
+Key definitions and notation from the lectures through Section 3.9.
+:::
+
+::: {.reference-switcher}
+[Definitions](definitions.qmd){.current-reference aria-current="page"}
+
+[Theorems and rules](theorems.qmd)
+
+:::
+
+::: {.reference-index}
+
+::: {.reference-topics}
+[Limits](#limits)
+
+[Continuity](#continuity)
+
+[Derivatives](#derivatives)
+
+[Motion & functions](#motion-and-special-functions)
+
+[Precalculus](#precalculus)
+:::
+
+## Limits
+
+### Defined near a point
+
+We say $f$ is *defined near $a$* if it is defined on some open interval containing $a$, except possibly at $a$.
+
+[Lecture explanation](../lectures/02-limits.qmd)
+
+### Limit (informal)
+
+We write $\displaystyle\lim_{x\to a}f(x)=L$ if the values of $f(x)$ can be made arbitrarily close to $L$ by taking *all* $x$ sufficiently close to $a$, with $x\ne a$. We also write $f(x)\to L$ as $x\to a$. If no such real number $L$ exists, the finite limit does not exist (DNE).
+
+[Lecture explanation](../lectures/02-limits.qmd) · [Examples](../lectures/02-limits.qmd#limits-and-function-values)
+
+### One-sided limits
+
+The *left-hand limit* $\displaystyle\lim_{x\to a^-}f(x)=L$ means $f(x)\to L$ as $x$ approaches $a$ through values $x<a$. The *right-hand limit* $\displaystyle\lim_{x\to a^+}f(x)=L$ uses values $x>a$.
+
+[Lecture explanation](../lectures/02-limits.qmd#one-sided-limits)
+
+### Infinite limits
+
+We write $\displaystyle\lim_{x\to a}f(x)=\infty$ if outputs exceed every positive bound for all sufficiently nearby $x\ne a$.
+
+We write $\displaystyle\lim_{x\to a}f(x)=-\infty$ if outputs fall below every negative bound for all sufficiently nearby $x\ne a$.
+
+Similarly for $x\to a^-$ and $x\to a^+$. Infinity describes unbounded behavior; it is not a real-number limit.
+
+[Lecture explanation](../lectures/03-infinite-limits.qmd#infinite-limits-and-vertical-asymptotes)
+
+### Vertical asymptote
+
+The line $x=a$ is a *vertical asymptote* if at least one of the one-sided limits at $a$ is $\infty$ or $-\infty$.
+
+[Lecture explanation](../lectures/03-infinite-limits.qmd#infinite-limits-and-vertical-asymptotes)
+
+### Indeterminate form
+
+An expression such as $0/0$ obtained by substitution does not determine the limit. Further analysis is needed.
+
+[Lecture explanation](../lectures/04-limit-laws.qmd#indeterminate-forms-and-simplifying)
+
+## Continuity
+
+### Continuity at a point
+
+A function $f$ is *continuous at $a$* if
+
+$$
+\lim_{x\to a}f(x)=f(a).
+$$
+
+This requires $f(a)$ to be defined, the limit to exist as a finite number, and the two to agree.
+
+[Lecture explanation](../lectures/06-continuity.qmd#continuity-at-a-point)
+
+### One-sided continuity
+
+A function is *right-continuous at $a$* if $\displaystyle\lim_{x\to a^+}f(x)=f(a)$, and *left-continuous at $a$* if $\displaystyle\lim_{x\to a^-}f(x)=f(a)$.
+
+[Lecture explanation](../lectures/06-continuity.qmd#one-sided-continuity)
+
+### Continuity on an interval
+
+A function is continuous on an interval when it is continuous at every interior point (a point that is not an endpoint), with right-continuity at an included left endpoint and left-continuity at an included right endpoint.
+
+[Lecture explanation](../lectures/06-continuity.qmd#one-sided-continuity)
+
+### Removable discontinuity
+
+A *removable discontinuity* at $a$ occurs when the finite limit $\displaystyle\lim_{x\to a}f(x)$ exists, but $f(a)$ is undefined or differs from that limit.
+
+[Lecture explanation](../lectures/06-continuity.qmd#types-of-discontinuities)
+
+### Jump discontinuity
+
+A *jump discontinuity* at $a$ occurs when the two one-sided limits are finite and unequal.
+
+[Lecture explanation](../lectures/06-continuity.qmd#types-of-discontinuities)
+
+### Infinite discontinuity
+
+An *infinite discontinuity* at $a$ occurs when at least one one-sided limit is $+\infty$ or $-\infty$.
+
+[Lecture explanation](../lectures/06-continuity.qmd#types-of-discontinuities)
+
+## Derivatives
+
+### Secant line, average rate of change, and difference quotient
+
+A *secant line* passes through two distinct points on a graph. Its slope is the *average rate of change*. For inputs $a$ and $a+h$, the *difference quotient* is
+
+$$
+\frac{f(a+h)-f(a)}{h},\qquad h\ne0.
+$$
+
+Slope has units of output units per input unit.
+
+[Lecture explanation](../lectures/02-limits.qmd)
+
+### Derivative at a point and differentiability
+
+The *derivative of $f$ at $a$*, read “$f$ prime at $a$,” is
+
+$$
+f'(a)=\lim_{x\to a}\frac{f(x)-f(a)}{x-a}
+=\lim_{h\to0}\frac{f(a+h)-f(a)}{h},
+$$
+
+provided the limit exists as a finite number. The two forms agree by setting $h=x-a$.
+We say $f$ is *differentiable at $a$* when $f'(a)$ exists.
+
+[Lecture explanation](../lectures/09-derivative-at-a-point.qmd#the-derivative-at-a-point) · [Examples](../lectures/09-derivative-at-a-point.qmd#computing-derivatives-from-the-definition)
+
+### Tangent line and instantaneous rate of change
+
+When $f'(a)$ exists, it is the slope of the tangent line to the graph of $f$ at $(a,f(a))$, and the instantaneous rate of change of $f$ there. The tangent line has equation
+
+$$
+y-f(a)=f'(a)(x-a).
+$$
+
+[Lecture explanation](../lectures/11-differentiation-rules.qmd#tangent-lines-and-prescribed-slopes)
+
+### Derivative function
+
+For a function $f$, the *derivative function* $f'$ is defined by
+
+$$
+f'(x)=\lim_{h\to0}\frac{f(x+h)-f(x)}{h}.
+$$
+
+Its domain consists of the points $x$ where this limit exists as a finite number.
+
+[Lecture explanation](../lectures/10-derivative-function.qmd#section-3.2-the-derivative-function)
+
+### Higher-order derivatives
+
+The *second derivative* $f''$ is the derivative of $f'$. The *third derivative* $f'''$ is the derivative of $f''$. Repeating this process gives the $n$th derivative, written $f^{(n)}$.
+
+For $y=f(x)$, the notation $y'$, $f'(x)$, and $\dfrac{dy}{dx}$ denotes the first derivative; $y''$, $f''(x)$, and $\dfrac{d^2y}{dx^2}$ denotes the second derivative.
+
+[Lecture explanation](../lectures/10-derivative-function.qmd#higher-order-derivatives) · [Notation](../lectures/10-derivative-function.qmd#notation)
+
+## Motion and special functions
+
+### Velocity, speed, and acceleration
+
+For a position function $s(t)$,
+
+$$
+v(t)=s'(t),\qquad \text{speed}=|v(t)|,\qquad a(t)=v'(t)=s''(t),
+$$
+
+where the derivatives exist. The sign of velocity gives direction. If position is measured in meters and time in seconds, velocity has units m/s, speed has units m/s, and acceleration has units m/s$^2$.
+
+[Lecture explanation](../lectures/12-rates-of-change.qmd#from-derivatives-to-motion)
+
+### Trigonometric functions and radians
+
+Angles are measured in **radians**; one full turn is $2\pi$ radians. On the unit circle, the point at angle $x$ has coordinates $(\cos x,\sin x)$.
+
+$$
+\tan x=\frac{\sin x}{\cos x},\qquad \sec x=\frac1{\cos x}\qquad(\cos x\ne0),
+$$
+
+$$
+\cot x=\frac{\cos x}{\sin x},\qquad \csc x=\frac1{\sin x}\qquad(\sin x\ne0).
+$$
+
+The symbols $\sec$ and $\csc$ denote reciprocals, not inverse functions. A square such as $\sin^2x$ means $(\sin x)^2$.
+
+[Lecture explanation](../lectures/13-trigonometric-derivatives.qmd#trigonometric-notation-we-will-use)
+
+### Inverse function
+
+An inverse function *undoes* the original function:
+
+$$
+f^{-1}(f(x))=x,\qquad f(f^{-1}(y))=y.
+$$
+
+ Here $f$ must be one-to-one on the domain being used. The notation $f^{-1}$ means the inverse function, not the reciprocal $1/f$.
+
+[Lecture explanation](../lectures/15-inverse-functions.qmd#inverse-functions)
+
+### Exponential and logarithmic functions
+
+For $a>0$, the exponential function is $f(x)=a^x$. Its domain is $\mathbb R$. When $a\ne1$, its range is $(0,\infty)$ and its inverse is $\log_a x$:
+
+$$
+y=\log_a x\quad\Longleftrightarrow\quad a^y=x,\qquad x>0.
+$$
+
+The logarithm has domain $(0,\infty)$ and range $\mathbb R$. The base $a=1$ gives the constant exponential function $f(x)=1$, which has no inverse on $\mathbb R$.
+
+[Lecture explanation](../lectures/17-exponential-logarithmic.qmd#review)
+
+### Euler’s number
+
+The unique positive real number $e$ for which 
+
+$$
+\lim_{h\to0}\frac{e^h-1}{h}=1
+$$
+
+ is called *Euler's number*.
+
+[Lecture explanation](../lectures/17-exponential-logarithmic.qmd#what-is-e) · [Supporting lemmas](theorems.qmd#exponential-slope-and-the-existence-of-e)
+
+### Natural logarithm
+
+The *natural logarithm* is $\ln x=\log_e x$, the inverse of $e^x$. Thus
+
+$$
+e^{\ln x}=x\quad(x>0),\qquad \ln(e^x)=x\quad(x\in\mathbb R).
+$$
+
+[Lecture explanation](../lectures/17-exponential-logarithmic.qmd#review)
+
+### Relative growth rate
+
+For a positive quantity $P(t)$, its relative growth rate is $P'(t)/P(t)$. If $P(t)=P_0e^{kt}$ with $P_0>0$ and $k$ constant, then
+
+$$
+\frac{P'(t)}{P(t)}=k.
+$$
+
+Here $k>0$ gives growth and $k<0$ gives decay.
+
+[Lecture explanation](../lectures/17-exponential-logarithmic.qmd#relative-growth)
+
+## Precalculus
+
+### Function, domain, and range
+
+A *function* assigns exactly one output to each input in its domain. The *domain* is the set of allowed inputs; the *range* is the set of outputs the function actually produces. The notation $f(x)$ means the output corresponding to input $x$. A point on its graph has coordinates $(x,f(x))$.
+
+[Lecture explanation](../lectures/00-functions.qmd#functions-domain-and-range)
+
+### Composition
+
+The *composition* $(g\circ h)(x)=g(h(x))$ applies $h$ first and then applies $g$ to the result. Read from the inside out. The order generally matters.
+
+[Lecture explanation](../lectures/00-functions.qmd#composition-of-functions)
+
+### One-to-one function
+
+A function is *one-to-one* if different inputs always have different outputs.
+
+[Lecture explanation](../lectures/00-functions.qmd#one-to-one-functions-and-domain-restrictions)
+
+:::

@@ -1,0 +1,436 @@
+---
+title: "# Theorems and rules {.unnumbered}"
+description: "Key calculus theorems and rules with hypotheses, formulas, and lecture links."
+css: ../assets/reference-pages.css
+---
+
+::: {.source-note}
+Key results, with their hypotheses and formulas from the lectures through Section 3.9.
+:::
+
+::: {.reference-switcher}
+[Definitions](definitions.qmd)
+
+[Theorems and rules](theorems.qmd){.current-reference aria-current="page"}
+
+:::
+
+::: {.reference-index}
+
+::: {.reference-topics}
+[Limits](#limits)
+
+[Continuity](#continuity)
+
+[Differentiation](#differentiation)
+
+[Special functions](#special-functions)
+
+[Precalculus](#precalculus)
+:::
+
+## Limits
+
+### One-sided criterion for a limit
+
+The two-sided limit exists and equals $L$ exactly when both one-sided limits equal $L$:
+
+$$
+\lim_{x\to a}f(x)=L\quad\Longleftrightarrow\quad
+\lim_{x\to a^-}f(x)=\lim_{x\to a^+}f(x)=L.
+$$
+
+[Explanation and examples](../lectures/02-limits.qmd#one-sided-limits)
+
+### Limit laws
+
+::: {.statement}
+
+Suppose $\displaystyle\lim_{x\to a}f(x)=L$ and $\displaystyle\lim_{x\to a}g(x)=M$, where $L,M$ are real numbers. Let $c$ be a real constant and $n$ a positive integer.
+
+#### Constant {#limit-constant}
+
+$$
+\lim_{x\to a}c=c.
+$$
+
+#### Identity {#limit-identity}
+
+$$
+\lim_{x\to a}x=a.
+$$
+
+#### Sum and difference {#limit-sum-and-difference}
+
+$$
+\lim_{x\to a}(f(x)\pm g(x))=L\pm M.
+$$
+
+#### Scalar multiple {#limit-scalar-multiple}
+
+$$
+\lim_{x\to a}c f(x)=cL.
+$$
+
+#### Product {#limit-product}
+
+$$
+\lim_{x\to a}f(x)g(x)=LM.
+$$
+
+#### Quotient {#limit-quotient}
+
+$$
+\lim_{x\to a}\frac{f(x)}{g(x)}=\frac LM,\qquad M\ne0.
+$$
+
+#### Power {#limit-power}
+
+$$
+\lim_{x\to a}(f(x))^n=L^n.
+$$
+
+#### Root {#limit-root}
+
+$$
+\lim_{x\to a}\sqrt[n]{f(x)}=\sqrt[n]{L}.
+$$
+
+For even roots, require $L\ge0$ and $f(x)\ge0$ for the nearby inputs. Odd roots allow negative values. The same laws apply to one-sided limits.
+
+:::
+
+[Lecture explanation and examples](../lectures/04-limit-laws.qmd#the-limit-laws)
+
+### Substitution for polynomials and rational functions
+
+Let $f$ be a polynomial or rational function. If $a$ is in the domain of $f$, then
+
+$$
+\lim_{x\to a}f(x)=f(a).
+$$
+
+[Proof and examples](../lectures/04-limit-laws.qmd#polynomials-and-rational-functions)
+
+### Reciprocal powers near zero
+
+For a positive even integer $n$,
+
+$$
+\lim_{x\to a}\frac{1}{(x-a)^n}=\infty.
+$$
+
+For a positive odd integer $n$,
+
+$$
+\begin{gathered}
+\lim_{x\to a^-}\frac{1}{(x-a)^n}=-\infty,
+\\[0.4em]
+\lim_{x\to a^+}\frac{1}{(x-a)^n}=\infty.
+\end{gathered}
+$$
+
+[Explanation and examples](../lectures/03-infinite-limits.qmd#infinite-limits-and-vertical-asymptotes)
+
+### Squeeze Theorem
+
+Suppose $\ell(x)\le f(x)\le u(x)$ for all sufficiently nearby $x\ne a$. If
+
+$$
+\lim_{x\to a}\ell(x)=\lim_{x\to a}u(x)=L,
+$$
+
+then $\displaystyle\lim_{x\to a}f(x)=L$.
+
+[Explanation and examples](../lectures/05-squeeze-theorem.qmd#the-squeeze-theorem)
+
+### Fundamental trigonometric limit
+
+For angles measured in radians,
+
+$$
+\lim_{\theta\to0}\frac{\sin\theta}{\theta}=1.
+$$
+
+[Proof](../lectures/05-squeeze-theorem.qmd#the-fundamental-trigonometric-limit) · [Examples](../lectures/05-squeeze-theorem.qmd#trigonometric-limits)
+
+## Continuity
+
+### Continuity of polynomials and rational functions
+
+Polynomials and rational functions are continuous on their domains.
+
+[Explanation and proof](../lectures/06-continuity.qmd#continuity-at-a-point)
+
+### Operations that preserve continuity
+
+Suppose $f$ and $g$ are continuous on their domains. Then the following functions are continuous wherever they are defined:
+
+$$
+\begin{gathered}
+f+g,\qquad f-g,\qquad cf,\qquad fg,\\[0.4em]
+\frac fg,\qquad f^n,\qquad\sqrt[n]{f},
+\end{gathered}
+$$
+
+where $c$ is a constant and $n$ is a positive integer. For a quotient, require $g(x)\ne0$; for an even root, require $f(x)\ge0$.
+
+[Proof](../lectures/06-continuity.qmd#operations-that-preserve-continuity)
+
+### Continuity and composition
+
+Suppose $\displaystyle\lim_{x\to a}g(x)=L$ and $F$ is continuous at $L$. If $F(g(x))$ is defined for the nearby inputs under consideration, then
+
+$$
+\begin{aligned}
+\lim_{x\to a}F(g(x))
+&=F\left(\lim_{x\to a}g(x)\right)=F(L).
+\end{aligned}
+$$
+
+In particular, if $g$ is continuous at $a$ and $F$ is continuous at $g(a)$, then $F\circ g$ is continuous at $a$.
+
+[Explanation and example](../lectures/06-continuity.qmd#continuity-and-composition)
+
+### Continuity of trigonometric functions
+
+The functions $\sin x$, $\cos x$, and $\tan x$ are continuous on their domains.
+
+[Proof](../lectures/06-continuity.qmd#continuity-of-the-trigonometric-functions)
+
+### Intermediate Value Theorem
+
+Suppose $f$ is continuous on $[a,b]$. If $N$ lies between $f(a)$ and $f(b)$, then there is a $c\in[a,b]$ such that
+
+$$
+f(c)=N.
+$$
+
+[Explanation and examples](../lectures/07-intermediate-value.qmd#the-intermediate-value-theorem)
+
+## Differentiation
+
+### Differentiability implies continuity
+
+Let $a$ be in the domain of $f$. If $f'(a)$ exists, then $f$ is continuous at $a$.
+
+[Proof](../lectures/10-derivative-function.qmd#differentiability-implies-continuity) · [Why the converse is false](../lectures/10-derivative-function.qmd#the-converse-is-false)
+
+### Differentiation rules
+
+::: {.statement}
+
+Suppose $f$ and $g$ are differentiable at $x$. Let $c$ be a real constant and $n$ any real number.
+
+#### Constant {#constant-rule}
+
+$$
+\frac{d}{dx}(c)=0.
+$$
+
+#### Identity {#identity-rule}
+
+$$
+\frac{d}{dx}(x)=1.
+$$
+
+#### Sum and difference {#sum-and-difference-rules}
+
+$$
+\frac{d}{dx}[f(x)\pm g(x)]=f'(x)\pm g'(x).
+$$
+
+#### Scalar multiple {#scalar-multiple-rule}
+
+$$
+\frac{d}{dx}[cf(x)]=cf'(x).
+$$
+
+#### Power {#power-rule}
+
+$$
+\frac{d}{dx}(x^n)=nx^{n-1}.
+$$
+
+The power rule holds for $x>0$ for every real $n$, and wherever both sides are defined for other inputs. For $n=0$, use the constant rule.
+
+#### Product {#product-rule}
+
+$$
+\frac{d}{dx}[f(x)g(x)]=f'(x)g(x)+f(x)g'(x).
+$$
+
+#### Quotient {#quotient-rule}
+
+$$
+\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right]=\frac{g(x)f'(x)-f(x)g'(x)}{[g(x)]^2}.
+$$
+
+Require $g(x)\ne0$.
+
+:::
+
+[Lecture explanation](../lectures/11-differentiation-rules.qmd#section-3.3-the-rules-we-will-use) · [Sums and powers](../lectures/11-differentiation-rules.qmd#sums-constant-multiples-and-powers) · [Products](../lectures/11-differentiation-rules.qmd#products-one-derivative-at-a-time) · [Quotients](../lectures/11-differentiation-rules.qmd#quotients-and-negative-powers)
+
+### Chain rule
+
+Suppose $g$ is differentiable at $a$ and $f$ is differentiable at $g(a)$. Then $F=f\circ g$ is differentiable at $a$, and
+
+$$
+F'(a)=f'(g(a))\,g'(a).
+$$
+
+Equivalently,
+
+$$
+\frac{d}{dx}f(g(x))=\textcolor{#0072B2}{f'(g(x))}\,\textcolor{#B44D00}{g'(x)}.
+$$
+
+[Explanation](../lectures/14-chain-rule.qmd#the-chain-rule) · [Examples](../lectures/14-chain-rule.qmd#combining-differentiation-rules)
+
+### Power rule for a function
+
+If $g$ is differentiable, then
+
+$$
+\frac{d}{dx}(g(x))^n=\textcolor{#0072B2}{n(g(x))^{n-1}}\,\textcolor{#B44D00}{g'(x)},
+$$
+
+wherever the power function is differentiable at $g(x)$.
+
+[Proof and examples](../lectures/14-chain-rule.qmd#powers-of-functions)
+
+### Inverse-function derivative
+
+Suppose $f$ is one-to-one and continuous on an open interval containing $a$, is differentiable at $a$, and $f'(a)\ne0$. If $b=f(a)$, then $f^{-1}$ is differentiable at $b$, and 
+
+$$
+(f^{-1})'(b)=\frac{1}{f'(a)}=\frac{1}{f'(f^{-1}(b))}.
+$$
+
+[Derivation and examples](../lectures/15-inverse-functions.qmd#the-inverse-function-derivative)
+
+## Special functions
+
+### Trigonometric derivatives
+
+For angles measured in radians, on the domain of each function,
+
+$$
+\begin{array}{ll}
+\displaystyle\frac{d}{dx}(\sin x)=\cos x,
+&\displaystyle\frac{d}{dx}(\cos x)=-\sin x,\\[10pt]
+\displaystyle\frac{d}{dx}(\tan x)=\sec^2x,
+&\displaystyle\frac{d}{dx}(\cot x)=-\csc^2x,\\[10pt]
+\displaystyle\frac{d}{dx}(\sec x)=\sec x\tan x,
+&\displaystyle\frac{d}{dx}(\csc x)=-\csc x\cot x.
+\end{array}
+$$
+
+The functions $\tan,\sec$ require $\cos x\ne0$; $\cot,\csc$ require
+$\sin x\ne0$. Sine and cosine are defined for every real $x$.
+
+[Lecture explanation](../lectures/13-trigonometric-derivatives.qmd#trigonometric-notation-we-will-use) · [Derivations](../lectures/13-trigonometric-derivatives.qmd#using-quotients-to-explain-the-new-formulas)
+
+### Inverse-trigonometric derivatives
+
+With the usual inverse-trigonometric branches, the following derivatives hold on the indicated open domains. Angles are measured in radians. 
+
+$$
+\begin{array}{rcll}
+\text{(i)}\quad \dfrac{d}{dx}\sin^{-1}x&=&\dfrac1{\sqrt{1-x^2}},& |x|<1,\\[13pt]
+\text{(ii)}\quad \dfrac{d}{dx}\cos^{-1}x&=&-\dfrac1{\sqrt{1-x^2}},& |x|<1,\\[13pt]
+\text{(iii)}\quad \dfrac{d}{dx}\tan^{-1}x&=&\dfrac1{1+x^2},& x\in\mathbb R,\\[13pt]
+\text{(iv)}\quad \dfrac{d}{dx}\csc^{-1}x&=&-\dfrac1{|x|\sqrt{x^2-1}},& |x|>1,\\[13pt]
+\text{(v)}\quad \dfrac{d}{dx}\sec^{-1}x&=&\dfrac1{|x|\sqrt{x^2-1}},& |x|>1,\\[13pt]
+\text{(vi)}\quad \dfrac{d}{dx}\cot^{-1}x&=&-\dfrac1{1+x^2},& x\in\mathbb R.
+\end{array}
+$$
+
+Here $\cot^{-1}$ takes values in $(0,\pi)$, $\sec^{-1}$ in $[0,\pi]\setminus\{\pi/2\}$, and $\csc^{-1}$ in $[-\pi/2,\pi/2]\setminus\{0\}$.
+
+[Inverse-sine proof](../lectures/15-inverse-functions.qmd#derivatives-of-inverse-trigonometric-functions) · [Worked example](../lectures/15-inverse-functions.qmd#using-inverse-trigonometric-derivatives)
+
+### Exponential slope and the existence of e
+
+For $a>0$, the function 
+
+$$
+F(a)=\lim_{h\to0}\frac{a^h-1}{h}
+$$
+
+ is well-defined, continuous, and strictly increasing.
+
+There is a unique number $e\in(1,10)$ such that $F(e)=1$.
+
+[Geometric sketch and existence argument](../lectures/17-exponential-logarithmic.qmd#what-is-e)
+
+### Natural exponential and logarithmic derivatives
+
+$$
+\text{(i)}\quad \frac{d}{dx} e^x=e^x\quad(x\in\mathbb R),
+\qquad
+\text{(ii)}\quad \frac{d}{dx}\ln x=\frac1x\quad(x>0).
+$$
+
+[Proofs](../lectures/17-exponential-logarithmic.qmd#the-natural-exponential-and-logarithm) · [Examples](../lectures/17-exponential-logarithmic.qmd#worked-examples)
+
+### Exponential and logarithmic derivatives in other bases
+
+For $a>0$, 
+
+$$
+\text{(i)}\quad \frac{d}{dx} a^x=a^x\ln a.
+$$
+
+ For $a>0$, $a\ne1$, and $x>0$, 
+
+$$
+\text{(ii)}\quad \frac{d}{dx}\log_a x=\frac1{x\ln a}.
+$$
+
+[Proofs and examples](../lectures/17-exponential-logarithmic.qmd#other-bases)
+
+### Power rule for real exponents
+
+For any fixed real number $n$ and $x>0$, 
+
+$$
+\frac{d}{dx} x^n=nx^{n-1}.
+$$
+
+The restriction $x>0$ makes this proof work for every real exponent. The rule also holds at other inputs when the particular power function is differentiable there.
+
+[Proof](../lectures/17-exponential-logarithmic.qmd#the-power-rule-for-real-exponents)
+
+## Precalculus
+
+### Inverse functions and the horizontal line test
+
+A function has an inverse function on its range exactly when it is one-to-one. Graphically, this means that every horizontal line intersects the graph at most once.
+
+[Explanation and example](../lectures/00-functions.qmd#one-to-one-functions-and-domain-restrictions)
+
+### Exponent and logarithm laws
+
+For $a>0$, real $r,s$, and positive $M,N$, with $a\ne1$ for logarithms,
+
+$$
+a^{r+s}=a^ra^s,\qquad a^{r-s}=\frac{a^r}{a^s},\qquad (a^r)^s=a^{rs},
+$$
+
+ 
+
+$$
+\log_a(M^r)=r\log_a M,\quad
+\log_a(MN)=\log_a M+\log_a N,\quad
+\log_a\frac MN=\log_a M-\log_a N.
+$$
+
+[Lecture explanation](../lectures/17-exponential-logarithmic.qmd#algebraic-laws)
+
+## Methods in the lectures
+
+[Implicit differentiation](../lectures/16-implicit-differentiation.qmd) and [logarithmic differentiation](../lectures/17-exponential-logarithmic.qmd#logarithmic-differentiation) are techniques for applying these rules. Follow the lecture links for the steps and worked examples.
+
+:::

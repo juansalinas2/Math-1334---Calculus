@@ -42,7 +42,8 @@ book:
     - lectures/17-exponential-logarithmic.qmd
     - supplements/limits-map.qmd
     - supplements/worksheets.qmd
-    - supplements/glossary.qmd
+    - supplements/definitions.qmd
+    - supplements/theorems.qmd
     - supplements/self-checks.qmd
     - supplements/explore.qmd
     - lecture-pdfs.qmd

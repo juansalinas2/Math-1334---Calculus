@@ -21,7 +21,9 @@ Treat each finished lecture PDF as the source of truth. Preserve its explanation
 
 Practice and challenge solutions in the lecture pages start collapsed behind a native “Show solution” control. Keep each question and its given information visible; put all answer steps and solution-only diagrams inside the control. Preserve the original content and numbering. Worked teaching examples remain visible. Optional self-checks have separate collapsed hints and answers.
 
-The `supplements/` pages contain an instructor-approved glossary, optional self-checks with hints and answers, and interactive graphs. They are explicitly labeled as supplements, separate from the faithful lecture transcriptions. Keep new questions and explorations here; do not blend them into the PDF-derived content. The graphs use local JavaScript and SVG, with no account, API key, or paid service required.
+The `supplements/` pages contain optional self-checks with hints and answers, interactive graphs, and the course reference. They are separate from the faithful lecture transcriptions. Keep new questions and explorations here; do not blend them into the PDF-derived content. The graphs use local JavaScript and SVG, with no account, API key, or paid service required.
+
+The unnumbered Reference sidebar group contains `definitions.qmd` and `theorems.qmd`. Organize entries by topic in teaching order, retain the lecture notation and complete hypotheses, and link back to the relevant explanation, proof, and examples. Statements stay visible; proofs and worked examples remain in the lectures. Keep differentiation rules together. When a canonical lecture changes or a new lecture is added, check the corresponding reference entries too. `assets/reference-pages.css` contains page-specific layout rules without changing the shared theme. The old glossary URL and its topic bookmarks redirect through `assets/glossary-redirect.html`, installed by the post-render script.
 
 ## Local preview
 
@@ -56,7 +58,7 @@ The optional calculus concept map remains at `supplements/limits-map.qmd` to pre
 - `_quarto.yml`: chapter order, search, and book settings.
 - `index.qmd`: book home.
 - `lectures/`: topic chapters and their images.
-- `supplements/`: glossary, self-checks, and interactive explorations.
+- `supplements/`: definitions, theorems and rules, self-checks, and interactive explorations.
 - `assets/explorers.js`: local interactive graph controls.
 - `lecture-pdfs.qmd`: chronological lecture archive.
 - `downloads/`: explicitly selected student-facing PDFs.
