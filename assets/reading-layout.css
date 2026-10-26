@@ -69,11 +69,12 @@ html.reading-layout .chain-table {max-width:100%;overflow-x:auto;}
 html.reading-layout main.content .math.display {padding:.15em 0;max-width:100%;overflow-x:auto;overflow-y:hidden;}
 html.reading-layout main.content .math.display mjx-container {margin:.5em 0;}
 html.reading-layout .reading-outline {grid-column:3!important;grid-row:1!important;min-width:0;position:sticky;top:calc(var(--reading-header-height) + 24px);max-height:calc(100dvh - var(--reading-header-height) - 48px);overflow-y:auto;margin:30px 0 0;padding:0;font:13px/1.5 system-ui,sans-serif;}
-html.reading-layout .reading-outline-title {display:flex;align-items:center;gap:7px;width:100%;min-height:44px;padding:8px;text-align:left;background:transparent;border:0;border-radius:4px;color:var(--reading-text);font:600 13px/1.4 system-ui,sans-serif;cursor:pointer;}
-html.reading-layout .reading-outline-title:hover {background:var(--reading-panel);}
-html.reading-layout .reading-outline-arrow {font-size:16px;}
-html.reading-layout[data-outline-collapsed="true"] {--reading-outline-width:132px;}
-html.reading-layout .reading-outline nav {border-left:1px solid var(--reading-border);}
+html.reading-layout .reading-outline-title {display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:44px;padding:10px 4px;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--reading-border);border-radius:0;color:var(--reading-muted);font:500 13px/1.4 system-ui,sans-serif;cursor:pointer;}
+html.reading-layout .reading-outline-title:hover {color:var(--reading-text);border-bottom-color:var(--reading-muted);}
+html.reading-layout .reading-outline-arrow {width:7px;height:7px;flex:0 0 7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin:0 4px 4px 0;transition:transform 150ms ease;}
+html.reading-layout .reading-outline-title[aria-expanded="false"] .reading-outline-arrow {transform:rotate(-45deg);margin-bottom:0;}
+html.reading-layout[data-outline-collapsed="true"] {--reading-outline-width:148px;}
+html.reading-layout .reading-outline nav {margin-top:10px;border-left:1px solid var(--reading-border);}
 html.reading-layout .reading-outline nav a {display:block;padding:5px 8px 5px 12px;color:var(--reading-muted);text-decoration:none;}
 html.reading-layout .reading-outline nav a:hover,html.reading-layout .reading-outline nav a[aria-current="location"] {color:var(--reading-link);box-shadow:-2px 0 var(--reading-link);}
 html.reading-layout .reading-mobile-outline {display:none;}
@@ -100,20 +101,26 @@ html.reading-layout[data-homepage="true"] body.docked #quarto-content {grid-temp
  html.reading-layout body.docked #quarto-content,html.reading-layout[data-homepage="true"] body.docked #quarto-content {grid-template-columns:200px minmax(0,1fr)!important;}
  html.reading-layout[data-sidebar-collapsed="true"] body.docked #quarto-content {grid-template-columns:0 minmax(0,1fr)!important;}
  html.reading-layout .reading-outline {display:none;}
- html.reading-layout .reading-mobile-outline {display:block;margin:0 0 24px;padding-bottom:12px;border-bottom:1px solid var(--reading-border);font:14px/1.5 system-ui,sans-serif;}
- html.reading-layout .reading-mobile-outline nav {display:grid;gap:8px;margin-top:12px;}
- html.reading-layout .reading-mobile-outline summary {color:var(--reading-link);}
+ html.reading-layout .reading-mobile-outline {display:block;margin:0 0 24px;padding-bottom:0;border-bottom:1px solid var(--reading-border);font:14px/1.5 system-ui,sans-serif;}
+ html.reading-layout .reading-mobile-outline nav {display:grid;gap:8px;margin:4px 0 14px;padding-left:12px;border-left:1px solid var(--reading-border);}
+ html.reading-layout .reading-mobile-outline summary {display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:10px 4px;color:var(--reading-muted);font:500 13px/1.4 system-ui,sans-serif;list-style:none;cursor:pointer;}
+ html.reading-layout .reading-mobile-outline summary::-webkit-details-marker {display:none;}
+ html.reading-layout .reading-mobile-outline summary::after {content:'';width:7px;height:7px;flex:0 0 7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);margin-right:4px;transition:transform 150ms ease;}
+ html.reading-layout .reading-mobile-outline[open] summary::after {transform:rotate(45deg);}
+ html.reading-layout .reading-mobile-outline summary:hover {color:var(--reading-text);}
  html.reading-layout .reading-controls {grid-template-columns:200px minmax(100px,1fr) auto;gap:12px;}
 }
 @media (max-width:767.98px) {
  html.reading-layout body.docked #quarto-content {display:block!important;padding:0 20px!important;}
- html.reading-layout #quarto-sidebar {display:none!important;position:static!important;max-height:none;width:auto!important;border-right:0;border-bottom:1px solid var(--reading-border);margin:0 -20px!important;padding:18px 20px!important;}
+ html.reading-layout #quarto-sidebar {display:none!important;position:static!important;max-height:none!important;min-height:0!important;overflow-y:visible!important;width:auto!important;border-right:0;border-bottom:1px solid var(--reading-border);margin:0 -20px!important;padding:18px 20px!important;}
  html.reading-layout[data-mobile-menu="true"] #quarto-sidebar {display:block!important;}
  html.reading-layout .reading-controls {grid-template-columns:1fr auto;padding:12px 16px;gap:12px;}
- html.reading-layout .reading-search {grid-row:2;grid-column:1 / -1;max-width:none;}
+ html.reading-layout .reading-search {max-width:none;margin:0 0 16px;font:14px/1.5 system-ui,sans-serif;}
+ html.reading-layout .reading-search kbd {display:none;}
+ html.reading-layout #quarto-sidebar {scroll-margin-top:var(--reading-header-height);}
  html.reading-layout .reading-context {font-size:20px;}
  html.reading-layout .reading-appearance {grid-column:2;grid-row:1;}
- html.reading-layout .reading-options {grid-row:3;justify-content:stretch;}
+ html.reading-layout .reading-options {grid-row:2;justify-content:stretch;}
  html.reading-layout .reading-options label {width:100%;}
  html.reading-layout .reading-options select {font-size:16px;}
  html.reading-layout h1.title {font-size:26px;}
@@ -133,3 +140,5 @@ html.reading-layout[data-homepage="true"] body.docked #quarto-content {grid-temp
  html.reading-layout body.docked #quarto-content {display:block!important;padding:0!important;max-width:none;}
  html.reading-layout main.content {font-size:11pt;}
 }
+
+@media (prefers-reduced-motion:reduce) {html.reading-layout .reading-outline-arrow,html.reading-layout .reading-mobile-outline summary::after {transition:none;}}

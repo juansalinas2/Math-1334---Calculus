@@ -17,18 +17,19 @@ window.MathJax = {
   let size = ['small', 'standard', 'large', 'xlarge', 'xxlarge'].includes(saved.size) ? saved.size : 'xlarge';
   // Upgrade the old default while retaining other saved size choices.
   if (saved.sizeVersion !== 2 && size === 'standard') size = 'xlarge';
+  let mobileSize = ['small', 'standard', 'large', 'xlarge', 'xxlarge'].includes(saved.mobileSize) ? saved.mobileSize : 'standard';
   let sidebarCollapsed = saved.sidebarCollapsed === true;
   let mobileOpen = false;
   root.classList.add('reading-layout');
   function apply() {
     root.dataset.readingTheme = theme === 'system' ? (system.matches ? 'dark' : 'light') : theme;
-    root.dataset.readingSize = size;
+    root.dataset.readingSize = desktop.matches ? size : mobileSize;
     root.dataset.sidebarCollapsed = String(sidebarCollapsed);
     root.dataset.mobileMenu = String(mobileOpen);
   }
   function save() {
     apply();
-    try { localStorage.setItem(key, JSON.stringify({theme, size, sizeVersion: 2, sidebarCollapsed})); } catch (_) {}
+    try { localStorage.setItem(key, JSON.stringify({theme, size, mobileSize, sizeVersion: 2, sidebarCollapsed})); } catch (_) {}
   }
   apply();
   system.addEventListener('change', apply);
@@ -65,6 +66,7 @@ window.MathJax = {
       if (desktop.matches) sidebarCollapsed = !sidebarCollapsed;
       else mobileOpen = !mobileOpen;
       save(); syncToggle(); window.dispatchEvent(new Event('resize'));
+      if (!desktop.matches && mobileOpen) requestAnimationFrame(() => { sidebar.scrollIntoView({block:'start', behavior:'instant'}); sidebar.scrollTop = 0; });
     });
     desktop.addEventListener('change', () => { mobileOpen = false; apply(); syncToggle(); });
     syncToggle();
@@ -99,9 +101,20 @@ window.MathJax = {
       input.value = current;
       input.addEventListener('change', () => { onChange(input.value); save(); window.dispatchEvent(new Event('resize')); });
       label.append(input); options.append(label);
+      return input;
     }
     select('Theme', [['system','System'],['light','Light'],['paper','Paper'],['dark','Dark'],['darker','Darker']], theme, value => { theme = value; });
-    select('Text size', [['small','Small · 16px'],['standard','Compact · 18px'],['large','Medium · 20px'],['xlarge','Standard · 22px'],['xxlarge','Large · 24px']], size, value => { size = value; });
+    const sizeInput = select('Text size', [['small','16 px'],['standard','18 px'],['large','20 px'],['xlarge','22 px'],['xxlarge','24 px']], desktop.matches ? size : mobileSize, value => { if (desktop.matches) size = value; else mobileSize = value; });
+    function syncScreenControls() {
+      sizeInput.value = desktop.matches ? size : mobileSize;
+      for (const option of sizeInput.options) {
+        const px = {small:16, standard:18, large:20, xlarge:22, xxlarge:24}[option.value];
+        option.textContent = px + ' px' + (option.value === (desktop.matches ? 'xlarge' : 'standard') ? ' · default' : '');
+      }
+      if (desktop.matches) controls.insertBefore(search, settings);
+      else sidebar.prepend(search);
+    }
+    syncScreenControls(); desktop.addEventListener('change', syncScreenControls);
     document.getElementById('quarto-content').before(controls);
     if ('ResizeObserver' in window) new ResizeObserver(() => root.style.setProperty('--reading-header-height', controls.offsetHeight + 'px')).observe(controls);
     if (!main.id) main.id = 'reading-main'; main.setAttribute('tabindex', '-1');
