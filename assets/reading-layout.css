@@ -107,6 +107,10 @@ html.reading-layout[data-homepage="true"] body.docked #quarto-content {grid-temp
  html.reading-layout h1.title {font-size:26px;}
  html.reading-layout main.content {padding-top:24px!important;}
  html.reading-layout .reference-index section.level4 {display:block;}
+ html.reading-layout .page-navigation {flex-direction:column;gap:8px;}
+ html.reading-layout .page-navigation :is(.nav-page-previous,.nav-page-next) {width:100%;max-width:100%;}
+ html.reading-layout .page-navigation .pagination-link {width:100%;}
+ html.reading-layout .page-navigation .nav-page-text {min-width:0;overflow-wrap:anywhere;font-size:14px;}
 }
 @media (pointer:coarse) {
  html.reading-layout .reading-sidebar-toggle,html.reading-layout .reading-action,html.reading-layout .reading-menu summary {min-height:44px;}
