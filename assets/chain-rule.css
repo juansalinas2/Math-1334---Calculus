@@ -6,16 +6,16 @@
 .chain-table th, .chain-table td { border: 1px solid var(--reading-border); padding: .55rem 1rem; }
 .chain-table table { width: auto; margin: 1rem auto; }
 @media screen {
-  html[data-reading-theme="dark"] .chain-first,
-  html[data-reading-theme="dark"] mjx-mstyle[style*="color: rgb(0, 114, 178)"],
-  html[data-reading-theme="dark"] mjx-mstyle[style*="color: #0072B2"] { color: #63bfff !important; }
-  html[data-reading-theme="dark"] .chain-second,
-  html[data-reading-theme="dark"] mjx-mstyle[style*="color: rgb(180, 77, 0)"],
-  html[data-reading-theme="dark"] mjx-mstyle[style*="color: #B44D00"] { color: #ffb454 !important; }
-  html[data-reading-theme="dark"] .chain-third,
-  html[data-reading-theme="dark"] mjx-mstyle[style*="color: rgb(156, 43, 121)"],
-  html[data-reading-theme="dark"] mjx-mstyle[style*="color: #9C2B79"] { color: #f29ed9 !important; }
-  html[data-reading-theme="dark"] .chain-fourth,
-  html[data-reading-theme="dark"] mjx-mstyle[style*="color: rgb(0, 122, 61)"],
-  html[data-reading-theme="dark"] mjx-mstyle[style*="color: #007A3D"] { color: #71d69b !important; }
+  html:is([data-reading-theme="dark"], [data-reading-theme="darker"]) .chain-first,
+  html:is([data-reading-theme="dark"], [data-reading-theme="darker"]) mjx-mstyle[style*="color: rgb(0, 114, 178)"],
+  html:is([data-reading-theme="dark"], [data-reading-theme="darker"]) mjx-mstyle[style*="color: #0072B2"] { color: #63bfff !important; }
+  html:is([data-reading-theme="dark"], [data-reading-theme="darker"]) .chain-second,
+  html:is([data-reading-theme="dark"], [data-reading-theme="darker"]) mjx-mstyle[style*="color: rgb(180, 77, 0)"],
+  html:is([data-reading-theme="dark"], [data-reading-theme="darker"]) mjx-mstyle[style*="color: #B44D00"] { color: #ffb454 !important; }
+  html:is([data-reading-theme="dark"], [data-reading-theme="darker"]) .chain-third,
+  html:is([data-reading-theme="dark"], [data-reading-theme="darker"]) mjx-mstyle[style*="color: rgb(156, 43, 121)"],
+  html:is([data-reading-theme="dark"], [data-reading-theme="darker"]) mjx-mstyle[style*="color: #9C2B79"] { color: #f29ed9 !important; }
+  html:is([data-reading-theme="dark"], [data-reading-theme="darker"]) .chain-fourth,
+  html:is([data-reading-theme="dark"], [data-reading-theme="darker"]) mjx-mstyle[style*="color: rgb(0, 122, 61)"],
+  html:is([data-reading-theme="dark"], [data-reading-theme="darker"]) mjx-mstyle[style*="color: #007A3D"] { color: #71d69b !important; }
 }

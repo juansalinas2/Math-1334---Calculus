@@ -59,6 +59,8 @@ $$
 
 ## The inverse-function derivative
 
+::: {.statement .statement-theorem}
+
 **Theorem.**
 
 Suppose $f$ is one-to-one and continuous on an open interval containing $a$, is differentiable at $a$, and $f'(a)\ne0$. If $b=f(a)$, then $f^{-1}$ is differentiable at $b$, and 
@@ -66,6 +68,8 @@ Suppose $f$ is one-to-one and continuous on an open interval containing $a$, is 
 $$
 (f^{-1})'(b)=\frac{1}{f'(a)}=\frac{1}{f'(f^{-1}(b))}.
 $$
+
+:::
 
 **Proof.**
 
@@ -124,6 +128,8 @@ $$
 
 ## Derivatives of inverse trigonometric functions
 
+::: {.statement .statement-theorem}
+
 **Proposition.**
 
 With the usual inverse-trigonometric branches, the following derivatives hold on the indicated open domains. Angles are measured in radians. 
@@ -140,6 +146,8 @@ $$
 $$
 
 Here $\cot^{-1}$ takes values in $(0,\pi)$, $\sec^{-1}$ in $[0,\pi]\setminus\{\pi/2\}$, and $\csc^{-1}$ in $[-\pi/2,\pi/2]\setminus\{0\}$.
+
+:::
 
 **Proof of (i).**
 

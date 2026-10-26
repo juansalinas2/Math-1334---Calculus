@@ -70,6 +70,8 @@ $$
 
  We seek the base for which this slope is $1$.
 
+::: {.statement .statement-lemma}
+
 **Lemma.**
 
 For $a>0$, the function 
@@ -79,6 +81,8 @@ F(a)=\lim_{h\to0}\frac{a^h-1}{h}
 $$
 
  is well-defined, continuous, and strictly increasing.
+
+:::
 
 > *Sketch.* Think of $F(a)$ as the tangent slope of $y=a^x$ at $(0,1)$. The exponential graphs are smooth there, so each has a tangent slope. As the base $a$ changes, the tangent turns continuously; increasing $a$ increases its slope. The two graphs below illustrate this for two bases greater than $1$: the larger base gives the steeper tangent.
 
@@ -99,13 +103,19 @@ Tangent slope: $F(10)>F(2)$
 :::
 ::::
 
+::: {.statement .statement-lemma}
+
 **Lemma.**
 
 There is a unique number $e\in(1,10)$ such that $F(e)=1$.
 
+:::
+
 **Proof.**
 
 Reading the slopes geometrically, $F(1)=0$, while the graph of $10^x$ has slope greater than $1$ at $(0,1)$, so $F(10)>1$. By continuity and the Intermediate Value Theorem, some $e\in(1,10)$ satisfies $F(e)=1$. Strict increase makes this $e$ unique.
+
+::: {.statement .statement-definition}
 
 **Definition.**
 
@@ -116,6 +126,8 @@ $$
 $$
 
  is called *Euler's number*.
+
+:::
 
 **Note.** Another standard, equivalent definition is $\displaystyle e=\lim_{n\to\infty}\left(1+\frac1n\right)^n$.
 
@@ -158,6 +170,8 @@ The tangent is $y=1+(\ln a)x$, using the derivative formula proved in [Other bas
 
 ## The natural exponential and logarithm
 
+::: {.statement .statement-theorem}
+
 **Theorem.**
 
 $$
@@ -165,6 +179,8 @@ $$
 \qquad
 \text{(ii)}\quad \frac{d}{dx}\ln x=\frac1x\quad(x>0).
 $$
+
+:::
 
 **Proof.**
 
@@ -299,6 +315,8 @@ $$
 
 ## Other bases
 
+::: {.statement .statement-theorem}
+
 **Corollary.**
 
 For $a>0$, 
@@ -312,6 +330,8 @@ $$
 $$
 \text{(ii)}\quad \frac{d}{dx}\log_a x=\frac1{x\ln a}.
 $$
+
+:::
 
 **Proof.**
 
@@ -542,6 +562,8 @@ $$
 
 ## The power rule for real exponents
 
+::: {.statement .statement-theorem}
+
 **Theorem.**
 
 For any fixed real number $n$ and $x>0$, 
@@ -549,6 +571,8 @@ For any fixed real number $n$ and $x>0$,
 $$
 \frac{d}{dx} x^n=nx^{n-1}.
 $$
+
+:::
 
 **Proof.**
 

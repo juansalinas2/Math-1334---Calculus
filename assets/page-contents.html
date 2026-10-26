@@ -1,45 +1,55 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const main = document.querySelector('main.content');
-  const toolbar = document.querySelector('.reading-controls');
-  const headings = [...(main?.querySelectorAll('section.level2 > h2') || [])]
-    .filter(heading => heading.parentElement.id);
-  if (!main || !toolbar || headings.length < 3) return;
-  const details = document.createElement('details');
-  details.className = 'reading-menu reading-contents';
-  const summary = document.createElement('summary');
-  summary.textContent = 'On this page';
-  const list = document.createElement('ul');
-  list.className = 'reading-options reading-section-list';
-  for (const heading of headings) {
-    const item = document.createElement('li');
-    const link = document.createElement('a');
-    link.href = '#' + heading.parentElement.id;
+  if (!main || main.querySelector('.course-home')) return;
+  const reference = !!main.querySelector('.reference-index');
+  const headings = [...main.querySelectorAll(reference ? '.reference-index section.level3 > h3' : 'section.level2 > h2')].filter(h => h.parentElement.id);
+  const clean = heading => {
     const label = heading.cloneNode(true);
-    label.querySelectorAll('.anchorjs-link').forEach(anchor => anchor.remove());
-    link.textContent = label.textContent.trim();
-    link.addEventListener('click', () => {
-      details.open = false;
-      heading.setAttribute('tabindex', '-1');
-      heading.focus({preventScroll: true});
-    });
-    item.append(link); list.append(item);
+    label.querySelectorAll('.anchorjs-link').forEach(a => a.remove());
+    return label.textContent.trim().replace(/\\[()[\]]/g, '');
+  };
+  const labels = headings.map(clean);
+  const headingLabels = labels.map((label, index) => label === 'Practice' && labels.filter(text => text === label).length > 1 ? 'Practice · ' + (labels[index - 1] || 'Introduction') : label);
+  const jump = heading => {
+    heading.setAttribute('tabindex','-1');
+    heading.focus({preventScroll:true});
+  };
+  const source = main.querySelector('.source-note p');
+  if (source) {
+    const theorem = main.querySelector('.statement-theorem')?.closest('section');
+    const practice = headings.find(h => /^Practice/.test(clean(h)));
+    for (const [label, section, heading] of [['Jump to theorem',theorem,theorem?.querySelector('h2,h3')],['Jump to practice',practice?.parentElement,practice]]) {
+      if (!section?.id || !heading) continue;
+      const link = document.createElement('a'); link.href = '#' + section.id; link.textContent = label; link.addEventListener('click',()=>jump(heading)); source.append(link);
+    }
   }
-  details.append(summary, list);
-  toolbar.querySelector('.reading-action').before(details);
-  details.addEventListener('keydown', event => {
-    if (event.key === 'Escape') { details.open = false; summary.focus(); }
-  });
-  document.addEventListener('click', event => {
-    if (!details.contains(event.target)) details.open = false;
-  });
-  // Keep only one reading menu open, including when using the keyboard.
-  for (const menu of toolbar.querySelectorAll('.reading-menu')) {
-    menu.addEventListener('toggle', () => {
-      if (menu.open) for (const other of toolbar.querySelectorAll('.reading-menu')) {
-        if (other !== menu) other.open = false;
+  if (headings.length < 2) return;
+  const aside = document.createElement('aside'); aside.className = 'reading-outline'; aside.setAttribute('aria-label','On this page');
+  const title = document.createElement('p'); title.textContent = 'ON THIS PAGE'; title.className = 'reading-outline-title'; aside.append(title);
+  const details = document.createElement('details'); details.className = 'reading-mobile-outline';
+  const summary = document.createElement('summary'); summary.textContent = 'On this page'; details.append(summary);
+  for (const container of [aside,details]) {
+    const nav = document.createElement('nav'); nav.setAttribute('aria-label', 'Page sections');
+    for (const [index,heading] of headings.entries()) {
+      const link = document.createElement('a'); link.href = '#' + heading.parentElement.id; link.textContent = headingLabels[index];
+      link.addEventListener('click',()=>{ details.open = false; jump(heading); }); nav.append(link);
+    }
+    container.append(nav);
+  }
+  document.getElementById('quarto-content').append(aside);
+  (main.querySelector('.source-note') || main.querySelector(':scope > header')).after(details);
+  details.addEventListener('keydown',event=>{if(event.key==='Escape'){details.open=false;summary.focus();}});
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries=>{
+      const visible = entries.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top);
+      if (!visible.length) return;
+      const hash = '#' + visible[0].target.parentElement.id;
+      for (const a of aside.querySelectorAll('a')) {
+        if (a.getAttribute('href') === hash) a.setAttribute('aria-current','location'); else a.removeAttribute('aria-current');
       }
-    });
+    },{rootMargin:'-100px 0px -60% 0px'});
+    headings.forEach(h=>observer.observe(h));
   }
 });
 function openLinkedProof() {

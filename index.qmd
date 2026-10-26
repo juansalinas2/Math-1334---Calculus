@@ -1,29 +1,56 @@
 ---
-title: "# Calculus notes {.unnumbered}"
-subtitle: "Notes for Calculus 1"
+title: "# Calculus 1 {.unnumbered}"
+subtitle: "MATH 1334 · Seattle University"
 page-navigation: false
+css: assets/homepage.css
 ---
 
-These notes introduce differential calculus: limits, continuity, derivatives, and their applications. They grow alongside the lectures, with explanations, graphs, and worked examples organized by topic.
+::: {.course-home}
+Lecture notes, worked examples, and practice.
 
-[See the latest class](lectures/17-exponential-logarithmic.qmd){.start-link}
+::: {.home-latest}
+[Latest posted lecture · October 23]{.home-eyebrow}
 
-**October 23:** [Exponential and logarithmic derivatives](lectures/17-exponential-logarithmic.qmd) — Euler’s number, logarithmic differentiation, and worked practice.
+## Exponential and logarithmic derivatives {.unnumbered}
 
-[Week 4 worksheet](supplements/worksheets.qmd#week-4-derivatives)
+Section 3.9 · Euler’s number, exponential derivatives, and logarithmic differentiation.
 
-New here? [Begin with Chapter 1](lectures/01-introduction.qmd).
+[Read the lecture →](lectures/17-exponential-logarithmic.qmd){.home-primary}
+:::
 
-Read the numbered chapters in order, or use the contents and search to return to a particular idea.
+::: {.home-tools}
+::: {.home-tool}
+[Definitions](supplements/definitions.qmd)
 
-For the original handouts, visit the [lecture PDF archive](lecture-pdfs.qmd), organized by date.
+Precise meanings and assumptions.
+:::
+::: {.home-tool}
+[Theorems & rules](supplements/theorems.qmd)
 
-The [precalculus review](lectures/00-functions.qmd) is **Appendix A**, with its original [review PDF](downloads/september-25-chapter-1-review.pdf).
+Key results and when they apply.
+:::
+::: {.home-tool}
+[Practice & worksheets](supplements/worksheets.qmd)
 
-## References
+Class handouts for working through problems.
+:::
+::: {.home-tool}
+[Lecture PDFs](lecture-pdfs.qmd)
 
-These notes draw on the exposition, examples, and ideas in the following texts, adapted to the sequence and emphasis of this course:
+Original notes, organized by date.
+:::
+:::
+
+::: {.home-start}
+Starting the course? [Begin with Chapter 1](lectures/01-introduction.qmd) or revisit [Appendix A: precalculus](lectures/00-functions.qmd).
+:::
+
+<details class="home-references">
+<summary>Textbooks & acknowledgments</summary>
 
 - Gilbert Strang and Edwin “Jed” Herman, [*Calculus Volume 1*](https://openstax.org/details/books/calculus-volume-1). OpenStax.
 - James Stewart, [*Calculus*](https://www.stewartcalculus.com/). Cengage.
 - Michael Spivak, [*Calculus*](https://mathpop.com/products/calculus-4th-edition-digital-edition). Publish or Perish.
+
+</details>
+:::

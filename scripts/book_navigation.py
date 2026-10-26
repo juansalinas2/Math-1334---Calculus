@@ -28,6 +28,8 @@ def rebuild_sidebar(html, page_name):
     for leaf in re.findall(r'<li class="sidebar-item">[\s\S]*?</li>', match[0]):
         href = re.search(r'<a href="([^"]+)"', leaf)[1]
         name = urlsplit(html_lib.unescape(href)).path.rsplit('/', 1)[-1]
+        if name == 'theorems.html':
+            leaf = leaf.replace('Theorems</span>', 'Theorems &amp; rules</span>')
         leaves[name] = leaf
         hrefs[name] = href
         if name == page_name:
@@ -67,8 +69,9 @@ def rebuild_sidebar(html, page_name):
         + group('Chapter 1', intro_children, intro)
         + group('Chapter 2', SECTIONS, 'limits-and-continuity.html')
         + group('Chapter 3', DERIVATIVE_SECTIONS, 'derivatives.html')
-        + group('Reference', REFERENCE)
-        + group('Supplements', SUPPLEMENTS)
+        + '<li class="book-nav-label">LOOK UP</li>'
+        + ''.join(leaves[name] for name in REFERENCE)
+        + group('Study aids', SUPPLEMENTS)
         + leaves['lecture-pdfs.html']
         + group('Appendices', ['00-functions.html'])
     )

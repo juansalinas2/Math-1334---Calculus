@@ -145,8 +145,10 @@ h3 { font-size: 1.25rem; margin-top: 2rem; }
 #quarto-sidebar .sidebar-item { padding-top: .18rem; }
 .source-note { font-size: .86rem; color: var(--reading-muted); margin-bottom: 1.4rem; }
 .source-note a { color: var(--reading-muted); text-decoration-color: var(--reading-border); }
-.statement { margin: 1.5rem 0; padding: .9rem 1.2rem; border-left: 4px solid var(--definition-border); background: var(--definition-bg); border-radius: 0 4px 4px 0; }
+.statement { color: var(--reading-text); margin: 1.5rem 0; padding: .9rem 1.2rem; border-left: 4px solid var(--definition-border); background: var(--definition-bg); border-radius: 0 4px 4px 0; }
 .statement.statement-theorem { border-left-color: var(--theorem-border); background: var(--theorem-bg); }
+.statement :is(strong, b, em) { color: inherit; }
+.statement.statement-lemma { background: transparent; border-left: 2px solid var(--reading-border); border-radius: 0; padding: .3rem 1rem; }
 .statement > :last-child { margin-bottom: 0; }
 details.proof { border: 1px solid var(--reading-border); border-radius: 5px; padding: 0 1rem; margin: 1.3rem 0; }
 details.proof > summary { padding: .65rem 1rem; margin: 0 -1rem; background: var(--reading-panel); border-radius: 4px; }
@@ -417,3 +419,7 @@ main.content :is(h2, h3, h4, section[id]) { scroll-margin-top: 5rem; }
 }
 @media (prefers-reduced-motion: reduce) { .book-nav-group > summary::after { transition: none; } }
 @media print { .reading-skip, .reading-back-top { display: none !important; } }
+
+// Direct reference links stay visible, including in dark themes.
+#quarto-sidebar .sidebar-item-text { color: var(--reading-text); }
+.book-nav-label { padding: 1.2rem .4rem .35rem; color: var(--reading-muted); font: 600 .7rem/1.4 system-ui, sans-serif; letter-spacing: .06em; }

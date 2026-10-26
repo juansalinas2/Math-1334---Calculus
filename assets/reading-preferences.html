@@ -1,5 +1,5 @@
 <script>
-// Serve the renderer and font data together; no external math-font requests.
+// Preserve the locally hosted TeX renderer and its Computer Modern math fonts.
 window.MathJax = {
   output: {
     font: 'mathjax-newcm',
@@ -9,16 +9,20 @@ window.MathJax = {
 (() => {
   const root = document.documentElement;
   const system = window.matchMedia('(prefers-color-scheme: dark)');
+  const desktop = window.matchMedia('(min-width: 768px)');
   const key = 'calculus-notes-reading';
   let saved = {};
   try { saved = JSON.parse(localStorage.getItem(key)) || {}; } catch (_) {}
   let theme = ['system', 'light', 'paper', 'dark', 'darker'].includes(saved.theme) ? saved.theme : 'system';
-  let size = saved.size === 'large' ? 'large' : 'standard';
+  let size = ['small', 'standard', 'large', 'xlarge', 'xxlarge'].includes(saved.size) ? saved.size : 'standard';
   let sidebarCollapsed = saved.sidebarCollapsed === true;
+  let mobileOpen = false;
+  root.classList.add('reading-layout');
   function apply() {
     root.dataset.readingTheme = theme === 'system' ? (system.matches ? 'dark' : 'light') : theme;
     root.dataset.readingSize = size;
     root.dataset.sidebarCollapsed = String(sidebarCollapsed);
+    root.dataset.mobileMenu = String(mobileOpen);
   }
   function save() {
     apply();
@@ -34,107 +38,72 @@ window.MathJax = {
   stylesheet?.addEventListener('error', recoverStyles, {once: true});
   window.addEventListener('load', recoverStyles, {once: true});
   document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('main.content > header');
-    if (!header) return;
-    const controls = document.createElement('div');
-    controls.className = 'reading-controls';
-    controls.setAttribute('role', 'navigation');
-    controls.setAttribute('aria-label', 'Reading tools');
-    const context = document.createElement('a');
-    context.className = 'reading-context';
-    context.href = (document.querySelector('meta[name="quarto:offset"]')?.content || './') + 'index.html';
-    context.textContent = 'Calculus notes';
-    controls.append(context);
+    const main = document.querySelector('main.content');
+    const header = main?.querySelector(':scope > header');
     const sidebar = document.getElementById('quarto-sidebar');
-    if (sidebar) {
-      const desktop = window.matchMedia('(min-width: 992px)');
-      const toggle = document.createElement('button');
-      toggle.type = 'button';
-      toggle.className = 'reading-sidebar-toggle';
-      toggle.setAttribute('aria-controls', 'quarto-sidebar');
-      const icon = document.createElement('i');
-      icon.setAttribute('aria-hidden', 'true');
-      toggle.append(icon);
-      const hint = document.createElement('span');
-      hint.className = 'sidebar-toggle-hint';
-      hint.setAttribute('aria-hidden', 'true');
-      toggle.append(hint);
-      function syncToggle() {
-        const label = sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar';
-        toggle.setAttribute('aria-label', label);
-        hint.textContent = label;
-        icon.className = sidebarCollapsed ? 'bi bi-layout-sidebar' : 'bi bi-layout-sidebar-reverse';
-        toggle.setAttribute('aria-expanded', String(!sidebarCollapsed));
-        sidebar.inert = sidebarCollapsed && desktop.matches;
-      }
-      toggle.addEventListener('click', () => {
-        sidebarCollapsed = !sidebarCollapsed;
-        save();
-        syncToggle();
-        // Let Quarto recompute its sticky navigation and figure positions.
-        window.dispatchEvent(new Event('resize'));
-      });
-      syncToggle();
-      desktop.addEventListener('change', syncToggle);
-      document.body.append(toggle);
+    if (!main || !header || !sidebar) return;
+    root.dataset.homepage = String(!!main.querySelector('.course-home'));
+    if (main.querySelector('.course-home')) header.querySelector('h1').textContent = 'Calculus 1';
+    const controls = document.createElement('header');
+    controls.className = 'reading-controls';
+    controls.setAttribute('aria-label', 'Site navigation and appearance');
+    const brand = document.createElement('div'); brand.className = 'reading-brand';
+    const toggle = document.createElement('button');
+    toggle.type = 'button'; toggle.className = 'reading-sidebar-toggle';
+    toggle.setAttribute('aria-controls', 'quarto-sidebar');
+    const icon = document.createElement('i'); icon.className = 'bi bi-layout-sidebar'; icon.setAttribute('aria-hidden', 'true');
+    toggle.append(icon);
+    function syncToggle() {
+      const expanded = desktop.matches ? !sidebarCollapsed : mobileOpen;
+      toggle.setAttribute('aria-label', expanded ? 'Collapse contents' : 'Show contents');
+      toggle.setAttribute('aria-expanded', String(expanded));
+      sidebar.inert = !expanded;
     }
-    const search = document.createElement('button');
-    search.type = 'button';
-    search.className = 'reading-action';
-    search.textContent = 'Search';
-    search.setAttribute('aria-label', 'Search course notes');
-    search.title = 'Search course notes (/)';
-    search.addEventListener('click', () => window.quartoOpenSearch?.());
-    controls.append(search);
-    const settings = document.createElement('details');
-    settings.className = 'reading-menu';
-    const summary = document.createElement('summary');
-    summary.textContent = 'Appearance';
-    settings.append(summary);
-    const options = document.createElement('div');
-    options.className = 'reading-options';
-    settings.append(options);
-    controls.append(settings);
-    document.addEventListener('click', event => {
-      if (!settings.contains(event.target)) settings.open = false;
+    toggle.addEventListener('click', () => {
+      if (desktop.matches) sidebarCollapsed = !sidebarCollapsed;
+      else mobileOpen = !mobileOpen;
+      save(); syncToggle(); window.dispatchEvent(new Event('resize'));
     });
-    settings.addEventListener('keydown', event => {
-      if (event.key === 'Escape') { settings.open = false; summary.focus(); }
+    desktop.addEventListener('change', () => { mobileOpen = false; apply(); syncToggle(); });
+    syncToggle();
+    const context = document.createElement('a'); context.className = 'reading-context';
+    context.href = (document.querySelector('meta[name="quarto:offset"]')?.content || './') + 'index.html';
+    context.textContent = 'Calculus notes'; brand.append(toggle, context); controls.append(brand);
+    const search = document.createElement('button'); search.type = 'button'; search.className = 'reading-action reading-search';
+    search.setAttribute('aria-label', 'Search course notes');
+    const searchIcon = document.createElement('i'); searchIcon.className = 'bi bi-search'; searchIcon.setAttribute('aria-hidden', 'true');
+    const searchLabel = document.createElement('span'); searchLabel.textContent = 'Search notes…';
+    const shortcut = document.createElement('kbd'); shortcut.textContent = '/'; shortcut.setAttribute('aria-hidden', 'true');
+    search.append(searchIcon, searchLabel, shortcut);
+    search.addEventListener('click', () => window.quartoOpenSearch?.()); controls.append(search);
+    const settings = document.createElement('details'); settings.className = 'reading-menu';
+    const summary = document.createElement('summary'); summary.textContent = 'Appearance'; settings.append(summary);
+    const options = document.createElement('div'); options.className = 'reading-options'; settings.append(options); controls.append(settings);
+    document.addEventListener('click', event => { if (!settings.contains(event.target)) settings.open = false; });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        if (settings.open) { settings.open = false; summary.focus(); }
+        else if (mobileOpen) { mobileOpen = false; apply(); syncToggle(); toggle.focus(); }
+      }
     });
     function select(labelText, values, current, onChange) {
-      const label = document.createElement('label');
-      label.textContent = labelText;
-      const input = document.createElement('select');
-      input.setAttribute('aria-label', labelText);
+      const label = document.createElement('label'); label.textContent = labelText;
+      const input = document.createElement('select'); input.setAttribute('aria-label', labelText);
       for (const [value, text] of values) input.add(new Option(text, value));
       input.value = current;
-      input.addEventListener('change', () => { onChange(input.value); save(); });
-      label.append(input);
-      options.append(label);
+      input.addEventListener('change', () => { onChange(input.value); save(); window.dispatchEvent(new Event('resize')); });
+      label.append(input); options.append(label);
     }
-    select('Theme', [['system', 'System'], ['light', 'Light'], ['paper', 'Paper'], ['dark', 'Dark'], ['darker', 'Darker']], theme, value => { theme = value; });
-    select('Text', [['standard', 'Standard'], ['large', 'Larger']], size, value => { size = value; });
-    header.before(controls);
-    const main = document.querySelector('main.content');
-    if (main) {
-      if (!main.id) main.id = 'reading-main';
-      main.setAttribute('tabindex', '-1');
-      const skip = document.createElement('a');
-      skip.className = 'reading-skip';
-      skip.href = '#' + main.id;
-      skip.textContent = 'Skip to notes';
-      skip.addEventListener('click', () => main.focus({preventScroll: true}));
-      document.body.prepend(skip);
-      const top = document.createElement('a');
-      top.className = 'reading-back-top';
-      top.href = '#' + header.id;
-      top.textContent = 'Back to top ↑';
-      top.addEventListener('click', () => {
-        header.setAttribute('tabindex', '-1');
-        header.focus({preventScroll: true});
-      });
-      main.append(top);
-    }
+    select('Theme', [['system','System'],['light','Light'],['paper','Paper'],['dark','Dark'],['darker','Darker']], theme, value => { theme = value; });
+    select('Text size', [['small','Small · 16px'],['standard','Standard · 18px'],['large','Large · 20px'],['xlarge','Extra large · 22px'],['xxlarge','Largest · 24px']], size, value => { size = value; });
+    document.getElementById('quarto-content').before(controls);
+    if ('ResizeObserver' in window) new ResizeObserver(() => root.style.setProperty('--reading-header-height', controls.offsetHeight + 'px')).observe(controls);
+    if (!main.id) main.id = 'reading-main'; main.setAttribute('tabindex', '-1');
+    const skip = document.createElement('a'); skip.className = 'reading-skip'; skip.href = '#' + main.id; skip.textContent = 'Skip to notes';
+    skip.addEventListener('click', () => main.focus({preventScroll:true})); document.body.prepend(skip);
+    const top = document.createElement('a'); top.className = 'reading-back-top'; top.href = '#' + header.id; top.textContent = 'Back to top ↑';
+    top.addEventListener('click', () => { header.setAttribute('tabindex','-1'); header.focus({preventScroll:true}); });
+    if (!main.querySelector('.course-home')) main.append(top);
   });
 })();
 </script>

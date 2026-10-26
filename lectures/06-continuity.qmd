@@ -290,7 +290,7 @@ The functions $\sin x$, $\cos x$, and $\tan x$ are continuous on their domains.
 
 :::
 
-::: {.statement .statement-theorem}
+::: {.statement .statement-lemma}
 
 **Lemma**
 
