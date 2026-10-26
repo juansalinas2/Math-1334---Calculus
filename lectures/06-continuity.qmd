@@ -19,8 +19,6 @@ $$
 \lim_{x\to a}f(x)=f(a).
 $$
 
-:::
-
 Check three things:
 
 1.  $f(a)$ is defined.
@@ -28,6 +26,8 @@ Check three things:
 2.  $\displaystyle\lim_{x\to a}f(x)$ exists as a finite number.
 
 3.  $\displaystyle\lim_{x\to a}f(x)=f(a)$.
+
+:::
 
 Graphically: the graph has no break at $a$.
 
@@ -124,7 +124,11 @@ A function is *right-continuous at $a$* if $\displaystyle\lim_{x\to a^+}f(x)=f(a
 
 :::
 
+::: {.statement .statement-definition}
+
 A function is continuous on an interval when it is continuous at every interior point (a point that is not an endpoint), with right-continuity at an included left endpoint and left-continuity at an included right endpoint.
+
+:::
 
 **Example 3.** The function $f(x)=\sqrt{x}$ is continuous on $[0,\infty)$.
 
@@ -263,9 +267,9 @@ $$
 \end{aligned}
 $$
 
-:::
-
 In particular, if $g$ is continuous at $a$ and $F$ is continuous at $g(a)$, then $F\circ g$ is continuous at $a$.
+
+:::
 
 **Example 4.** Let $\displaystyle\lim_{x\to0}g(x)=-1$ and $F(x)=x^2-2x+1$.
 

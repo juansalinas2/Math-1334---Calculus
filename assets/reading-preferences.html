@@ -50,6 +50,14 @@ window.MathJax = {
     const controls = document.createElement('header');
     controls.className = 'reading-controls';
     controls.setAttribute('aria-label', 'Site navigation and appearance');
+    let lastScrollY = Math.max(0, window.scrollY);
+    let scrollTravel = 0;
+    let scrollFrame = 0;
+    function showHeader() {
+      root.dataset.headerHidden = 'false';
+      scrollTravel = 0;
+      lastScrollY = Math.max(0, window.scrollY);
+    }
     const brand = document.createElement('div'); brand.className = 'reading-brand';
     const toggle = document.createElement('button');
     toggle.type = 'button'; toggle.className = 'reading-sidebar-toggle';
@@ -61,6 +69,7 @@ window.MathJax = {
       toggle.setAttribute('aria-label', expanded ? 'Collapse contents' : 'Show contents');
       toggle.setAttribute('aria-expanded', String(expanded));
       sidebar.inert = !expanded;
+      if (mobileOpen) showHeader();
     }
     toggle.addEventListener('click', () => {
       if (!mobile.matches) sidebarCollapsed = !sidebarCollapsed;
@@ -86,7 +95,7 @@ window.MathJax = {
     settings.textContent = 'Appearance'; settings.setAttribute('aria-controls', 'reading-appearance-options');
     const options = document.createElement('div'); options.className = 'reading-options'; options.id = 'reading-appearance-options';
     options.setAttribute('role', 'region'); options.setAttribute('aria-label', 'Reading appearance');
-    function setAppearance(open) { options.hidden = !open; settings.setAttribute('aria-expanded', String(open)); }
+    function setAppearance(open) { options.hidden = !open; settings.setAttribute('aria-expanded', String(open)); if (open) showHeader(); }
     setAppearance(false); controls.append(settings, options);
     settings.addEventListener('click', () => setAppearance(options.hidden));
     document.addEventListener('click', event => { if (!options.contains(event.target) && !settings.contains(event.target)) setAppearance(false); });
@@ -116,6 +125,35 @@ window.MathJax = {
     }
     syncScreenControls(); mobile.addEventListener('change', syncScreenControls);
     document.getElementById('quarto-content').before(controls);
+    // Follow deliberate vertical scrolling; ignore tiny changes and overscroll bounce.
+    function updateHeaderOnScroll() {
+      scrollFrame = 0;
+      const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      const y = Math.min(maxY, Math.max(0, window.scrollY));
+      const delta = y - lastScrollY;
+      lastScrollY = y;
+      const keyboardFocus = controls.contains(document.activeElement) && document.activeElement.matches(':focus-visible');
+      if (!mobile.matches || y <= 12 || mobileOpen || !options.hidden || keyboardFocus || document.querySelector('.aa-DetachedOverlay')) {
+        root.dataset.headerHidden = 'false'; scrollTravel = 0; return;
+      }
+      if (!delta) return;
+      if (Math.sign(delta) !== Math.sign(scrollTravel)) scrollTravel = 0;
+      scrollTravel += delta;
+      if (scrollTravel >= 10 && y > controls.offsetHeight) { root.dataset.headerHidden = 'true'; scrollTravel = 0; }
+      else if (scrollTravel <= -6) { root.dataset.headerHidden = 'false'; scrollTravel = 0; }
+    }
+    window.addEventListener('scroll', () => {
+      if (!scrollFrame) scrollFrame = requestAnimationFrame(updateHeaderOnScroll);
+    }, {passive:true});
+    controls.addEventListener('focusin', showHeader);
+    let viewportWidth = window.innerWidth;
+    window.addEventListener('resize', () => {
+      if (window.innerWidth !== viewportWidth) { viewportWidth = window.innerWidth; showHeader(); }
+    }, {passive:true});
+    window.addEventListener('pageshow', showHeader);
+    mobile.addEventListener('change', showHeader);
+    showHeader();
+
     if ('ResizeObserver' in window) new ResizeObserver(() => root.style.setProperty('--reading-header-height', controls.offsetHeight + 'px')).observe(controls);
     if (!main.id) main.id = 'reading-main'; main.setAttribute('tabindex', '-1');
     const skip = document.createElement('a'); skip.className = 'reading-skip'; skip.href = '#' + main.id; skip.textContent = 'Skip to notes';

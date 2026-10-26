@@ -169,7 +169,11 @@ The one-sided limits disagree, so the two-sided limit DNE.
 
 **Example 3.** Find $\displaystyle\lim_{x\to1}f(x)$.
 
+::: {.statement .statement-definition}
+
 Substitution gives the *indeterminate form* $0/0$: we need to simplify.
+
+:::
 
 *Factor and cancel.* For $x\ne1,-1$,
 

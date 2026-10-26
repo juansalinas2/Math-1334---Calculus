@@ -9,13 +9,21 @@ description: "Vertical asymptotes, sign analysis, and limits that do not exist."
 
 ## Infinite limits and vertical asymptotes
 
+::: {.statement .statement-definition}
+
 **Definition.** We write $\displaystyle\lim_{x\to a}f(x)=\infty$ if outputs exceed every positive bound for all sufficiently nearby $x\ne a$.
 
 We write $\displaystyle\lim_{x\to a}f(x)=-\infty$ if outputs fall below every negative bound for all sufficiently nearby $x\ne a$.
 
 Similarly for $x\to a^-$ and $x\to a^+$. Infinity describes unbounded behavior; it is not a real-number limit.
 
+:::
+
+::: {.statement .statement-definition}
+
 The line $x=a$ is a *vertical asymptote* if at least one of the one-sided limits at $a$ is $\infty$ or $-\infty$.
+
+:::
 
 **Example 1.** $\displaystyle A(x)=\frac{1}{x+1},\qquad a=-1.$
 
@@ -49,6 +57,8 @@ Again, $x=-1$ is a vertical asymptote.
 
 ![](assets/vertical-negative-square.png){fig-alt="Negative one over (x plus 1) squared approaches negative infinity from both sides of -1." width=209}
 
+::: {.statement .statement-theorem}
+
 **Theorem.** For a positive even integer $n$,
 
 $$
@@ -64,6 +74,8 @@ $$
 \lim_{x\to a^+}\frac{1}{(x-a)^n}=\infty.
 \end{gathered}
 $$
+
+:::
 
 ## Harder limits
 

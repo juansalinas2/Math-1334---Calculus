@@ -9,7 +9,11 @@ description: "Approaching a value, reading graphs and tables, and one-sided limi
 
 **Goal.** Compute slopes of tangent lines.
 
+::: {.statement .statement-definition}
+
 A *secant line* passes through two points on the graph. Its slope is the average rate of change. A *tangent line* gives the instantaneous rate of change at a point (instantaneous velocity for a position function).
+
+:::
 
 ![](assets/secant-tangent.png){fig-alt="A secant joins two points on a curve; the tangent touches the curve at the first point." width=502}
 
@@ -19,11 +23,15 @@ $$
 \frac{f(1+h)-f(1)}{h},\qquad h\ne0.
 $$
 
+::: {.statement .statement-definition}
+
 More generally, the *difference quotient* is
 
 $$
 \frac{f(a+h)-f(a)}{h}.
 $$
+
+:::
 
 As $h\to0$, the second point approaches the first. We study limits to describe what the secant slope approaches.
 
