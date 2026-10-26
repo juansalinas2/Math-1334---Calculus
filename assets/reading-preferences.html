@@ -78,13 +78,17 @@ window.MathJax = {
     const shortcut = document.createElement('kbd'); shortcut.textContent = '/'; shortcut.setAttribute('aria-hidden', 'true');
     search.append(searchIcon, searchLabel, shortcut);
     search.addEventListener('click', () => window.quartoOpenSearch?.()); controls.append(search);
-    const settings = document.createElement('details'); settings.className = 'reading-menu';
-    const summary = document.createElement('summary'); summary.textContent = 'Appearance'; settings.append(summary);
-    const options = document.createElement('div'); options.className = 'reading-options'; settings.append(options); controls.append(settings);
-    document.addEventListener('click', event => { if (!settings.contains(event.target)) settings.open = false; });
+    const settings = document.createElement('button'); settings.type = 'button'; settings.className = 'reading-action reading-appearance';
+    settings.textContent = 'Appearance'; settings.setAttribute('aria-controls', 'reading-appearance-options');
+    const options = document.createElement('div'); options.className = 'reading-options'; options.id = 'reading-appearance-options';
+    options.setAttribute('role', 'region'); options.setAttribute('aria-label', 'Reading appearance');
+    function setAppearance(open) { options.hidden = !open; settings.setAttribute('aria-expanded', String(open)); }
+    setAppearance(false); controls.append(settings, options);
+    settings.addEventListener('click', () => setAppearance(options.hidden));
+    document.addEventListener('click', event => { if (!options.contains(event.target) && !settings.contains(event.target)) setAppearance(false); });
     document.addEventListener('keydown', event => {
       if (event.key === 'Escape') {
-        if (settings.open) { settings.open = false; summary.focus(); }
+        if (!options.hidden) { setAppearance(false); settings.focus(); }
         else if (mobileOpen) { mobileOpen = false; apply(); syncToggle(); toggle.focus(); }
       }
     });

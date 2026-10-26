@@ -21,8 +21,14 @@ html.reading-layout .reading-context {display:block;white-space:nowrap;font:400 
 html.reading-layout .reading-sidebar-toggle {position:static;display:grid;place-items:center;width:30px;height:34px;min-width:30px;border:0;background:transparent;color:var(--reading-text);transform:none;font-size:18px;padding:0;}
 html.reading-layout .reading-search {display:flex;align-items:center;gap:10px;width:100%;max-width:440px;min-height:38px;padding:6px 10px;border:1px solid var(--reading-border);border-radius:6px;background:var(--reading-bg);color:var(--reading-muted);text-align:left;}
 html.reading-layout .reading-search kbd {margin-left:auto;padding:0 6px;border:1px solid var(--reading-border);background:var(--reading-sidebar);color:var(--reading-muted);font:12px/20px system-ui,sans-serif;}
-html.reading-layout .reading-menu > summary {color:var(--reading-text);font-size:13px;white-space:nowrap;}
-html.reading-layout .reading-options {width:285px;max-width:calc(100vw - 32px);}
+html.reading-layout .reading-appearance {color:var(--reading-text);font-size:13px;white-space:nowrap;justify-self:end;}
+html.reading-layout .reading-appearance::after {content:'▾';margin-left:.5em;}
+html.reading-layout .reading-appearance[aria-expanded="true"]::after {content:'▴';}
+html.reading-layout .reading-options[hidden],html.reading-layout .reading-outline nav[hidden] {display:none!important;}
+html.reading-layout .reading-mobile-outline:not([open]) > nav {display:none!important;}
+html.reading-layout .reading-options {position:static;grid-column:1 / -1;display:flex;justify-content:flex-end;flex-wrap:wrap;gap:16px 24px;width:100%;max-width:none;padding:12px 0 0;margin:0;border:0;border-top:1px solid var(--reading-border);border-radius:0;box-shadow:none;}
+html.reading-layout .reading-options label {align-items:center;gap:12px;margin:0;}
+html.reading-layout .reading-options label + label {margin:0;}
 html.reading-layout .reading-options select {width:175px;max-width:100%;font-size:14px;}
 html.reading-layout body.docked #quarto-content {
   display:grid!important;grid-template-columns:240px minmax(0,1fr) var(--reading-outline-width)!important;grid-template-rows:auto auto!important;
@@ -63,7 +69,9 @@ html.reading-layout .chain-table {max-width:100%;overflow-x:auto;}
 html.reading-layout main.content .math.display {padding:.15em 0;max-width:100%;overflow-x:auto;overflow-y:hidden;}
 html.reading-layout main.content .math.display mjx-container {margin:.5em 0;}
 html.reading-layout .reading-outline {grid-column:3!important;grid-row:1!important;min-width:0;position:sticky;top:calc(var(--reading-header-height) + 24px);max-height:calc(100dvh - var(--reading-header-height) - 48px);overflow-y:auto;margin:30px 0 0;padding:0;font:13px/1.5 system-ui,sans-serif;}
-html.reading-layout .reading-outline-title {padding:6px 8px 12px 12px;color:var(--reading-text);font:600 13px/1.4 system-ui,sans-serif;cursor:pointer;}
+html.reading-layout .reading-outline-title {display:flex;align-items:center;gap:7px;width:100%;min-height:44px;padding:8px;text-align:left;background:transparent;border:0;border-radius:4px;color:var(--reading-text);font:600 13px/1.4 system-ui,sans-serif;cursor:pointer;}
+html.reading-layout .reading-outline-title:hover {background:var(--reading-panel);}
+html.reading-layout .reading-outline-arrow {font-size:16px;}
 html.reading-layout[data-outline-collapsed="true"] {--reading-outline-width:132px;}
 html.reading-layout .reading-outline nav {border-left:1px solid var(--reading-border);}
 html.reading-layout .reading-outline nav a {display:block;padding:5px 8px 5px 12px;color:var(--reading-muted);text-decoration:none;}
@@ -104,6 +112,9 @@ html.reading-layout[data-homepage="true"] body.docked #quarto-content {grid-temp
  html.reading-layout .reading-controls {grid-template-columns:1fr auto;padding:12px 16px;gap:12px;}
  html.reading-layout .reading-search {grid-row:2;grid-column:1 / -1;max-width:none;}
  html.reading-layout .reading-context {font-size:20px;}
+ html.reading-layout .reading-appearance {grid-column:2;grid-row:1;}
+ html.reading-layout .reading-options {grid-row:3;justify-content:stretch;}
+ html.reading-layout .reading-options label {width:100%;}
  html.reading-layout .reading-options select {font-size:16px;}
  html.reading-layout h1.title {font-size:26px;}
  html.reading-layout main.content {padding-top:24px!important;}
