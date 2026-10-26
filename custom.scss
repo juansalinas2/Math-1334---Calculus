@@ -107,7 +107,7 @@ html[data-reading-theme="dark"] main.content img,
 html[data-reading-theme="darker"] main.content img,
 .graph-explorer svg { background: #fff; border-radius: 4px; }
 .graph-explorer svg text { fill: #293137 !important; }
-#quarto-search .aa-Form, .aa-DetachedSearchButton, .aa-DetachedFormContainer,
+.aa-Form, .aa-Input, .aa-DetachedSearchButton, .aa-DetachedFormContainer,
 .aa-DetachedContainer, .aa-Panel, .aa-Panel .aa-Item {
   background-color: var(--reading-bg) !important;
   color: var(--reading-text) !important;
@@ -297,7 +297,7 @@ main.content a { text-underline-offset: .17em; text-decoration-thickness: 1px; }
 .reading-options label + label { margin-top: .8rem; }
 .reading-options select { min-width: 115px; }
 .reading-sidebar-toggle {
-  position: fixed; top: 1.5rem; left: calc(1.5rem + 250px - 17px); z-index: 50;
+  position: fixed; top: 1.5rem; left: calc(250px - 17px); z-index: 50;
   display: grid; place-items: center; width: 34px; height: 38px;
   color: var(--reading-muted); background: var(--reading-bg);
   border: 1px solid var(--reading-border); border-radius: 7px;

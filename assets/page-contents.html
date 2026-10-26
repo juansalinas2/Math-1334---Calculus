@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const item = document.createElement('li');
     const link = document.createElement('a');
     link.href = '#' + heading.parentElement.id;
-    link.textContent = heading.textContent.trim();
+    const label = heading.cloneNode(true);
+    label.querySelectorAll('.anchorjs-link').forEach(anchor => anchor.remove());
+    link.textContent = label.textContent.trim();
     link.addEventListener('click', () => {
       details.open = false;
       heading.setAttribute('tabindex', '-1');
