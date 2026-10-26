@@ -9,7 +9,7 @@ description: "Intermediate values and the existence of solutions."
 
 ## The Intermediate Value Theorem
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Intermediate Value Theorem**
 

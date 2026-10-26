@@ -1,7 +1,7 @@
 """Group book sections without turning each reading page into a chapter.
 
 Quarto books replace sidebar.contents with the chapter list. Keep native book
-numbering and page navigation, then group its existing links in closed details.
+numbering and page navigation, then group its existing links in native details.
 """
 import html as html_lib
 import re
@@ -30,16 +30,24 @@ def rebuild_sidebar(html, page_name):
         name = urlsplit(html_lib.unescape(href)).path.rsplit('/', 1)[-1]
         leaves[name] = leaf
         hrefs[name] = href
+        if name == page_name:
+            leaves[name] = leaf.replace('<a ', '<a aria-current="page" ', 1)
 
     def group(title, children, parent=None):
         if parent:
-            label = re.search(r'<a\b[\s\S]*?</a>', leaves[parent])[0]
+            # Give the entire summary one job: expanding its chapter.
+            link = re.search(r'<a\b[^>]*>([\s\S]*?)</a>', leaves[parent])
+            label = '<span class="sidebar-item-text">' + link[1] + '</span>'
         else:
             label = f'<span class="sidebar-item-text">{html_lib.escape(title)}</span>'
         active = ' current-group' if page_name in children or page_name == parent else ''
         items = ''.join(leaves[name] for name in children)
+        if parent:
+            overview = re.sub(r'(<a\b[^>]*>)[\s\S]*?(</a>)', r'\1Chapter overview\2', leaves[parent], count=1)
+            items = overview + items
+        expanded = ' open' if active else ''
         return (f'<li class="sidebar-item sidebar-item-section{active}">'
-                f'<details class="book-nav-group"><summary aria-label="Expand or collapse {html_lib.escape(title)}">'
+                f'<details class="book-nav-group"{expanded}><summary aria-label="Expand or collapse {html_lib.escape(title)}">'
                 f'{label}</summary><ul class="list-unstyled sidebar-section depth1">{items}</ul></details></li>')
 
     intro = '01-introduction.html'

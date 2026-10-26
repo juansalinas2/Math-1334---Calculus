@@ -12,7 +12,8 @@ book:
   author: "Juan Salinas"
   description: "Notes, worked examples, and lecture PDFs for introductory differential calculus."
   site-url: https://juansalinas2.github.io/Math-1334---Calculus/
-  search: true
+  search:
+    type: overlay
   page-navigation: true
   sidebar:
     style: docked

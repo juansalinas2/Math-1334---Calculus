@@ -31,7 +31,7 @@ Thus $\displaystyle\lim_{x\to2^-}f(x)=-4$ and $\displaystyle\lim_{x\to2^+}f(x)=4
 
 ## The limit laws
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Limit laws**
 
@@ -94,7 +94,7 @@ $$
 
 ## Polynomials and rational functions
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Corollary**
 

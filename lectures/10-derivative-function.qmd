@@ -9,7 +9,7 @@ description: "Derivative functions, higher-order derivatives, notation, differen
 
 ## Section 3.2: the derivative function
 
-::: {.statement}
+::: {.statement .statement-definition}
 
 **Definition**
 
@@ -99,7 +99,7 @@ The symbol $\dfrac{d}{dx}$ is the *derivative operator*.
 
 ## Differentiability implies continuity
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Theorem**
 
@@ -135,7 +135,7 @@ Therefore $f$ is continuous at $a$.
 
 </details>
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Corollary**
 

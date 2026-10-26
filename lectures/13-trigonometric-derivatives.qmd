@@ -40,7 +40,7 @@ $$
 The symbols $\sec$ and $\csc$ denote reciprocals, not inverse functions.
 A square such as $\sin^2x$ means $(\sin x)^2$.
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Theorem (Trigonometric derivative formulas)**
 

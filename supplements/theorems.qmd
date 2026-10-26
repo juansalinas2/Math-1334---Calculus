@@ -15,7 +15,7 @@ Key results, with their hypotheses and formulas from the lectures through Sectio
 
 :::
 
-::: {.reference-index}
+::: {.reference-index .reference-theorem}
 
 ::: {.reference-topics}
 [Limits](#limits)

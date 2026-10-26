@@ -27,19 +27,19 @@ $$
 
 As $h\to0$, the second point approaches the first. We study limits to describe what the secant slope approaches.
 
-::: {.statement}
+::: {.statement .statement-definition}
 
 **Definition.** We say $f$ is *defined near $a$* if it is defined on some open interval containing $a$, except possibly at $a$. For example, $(x^2-1)/(x-1)$ is defined near $1$, although it is undefined at $1$.
 
 :::
 
-::: {.statement}
+::: {.statement .statement-definition}
 
 **Definition (informal).** We write $\displaystyle\lim_{x\to a}f(x)=L$ if the values of $f(x)$ can be made arbitrarily close to $L$ by taking *all* $x$ sufficiently close to $a$, with $x\ne a$. We also write $f(x)\to L$ as $x\to a$. If no such real number $L$ exists, the finite limit does not exist (DNE).
 
 :::
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Theorem.** For real constants $a$ and $c$,
 
@@ -98,13 +98,13 @@ A limit describes nearby values, not necessarily the value at the point.
 
 ## One-sided limits
 
-::: {.statement}
+::: {.statement .statement-definition}
 
 **Definition.** The *left-hand limit* $\displaystyle\lim_{x\to a^-}f(x)=L$ means $f(x)\to L$ as $x$ approaches $a$ through values $x<a$. The *right-hand limit* $\displaystyle\lim_{x\to a^+}f(x)=L$ uses values $x>a$.
 
 :::
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Theorem.** The two-sided limit exists and equals $L$ exactly when both one-sided limits equal $L$:
 

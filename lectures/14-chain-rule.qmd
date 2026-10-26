@@ -51,7 +51,7 @@ In particular, $\cos^4x$ means $(\cos x)^4$.
 
 ## The chain rule
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Theorem (Chain rule).**
 
@@ -221,7 +221,7 @@ $$
 $$
 
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Corollary (Power rule for a function).**
 

@@ -37,7 +37,7 @@ Thus the instantaneous velocity at $x=1$ is $1$.
 
 ## The derivative at a point
 
-::: {.statement}
+::: {.statement .statement-definition}
 
 **Definition**
 

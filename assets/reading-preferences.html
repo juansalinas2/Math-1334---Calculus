@@ -12,15 +12,17 @@ window.MathJax = {
   const key = 'calculus-notes-reading';
   let saved = {};
   try { saved = JSON.parse(localStorage.getItem(key)) || {}; } catch (_) {}
-  let theme = ['system', 'light', 'paper', 'dark'].includes(saved.theme) ? saved.theme : 'system';
+  let theme = ['system', 'light', 'paper', 'dark', 'darker'].includes(saved.theme) ? saved.theme : 'system';
   let size = saved.size === 'large' ? 'large' : 'standard';
+  let sidebarCollapsed = saved.sidebarCollapsed === true;
   function apply() {
     root.dataset.readingTheme = theme === 'system' ? (system.matches ? 'dark' : 'light') : theme;
     root.dataset.readingSize = size;
+    root.dataset.sidebarCollapsed = String(sidebarCollapsed);
   }
   function save() {
     apply();
-    try { localStorage.setItem(key, JSON.stringify({theme, size})); } catch (_) {}
+    try { localStorage.setItem(key, JSON.stringify({theme, size, sidebarCollapsed})); } catch (_) {}
   }
   apply();
   system.addEventListener('change', apply);
@@ -36,8 +38,69 @@ window.MathJax = {
     if (!header) return;
     const controls = document.createElement('div');
     controls.className = 'reading-controls';
-    controls.setAttribute('role', 'group');
-    controls.setAttribute('aria-label', 'Reading preferences');
+    controls.setAttribute('role', 'navigation');
+    controls.setAttribute('aria-label', 'Reading tools');
+    const context = document.createElement('a');
+    context.className = 'reading-context';
+    context.href = (document.querySelector('meta[name="quarto:offset"]')?.content || './') + 'index.html';
+    context.textContent = 'Calculus notes';
+    controls.append(context);
+    const sidebar = document.getElementById('quarto-sidebar');
+    if (sidebar) {
+      const desktop = window.matchMedia('(min-width: 992px)');
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'reading-sidebar-toggle';
+      toggle.setAttribute('aria-controls', 'quarto-sidebar');
+      const icon = document.createElement('i');
+      icon.setAttribute('aria-hidden', 'true');
+      toggle.append(icon);
+      const hint = document.createElement('span');
+      hint.className = 'sidebar-toggle-hint';
+      hint.setAttribute('aria-hidden', 'true');
+      toggle.append(hint);
+      function syncToggle() {
+        const label = sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar';
+        toggle.setAttribute('aria-label', label);
+        hint.textContent = label;
+        icon.className = sidebarCollapsed ? 'bi bi-layout-sidebar' : 'bi bi-layout-sidebar-reverse';
+        toggle.setAttribute('aria-expanded', String(!sidebarCollapsed));
+        sidebar.inert = sidebarCollapsed && desktop.matches;
+      }
+      toggle.addEventListener('click', () => {
+        sidebarCollapsed = !sidebarCollapsed;
+        save();
+        syncToggle();
+        // Let Quarto recompute its sticky navigation and figure positions.
+        window.dispatchEvent(new Event('resize'));
+      });
+      syncToggle();
+      desktop.addEventListener('change', syncToggle);
+      document.body.append(toggle);
+    }
+    const search = document.createElement('button');
+    search.type = 'button';
+    search.className = 'reading-action';
+    search.textContent = 'Search';
+    search.setAttribute('aria-label', 'Search course notes');
+    search.title = 'Search course notes (/)';
+    search.addEventListener('click', () => window.quartoOpenSearch?.());
+    controls.append(search);
+    const settings = document.createElement('details');
+    settings.className = 'reading-menu';
+    const summary = document.createElement('summary');
+    summary.textContent = 'Appearance';
+    settings.append(summary);
+    const options = document.createElement('div');
+    options.className = 'reading-options';
+    settings.append(options);
+    controls.append(settings);
+    document.addEventListener('click', event => {
+      if (!settings.contains(event.target)) settings.open = false;
+    });
+    settings.addEventListener('keydown', event => {
+      if (event.key === 'Escape') { settings.open = false; summary.focus(); }
+    });
     function select(labelText, values, current, onChange) {
       const label = document.createElement('label');
       label.textContent = labelText;
@@ -47,11 +110,31 @@ window.MathJax = {
       input.value = current;
       input.addEventListener('change', () => { onChange(input.value); save(); });
       label.append(input);
-      controls.append(label);
+      options.append(label);
     }
-    select('Theme', [['system', 'System'], ['light', 'Light'], ['paper', 'Paper'], ['dark', 'Dark']], theme, value => { theme = value; });
+    select('Theme', [['system', 'System'], ['light', 'Light'], ['paper', 'Paper'], ['dark', 'Dark'], ['darker', 'Darker']], theme, value => { theme = value; });
     select('Text', [['standard', 'Standard'], ['large', 'Larger']], size, value => { size = value; });
     header.before(controls);
+    const main = document.querySelector('main.content');
+    if (main) {
+      if (!main.id) main.id = 'reading-main';
+      main.setAttribute('tabindex', '-1');
+      const skip = document.createElement('a');
+      skip.className = 'reading-skip';
+      skip.href = '#' + main.id;
+      skip.textContent = 'Skip to notes';
+      skip.addEventListener('click', () => main.focus({preventScroll: true}));
+      document.body.prepend(skip);
+      const top = document.createElement('a');
+      top.className = 'reading-back-top';
+      top.href = '#' + header.id;
+      top.textContent = 'Back to top ↑';
+      top.addEventListener('click', () => {
+        header.setAttribute('tabindex', '-1');
+        header.focus({preventScroll: true});
+      });
+      main.append(top);
+    }
   });
 })();
 </script>

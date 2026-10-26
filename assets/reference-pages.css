@@ -37,9 +37,9 @@
   margin: .8rem 0;
   padding: 1rem 1.2rem .8rem;
   border: 1px solid var(--reading-border);
-  border-left: 3px solid var(--reading-link);
+  border-left: 4px solid var(--definition-border);
   border-radius: 0 6px 6px 0;
-  background: var(--reading-panel);
+  background: var(--definition-bg);
 }
 .reference-index h3 {
   margin: 0 0 .65rem;
@@ -90,3 +90,13 @@
   .reference-index h3, .reference-index h4 { break-after: avoid; }
   .reference-index .math.display { overflow: visible; }
 }
+
+.reference-theorem section.level3 {
+  border-left-color: var(--theorem-border);
+  background: var(--theorem-bg);
+}
+.reference-switcher .current-reference {
+  color: var(--reading-accent);
+  border-bottom-color: var(--reading-accent);
+}
+.reference-index .statement.statement-theorem { background: transparent; }

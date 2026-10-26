@@ -15,7 +15,7 @@ Key definitions and notation from the lectures through Section 3.9.
 
 :::
 
-::: {.reference-index}
+::: {.reference-index .reference-definition}
 
 ::: {.reference-topics}
 [Limits](#limits)

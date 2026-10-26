@@ -24,7 +24,7 @@ let us build a derivative from simpler derivatives.
 
 ### Section 3.3: the rules we will use
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Theorem (Differentiation rules)**
 

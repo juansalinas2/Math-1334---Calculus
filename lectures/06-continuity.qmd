@@ -9,7 +9,7 @@ description: "Continuity at a point, discontinuities, and operations on continuo
 
 ## Continuity at a point
 
-::: {.statement}
+::: {.statement .statement-definition}
 
 **Definition**
 
@@ -63,7 +63,7 @@ $$
 
 Therefore $f$ is not continuous at $x=-\tfrac12$.
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Corollary**
 
@@ -80,7 +80,7 @@ Immediate from the plug-in rule.
 
 ## Types of discontinuities
 
-::: {.statement}
+::: {.statement .statement-definition}
 
 **Definition**
 
@@ -88,7 +88,7 @@ A *removable discontinuity* at $a$ occurs when the finite limit $\displaystyle\l
 
 :::
 
-::: {.statement}
+::: {.statement .statement-definition}
 
 **Definition**
 
@@ -96,7 +96,7 @@ A *jump discontinuity* at $a$ occurs when the two one-sided limits are finite an
 
 :::
 
-::: {.statement}
+::: {.statement .statement-definition}
 
 **Definition**
 
@@ -116,7 +116,7 @@ An *infinite discontinuity* at $a$ occurs when at least one one-sided limit is $
 
 ## One-sided continuity
 
-::: {.statement}
+::: {.statement .statement-definition}
 
 **Definition**
 
@@ -214,7 +214,7 @@ With these choices, $P$ is continuous at $2$ and on each side of $2$.
 
 ## Operations that preserve continuity
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Proposition**
 
@@ -250,7 +250,7 @@ The other statements follow from the corresponding limit laws, with limits taken
 
 ## Continuity and composition
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Proposition**
 
@@ -282,7 +282,7 @@ $$
 
 ## Continuity of the trigonometric functions
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Theorem**
 
@@ -290,7 +290,7 @@ The functions $\sin x$, $\cos x$, and $\tan x$ are continuous on their domains.
 
 :::
 
-::: {.statement}
+::: {.statement .statement-theorem}
 
 **Lemma**
 
