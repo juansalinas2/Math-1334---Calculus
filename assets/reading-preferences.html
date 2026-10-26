@@ -9,7 +9,7 @@ window.MathJax = {
 (() => {
   const root = document.documentElement;
   const system = window.matchMedia('(prefers-color-scheme: dark)');
-  const desktop = window.matchMedia('(min-width: 768px)');
+  const mobile = window.matchMedia('(max-width: 767.98px), (max-width: 1199.98px) and (hover: none) and (pointer: coarse)');
   const key = 'calculus-notes-reading';
   let saved = {};
   try { saved = JSON.parse(localStorage.getItem(key)) || {}; } catch (_) {}
@@ -23,7 +23,7 @@ window.MathJax = {
   root.classList.add('reading-layout');
   function apply() {
     root.dataset.readingTheme = theme === 'system' ? (system.matches ? 'dark' : 'light') : theme;
-    root.dataset.readingSize = desktop.matches ? size : mobileSize;
+    root.dataset.readingSize = !mobile.matches ? size : mobileSize;
     root.dataset.sidebarCollapsed = String(sidebarCollapsed);
     root.dataset.mobileMenu = String(mobileOpen);
   }
@@ -57,29 +57,31 @@ window.MathJax = {
     const icon = document.createElement('i'); icon.className = 'bi bi-layout-sidebar'; icon.setAttribute('aria-hidden', 'true');
     toggle.append(icon);
     function syncToggle() {
-      const expanded = desktop.matches ? !sidebarCollapsed : mobileOpen;
+      const expanded = !mobile.matches ? !sidebarCollapsed : mobileOpen;
       toggle.setAttribute('aria-label', expanded ? 'Collapse contents' : 'Show contents');
       toggle.setAttribute('aria-expanded', String(expanded));
       sidebar.inert = !expanded;
     }
     toggle.addEventListener('click', () => {
-      if (desktop.matches) sidebarCollapsed = !sidebarCollapsed;
+      if (!mobile.matches) sidebarCollapsed = !sidebarCollapsed;
       else mobileOpen = !mobileOpen;
       save(); syncToggle(); window.dispatchEvent(new Event('resize'));
-      if (!desktop.matches && mobileOpen) requestAnimationFrame(() => { sidebar.scrollIntoView({block:'start', behavior:'instant'}); sidebar.scrollTop = 0; });
+      if (mobile.matches && mobileOpen) requestAnimationFrame(() => { sidebar.scrollIntoView({block:'start', behavior:'instant'}); sidebar.scrollTop = 0; });
     });
-    desktop.addEventListener('change', () => { mobileOpen = false; apply(); syncToggle(); });
+    mobile.addEventListener('change', () => { mobileOpen = false; apply(); syncToggle(); });
     syncToggle();
     const context = document.createElement('a'); context.className = 'reading-context';
     context.href = (document.querySelector('meta[name="quarto:offset"]')?.content || './') + 'index.html';
     context.textContent = 'Calculus notes'; brand.append(toggle, context); controls.append(brand);
-    const search = document.createElement('button'); search.type = 'button'; search.className = 'reading-action reading-search';
+    const search = document.createElement('button'); search.type = 'button'; search.className = 'reading-action reading-search reading-search-desktop';
     search.setAttribute('aria-label', 'Search course notes');
     const searchIcon = document.createElement('i'); searchIcon.className = 'bi bi-search'; searchIcon.setAttribute('aria-hidden', 'true');
     const searchLabel = document.createElement('span'); searchLabel.textContent = 'Search notes…';
     const shortcut = document.createElement('kbd'); shortcut.textContent = '/'; shortcut.setAttribute('aria-hidden', 'true');
     search.append(searchIcon, searchLabel, shortcut);
     search.addEventListener('click', () => window.quartoOpenSearch?.()); controls.append(search);
+    const mobileSearch = search.cloneNode(true); mobileSearch.className = 'reading-action reading-search reading-search-mobile';
+    mobileSearch.addEventListener('click', () => window.quartoOpenSearch?.()); sidebar.prepend(mobileSearch);
     const settings = document.createElement('button'); settings.type = 'button'; settings.className = 'reading-action reading-appearance';
     settings.textContent = 'Appearance'; settings.setAttribute('aria-controls', 'reading-appearance-options');
     const options = document.createElement('div'); options.className = 'reading-options'; options.id = 'reading-appearance-options';
@@ -104,17 +106,15 @@ window.MathJax = {
       return input;
     }
     select('Theme', [['system','System'],['light','Light'],['paper','Paper'],['dark','Dark'],['darker','Darker']], theme, value => { theme = value; });
-    const sizeInput = select('Text size', [['small','16 px'],['standard','18 px'],['large','20 px'],['xlarge','22 px'],['xxlarge','24 px']], desktop.matches ? size : mobileSize, value => { if (desktop.matches) size = value; else mobileSize = value; });
+    const sizeInput = select('Text size', [['small','16 px'],['standard','18 px'],['large','20 px'],['xlarge','22 px'],['xxlarge','24 px']], !mobile.matches ? size : mobileSize, value => { if (!mobile.matches) size = value; else mobileSize = value; });
     function syncScreenControls() {
-      sizeInput.value = desktop.matches ? size : mobileSize;
+      sizeInput.value = !mobile.matches ? size : mobileSize;
       for (const option of sizeInput.options) {
         const px = {small:16, standard:18, large:20, xlarge:22, xxlarge:24}[option.value];
-        option.textContent = px + ' px' + (option.value === (desktop.matches ? 'xlarge' : 'standard') ? ' · default' : '');
+        option.textContent = px + ' px' + (option.value === (!mobile.matches ? 'xlarge' : 'standard') ? ' · default' : '');
       }
-      if (desktop.matches) controls.insertBefore(search, settings);
-      else sidebar.prepend(search);
     }
-    syncScreenControls(); desktop.addEventListener('change', syncScreenControls);
+    syncScreenControls(); mobile.addEventListener('change', syncScreenControls);
     document.getElementById('quarto-content').before(controls);
     if ('ResizeObserver' in window) new ResizeObserver(() => root.style.setProperty('--reading-header-height', controls.offsetHeight + 'px')).observe(controls);
     if (!main.id) main.id = 'reading-main'; main.setAttribute('tabindex', '-1');
