@@ -26,10 +26,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   if (headings.length < 2) return;
   const aside = document.createElement('aside'); aside.className = 'reading-outline'; aside.setAttribute('aria-label','On this page');
-  const title = document.createElement('p'); title.textContent = 'ON THIS PAGE'; title.className = 'reading-outline-title'; aside.append(title);
+  const desktopDetails = document.createElement('details');
+  let outlineOpen = true;
+  try { outlineOpen = localStorage.getItem('calculus-notes-outline') !== 'closed'; } catch (_) {}
+  desktopDetails.open = outlineOpen;
+  document.documentElement.dataset.outlineCollapsed = String(!outlineOpen);
+  const title = document.createElement('summary'); title.textContent = 'On this page'; title.className = 'reading-outline-title'; desktopDetails.append(title); aside.append(desktopDetails);
+  desktopDetails.addEventListener('toggle', () => {
+    document.documentElement.dataset.outlineCollapsed = String(!desktopDetails.open);
+    try { localStorage.setItem('calculus-notes-outline', desktopDetails.open ? 'open' : 'closed'); } catch (_) {}
+  });
+  desktopDetails.addEventListener('keydown', event => { if (event.key === 'Escape') { desktopDetails.open = false; title.focus(); } });
   const details = document.createElement('details'); details.className = 'reading-mobile-outline';
   const summary = document.createElement('summary'); summary.textContent = 'On this page'; details.append(summary);
-  for (const container of [aside,details]) {
+  for (const container of [desktopDetails,details]) {
     const nav = document.createElement('nav'); nav.setAttribute('aria-label', 'Page sections');
     for (const [index,heading] of headings.entries()) {
       const link = document.createElement('a'); link.href = '#' + heading.parentElement.id; link.textContent = headingLabels[index];

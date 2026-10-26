@@ -14,7 +14,9 @@ window.MathJax = {
   let saved = {};
   try { saved = JSON.parse(localStorage.getItem(key)) || {}; } catch (_) {}
   let theme = ['system', 'light', 'paper', 'dark', 'darker'].includes(saved.theme) ? saved.theme : 'system';
-  let size = ['small', 'standard', 'large', 'xlarge', 'xxlarge'].includes(saved.size) ? saved.size : 'standard';
+  let size = ['small', 'standard', 'large', 'xlarge', 'xxlarge'].includes(saved.size) ? saved.size : 'xlarge';
+  // Upgrade the old default while retaining other saved size choices.
+  if (saved.sizeVersion !== 2 && size === 'standard') size = 'xlarge';
   let sidebarCollapsed = saved.sidebarCollapsed === true;
   let mobileOpen = false;
   root.classList.add('reading-layout');
@@ -26,7 +28,7 @@ window.MathJax = {
   }
   function save() {
     apply();
-    try { localStorage.setItem(key, JSON.stringify({theme, size, sidebarCollapsed})); } catch (_) {}
+    try { localStorage.setItem(key, JSON.stringify({theme, size, sizeVersion: 2, sidebarCollapsed})); } catch (_) {}
   }
   apply();
   system.addEventListener('change', apply);
@@ -95,7 +97,7 @@ window.MathJax = {
       label.append(input); options.append(label);
     }
     select('Theme', [['system','System'],['light','Light'],['paper','Paper'],['dark','Dark'],['darker','Darker']], theme, value => { theme = value; });
-    select('Text size', [['small','Small · 16px'],['standard','Standard · 18px'],['large','Large · 20px'],['xlarge','Extra large · 22px'],['xxlarge','Largest · 24px']], size, value => { size = value; });
+    select('Text size', [['small','Small · 16px'],['standard','Compact · 18px'],['large','Medium · 20px'],['xlarge','Standard · 22px'],['xxlarge','Large · 24px']], size, value => { size = value; });
     document.getElementById('quarto-content').before(controls);
     if ('ResizeObserver' in window) new ResizeObserver(() => root.style.setProperty('--reading-header-height', controls.offsetHeight + 'px')).observe(controls);
     if (!main.id) main.id = 'reading-main'; main.setAttribute('tabindex', '-1');
