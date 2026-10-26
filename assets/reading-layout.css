@@ -59,6 +59,7 @@ html.reading-layout .source-note p {font:inherit;display:flex;flex-wrap:wrap;gap
 html.reading-layout .source-note a {color:var(--reading-link);text-decoration:none;}
 html.reading-layout .statement {margin:1.1em 0;padding:.9em 1em;color:var(--reading-text);}
 html.reading-layout .statement-lemma {padding:.3em .9em;}
+html.reading-layout .chain-table {max-width:100%;overflow-x:auto;}
 html.reading-layout main.content .math.display {padding:.15em 0;max-width:100%;overflow-x:auto;overflow-y:hidden;}
 html.reading-layout main.content .math.display mjx-container {margin:.5em 0;}
 html.reading-layout .reading-outline {grid-column:3!important;grid-row:1!important;min-width:0;position:sticky;top:calc(var(--reading-header-height) + 24px);max-height:calc(100dvh - var(--reading-header-height) - 48px);overflow-y:auto;margin:30px 0 0;padding:0;font:12px/1.5 system-ui,sans-serif;}
