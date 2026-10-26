@@ -87,6 +87,11 @@ a, a:hover { color: var(--reading-link); }
   background-color: var(--reading-sidebar) !important;
   color: var(--reading-text);
 }
+#quarto-header .quarto-secondary-nav :is(button, a, .breadcrumb-item, .bi) {
+  color: var(--reading-text) !important;
+}
+#quarto-header .quarto-secondary-nav { border-color: var(--reading-border) !important; }
+#quarto-sidebar .sidebar-link, #quarto-sidebar .menu-text { white-space: normal; overflow-wrap: break-word; }
 .sidebar nav[role="doc-toc"] ul > li > a, .sidebar-title > a,
 .sidebar-item-container, .sidebar-item-container a,
 .quarto-secondary-nav-title, .quarto-btn-toggle, .breadcrumb-item a,
