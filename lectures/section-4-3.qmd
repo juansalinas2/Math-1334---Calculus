@@ -12,13 +12,24 @@ Friday, November 6, 2026 · Transcribed by Cleo McBride · [Lecture PDF (textboo
 ## The first derivative test
 
 ::: {.statement .statement-theorem #first-derivative-test}
-**Theorem (first derivative test).** Suppose $f$ is continuous at $c$ and differentiable on both sides of $c$ in some open interval about $c$. Read the sign of $f'$ from left to right.
+**Theorem (first derivative test).** Let $c$ be an interior critical number of $f$, with $f$ continuous at $c$. Suppose that on each side of $c$, sufficiently close to $c$, $f'$ exists and is either strictly positive throughout or strictly negative throughout. Then
+$$
+f\text{ has a local extremum at }c
+\quad\Longleftrightarrow\quad
+f'\text{ changes sign at }c.
+$$
+In particular, reading from left to right:
 
 - Positive to negative: $f$ has a strict local maximum at $c$.
 - Negative to positive: $f$ has a strict local minimum at $c$.
 - Positive on both sides, or negative on both sides: $f$ has no local extremum at $c$.
 :::
 
+**Note.** We say that $f'$ *changes sign at $c$* if, for some $\delta>0$, $f'$ is positive throughout $(c-\delta,c)$ and negative throughout $(c,c+\delta)$, or vice versa.
+
+![](assets/first-derivative-test-maximum.svg){fig-alt="At c = 0 the derivative −2x changes from positive to negative. Beside its sign graph, the parabola y = 1 − x² rises to (0,1) and then falls." width=515}
+
+**Proof (postponed).** We will use the following consequence of the Mean Value Theorem. If $f'>0$ on an interval, then $f$ is increasing there. Similarly, if $f'<0$, then $f$ is decreasing.
 
 **Example 1.** Classify the interior critical numbers of $f(x)=4x^3-12x+12$ on $[-2,3]$.
 
@@ -101,7 +112,20 @@ The derivative factors as $f'(x)=12(x-1)(x+1)$, so the critical numbers are $-1$
 
 </details>
 
-**Example 5.** What does the second derivative test tell us about $h(x)=x^2\tan x$ at $x=0$?
+**Example 5.** Use the second derivative test to classify $x=0$ for $f(x)=x\tan x$.
+
+<details class="proof practice-solution" open>
+<summary>Solution</summary>
+
+The product rule gives
+$$
+f'(x)=\tan x+x\sec^2 x,\qquad f''(x)=2\sec^2 x(1+x\tan x).
+$$
+Since $f'(0)=0$ and $f''(0)=2>0$, $f$ has a strict local minimum at $(0,0)$.
+
+</details>
+
+**Practice.** Now let $h(x)=x^2\tan x$. Compute $h'(0)$ and $h''(0)$. What does the second derivative test tell you? Is there a local extremum at $0$? Justify your answer.
 
 <details class="proof practice-solution">
 <summary>Solution</summary>

@@ -497,7 +497,13 @@ Let $f$ be differentiable on an open interval $I$. If $f'>0$ throughout $I$, the
 
 ### First derivative test
 
-Suppose $f$ is continuous at $c$ and differentiable on both sides of $c$ in an open interval about $c$. Read the sign of $f'$ on the two adjacent intervals from left to right.
+Let $c$ be an interior critical number of $f$, with $f$ continuous at $c$. Suppose that on each side of $c$, sufficiently close to $c$, $f'$ exists and is either strictly positive throughout or strictly negative throughout. Then
+$$
+f\text{ has a local extremum at }c
+\quad\Longleftrightarrow\quad
+f'\text{ changes sign at }c.
+$$
+In particular, reading from left to right:
 
 - $+$ to $-$ gives a strict local maximum at $c$.
 - $-$ to $+$ gives a strict local minimum at $c$.
