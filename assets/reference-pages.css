@@ -100,3 +100,8 @@
   border-bottom-color: var(--reading-accent);
 }
 .reference-index .statement.statement-theorem { background: transparent; }
+
+.reference-theorem section.lookup-definition {
+  border-left-color: var(--definition-border);
+  background: var(--definition-bg);
+}

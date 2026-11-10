@@ -1,0 +1,39 @@
+### Defined near a point {.lookup-definition}
+
+We say $f$ is *defined near $a$* if it is defined on some open interval containing $a$, except possibly at $a$.
+
+[Lecture explanation](../lectures/02-limits.qmd)
+
+### Limit (informal) {.lookup-definition}
+
+We write $\displaystyle\lim_{x\to a}f(x)=L$ if the values of $f(x)$ can be made arbitrarily close to $L$ by taking *all* $x$ sufficiently close to $a$, with $x\ne a$. We also write $f(x)\to L$ as $x\to a$. If no such real number $L$ exists, the finite limit does not exist (DNE).
+
+[Lecture explanation](../lectures/02-limits.qmd) · [Examples](../lectures/02-limits.qmd#limits-and-function-values)
+
+### One-sided limits {.lookup-definition}
+
+The *left-hand limit* $\displaystyle\lim_{x\to a^-}f(x)=L$ means $f(x)\to L$ as $x$ approaches $a$ through values $x<a$. The *right-hand limit* $\displaystyle\lim_{x\to a^+}f(x)=L$ uses values $x>a$.
+
+[Lecture explanation](../lectures/02-limits.qmd#one-sided-limits)
+
+### Infinite limits {.lookup-definition}
+
+We write $\displaystyle\lim_{x\to a}f(x)=\infty$ if outputs exceed every positive bound for all sufficiently nearby $x\ne a$.
+
+We write $\displaystyle\lim_{x\to a}f(x)=-\infty$ if outputs fall below every negative bound for all sufficiently nearby $x\ne a$.
+
+Similarly for $x\to a^-$ and $x\to a^+$. Infinity describes unbounded behavior; it is not a real-number limit.
+
+[Lecture explanation](../lectures/03-infinite-limits.qmd#infinite-limits-and-vertical-asymptotes)
+
+### Vertical asymptote {.lookup-definition}
+
+The line $x=a$ is a *vertical asymptote* if at least one of the one-sided limits at $a$ is $\infty$ or $-\infty$.
+
+[Lecture explanation](../lectures/03-infinite-limits.qmd#infinite-limits-and-vertical-asymptotes)
+
+### Indeterminate form {.lookup-definition}
+
+An expression such as $0/0$ obtained by substitution does not determine the limit. Further analysis is needed.
+
+[Lecture explanation](../lectures/04-limit-laws.qmd#indeterminate-forms-and-simplifying)

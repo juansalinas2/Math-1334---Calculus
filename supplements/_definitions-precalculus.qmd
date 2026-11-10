@@ -1,0 +1,29 @@
+### Function, domain, and range {.lookup-definition}
+
+A *function* assigns exactly one output to each input in its domain. The *domain* is the set of allowed inputs; the *range* is the set of outputs the function actually produces. The notation $f(x)$ means the output corresponding to input $x$. A point on its graph has coordinates $(x,f(x))$.
+
+[Lecture explanation](../lectures/00-functions.qmd#functions-domain-and-range)
+
+### Piecewise-defined function {.lookup-definition}
+
+A *piecewise-defined function* uses different formulas on different parts of its domain. The condition attached to each formula specifies where it applies.
+
+[Explanation and examples](../lectures/00-functions.qmd#piecewise-defined-functions)
+
+### Composition {.lookup-definition}
+
+The *composition* $(g\circ h)(x)=g(h(x))$ applies $h$ first and then applies $g$ to the result. Read from the inside out. The order generally matters.
+
+[Lecture explanation](../lectures/00-functions.qmd#composition-of-functions)
+
+### Amplitude and period of a sine graph {.lookup-definition}
+
+The *amplitude* is the vertical distance from the midline to a peak. For $y=A\sin x$ with $A\ne0$, the amplitude is $|A|$ and the smallest positive period is $2\pi$.
+
+[Lecture explanation](../lectures/00-functions.qmd#sine-graphs-amplitude-and-period)
+
+### One-to-one function {.lookup-definition}
+
+A function is *one-to-one* if different inputs always have different outputs.
+
+[Lecture explanation](../lectures/00-functions.qmd#one-to-one-functions-and-domain-restrictions)

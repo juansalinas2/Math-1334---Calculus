@@ -1,0 +1,55 @@
+### Secant line, average rate of change, and difference quotient {.lookup-definition}
+
+A *secant line* passes through two distinct points on a graph. Its slope is the *average rate of change*. For inputs $a$ and $a+h$, the *difference quotient* is
+
+$$
+\frac{f(a+h)-f(a)}{h},\qquad h\ne0.
+$$
+
+Slope has units of output units per input unit.
+
+[Lecture explanation](../lectures/02-limits.qmd)
+
+### Derivative at a point and differentiability {.lookup-definition}
+
+The *derivative of $f$ at $a$*, read “$f$ prime at $a$,” is
+
+$$
+f'(a)=\lim_{x\to a}\frac{f(x)-f(a)}{x-a}
+=\lim_{h\to0}\frac{f(a+h)-f(a)}{h},
+$$
+
+provided the limit exists as a finite number. The two forms agree by setting $h=x-a$.
+We say $f$ is *differentiable at $a$* when $f'(a)$ exists.
+
+[Lecture explanation](../lectures/09-derivative-at-a-point.qmd#the-derivative-at-a-point) · [Examples](../lectures/09-derivative-at-a-point.qmd#computing-derivatives-from-the-definition)
+
+### Tangent line and instantaneous rate of change {.lookup-definition}
+
+When $f'(a)$ exists, it is the slope of the tangent line to the graph of $f$ at $(a,f(a))$, and the instantaneous rate of change of $f$ there. The tangent line has equation
+
+$$
+y-f(a)=f'(a)(x-a).
+$$
+
+[Lecture explanation](../lectures/11-differentiation-rules.qmd#tangent-lines-and-prescribed-slopes)
+
+### Derivative function {.lookup-definition}
+
+For a function $f$, the *derivative function* $f'$ is defined by
+
+$$
+f'(x)=\lim_{h\to0}\frac{f(x+h)-f(x)}{h}.
+$$
+
+Its domain consists of the points $x$ where this limit exists as a finite number.
+
+[Lecture explanation](../lectures/10-derivative-function.qmd#section-3.2-the-derivative-function)
+
+### Higher-order derivatives {.lookup-definition}
+
+The *second derivative* $f''$ is the derivative of $f'$. The *third derivative* $f'''$ is the derivative of $f''$. Repeating this process gives the $n$th derivative, written $f^{(n)}$.
+
+For $y=f(x)$, the notation $y'$, $f'(x)$, and $\dfrac{dy}{dx}$ denotes the first derivative; $y''$, $f''(x)$, and $\dfrac{d^2y}{dx^2}$ denotes the second derivative.
+
+[Lecture explanation](../lectures/10-derivative-function.qmd#higher-order-derivatives) · [Notation](../lectures/10-derivative-function.qmd#notation)

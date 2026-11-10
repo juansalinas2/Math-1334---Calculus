@@ -1,0 +1,41 @@
+### Continuity at a point {.lookup-definition}
+
+A function $f$ is *continuous at $a$* if
+
+$$
+\lim_{x\to a}f(x)=f(a).
+$$
+
+This requires $f(a)$ to be defined, the limit to exist as a finite number, and the two to agree.
+
+[Lecture explanation](../lectures/06-continuity.qmd#continuity-at-a-point)
+
+### One-sided continuity {.lookup-definition}
+
+A function is *right-continuous at $a$* if $\displaystyle\lim_{x\to a^+}f(x)=f(a)$, and *left-continuous at $a$* if $\displaystyle\lim_{x\to a^-}f(x)=f(a)$.
+
+[Lecture explanation](../lectures/06-continuity.qmd#one-sided-continuity)
+
+### Continuity on an interval {.lookup-definition}
+
+A function is continuous on an interval when it is continuous at every interior point (a point that is not an endpoint), with right-continuity at an included left endpoint and left-continuity at an included right endpoint.
+
+[Lecture explanation](../lectures/06-continuity.qmd#one-sided-continuity)
+
+### Removable discontinuity {.lookup-definition}
+
+A *removable discontinuity* at $a$ occurs when the finite limit $\displaystyle\lim_{x\to a}f(x)$ exists, but $f(a)$ is undefined or differs from that limit.
+
+[Lecture explanation](../lectures/06-continuity.qmd#types-of-discontinuities)
+
+### Jump discontinuity {.lookup-definition}
+
+A *jump discontinuity* at $a$ occurs when the two one-sided limits are finite and unequal.
+
+[Lecture explanation](../lectures/06-continuity.qmd#types-of-discontinuities)
+
+### Infinite discontinuity {.lookup-definition}
+
+An *infinite discontinuity* at $a$ occurs when at least one one-sided limit is $+\infty$ or $-\infty$.
+
+[Lecture explanation](../lectures/06-continuity.qmd#types-of-discontinuities)

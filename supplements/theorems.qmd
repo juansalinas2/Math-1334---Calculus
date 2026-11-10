@@ -5,7 +5,7 @@ css: ../assets/reference-pages.css
 ---
 
 ::: {.source-note}
-Key results, with their hypotheses and formulas from the lectures through course Section 4.4.
+Definitions, theorems, and rules from the lecture notes through course §4.5.
 :::
 
 ::: {.reference-switcher}
@@ -32,6 +32,8 @@ Key results, with their hypotheses and formulas from the lectures through course
 :::
 
 ## Limits
+
+{{< include _definitions-limits.qmd >}}
 
 ### One-sided criterion for a limit
 
@@ -158,6 +160,8 @@ $$
 
 ## Continuity
 
+{{< include _definitions-continuity.qmd >}}
+
 ### Continuity of polynomials and rational functions
 
 Polynomials and rational functions are continuous on their domains.
@@ -200,6 +204,15 @@ The functions $\sin x$, $\cos x$, and $\tan x$ are continuous on their domains.
 
 [Proof](../lectures/06-continuity.qmd#continuity-of-the-trigonometric-functions)
 
+### Sine and cosine limits at zero
+
+With angles measured in radians,
+$$
+\lim_{h\to0}\sin h=0,\qquad \lim_{h\to0}\cos h=1.
+$$
+
+[Lemma and continuity proof](../lectures/06-continuity.qmd#continuity-of-the-trigonometric-functions)
+
 ### Intermediate Value Theorem
 
 Suppose $f$ is continuous on $[a,b]$. If $N$ lies between $f(a)$ and $f(b)$, then there is a $c\in[a,b]$ such that
@@ -212,11 +225,22 @@ $$
 
 ## Differentiation
 
+{{< include _definitions-derivatives.qmd >}}
+
 ### Differentiability implies continuity
 
 Let $a$ be in the domain of $f$. If $f'(a)$ exists, then $f$ is continuous at $a$.
 
 [Proof](../lectures/10-derivative-function.qmd#differentiability-implies-continuity) · [Why the converse is false](../lectures/10-derivative-function.qmd#the-converse-is-false)
+
+### Tangent-line equation
+
+If $f'(a)$ exists, the tangent line at $(a,f(a))$ is
+$$
+y-f(a)=f'(a)(x-a).
+$$
+
+[Corollary](../lectures/10-derivative-function.qmd#differentiability-implies-continuity) · [Examples](../lectures/11-differentiation-rules.qmd#tangent-lines-and-prescribed-slopes)
 
 ### Differentiation rules
 
@@ -314,6 +338,14 @@ $$
 
 ## Special functions
 
+{{< include _definitions-motion.qmd >}}
+
+### Speeding up and slowing down
+
+For one-dimensional motion with velocity $v$ and acceleration $a$, speed is increasing when $v$ and $a$ have the same nonzero sign, and decreasing when they have opposite signs.
+
+[Motion and sign graphs](../lectures/12-rates-of-change.qmd#from-derivatives-to-motion)
+
 ### Trigonometric derivatives
 
 For angles measured in radians, on the domain of each function,
@@ -393,6 +425,16 @@ $$
 
 [Proofs and examples](../lectures/17-exponential-logarithmic.qmd#other-bases)
 
+### Logarithmic differentiation of a variable power
+
+If $f$ and $g$ are differentiable and $f(x)>0$, then
+$$
+\frac{d}{dx} f(x)^{g(x)}
+=f(x)^{g(x)}\left(g'(x)\ln f(x)+g(x)\frac{f'(x)}{f(x)}\right).
+$$
+
+[Derivation](../lectures/17-exponential-logarithmic.qmd#the-general-calculation)
+
 ### Power rule for real exponents
 
 For any fixed real number $n$ and $x>0$, 
@@ -407,6 +449,28 @@ The restriction $x>0$ makes this proof work for every real exponent. The rule al
 
 ## Applications of derivatives
 
+{{< include _definitions-applications.qmd >}}
+
+### Relating rates with the chain rule
+
+If $y=f(x(t))$, with $x$ differentiable at $t_0$ and $f$ differentiable at $x(t_0)$, then
+$$
+\left.\frac{dy}{dt}\right|_{t=t_0}
+=f'(x(t_0))\left.\frac{dx}{dt}\right|_{t=t_0}.
+$$
+For an implicit relation, differentiate both sides with respect to $t$ before substituting the measurements at $t_0$.
+
+[Related rates method](../lectures/related-rates.qmd#the-three-steps)
+
+### Similar triangles
+
+A segment parallel to one side of a triangle cuts off a similar triangle. If $a,b,c$ are the smaller side lengths and $A,B,C$ the corresponding full side lengths, then
+$$
+\frac aA=\frac bB=\frac cC.
+$$
+
+[Theorem, diagram, and proof](../lectures/related-rates.qmd#similar-triangles-theorem)
+
 ### Extreme Value Theorem
 
 If $f$ is continuous on $[a,b]$, then $f$ attains both a global minimum and a global maximum on $[a,b]$.
@@ -419,6 +483,44 @@ If $f$ has a local maximum or minimum at $c$, then $c$ is at the boundary of the
 
 [Proof and counterexample to the converse](../lectures/18-maxima-and-minima.qmd#fermat)
 
+### Closed-interval method
+
+For $f$ continuous on $[a,b]$, compare $f(a)$, $f(b)$, and the values $f(c)$ at every interior critical number. The smallest value is the global minimum and the largest is the global maximum.
+
+[Method and examples](../lectures/18-maxima-and-minima.qmd#closed-interval-method)
+
+### Increasing and decreasing test
+
+Let $f$ be differentiable on an open interval $I$. If $f'>0$ throughout $I$, then $f$ is increasing there. If $f'<0$ throughout $I$, then $f$ is decreasing there.
+
+[Derivative signs and worked examples](../lectures/curve-sketching.qmd#worked-sketches)
+
+### First derivative test
+
+Suppose $f$ is continuous at $c$ and differentiable on both sides of $c$ in an open interval about $c$. Read the sign of $f'$ on the two adjacent intervals from left to right.
+
+- $+$ to $-$ gives a strict local maximum at $c$.
+- $-$ to $+$ gives a strict local minimum at $c$.
+- $+$ on both sides or $-$ on both sides gives no local extremum at $c$.
+
+[Theorem and sign graph](../lectures/section-4-3.qmd#first-derivative-test)
+
+### Concavity test
+
+If $f''>0$ throughout an interval, the graph of $f$ is concave up there. If $f''<0$ throughout an interval, the graph is concave down there.
+
+[Theorem and inflection-point example](../lectures/section-4-3.qmd#concavity-test)
+
+### Second derivative test
+
+Suppose $f'(c)=0$ and $f''$ is continuous on an open interval containing $c$.
+
+- $f''(c)>0$ gives a strict local minimum at $c$.
+- $f''(c)<0$ gives a strict local maximum at $c$.
+- $f''(c)=0$ leaves the test inconclusive.
+
+[Theorem, proof, and examples](../lectures/section-4-3.qmd#second-derivative-test)
+
 ### End behaviour of a rational function
 
 Let $p$ and $q$ be polynomials with leading terms $a_mx^m$ and $b_nx^n$, where $a_m b_n\ne0$. At either end,
@@ -430,6 +532,12 @@ $$
 
 [Proof and examples](../lectures/19-end-behaviour-and-curve-sketching.qmd#end-behaviour-of-a-rational-function)
 
+### Polynomial division
+
+For real polynomials $P$ and $Q$ with $Q\ne0$, there are unique polynomials $S$ and $R$ such that $P=SQ+R$ and either $R=0$ or $\deg R<\deg Q$.
+
+[Long division and the Euclidean algorithm](../lectures/19-end-behaviour-and-curve-sketching.qmd#slant-asymptotes)
+
 ### Slant asymptote by division
 
 If $P$ and $Q$ are polynomials with $\deg P=\deg Q+1$, the line given by the quotient in polynomial division is a slant asymptote of $P/Q$ at both ends.
@@ -437,6 +545,8 @@ If $P$ and $Q$ are polynomials with $\deg P=\deg Q+1$, the line given by the quo
 [Theorem and proof](../lectures/19-end-behaviour-and-curve-sketching.qmd#slant-by-division)
 
 ## Precalculus
+
+{{< include _definitions-precalculus.qmd >}}
 
 ### Inverse functions and the horizontal line test
 
@@ -463,6 +573,8 @@ $$
 [Lecture explanation](../lectures/17-exponential-logarithmic.qmd#algebraic-laws)
 
 ## Methods in the lectures
+
+[Related rates in three steps](../lectures/related-rates.qmd#the-three-steps) · [Curve sketching in eight steps](../lectures/curve-sketching.qmd#curve-sketching-steps)
 
 [Implicit differentiation](../lectures/16-implicit-differentiation.qmd) and [logarithmic differentiation](../lectures/17-exponential-logarithmic.qmd#logarithmic-differentiation) are techniques for applying these rules. Follow the lecture links for the steps and worked examples.
 

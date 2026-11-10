@@ -1,0 +1,68 @@
+### Related rates {.lookup-definition}
+
+When $x$ and $y$ depend on time $t$, their *related rates* are $dx/dt$ and $dy/dt$, connected by differentiating an equation relating $x$ and $y$. Evaluate both rates at the same instant $t_0$.
+
+[Three steps and examples](../lectures/related-rates.qmd#the-three-steps)
+
+### Global and local extrema {.lookup-definition}
+
+Let $c$ belong to the domain $D$ of $f$. The value $f(c)$ is a *global maximum* if $f(c)\ge f(x)$ for every $x\in D$. It is a *local maximum* if this inequality holds when $x$ is near $c$, that is, for all $x\in D\cap(c-\delta,c+\delta)$ for some $\delta>0$. Reverse the inequalities for a *global minimum* or a *local minimum*.
+
+[Definitions and graphs](../lectures/18-maxima-and-minima.qmd#global-and-local-extrema)
+
+### Critical number and critical value {.lookup-definition}
+
+A number $c$ in the domain of $f$ is a *critical number* if $f'(c)=0$ or $f'(c)$ does not exist. Its output $f(c)$ is a *critical value*.
+
+[Definition and examples](../lectures/18-maxima-and-minima.qmd#finding-global-extrema)
+
+### Increasing and decreasing {.lookup-definition}
+
+On an interval $I$, $f$ is *increasing* if $x_1<x_2$ in $I$ implies $f(x_1)<f(x_2)$. It is *decreasing* if $x_1<x_2$ implies $f(x_1)>f(x_2)$.
+
+[Intervals of increase and decrease](../lectures/curve-sketching.qmd#worked-sketches)
+
+### Concavity {.lookup-definition}
+
+On an interval where $f$ is differentiable, its graph is *concave up* if $f'$ is increasing and *concave down* if $f'$ is decreasing.
+
+[Definition and tangent-line sketches](../lectures/section-4-3.qmd#concavity)
+
+### Inflection point {.lookup-definition}
+
+If $f$ is continuous at $c$ and its graph changes concavity there, $(c,f(c))$ is an *inflection point*. A zero of $f''$ alone does not establish a change of concavity.
+
+[Definition and cubic example](../lectures/section-4-3.qmd#inflection-point)
+
+### Limit at infinity and horizontal asymptote {.lookup-definition}
+
+We write $\lim_{x\to\infty} f(x)=L$ if $f(x)\to L$ as $x\to\infty$, and similarly at $-\infty$. A line $y=L$ is a *horizontal asymptote* when $f(x)$ tends to $L$ at either end.
+
+<details class="proof">
+<summary>Precise definition of a limit at infinity</summary>
+
+Suppose the domain is unbounded above. For every $\varepsilon>0$ there must be a real $M$ such that $|f(x)-L|<\varepsilon$ for every domain point $x>M$. At $-\infty$, use a domain unbounded below and $x<M$.
+
+</details>
+
+[Definitions and examples](../lectures/19-end-behaviour-and-curve-sketching.qmd#limits-at-infinity-and-horizontal-asymptotes)
+
+### Slant asymptote {.lookup-definition}
+
+A line $y=mx+b$, with $m\ne0$, is a *slant asymptote* if $f(x)-(mx+b)\to0$ as $x\to\infty$ or as $x\to-\infty$.
+
+[Definition and examples](../lectures/19-end-behaviour-and-curve-sketching.qmd#slant-asymptotes)
+
+### Axis intercepts {.lookup-definition}
+
+An $x$-intercept is a point $(a,0)$ with $f(a)=0$. The $y$-intercept is $(0,f(0))$ if $0$ is in the domain.
+
+[Curve sketching steps](../lectures/curve-sketching.qmd#curve-sketching-steps)
+
+### Even, odd, and periodic functions {.lookup-definition}
+
+On a domain symmetric about zero, $f$ is *even* if $f(-x)=f(x)$ for every $x$, and *odd* if $f(-x)=-f(x)$ for every $x$. Their graphs have symmetry about the $y$-axis and the origin, respectively.
+
+A *period* is one fixed $T>0$ such that shifting the domain by $T$ gives the same domain and $f(x+T)=f(x)$ for every $x$ in it.
+
+[Symmetry in curve sketching](../lectures/curve-sketching.qmd#curve-sketching-steps)

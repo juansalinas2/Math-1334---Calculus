@@ -1,0 +1,91 @@
+### Velocity, speed, and acceleration {.lookup-definition}
+
+For a position function $s(t)$,
+
+$$
+v(t)=s'(t),\qquad \text{speed}=|v(t)|,\qquad a(t)=v'(t)=s''(t),
+$$
+
+where the derivatives exist. The sign of velocity gives direction. If position is measured in meters and time in seconds, velocity has units m/s, speed has units m/s, and acceleration has units m/s$^2$.
+
+[Lecture explanation](../lectures/12-rates-of-change.qmd#from-derivatives-to-motion)
+
+### Trigonometric functions and radians {.lookup-definition}
+
+Angles are measured in **radians**; one full turn is $2\pi$ radians. On the unit circle, the point at angle $x$ has coordinates $(\cos x,\sin x)$.
+
+$$
+\tan x=\frac{\sin x}{\cos x},\qquad \sec x=\frac1{\cos x}\qquad(\cos x\ne0),
+$$
+
+$$
+\cot x=\frac{\cos x}{\sin x},\qquad \csc x=\frac1{\sin x}\qquad(\sin x\ne0).
+$$
+
+The symbols $\sec$ and $\csc$ denote reciprocals, not inverse functions. A square such as $\sin^2x$ means $(\sin x)^2$.
+
+[Lecture explanation](../lectures/13-trigonometric-derivatives.qmd#trigonometric-notation-we-will-use)
+
+### Explicit and implicit equations {.lookup-definition}
+
+An *explicit* formula writes $y=f(x)$. An *implicit* equation relates the coordinates, for example by $F(x,y)=0$. A single implicit equation may describe more than one branch.
+
+[Implicit differentiation](../lectures/16-implicit-differentiation.qmd)
+
+### Inverse function {.lookup-definition}
+
+An inverse function *undoes* the original function:
+
+$$
+f^{-1}(f(x))=x,\qquad f(f^{-1}(y))=y.
+$$
+
+ Here $f$ must be one-to-one on the domain being used. The notation $f^{-1}$ means the inverse function, not the reciprocal $1/f$.
+
+[Lecture explanation](../lectures/15-inverse-functions.qmd#inverse-functions)
+
+### Exponential and logarithmic functions {.lookup-definition}
+
+For $a>0$, the exponential function is $f(x)=a^x$. Its domain is $\mathbb R$. When $a\ne1$, its range is $(0,\infty)$ and its inverse is $\log_a x$:
+
+$$
+y=\log_a x\quad\Longleftrightarrow\quad a^y=x,\qquad x>0.
+$$
+
+The logarithm has domain $(0,\infty)$ and range $\mathbb R$. The base $a=1$ gives the constant exponential function $f(x)=1$, which has no inverse on $\mathbb R$.
+
+[Lecture explanation](../lectures/17-exponential-logarithmic.qmd#review)
+
+### Euler’s number {.lookup-definition}
+
+The unique positive real number $e$ for which
+
+$$
+\lim_{h\to0}\frac{e^h-1}{h}=1
+$$
+
+ is called *Euler's number*.
+
+[Lecture explanation](../lectures/17-exponential-logarithmic.qmd#what-is-e) · [Supporting lemmas](theorems.qmd#exponential-slope-and-the-existence-of-e)
+
+### Natural logarithm {.lookup-definition}
+
+The *natural logarithm* is $\ln x=\log_e x$, the inverse of $e^x$. Thus
+
+$$
+e^{\ln x}=x\quad(x>0),\qquad \ln(e^x)=x\quad(x\in\mathbb R).
+$$
+
+[Lecture explanation](../lectures/17-exponential-logarithmic.qmd#review)
+
+### Relative growth rate {.lookup-definition}
+
+For a positive quantity $P(t)$, its relative growth rate is $P'(t)/P(t)$. If $P(t)=P_0e^{kt}$ with $P_0>0$ and $k$ constant, then
+
+$$
+\frac{P'(t)}{P(t)}=k.
+$$
+
+Here $k>0$ gives growth and $k<0$ gives decay.
+
+[Lecture explanation](../lectures/17-exponential-logarithmic.qmd#relative-growth)
