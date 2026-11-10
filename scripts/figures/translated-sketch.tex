@@ -1,0 +1,23 @@
+% The first worked sketch in course section 4.5.
+\documentclass[tikz,border=3pt]{standalone}
+\usepackage{lmodern}
+\usetikzlibrary{arrows.meta}
+\definecolor{curve}{HTML}{254E60}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=.79cm,font=\small,>=Stealth,
+    every node/.style={inner sep=2pt},line cap=round]
+  \draw[gray,thin,->] (-4.90,0)--(4.35,0) node[right,black]{$x$};
+  \draw[gray,thin,->] (0,-2.97)--(0,3.82) node[above,black]{$y$};
+  \draw[gray,densely dashed,thin] (-1,-2.91)--(-1,3.77) node[above,black]{$x=-1$};
+  \draw[gray,densely dashed,thin] (-4.85,1)--(4.22,1) node[right,black]{$y=1$};
+  \begin{scope}
+    \clip (-4.8,-2.88) rectangle (4.18,3.69);
+    \draw[curve,line width=1pt,domain=-4.8:-1.36,samples=125]
+      plot (\x,{\x/(\x+1)});
+    \draw[curve,line width=1pt,domain=-.749:4.18,samples=145]
+      plot (\x,{\x/(\x+1)});
+  \end{scope}
+  \fill[curve] (0,0) circle (1.8pt);
+  \draw[thin,gray] (.06,-.05)--(.46,-.54)--(1.08,-.54) node[right,black]{$(0,0)$};
+\end{tikzpicture}
+\end{document}

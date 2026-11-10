@@ -36,6 +36,15 @@ $\displaystyle\lim_{x\to-\infty} f(x)=M$
 [In either case, the line $y=L$ is a **horizontal asymptote** of $f$.]{#horizontal-asymptote}
 :::
 
+<details class="proof">
+<summary>Precise definition of a limit at infinity</summary>
+
+Suppose the domain of $f$ is unbounded above. We write $\displaystyle\lim_{x\to+\infty}f(x)=L$ if for every $\varepsilon>0$ there exists a real number $M$ such that $|f(x)-L|<\varepsilon$ for every $x$ in the domain with $x>M$.
+
+Similarly for $x\to-\infty$, using $x<M$.
+
+</details>
+
 Find the limits at both ends and identify any horizontal asymptotes.
 
 **Example 1.** $\displaystyle f(x)=\frac{x^2-1}{x}=x-\frac1x$.
@@ -146,6 +155,19 @@ $$
 \frac{P(x)}{Q(x)}-(mx+b)=\frac{R(x)}{Q(x)}\longrightarrow0
 \qquad(x\to\pm\infty).
 $$
+
+<details class="proof">
+<summary>Optional note on the Euclidean algorithm</summary>
+
+We can divide polynomials with real coefficients much as we divide integers. Given $P$ and a nonzero divisor $Q$, there are unique polynomials $S$ and $R$ such that
+$$
+P=SQ+R,
+$$
+where $R=0$ or $\deg R<\deg Q$. Here $S$ is the quotient and $R$ the remainder.
+
+The **Euclidean algorithm** repeats this division. Divide $Q$ by $R$ if $R\ne0$, then continue with successive remainders. Their degrees decrease, so the process stops. The last nonzero divisor is a greatest common divisor of the original polynomials, up to a nonzero constant factor.
+
+</details>
 
 **Example 3.** Divide $x^2$ by $x-1$.
 

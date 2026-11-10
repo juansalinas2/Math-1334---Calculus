@@ -187,9 +187,13 @@
     \draw[accent,line width=.85pt] (-.085,.075)--(0,0)--(-.085,-.075);
   \end{scope}
 }
-\foreach \p in {A,B,C,b,c} {\pt{(\p)}}
-\node[above] at (A) {$a=A$};
-\node[below left] at (B) {$B$}; \node[below right] at (C) {$C$};
-\node[left=2pt] at (b) {$b$}; \node[right=2pt] at (c) {$c$};
+% Lowercase labels lie beside the small triangle's edges.
+\path (A)--(b) node[midway,right=2pt] {$a$};
+\path (A)--(c) node[midway,below left=-1pt] {$b$};
+\path (b)--(c) node[pos=.35,above=1pt] {$c$};
+% Dimension lines measure the full outer sides, including the shared portions.
+\draw[dim] ($(B)+(-.22,.15)$)--($(A)+(-.22,.15)$) node[midway,left=2pt] {$A$};
+\draw[dim] ($(A)+(.17,.21)$)--($(C)+(.17,.21)$) node[midway,above right=1pt] {$B$};
+\draw[dim] ($(B)+(0,-.22)$)--($(C)+(0,-.22)$) node[midway,below] {$C$};
 \end{tikzpicture}
 \end{document}

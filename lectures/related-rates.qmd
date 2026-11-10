@@ -35,12 +35,12 @@ In a **related rates** problem, we are given one rate, say $\left.\dfrac{dx}{dt}
 Often a measurement identifies $t_0$. For example, “when $x=6$” means $x(t_0)=6$. Use the relation to find any other value you need, such as $y(t_0)$.
 
 ::: {.rr-method}
-1. *Understand the situation.* Label a sketch. List the givens with units and the rate to find.
-2. *Relate rates.* Write an equation connecting the variables. Differentiate with respect to $t$.
-3. *Plug in.* Substitute the values at $t_0$ and give the rate with units.
+1. *Understand the situation.* Label a sketch with $x(t)$ and $y(t)$. Record the givens with units and the rate to find.
+2. *Relate rates.* Write an equation relating $x$ and $y$. Differentiate with respect to $t$ to relate $dx/dt$ and $dy/dt$.
+3. *Plug in.* At $t=t_0$, substitute the known values and rate to find $\left.\dfrac{dy}{dt}\right|_{t=t_0}$ with units.
 :::
 
-## Primer Problems {#primer-problems}
+## Part 1. Primer Problems {#primer-problems}
 
 []{#part-1-board-problems}
 
@@ -316,16 +316,23 @@ Here $L=\sqrt{4^2+3^2}=5\ \mathrm m$, so $\left.\dfrac{dx}{dt}\right|_{t_0}=\dfr
 
 ### Similar triangles {#similar-triangles}
 
-::: {.rr-figure .rr-similarity}
-![](assets/rr-similar.svg){fig-alt="Triangle abc is shaded inside triangle ABC. They share the vertex a=A. The points b and c lie on AB and AC, and matching arrows mark bc parallel to BC."}
+::: {.statement .statement-theorem #similar-triangles-theorem}
+**Theorem (similar triangles).** A segment parallel to one side of a triangle cuts off a smaller triangle whose sides are proportional to the corresponding sides of the original. If $a,b,c$ are the smaller side lengths and $A,B,C$ are the corresponding full side lengths, then
+$$
+\frac{a}{A}=\frac{b}{B}=\frac{c}{C}.
+$$
 :::
 
-The small triangle $abc$ sits inside $ABC$, with $a=A$ and $bc\parallel BC$. Both triangles have the same angle at $A$. Since the marked sides are parallel, the angles at $b$ and $B$ also agree. By angle–angle similarity, $\triangle abc\sim\triangle ABC$, so
-$$
-\frac{ab}{AB}=\frac{ac}{AC}=\frac{bc}{BC}.
-$$
+::: {.rr-figure .rr-similarity}
+![](assets/rr-similar.svg){fig-alt="Two nested oblique triangles share their top vertex. The small triangle’s left side, right side, and base are a, b, c. The full lengths of the corresponding outer sides are A, B, C. The bases are parallel."}
+:::
 
-Each fraction compares a side of the small triangle with its matching side of the large triangle. In the tank below, use the water radius and depth as the small triangle’s sides.
+<details class="proof">
+<summary>Sketch of proof</summary>
+
+Scale the small triangle about the shared vertex by the factor $A/a$. Its left side now reaches the end of the large triangle’s left side. Its base stays parallel to the original base, so it lies on the large triangle’s base and meets the right side at the same endpoint. Thus the same factor takes $b$ to $B$ and $c$ to $C$.
+
+</details>
 
 ### Example 6. A conical tank {#cone .rr-problem}
 

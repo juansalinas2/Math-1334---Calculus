@@ -8,13 +8,9 @@ Monday, November 9, 2026 · [Lecture PDF (textbook §4.6)](../downloads/november
 :::
 
 <style>
-.sketch-pair {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;gap:1.5rem;margin:1rem 0}
-.sketch-pair p {margin:.35em 0}
-.sketch-pair img {display:block;max-width:100%;height:auto;margin:auto}
 .sketch-item {margin:1.45em 0;padding-bottom:1em;border-bottom:1px solid var(--reading-border,#ccc)}
 .sketch-item:last-child {border-bottom:0}
 .sketch-steps li {margin:.65em 0;padding-left:.25em}
-@media(max-width:600px){.sketch-pair{grid-template-columns:minmax(0,1fr);gap:.7em}.sketch-pair img{max-width:min(100%,21rem)}}
 </style>
 
 []{#curve-sketching}
@@ -36,16 +32,7 @@ Monday, November 9, 2026 · [Lecture PDF (textbook §4.6)](../downloads/november
 ## Worked sketches
 
 ::::: {.sketch-item #example-1}
-:::: {.sketch-pair}
-::: {}
-**Example 1.** Sketch the graph of
-
-$\displaystyle f(x)=\frac{x}{x+1}$.
-:::
-::: {}
-![](assets/november-9-translated-sketch.svg){fig-alt="Two increasing branches approach the dashed lines x=−1 and y=1. The branch to the right of x=−1 crosses the origin." width=420}
-:::
-::::
+**Example 1.** Sketch the graph of $\displaystyle f(x)=\frac{x}{x+1}$.
 
 <details class="proof practice-solution" open>
 <summary>Worked sketch</summary>
@@ -72,20 +59,13 @@ The vertical asymptote is $x=-1$. At both ends $f(x)\to1$, so $y=1$ is a horizon
 
 **8. Sketch.** The left branch approaches $y=1$ from above. The right branch passes through the origin and approaches $y=1$ from below.
 
+![](assets/november-9-translated-sketch.svg){fig-alt="Two increasing branches approach the dashed lines x=−1 and y=1. The branch to the right of x=−1 crosses the origin." width=420}
+
 </details>
 :::::
 
 ::::: {.sketch-item #example-8}
-:::: {.sketch-pair}
-::: {}
-**Example 2.** Sketch the graph of
-
-$\displaystyle f(x)=\frac{2x^2}{x^2-1}$.
-:::
-::: {}
-![](assets/november-9-rational-sketch.svg){fig-alt="Even graph with two outer branches above y=2 and a central branch peaking at (0,0) between the vertical asymptotes x=−1 and x=1." width=450}
-:::
-::::
+**Example 2.** Sketch the graph of $\displaystyle f(x)=\frac{2x^2}{x^2-1}$.
 
 <details class="proof practice-solution" open>
 <summary>Worked sketch</summary>
@@ -133,20 +113,15 @@ Both changes of concavity occur at excluded inputs. There are no inflection poin
 
 **8. Sketch.** Draw the middle branch through $(0,0)$ and the two outer branches above $y=2$.
 
+![](assets/november-9-rational-sketch.svg){fig-alt="Even graph with two outer branches above y=2 and a central branch peaking at (0,0) between the vertical asymptotes x=−1 and x=1." width=450}
+
 </details>
 :::::
 
 ## Practice {#practice}
 
 ::::: {.sketch-item}
-:::: {.sketch-pair}
-::: {}
 [**Practice 1.**]{#example-9} Sketch $\displaystyle g(x)=\frac{x^3}{x^2+1}$. Mark the slant asymptote and each inflection point.
-:::
-::: {}
-![](assets/november-9-cubic-sketch.svg){fig-alt="An increasing odd curve approaches y=x at both ends. Its inflection points are (−√3, −3√3/4), (0,0), and (√3, 3√3/4)." width=465}
-:::
-::::
 
 <details class="proof practice-solution">
 <summary>Show solution</summary>
@@ -182,20 +157,13 @@ The function is strictly increasing on $(-\infty,\infty)$.
 
 **8. Sketch.** The inflection points are $(-\sqrt3,-3\sqrt3/4)$, $(0,0)$, and $(\sqrt3,3\sqrt3/4)$.
 
-
+![](assets/november-9-cubic-sketch.svg){fig-alt="An increasing odd curve approaches y=x at both ends. Its inflection points are (−√3, −3√3/4), (0,0), and (√3, 3√3/4)." width=465}
 
 </details>
 :::::
 
 ::::: {.sketch-item}
-:::: {.sketch-pair}
-::: {}
 **Practice 2.** Sketch the graph of $\displaystyle f(x)=\frac4{x^2+3}$.
-:::
-::: {}
-![](assets/november-9-practice-one-graph.svg){fig-alt="An even curve above the x-axis peaks at (0,4/3) and changes concavity at (−1,1) and (1,1)." width=335}
-:::
-::::
 
 <details class="proof practice-solution">
 <summary>Show solution</summary>
@@ -210,20 +178,13 @@ The domain is $(-\infty,\infty)$, or equivalently, $\mathbb R$. The function is 
 
 The function is increasing on $(-\infty,0)$ and decreasing on $(0,\infty)$, with a global maximum at $(0,4/3)$. It is concave up on $(-\infty,-1)$ and $(1,\infty)$ and concave down on $(-1,1)$. The inflection points are $(-1,1)$ and $(1,1)$.
 
-
+![](assets/november-9-practice-one-graph.svg){fig-alt="An even curve above the x-axis peaks at (0,4/3) and changes concavity at (−1,1) and (1,1)." width=335}
 
 </details>
 :::::
 
 ::::: {.sketch-item}
-:::: {.sketch-pair}
-::: {}
 **Practice 3.** Sketch the graph of $\displaystyle g(x)=\frac{x^2}{x-1}=x+1+\frac1{x-1}$.
-:::
-::: {}
-![](assets/november-9-practice-two-graph.svg){fig-alt="Two branches separated by x=1 approach the line y=x+1, with a local maximum at the origin and a local minimum at (2,4)." width=265}
-:::
-::::
 
 <details class="proof practice-solution">
 <summary>Show solution</summary>
@@ -246,7 +207,7 @@ The branch for $x<1$ lies below $y=x+1$, and the branch for $x>1$ lies above it.
 
 The function is increasing on $(-\infty,0)$ and $(2,\infty)$ and decreasing on $(0,1)$ and $(1,2)$. It has a local maximum at $(0,0)$ and a local minimum at $(2,4)$. It is concave down on $(-\infty,1)$ and concave up on $(1,\infty)$. There are no inflection points.
 
-
+![](assets/november-9-practice-two-graph.svg){fig-alt="Two branches separated by x=1 approach the line y=x+1, with a local maximum at the origin and a local minimum at (2,4)." width=265}
 
 </details>
 :::::

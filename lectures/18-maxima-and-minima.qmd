@@ -26,13 +26,18 @@ Either is a *global extreme value*, attained at $c$.
 **Extreme Value Theorem.** If $f$ is continuous on $[a,b]$, then $f$ attains both a global minimum and a global maximum on $[a,b]$.
 :::
 
-**Note.** One can prove this using Bolzano–Weierstrass from analysis, or a result from [topology](https://en.wikipedia.org/wiki/Topology) that the continuous image of a compact set is compact. For this class, the conclusion is that continuous functions map closed intervals to closed intervals,
+<details class="proof">
+<summary>Optional note on the Extreme Value Theorem</summary>
+
+One can prove this using Bolzano–Weierstrass from analysis, or a result from [topology](https://en.wikipedia.org/wiki/Topology) that the continuous image of a compact set is compact. For this class, the conclusion is that continuous functions map closed intervals to closed intervals,
 
 $$
 f([a,b])=[m,M],
 $$
 
-where $m$ and $M$ are the minimum and maximum. The Intermediate Value Theorem supplies every value between them.
+where $m$ and $M$ are the minimum and maximum of $f$ on $[a,b]$, respectively. The Intermediate Value Theorem supplies every value between them.
+
+</details>
 
 ::: {.statement .statement-definition #local-extrema}
 **Definition (local extrema).** The number $f(c)$ is a
