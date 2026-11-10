@@ -7,9 +7,9 @@ description: "Classify critical numbers with the first and second derivative tes
 Friday, November 6, 2026 · Transcribed by Cleo McBride · [Lecture PDF (textbook §4.5)](../downloads/november-6-local-extrema-and-concavity.pdf)
 :::
 
-## The first derivative test
+**Goal.** Given a critical number $c$, determine whether $f(c)$ is a local maximum, a local minimum, or neither.
 
-How can we tell whether a critical number gives a local maximum, a local minimum, or neither?
+## The first derivative test
 
 ::: {.statement .statement-theorem #first-derivative-test}
 **Theorem (first derivative test).** Suppose $f$ is continuous at $c$ and differentiable on both sides of $c$ in some open interval about $c$. Read the sign of $f'$ from left to right.
@@ -19,7 +19,6 @@ How can we tell whether a critical number gives a local maximum, a local minimum
 - Positive on both sides, or negative on both sides: $f$ has no local extremum at $c$.
 :::
 
-In the first case, $f$ increases toward $c$ and decreases after it. In the second, the directions reverse.
 
 **Example 1.** Classify the interior critical numbers of $f(x)=4x^3-12x+12$ on $[-2,3]$.
 
@@ -32,9 +31,17 @@ The derivative $f'(x)=12(x-1)(x+1)$ vanishes at $-1$ and $1$. Both factors are n
 
 </details>
 
+**Example 2.** Classify $x=0$ for $p(x)=\cos x$.
+
+<details class="proof practice-solution">
+<summary>Solution</summary>
+
+The derivative $p'(x)=-\sin x$ is positive on $(-\pi/2,0)$ and negative on $(0,\pi/2)$. Hence $p(0)=1$ is a local maximum.
+
+</details>
+
 ## Concavity and inflection points
 
-How do the slopes of the tangent lines change as we move from left to right?
 
 ::: {.statement .statement-definition #concavity}
 **Definition (concavity).** On an interval where $f$ is differentiable, its graph is *concave up* if $f'$ is increasing, and *concave down* if $f'$ is decreasing.
@@ -46,18 +53,17 @@ How do the slopes of the tangent lines change as we move from left to right?
 **Theorem (concavity test).** If $f''>0$ throughout an interval, the graph of $f$ is concave up there. If $f''<0$ throughout an interval, it is concave down.
 :::
 
-This follows by applying the increasing and decreasing test to $f'$.
 
 ::: {.statement .statement-definition #inflection-point}
 **Definition (inflection point).** If $f$ is continuous at $c$ and its graph changes concavity there, then $(c,f(c))$ is an *inflection point*.
 :::
 
-**Example 2.** Where does the graph of $g(x)=x^3+1$ change concavity?
+**Example 3.** Where does the graph of $g(x)=x^3+1$ change concavity?
 
 <details class="proof practice-solution">
 <summary>Solution</summary>
 
-Differentiate twice: $g'(x)=3x^2$ and $g''(x)=6x$. The second derivative is negative on $(-\infty,0)$ and positive on $(0,\infty)$. The graph changes from concave down to concave up at $(0,1)$. Although its tangent is horizontal there, $g$ increases through the inflection point.
+Differentiate twice: $g'(x)=3x^2$ and $g''(x)=6x$. The second derivative is negative on $(-\infty,0)$ and positive on $(0,\infty)$. The graph changes from concave down to concave up at $(0,1)$. Here $g'(0)=0$, but $g$ increases on both sides of zero.
 
 ![](assets/november-6-inflection.svg){fig-alt="The increasing cubic flattens at (0,1). Its second derivative changes from negative to positive at zero." width=445}
 
@@ -65,7 +71,6 @@ Differentiate twice: $g'(x)=3x^2$ and $g''(x)=6x$. The second derivative is nega
 
 ## The second derivative test
 
-At a horizontal tangent, can we classify a critical number using just $f''(c)$?
 
 ::: {.statement .statement-theorem #second-derivative-test}
 **Theorem (second derivative test).** Suppose $f'(c)=0$ and $f''$ is continuous on an open interval containing $c$.
@@ -82,7 +87,7 @@ If $f''(c)>0$, continuity keeps $f''$ positive near $c$. Thus $f'$ increases thr
 
 </details>
 
-**Example 3.** Return to the cubic $f(x)=4x^3-12x+12$ from Example 1. Classify its two critical numbers using the second derivative test.
+**Example 4.** Return to the cubic $f(x)=4x^3-12x+12$ from Example 1. Classify its two critical numbers using the second derivative test.
 
 <details class="proof practice-solution">
 <summary>Solution</summary>
@@ -96,7 +101,7 @@ The derivative factors as $f'(x)=12(x-1)(x+1)$, so the critical numbers are $-1$
 
 </details>
 
-**Example 4.** What does the second derivative test tell us about $h(x)=x^2\tan x$ at $x=0$?
+**Example 5.** What does the second derivative test tell us about $h(x)=x^2\tan x$ at $x=0$?
 
 <details class="proof practice-solution">
 <summary>Solution</summary>
@@ -110,7 +115,7 @@ h''(x)&=2\tan x+4x\sec^2 x+2x^2\sec^2 x\tan x.
 $$
 Both derivatives vanish at zero, so the test is inconclusive. For $0<|x|<\pi/2$, the factor $x^2$ is positive and $\tan x$ has the same sign as $x$. Thus $h(x)<h(0)$ just to the left of zero and $h(x)>h(0)$ just to the right. There is no local extremum at $0$.
 
-**Remark.** The same test result occurs for $x^4$ and $-x^4$ at zero. The first has a local minimum there and the second has a local maximum.
+**Comparison.** All three functions below satisfy $f'(0)=f''(0)=0$. At $0$, $x^2\tan x$ has neither extremum, $x^4$ has a local minimum, and $-x^4$ has a local maximum.
 
 ![](assets/november-6-flat-tangents.svg){fig-alt="Near zero, x squared times tangent x passes through the origin, x to the fourth has a minimum, and negative x to the fourth has a maximum." width=590}
 
