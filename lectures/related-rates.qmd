@@ -24,15 +24,20 @@ Monday, November 2, 2026 · [Examples and practice (PDF)](../downloads/related-r
 
 ## The three steps
 
-Suppose $x$ and $y$ both change with time and $y=x^2$. Knowing $dx/dt$ tells us something about $dy/dt$. Differentiating the equation gives $dy/dt=2x\,dx/dt$. To find a numerical rate, we also need to know where $x$ is at the instant in question.
+Let $y(t)$ depend on a parameter $t$, usually time. Sometimes we have no explicit formula for $y$ in terms of $t$. Instead, we relate $y$ to another changing quantity $x(t)$, for example by writing
+$$
+y(t)=f(x(t)).
+$$
+
+In a **related rates** problem, we are given one rate, say $\left.\dfrac{dx}{dt}\right|_{t=t_0}$, and asked to find another, $\left.\dfrac{dy}{dt}\right|_{t=t_0}$. A constant rate $dx/dt$ has the same value at every instant.
+
+Often a measurement identifies $t_0$. For example, “when $x=6$” means $x(t_0)=6$. Use the relation to find any other value you need, such as $y(t_0)$.
 
 ::: {.rr-method}
-1. **Understand the situation.** Draw and label a picture. Define the variables as functions of time. Record the given measurements and rates, including signs and units. Let $t_0$ denote the instant in question and write the derivative you want to find.
-2. **Relate rates.** Identify the variables in the given and desired rates. Find an equation connecting those variables, using the Pythagorean theorem, similar triangles, or an area or volume formula as needed. Differentiate both sides with respect to $t$. Solve for the desired rate when convenient.
-3. **Plug in.** Once the derivative equation is ready, substitute the values at $t_0$. Report the sign, units, and direction when relevant.
+1. **Understand the situation.** Label a sketch. List the givens with units and the rate to find.
+2. **Relate rates.** Write an equation connecting the variables. Differentiate with respect to $t$.
+3. **Plug in.** Substitute the values at $t_0$ and give the rate with units.
 :::
-
-**A common mistake.** If $r(t_0)=2$, replacing $r$ by $2$ before differentiating treats the radius as constant. Keep the changing radius $r(t)$ in the volume formula. A *fixed* measurement, such as the length of a rigid ladder, may be used from the start.
 
 ## Part 1. Board problems
 
@@ -137,7 +142,7 @@ Let $V(t)$ be the air volume and $r(t)$ the radius. At $t_0$, $r=2\ \mathrm{cm}$
 
 [2. Relate rates.]{.rr-step-label}
 
-Use the volume of a sphere.
+Keep $r$ variable while differentiating. The value $r=2$ applies only at $t_0$.
 $$
 V=\frac43\pi r^3
 \quad\Longrightarrow\quad
