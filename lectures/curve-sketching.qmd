@@ -168,15 +168,27 @@ The function is strictly increasing on $(-\infty,\infty)$.
 <details class="proof practice-solution">
 <summary>Show solution</summary>
 
-$$
-\begin{aligned} f'(x)&=\frac{-8x}{(x^2+3)^2},\\[2pt] f''(x)&=\frac{24(x^2-1)}{(x^2+3)^3}.\end{aligned}
-$$
+**1. Domain.** $(-\infty,\infty)$, or equivalently, $\mathbb R$, since $x^2+3>0$ for every real $x$.
 
-The domain is $(-\infty,\infty)$, or equivalently, $\mathbb R$. The function is even. The only intercept is $(0,4/3)$. Since $\displaystyle\lim_{x\to\pm\infty}4/(x^2+3)=0$, both ends approach $y=0$ from above.
+**2. Intercepts.** The $y$-intercept is $(0,4/3)$. The numerator is always $4$, so there is no $x$-intercept.
+
+**3. Symmetry.** $f(-x)=f(x)$, so the graph is symmetric about the $y$-axis.
+
+**4. Asymptotes.** The denominator never vanishes, so there is no vertical asymptote. At both ends,
+$$
+\lim_{x\to\pm\infty}\frac{4}{x^2+3}=0.
+$$
+The horizontal asymptote is $y=0$. Since $f(x)>0$, the graph approaches it from above.
+
+**5. Increase and decrease.** $\displaystyle f'(x)=\frac{-8x}{(x^2+3)^2}$. Its sign is opposite to that of $x$. Thus $f$ increases on $(-\infty,0)$ and decreases on $(0,\infty)$.
 
 ![](assets/november-9-practice-one-signs.svg){fig-alt="The first derivative changes from + to − at 0. The second derivative changes from + to − at −1 and back to + at 1." width=285}
 
-The function is increasing on $(-\infty,0)$ and decreasing on $(0,\infty)$, with a global maximum at $(0,4/3)$. It is concave up on $(-\infty,-1)$ and $(1,\infty)$ and concave down on $(-1,1)$. The inflection points are $(-1,1)$ and $(1,1)$.
+**6. Local extrema.** At $x=0$, $f'$ changes from positive to negative. The point $(0,4/3)$ is a local maximum and also the global maximum. There is no local minimum.
+
+**7. Concavity and inflection points.** $\displaystyle f''(x)=\frac{24(x^2-1)}{(x^2+3)^3}$. The graph is concave up on $(-\infty,-1)$ and $(1,\infty)$, and concave down on $(-1,1)$. Concavity changes at $x=\pm1$, where $f(\pm1)=1$. The inflection points are $(-1,1)$ and $(1,1)$.
+
+**8. Sketch.** Plot the maximum and both inflection points. Draw the right branch decreasing toward $y=0$, changing concavity at $(1,1)$. Reflect it across the $y$-axis.
 
 ![](assets/november-9-practice-one-graph.svg){fig-alt="An even curve above the x-axis peaks at (0,4/3) and changes concavity at (−1,1) and (1,1)." width=335}
 
@@ -189,23 +201,28 @@ The function is increasing on $(-\infty,0)$ and decreasing on $(0,\infty)$, with
 <details class="proof practice-solution">
 <summary>Show solution</summary>
 
-$$
-\begin{aligned} g'(x)&=\frac{x(x-2)}{(x-1)^2},\\[2pt] g''(x)&=\frac2{(x-1)^3}.\end{aligned}
-$$
+**1. Domain.** $(-\infty,1)\cup(1,\infty)$, or equivalently, $\mathbb R\setminus\{1\}$.
 
-The domain is $(-\infty,1)\cup(1,\infty)$, or equivalently, $\mathbb R\setminus\{1\}$. Both intercepts are $(0,0)$. The graph has half-turn symmetry about $(1,2)$.
+**2. Intercepts.** The numerator $x^2$ vanishes only at $x=0$. Since $g(0)=0$, both intercepts are $(0,0)$.
 
-At $x=1$, the left-hand limit is $-\infty$ and the right-hand limit is $+\infty$. For the slant asymptote,
+**3. Symmetry.** For $u\ne0$, $g(1+u)-2=u+1/u$ is odd in $u$. Thus the graph has half-turn symmetry about $(1,2)$.
 
+**4. Asymptotes.** Write $g(x)=x+1+1/(x-1)$. The last term gives the one-sided limits
 $$
-\lim_{x\to\pm\infty}\bigl[g(x)-(x+1)\bigr]=\lim_{x\to\pm\infty}\frac1{x-1}=0.
+\lim_{x\to1^-}g(x)=-\infty,\qquad
+\lim_{x\to1^+}g(x)=+\infty.
 $$
+Thus $x=1$ is a vertical asymptote. At both ends, $g(x)-(x+1)=1/(x-1)\to0$, so $y=x+1$ is a slant asymptote.
 
-The branch for $x<1$ lies below $y=x+1$, and the branch for $x>1$ lies above it.
+**5. Increase and decrease.** $\displaystyle g'(x)=1-\frac1{(x-1)^2}=\frac{x(x-2)}{(x-1)^2}$. Split the domain at $0$, $1$, and $2$. The function increases on $(-\infty,0)$ and $(2,\infty)$, and decreases on $(0,1)$ and $(1,2)$.
 
 ![](assets/november-9-practice-two-signs.svg){fig-alt="The first derivative has signs +, −, −, + across 0, 1, and 2. The second derivative is negative left of 1 and positive right of 1. Both derivatives are undefined at 1." width=285}
 
-The function is increasing on $(-\infty,0)$ and $(2,\infty)$ and decreasing on $(0,1)$ and $(1,2)$. It has a local maximum at $(0,0)$ and a local minimum at $(2,4)$. It is concave down on $(-\infty,1)$ and concave up on $(1,\infty)$. There are no inflection points.
+**6. Local extrema.** At $x=0$, $g'$ changes from positive to negative, giving a local maximum at $(0,0)$. At $x=2$, it changes from negative to positive, giving a local minimum at $(2,4)$.
+
+**7. Concavity and inflection points.** $\displaystyle g''(x)=\frac{2}{(x-1)^3}$. The graph is concave down on $(-\infty,1)$ and concave up on $(1,\infty)$. The change occurs at the excluded input $x=1$, so there is no inflection point.
+
+**8. Sketch.** Draw $x=1$ and $y=x+1$ first. The left branch lies below the slant line and peaks at $(0,0)$. The right branch lies above the line and turns upward at $(2,4)$.
 
 ![](assets/november-9-practice-two-graph.svg){fig-alt="Two branches separated by x=1 approach the line y=x+1, with a local maximum at the origin and a local minimum at (2,4)." width=265}
 
