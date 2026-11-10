@@ -7,6 +7,7 @@ Download the original lecture notes for printing or annotation, or follow the to
 | Lecture | PDF | Read online |
 |:--|:--|:--|
 | November 9, 2026 | [End behaviour and curve sketching](downloads/november-9-end-behavior-and-curve-sketching.pdf) | [End behavior and limits at infinity](lectures/19-end-behaviour-and-curve-sketching.qmd) · [Curve sketching](lectures/curve-sketching.qmd) |
+| November 6, 2026 | [Concavity and the second derivative test](downloads/november-6-local-extrema-and-concavity.pdf) | [Concavity and the second derivative test](lectures/section-4-3.qmd) |
 | November 4, 2026 | [Maxima and minima](downloads/november-4-maxima-and-minima.pdf) | [Maxima and minima](lectures/18-maxima-and-minima.qmd) |
 | November 2, 2026 | [Related rates problems](downloads/related-rates-examples-practice.pdf) · [Answer sheet](downloads/related-rates-answer-sheet.pdf) | [Related rates](lectures/related-rates.qmd) |
 | October 23, 2026 | [Exponential and logarithmic derivatives](downloads/october-23-exponential-logarithmic-class-notes.pdf) | [Exponential and logarithmic derivatives](lectures/17-exponential-logarithmic.qmd) |

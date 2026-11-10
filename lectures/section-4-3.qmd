@@ -1,10 +1,92 @@
 ---
-title: "# 4.3 To be published {.unnumbered}"
-description: "Friday, November 6, 2026."
+title: "# 4.3 Concavity and the second derivative test {.unnumbered}"
+description: "Tangent slopes, inflection points, and local extrema."
 ---
 
 ::: {.source-note}
-Friday, November 6, 2026
+Friday, November 6, 2026 · Transcribed by Cleo McBride · [Lecture PDF (textbook §4.5)](../downloads/november-6-local-extrema-and-concavity.pdf)
 :::
 
-To be published
+## Concavity and inflection points
+
+How do the slopes of the tangent lines change as we move from left to right?
+
+::: {.statement .statement-definition #concavity}
+**Definition (concavity).** On an interval where $f$ is differentiable, its graph is *concave up* if $f'$ is increasing, and *concave down* if $f'$ is decreasing.
+:::
+
+![](assets/november-6-slopes.svg){fig-alt="Three tangent lines on each curve show slopes increasing from left to right on the first curve and decreasing on the second." width=475}
+
+::: {.statement .statement-theorem #concavity-test}
+**Theorem (concavity test).** If $f''>0$ throughout an interval, the graph of $f$ is concave up there. If $f''<0$ throughout an interval, it is concave down.
+:::
+
+This follows by applying the increasing and decreasing test to $f'$.
+
+::: {.statement .statement-definition #inflection-point}
+**Definition (inflection point).** If $f$ is continuous at $c$ and its graph changes concavity there, then $(c,f(c))$ is an *inflection point*.
+:::
+
+**Example 1.** Where does the graph of $g(x)=x^3+1$ change concavity?
+
+<details class="proof practice-solution">
+<summary>Solution</summary>
+
+Differentiate twice: $g'(x)=3x^2$ and $g''(x)=6x$. The second derivative is negative on $(-\infty,0)$ and positive on $(0,\infty)$. The graph changes from concave down to concave up at $(0,1)$. Although its tangent is horizontal there, $g$ increases through the inflection point.
+
+![](assets/november-6-inflection.svg){fig-alt="The increasing cubic flattens at (0,1). Its second derivative changes from negative to positive at zero." width=445}
+
+</details>
+
+## The second derivative test
+
+At a horizontal tangent, can we classify a critical number using just $f''(c)$?
+
+::: {.statement .statement-theorem #second-derivative-test}
+**Theorem (second derivative test).** Suppose $f'(c)=0$ and $f''$ is continuous on an open interval containing $c$.
+
+- If $f''(c)>0$, then $f(c)$ is a strict local minimum.
+- If $f''(c)<0$, then $f(c)$ is a strict local maximum.
+- If $f''(c)=0$, the test is inconclusive.
+:::
+
+<details class="proof">
+<summary>Proof</summary>
+
+If $f''(c)>0$, continuity keeps $f''$ positive near $c$. Thus $f'$ increases through $f'(c)=0$, from negative values to positive values. The first derivative test gives a local minimum. When $f''(c)<0$, $f'$ decreases through zero, giving a local maximum.
+
+</details>
+
+**Example 2.** Classify the critical numbers of $f(x)=4x^3-12x+12$.
+
+<details class="proof practice-solution">
+<summary>Solution</summary>
+
+The derivative factors as $f'(x)=12(x-1)(x+1)$, so the critical numbers are $-1$ and $1$. Since $f''(x)=24x$,
+
+- $f''(-1)=-24<0$ gives a local maximum at $(-1,20)$.
+- $f''(1)=24>0$ gives a local minimum at $(1,4)$.
+
+![](assets/november-6-extrema.svg){fig-alt="The cubic rises to the local maximum (−1,20), falls to the local minimum (1,4), then rises again." width=370}
+
+</details>
+
+**Example 3.** What does the second derivative test tell us about $h(x)=x^2\tan x$ at $x=0$?
+
+<details class="proof practice-solution">
+<summary>Solution</summary>
+
+Differentiating twice gives
+$$
+\begin{aligned}
+h'(x)&=2x\tan x+x^2\sec^2 x,\\
+h''(x)&=2\tan x+4x\sec^2 x+2x^2\sec^2 x\tan x.
+\end{aligned}
+$$
+Both derivatives vanish at zero, so the test is inconclusive. For $0<|x|<\pi/2$, the factor $x^2$ is positive and $\tan x$ has the same sign as $x$. Thus $h(x)<h(0)$ just to the left of zero and $h(x)>h(0)$ just to the right. There is no local extremum at $0$.
+
+**Remark.** The same test result occurs for $x^4$ and $-x^4$ at zero. The first has a local minimum there and the second has a local maximum.
+
+![](assets/november-6-flat-tangents.svg){fig-alt="Near zero, x squared times tangent x passes through the origin, x to the fourth has a minimum, and negative x to the fourth has a maximum." width=590}
+
+</details>

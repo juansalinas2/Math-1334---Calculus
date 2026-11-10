@@ -7,7 +7,7 @@ Sections follow our lecture order. The section numbers in the textbook may diffe
 
 - [**4.1 Related rates**](related-rates.qmd) · Monday, November 2. Set up a diagram, relate the rates, and evaluate at the specified instant.
 - [**4.2 Maxima and minima**](18-maxima-and-minima.qmd) · Wednesday, November 4. Global and local extrema, critical numbers, and the closed-interval method.
-- [**4.3 To be published**](section-4-3.qmd) · Friday, November 6.
+- [**4.3 Concavity and the second derivative test**](section-4-3.qmd) · Friday, November 6. Use changing tangent slopes to locate inflection points and classify local extrema.
 - [**4.4 End behavior and limits at infinity**](19-end-behaviour-and-curve-sketching.qmd) · Monday, November 9. Horizontal and slant asymptotes.
 - [**4.5 Curve sketching**](curve-sketching.qmd) · Monday, November 9. Use derivative sign graphs to sketch each branch.
 
