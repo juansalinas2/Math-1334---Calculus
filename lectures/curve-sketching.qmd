@@ -20,7 +20,9 @@ Monday, November 9, 2026 · [Lecture PDF (textbook §4.6)](../downloads/november
 ::: {.sketch-steps}
 1. **Domain.** Give the domain in interval notation. Then give an equivalent description in set notation.
 2. **Intercepts.** Solve $f(x)=0$ for the $x$-intercepts. The $y$-intercept is $(0,f(0))$ if $f(0)$ exists.
-3. **Symmetry.** Even: $f(-x)=f(x)$. Odd: $f(-x)=-f(x)$. Periodic: $f(x+T)=f(x)$ for some $T>0$.
+3. **Symmetry.** Check whether the graph has any of these symmetries:
+   - *Even or odd.* On a domain symmetric about $0$, check whether $f(-x)=f(x)$ (even) or $f(-x)=-f(x)$ (odd) for every $x$ in the domain.
+   - *Periodic.* Look for one fixed $T>0$ such that shifting the domain by $T$ gives the same domain and $f(x+T)=f(x)$ for every $x$ in it. The graph then repeats every $T$ units.
 4. **Asymptotes.** Compute one-sided limits at domain breaks for vertical asymptotes. Check both ends for horizontal or slant asymptotes.
 5. **Increase and decrease.** Draw a sign graph for $f'$. Identify intervals where $f'>0$ and where $f'<0$.
 6. **Local extrema.** Classify the critical numbers using a derivative test.
