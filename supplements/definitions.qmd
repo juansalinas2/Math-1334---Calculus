@@ -5,7 +5,7 @@ css: ../assets/reference-pages.css
 ---
 
 ::: {.source-note}
-Key definitions and notation from the lectures through Section 3.9.
+Key definitions and notation from the lectures through course Section 4.4.
 :::
 
 ::: {.reference-switcher}
@@ -25,6 +25,8 @@ Key definitions and notation from the lectures through Section 3.9.
 [Derivatives](#derivatives)
 
 [Motion & functions](#motion-and-special-functions)
+
+[Applications of derivatives](#applications-of-derivatives)
 
 [Precalculus](#precalculus)
 :::
@@ -260,6 +262,32 @@ $$
 Here $k>0$ gives growth and $k<0$ gives decay.
 
 [Lecture explanation](../lectures/17-exponential-logarithmic.qmd#relative-growth)
+
+## Applications of derivatives
+
+### Global and local extrema
+
+Let $c$ belong to the domain $D$ of $f$. The value $f(c)$ is a *global maximum* if $f(c)\ge f(x)$ for every $x\in D$. It is a *local maximum* if this inequality holds when $x$ is near $c$, that is, for all $x\in D\cap(c-\delta,c+\delta)$ for some $\delta>0$. Reverse the inequalities for a *global minimum* or a *local minimum*.
+
+[Definitions and graphs](../lectures/18-maxima-and-minima.qmd#global-and-local-extrema)
+
+### Critical number and critical value
+
+A number $c$ in the domain of $f$ is a *critical number* if $f'(c)=0$ or $f'(c)$ does not exist. Its output $f(c)$ is a *critical value*.
+
+[Definition and examples](../lectures/18-maxima-and-minima.qmd#finding-global-extrema)
+
+### Limit at infinity and horizontal asymptote
+
+We write $\lim_{x\to\infty} f(x)=L$ if $f(x)\to L$ as $x\to\infty$, and similarly at $-\infty$. A line $y=L$ is a *horizontal asymptote* when $f(x)$ tends to $L$ at either end.
+
+[Definitions and examples](../lectures/19-end-behaviour-and-curve-sketching.qmd#limits-at-infinity-and-horizontal-asymptotes)
+
+### Slant asymptote
+
+A line $y=mx+b$, with $m\ne0$, is a *slant asymptote* if $f(x)-(mx+b)\to0$ as $x\to\infty$ or as $x\to-\infty$.
+
+[Definition and examples](../lectures/19-end-behaviour-and-curve-sketching.qmd#slant-asymptotes)
 
 ## Precalculus
 

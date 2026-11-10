@@ -5,7 +5,7 @@ css: ../assets/reference-pages.css
 ---
 
 ::: {.source-note}
-Key results, with their hypotheses and formulas from the lectures through Section 3.9.
+Key results, with their hypotheses and formulas from the lectures through course Section 4.4.
 :::
 
 ::: {.reference-switcher}
@@ -25,6 +25,8 @@ Key results, with their hypotheses and formulas from the lectures through Sectio
 [Differentiation](#differentiation)
 
 [Special functions](#special-functions)
+
+[Applications of derivatives](#applications-of-derivatives)
 
 [Precalculus](#precalculus)
 :::
@@ -402,6 +404,37 @@ $$
 The restriction $x>0$ makes this proof work for every real exponent. The rule also holds at other inputs when the particular power function is differentiable there.
 
 [Proof](../lectures/17-exponential-logarithmic.qmd#the-power-rule-for-real-exponents)
+
+## Applications of derivatives
+
+### Extreme Value Theorem
+
+If $f$ is continuous on $[a,b]$, then $f$ attains both a global minimum and a global maximum on $[a,b]$.
+
+[Theorem](../lectures/18-maxima-and-minima.qmd#extreme-value-theorem) · [Closed-interval method](../lectures/18-maxima-and-minima.qmd#closed-interval-method)
+
+### Fermat’s theorem
+
+If $f$ has a local maximum or minimum at $c$, then $c$ is at the boundary of the domain or is a critical number of $f$.
+
+[Proof and counterexample to the converse](../lectures/18-maxima-and-minima.qmd#fermat)
+
+### End behaviour of a rational function
+
+Let $p$ and $q$ be polynomials with leading terms $a_mx^m$ and $b_nx^n$, where $a_m b_n\ne0$. At either end,
+
+$$
+\lim_{x\to\pm\infty}\frac{p(x)}{q(x)}
+=\lim_{x\to\pm\infty}\frac{a_m}{b_n}x^{m-n}.
+$$
+
+[Proof and examples](../lectures/19-end-behaviour-and-curve-sketching.qmd#end-behaviour-of-a-rational-function)
+
+### Slant asymptote by division
+
+If $P$ and $Q$ are polynomials with $\deg P=\deg Q+1$, the line given by the quotient in polynomial division is a slant asymptote of $P/Q$ at both ends.
+
+[Theorem and proof](../lectures/19-end-behaviour-and-curve-sketching.qmd#slant-by-division)
 
 ## Precalculus
 

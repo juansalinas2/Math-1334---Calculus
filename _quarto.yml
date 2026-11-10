@@ -42,6 +42,11 @@ book:
     - lectures/15-inverse-functions.qmd
     - lectures/16-implicit-differentiation.qmd
     - lectures/17-exponential-logarithmic.qmd
+    - lectures/applications-of-derivatives.qmd
+    - lectures/related-rates.qmd
+    - lectures/18-maxima-and-minima.qmd
+    - lectures/section-4-3.qmd
+    - lectures/19-end-behaviour-and-curve-sketching.qmd
     - supplements/limits-map.qmd
     - supplements/worksheets.qmd
     - supplements/definitions.qmd

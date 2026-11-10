@@ -16,6 +16,8 @@ SUPPLEMENTS = ['limits-map.html', 'worksheets.html', 'self-checks.html', 'explor
 REFERENCE = ['definitions.html', 'theorems.html']
 DERIVATIVE_SECTIONS = ['09-derivative-at-a-point.html', '10-derivative-function.html', '11-differentiation-rules.html', '12-rates-of-change.html', '13-trigonometric-derivatives.html', '14-chain-rule.html', '15-inverse-functions.html', '16-implicit-differentiation.html', '17-exponential-logarithmic.html']
 
+APPLICATION_SECTIONS = ['related-rates.html', '18-maxima-and-minima.html', 'section-4-3.html', '19-end-behaviour-and-curve-sketching.html']
+
 
 def rebuild_sidebar(html, page_name):
     match = re.search(r'<div class="sidebar-menu-container">[\s\S]*?</nav>', html)
@@ -69,6 +71,7 @@ def rebuild_sidebar(html, page_name):
         + group('Chapter 1', intro_children, intro)
         + group('Chapter 2', SECTIONS, 'limits-and-continuity.html')
         + group('Chapter 3', DERIVATIVE_SECTIONS, 'derivatives.html')
+        + group('Chapter 4', APPLICATION_SECTIONS, 'applications-of-derivatives.html')
         + '<li class="book-nav-label">LOOK UP</li>'
         + ''.join(leaves[name] for name in REFERENCE)
         + group('Study aids', SUPPLEMENTS)
@@ -81,5 +84,8 @@ def rebuild_sidebar(html, page_name):
         html = html.replace('<div class="quarto-title">', context + '<div class="quarto-title">', 1)
     if page_name in DERIVATIVE_SECTIONS:
         context = '<p class="chapter-context"><a href="' + hrefs['derivatives.html'] + '">Chapter 3 · Derivatives</a></p>'
+        html = html.replace('<div class="quarto-title">', context + '<div class="quarto-title">', 1)
+    if page_name in APPLICATION_SECTIONS:
+        context = '<p class="chapter-context"><a href="' + hrefs['applications-of-derivatives.html'] + '">Chapter 4 · Applications of derivatives</a></p>'
         html = html.replace('<div class="quarto-title">', context + '<div class="quarto-title">', 1)
     return html

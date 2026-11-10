@@ -1,0 +1,160 @@
+---
+title: "# 4.2 Maxima and minima {.unnumbered}"
+description: "Global and local extrema, Fermat’s theorem, and the closed-interval method."
+---
+
+::: {.source-note}
+Wednesday, November 4, 2026 · [Lecture PDF (textbook §4.3)](../downloads/november-4-maxima-and-minima.pdf)
+:::
+
+**Question.** Where does a profit function attain its largest value? Where does a loss function attain its smallest value?
+
+![](assets/november-4-profit-loss.svg){fig-alt="Two graphs mark the input c and output f(c) at the highest profit and the lowest loss, respectively." width=495}
+
+## Global and local extrema
+
+::: {.statement .statement-definition #global-extrema}
+**Definition (global extrema).** Let $D$ be the domain of $f$ and let $c\in D$. The value $f(c)$ is a
+
+- *global maximum* if $f(c)\ge f(x)$ for every $x\in D$,
+- *global minimum* if $f(c)\le f(x)$ for every $x\in D$.
+
+Either is a *global extreme value*, attained at $c$.
+:::
+
+::: {.statement .statement-theorem #extreme-value-theorem}
+**Extreme Value Theorem.** If $f$ is continuous on $[a,b]$, then $f$ attains both a global minimum and a global maximum on $[a,b]$.
+:::
+
+**Note.** One can prove this using Bolzano–Weierstrass from analysis, or a result from [topology](https://en.wikipedia.org/wiki/Topology) that the continuous image of a compact set is compact. For this class, the conclusion is that continuous functions map closed intervals to closed intervals,
+
+$$
+f([a,b])=[m,M],
+$$
+
+where $m$ and $M$ are the minimum and maximum. The Intermediate Value Theorem supplies every value between them.
+
+::: {.statement .statement-definition #local-extrema}
+**Definition (local extrema).** The number $f(c)$ is a
+
+- *local maximum* of $f$ if $f(c)\ge f(x)$ when $x$ is near $c$,
+- *local minimum* of $f$ if $f(c)\le f(x)$ when $x$ is near $c$.
+
+Here $x$ is *near* $c$ if we restrict $x$ to some open interval containing $c$, considering only points in the domain.
+:::
+
+**Note.** More precisely, a local maximum means that some $\delta>0$ satisfies
+
+$$
+f(x)\le f(c)\qquad\text{for every }x\in D\cap(c-\delta,c+\delta).
+$$
+
+For a local minimum, reverse the inequality. At an included endpoint, compare only on the side in the domain.
+
+![](assets/november-4-local-maximum.svg){fig-alt="The graph peaks at c on the interval from c minus delta to c plus delta, then rises higher farther to the right." width=345}
+
+The value $f(c)$ is a local maximum. Farther to the right, $f$ takes larger values.
+
+## Finding global extrema
+
+::: {.statement .statement-definition #critical-number}
+**Definition (critical number).** A number $c$ in the domain of $f$ is a *critical number* if $f'(c)=0$ or $f'(c)$ does not exist. The corresponding output $f(c)$ is a *critical value*.
+:::
+
+::: {.statement .statement-theorem #fermat}
+**Fermat’s theorem (extrema $\implies$ critical).** If $f$ has a local maximum or minimum at $c$, then $c$ is at the boundary of the domain or is a critical number of $f$.
+:::
+
+**Proof.** It suffices to consider an interior point $c$. If $f'(c)$ does not exist, $c$ is critical by definition. Suppose $f'(c)$ exists and $f(c)$ is a local maximum. For all sufficiently small $h$, we have $f(c+h)\le f(c)$, so the numerator $f(c+h)-f(c)$ is nonpositive.
+
+If $h>0$, dividing by $h$ preserves the inequality. If $h<0$, it reverses it. Thus
+
+$$
+\begin{aligned}
+\frac{f(c+h)-f(c)}{h}&\le 0 &&(h>0),\\
+\frac{f(c+h)-f(c)}{h}&\ge 0 &&(h<0).
+\end{aligned}
+$$
+
+Since $f'(c)$ exists, the right and left limits both equal $f'(c)$. Taking these limits gives
+
+$$
+f'(c)\le 0\qquad\text{and}\qquad f'(c)\ge 0.
+$$
+
+Hence $f'(c)=0$. At a local minimum, the inequalities reverse and give the same conclusion. In either case, $c$ is critical.
+
+**Remark (the converse is false).** For $f(x)=x^3$, we have $f'(0)=0$, so $0$ is critical. But $x^3<0$ to the left of $0$ and $x^3>0$ to the right. Thus $f(0)$ is neither a local maximum nor a local minimum.
+
+![](assets/november-4-stationary-cubic.svg){fig-alt="The increasing cubic crosses the origin with a horizontal tangent." width=275}
+
+## Closed-interval method
+
+To find the global extrema of a continuous function $f$ on $[a,b]$,
+
+1. List the endpoints $a$ and $b$.
+2. Find all critical numbers in $(a,b)$.
+3. Evaluate $f$ at every listed point. The largest and smallest outputs are the global maximum and minimum.
+
+## Worked examples
+
+**Example 1.** Find the global extrema of $f(x)=x+2$ on $[-1,1]$.
+
+Since $f'(x)=1$, there are no interior critical numbers. Compare
+
+$$
+f(-1)=1,\qquad f(1)=3.
+$$
+
+The global minimum is $1$ at $x=-1$ and the global maximum is $3$ at $x=1$.
+
+**Example 2.** Find the global extrema of $f(x)=x^3(4-x)$ on $[-1,4]$.
+
+We have $f'(x)=12x^2-4x^3=4x^2(3-x)$. Compare both endpoints and the two interior critical numbers,
+
+$$
+f(-1)=-5,\quad f(0)=0,\quad f(3)=27,\quad f(4)=0.
+$$
+
+The global minimum is $-5$ at $x=-1$ and the global maximum is $27$ at $x=3$.
+
+**Example 3.** Find the global extrema of $f(x)=1-x^2$ on $[-1,3]$.
+
+Since $f'(x)=-2x$, the only interior critical number is $0$. The candidate values are
+
+$$
+f(-1)=0,\qquad f(0)=1,\qquad f(3)=-8.
+$$
+
+The maximum is $1$ at $x=0$ and the minimum is $-8$ at $x=3$.
+
+**Example 4.** Find the global extrema on $[2,4]$ of
+
+$$
+f(x)=\begin{cases}
+\dfrac{x^2-9}{x-3},&x\ne3,\\[4pt]
+2,&x=3.
+\end{cases}
+$$
+
+Away from $3$, $f(x)=x+3$ and $f'(x)=1$. At $3$, $f$ is discontinuous and $f'(3)$ does not exist. The maximum is $f(4)=7$ and the minimum is $f(3)=2$.
+
+![](assets/november-4-piecewise.svg){fig-alt="A line segment runs from (2,5) to (4,7), with an open circle at (3,6) and a filled point at (3,2)." width=220}
+
+**Example 5.** Find the global extrema of $f(x)=\sin x$ on $[-\pi/2,\pi]$.
+
+The only interior zero of $f'(x)=\cos x$ is $\pi/2$. Compare
+
+$$
+f(-\pi/2)=-1,\qquad f(\pi/2)=1,\qquad f(\pi)=0.
+$$
+
+The minimum is $-1$ at $x=-\pi/2$ and the maximum is $1$ at $x=\pi/2$.
+
+**Example 6.** Find the global extrema of $f(x)=2+|x|$ on $[-1,2]$.
+
+The graph has slope $-1$ to the left of $0$ and $1$ to the right, so $0$ is a critical number. From $f(-1)=3$, $f(0)=2$, and $f(2)=4$, the minimum is $2$ at $x=0$ and the maximum is $4$ at $x=2$.
+
+**Example 7.** For $f(x)=2+(x-5)^3$ on $[4,7]$, is $5$ a critical number? Is $f(5)$ a local extremum?
+
+Since $f'(x)=3(x-5)^2$, we have $f'(5)=0$. Yet $f(x)<2$ to the left of $5$ and $f(x)>2$ to the right. Thus $5$ is a critical number and $f(5)$ is neither a local maximum nor a local minimum.

@@ -9,13 +9,13 @@ css: assets/homepage.css
 Lecture notes, worked examples, and practice.
 
 ::: {.home-latest}
-[Latest posted lecture · October 23]{.home-eyebrow}
+[Latest posted lecture · November 9]{.home-eyebrow}
 
-## Exponential and logarithmic derivatives {.unnumbered}
+## End behaviour and curve sketching {.unnumbered}
 
-Section 3.9 · Euler’s number, exponential derivatives, and logarithmic differentiation.
+Section 4.4 · Horizontal and slant asymptotes, derivative sign charts, and curve sketching.
 
-[Read the lecture →](lectures/17-exponential-logarithmic.qmd){.home-primary}
+[Read the lecture →](lectures/19-end-behaviour-and-curve-sketching.qmd){.home-primary}
 :::
 
 ::: {.home-tools}

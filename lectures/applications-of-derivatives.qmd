@@ -1,0 +1,13 @@
+---
+title: "Applications of derivatives"
+description: "Chapter 4: related rates, extrema, end behaviour, and curve sketching."
+---
+
+Sections follow our lecture order. The section numbers in the textbook may differ.
+
+- [**4.1 Related rates**](related-rates.qmd) · Monday, November 2. Set up a diagram, relate the rates, and evaluate at the specified instant.
+- [**4.2 Maxima and minima**](18-maxima-and-minima.qmd) · Wednesday, November 4. Global and local extrema, critical numbers, and the closed-interval method.
+- [**4.3 To be published**](section-4-3.qmd) · Friday, November 6.
+- [**4.4 End behaviour and curve sketching**](19-end-behaviour-and-curve-sketching.qmd) · Monday, November 9. Horizontal and slant asymptotes, derivative sign charts, and worked sketches.
+
+[Start Section 4.1](related-rates.qmd){.start-link}
