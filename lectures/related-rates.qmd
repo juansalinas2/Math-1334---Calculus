@@ -4,7 +4,7 @@ description: "Draw the situation, relate the rates, and evaluate at the specifie
 ---
 
 ::: {.source-note}
-Monday, November 2, 2026 · [Examples and practice (PDF)](../downloads/related-rates-examples-practice.pdf) · [Answer sheet (PDF)](../downloads/related-rates-answer-sheet.pdf)
+Monday, November 2, 2026 · [Examples and practice (PDF)](../downloads/related-rates-examples-practice.pdf) · [Answer sheet (PDF)](../downloads/related-rates-answer-sheet.pdf) · [Similar triangles](#similar-triangles)
 :::
 
 <style>
@@ -20,6 +20,7 @@ section.rr-problem {padding-bottom:1em}
 section.rr-problem + section.rr-problem {border-top:1px solid var(--reading-border,#ccc)}
 section.rr-problem .math.display {display:block;max-width:100%;overflow-x:auto}
 @media(max-width:700px){.rr-setup{grid-template-columns:minmax(0,1fr)}.rr-figure{max-width:340px}}
+.rr-figure.rr-similarity {max-width:30rem;margin:1rem auto}
 </style>
 
 ## The three steps
@@ -248,21 +249,6 @@ $\left.\dfrac{dA}{dt}\right|_{t_0}=\tfrac12[6(-2)+8(3)]=6\ \mathrm{cm^2/min}$. T
 
 </details>
 
-### Similar triangles
-
-::::: {.rr-setup}
-::: {}
-Two right triangles that share an acute angle are similar by angle–angle similarity. Match the vertical sides with one another and the horizontal sides with one another. If the larger triangle has height $H$ and base $B$, and the smaller has height $h$ and base $b$, then
-$$
-\frac{H}{B}=\frac{h}{b}.
-$$
-This proportion lets us eliminate a variable before differentiating.
-:::
-::: {.rr-figure}
-![](assets/rr-similar.svg){fig-alt="Two nested right triangles with matching heights H and h, bases B and b, and a shared angle at the tip."}
-:::
-:::::
-
 ## Part 3. More challenging models
 
 ### Example 5. A sliding ladder {#ladder .rr-problem}
@@ -327,6 +313,19 @@ $$
 Here $L=\sqrt{4^2+3^2}=5\ \mathrm m$, so $\left.\dfrac{dx}{dt}\right|_{t_0}=\dfrac54(-1)=-\dfrac54\ \mathrm{m/s}$. The boat **approaches the dock at $5/4\ \mathrm{m/s}$**.
 
 </details>
+
+### Similar triangles {#similar-triangles}
+
+::: {.rr-figure .rr-similarity}
+![](assets/rr-similar.svg){fig-alt="Triangle abc is shaded inside triangle ABC. They share the vertex a=A. The points b and c lie on AB and AC, and matching arrows mark bc parallel to BC."}
+:::
+
+The small triangle $abc$ sits inside $ABC$, with $a=A$ and $bc\parallel BC$. Both triangles have the same angle at $A$. Since the marked sides are parallel, the angles at $b$ and $B$ also agree. By angle–angle similarity, $\triangle abc\sim\triangle ABC$, so
+$$
+\frac{ab}{AB}=\frac{ac}{AC}=\frac{bc}{BC}.
+$$
+
+Each fraction compares a side of the small triangle with its matching side of the large triangle. In the tank below, use the water radius and depth as the small triangle’s sides.
 
 ### Example 6. A conical tank {#cone .rr-problem}
 

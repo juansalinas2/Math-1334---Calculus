@@ -176,13 +176,20 @@
 % similar
 \begin{tikzpicture}
 \sheet
-\coordinate (A) at (.96,1.05); \coordinate (T) at (.96,3.66); \coordinate (E) at (6.18,1.05);
-\draw[fill=wash] (A)--(T)--(E)--cycle;
-\draw[accent,fill=accent!17] (4.04,1.05)--(4.04,2.12)--(E)--cycle;
-\draw[thin] (.96,1.25)--(1.16,1.25)--(1.16,1.05) (4.04,1.25)--(4.24,1.25)--(4.24,1.05);
-\draw[accent] (5.72,1.05) arc[start angle=180,end angle=153.435,radius=.46];
-\node[left] at (.96,2.35) {$H$}; \node[left] at (4.04,1.62) {$h$};
-\draw[dim] (4.04,.84)--(6.18,.84) node[midway,below]{$b$};
-\draw[dim] (.96,.35)--(6.18,.35) node[midway,below]{$B$};
+\coordinate (A) at (2.72,3.72); \coordinate (B) at (.62,.52); \coordinate (C) at (6.52,.90);
+\coordinate (b) at ($(A)!.55!(B)$); \coordinate (c) at ($(A)!.55!(C)$);
+\fill[wash] (A)--(b)--(c)--cycle;
+\draw[ink] (A)--(B)--(C)--cycle;
+\draw[trace] (b)--(c);
+% Identical chevrons mark the parallel sides.
+\foreach \p/\q in {B/C,b/c}{
+  \begin{scope}[shift={($(\p)!.52!(\q)$)},rotate=3.685]
+    \draw[accent,line width=.85pt] (-.085,.075)--(0,0)--(-.085,-.075);
+  \end{scope}
+}
+\foreach \p in {A,B,C,b,c} {\pt{(\p)}}
+\node[above] at (A) {$a=A$};
+\node[below left] at (B) {$B$}; \node[below right] at (C) {$C$};
+\node[left=2pt] at (b) {$b$}; \node[right=2pt] at (c) {$c$};
 \end{tikzpicture}
 \end{document}

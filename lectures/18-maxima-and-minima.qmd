@@ -43,13 +43,18 @@ where $m$ and $M$ are the minimum and maximum. The Intermediate Value Theorem su
 Here $x$ is *near* $c$ if we restrict $x$ to some open interval containing $c$, considering only points in the domain.
 :::
 
-**Note.** More precisely, a local maximum means that some $\delta>0$ satisfies
+<details class="proof">
+<summary>Optional: the precise meaning of “nearby”</summary>
+
+A local maximum means that some $\delta>0$ satisfies
 
 $$
 f(x)\le f(c)\qquad\text{for every }x\in D\cap(c-\delta,c+\delta).
 $$
 
 For a local minimum, reverse the inequality. At an included endpoint, compare only on the side in the domain.
+
+</details>
 
 ![](assets/november-4-local-maximum.svg){fig-alt="The graph peaks at c on the interval from c minus delta to c plus delta, then rises higher farther to the right." width=345}
 

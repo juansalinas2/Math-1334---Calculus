@@ -1,0 +1,252 @@
+---
+title: "# 4.5 Curve sketching {.unnumbered}"
+description: "Use limits, sign graphs, and derivative tests to sketch a curve."
+---
+
+::: {.source-note}
+Monday, November 9, 2026 · [Lecture PDF (textbook §4.6)](../downloads/november-9-end-behavior-and-curve-sketching.pdf)
+:::
+
+<style>
+.sketch-pair {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;gap:1.5rem;margin:1rem 0}
+.sketch-pair p {margin:.35em 0}
+.sketch-pair img {display:block;max-width:100%;height:auto;margin:auto}
+.sketch-item {margin:1.45em 0;padding-bottom:1em;border-bottom:1px solid var(--reading-border,#ccc)}
+.sketch-item:last-child {border-bottom:0}
+.sketch-steps li {margin:.65em 0;padding-left:.25em}
+@media(max-width:600px){.sketch-pair{grid-template-columns:minmax(0,1fr);gap:.7em}.sketch-pair img{max-width:min(100%,21rem)}}
+</style>
+
+[]{#curve-sketching}
+
+## Curve sketching steps {#curve-sketching-steps}
+
+::: {.sketch-steps}
+1. **Domain.** Give the domain in interval notation. Then give an equivalent description in set notation.
+2. **Intercepts.** Solve $f(x)=0$ for the $x$-intercepts. The $y$-intercept is $(0,f(0))$ if $f(0)$ exists.
+3. **Symmetry.** Even: $f(-x)=f(x)$. Odd: $f(-x)=-f(x)$. Periodic: $f(x+T)=f(x)$ for some $T>0$.
+4. **Asymptotes.** Compute one-sided limits at domain breaks for vertical asymptotes. Check both ends for horizontal or slant asymptotes.
+5. **Increase and decrease.** Draw a sign graph for $f'$. Identify intervals where $f'>0$ and where $f'<0$.
+6. **Local extrema.** Classify the critical numbers using a derivative test.
+7. **Concavity and inflection points.** Draw a sign graph for $f''$. Mark the points on the graph where concavity changes.
+8. **Sketch.** Draw the asymptotes, plot the key points, and trace each branch using its direction and concavity.
+
+:::
+
+## Worked sketches
+
+::::: {.sketch-item #example-1}
+:::: {.sketch-pair}
+::: {}
+**Example 1.** Sketch the graph of
+
+$\displaystyle f(x)=\frac{x}{x+1}$.
+:::
+::: {}
+![](assets/november-9-translated-sketch.svg){fig-alt="Two increasing branches approach the dashed lines x=−1 and y=1. The branch to the right of x=−1 crosses the origin." width=420}
+:::
+::::
+
+<details class="proof practice-solution" open>
+<summary>Worked sketch</summary>
+
+**1. Domain.** $(-\infty,-1)\cup(-1,\infty)$, or equivalently, $\mathbb R\setminus\{-1\}$.
+
+**2. Intercepts.** Both axes meet the graph at $(0,0)$.
+
+**3. Symmetry.** The graph is neither even nor odd.
+
+**4. Asymptotes.** Write $f(x)=1-1/(x+1)$. Then
+$$
+\lim_{x\to-1^-}f(x)=+\infty,\qquad \lim_{x\to-1^+}f(x)=-\infty.
+$$
+The vertical asymptote is $x=-1$. At both ends $f(x)\to1$, so $y=1$ is a horizontal asymptote.
+
+**5. Increase and decrease.** $f'(x)=1/(x+1)^2$ is positive on both $(-\infty,-1)$ and $(-1,\infty)$. Each branch is increasing.
+
+**6. Local extrema.** The derivative is positive everywhere in the domain, so there are no critical numbers or local extrema.
+
+**7. Concavity and inflection points.** $f''(x)=-2/(x+1)^3$. The graph is concave up on $(-\infty,-1)$ and concave down on $(-1,\infty)$. Since $-1$ is outside the domain, there is no inflection point.
+
+![](assets/november-9-translated-signs.svg){fig-alt="Across the break at −1, the first derivative is positive on both intervals. The second derivative changes from positive to negative." width=355}
+
+**8. Sketch.** The left branch approaches $y=1$ from above. The right branch passes through the origin and approaches $y=1$ from below.
+
+</details>
+:::::
+
+::::: {.sketch-item #example-8}
+:::: {.sketch-pair}
+::: {}
+**Example 2.** Sketch the graph of
+
+$\displaystyle f(x)=\frac{2x^2}{x^2-1}$.
+:::
+::: {}
+![](assets/november-9-rational-sketch.svg){fig-alt="Even graph with two outer branches above y=2 and a central branch peaking at (0,0) between the vertical asymptotes x=−1 and x=1." width=450}
+:::
+::::
+
+<details class="proof practice-solution" open>
+<summary>Worked sketch</summary>
+
+**1. Domain.** $(-\infty,-1)\cup(-1,1)\cup(1,\infty)$, or equivalently, $\mathbb R\setminus\{-1,1\}$.
+
+**2. Intercepts.** Both axes meet the graph at $(0,0)$.
+
+**3. Symmetry.** $f(-x)=f(x)$. The graph is symmetric about the $y$-axis.
+
+**4. Asymptotes.** Factor $x^2-1=(x-1)(x+1)$. The numerator approaches $2$ at both excluded inputs, so the one-sided limits are
+
+$$
+\begin{aligned}
+\lim_{x\to-1^-} f(x)&=+\infty, & \lim_{x\to-1^+} f(x)&=-\infty,\\
+\lim_{x\to1^-} f(x)&=-\infty, & \lim_{x\to1^+} f(x)&=+\infty.
+\end{aligned}
+$$
+
+Thus $x=-1$ and $x=1$ are vertical asymptotes. At both ends,
+
+$$
+\lim_{x\to\pm\infty}f(x)=\lim_{x\to\pm\infty}\left(2+\frac{2}{x^2-1}\right)=2.
+$$
+
+The graph approaches $y=2$ from above.
+
+**5. Increase and decrease.** $\displaystyle f'(x)=\frac{-4x}{(x^2-1)^2}$.
+
+![](assets/november-9-rational-first-signs.svg){fig-alt="The first derivative has signs +, +, −, − across −1, 0, and 1. It vanishes at 0 and is undefined at −1 and 1." width=440}
+
+- $f'>0$ on $(-\infty,-1)\cup(-1,0)$, or equivalently, where $x<0$ and $x\ne-1$. The function increases on each interval.
+- $f'<0$ on $(0,1)\cup(1,\infty)$, or equivalently, where $x>0$ and $x\ne1$. The function decreases on each interval.
+
+**6. Local extrema.** At $x=0$, $f'$ changes from $+$ to $-$. The only local extremum is a maximum at $(0,0)$.
+
+**7. Concavity and inflection points.** $\displaystyle f''(x)=\frac{4(3x^2+1)}{(x^2-1)^3}$.
+
+![](assets/november-9-rational-second-signs.svg){fig-alt="The second derivative is positive to the left of −1, negative between −1 and 1, and positive to the right of 1. Both breaks are outside the domain." width=440}
+
+- Concave up on $(-\infty,-1)$ and $(1,\infty)$, or equivalently, where $|x|>1$.
+- Concave down on $(-1,1)$, or equivalently, where $|x|<1$.
+
+Both changes of concavity occur at excluded inputs. There are no inflection points.
+
+**8. Sketch.** Draw the middle branch through $(0,0)$ and the two outer branches above $y=2$.
+
+</details>
+:::::
+
+## Practice {#practice}
+
+::::: {.sketch-item}
+:::: {.sketch-pair}
+::: {}
+[**Practice 1.**]{#example-9} Sketch $\displaystyle g(x)=\frac{x^3}{x^2+1}$. Mark the slant asymptote and each inflection point.
+:::
+::: {}
+![](assets/november-9-cubic-sketch.svg){fig-alt="An increasing odd curve approaches y=x at both ends. Its inflection points are (−√3, −3√3/4), (0,0), and (√3, 3√3/4)." width=465}
+:::
+::::
+
+<details class="proof practice-solution">
+<summary>Show solution</summary>
+
+**1. Domain.** $(-\infty,\infty)$, or equivalently, $\mathbb R$.
+
+**2. Intercepts.** Both intercepts are $(0,0)$.
+
+**3. Symmetry.** $g(-x)=-g(x)$. The graph is symmetric about the origin.
+
+**4. Asymptotes.** The denominator $x^2+1$ is positive everywhere. At both ends,
+
+$$
+\lim_{x\to\pm\infty}\bigl(g(x)-x\bigr)=\lim_{x\to\pm\infty}\frac{-x}{x^2+1}=0.
+$$
+
+The slant asymptote is $y=x$. The graph lies above it for $x<0$ and below it for $x>0$.
+
+**5. Increase and decrease.** $\displaystyle g'(x)=\frac{x^2(x^2+3)}{(x^2+1)^2}$.
+
+![](assets/november-9-cubic-first-signs.svg){fig-alt="The first derivative is zero at 0 and positive on both sides." width=440}
+
+The function is strictly increasing on $(-\infty,\infty)$.
+
+**6. Local extrema.** The tangent at the origin is horizontal. The derivative stays positive on either side, so there are no local extrema.
+
+**7. Concavity and inflection points.** $\displaystyle g''(x)=\frac{2x(3-x^2)}{(x^2+1)^3}$.
+
+![](assets/november-9-cubic-second-signs.svg){fig-alt="The second derivative has signs +, −, +, −, changing at minus square root of 3, 0, and square root of 3." width=440}
+
+- Concave up on $(-\infty,-\sqrt3)\cup(0,\sqrt3)$.
+- Concave down on $(-\sqrt3,0)\cup(\sqrt3,\infty)$.
+
+**8. Sketch.** The inflection points are $(-\sqrt3,-3\sqrt3/4)$, $(0,0)$, and $(\sqrt3,3\sqrt3/4)$.
+
+
+
+</details>
+:::::
+
+::::: {.sketch-item}
+:::: {.sketch-pair}
+::: {}
+**Practice 2.** Sketch the graph of $\displaystyle f(x)=\frac4{x^2+3}$.
+:::
+::: {}
+![](assets/november-9-practice-one-graph.svg){fig-alt="An even curve above the x-axis peaks at (0,4/3) and changes concavity at (−1,1) and (1,1)." width=335}
+:::
+::::
+
+<details class="proof practice-solution">
+<summary>Show solution</summary>
+
+$$
+\begin{aligned} f'(x)&=\frac{-8x}{(x^2+3)^2},\\[2pt] f''(x)&=\frac{24(x^2-1)}{(x^2+3)^3}.\end{aligned}
+$$
+
+The domain is $(-\infty,\infty)$, or equivalently, $\mathbb R$. The function is even. The only intercept is $(0,4/3)$. Since $\displaystyle\lim_{x\to\pm\infty}4/(x^2+3)=0$, both ends approach $y=0$ from above.
+
+![](assets/november-9-practice-one-signs.svg){fig-alt="The first derivative changes from + to − at 0. The second derivative changes from + to − at −1 and back to + at 1." width=285}
+
+The function is increasing on $(-\infty,0)$ and decreasing on $(0,\infty)$, with a global maximum at $(0,4/3)$. It is concave up on $(-\infty,-1)$ and $(1,\infty)$ and concave down on $(-1,1)$. The inflection points are $(-1,1)$ and $(1,1)$.
+
+
+
+</details>
+:::::
+
+::::: {.sketch-item}
+:::: {.sketch-pair}
+::: {}
+**Practice 3.** Sketch the graph of $\displaystyle g(x)=\frac{x^2}{x-1}=x+1+\frac1{x-1}$.
+:::
+::: {}
+![](assets/november-9-practice-two-graph.svg){fig-alt="Two branches separated by x=1 approach the line y=x+1, with a local maximum at the origin and a local minimum at (2,4)." width=265}
+:::
+::::
+
+<details class="proof practice-solution">
+<summary>Show solution</summary>
+
+$$
+\begin{aligned} g'(x)&=\frac{x(x-2)}{(x-1)^2},\\[2pt] g''(x)&=\frac2{(x-1)^3}.\end{aligned}
+$$
+
+The domain is $(-\infty,1)\cup(1,\infty)$, or equivalently, $\mathbb R\setminus\{1\}$. Both intercepts are $(0,0)$. The graph has half-turn symmetry about $(1,2)$.
+
+At $x=1$, the left-hand limit is $-\infty$ and the right-hand limit is $+\infty$. For the slant asymptote,
+
+$$
+\lim_{x\to\pm\infty}\bigl[g(x)-(x+1)\bigr]=\lim_{x\to\pm\infty}\frac1{x-1}=0.
+$$
+
+The branch for $x<1$ lies below $y=x+1$, and the branch for $x>1$ lies above it.
+
+![](assets/november-9-practice-two-signs.svg){fig-alt="The first derivative has signs +, −, −, + across 0, 1, and 2. The second derivative is negative left of 1 and positive right of 1. Both derivatives are undefined at 1." width=285}
+
+The function is increasing on $(-\infty,0)$ and $(2,\infty)$ and decreasing on $(0,1)$ and $(1,2)$. It has a local maximum at $(0,0)$ and a local minimum at $(2,4)$. It is concave down on $(-\infty,1)$ and concave up on $(1,\infty)$. There are no inflection points.
+
+
+
+</details>
+:::::

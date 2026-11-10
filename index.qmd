@@ -13,9 +13,9 @@ Lecture notes, worked examples, and practice.
 
 ## End behaviour and curve sketching {.unnumbered}
 
-Section 4.4 · Horizontal and slant asymptotes, derivative sign charts, and curve sketching.
+Sections 4.4–4.5 · Limits at infinity, asymptotes, and curve sketching.
 
-[Read the lecture →](lectures/19-end-behaviour-and-curve-sketching.qmd){.home-primary}
+[4.4 End behavior and limits at infinity](lectures/19-end-behaviour-and-curve-sketching.qmd){.home-primary} · [4.5 Curve sketching](lectures/curve-sketching.qmd)
 :::
 
 ::: {.home-tools}
