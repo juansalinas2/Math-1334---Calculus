@@ -464,10 +464,11 @@ For an implicit relation, differentiate both sides with respect to $t$ before su
 
 ### Similar triangles
 
-A segment parallel to one side of a triangle cuts off a similar triangle. If $a,b,c$ are the smaller side lengths and $A,B,C$ the corresponding full side lengths, then
+Suppose two triangles with corresponding side lengths $a,b,c$ and $A,B,C$ are similar, meaning their corresponding angles are equal. Then
 $$
-\frac aA=\frac bB=\frac cC.
+\frac{a}{A}=\frac{b}{B}=\frac{c}{C}.
 $$
+This common ratio is the **scaling factor** from the triangle with sides $A,B,C$ to the triangle with sides $a,b,c$.
 
 [Theorem, diagram, and proof](../lectures/related-rates.qmd#similar-triangles-theorem)
 

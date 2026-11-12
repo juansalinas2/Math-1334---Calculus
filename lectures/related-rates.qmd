@@ -317,10 +317,11 @@ Here $L=\sqrt{4^2+3^2}=5\ \mathrm m$, so $\left.\dfrac{dx}{dt}\right|_{t_0}=\dfr
 ### Similar triangles {#similar-triangles}
 
 ::: {.statement .statement-theorem #similar-triangles-theorem}
-**Theorem (similar triangles).** A segment parallel to one side of a triangle cuts off a smaller triangle whose sides are proportional to the corresponding sides of the original. If $a,b,c$ are the smaller side lengths and $A,B,C$ are the corresponding full side lengths, then
+**Theorem (similar triangles).** Suppose two triangles with corresponding side lengths $a,b,c$ and $A,B,C$ are similar, meaning their corresponding angles are equal. Then
 $$
 \frac{a}{A}=\frac{b}{B}=\frac{c}{C}.
 $$
+This common ratio is the **scaling factor** from the triangle with sides $A,B,C$ to the triangle with sides $a,b,c$.
 :::
 
 ::: {.rr-figure .rr-similarity}
@@ -330,7 +331,7 @@ $$
 <details class="proof">
 <summary>Sketch of proof</summary>
 
-Scale the small triangle about the shared vertex by the factor $A/a$. Its left side now reaches the end of the large triangle’s left side. Its base stays parallel to the original base, so it lies on the large triangle’s base and meets the right side at the same endpoint. Thus the same factor takes $b$ to $B$ and $c$ to $C$.
+Scale the triangle with sides $A,B,C$ by $k=a/A$. The side of length $A$ now has length $a$, and its two adjacent angles agree with those of the other triangle. By angle-side-angle congruence, the scaled triangle has side lengths $a,b,c$. Thus $kB=b$ and $kC=c$.
 
 </details>
 
