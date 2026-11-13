@@ -20,7 +20,7 @@ Monday, November 9, 2026 · [Lecture PDF (textbook §4.6)](../downloads/november
 ::: {.sketch-steps}
 1. **Domain.** Give the domain in interval notation. Then give an equivalent description in set notation.
 2. **Intercepts.** Solve $f(x)=0$ for the $x$-intercepts. The $y$-intercept is $(0,f(0))$ if $f(0)$ exists.
-3. **Symmetry.** Check for even or odd symmetry and for periodicity. A translated graph may also have symmetry about a different center.
+3. **Symmetry.** Check for even or odd symmetry and for periodicity.
    - *Even or odd.* On a domain symmetric about $0$, check whether $f(-x)=f(x)$ (even) or $f(-x)=-f(x)$ (odd) for every $x$ in the domain.
    - *Periodic.* Look for one fixed $T>0$ such that shifting the domain by $T$ gives the same domain and $f(x+T)=f(x)$ for every $x$ in it. The graph then repeats every $T$ units.
 4. **Asymptotes.** At a suspected vertical asymptote $x=a$, check whether at least one one-sided limit is infinite. At each unbounded end of the domain, check for a horizontal or slant asymptote.
@@ -43,7 +43,7 @@ Monday, November 9, 2026 · [Lecture PDF (textbook §4.6)](../downloads/november
 
 **2. Intercepts.** Both axes meet the graph at $(0,0)$.
 
-**3. Symmetry.** The graph is neither even nor odd. Since $f(-1+u)-1=-1/u$ is odd in $u$ for $u\ne0$, the graph has half-turn symmetry about $(-1,1)$.
+**3. Symmetry.** The function is neither even nor odd.
 
 **4. Asymptotes.** Write $f(x)=1-1/(x+1)$. Then
 $$
@@ -209,7 +209,7 @@ The horizontal asymptote is $y=0$. Since $f(x)>0$, the graph approaches it from 
 
 **2. Intercepts.** The numerator $x^2$ vanishes only at $x=0$. Since $g(0)=0$, both intercepts are $(0,0)$.
 
-**3. Symmetry.** For $u\ne0$, $g(1+u)-2=u+1/u$ is odd in $u$. Thus the graph has half-turn symmetry about $(1,2)$.
+**3. Symmetry.** The domain excludes $1$ but includes $-1$, so $g$ is neither even nor odd.
 
 **4. Asymptotes.** Write $g(x)=x+1+1/(x-1)$. The last term gives the one-sided limits
 $$
