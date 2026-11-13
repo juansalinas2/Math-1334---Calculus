@@ -9,13 +9,13 @@ css: assets/homepage.css
 Lecture notes, worked examples, and practice.
 
 ::: {.home-latest}
-[Latest posted lecture · November 9]{.home-eyebrow}
+[Latest posted lecture · November 13]{.home-eyebrow}
 
-## End behaviour and curve sketching {.unnumbered}
+## Optimization {.unnumbered}
 
-Sections 4.4–4.5 · Limits at infinity, asymptotes, and curve sketching.
+Section 4.6 · Maximize or minimize an objective function subject to constraints.
 
-[4.4 End behavior and limits at infinity](lectures/19-end-behaviour-and-curve-sketching.qmd){.home-primary} · [4.5 Curve sketching](lectures/curve-sketching.qmd)
+[4.6 Optimization](lectures/optimization.qmd){.home-primary} · [Download the worksheet](downloads/optimization-worksheet.pdf)
 :::
 
 ::: {.home-tools}

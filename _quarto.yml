@@ -48,6 +48,7 @@ book:
     - lectures/section-4-3.qmd
     - lectures/19-end-behaviour-and-curve-sketching.qmd
     - lectures/curve-sketching.qmd
+    - lectures/optimization.qmd
     - supplements/limits-map.qmd
     - supplements/worksheets.qmd
     - supplements/definitions.qmd

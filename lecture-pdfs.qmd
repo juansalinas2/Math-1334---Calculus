@@ -6,6 +6,7 @@ Download the original lecture notes for printing or annotation, or follow the to
 
 | Lecture | PDF | Read online |
 |:--|:--|:--|
+| November 13, 2026 | [Optimization worksheet](downloads/optimization-worksheet.pdf) | [Optimization](lectures/optimization.qmd) |
 | November 9, 2026 | [End behaviour and curve sketching](downloads/november-9-end-behavior-and-curve-sketching.pdf) | [End behavior and limits at infinity](lectures/19-end-behaviour-and-curve-sketching.qmd) · [Curve sketching](lectures/curve-sketching.qmd) |
 | November 6, 2026 | [Finding Local Extrema: The First and Second Derivative Tests](downloads/november-6-local-extrema-and-concavity.pdf) | [Finding Local Extrema: The First and Second Derivative Tests](lectures/section-4-3.qmd) |
 | November 4, 2026 | [Maxima and minima](downloads/november-4-maxima-and-minima.pdf) | [Maxima and minima](lectures/18-maxima-and-minima.qmd) |
@@ -26,4 +27,4 @@ Download the original lecture notes for printing or annotation, or follow the to
 
 The October 5 [exam-practice handout](downloads/october-5-exam-practice.pdf) is also available [online at the end of Chapter 2](lectures/08-exam-practice.qmd). It contains questions only, with no answers.
 
-The original [precalculus, Week 2, and Week 4 worksheets](supplements/worksheets.qmd) are collected separately, with links to the corresponding notes.
+The [worksheets page](supplements/worksheets.qmd) collects the class handouts and links to the corresponding notes.

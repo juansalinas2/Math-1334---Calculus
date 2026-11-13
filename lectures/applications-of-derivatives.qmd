@@ -1,6 +1,6 @@
 ---
 title: "Applications of derivatives"
-description: "Chapter 4: related rates, extrema, end behaviour, and curve sketching."
+description: "Chapter 4: related rates, extrema, end behaviour, curve sketching, and optimization."
 ---
 
 Sections follow our lecture order. The section numbers in the textbook may differ.
@@ -10,5 +10,6 @@ Sections follow our lecture order. The section numbers in the textbook may diffe
 - [**4.3 Finding Local Extrema: The First and Second Derivative Tests**](section-4-3.qmd) · Friday, November 6. Classify critical numbers using both derivative tests and locate changes in concavity.
 - [**4.4 End behavior and limits at infinity**](19-end-behaviour-and-curve-sketching.qmd) · Monday, November 9. Horizontal and slant asymptotes.
 - [**4.5 Curve sketching**](curve-sketching.qmd) · Monday, November 9. Use derivative sign graphs to sketch each branch.
+- [**4.6 Optimization**](optimization.qmd) · Friday, November 13. Choose an objective, impose the constraints, and find a global maximum or minimum.
 
 [Start Section 4.1](related-rates.qmd){.start-link}

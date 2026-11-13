@@ -35,3 +35,9 @@ Four pages with two investigations:
 - **Problem 2. Is the fish population recovering?** — Wednesday, Sections 3.3–3.4. Interpret the graph of a population's rate of change, sketch the population, and consider possible future fishing restrictions.
 
 Related notes: [The derivative at a point](../lectures/09-derivative-at-a-point.qmd) and [The derivative function](../lectures/10-derivative-function.qmd).
+
+## Week 8 · Optimization {#week-8-optimization}
+
+[Download the optimization worksheet](../downloads/optimization-worksheet.pdf){.start-link}
+
+[Section 4.6](../lectures/optimization.qmd) includes the six worked examples and seven practice problems with expandable solutions.
