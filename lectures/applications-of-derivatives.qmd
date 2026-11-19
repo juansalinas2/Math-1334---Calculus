@@ -1,6 +1,6 @@
 ---
 title: "Applications of derivatives"
-description: "Chapter 4: related rates, extrema, end behaviour, curve sketching, and optimization."
+description: "Chapter 4: related rates, extrema, end behaviour, curve sketching, optimization, and L’Hôpital’s rule."
 ---
 
 Sections follow our lecture order. The section numbers in the textbook may differ.
@@ -11,5 +11,7 @@ Sections follow our lecture order. The section numbers in the textbook may diffe
 - [**4.4 End behavior and limits at infinity**](19-end-behaviour-and-curve-sketching.qmd) · Monday, November 9. Horizontal and slant asymptotes.
 - [**4.5 Curve sketching**](curve-sketching.qmd) · Monday, November 9. Use derivative sign graphs to sketch each branch.
 - [**4.6 Optimization**](optimization.qmd) · Friday, November 13. Choose an objective, impose the constraints, and find a global maximum or minimum.
+
+- [**4.7 l’Hospital’s Rule**](lhopitals-rule.qmd) · Wednesday, November 18. Indeterminate forms and limits using derivatives. Textbook §4.8.
 
 [Start Section 4.1](related-rates.qmd){.start-link}

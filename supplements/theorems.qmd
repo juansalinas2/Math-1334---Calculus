@@ -5,7 +5,7 @@ css: ../assets/reference-pages.css
 ---
 
 ::: {.source-note}
-Definitions, theorems, and rules from the lecture notes through course §4.5.
+Definitions, theorems, and rules from the lecture notes through course §4.7.
 :::
 
 ::: {.reference-switcher}
@@ -550,6 +550,21 @@ For real polynomials $P$ and $Q$ with $Q\ne0$, there are unique polynomials $S$ 
 If $P$ and $Q$ are polynomials with $\deg P=\deg Q+1$, the line given by the quotient in polynomial division is a slant asymptote of $P/Q$ at both ends.
 
 [Theorem and proof](../lectures/19-end-behaviour-and-curve-sketching.qmd#slant-by-division)
+
+### l’Hospital’s rule
+
+Let $f,g$ be differentiable near $a$, except possibly at $a$, with
+$g'(x)\ne0$ for $x\ne a$ near $a$.
+If $\displaystyle\lim_{x\to a}\frac{f(x)}{g(x)}$ has form $0/0$ or $\infty/\infty$, then
+$$
+ \lim_{x\to a}\frac{f(x)}{g(x)}
+ =
+ \lim_{x\to a}\frac{f'(x)}{g'(x)},
+$$
+provided the limit on the right exists, finite or infinite.
+The same statement holds for one-sided limits and limits at $\pm\infty$.
+
+[Statement, sketch, and examples](../lectures/lhopitals-rule.qmd#lhospitals-theorem)
 
 ## Precalculus
 

@@ -66,3 +66,15 @@ On a domain symmetric about zero, $f$ is *even* if $f(-x)=f(x)$ for every $x$, a
 A *period* is one fixed $T>0$ such that shifting the domain by $T$ gives the same domain and $f(x+T)=f(x)$ for every $x$ in it.
 
 [Symmetry in curve sketching](../lectures/curve-sketching.qmd#curve-sketching-steps)
+
+### Indeterminate forms {.lookup-definition}
+
+We say $\displaystyle\lim_{x\to a}\frac{f(x)}{g(x)}$ has indeterminate form
+$0/0$ (respectively, $\infty/\infty$) if
+$$
+ \lim_{x\to a}f(x)=\lim_{x\to a}g(x)=0
+ \qquad
+ \left(\text{respectively, }|f(x)|,|g(x)|\to\infty\right).
+$$
+
+[Definition and examples](../lectures/lhopitals-rule.qmd#indeterminate-form)
