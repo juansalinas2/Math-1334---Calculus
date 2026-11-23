@@ -9,13 +9,15 @@ css: assets/homepage.css
 Lecture notes, worked examples, and practice.
 
 ::: {.home-latest}
-[Latest posted lecture · November 18]{.home-eyebrow}
+[Latest class material · November 23]{.home-eyebrow}
 
-## l’Hospital’s Rule {.unnumbered}
+## Exam 3 review {.unnumbered}
 
-Section 4.7 · Indeterminate forms and limits using derivatives. Textbook §4.8.
+Related rates, extrema, optimization, curve sketching, and limits.
 
-[4.7 l’Hospital’s Rule](lectures/lhopitals-rule.qmd){.home-primary} · [Download the lecture PDF](downloads/lhopitals-rule.pdf)
+[Read the review](lectures/exam-3-review.qmd){.home-primary} · [Download the worksheet](downloads/exam-3-review-worksheet.pdf)
+
+[Exam 2 review](lectures/exam-2-review.qmd) · [l’Hospital’s rule](lectures/lhopitals-rule.qmd)
 :::
 
 ::: {.home-tools}

@@ -14,4 +14,6 @@ Sections follow our lecture order. The section numbers in the textbook may diffe
 
 - [**4.7 l’Hospital’s Rule**](lhopitals-rule.qmd) · Wednesday, November 18. Indeterminate forms and limits using derivatives. Textbook §4.8.
 
+- [**Exam 3 review**](exam-3-review.qmd) · Original practice questions and printable worksheet.
+
 [Start Section 4.1](related-rates.qmd){.start-link}

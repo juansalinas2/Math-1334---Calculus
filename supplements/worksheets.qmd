@@ -4,6 +4,16 @@
 Supplement · Original student handouts, ready to download and print. These worksheets provide longer practice alongside the lecture notes.
 :::
 
+## Exam reviews {#exam-reviews}
+
+The online reviews preserve the original problem numbers and diagrams.
+
+| Review | Topics | Materials |
+|:--|:--|:--|
+| Exam 3 | Related rates, extrema, optimization, curve sketching, and limits | [Read online](../lectures/exam-3-review.qmd) · [Download PDF](../downloads/exam-3-review-worksheet.pdf) |
+| Exam 2 | Derivative definitions and rules, graphs, motion, inverse functions, and implicit differentiation | [Read online](../lectures/exam-2-review.qmd) · [Download PDF](../downloads/exam-2-review-worksheet.pdf) |
+| Exam 1 | Limits and continuity | [Read online](../lectures/08-exam-practice.qmd) · [Download PDF](../downloads/october-5-exam-practice.pdf) |
+
 ## Precalculus review
 
 [Download the precalculus worksheet](../downloads/precalculus-review-worksheet.pdf){.start-link}

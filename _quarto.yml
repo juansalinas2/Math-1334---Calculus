@@ -42,6 +42,7 @@ book:
     - lectures/15-inverse-functions.qmd
     - lectures/16-implicit-differentiation.qmd
     - lectures/17-exponential-logarithmic.qmd
+    - lectures/exam-2-review.qmd
     - lectures/applications-of-derivatives.qmd
     - lectures/related-rates.qmd
     - lectures/18-maxima-and-minima.qmd
@@ -50,6 +51,7 @@ book:
     - lectures/curve-sketching.qmd
     - lectures/optimization.qmd
     - lectures/lhopitals-rule.qmd
+    - lectures/exam-3-review.qmd
     - supplements/limits-map.qmd
     - supplements/worksheets.qmd
     - supplements/definitions.qmd
