@@ -2,7 +2,7 @@
 
 Math 1334 · Seattle University · Fall 2026
 
-Download the original lecture notes for printing or annotation, or follow the topic links to read the material online.
+[Download the lecture book (PDF)](downloads/math-1334-calculus-lecture-notes.pdf) or browse the original notes by date below.
 
 | Lecture | PDF | Read online |
 |:--|:--|:--|

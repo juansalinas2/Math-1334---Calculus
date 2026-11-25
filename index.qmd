@@ -8,6 +8,8 @@ css: assets/homepage.css
 ::: {.course-home}
 Lecture notes, worked examples, and practice.
 
+[Download the lecture book (PDF)](downloads/math-1334-calculus-lecture-notes.pdf)
+
 ::: {.home-latest}
 [Latest class material · November 23]{.home-eyebrow}
 
