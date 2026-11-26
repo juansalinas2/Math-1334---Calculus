@@ -30,4 +30,15 @@ for page in site.rglob('*.html'):
 shutil.copy2('assets/glossary-redirect.html', site / 'supplements/glossary.html')
 
 # The full-page map has its own layout and is deployed alongside the book.
-shutil.copytree('assets/course-map', site / 'map', dirs_exist_ok=True)
+map_source = Path('assets/course-map')
+map_output = site / 'map'
+shutil.copytree(map_source, map_output, dirs_exist_ok=True)
+# Change asset URLs with their contents so returning students see a coherent release.
+map_index = map_output / 'index.html'
+map_html = map_index.read_text()
+for asset in map_source.rglob('*'):
+    if asset.suffix in ('.css', '.js'):
+        url = './' + asset.relative_to(map_source).as_posix()
+        version = hashlib.sha256(asset.read_bytes()).hexdigest()[:12]
+        map_html = map_html.replace(f'"{url}"', f'"{url}?v={version}"')
+map_index.write_text(map_html)
