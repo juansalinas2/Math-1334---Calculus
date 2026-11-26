@@ -4,8 +4,29 @@ const formulaZoom = 2.1;
 const interior = d3.select("#inside-topic");
 const guides = d3.select("#orbit-guides");
 let insideId = null;
+let interiorPage = 0;
+let mountedPage = -1;
 let layoutKey = "";
 let zoomAnchor = null;
+const pageControls = document.getElementById("part-pages");
+
+// A group of four divides into two pairs, leaving room for the parent in both views.
+function pagesOf(parts) {
+  const pages = [];
+  let start = 0;
+  while (start < parts.length) {
+    const size = parts.length - start === 4 ? 2 : 3;
+    pages.push(parts.slice(start, start + size));
+    start += size;
+  }
+  return pages;
+}
+for (const [id, step] of [["previous-parts", -1], ["next-parts", 1]]) {
+  document.getElementById(id).onclick = () => {
+    interiorPage += step;
+    drawInterior(d3.zoomTransform(viewport));
+  };
+}
 
 function partSlug(part) {
   return part.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-$/, "");
@@ -32,15 +53,32 @@ function drawInterior(view) {
   }
   if (insideId !== (topic?.id ?? null)) {
     insideId = topic?.id ?? null;
+    if (topic && insideId !== selected) interiorPage = 0;
+    mountedPage = -1;
     layoutKey = "";
     interior.selectAll("*").remove();
     guides.selectAll("*").remove();
     world.classed("has-interior", Boolean(topic));
     stops.classed("inside-parent", (d) => d.id === insideId);
     interior.style("display", topic ? null : "none");
-    if (topic) buildInterior(topic);
+    pageControls.hidden = true;
   }
   if (!topic) return;
+  const pages = pagesOf(topic.parts);
+  const visible = pages[interiorPage];
+  if (mountedPage !== interiorPage) {
+    mountedPage = interiorPage;
+    layoutKey = "";
+    interior.selectAll("*").remove();
+    guides.selectAll("*").remove();
+    buildInterior(topic, visible);
+    pageControls.hidden = pages.length < 2;
+    document.getElementById("part-page").textContent = (interiorPage + 1) +
+      " / " + pages.length;
+    document.getElementById("previous-parts").disabled = interiorPage === 0;
+    document.getElementById("next-parts").disabled =
+      interiorPage === pages.length - 1;
+  }
   const transform = "translate(" + [topic.x, topic.y] + ") scale(" +
     1 / view.k + ")";
   interior.attr("transform", transform);
@@ -51,10 +89,12 @@ function drawInterior(view) {
   if (key === layoutKey) return;
   layoutKey = key;
   const narrow = width < 560;
-  const count = topic.parts.length;
+  const count = visible.length;
   const rx = Math.min(narrow ? width * .24 : width * .25, deep ? 180 : 138);
-  const ry = Math.min(height * .21, deep ? 96 : 79);
-  const positions = count === 2
+  const ry = Math.min(height * .23, deep ? 114 : 86);
+  const positions = count === 1
+    ? [[0, -ry]]
+    : count === 2
     ? narrow ? [[0, -ry], [0, ry]] : [[-rx, -ry * .57], [rx, ry * .57]]
     : [[-rx, -ry * .72], [rx, -ry * .72], [0, ry]];
   const box = Math.max(
@@ -78,28 +118,22 @@ function drawInterior(view) {
     deep ? 74 : 48,
   );
   group.select("foreignObject").attr("x", -box / 2).attr("width", box);
-  // A long formula fits its own label without typesetting or resizing the graph.
+  // Keep compact notation legible. A full equation is always available in the note.
   if (deep) {
     group.selectAll(".part-formula").each(function () {
-      const formula = this.querySelector("math");
-      if (formula) {
-        formula.style.fontSize = "14px";
-        const natural = formula.getBoundingClientRect().width;
-        if (natural > box - 10) {
-          formula.style.fontSize = (14 * (box - 10) / natural) + "px";
-        }
-      }
+      this.hidden = false;
+      this.hidden = this.scrollWidth > box - 4;
     });
   }
 }
 
-function buildInterior(topic) {
+function buildInterior(topic, visible) {
   const color = families[topic.family].color;
   guides.attr("stroke", color).attr("aria-hidden", "true");
   guides.append("ellipse").attr("class", "orbit");
-  guides.selectAll("line").data(topic.parts).join("line");
+  guides.selectAll("line").data(visible).join("line");
   interior.attr("aria-label", "Inside " + topic.title).style("--accent", color);
-  const buttons = interior.selectAll("g.part").data(topic.parts).join("g")
+  const buttons = interior.selectAll("g.part").data(visible).join("g")
     .attr("class", "part").attr("role", "button").attr("tabindex", 0)
     .attr("aria-label", (p) => topic.title + ", " + p.title)
     .on("click", (event, p) => {
@@ -115,11 +149,11 @@ function buildInterior(topic) {
   buttons.append("circle").attr("r", 6).attr("stroke", color);
   const labels = buttons.append("foreignObject").attr("y", 10).attr(
     "height",
-    66,
+    85,
   )
     .append("xhtml:div").attr("class", "part-label");
   labels.append("xhtml:strong").text((p) => p.title);
   labels.append("xhtml:span").attr("class", "part-formula").each(function (p) {
-    writeMapText(this, p.formula);
+    writeMapText(this, p.symbol || p.formula.split("\n")[0]);
   });
 }

@@ -6,6 +6,7 @@
     <meta name="theme-color" content="#f9f8f2">
     <title>Calculus concept map · MATH 1334</title>
     <link rel="stylesheet" href="./map.css">
+    <link rel="stylesheet" href="./math.css">
     <script defer src="./vendor/d3.v7.min.js"></script>
     <script defer src="./topics.js"></script>
     <script defer src="./graph.js"></script>
@@ -75,6 +76,11 @@
         </div>
         <div class="touch-hint" aria-hidden="true">
           Drag to move · Pinch to explore a concept
+        </div>
+        <div id="part-pages" hidden aria-label="Subtopic pages">
+          <button id="previous-parts" aria-label="Previous subtopics">‹</button>
+          <output id="part-page" aria-live="polite"></output>
+          <button id="next-parts" aria-label="Next subtopics">›</button>
         </div>
         <div class="controls" aria-label="Map controls">
           <button id="out" disabled aria-label="Zoom out" title="Zoom out">

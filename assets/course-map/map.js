@@ -22,12 +22,6 @@ let renderedScale = 0;
 let drawFrame = null;
 let gesturing = false;
 let hovered = null;
-const bounds = {
-  left: -15 * horizontalSpacing,
-  top: 10,
-  right: 1450 * horizontalSpacing,
-  bottom: 842,
-};
 
 function trackPath(edge) {
   const a = byTopic.get(edge.source);
@@ -142,18 +136,10 @@ function move(x, y, scale) {
 }
 function frame() {
   const items = stations.filter((s) => family === "all" || s.family === family);
-  const left = family === "all"
-    ? bounds.left
-    : Math.min(...items.map((d) => d.x)) - 100;
-  const right = family === "all"
-    ? bounds.right
-    : Math.max(...items.map((d) => d.x)) + 100;
-  const top = family === "all"
-    ? bounds.top
-    : Math.min(...items.map((d) => d.y)) - 42;
-  const bottom = family === "all"
-    ? bounds.bottom
-    : Math.max(...items.map((d) => d.y)) + 62;
+  const left = Math.min(...items.map((d) => d.x)) - 115;
+  const right = Math.max(...items.map((d) => d.x)) + 115;
+  const top = Math.min(...items.map((d) => d.y)) - 44;
+  const bottom = Math.max(...items.map((d) => d.y)) + 72;
   const scale = Math.max(
     minZoom,
     Math.min(
@@ -198,9 +184,9 @@ function paint(preview = selected) {
 }
 function el(tag, text, className) {
   const element = document.createElement(tag);
+  if (className) element.className = className;
   if (text.includes("$")) writeMapText(element, text);
   else element.textContent = text;
-  if (className) element.className = className;
   return element;
 }
 function showTopic(id, slug = null) {
@@ -209,6 +195,9 @@ function showTopic(id, slug = null) {
   const part = topic.parts.find((item) => partSlug(item) === slug);
   selected = id;
   selectedPart = part ? slug : null;
+  interiorPage = part
+    ? pagesOf(topic.parts).findIndex((page) => page.includes(part))
+    : 0;
   zoomAnchor = null;
   hovered = null;
   cameraMode = "selected";
@@ -226,7 +215,7 @@ function showTopic(id, slug = null) {
     body.append(back);
   }
   const link = el("a", "Read the lecture notes", "note-link");
-  link.href = topic.href;
+  link.href = part?.href || topic.href;
   body.append(
     heading,
     el("h3", "Definition"),
@@ -244,11 +233,10 @@ function showTopic(id, slug = null) {
     button.onclick = () => showTopic(id, partSlug(item));
     parts.append(button);
   }
-  body.append(
-    el("h3", "From class"),
-    el("p", topic.example),
-    el("h3", "Follow a connection"),
-  );
+  if (!part || part.example) {
+    body.append(el("h3", "From class"), el("p", note.example));
+  }
+  body.append(el("h3", "Follow a connection"));
   nearby(id).forEach((edge) => {
     const other = byTopic.get(edge.source === id ? edge.target : edge.source);
     const button = el("button", "", "neighbor");
@@ -371,30 +359,39 @@ function normalizeQuery(text) {
   return text.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "")
     .replace(/[’′]/g, "'").replace(/″/g, "''").trim();
 }
+const searchEntries = stations.flatMap((topic) =>
+  [topic, ...topic.parts].map((note) => ({
+    topic,
+    note,
+    title: normalizeQuery(note.title),
+    keywords: normalizeQuery(
+      note === topic
+        ? [topic.label, aliases[topic.id] || ""].join(" ")
+        : note.aliases || "",
+    ),
+    definition: normalizeQuery(note.definition),
+  }))
+);
 function search() {
   const q = normalizeQuery(lookup.value);
   results.replaceChildren();
   results.hidden = !q;
   if (!q) return;
-  const hits = stations.filter((s) =>
-    normalizeQuery(
-      [
-        s.label,
-        s.title,
-        aliases[s.id] || "",
-        s.definition,
-        s.parts.map((p) => p.title).join(" "),
-      ].join(" "),
-    )
-      .includes(q)
-  );
-  hits.sort((a, b) =>
-    Number(b.title.toLowerCase().includes(q)) -
-    Number(a.title.toLowerCase().includes(q))
-  );
-  hits.forEach((s) => {
-    const btn = el("button", s.title);
-    btn.onclick = () => showTopic(s.id);
+  const rank = (entry) =>
+    entry.title === q
+      ? 4
+      : entry.title.includes(q)
+      ? 3
+      : entry.keywords.includes(q)
+      ? 2
+      : Number(entry.definition.includes(q));
+  const hits = searchEntries.map((entry) => ({ entry, score: rank(entry) }))
+    .filter((hit) => hit.score > 0).sort((a, b) => b.score - a.score);
+  hits.forEach(({ entry: { topic, note } }) => {
+    const btn = el("button", note.title);
+    if (note !== topic) btn.append(el("small", topic.title));
+    btn.onclick = () =>
+      showTopic(topic.id, note === topic ? null : partSlug(note));
     results.append(btn);
   });
   if (!hits.length) results.append(el("p", "No matching concept."));

@@ -16,6 +16,7 @@ description: "See how the main ideas of differential calculus connect."
 :::
 
 ```{=html}
+<link rel="stylesheet" href="../map/math.css">
 <style>
 .atlas-launch { display:flex; align-items:center; justify-content:space-between; margin:.5rem 0 1rem; padding:1rem 1.3rem; background:#123e42; color:#fff!important; border-radius:.5rem; text-decoration:none!important; }
 .atlas-launch:hover,.atlas-launch:focus-visible { background:#205858; }
@@ -24,7 +25,6 @@ description: "See how the main ideas of differential calculus connect."
 .atlas-launch-arrow { font:1.45rem system-ui; }
 
 .map-equation { overflow-x: auto; padding: .3em 0; }
-.map-equation math { display: block; width: max-content; math-style: normal; }
 .idea-map { margin: 1.2rem 0 .7rem; }
 .idea-node { cursor: pointer; }
 .idea-node:hover rect, .idea-node:focus rect, .idea-node[aria-pressed="true"] rect { stroke: var(--reading-link, #285d80); stroke-width: 3; fill: var(--reading-panel, #f3f6f8); }

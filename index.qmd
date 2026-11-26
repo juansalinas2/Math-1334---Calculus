@@ -8,8 +8,6 @@ css: assets/homepage.css
 ::: {.course-home}
 Lecture notes, worked examples, and practice.
 
-[Open the calculus concept map](map/){.home-primary}
-
 [Download the lecture notes (PDF)](downloads/math-1334-calculus-lecture-notes.pdf)
 
 ::: {.home-latest}
@@ -23,6 +21,8 @@ Related rates, extrema, optimization, curve sketching, and limits.
 
 [Exam 2 review](lectures/exam-2-review.qmd) · [l’Hospital’s rule](lectures/lhopitals-rule.qmd)
 :::
+
+## Look up {.unnumbered}
 
 ::: {.home-tools}
 ::: {.home-tool}
@@ -46,6 +46,8 @@ Class handouts for working through problems.
 Original notes, organized by date.
 :::
 :::
+
+[Open the calculus concept map](map/){.home-primary}
 
 ::: {.home-start}
 Starting the course? [Begin with Chapter 1](lectures/01-introduction.qmd) or revisit [Appendix A: precalculus](lectures/00-functions.qmd).

@@ -1,6 +1,7 @@
 // Coordinates keep each concept in the same place across visits.
 // The short labels belong to the diagram; topics.js holds the lecture text.
 const families = {
+  foundations: { label: "Precalculus", color: "#616b36" },
   limits: { label: "Limits & continuity", color: "#127c73" },
   differentiation: { label: "Differentiation", color: "#4054ae" },
   shape: { label: "Shape & extrema", color: "#965387" },
@@ -9,6 +10,16 @@ const families = {
 
 const horizontalSpacing = 1.2;
 const stations = [
+  ["functions", "foundations", 454, 912, "Functions & domains"],
+  ["unitcircle", "foundations", 113, 910, "Radians & unit circle"],
+  ["infinite", "limits", -68, 324, "Infinite limits"],
+  ["limitmethods", "limits", 97, -30, "Algebraic limits"],
+  ["breaks", "limits", 490, -35, "Discontinuities"],
+  ["derivative2", "differentiation", 635, 163, "Derivative function"],
+  ["invtrig", "differentiation", -58, 561, "Inverse trig derivatives"],
+  ["tests", "shape", 1080, 365, "Extremum tests"],
+  ["rationaltails", "limits", 1270, 777, "Rational functions"],
+  ["forms", "applications", 46, 385, "Indeterminate forms"],
   // Topic, family, position, map label, and optional mathematical symbol for a hub.
   ["sides", "limits", 94, 236, "One-sided limits"],
   ["laws", "limits", 85, 92, "Limit laws"],
@@ -52,6 +63,83 @@ const stations = [
 // Every connection states the mathematical relationship when either end is selected.
 // Longer connections appear on selection to keep the overview legible.
 const connections = [
+  [
+    "functions",
+    "unitcircle",
+    "Sine and cosine are functions of an angle in radians.",
+  ],
+  [
+    "functions",
+    "inverse",
+    "Restrict the domain to obtain a one-to-one function with an inverse.",
+    true,
+  ],
+  ["functions", "chain", "The chain rule differentiates a composition.", true],
+  [
+    "unitcircle",
+    "trig",
+    "The trigonometric derivative formulas use angles measured in radians.",
+    true,
+  ],
+  [
+    "infinite",
+    "sides",
+    "The signs on the left and right determine the behavior at a vertical asymptote.",
+  ],
+  [
+    "infinite",
+    "endbehavior",
+    "In an infinite limit the outputs grow without bound. In a limit at infinity the inputs travel along a tail.",
+    true,
+  ],
+  ["limitmethods", "laws", "Simplify a quotient until the limit laws apply."],
+  [
+    "breaks",
+    "continuity",
+    "Compare both one-sided limits with the function value to identify the break.",
+  ],
+  [
+    "infinite",
+    "breaks",
+    "An infinite one-sided limit produces an infinite discontinuity.",
+    true,
+  ],
+  [
+    "derivative",
+    "derivative2",
+    "Allow the point of evaluation to vary to get the derivative function.",
+  ],
+  [
+    "derivative2",
+    "derivatives",
+    "The derivative function can itself be differentiated.",
+    true,
+  ],
+  [
+    "inverse",
+    "invtrig",
+    "Restrict a trigonometric function to a one-to-one branch and use reciprocal slopes.",
+  ],
+  [
+    "tests",
+    "critical",
+    "Fermat’s theorem identifies candidates. The derivative tests classify them.",
+  ],
+  [
+    "tests",
+    "local",
+    "A derivative sign change distinguishes a peak from a valley.",
+  ],
+  [
+    "rationaltails",
+    "endbehavior",
+    "Degree comparison and polynomial division determine horizontal and slant asymptotes.",
+  ],
+  [
+    "forms",
+    "lhospital",
+    "Algebra or logarithms can produce a quotient to which the rule applies.",
+  ],
   [
     "sides",
     "limit",
