@@ -3,38 +3,11 @@
 const courseCenter = [700, 430];
 const courseScale = .15, groupsScale = .42, topicsScale = 1;
 const courseBoundary = .24, groupsBoundary = .61;
-const skyView = new URLSearchParams(location.search).get("view") === "sky";
 const representatives = { foundations: "unitcircle", limits: "limit", differentiation: "derivative", shape: "concavity", applications: "optimization" };
 const systemLayer = document.getElementById("systems");
 const systemNodes = document.getElementById("system-nodes");
 const systemLines = d3.select("#system-lines").append("g");
 let systemKey = "", systemLayout = [], systemKind = "", systemIntent = null;
-
-function skyArt(id) {
-  const icon = d3.create("svg:svg").attr("viewBox", "0 0 100 100")
-    .attr("class", "sky-art").attr("aria-hidden", "true").attr("focusable", "false");
-  icon.append("use").attr("href", "#sky-" + id).attr("width", 100).attr("height", 100);
-  return icon.node();
-}
-function initializeSky() {
-  document.body.dataset.view = skyView ? "sky" : "map";
-  if (!skyView) return;
-  document.title = "Celestial calculus · MATH 1334";
-  document.querySelector("h1").textContent = "Celestial calculus";
-  const link = document.getElementById("view-switch");
-  link.textContent = "Standard map";
-  link.href = "./";
-  const stars = d3.select("#sky-stars").append("svg").attr("width", "100%").attr("height", "100%")
-    .attr("viewBox", "0 0 1100 760").attr("preserveAspectRatio", "xMidYMid slice");
-  let seed = 1334;
-  function random() { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }
-  for (let i = 0; i < 185; i++) {
-    stars.append("circle").attr("cx", random() * 1100).attr("cy", random() * 760)
-      .attr("r", .45 + random() ** 3 * 1.45).attr("fill", i % 7 ? "#dcf1ff" : "#ffd99d")
-      .attr("opacity", .28 + random() * .6);
-  }
-}
-initializeSky();
 
 function systemAt(k) {
   if (k < courseBoundary) return "course";
@@ -98,9 +71,8 @@ function buildSystem(kind, width, height) {
     button.setAttribute("aria-label", node.label + (node.count ? ", " + node.count : "") + ". Explore");
     const illustration = el("span", "", "cluster-symbol");
     const note = node.topic || byTopic.get(representatives[id] || "derivative");
-    if (skyView) illustration.append(skyArt(id));
-    if (!skyView || node.topic) illustration.append(focusMark(note));
-    if (!skyView && kind !== "family") {
+    illustration.append(focusMark(note));
+    if (kind !== "family") {
       illustration.classList.add("aggregate-mark");
       for (let j = 0; j < 3; j++) illustration.append(el("i", "", "satellite"));
     }
@@ -136,10 +108,7 @@ function buildSystem(kind, width, height) {
     const path = d3.line().x(n => n.x).y(n => n.y).curve(d3.curveBumpX)([a,b]);
     systemLines.append("path").attr("d", path).attr("class", "system-connection");
   }
-  if (skyView && kind === "groups") for (const r of [.85,1.12]) {
-    systemLines.append("ellipse").attr("rx", Math.min(width*.36, 370)*r).attr("ry", Math.min(height*.22,130)*r)
-      .attr("transform","rotate(-10)").attr("class","system-orbit");
-  }
+
 }
 function drawSystem(view) {
   const width = viewport.clientWidth, height = viewport.clientHeight;
@@ -157,7 +126,7 @@ function drawSystem(view) {
   if (document.body.dataset.level !== tier) {
     const touch = matchMedia("(pointer: coarse), (max-width: 760px)").matches;
     const action = touch ? "Tap" : "Select";
-    const hint = { course:action+" Calculus to explore", groups:action+" a group to explore", family:action+" a topic to open its moons", topics:touch?"Drag to pan · Pinch to zoom":"Drag to pan · Scroll to zoom", detail:action+" a moon to read" };
+    const hint = { course:action+" Calculus to explore", groups:action+" a group to explore", family:action+" a topic to see its subtopics", topics:touch?"Drag to pan · Pinch to zoom":"Drag to pan · Scroll to zoom", detail:action+" a subtopic to read" };
     document.querySelector(".gesture-hint").textContent = hint[tier];
   }
   systemKind = kind;

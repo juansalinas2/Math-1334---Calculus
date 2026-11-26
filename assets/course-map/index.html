@@ -18,6 +18,7 @@
     <script defer src="./interior.js"></script>
     <script defer src="./systems.js"></script>
     <script defer src="./search.js"></script>
+    <script defer src="./topic-list.js"></script>
     <script defer src="./map.js"></script>
   </head>
   <body data-map-layout="focus">
@@ -56,7 +57,10 @@
             aria-controls="results"
           ><div id="results" hidden></div>
         </div>
-        <a class="view-switch" id="view-switch" href="?view=sky">Celestial demo</a>
+        <div class="presentation-switch" role="group" aria-label="Browse concepts">
+          <button type="button" data-presentation="map" aria-pressed="true">Zoom map</button>
+          <button type="button" data-presentation="list" aria-pressed="false">Topic list</button>
+        </div>
         <label class="map-theme-control" title="Theme"><span>Theme</span><select id="map-theme" aria-label="Map theme"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option><option value="paper">Paper</option><option value="darker">Darker</option></select></label>
       </div>
       <nav aria-label="Focus the map by topic">
@@ -76,8 +80,6 @@
         >
           <svg id="drawing" width="100%" height="100%" aria-label="Concept graph">
           <!-- node marks -->
-          <!-- sky symbols -->
-          <g id="sky-stars" aria-hidden="true"></g>
           <g id="world">
             <g id="rails"></g>
             <g id="stops"></g>
@@ -89,6 +91,7 @@
           </div>
           <section id="inside-topic" class="focus-card" hidden></section>
         </div>
+        <section id="topic-list" aria-label="Topics and subtopics" hidden></section>
         <div class="explore-tools" id="explore-tools">
           <details class="class-questions" id="class-questions">
             <summary>Start with a question <span aria-hidden="true">↗</span></summary>

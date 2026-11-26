@@ -44,7 +44,6 @@ function buildTopicOrbit(topic) {
     if (slug) button.dataset.part = slug;
     if (Math.abs(x - geometry.cx) < .01) button.classList.add("orbit-pole");
     const face = el("span", "", "orbit-face");
-    if (skyView && isPlanet) face.append(skyArt(topic.family));
     face.append(focusMark(note));
     const visibleName = isPlanet ? (topic.label || topic.title) : note.title;
     button.append(face, el("span", visibleName, "orbit-name"));

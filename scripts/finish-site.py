@@ -45,8 +45,6 @@ subprocess.run([*runner, 'scripts/render-map-math.js', str(map_output), json.dum
 map_index = map_output / 'index.html'
 marks = Path('scripts/figures/map-node-marks.svg').read_text()
 map_html = map_index.read_text().replace('<!-- node marks -->', marks)
-sky = Path('scripts/figures/map-sky.svg').read_text()
-map_html = map_html.replace('<!-- sky symbols -->', sky[sky.index('>') + 1:sky.rindex('</svg>')])
 # Ship the shell and its interdependent scripts together so cached documents
 # keep their matching controls, geometry, and typeset notation.
 def inline_script(name):

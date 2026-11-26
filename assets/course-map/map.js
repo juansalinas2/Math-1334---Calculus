@@ -70,7 +70,7 @@ function setReading(open, jump = false) {
   const toggle = byId("sheet-toggle");
   const example = byId("detail-body").querySelector(".note-example");
   toggle.setAttribute("aria-expanded", String(open));
-  toggle.textContent = open ? "Back to map" : example ? "Read example" : "Read note";
+  toggle.textContent = open ? (document.body.dataset.presentation === "list" ? "Back to list" : "Back to map") : example ? "Read example" : "Read note";
   if (open && jump && example) {
     const margin = byId("reader-tools").offsetHeight + 8;
     reader.scrollTop += example.getBoundingClientRect().top - reader.getBoundingClientRect().top - margin;
@@ -308,17 +308,18 @@ function showTopic(id, slug = null, fromLocation = false) {
   results.hidden = true;
   lookup.value = "";
   paint();
+  syncTopicList();
   const previous = routeViews.get(next);
   if (previous && (fromLocation || (sameTopic && !part))) move(...previous);
   else if (!sameTopic || d3.zoomTransform(viewport).k < detailZoom) {
     move(topic.x, topic.y, Math.max(detailZoom + .03, d3.zoomTransform(viewport).k));
   } else drawCamera();
-  if (!matchMedia("(max-width: 760px), (max-width: 1000px) and (orientation: portrait)").matches) heading.focus({preventScroll: true});
+  if (document.body.dataset.presentation !== "list" && !matchMedia("(max-width: 760px), (max-width: 1000px) and (orientation: portrait)").matches) heading.focus({preventScroll: true});
 }
 function overview(which = "all", restore = false, fromLocation = false, scale = null) {
   rememberView();
   const atRoot = scale !== null && scale < courseBoundary;
-  const next = which === "all" ? (atRoot ? "#calculus" : skyView ? "#groups" : "") : "#family/" + which;
+  const next = which === "all" ? (atRoot ? "#calculus" : "") : "#family/" + which;
   setRoute(next, fromLocation);
   selected = null;
   selectedPart = null;
@@ -333,6 +334,7 @@ function overview(which = "all", restore = false, fromLocation = false, scale = 
   byId("explore-tools").hidden = false;
   byId("class-questions").open = false;
   paint();
+  syncTopicList();
   const previous = routeViews.get(next);
   if (scale !== null) {
     cameraMode = "manual";
@@ -397,7 +399,7 @@ function scaleBy(factor) {
 zoomIn.onclick = () => scaleBy(1.35);
 zoomOut.onclick = () => scaleBy(1 / 1.35);
 function leaveTopic() {
-  const entryRoute = entryFamily === "all" ? (skyView ? "#groups" : "") : "#family/" + entryFamily;
+  const entryRoute = entryFamily === "all" ? "" : "#family/" + entryFamily;
   const previous = routeViews.get(entryRoute);
   // A topic can be opened from an already magnified map. Backing away must
   // leave the orbit even if the old camera would immediately reopen it.
@@ -514,7 +516,7 @@ document.addEventListener("keydown", (e) => {
   if (
     !e.metaKey && !e.ctrlKey && !e.altKey && !e.isComposing &&
     !e.target.closest("input, textarea, select, [contenteditable]") &&
-    ["+", "=", "-"].includes(e.key)
+    document.body.dataset.presentation !== "list" && ["+", "=", "-"].includes(e.key)
   ) {
     e.preventDefault();
     scaleBy(e.key === "-" ? 1 / 1.35 : 1.35);
@@ -531,7 +533,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 function initialFrame() {
-  move(...courseCenter, skyView ? courseScale : groupsScale);
+  move(...courseCenter, groupsScale);
 }
 new ResizeObserver(() => {
   // Opening the panel already measured and used its new viewport.
@@ -554,7 +556,7 @@ function openLocation() {
   const [id, slug] = location.hash.slice(1).split("/");
   if (byTopic.has(id)) showTopic(id, slug, true);
   else if (id === "family" && Object.hasOwn(families, slug)) overview(slug, true, true);
-  else if (id === "calculus" || (skyView && ready && !id)) overview("all", false, true, courseScale);
+  else if (id === "calculus") overview("all", false, true, courseScale);
   else if (id === "groups" || ready) overview("all", true, true);
   else {
     cameraMode = "initial";
@@ -562,6 +564,7 @@ function openLocation() {
     initialFrame();
   }
 }
+initializePresentation();
 window.addEventListener("hashchange", openLocation);
 openLocation();
 ready = true;
