@@ -418,6 +418,11 @@
     },
     "answers": [
       {
+        "match": "\\bd\\s*h\\s*/\\s*d\\s*t\\b|(?:unknown|wanted|looking for).*(?:depth|height).*rate|rate of (?:the )?(?:depth|height)",
+        "step": 2,
+        "text": "\\(dh/dt\\) is the rate the problem asks for. It measures the change in water depth in meters per minute. From \\(V=\\pi h^3/27\\), differentiate to get \\(dV/dt=(\\pi h^2/9)\\,dh/dt\\). At \\(h=3\\), divide the given volume rate by \\(\\pi\\) to obtain the depth rate."
+      },
+      {
         "match": "r\\s*/\\s*h\\s*=\\s*(?:6\\s*/\\s*2|3(?:\\.0+)?)(?!\\d|[./]\\d)|\\br\\s*=\\s*3\\s*\\*?\\s*h\\b",
         "step": 2,
         "text": "Try that equation on the full tank. At \\(h=6\\), the rule \\(r=3h\\) would predict an 18-m radius. The actual radius is 2 m. Putting radius first in both fractions gives \\(r/h=2/6\\). What radius does the repaired ratio give at \\(h=3\\)?",

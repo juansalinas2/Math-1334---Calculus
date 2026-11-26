@@ -452,8 +452,9 @@
       const previous = key === activeTopic ? activeStep : 0;
       const remainder = ref ? q.replace(ref.match[0], "").trim() : q;
       const partMatch = partPattern.exec(remainder);
+      const next = /^(?:(?:ok(?:ay)?[, ]*|and )?(?:what(?:'s| is)? )?(?:comes? )?next(?: step)?|then what|go on|continue)$/.test(q);
       const another = /^(?:(?:can|could) i (?:get|have) |give me )?(?:another|one more|next|second) hint(?: please)?$/.test(q);
-      const part = partMatch?.slice(1).find(Boolean) || ref?.part || (another && key === activeTopic ? activePart : "");
+      const part = partMatch?.slice(1).find(Boolean) || ref?.part || ((another || next) && key === activeTopic ? activePart : "");
       const continuingHint = another && key === activeTopic && hintLevel > 0;
       const lastHintLevel = continuingHint ? hintLevel : 0;
       activePart = part;
@@ -462,7 +463,6 @@
       activeStep = 0;
       let supported = true;
       let step = 0;
-      const next = /^(?:(?:ok(?:ay)?[, ]*|and )?(?:what(?:'s| is)? )?(?:comes? )?next(?: step)?|then what|go on|continue)$/.test(q);
       const hints = item.partHints || {};
       const entries = item.answers || [];
       const exact = prompts(item).find(a => normalized(a.question) === q);
@@ -489,7 +489,7 @@
           answer.append(element("p", item.hint));
         } else authored(part ? item[part] : item.starterHtml);
         step = topic.steps.length ? 1 : 0;
-        if (part) step = topic.parts.get(part)?.step || step;
+        if (part && topic.steps.length) step = 2;
         if (continuingHint && !part && topic.steps.length) step = 2;
       } else if (definition) {
         excerpt(topics.get("the-three-steps").node.querySelectorAll(":scope > p")[1]);
@@ -504,13 +504,15 @@
         if (item.help.reply) pendingReply = {key, index:0, rule:item.help.reply};
         authored(item.answerHtml);
         step = item.help.step;
-      } else if (part && topic.parts.has(part)) {
+      } else if (!next && part && topic.parts.has(part)) {
         const hit = topic.parts.get(part);
         step = hit.step;
         excerpt(hit.paragraph);
       } else if (next || /\bstep\s*[123]\b/.test(q)) {
         step = next ? Math.min(previous + 1, 3) : Number(q.match(/\bstep\s*([123])\b/)[1]);
-        showStep(topic, step);
+        const hit = part && topic.parts.get(part);
+        if (hit && hit.step === step) excerpt(hit.paragraph);
+        else showStep(topic, step);
       } else {
         const setup = /what (?:is|does).*d[a-z]\s*\/\s*dt|set.?up|givens?|given rate|sketch|draw|label|what.*(?:finding|find|asked)|what.*(?:stand for|represent)|what does.*mean/;
         const relation = /differentiat|chain rule|product rule|equation|relate the rates|relation|formula/;
