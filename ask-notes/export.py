@@ -1,9 +1,10 @@
-"""Prepare only the public related-rates lecture for Bedrock and the local preview."""
+"""Prepare the shared course index and the authored related-rates exercises."""
 import json
 import shutil
 import sys
 from pathlib import Path
 from practice import checks
+from course_index import build
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
@@ -12,6 +13,18 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 PAGE = "lectures/related-rates.html"
 BUILD = HERE / "build"
+SEARCH_INDEX = "assets/course-search-index.js"
+
+
+def course_passages(site):
+    raw = (site / SEARCH_INDEX).read_text().strip()
+    prefix = "window.courseSearchIndex="
+    if not raw.startswith(prefix):
+        raise ValueError("Unexpected course search index format.")
+    book = build(json.loads(raw[len(prefix):].removesuffix(";")))
+    if not any(k.startswith("lectures/14-chain-rule.html#") for k in book) or PAGE + "#cone" not in book:
+        raise ValueError("The course index is missing published lectures.")
+    return book
 
 
 def read_passages(site):
@@ -42,7 +55,8 @@ def export(site):
     # Older bundles embedded a copy of the whole lecture. The live page is canonical.
     (function / "pilot.html").unlink(missing_ok=True)
     (function / "passages.json").write_text(json.dumps(book, ensure_ascii=False, indent=2))
-    for name in ("app.py", "responses.py", "practice.py", "checks.json"):
+    (function / "course.json").write_text(json.dumps(course_passages(site), ensure_ascii=False, separators=(",", ":")))
+    for name in ("app.py", "responses.py", "practice.py", "checks.json", "course_index.py"):
         shutil.copyfile(HERE / name, function / name)
     return book
 

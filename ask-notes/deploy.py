@@ -12,7 +12,7 @@ from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 import uuid
 
-from export import BUILD, HERE, ROOT, PAGE, export
+from export import BUILD, HERE, ROOT, PAGE, SEARCH_INDEX, export
 from practice import checks
 
 STACK = "math1334-ask-notes"
@@ -66,10 +66,11 @@ def main():
         site = args.site
         if args.published_notes:
             site = BUILD / "public-course"
-            page = site / PAGE
-            page.parent.mkdir(parents=True, exist_ok=True)
-            with urlopen("https://juansalinas2.github.io/Math-1334---Calculus/" + PAGE, timeout=25) as response:
-                page.write_bytes(response.read())
+            for resource in (PAGE, SEARCH_INDEX):
+                path = site / resource
+                path.parent.mkdir(parents=True, exist_ok=True)
+                with urlopen("https://juansalinas2.github.io/Math-1334---Calculus/" + resource, timeout=25) as response:
+                    path.write_bytes(response.read())
         export(site)
     if args.class_code_file:
         path = args.class_code_file.expanduser()

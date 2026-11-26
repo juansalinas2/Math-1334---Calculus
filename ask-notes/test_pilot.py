@@ -11,7 +11,8 @@ import practice
 from review import report
 from unittest.mock import Mock, patch
 import app
-from export import ROOT, read_passages
+import course_index
+from export import ROOT, course_passages, read_passages
 from site_assets import add_widget
 
 
@@ -38,6 +39,43 @@ class PilotTests(unittest.TestCase):
         self.cloud.update_item.side_effect = self.cloud.exceptions.ConditionalCheckFailedException()
         self.assertEqual(self.ask("question")["statusCode"], 429)
         self.cloud.retrieve.assert_not_called()
+        self.cloud.converse.assert_not_called()
+
+    def test_course_wide_retrieval_and_numbered_examples(self):
+        book = course_passages(ROOT / "_site")
+        idx = course_index.Index(book)
+        page = "lectures/optimization.html"
+        keys, message = idx.search("I'm stuck on example 4", page, page + "#primer")
+        self.assertFalse(message)
+        self.assertEqual(book[keys[0]]["href"], page + "#optimization-problems")
+        self.assertIn("slope", book[keys[0]]["text"])
+        self.assertNotIn("Example 5.", book[keys[0]]["text"])
+        keys, _ = idx.search("When can I use the squeeze theorem?", page, page + "#primer")
+        self.assertIn("squeeze-theorem.html", book[keys[0]]["href"])
+        keys, message = idx.search("example 149", page, page)
+        self.assertFalse(keys)
+        self.assertIn("Optimization", message)
+        self.assertNotIn("downloads/", " ".join(book))
+
+    def test_course_uses_verified_sources_and_existing_allowance(self):
+        book = course_passages(ROOT / "_site")
+        page = "lectures/14-chain-rule.html"
+        self.enterContext(patch.object(course_index, "corpus", return_value=book))
+        self.enterContext(patch.object(course_index, "index", return_value=course_index.Index(book)))
+        self.cloud.converse.return_value = {"stopReason":"end_turn", "output":{"message":{"content":[
+            {"text":"Use the inside derivative too [1]."}]}}}
+        body = {"page":page, "mode":"course", "section":page + "#the-chain-rule",
+                "question":"How do I use the chain rule?", "history":[]}
+        def send():
+            return app.handler({"headers":{"x-class-code":"demo"}, "body":json.dumps(body)}, None)
+        result = json.loads(send()["body"])
+        self.assertEqual(result["sources"][0]["href"], page + "#the-chain-rule")
+        self.assertTrue(self.cloud.update_item.called)
+        self.assertIn("derivative", self.cloud.converse.call_args.kwargs["messages"][0]["content"][0]["text"])
+        body["section"] = "foreign"
+        body["question"] = "example 999"
+        self.cloud.converse.reset_mock()
+        self.assertFalse(json.loads(send()["body"])["sources"])
         self.cloud.converse.assert_not_called()
 
     def test_pilot_opens_the_course_page_without_a_model_call(self):

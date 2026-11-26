@@ -24,11 +24,11 @@ def bundle():
     target = BUILD / "math1334-cloudshell.zip"
     files = [HERE / name for name in ("template.yaml", "deploy.py", "export.py", "review.py",
              "evaluate.py", "responses.py", "README.md", "System-Guide.tex", "preview-search.js",
-             "practice.py", "practice.js", "checks.json", "app.py", "widget.js", "widget.css",
+             "practice.py", "practice.js", "checks.json", "app.py", "course_index.py", "widget.js", "widget.css",
              "site_assets.py", "pilot-endpoint.txt", "preview.py", "bundle.py", "test_pilot.py", "test_walkthrough.py")]
     files.append(build_guide())
     files.extend(BUILD / "function" / name for name in ("app.py", "responses.py", "practice.py",
-                                                          "checks.json", "passages.json"))
+                                                          "checks.json", "passages.json", "course_index.py", "course.json"))
     with ZipFile(target, "w", compression=ZIP_DEFLATED) as archive:
         for file in files:
             archive.write(file, Path("math1334-cloudshell") / file.relative_to(HERE))
