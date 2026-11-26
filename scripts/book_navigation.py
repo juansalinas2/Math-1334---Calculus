@@ -13,7 +13,7 @@ SECTIONS = [
     '08-exam-practice.html',
 ]
 SUPPLEMENTS = ['limits-map.html', 'worksheets.html', 'self-checks.html', 'explore.html']
-REFERENCE = ['definitions.html', 'reading-calculus.html', 'theorems.html']
+REFERENCE = ['definitions.html', 'theorems.html']
 DERIVATIVE_SECTIONS = ['09-derivative-at-a-point.html', '10-derivative-function.html', '11-differentiation-rules.html', '12-rates-of-change.html', '13-trigonometric-derivatives.html', '14-chain-rule.html', '15-inverse-functions.html', '16-implicit-differentiation.html', '17-exponential-logarithmic.html', 'exam-2-review.html']
 
 APPLICATION_SECTIONS = ['related-rates.html', '18-maxima-and-minima.html', 'section-4-3.html', '19-end-behaviour-and-curve-sketching.html', 'curve-sketching.html', 'optimization.html', 'lhopitals-rule.html', 'exam-3-review.html']
@@ -66,8 +66,15 @@ def rebuild_sidebar(html, page_name):
         leaves[key] = (f'<li class="sidebar-item"><a class="sidebar-item-text sidebar-link" '
                        f'href="{hrefs[intro]}#{anchor}">{title}</a></li>')
         intro_children.append(key)
+    map_href = hrefs['index.html'].rsplit('index.html', 1)[0] + 'map/'
+    map_link = (
+        '<li class="sidebar-item"><div class="sidebar-item-container">'
+        f'<a href="{map_href}" class="sidebar-item-text sidebar-link">'
+        '<span class="menu-text">Calculus concept map</span></a></div></li>'
+    )
     menu = (
         leaves['index.html']
+        + map_link
         + group('Chapter 1', intro_children, intro)
         + group('Chapter 2', SECTIONS, 'limits-and-continuity.html')
         + group('Chapter 3', DERIVATIVE_SECTIONS, 'derivatives.html')

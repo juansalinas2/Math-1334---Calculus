@@ -15,8 +15,6 @@ Key definitions and notation from the lectures through course §4.7.
 
 :::
 
-To practice translating between words and symbols, open [Reading calculus](reading-calculus.qmd).
-
 ::: {.reference-index .reference-definition}
 
 ::: {.reference-topics}

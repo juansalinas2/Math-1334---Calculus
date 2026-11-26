@@ -8,6 +8,8 @@ css: assets/homepage.css
 ::: {.course-home}
 Lecture notes, worked examples, and practice.
 
+[Open the calculus concept map](map/){.home-primary}
+
 [Download the lecture notes (PDF)](downloads/math-1334-calculus-lecture-notes.pdf)
 
 ::: {.home-latest}
