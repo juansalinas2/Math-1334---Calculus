@@ -2,7 +2,6 @@
   const checks = /* COURSE_CHECKS */ null;
   const script = document.currentScript;
   const endpoint = script.dataset.endpoint;
-  const standalone = script.hasAttribute("data-standalone");
 
   function element(tag, text) {
     const el = document.createElement(tag);
@@ -147,12 +146,11 @@
     panel.append(details);
   }
 
-  function mount(container, section, initiallyOpen, target) {
+  function mount(container, section, target) {
     const check = checks[section];
     if (!check) return;
     const panel = element("details");
     panel.className = "proof rr-self-check";
-    panel.open = initiallyOpen;
     const hint = element("details");
     hint.append(element("summary", "Hint"), element("p", check.hint));
     const group = element("fieldset");
@@ -182,43 +180,21 @@
       return button;
     });
     panel.append(element("summary", "Check your next step"), group, hint, result);
-    if (target) {
-      const help = readingHelp(target, section, check);
-      help.classList.add("proof");
-      container.append(help);
-    }
+    const help = readingHelp(target, section, check);
+    help.classList.add("proof");
+    container.append(help);
     container.append(panel);
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    if (standalone) {
-      const reading = document.getElementById("reading");
-      const container = document.getElementById("self-check");
-      // Keep a student's work while they switch between examples on this page.
-      const panels = new Map();
-      function select() {
-        container.replaceChildren();
-        const section = reading.value;
-        if (!checks[section]) return;
-        if (!panels.has(section)) {
-          mount(container, section, true);
-          panels.set(section, container.firstElementChild);
-        } else {
-          container.append(panels.get(section));
-        }
-      }
-      reading.addEventListener("change", select);
-      select();
-    } else {
-      for (const section of Object.keys(checks)) {
-        const target = document.getElementById(section);
-        if (!target) continue;
-        const solution = target.querySelector(":scope > details.practice-solution");
-        const container = element("div");
-        if (solution) solution.before(container);
-        else target.append(container);
-        mount(container, section, false, target);
-      }
+    for (const section of Object.keys(checks)) {
+      const target = document.getElementById(section);
+      if (!target) continue;
+      const solution = target.querySelector(":scope > details.practice-solution");
+      const container = element("div");
+      if (solution) solution.before(container);
+      else target.append(container);
+      mount(container, section, target);
     }
   });
 })();

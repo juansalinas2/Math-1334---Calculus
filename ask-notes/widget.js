@@ -1,14 +1,13 @@
 (() => {
   const script = document.currentScript;
   const endpoint = script.dataset.endpoint;
-  const preview = script.dataset.mode === "preview";
-  const standalone = preview || script.dataset.mode === "pilot";
   const root = script.dataset.root ? new URL(script.dataset.root) : new URL("../../", script.src);
   const page = "lectures/related-rates.html";
 
+  const onLecture = script.dataset.lecture === "yes" || location.pathname === new URL(page, root).pathname;
+
   function currentSection() {
-    if (standalone) return document.querySelector("#reading")?.value || "";
-    if (location.pathname !== new URL(page, root).pathname) return "";
+    if (!onLecture) return "";
     const headings = [...document.querySelectorAll("main section[id] > :is(h2,h3,h4)")];
     const line = Math.min(200, window.innerHeight * 0.32);
     const above = headings.filter(h => h.getBoundingClientRect().top <= line);
@@ -29,7 +28,7 @@
             placeholder="Why do we wait to plug in the numbers?"></textarea></label>
           <label class="ask-scope" hidden><select aria-label="Where to look"><option value="section">Use this example</option><option value="all">Search all related-rates notes</option></select></label>
           <label class="ask-code">Class code <input type="password" maxlength="120" autocomplete="off" required></label>
-          <button type="submit"></button>
+          <button type="submit">Ask</button>
         </form>
         <p role="status" aria-live="polite"></p><div class="ask-answer"></div>
       </details>`;
@@ -41,23 +40,8 @@
     const button = panel.querySelector("button");
     const status = panel.querySelector('[role="status"]');
     const output = panel.querySelector(".ask-answer");
-    if (preview) panel.querySelector(".ask-code").hidden = true;
-    code.required = !preview;
-    button.textContent = preview ? "Find a passage" : "Ask";
     let request;
     let section = "";
-    if (standalone) {
-      details.open = true;
-      const reading = document.querySelector("#reading");
-      reading.value = "ladder";
-      const starter = "Why can’t I plug in the 6 first?";
-      question.value = starter;
-      reading.addEventListener("change", () => {
-        clear();
-        if (!question.value || question.value === starter) question.value = reading.value === "ladder" ? starter : "";
-      });
-    }
-
     function clear() {
       request?.abort();
       request = null;
@@ -70,10 +54,9 @@
     details.addEventListener("toggle", () => {
       if (!details.open) { clear(); return; }
       section = panel.dataset.selected || currentSection();
-      panel.querySelector(".ask-scope").hidden = standalone || !section;
+      panel.querySelector(".ask-scope").hidden = !section;
       if (input.value.trim()) question.value = input.value.trim().slice(0, 450);
-      status.textContent = preview ? "Local preview · reads passages from the lecture." : "";
-      if (!standalone) question.focus();
+      question.focus();
     });
     dialog.addEventListener("close", () => { details.open = false; delete panel.dataset.selected; clear(); });
     // The course search also handles arrow keys; editing an answer stays native.
@@ -84,13 +67,13 @@
     function link(source) {
       if (!source || !/^lectures\/related-rates\.html#[a-z0-9-]+$/.test(source.href)) return null;
       const a = document.createElement("a");
-      a.href = new URL(source.href, root);
+      a.href = onLecture ? "#" + source.href.split("#")[1] : new URL(source.href, root);
       a.textContent = source.title;
-      if (!standalone) a.addEventListener("click", () => dialog.close());
+      a.addEventListener("click", () => dialog.close());
       return a;
     }
     function offerFeedback(data) {
-      if (!preview && !data.receipt) return;
+      if (!data.receipt) return;
       const box = document.createElement("details");
       box.className = "ask-feedback";
       box.innerHTML = `
@@ -108,7 +91,6 @@
         e.preventDefault();
         const send = box.querySelector("button"), message = box.querySelector('[role="status"]');
         if (send.disabled) return;
-        if (preview) { message.textContent = "Preview only. Your response stayed on this device."; return; }
         send.disabled = true;
         message.textContent = "Sending…";
         try {
@@ -126,7 +108,7 @@
       });
     }
 
-    if (!standalone && location.pathname === new URL(page, root).pathname) {
+    if (onLecture) {
       for (const heading of document.querySelectorAll("main section[id] > h3")) {
         if (!/^(Example|Practice)\s+\d/.test(heading.textContent.trim())) continue;
         const ask = document.createElement("button");
@@ -153,25 +135,19 @@
       status.textContent = "Reading the related-rates notes…";
       const timer = setTimeout(() => controller.abort(), 29000);
       try {
-        let data;
-        if (preview) {
-          data = window.courseAskPreview(question.value.trim(), currentSection());
-        } else {
-          const response = await fetch(endpoint, {
-            method: "POST", credentials: "omit", signal: controller.signal,
-            headers: {"Content-Type": "application/json", "X-Class-Code": code.value},
-            body: JSON.stringify({question: question.value.trim(), section: standalone ? currentSection() :
-              (panel.querySelector(".ask-scope select").value === "all" ? "" : section)})
-          });
-          data = await response.json();
-          if (request !== controller) return;
-          if (!response.ok) throw new Error(data.error || "Ask is unavailable. Try course search.");
-        }
-        status.textContent = data.preview ? "From the lecture" : "";
+        const response = await fetch(endpoint, {
+          method: "POST", credentials: "omit", signal: controller.signal,
+          headers: {"Content-Type": "application/json", "X-Class-Code": code.value},
+          body: JSON.stringify({question: question.value.trim(),
+            section: panel.querySelector(".ask-scope select").value === "all" ? "" : section})
+        });
+        const data = await response.json();
+        if (request !== controller) return;
+        if (!response.ok) throw new Error(data.error || "Ask is unavailable. Try course search.");
+        status.textContent = "";
         const answer = document.createElement("p");
         answer.textContent = data.answer;
-        const excerpt = preview && data.passage && document.getElementById("passage-" + data.passage);
-        output.append(excerpt ? excerpt.content.cloneNode(true) : answer);
+        output.append(answer);
         const sources = data.sources?.length ? data.sources : data.related || [];
         if (sources.length) {
           const label = document.createElement("strong");
@@ -181,13 +157,17 @@
             const a = link(source);
             if (!a) continue;
             const row = document.createElement("div");
-            if (data.sources?.length && !data.preview) row.append("[" + source.id + "] ");
+            if (data.sources?.length) row.append("[" + source.id + "] ");
             row.append(a);
             output.append(row);
           }
         }
         offerFeedback(data);
-        await window.MathJax?.typesetPromise?.([output]);
+        const macros = data.answer.match(/\\[a-zA-Z]+/g) || [];
+        const calculus = /^\\(?:frac|dfrac|tfrac|sqrt|left|right|bigl|bigr|mathrm|text|cdot|times|pi|theta|sin|cos|tan|infty|approx|leq?|geq?|neq|pm|quad|qquad|boxed)$/;
+        if (macros.every(command => calculus.test(command))) {
+          await window.MathJax?.typesetPromise?.([answer]);
+        }
       } catch (error) {
         if (request === controller) {
           status.textContent = error.name === "AbortError" ? "The request timed out. Try course search." : error.message;
