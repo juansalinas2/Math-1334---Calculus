@@ -1,0 +1,674 @@
+{
+  "limit": {
+    "title": "Limit",
+    "href": "../lectures/02-limits.html#limits-and-function-values",
+    "definition": "The limit is the value approached by the outputs as the input approaches a point.",
+    "formula": "$\\lim_{x\\to a}f(x)=L$",
+    "idea": "Follow the outputs while the input moves closer to $a$. The value at $a$ can be missing.",
+    "example": "$\\displaystyle\\lim_{x\\to2}\\frac{x^2-4}{x-2}=4$, although the quotient is undefined at $2$.",
+    "parts": [
+      {
+        "title": "Nearby inputs",
+        "definition": "Approach $a$ through other inputs in the domain.",
+        "formula": "$0<|x-a|<\\delta$",
+        "idea": "A hole at $a$ leaves the nearby outputs available."
+      },
+      {
+        "title": "Target value",
+        "definition": "Outputs eventually lie within any prescribed distance $\\varepsilon>0$ of $L$.",
+        "formula": "$|f(x)-L|<\\varepsilon$",
+        "idea": "A smaller tolerance asks for a closer approximation."
+      }
+    ]
+  },
+  "sides": {
+    "title": "One-sided limits",
+    "href": "../lectures/02-limits.html#one-sided-limits",
+    "definition": "A one-sided limit restricts the input to one side of the point.",
+    "formula": "$\\lim_{x\\to a^-}f(x),\\quad\\lim_{x\\to a^+}f(x)$",
+    "idea": "Compare the heights approached by the two branches before declaring a two-sided limit.",
+    "example": "For $h(x)=(x^2-4)/|x-2|$, the left limit at $2$ is $-4$ and the right limit is $4$.",
+    "parts": [
+      {
+        "title": "From the left",
+        "definition": "Approach $a$ through inputs smaller than $a$.",
+        "formula": "$x\\to a^-,\\quad x<a$",
+        "idea": "Choose the branch on the left."
+      },
+      {
+        "title": "From the right",
+        "definition": "Approach $a$ through inputs larger than $a$.",
+        "formula": "$x\\to a^+,\\quad x>a$",
+        "idea": "Choose the branch on the right. The two sides must agree for a finite two-sided limit."
+      }
+    ]
+  },
+  "laws": {
+    "title": "Limit laws",
+    "href": "../lectures/04-limit-laws.html#the-limit-laws",
+    "definition": "If $f(x)\\to L$ and $g(x)\\to M$ as $x\\to a$, with both limits finite, limit laws combine them by arithmetic wherever the operation is defined.",
+    "formula": "$\\lim_{x\\to a}(f+g)(x)=L+M$",
+    "idea": "Once the component limits $L$ and $M$ are known, assemble them in the same order as the expression.",
+    "example": "$\\displaystyle\\lim_{x\\to2}(3x^2-2x+1)=9$.",
+    "parts": [
+      {
+        "title": "Products",
+        "definition": "The limit of a product is the product of the finite limits.",
+        "formula": "$\\lim_{x\\to a}(fg)(x)=LM$",
+        "idea": "Treat factors separately, then multiply."
+      },
+      {
+        "title": "Quotients",
+        "definition": "The quotient law requires a nonzero denominator limit.",
+        "formula": "$\\lim_{x\\to a}\\frac{f(x)}{g(x)}=\\frac{L}{M},\\quad M\\ne0$",
+        "idea": "Check the denominator before dividing."
+      }
+    ]
+  },
+  "squeeze": {
+    "title": "Squeeze theorem",
+    "href": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "definition": "A function trapped between two functions with the same limit has that limit.",
+    "formula": "$g\\le f\\le h,\\quad g,h\\to L\\ \\Longrightarrow\\ f\\to L$",
+    "idea": "As the gap between the bounds closes, the middle function runs out of room.",
+    "example": "For $x\\ne0$, $-x^2\\le x^2\\sin(1/x)\\le x^2$, so the middle expression tends to $0$ as $x\\to0$.",
+    "parts": [
+      {
+        "title": "Bounds",
+        "definition": "Find a lower and an upper bound near the point.",
+        "formula": "$g(x)\\le f(x)\\le h(x)$",
+        "idea": "Bound the oscillating factor by quantities you can control."
+      },
+      {
+        "title": "Common limit",
+        "definition": "Both bounding functions must approach the same value.",
+        "formula": "$\\lim_{x\\to a}g(x)=\\lim_{x\\to a}h(x)=L$",
+        "idea": "Distinct limiting heights leave a gap."
+      }
+    ]
+  },
+  "continuity": {
+    "title": "Continuity",
+    "href": "../lectures/06-continuity.html#continuity-at-a-point",
+    "definition": "A function is continuous at a point in its domain when its limit equals its value there.",
+    "formula": "$\\lim_{x\\to a}f(x)=f(a)$",
+    "idea": "Nearby outputs approach the height of the point actually drawn on the graph.",
+    "example": "$f(x)=|x|$ is continuous at $0$ even though its graph has a corner there.",
+    "parts": [
+      {
+        "title": "Point value",
+        "definition": "Evaluate the function at the specified input.",
+        "formula": "$a\\in\\operatorname{dom} f$",
+        "idea": "A filled point gives the actual height."
+      },
+      {
+        "title": "Matching limit",
+        "definition": "Compare the limiting height with the point value.",
+        "formula": "$L=f(a)$",
+        "idea": "A hole or a jump can break the match."
+      }
+    ]
+  },
+  "ivt": {
+    "title": "Intermediate Value Theorem",
+    "href": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "definition": "A continuous function on a closed interval attains every value between its endpoint values.",
+    "formula": "$\\min(f(a),f(b))\\le N\\le\\max(f(a),f(b))$\n$\\Longrightarrow\\ \\exists c\\in[a,b]\\colon f(c)=N$",
+    "idea": "A continuous graph going from one height to another passes through each intermediate height $N$.",
+    "example": "For $f(x)=4x^3-6x^2+3x-2$, $f(0)=-2$ and $f(2)=12$, so there is a zero in $(0,2)$.",
+    "parts": [
+      {
+        "title": "Intermediate height",
+        "definition": "Choose $N$ between the endpoint outputs, in either order.",
+        "formula": "$\\min(f(a),f(b))\\le N\\le\\max(f(a),f(b))$",
+        "idea": "Pick a horizontal line the graph must meet."
+      },
+      {
+        "title": "A zero",
+        "definition": "Opposite endpoint signs put height zero strictly between the outputs.",
+        "formula": "$f(a)f(b)<0\\ \\Longrightarrow\\ \\exists c\\in(a,b):f(c)=0$",
+        "idea": "This locates an interval containing a root."
+      }
+    ]
+  },
+  "evt": {
+    "title": "Extreme Value Theorem",
+    "href": "../lectures/18-maxima-and-minima.html#extreme-value-theorem",
+    "definition": "A continuous function on a closed, bounded interval attains a global minimum and a global maximum.",
+    "formula": "$\\exists u,v\\in[a,b]:\\ f(u)\\le f(x)\\le f(v)$\n$\\text{for every }x\\in[a,b].$",
+    "idea": "The theorem guarantees that both extreme heights occur. Finding their locations takes another step.",
+    "example": "$f(x)=x^3(4-x)$ attains both extrema on $[-1,4]$.",
+    "parts": [
+      {
+        "title": "Closed interval",
+        "definition": "The interval includes both endpoints and has finite length.",
+        "formula": "$x\\in[a,b]$",
+        "idea": "An omitted endpoint can leave an extreme height unattained."
+      },
+      {
+        "title": "Attainment",
+        "definition": "Some input realizes each extreme output.",
+        "formula": "$m=f(u),\\quad M=f(v)$",
+        "idea": "The extrema are values the function actually takes."
+      }
+    ]
+  },
+  "endbehavior": {
+    "title": "End behavior and asymptotes",
+    "href": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "definition": "End behavior describes the outputs as inputs grow arbitrarily large in either direction.",
+    "formula": "$x\\to+\\infty\\quad\\text{or}\\quad x\\to-\\infty$",
+    "idea": "Follow the two tails separately. Each may approach a different line.",
+    "example": "For $f(x)=(x^2-1)/x$, the difference $f(x)-x=-1/x$ tends to $0$ at both ends.",
+    "parts": [
+      {
+        "title": "Horizontal asymptote",
+        "definition": "The outputs approach a constant height at the chosen end.",
+        "formula": "$\\lim_{x\\to\\infty}f(x)=L$",
+        "idea": "The tail approaches the line $y=L$. The left end uses $x\\to-\\infty$."
+      },
+      {
+        "title": "Slant asymptote",
+        "definition": "The vertical distance to a line of nonzero slope tends to zero.",
+        "formula": "$f(x)-(mx+b)\\to0,\\quad m\\ne0$",
+        "idea": "Subtract the proposed line to study the error."
+      }
+    ]
+  },
+  "lhospital": {
+    "title": "l’Hospital’s rule",
+    "href": "../lectures/lhopitals-rule.html#infinity-over-infinity",
+    "definition": "For a quotient of form $0/0$ or $\\infty/\\infty$, use the ratio of derivatives when its limit exists. Assume differentiability and $g'\\ne0$ in a punctured neighborhood.",
+    "formula": "$\\lim_{x\\to a}\\frac{f(x)}{g(x)}=\\lim_{x\\to a}\\frac{f'(x)}{g'(x)}$",
+    "idea": "Relative rates of change can settle which quantity dominates. The same rule applies at infinity.",
+    "example": "$\\displaystyle\\lim_{x\\to\\infty}e^x/x^2=+\\infty$ after two applications.",
+    "parts": [
+      {
+        "title": "Indeterminate form",
+        "definition": "Check the separate numerator and denominator limits first.",
+        "formula": "$\\frac{0}{0}\\quad\\text{or}\\quad\\frac{\\infty}{\\infty}$",
+        "idea": "These symbols name patterns of limits. Neither pattern determines a quotient value."
+      },
+      {
+        "title": "Derivative ratio",
+        "definition": "Differentiate numerator and denominator separately.",
+        "formula": "$\\frac{f'(x)}{g'(x)}$",
+        "idea": "A simpler ratio can have an accessible limit."
+      }
+    ]
+  },
+  "derivative": {
+    "title": "Derivative at a point",
+    "href": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
+    "definition": "The derivative at $a$ is the finite limit of the difference quotient as the input change shrinks to zero.",
+    "formula": "$f'(a)=\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}$",
+    "idea": "Pin one point on the curve and slide a second point toward it. The limiting secant slope is the tangent slope.",
+    "example": "For $f(x)=|x|$ at $a=0$, the left-hand slope is $-1$ and the right-hand slope is $1$. The derivative does not exist there.",
+    "parts": [
+      {
+        "title": "Secant slope",
+        "definition": "Divide the output change by the input change between two distinct points.",
+        "formula": "$\\frac{f(a+h)-f(a)}{h},\\quad h\\ne0$",
+        "idea": "This is the average rate over a nonzero step."
+      },
+      {
+        "title": "Limiting slope",
+        "definition": "A single finite value must be approached from both sides at an interior point.",
+        "formula": "$h\\to0^-,\\quad h\\to0^+$",
+        "idea": "Unequal limiting slopes reveal a corner."
+      }
+    ]
+  },
+  "derivative2": {
+    "title": "Derivative",
+    "href": "../lectures/10-derivative-function.html",
+    "definition": "The derivative function assigns each input the derivative at that input, wherever it exists.",
+    "formula": "$x\\longmapsto f'(x)$",
+    "idea": "Collect all tangent slopes into a new function.",
+    "example": "For position $s(t)$, the functions $s'(t)$ and $s''(t)$ give velocity and acceleration.",
+    "parts": [
+      {
+        "title": "At one point",
+        "definition": "Fix the input and evaluate its slope.",
+        "formula": "$f'(a)$",
+        "idea": "The result is a number."
+      },
+      {
+        "title": "Across inputs",
+        "definition": "Allow the input to vary.",
+        "formula": "$x\\mapsto f'(x)$",
+        "idea": "The graph of the derivative records how the slopes change."
+      }
+    ]
+  },
+  "tangent": {
+    "title": "Tangent line",
+    "href": "../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes",
+    "definition": "At a differentiable point, the tangent line passes through the point and has slope equal to the derivative.",
+    "formula": "$y=f(a)+f'(a)(x-a)$",
+    "idea": "The tangent line gives a local linear prediction of the function value.",
+    "example": "For $f(x)=3/x^2+1$ at $a=1$, the line is $y=4-6(x-1)$.",
+    "parts": [
+      {
+        "title": "Point of contact",
+        "definition": "Evaluate the function to locate the point.",
+        "formula": "$(a,f(a))$",
+        "idea": "This anchors the line to the graph."
+      },
+      {
+        "title": "Tangent slope",
+        "definition": "Evaluate the derivative at the same input.",
+        "formula": "$m=f'(a)$",
+        "idea": "This fixes the line's direction."
+      }
+    ]
+  },
+  "motion": {
+    "title": "Motion",
+    "href": "../lectures/12-rates-of-change.html",
+    "definition": "Velocity is the derivative of position with respect to time. Acceleration is the derivative of velocity.",
+    "formula": "$v(t)=s'(t),\\qquad a(t)=v'(t)$",
+    "idea": "Position tells where the particle is, velocity tells how it moves, and acceleration tells how its velocity changes.",
+    "example": "For $s(t)=t^3-6t^2+9t+2$, compare the signs of $v(t)$ and $a(t)$ to decide when the particle speeds up.",
+    "parts": [
+      {
+        "title": "Speed",
+        "definition": "Speed is the magnitude of velocity.",
+        "formula": "$|v(t)|$",
+        "idea": "Taking the absolute value drops the direction."
+      },
+      {
+        "title": "Speeding up",
+        "definition": "Away from zero velocity, matching signs of velocity and acceleration increase speed.",
+        "formula": "$v(t)a(t)>0$",
+        "idea": "An acceleration pointing along the motion increases its magnitude."
+      }
+    ]
+  },
+  "rules": {
+    "title": "Differentiation rules",
+    "href": "../lectures/11-differentiation-rules.html#section-3.3-the-rules-we-will-use",
+    "definition": "Differentiation rules compute derivatives from the operations used to build a function.",
+    "formula": "$(af+bg)'=af'+bg'$",
+    "idea": "Identify the outermost operation first. A sum, a product, and a composition call for different rules.",
+    "example": "For $f(x)=x(3-x)$ the product rule gives $f'(x)=(3-x)-x=3-2x$.",
+    "parts": [
+      {
+        "title": "Product rule",
+        "definition": "Differentiate each factor in turn and add the two terms.",
+        "formula": "$(fg)'=f'g+fg'$",
+        "idea": "Each term records the change contributed by one factor."
+      },
+      {
+        "title": "Quotient rule",
+        "definition": "For $g(x)\\ne0$, differentiate the numerator and denominator in the indicated order.",
+        "formula": "$(f/g)'=\\frac{f'g-fg'}{g^2}$",
+        "idea": "Keep the order in the numerator to obtain the correct sign."
+      },
+      {
+        "title": "Power rule",
+        "definition": "A power loses one degree on differentiation.",
+        "formula": "$(x^n)'=nx^{n-1}$",
+        "idea": "For positive integers $n$, this quickly turns a polynomial into its slope function."
+      }
+    ]
+  },
+  "chain": {
+    "title": "Chain rule",
+    "href": "../lectures/14-chain-rule.html#the-chain-rule",
+    "definition": "For a differentiable composition, multiply the outer derivative at the inner value by the inner derivative.",
+    "formula": "$(f\\circ g)'(x)=f'(g(x))\\,g'(x)$",
+    "idea": "A change in the input travels through two functions. Multiply the two rates along that path.",
+    "example": "If $y=(\\cos x)^4$, then $y'=-4\\cos^3(x)\\sin x$.",
+    "parts": [
+      {
+        "title": "Inner change",
+        "definition": "Differentiate the inside quantity with respect to the original input.",
+        "formula": "$u=g(x),\\quad \\frac{du}{dx}=g'(x)$",
+        "idea": "This tells how fast the input to the outer function moves."
+      },
+      {
+        "title": "Outer change",
+        "definition": "Evaluate the outer derivative at the current inside value.",
+        "formula": "$\\frac{dy}{du}=f'(u)$",
+        "idea": "Combining the two factors gives the rate with respect to $x$."
+      }
+    ]
+  },
+  "implicit": {
+    "title": "Implicit differentiation",
+    "href": "../lectures/16-implicit-differentiation.html",
+    "definition": "Implicit differentiation finds the slope of a curve defined by an equation, treating $y$ locally as a differentiable function of $x$.",
+    "formula": "$x^2+y^2=1\\ \\Longrightarrow\\ 2x+2y\\,\\dfrac{dy}{dx}=0$",
+    "idea": "An equation can determine the tangent slope even when solving for $y$ is inconvenient.",
+    "example": "On $x^2+y^2=1$, the slope at $(1/\\sqrt2,1/\\sqrt2)$ is $-1$.",
+    "parts": [
+      {
+        "title": "Chain rule for y",
+        "definition": "Differentiating a power of $y(x)$ introduces its derivative.",
+        "formula": "$\\frac{d}{dx}(y^2)=2y\\frac{dy}{dx}$",
+        "idea": "The dependent variable changes with $x$."
+      },
+      {
+        "title": "Isolate the slope",
+        "definition": "Collect terms containing the unknown derivative and solve.",
+        "formula": "$\\frac{dy}{dx}=-\\frac{x}{y}\\quad(y\\ne0)$",
+        "idea": "Substituting a point now gives its tangent slope."
+      }
+    ]
+  },
+  "rates": {
+    "title": "Related rates",
+    "href": "../lectures/related-rates.html#the-three-steps",
+    "definition": "Related rates connect time derivatives of quantities constrained by one equation.",
+    "formula": "$y=f(x(t))\\quad\\Longrightarrow\\quad \\frac{dy}{dt}=f'(x)\\frac{dx}{dt}$",
+    "idea": "A geometric constraint links the changing quantities. Its derivative links their rates at the same instant.",
+    "example": "If $y=x^2$, $x=3$, and $dx/dt=2$, then $dy/dt=2(3)(2)=12$.",
+    "parts": [
+      {
+        "title": "Relate quantities",
+        "definition": "Write an equation valid throughout the motion.",
+        "formula": "$x(t)^2+y(t)^2=r(t)^2$",
+        "idea": "Keep the changing lengths as variables."
+      },
+      {
+        "title": "Relate rates",
+        "definition": "Differentiate with respect to time before substituting the given instant.",
+        "formula": "$x\\frac{dx}{dt}+y\\frac{dy}{dt}=r\\frac{dr}{dt}$",
+        "idea": "The differentiated constraint reveals the missing rate."
+      }
+    ]
+  },
+  "inverse": {
+    "title": "Inverse functions",
+    "href": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "definition": "An inverse function reverses a one-to-one function on its range.",
+    "formula": "$f^{-1}(f(x))=x$",
+    "idea": "Exchanging input and output exchanges horizontal and vertical changes, giving reciprocal slopes where the original slope is nonzero.",
+    "example": "If $f(2)=5$ and $f'(2)=-3$, the inverse derivative at $5$ is $-1/3$ under the inverse derivative theorem's hypotheses.",
+    "parts": [
+      {
+        "title": "Corresponding points",
+        "definition": "An output of the original function becomes an input of its inverse.",
+        "formula": "$f(a)=b\\ \\Longleftrightarrow\\ f^{-1}(b)=a$",
+        "idea": "Keep track of which input belongs to each function."
+      },
+      {
+        "title": "Reciprocal slope",
+        "definition": "For a differentiable local inverse with $f'(a)\\ne0$, slopes at corresponding points are reciprocal.",
+        "formula": "$(f^{-1})'(b)=1/f'(a)$",
+        "idea": "The slope at $b$ uses the original derivative at $a$."
+      }
+    ]
+  },
+  "exp": {
+    "title": "Exponentials and logarithms",
+    "href": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "definition": "The natural exponential has derivative equal to itself. The natural logarithm is its inverse on positive inputs.",
+    "formula": "$(e^x)'=e^x,\\qquad (\\ln x)'=1/x\\quad(x>0)$",
+    "idea": "Exponential growth is proportional to the amount present. Its inverse translates multiplicative change into addition.",
+    "example": "$\\displaystyle\\frac{d}{dx}2^{3x}=3\\ln(2)\\,2^{3x}$.",
+    "parts": [
+      {
+        "title": "General base",
+        "definition": "A positive constant base contributes a logarithmic factor.",
+        "formula": "$(a^x)'=(\\ln a)a^x,\\quad a>0$",
+        "idea": "Writing $a^x=e^{x\\ln a}$ explains the factor."
+      },
+      {
+        "title": "Log of a function",
+        "definition": "Apply the chain rule where the inside is positive.",
+        "formula": "$(\\ln u)'=u'/u,\\quad u>0$",
+        "idea": "This expresses the derivative relative to the current value."
+      }
+    ]
+  },
+  "logdiff": {
+    "title": "Logarithmic differentiation",
+    "href": "../lectures/17-exponential-logarithmic.html#logarithmic-differentiation",
+    "definition": "Logarithmic differentiation takes the logarithm of a positive function, differentiates implicitly, and solves for its derivative.",
+    "formula": "$(\\ln y)'=\\frac{y'}{y}\\quad(y>0)$",
+    "idea": "A logarithm turns products into sums and brings a variable exponent down where it can be differentiated.",
+    "example": "For $y=x^x$ with $x>0$, $y'=x^x(\\ln x+1)$.",
+    "parts": [
+      {
+        "title": "Bring down the exponent",
+        "definition": "For a positive base, take logarithms on both sides.",
+        "formula": "$y=u^v\\ \\Longrightarrow\\ \\ln y=v\\ln u$",
+        "idea": "A variable power becomes a product."
+      },
+      {
+        "title": "Recover the derivative",
+        "definition": "Multiply the differentiated identity by the original function.",
+        "formula": "$y'=y(\\ln y)'$",
+        "idea": "Substitute the original expression for $y$ at the end."
+      }
+    ]
+  },
+  "trig": {
+    "title": "Trigonometric derivatives",
+    "href": "../lectures/13-trigonometric-derivatives.html",
+    "definition": "With angles measured in radians, sine differentiates to cosine and cosine to negative sine.",
+    "formula": "$(\\sin x)'=\\cos x,\\qquad(\\cos x)'=-\\sin x$",
+    "idea": "The unit circle connects the rate of change of one coordinate to the other coordinate.",
+    "example": "For $G(x)=3\\sin x-x^2$, $G'(x)=3\\cos x-2x$.",
+    "parts": [
+      {
+        "title": "Fundamental limit",
+        "definition": "Near zero the sine of a radian angle is approximately the angle itself.",
+        "formula": "$\\lim_{h\\to0}\\frac{\\sin h}{h}=1$",
+        "idea": "This supplies the scale in the derivative of sine."
+      },
+      {
+        "title": "An inside angle",
+        "definition": "A varying angle contributes its own rate by the chain rule.",
+        "formula": "$(\\sin u)'=(\\cos u)u'$",
+        "idea": "A faster-moving angle changes the output faster."
+      }
+    ]
+  },
+  "derivatives": {
+    "title": "Second derivative",
+    "href": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "definition": "The second derivative is the derivative of the first derivative, wherever it exists.",
+    "formula": "$f''(x)=\\frac{d}{dx}f'(x)$",
+    "idea": "The first derivative gives the slope. The second tells how rapidly that slope changes as the input moves.",
+    "example": "For $g(x)=x^3+1$, $g'(x)=3x^2$ and $g''(x)=6x$.",
+    "parts": [
+      {
+        "title": "Slope changing",
+        "definition": "Take the rate of change of the tangent slope.",
+        "formula": "$f''(a)=\\lim_{h\\to0}\\frac{f'(a+h)-f'(a)}{h}$",
+        "idea": "A locally constant slope gives zero second derivative."
+      },
+      {
+        "title": "Stationary point test",
+        "definition": "At a stationary point with continuous second derivative nearby, its sign can classify the point.",
+        "formula": "$f'(c)=0,\\ f''(c)>0\\ \\Longrightarrow\\ \\text{local minimum}$",
+        "idea": "Positive second derivative bends the graph upward at its horizontal tangent."
+      }
+    ]
+  },
+  "monotonic": {
+    "title": "Increasing and decreasing",
+    "href": "../lectures/section-4-3.html#the-first-derivative-test",
+    "definition": "A function increases on an interval when larger inputs always give larger outputs there. For a decreasing function, the output order reverses.",
+    "formula": "$x_1<x_2\\ \\Longrightarrow\\ f(x_1)<f(x_2)$",
+    "idea": "Compare two inputs to define increase. The sign of the derivative lets you detect it across an interval.",
+    "example": "For $f(x)=4x^3-12x+12$, $f'$ is positive to the left of $-1$, negative between $-1$ and $1$, and positive to the right of $1$.",
+    "parts": [
+      {
+        "title": "Increasing",
+        "definition": "Positive derivative throughout an interval ensures increase there.",
+        "formula": "$f'>0\\ \\Longrightarrow\\ f\\text{ increases}$",
+        "idea": "The Mean Value Theorem connects tangent slopes to the change between any two inputs."
+      },
+      {
+        "title": "Decreasing",
+        "definition": "Negative derivative throughout an interval ensures decrease there.",
+        "formula": "$f'<0\\ \\Longrightarrow\\ f\\text{ decreases}$",
+        "idea": "Each secant across the interval then slopes downward."
+      }
+    ]
+  },
+  "concavity": {
+    "title": "Concavity",
+    "href": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "definition": "On an interval, a differentiable graph is concave up when its tangent slopes increase and concave down when they decrease.",
+    "formula": "$\\begin{aligned}\\text{up: }&f'(u)<f'(v)\\\\ \\text{down: }&f'(u)>f'(v)\\end{aligned}\\quad(u<v)$",
+    "idea": "A line keeps the same slope. Concavity describes which way a curve bends away from its tangent as its slope changes.",
+    "example": "For $g(x)=x^3+1$, $g''(x)=6x$. The graph is concave down to the left of $0$ and concave up to the right.",
+    "parts": [
+      {
+        "title": "Concave up",
+        "definition": "Tangent slopes increase as the input moves right.",
+        "formula": "$x_1<x_2\\ \\Rightarrow\\ f'(x_1)<f'(x_2)$",
+        "idea": "Even a falling curve can bend upward as its slopes become less negative."
+      },
+      {
+        "title": "Concave down",
+        "definition": "Tangent slopes decrease as the input moves right.",
+        "formula": "$x_1<x_2\\ \\Rightarrow\\ f'(x_1)>f'(x_2)$",
+        "idea": "Even a rising curve can bend downward as its slopes become less positive."
+      },
+      {
+        "title": "Tangent comparison",
+        "definition": "On a concave-up interval the graph lies on or above each tangent line. For concave down, the inequality reverses.",
+        "formula": "$f(x)\\ge f(a)+f'(a)(x-a)$",
+        "idea": "Comparing the curve with its linear prediction makes the bend visible."
+      }
+    ]
+  },
+  "inflect": {
+    "title": "Inflection points",
+    "href": "../lectures/section-4-3.html#inflection-point",
+    "definition": "An inflection point is a point of continuity where the graph changes concavity. One way to verify this is a sign change of the second derivative.",
+    "formula": "$\\begin{aligned}x<c\\!:&\\quad f''(x)<0\\\\ x>c\\!:&\\quad f''(x)>0\\end{aligned}\\quad\\text{or vice versa, near }c$",
+    "idea": "Look on both sides of the point to see whether the direction of bending switches.",
+    "example": "For $g(x)=x^3+1$, $g''(x)=6x$ changes sign at $0$, so $(0,1)$ is an inflection point.",
+    "parts": [
+      {
+        "title": "Candidate",
+        "definition": "An interior input where the second derivative vanishes or fails to exist is worth checking.",
+        "formula": "$f''(c)=0\\quad\\text{or }f''(c)\\text{ undefined}$",
+        "idea": "The candidate still needs a change in concavity."
+      },
+      {
+        "title": "Change of sign",
+        "definition": "Opposite signs of the second derivative on the two sides establish opposite concavities.",
+        "formula": "$f''<0\\ \\big|\\ f''>0$",
+        "idea": "A sign chart records the behavior on intervals around the input."
+      }
+    ]
+  },
+  "critical": {
+    "title": "Critical numbers",
+    "href": "../lectures/18-maxima-and-minima.html#finding-global-extrema",
+    "definition": "A critical number is an input in the domain where the derivative is zero or fails to exist.",
+    "formula": "$c\\in\\operatorname{dom}f,\\quad f'(c)=0\\ \\text{or } f'(c)\\text{ undefined}$",
+    "idea": "Critical numbers narrow the search for interior extrema. Check what the function does on either side.",
+    "example": "For $f(x)=x^3$, $f'(0)=0$ and the graph increases through $0$.",
+    "parts": [
+      {
+        "title": "Stationary input",
+        "definition": "The derivative exists and equals zero.",
+        "formula": "$f'(c)=0$",
+        "idea": "A horizontal tangent marks an input to investigate."
+      },
+      {
+        "title": "Undefined derivative",
+        "definition": "The point belongs to the graph even though its derivative fails to exist.",
+        "formula": "$f(c)\\text{ exists},\\quad f'(c)\\text{ undefined}$",
+        "idea": "A corner can be an extremum, as with $|x|$ at zero."
+      }
+    ]
+  },
+  "global": {
+    "title": "Global extrema",
+    "href": "../lectures/18-maxima-and-minima.html#closed-interval-method",
+    "definition": "A global maximum or minimum is an output at least as large or as small as every output on the entire domain $D$.",
+    "formula": "$f(c)=\\max_{x\\in D}f(x)\\quad\\text{or}\\quad f(c)=\\min_{x\\in D}f(x)$",
+    "idea": "The comparison includes every feasible input. An endpoint can win.",
+    "example": "For $f(x)=x+2$ on $[-1,1]$, the minimum is $1$ and the maximum is $3$.",
+    "parts": [
+      {
+        "title": "Global maximum",
+        "definition": "At a maximizing input, every domain value is at most its output.",
+        "formula": "$f(x)\\le f(c)\\quad(\\forall x\\in D)$",
+        "idea": "Compare heights across the entire graph."
+      },
+      {
+        "title": "Global minimum",
+        "definition": "At a minimizing input, every domain value is at least its output.",
+        "formula": "$f(c)\\le f(x)\\quad(\\forall x\\in D)$",
+        "idea": "On a closed interval, include both endpoints among the candidates."
+      }
+    ]
+  },
+  "local": {
+    "title": "Local extrema",
+    "href": "../lectures/section-4-3.html#first-derivative-test",
+    "definition": "A local extremum is an output that is largest or smallest among outputs sufficiently near its input.",
+    "formula": "$\\begin{aligned}\\text{local max: }&f(x)\\le f(c)\\\\ \\text{local min: }&f(x)\\ge f(c)\\end{aligned}\\quad(x\\text{ near }c)$",
+    "idea": "Look a short distance to the left and right. A change from rising to falling produces a peak.",
+    "example": "For $f(x)=4x^3-12x+12$, $f(-1)=20$ is a local maximum and $f(1)=4$ is a local minimum.",
+    "parts": [
+      {
+        "title": "Local maximum",
+        "definition": "The output is at least as large as all nearby domain values.",
+        "formula": "$f(x)\\le f(c)\\quad(x\\text{ near }c)$",
+        "idea": "A change in the sign of $f'$ from positive to negative produces this shape at a continuous interior point."
+      },
+      {
+        "title": "Local minimum",
+        "definition": "The output is at most as large as all nearby domain values.",
+        "formula": "$f(c)\\le f(x)\\quad(x\\text{ near }c)$",
+        "idea": "A change in the sign of $f'$ from negative to positive produces a valley at a continuous interior point."
+      }
+    ]
+  },
+  "optimization": {
+    "title": "Optimization",
+    "href": "../lectures/optimization.html#primer",
+    "definition": "Optimization finds the largest or smallest value of an objective subject to constraints.",
+    "formula": "$\\max_{x\\in D}F(x)\\quad\\text{or}\\quad\\min_{x\\in D}F(x)$",
+    "idea": "The objective says what counts as best. The constraints determine which choices are possible.",
+    "example": "For $x,y\\ge0$ and $x+y=6$, the product $xy$ has maximum $9$ at $(3,3)$.",
+    "parts": [
+      {
+        "title": "Objective",
+        "definition": "Write the quantity to maximize or minimize as a function.",
+        "formula": "$P=xy$",
+        "idea": "This is the number used to compare feasible choices."
+      },
+      {
+        "title": "Constraint",
+        "definition": "Use the relation and domain restrictions to reduce the variables.",
+        "formula": "$y=6-x,\\quad 0\\le x\\le6$",
+        "idea": "Now compare $P(x)=x(6-x)$ at the endpoints and interior critical numbers."
+      }
+    ]
+  },
+  "sketch": {
+    "title": "Curve sketching",
+    "href": "../lectures/curve-sketching.html#curve-sketching-steps",
+    "definition": "Curve sketching combines the domain, intercepts, symmetry, asymptotes, extrema and concavity to draw a graph.",
+    "formula": "$y=f(x),\\qquad f'(x),\\qquad f''(x)$",
+    "idea": "Function values place the graph. Derivative signs tell how to connect those points and how each piece bends.",
+    "example": "For $f(x)=x/(x+1)$, the domain excludes $-1$ and the horizontal asymptote is $y=1$.",
+    "parts": [
+      {
+        "title": "First derivative chart",
+        "definition": "Split the domain into intervals and record the sign of the derivative.",
+        "formula": "$f'>0\\ \\text{or}\\ f'<0$",
+        "idea": "This gives the direction of motion along each branch."
+      },
+      {
+        "title": "Second derivative chart",
+        "definition": "On each interval where its sign is fixed, the second derivative gives the direction of bending.",
+        "formula": "$f''>0\\ \\text{or}\\ f''<0$",
+        "idea": "Use this with the first chart to draw the shape of each branch."
+      }
+    ]
+  }
+}

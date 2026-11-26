@@ -9,6 +9,7 @@
     <script defer src="./vendor/d3.v7.min.js"></script>
     <script defer src="./topics.js"></script>
     <script defer src="./graph.js"></script>
+    <script defer src="./interior.js"></script>
     <script defer src="./map.js"></script>
   </head>
   <body>
@@ -64,15 +65,16 @@
         >
           <g id="world">
             <g id="rails"></g>
+            <g id="orbit-guides"></g>
             <g id="stops"></g>
+            <g id="inside-topic" role="group" style="display: none"></g>
           </g>
         </svg>
         <div class="hint">
-          <span aria-hidden="true">✥</span> Drag to move <i>·</i> Scroll or
-          pinch to zoom <i>·</i> Select a concept
+          Drag to move <i>·</i> Zoom into a concept to see its parts
         </div>
         <div class="touch-hint" aria-hidden="true">
-          Drag to move · Pinch to zoom
+          Drag to move · Pinch to explore a concept
         </div>
         <div class="controls" aria-label="Map controls">
           <button id="out" disabled aria-label="Zoom out" title="Zoom out">

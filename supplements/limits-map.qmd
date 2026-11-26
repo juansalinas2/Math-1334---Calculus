@@ -23,6 +23,8 @@ description: "See how the main ideas of differential calculus connect."
 .atlas-launch strong { font-size:1.25rem; } .atlas-launch small { color:#ddebe7; }
 .atlas-launch-arrow { font:1.45rem system-ui; }
 
+.map-equation { overflow-x: auto; padding: .3em 0; }
+.map-equation math { display: block; width: max-content; math-style: normal; }
 .idea-map { margin: 1.2rem 0 .7rem; }
 .idea-node { cursor: pointer; }
 .idea-node:hover rect, .idea-node:focus rect, .idea-node[aria-pressed="true"] rect { stroke: var(--reading-link, #285d80); stroke-width: 3; fill: var(--reading-panel, #f3f6f8); }
@@ -508,7 +510,7 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
     const addText = (tag, text, className) => {
       const el = document.createElement(tag);
       if (className) el.className = className;
-      el.textContent = text;
+      writeMapText(el, text);
       panel.appendChild(el);
       return el;
     };
@@ -519,12 +521,13 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
       edges.forEach(edge => edge.classList.toggle('is-connected', edge.dataset.from === id || edge.dataset.to === id));
       panel.replaceChildren();
       addText('h3', concept.title);
-      addText('p', concept.summary);
-      const example = document.createElement('p');
-      const label = document.createElement('strong');
-      label.textContent = 'From class: ';
-      example.append(label, document.createTextNode(concept.example));
-      panel.appendChild(example);
+      addText('strong', 'Definition');
+      addText('p', concept.definition);
+      addText('p', concept.formula, 'map-equation');
+      addText('strong', 'Idea');
+      addText('p', concept.idea);
+      addText('strong', 'From class');
+      addText('p', concept.example);
       const related = [...new Set(edges.filter(edge => edge.dataset.from === id || edge.dataset.to === id).map(edge => edge.dataset.from === id ? edge.dataset.to : edge.dataset.from))];
       if (related.length) {
         addText('p', 'Connected ideas:');

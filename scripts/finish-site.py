@@ -6,6 +6,7 @@ import hashlib
 import re
 import shutil
 from book_navigation import rebuild_sidebar
+from map_math import write_topics
 
 site = Path(os.environ.get('QUARTO_PROJECT_OUTPUT_DIR', '_site'))
 # Older cached HTML still points at its original, hashed stylesheet.
@@ -32,13 +33,20 @@ shutil.copy2('assets/glossary-redirect.html', site / 'supplements/glossary.html'
 # The full-page map has its own layout and is deployed alongside the book.
 map_source = Path('assets/course-map')
 map_output = site / 'map'
-shutil.copytree(map_source, map_output, dirs_exist_ok=True)
+shutil.copytree(map_source, map_output, dirs_exist_ok=True, ignore=shutil.ignore_patterns('notes.json'))
+write_topics(map_source, map_output / 'topics.js')
 # Change asset URLs with their contents so returning students see a coherent release.
 map_index = map_output / 'index.html'
 map_html = map_index.read_text()
 for asset in map_source.rglob('*'):
     if asset.suffix in ('.css', '.js'):
         url = './' + asset.relative_to(map_source).as_posix()
-        version = hashlib.sha256(asset.read_bytes()).hexdigest()[:12]
+        published_asset = map_output / asset.relative_to(map_source)
+        version = hashlib.sha256(published_asset.read_bytes()).hexdigest()[:12]
         map_html = map_html.replace(f'"{url}"', f'"{url}?v={version}"')
 map_index.write_text(map_html)
+guide = site / 'supplements/limits-map.html'
+topics_version = hashlib.sha256((map_output / 'topics.js').read_bytes()).hexdigest()[:12]
+guide.write_text(re.sub(r'(src="\.\./map/topics\.js)(?:\?v=[^"]*)?"',
+                        lambda match: match.group(1) + '?v=' + topics_version + '"',
+                        guide.read_text()))

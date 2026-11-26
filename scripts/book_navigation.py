@@ -74,12 +74,12 @@ def rebuild_sidebar(html, page_name):
     )
     menu = (
         leaves['index.html']
-        + map_link
         + group('Chapter 1', intro_children, intro)
         + group('Chapter 2', SECTIONS, 'limits-and-continuity.html')
         + group('Chapter 3', DERIVATIVE_SECTIONS, 'derivatives.html')
         + group('Chapter 4', APPLICATION_SECTIONS, 'applications-of-derivatives.html')
         + '<li class="book-nav-label">LOOK UP</li>'
+        + map_link
         + ''.join(leaves[name] for name in REFERENCE)
         + group('Study aids', SUPPLEMENTS)
         + leaves['lecture-pdfs.html']

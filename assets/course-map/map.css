@@ -462,3 +462,123 @@ aside {
     padding: 1px;
   }
 }
+
+.hub-symbol {
+  pointer-events: none;
+}
+.hub-symbol div {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  font-size: 15px;
+  color: white;
+}
+.hub-symbol math {
+  color: white;
+}
+.has-interior .station.inside-parent .station-mark {
+  transform: scale(var(--parent-scale, 1));
+}
+.has-interior .station:not(.inside-parent) {
+  opacity: 0.28;
+}
+.has-interior #rails {
+  opacity: 0.35;
+}
+#orbit-guides {
+  pointer-events: none;
+}
+#orbit-guides .orbit {
+  fill: var(--paper);
+  fill-opacity: 0.85;
+  stroke-dasharray: 2 6;
+  stroke-opacity: 0.45;
+}
+#orbit-guides line {
+  stroke-width: 1.2;
+  stroke-opacity: 0.55;
+}
+.part {
+  cursor: pointer;
+  outline: none;
+}
+.part circle {
+  fill: var(--paper);
+  stroke-width: 3;
+}
+.part:hover circle,
+.part:focus-visible circle,
+.part[aria-pressed="true"] circle {
+  fill: var(--accent);
+}
+.part-label {
+  text-align: center;
+  line-height: 1.14;
+  pointer-events: none;
+}
+.part-label strong, .part-formula {
+  border-radius: 4px;
+  background: var(--paper);
+  padding: 2px 4px;
+}
+.part-label strong {
+  display: inline-block;
+  color: var(--ink);
+  font: 600 14px/1.15 var(--ui);
+}
+.part-formula {
+  display: none;
+  width: fit-content;
+  max-width: 100%;
+  margin: 2px auto 0;
+}
+.with-formulas .part-formula {
+  display: block;
+}
+.part:focus-visible strong {
+  outline: 2px solid var(--accent);
+}
+#detail h3 {
+  margin-top: 14px;
+}
+#detail p {
+  margin: 0.4em 0 0.75em;
+}
+.equation {
+  border-left: 2px solid var(--accent);
+  background: #f4f4ec;
+  padding: 0.65rem 0.7rem;
+  margin: 0.6rem 0 0.85rem;
+  overflow-x: auto;
+}
+.equation math {
+  display: block;
+  width: max-content;
+  max-width: none;
+  math-style: normal;
+  font-size: 1.08em;
+  margin: 0.12em 0;
+}
+.parent-link {
+  background: none;
+  padding: 0;
+  margin: 0 0 7px;
+  border: 0;
+  color: var(--accent);
+  font: 600 14px var(--ui);
+}
+.part-links {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.part-links button {
+  border: 1px solid var(--line);
+  background: #f3f4ec;
+  font: 550 13px var(--ui);
+  padding: 7px 9px;
+  border-radius: 5px;
+}
+.part-links button:hover, .part-links button[aria-pressed="true"] {
+  border-color: var(--accent);
+}

@@ -13,6 +13,7 @@ const zoomLevel = byId("zoom-level");
 const minZoom = .16;
 const maxZoom = 3.6;
 let selected = null;
+let selectedPart = null;
 let family = "all";
 let cameraMode = "overview";
 let cameraWidth = 0;
@@ -46,17 +47,18 @@ const stops = d3.select("#stops").selectAll("g").data(stations).join("g")
   .attr("class", (d) => "station" + (d.symbol ? " hub" : ""))
   .attr("role", "button").attr("tabindex", 0).attr("aria-label", (d) => d.title)
   .attr("transform", (d) => "translate(" + d.x + "," + d.y + ")");
-stops.append("title").text((d) => d.title);
-stops.append("rect").attr("x", -78).attr("y", -25).attr("width", 156).attr(
+const marks = stops.append("g").attr("class", "station-mark");
+marks.append("title").text((d) => d.title);
+marks.append("rect").attr("x", -78).attr("y", -25).attr("width", 156).attr(
   "height",
   65,
 ).attr("fill", "transparent");
-stops.append("circle").attr("class", "halo").attr(
+marks.append("circle").attr("class", "halo").attr(
   "r",
   (d) => d.symbol ? 31 : 21,
 )
   .attr("fill", (d) => families[d.family].color).attr("fill-opacity", .15);
-stops.append("circle").attr("r", (d) => d.symbol ? 20 : 8).attr(
+marks.append("circle").attr("r", (d) => d.symbol ? 20 : 8).attr(
   "stroke-width",
   (d) => d.symbol ? 3 : 4,
 )
@@ -64,11 +66,18 @@ stops.append("circle").attr("r", (d) => d.symbol ? 20 : 8).attr(
     "stroke",
     (d) => families[d.family].color,
   );
-stops.filter((d) => d.symbol).append("text").attr("class", "formula").attr(
-  "text-anchor",
-  "middle",
-).attr("y", 6).text((d) => d.symbol);
-stops.append("text").attr("class", "label").attr("text-anchor", "middle").attr(
+marks.filter((d) => d.symbol).append("foreignObject").attr(
+  "class",
+  "hub-symbol",
+)
+  .attr("x", -21).attr("y", -13).attr("width", 42).attr("height", 26).attr(
+    "aria-hidden",
+    "true",
+  )
+  .append("xhtml:div").each(function (d) {
+    writeMapText(this, d.symbol);
+  });
+marks.append("text").attr("class", "label").attr("text-anchor", "middle").attr(
   "y",
   (d) => d.symbol ? 49 : 31,
 ).text((d) => d.label);
@@ -77,7 +86,9 @@ function drawCamera() {
   drawFrame = null;
   const view = d3.zoomTransform(viewport);
   world.attr("transform", view);
+  drawInterior(view);
   if (view.k === renderedScale) return;
+  world.style("--parent-scale", Math.min(1, 1.20 / view.k));
   // Only the overview uses larger labels. Panning needs no text layout.
   const labelScale = Math.max(.55, view.k);
   if (view.k < .8 || renderedScale < .8) {
@@ -104,6 +115,9 @@ const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
   })
   .on("zoom", (event) => {
     if (event.sourceEvent) {
+      zoomAnchor = event.sourceEvent.type === "wheel"
+        ? d3.pointer(event.sourceEvent, viewport)
+        : null;
       cameraMode = "manual";
       if (drawFrame === null) drawFrame = requestAnimationFrame(drawCamera);
     } else {
@@ -184,31 +198,55 @@ function paint(preview = selected) {
 }
 function el(tag, text, className) {
   const element = document.createElement(tag);
-  element.textContent = text;
+  if (text.includes("$")) writeMapText(element, text);
+  else element.textContent = text;
   if (className) element.className = className;
   return element;
 }
-function showTopic(id) {
+function showTopic(id, slug = null) {
   const topic = byTopic.get(id);
   if (!topic) return;
+  const part = topic.parts.find((item) => partSlug(item) === slug);
   selected = id;
+  selectedPart = part ? slug : null;
+  zoomAnchor = null;
   hovered = null;
   cameraMode = "selected";
   family = "all";
   detail.hidden = false;
   detail.style.setProperty("--accent", families[topic.family].color);
   const body = byId("detail-body");
-  const heading = el("h2", topic.title);
+  const note = part || topic;
+  const heading = el("h2", note.title);
   heading.tabIndex = -1;
-  const link = el("a", "Read the lecture notes ↗", "note-link");
+  body.replaceChildren(el("p", families[topic.family].label, "family-name"));
+  if (part) {
+    const back = el("button", "← " + topic.title, "parent-link");
+    back.onclick = () => showTopic(topic.id);
+    body.append(back);
+  }
+  const link = el("a", "Read the lecture notes", "note-link");
   link.href = topic.href;
-  body.replaceChildren(
-    el("p", families[topic.family].label, "family-name"),
+  body.append(
     heading,
-    el("p", topic.summary),
+    el("h3", "Definition"),
+    el("p", note.definition),
+    el("div", note.formula, "equation"),
+    el("h3", "Idea"),
+    el("p", note.idea),
+    link,
+  );
+  body.append(el("h3", "Inside " + topic.label), el("div", "", "part-links"));
+  const parts = body.lastElementChild;
+  for (const item of topic.parts) {
+    const button = el("button", item.title);
+    button.setAttribute("aria-pressed", String(item === part));
+    button.onclick = () => showTopic(id, partSlug(item));
+    parts.append(button);
+  }
+  body.append(
     el("h3", "From class"),
     el("p", topic.example),
-    link,
     el("h3", "Follow a connection"),
   );
   nearby(id).forEach((edge) => {
@@ -221,20 +259,22 @@ function showTopic(id) {
   detail.scrollTop = 0;
   results.hidden = true;
   lookup.value = "";
-  history.replaceState(null, "", "#" + id);
+  history.replaceState(null, "", "#" + id + (part ? "/" + slug : ""));
   paint();
   move(
     topic.x,
     topic.y,
     Math.max(
       d3.zoomTransform(viewport).k,
-      Math.min(1.35, viewport.clientWidth / 550),
+      part ? formulaZoom + .18 : detailZoom + .03,
     ),
   );
   heading.focus({ preventScroll: true });
 }
 function overview(which = "all") {
   selected = null;
+  selectedPart = null;
+  zoomAnchor = null;
   hovered = null;
   family = which;
   cameraMode = "overview";
@@ -288,6 +328,7 @@ document.querySelectorAll("[data-family]").forEach((btn) =>
   btn.onclick = () => overview(btn.dataset.family)
 );
 function scaleBy(factor) {
+  zoomAnchor = null;
   cameraMode = "manual";
   svg.call(zoom.scaleBy, factor);
 }
@@ -336,7 +377,15 @@ function search() {
   results.hidden = !q;
   if (!q) return;
   const hits = stations.filter((s) =>
-    normalizeQuery([s.label, s.title, aliases[s.id] || "", s.summary].join(" "))
+    normalizeQuery(
+      [
+        s.label,
+        s.title,
+        aliases[s.id] || "",
+        s.definition,
+        s.parts.map((p) => p.title).join(" "),
+      ].join(" "),
+    )
       .includes(q)
   );
   hits.sort((a, b) =>
@@ -404,10 +453,12 @@ new ResizeObserver(() => {
   }
 }).observe(viewport);
 function openLocation() {
-  const id = location.hash.slice(1);
-  if (byTopic.has(id)) showTopic(id);
+  const [id, slug] = location.hash.slice(1).split("/");
+  if (byTopic.has(id)) showTopic(id, slug);
   else {
     selected = null;
+    selectedPart = null;
+    zoomAnchor = null;
     family = "all";
     detail.hidden = true;
     cameraMode = "initial";
