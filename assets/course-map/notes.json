@@ -17,7 +17,8 @@
         "title": "Target value",
         "definition": "Outputs eventually lie within any prescribed distance $\\varepsilon>0$ of $L$.",
         "formula": "$|f(x)-L|<\\varepsilon$",
-        "idea": "A smaller tolerance asks for a closer approximation."
+        "idea": "A smaller tolerance asks for a closer approximation.",
+        "example": "A table of $\\frac{x^2-4}{x-2}$ near $2$ suggests a limit of $4$. Factoring gives $x+2$ for $x\\ne2$, which proves it."
       },
       {
         "title": "Reading a limit from a graph",
@@ -26,6 +27,14 @@
         "symbol": "$\\lim_{x\\to a^-}f(x)$",
         "idea": "Trace the graph toward the input from each side before looking at the filled point.",
         "href": "../lectures/08-exam-practice.html#problem-1"
+      },
+      {
+        "title": "Oscillation",
+        "definition": "A finite limit cannot exist if inputs arbitrarily near the point keep producing two distinct fixed heights.",
+        "formula": "$\\lim_{x\\to0}\\sin\\!\\left(\\frac1x\\right)\\ \\text{does not exist}$",
+        "symbol": "$\\sin(1/x)$",
+        "idea": "Near zero the graph keeps returning to both $1$ and $-1$. A table that samples only one sequence can miss the oscillation.",
+        "href": "../lectures/03-infinite-limits.html#harder-limits"
       }
     ]
   },
@@ -277,7 +286,9 @@
         "title": "Secant slope",
         "definition": "Divide the output change by the input change between two distinct points.",
         "formula": "$\\frac{f(a+h)-f(a)}{h},\\quad h\\ne0$",
-        "idea": "This is the average rate over a nonzero step."
+        "idea": "This is the average rate over a nonzero step.",
+        "aliases": "average rate of change difference quotient",
+        "href": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines"
       },
       {
         "title": "Limiting slope",
@@ -402,6 +413,14 @@
         "formula": "$F(t)=m\\frac{d^2x}{dt^2}$",
         "idea": "For constant mass, a force law describes how position changes by specifying acceleration.",
         "href": "../lectures/01-introduction.html#differential-equations"
+      },
+      {
+        "title": "Average and instantaneous velocity",
+        "definition": "Average velocity is displacement divided by elapsed time. Its limit as the time interval shrinks gives instantaneous velocity, when that limit exists.",
+        "formula": "$\\bar v=\\frac{s(t+h)-s(t)}{h}$\n$v(t)=\\lim_{h\\to0}\\frac{s(t+h)-s(t)}{h}$",
+        "symbol": "$\\bar v=\\frac{\\Delta s}{\\Delta t}$",
+        "idea": "Two positions determine a secant slope. Bringing the second time closer to the first gives the tangent slope.",
+        "href": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines"
       }
     ]
   },
@@ -545,7 +564,7 @@
         "title": "Similar triangles",
         "definition": "In similar triangles, the ratios of corresponding side lengths are equal.",
         "formula": "$\\frac{a}{A}=\\frac{b}{B}=\\frac{c}{C}=k$",
-        "idea": "The common ratio scales the larger-letter triangle to the smaller-letter triangle. Match corresponding sides before differentiating.",
+        "idea": "Multiplying the sides $A,B,C$ by $k$ gives $a,b,c$, respectively. Match corresponding sides before differentiating.",
         "href": "../lectures/related-rates.html#similar-triangles"
       },
       {
@@ -664,6 +683,14 @@
         "formula": "$(x^r)'=rx^{r-1}$",
         "idea": "Write $\\ln y=r\\ln x$ and differentiate.",
         "href": "../lectures/17-exponential-logarithmic.html#the-power-rule-for-real-exponents"
+      },
+      {
+        "title": "Variable base and exponent",
+        "definition": "If $u$ and $v$ are differentiable and $u>0$, logarithmic differentiation separates their contributions to the derivative of $y=u^v$.",
+        "formula": "$\\frac{y'}{y}=v'\\ln u+v\\frac{u'}{u}$",
+        "symbol": "$y=u^v$",
+        "idea": "Changing the exponent contributes the logarithm term. Changing the base contributes the relative rate of the base. Multiply by $y$ to recover the derivative.",
+        "href": "../lectures/17-exponential-logarithmic.html#the-general-calculation"
       }
     ]
   },
@@ -1054,7 +1081,7 @@
         "definition": "Near zero, an odd power of the displacement changes sign across the point. An even power stays positive on both sides.",
         "formula": "$\\lim_{x\\to0}\\frac{1}{x^2}=+\\infty$",
         "idea": "For $1/x$ the branches point in opposite directions. For $1/x^2$ both branches rise.",
-        "href": "../lectures/03-infinite-limits.html#harder-limits"
+        "href": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes"
       }
     ]
   },
@@ -1091,6 +1118,14 @@
         "href": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
         "symbol": "$\\sqrt u+\\sqrt v$",
         "example": "For the limit at $x=5$, multiplying by $\\sqrt{x+4}+3$ reduces the quotient to $\\frac{1}{\\sqrt{x+4}+3}$, whose limit is $\\frac16$."
+      },
+      {
+        "title": "Nonzero over zero",
+        "definition": "If the numerator tends to a nonzero number and the denominator tends to zero, the magnitude of the quotient grows without bound.",
+        "formula": "$f(x)\\to c\\ne0,\\quad g(x)\\to0$\n$\\Longrightarrow\\quad\\left|\\frac{f(x)}{g(x)}\\right|\\to\\infty$",
+        "symbol": "$|f/g|\\to\\infty$",
+        "idea": "Check the signs on each side to decide which branch rises and which falls.",
+        "href": "../lectures/04-limit-laws.html#three-possibilities-when-we-substitute"
       }
     ]
   },
@@ -1136,7 +1171,7 @@
       {
         "title": "Arcsine and arccosine",
         "definition": "For $|x|<1$, the two slopes have the same magnitude and opposite signs.",
-        "formula": "$(\\arcsin x)'=\\frac{1}{\\sqrt{1-x^2}}$\n$(\\arccos x)'=-\\frac{1}{\\sqrt{1-x^2}}$",
+        "formula": "$(\\arcsin(x))'=\\frac{1}{\\sqrt{1-x^2}}$\n$(\\arccos(x))'=-\\frac{1}{\\sqrt{1-x^2}}$",
         "idea": "On their principal branches, sine increases and cosine decreases.",
         "aliases": "arcsin arccos inverse sine inverse cosine",
         "example": "For $y=\\arcsin x$, differentiate $\\sin y=x$ to get $\\cos y\\,y'=1$. On the chosen branch, $\\cos y=\\sqrt{1-x^2}$."
@@ -1144,14 +1179,14 @@
       {
         "title": "Arctangent and arccotangent",
         "definition": "Both derivatives exist for every real input on the branches used in lecture.",
-        "formula": "$(\\arctan x)'=\\frac{1}{1+x^2}$\n$(\\operatorname{arccot}x)'=-\\frac{1}{1+x^2}$",
+        "formula": "$(\\arctan(x))'=\\frac{1}{1+x^2}$\n$(\\operatorname{arccot}(x))'=-\\frac{1}{1+x^2}$",
         "idea": "The identity $1+\\tan^2y=\\sec^2y$ expresses the reciprocal slope using the input.",
         "aliases": "arctan arccot inverse tangent inverse cotangent"
       },
       {
         "title": "Arcsecant and arccosecant",
         "definition": "Both derivatives require $|x|>1$.",
-        "formula": "$(\\operatorname{arcsec}x)'=\\frac{1}{|x|\\sqrt{x^2-1}}$\n$(\\operatorname{arccsc}x)'=-\\frac{1}{|x|\\sqrt{x^2-1}}$",
+        "formula": "$(\\operatorname{arcsec}(x))'=\\frac{1}{|x|\\sqrt{x^2-1}}$\n$(\\operatorname{arccsc}(x))'=-\\frac{1}{|x|\\sqrt{x^2-1}}$",
         "idea": "The absolute value keeps the denominator positive on both branches.",
         "aliases": "arcsec arccsc inverse secant inverse cosecant",
         "symbol": "$|x|>1$"

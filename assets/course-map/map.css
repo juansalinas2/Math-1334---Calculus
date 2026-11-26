@@ -476,8 +476,11 @@ aside {
 .hub-symbol math {
   color: white;
 }
-.has-interior .station.inside-parent .station-mark {
+.has-interior .station .station-mark {
   transform: scale(var(--parent-scale, 1));
+}
+.has-interior .track {
+  vector-effect: non-scaling-stroke;
 }
 .has-interior .station:not(.inside-parent) {
   opacity: 0.28;
@@ -540,6 +543,9 @@ aside {
 }
 #detail h3 {
   margin-top: 14px;
+}
+#detail h2:focus {
+  outline: none;
 }
 #detail p {
   margin: 0.4em 0 0.75em;
