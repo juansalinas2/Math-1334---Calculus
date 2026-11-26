@@ -150,8 +150,9 @@ const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
   .filter(event => {
     const content = event.target.closest?.(".focus-content");
     const scrollable = content && content.scrollHeight > content.clientHeight + 1;
-    if (scrollable && ((event.type === "wheel" && !event.ctrlKey) ||
-        (event.type === "touchstart" && event.touches.length === 1))) return false;
+    // Keep wheel and trackpad zoom working over an expanded card at every scale.
+    // A single touch can scroll the card when the mobile list exceeds its height.
+    if (scrollable && event.type === "touchstart" && event.touches.length === 1) return false;
     return (!event.ctrlKey || event.type === "wheel") && !event.button;
   })
   .duration(0)
@@ -198,8 +199,6 @@ const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
 svg.call(zoom).on("wheel.mapBoundary", event => {
   // D3 leaves a wheel event unhandled when it starts at a scale limit.
   // Keep it on the map so a trackpad pinch cannot start zooming the page.
-  const content = event.target.closest?.(".focus-content");
-  if (!event.ctrlKey && content && content.scrollHeight > content.clientHeight + 1) return;
   event.preventDefault();
 }, { passive: false });
 
