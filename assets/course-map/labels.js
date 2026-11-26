@@ -20,8 +20,8 @@ function captionSize(node,compact) {
     if(last>=0 && labelMetrics.measureText(lines[last]+" "+word).width<=limit) lines[last]+=" "+word;
     else lines.push(word);
   }
-  const w=Math.ceil(Math.max(...lines.map(s=>labelMetrics.measureText(s).width)))+6;
-  const lineHeight=size*1.06, h=lines.length*lineHeight+3;
+  const w=Math.ceil(1.1*Math.max(...lines.map(s=>labelMetrics.measureText(s).width)))+8;
+  const lineHeight=size*1.06, h=lines.length*lineHeight+5;
   const result={size,lines,w,h,lineHeight};
   captionMetrics.set(key,result);
   return result;
@@ -56,14 +56,17 @@ function placeLabels(view) {
     const vx=radius+4+w/2, vy=radius+4+h/2;
     const offsets=[[0,vy],[0,-vy],[vx,0],[-vx,0],[vx,-vy*.7],[-vx,-vy*.7],
       [vx,vy*.7],[-vx,vy*.7],[w*.28,vy+8],[-w*.28,vy+8],[w*.28,-vy-8],[-w*.28,-vy-8],
-      [0,vy+16],[0,-vy-16]];
+      [0,vy+16],[0,-vy-16],
+      [vx+13,-h],[-vx-13,-h],[vx+13,h],[-vx-13,h],[w*.45,vy+24],[-w*.45,vy+24],
+      [w*.45,-vy-24],[-w*.45,-vy-24],[0,vy+34],[0,-vy-34]];
     let best=null, score=Infinity;
-    for(const [index,[dx,dy]] of offsets.entries()) {
+    for(const [index,[offsetX,offsetY]] of offsets.entries()) {
+      const dx=nearFit ? Math.max(bounds.left+w/2-x, Math.min(bounds.right-w/2-x,offsetX)) : offsetX;
+      const dy=nearFit ? Math.max(bounds.top+h/2-y, Math.min(bounds.bottom-h/2-y,offsetY)) : offsetY;
       const rect=box(x+dx,y+dy,w,h);
-      let cost=index*1.5;
+      let cost=index*1.5 + .04*(Math.abs(dx-offsetX)+Math.abs(dy-offsetY));
       for(const other of obstacles) cost+=overlap(rect,other)*2;
       for(const other of occupied) cost+=overlap(rect,other)*1.6;
-      if(nearFit) cost+=(w*h-overlap(rect,bounds))*4;
       if(cost<score) {score=cost;best={rect,dx,dy};}
       if(score===0) break;
     }
