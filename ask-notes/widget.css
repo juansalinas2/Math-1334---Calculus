@@ -31,23 +31,16 @@
 .rr-self-check input, .rr-self-check textarea { width: 100%; box-sizing: border-box; font: inherit; color: inherit; background: var(--reading-bg,Canvas); border: 1px solid var(--reading-border); padding: .36em; }
 .rr-self-check [role=status]:empty { display: none; }
 
-.rr-help-box,.rr-help-popup {font-family:var(--reading-font,Georgia,serif); color:var(--reading-text,CanvasText); background:var(--reading-bg,Canvas); border:1px solid var(--reading-border,GrayText); border-radius:.35rem; box-sizing:border-box;}
-.rr-help-box {position:fixed; inset:auto max(1rem,env(safe-area-inset-right)) max(.8rem,env(safe-area-inset-bottom)) auto; z-index:10; max-width:calc(100vw - 2rem); margin:0; font-size:1rem; line-height:1.4; box-shadow:0 2px 10px #0001;}
-.rr-help-box summary {cursor:pointer; padding:.48rem .85rem; font-weight:600;}
-.rr-help-box[open] {width:23rem;}
-.rr-help-box[open] summary {border-bottom:1px solid var(--reading-border);}
-.rr-help-box form,.rr-help-popup > form {display:flex; align-items:end; gap:.5rem; margin:0;}
-.rr-help-box form {padding:.75rem;}
-.rr-help-box label,.rr-help-popup > form label {display:grid; flex:1; min-width:0; gap:.27em; font-size:.94em;}
-.rr-help-box input,.rr-help-popup > form input,.rr-help-box button,.rr-help-popup button {box-sizing:border-box; font:inherit; line-height:1.3; background:var(--reading-bg,Canvas); color:inherit; border:1px solid var(--reading-border,GrayText); border-radius:.25rem; padding:.4em .64em;}
-.rr-help-box input,.rr-help-popup > form input {width:100%; min-width:0; font-size:max(1rem,1em);}
-.rr-help-box button,.rr-help-popup button {cursor:pointer;}
-.rr-help-popup {width:min(34rem,calc(100vw - 1.5rem)); max-height:85dvh; overflow:auto; overscroll-behavior:contain; margin:auto; padding:clamp(.9rem,3vw,1.5rem); font-size:clamp(1rem,1.04em,1.24rem); line-height:1.5;}
-.rr-help-popup::backdrop {background:rgb(0 0 0 / .34);}
-.rr-help-popup header {display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:0 0 .9rem; padding:0; border:0;}
-.rr-help-popup h2 {font-family:inherit; font-size:1.24em; font-weight:600; line-height:1.25; margin:0;}
+.rr-help-trigger,.rr-help-popup {font-family:var(--reading-font,Georgia,serif);color:var(--reading-text,CanvasText);background:var(--reading-bg,Canvas);border:1px solid var(--reading-border,GrayText);border-radius:.35rem;box-sizing:border-box;}
+.rr-help-trigger {position:fixed;inset:auto max(1rem,env(safe-area-inset-right)) max(.8rem,env(safe-area-inset-bottom)) auto;z-index:10;margin:0;padding:.48rem .85rem;font-size:1rem;font-weight:600;line-height:1.4;cursor:pointer;box-shadow:0 2px 10px #0001;}
+.rr-help-popup {font-size:clamp(1rem,1.04em,1.24rem);line-height:1.5;}
+.rr-help-popup > form label {display:grid;min-width:0;gap:.27em;font-size:.94em;}
+.rr-help-popup > form input,.rr-help-popup button {box-sizing:border-box;font:inherit;line-height:1.3;background:var(--reading-bg,Canvas);color:inherit;border:1px solid var(--reading-border,GrayText);border-radius:.25rem;padding:.4em .64em;}
+.rr-help-popup > form input {width:100%;min-width:0;font-size:max(1rem,1em);}
+.rr-help-popup button {cursor:pointer;}
+.rr-help-popup header {display:flex;align-items:center;justify-content:space-between;padding:0;border:0;}
+.rr-help-popup h2 {font-family:inherit;font-weight:600;line-height:1.25;margin:0;}
 .rr-help-popup h2:focus {outline:none;}
-body:has(.rr-help-popup[open]) .rr-help-box {visibility:hidden;}
 .rr-help-popup header button {font-size:.86em;}
 .rr-asked {font-style:italic; margin:.2em 0 .65em;}
 .rr-help-answer p {margin:.45em 0;}
@@ -58,7 +51,7 @@ body:has(.rr-help-popup[open]) .rr-help-box {visibility:hidden;}
 .rr-self-check {margin:.7em 0; font-size:.9em;}
 .rr-self-check summary {cursor:pointer;}
 .rr-help-popup > form {margin-top:1rem; padding-top:.7rem; border-top:1px solid var(--reading-border);}
-@media print {.rr-help-box,.rr-help-popup {display:none!important;}}
+@media print {.rr-help-trigger,.rr-help-popup {display:none!important;}}
 
 /* A modeless reading companion. Only the answer scrolls inside the panel. */
 .rr-help-popup {position:fixed; inset:auto max(.65rem,env(safe-area-inset-right)) max(.65rem,env(safe-area-inset-bottom)) auto; z-index:110; width:min(25rem,calc(100% - 16px)); max-height:66dvh; margin:0; overflow:hidden; padding:.85rem 1rem; box-shadow:0 .25rem 1.4rem #0002;}
@@ -76,7 +69,7 @@ body:has(.rr-help-popup[open]) .rr-help-box {visibility:hidden;}
 }
 @media (max-height:400px) {.rr-help-popup {max-height:72dvh;}}
 
-.rr-help-box .rr-question-form,.rr-help-popup .rr-question-form {display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.35rem .5rem;}
+.rr-help-popup .rr-question-form {display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.35rem .5rem;}
 .rr-question-form .rr-suggestion {grid-column:1 / -1;display:flex;align-items:center;gap:.3rem;}
 .rr-suggestion[hidden],.rr-suggestion button[hidden] {display:none;}
 .rr-question-form .rr-suggestion button {background:transparent;border:0;color:var(--reading-link,LinkText);font-size:.88em;min-height:1.8rem;}
@@ -84,10 +77,12 @@ body:has(.rr-help-popup[open]) .rr-help-box {visibility:hidden;}
 .rr-suggestion kbd {font:inherit;font-size:.79em;color:var(--reading-text,CanvasText);background:transparent;border:1px solid var(--reading-border,GrayText);border-radius:.25rem;padding:0 .28em;}
 .rr-visually-hidden {position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
 @media (pointer:coarse) {.rr-suggestion kbd {display:none;} .rr-question-form .rr-suggestion button {min-height:2.5rem;}}
-@media (max-height:450px) {.rr-help-popup[open] {max-height:85dvh;}}
+@media (max-height:450px) {.rr-help-popup[open] {max-height:85dvh;overflow:auto;}}
 
-.rr-question-form .rr-class-code,.rr-question-form .rr-ai-notice,.rr-question-form .rr-free-hint {grid-column:1 / -1;}
-.rr-question-form .rr-class-code[hidden] {display:none;}
+.rr-question-form .rr-ai-notice {grid-column:1 / -1;}
+.rr-help-popup > [hidden],.rr-help-trigger[hidden],.rr-question-form [hidden] {display:none;}
+.rr-help-popup > [aria-live][hidden] + form {border-top:0;}
+.rr-question-form .rr-edit-question {font-size:.88em;}
 .rr-question-form .rr-free-hint {justify-self:start;font-size:.88em;}
 .rr-question-form .rr-ai-notice {line-height:1.25;font-size:.74em;}
 .rr-generated-answer {white-space:pre-wrap;}

@@ -218,15 +218,19 @@
     }
     if (!topics.has("the-three-steps")) return;
 
-    const box = element("details");
-    box.className = "rr-help-box";
-    box.id = "ask-for-help";
-    const trigger = element("summary", "Ask for help");
+    const trigger = element("button", "Ask for help");
+    trigger.type = "button";
+    trigger.id = "ask-for-help";
+    trigger.className = "rr-help-trigger";
+    trigger.setAttribute("aria-haspopup", "dialog");
+    trigger.setAttribute("aria-controls", "rr-tutor");
+    trigger.setAttribute("aria-expanded", "false");
     const popup = element("dialog");
+    popup.id = "rr-tutor";
     popup.className = "rr-help-popup";
     popup.setAttribute("aria-labelledby", "rr-answer-title");
     const bar = element("header");
-    const title = element("h2", "From the notes");
+    const title = element("h2", "Ask for help");
     title.id = "rr-answer-title";
     title.tabIndex = -1;
     const move = element("button", "Move");
@@ -245,13 +249,13 @@
     answer.className = "rr-help-answer";
     const thread = element("div");
     thread.setAttribute("aria-live", "polite");
+    thread.hidden = true;
     thread.append(asked, answer);
     let activeTopic = "";
     let activeStep = 0;
     let activePart = "";
     let pendingReply = null;
     let hintLevel = 0;
-    let minimized = false;
     const attempts = new Map();
 
     const chat = endpoint && window.courseTutor;
@@ -268,7 +272,7 @@
     async function askTutor(question, section) {
       if (pending) return;
       pending = true;
-      first.send.disabled = follow.send.disabled = true;
+      composer.setBusy(true);
       asked.textContent = question;
       answer.replaceChildren(element("p", "Reading the example and your question…"));
       present();
@@ -304,18 +308,18 @@
         const safe = /^\\(?:frac|dfrac|tfrac|sqrt|left|right|bigl|bigr|mathrm|text|cdot|times|pi|theta|sin|cos|tan|infty|approx|leq?|geq?|neq|pm|quad|qquad|boxed|begin|end|aligned|displaystyle|partial)$/;
         if (macros.every(m => safe.test(m))) await window.MathJax?.typesetPromise?.([body]);
       } catch (error) {
-        if (error.status === 403) { classCode = ""; first.code.value = follow.code.value = ""; }
         activeTopic = section;
         answer.replaceChildren(element("p", error.status ? error.message : "The AI tutor could not finish this reply. Try again or use the worked hints."));
-        action("Use worked hints", () => show(question, section));
-        if (error.status !== 429) {
-          follow.field.value = question;
-          follow.update();
+        if (error.status === 403) {
+          classCode = "";
+          composer.requestCode(question, section);
+        } else {
+          composer.field.value = question;
         }
       } finally {
         pending = false;
-        first.send.disabled = follow.send.disabled = false;
-        first.update(); follow.update();
+        composer.setBusy(false);
+        composer.update();
       }
     }
 
@@ -323,17 +327,20 @@
       return [item.help, ...(item.answers || []).filter(a => a.question)];
     }
 
-    function questionForm(labelText, placeholder, getReading, isFollowup = false) {
+    function questionForm() {
+      const getReading = () => activeTopic || currentReading();
+      let queued = null;
       const form = element("form");
       form.className = "rr-question-form";
-      const label = element("label", labelText);
+      const label = element("label");
+      const caption = element("span", "Your question");
       const field = element("input");
       field.type = "text";
       field.required = true;
       field.maxLength = 450;
       field.autocomplete = "off";
-      field.placeholder = placeholder;
-      label.append(field);
+      field.placeholder = "Ask about this reading…";
+      label.append(caption, field);
       const send = element("button", chat ? "Ask AI" : "Ask");
       send.type = "submit";
       const row = element("div");
@@ -350,36 +357,70 @@
       row.append(fill, other);
       const instructions = element("span", "Tab fills the suggested question. Enter asks your question. Escape dismisses the suggestion.");
       instructions.className = "rr-visually-hidden";
-      instructions.id = isFollowup ? "rr-follow-keys" : "rr-question-keys";
+      instructions.id = "rr-question-keys";
       field.setAttribute("aria-describedby", instructions.id);
       sample.id = instructions.id + "-sample";
       form.append(label, send, row, instructions);
-      const codeLabel = element("label", "Class code for AI");
-      const code = element("input");
-      code.type = "password"; code.maxLength = 120; code.autocomplete = "off";
-      codeLabel.className = "rr-class-code";
-      codeLabel.append(code);
+      const hint = element("button", "Use worked hints");
+      hint.type = "button";
+      hint.className = "rr-free-hint";
+      const edit = element("button", "Edit question");
+      edit.type = "button";
+      edit.hidden = true;
+      edit.className = "rr-edit-question";
+      const notice = element("small", "Ask AI sends your question and recent turns to AWS. Check its math against the worked notes. Sharing with Juan is optional.");
+      notice.className = "rr-ai-notice";
       if (chat) {
-        const hint = element("button", "Use worked hints");
-        hint.type = "button"; hint.className = "rr-free-hint";
+        form.append(hint, edit, notice);
         hint.addEventListener("click", () => {
-          if (!pending) show(field.value.trim() || "First step", filledReading || getReading());
+          const question = queued?.question || field.value.trim() || "First step";
+          show(question, queued?.section || filledReading || getReading());
         });
-        const notice = element("small", "Ask AI sends your question and recent turns to AWS. Check its math against the worked notes. Sharing with Juan is optional.");
-        notice.className = "rr-ai-notice";
-        form.append(codeLabel, hint, notice);
+        edit.addEventListener("click", () => {
+          const draft = queued;
+          reset();
+          field.value = draft.question;
+          filledReading = draft.section;
+          update();
+          field.focus({preventScroll:true});
+        });
       }
 
       let options = [], index = 0, reading = "", dismissed = false, filledReading = "";
+      function requestCode(question, section) {
+        queued = {question, section};
+        field.value = "";
+        field.type = "password";
+        field.maxLength = 120;
+        field.placeholder = "Enter your class code";
+        caption.textContent = "Class code for AI";
+        send.textContent = "Send question";
+        edit.hidden = false;
+        row.hidden = true;
+        field.removeAttribute("aria-describedby");
+        if (popup.open && popup.contains(document.activeElement)) field.focus({preventScroll:true});
+      }
+      function reset() {
+        queued = null;
+        field.value = "";
+        field.type = "text";
+        field.maxLength = 450;
+        field.placeholder = "Ask about this reading…";
+        send.textContent = chat ? "Ask AI" : "Ask";
+        edit.hidden = true;
+        dismissed = false; filledReading = ""; index = 0;
+        update();
+      }
       function update() {
-        codeLabel.hidden = !!classCode;
+        if (queued) return;
+        caption.textContent = asked.textContent ? "Ask a follow-up" : "Your question";
         const raw = normalized(field.value);
         const ref = numbered(raw);
         reading = ref?.candidates.length === 1 ? ref.candidates[0] : getReading();
         const term = ref ? raw.replace(ref.match[0], "").trim() : raw;
         options = prompts(checks[reading]).map(a => a.question).filter(q => {
           if (ref && ref.candidates.length !== 1) return false;
-          if (isFollowup && normalized(asked.textContent) === normalized(q)) return false;
+          if (normalized(asked.textContent) === normalized(q)) return false;
           const text = normalized(q);
           if (!term) return true;
           if (text === term) return false;
@@ -419,17 +460,23 @@
       });
       form.addEventListener("submit", event => {
         event.preventDefault();
+        if (pending) return;
         const value = field.value.trim();
         if (!value) { field.focus(); return; }
+        if (queued) {
+          const {question, section} = queued;
+          classCode = value;
+          askTutor(question, section);
+          return;
+        }
         const section = filledReading || getReading();
-        if (!chat) { show(value, section); return; }
-        if (pending) return;
-        classCode = classCode || code.value.trim();
-        if (!classCode) { code.focus(); code.setCustomValidity("Enter the class code or choose worked hints."); code.reportValidity(); code.setCustomValidity(""); return; }
-        askTutor(value, section);
+        if (!chat) show(value, section);
+        else if (classCode) askTutor(value, section);
+        else requestCode(value, section);
       });
-      return {form, field, send, code, update, reset() {
-        field.value = ""; dismissed = false; filledReading = ""; index = 0; update();
+      return {form, field, update, reset, requestCode, setBusy(busy) {
+        send.disabled = hint.disabled = busy;
+        field.readOnly = busy;
       }};
     }
 
@@ -473,7 +520,7 @@
           if (p.tagName === "DETAILS") p.open = true;
         }
         target.tabIndex = -1;
-        history.replaceState(null, "", link.hash);
+        window.history.replaceState(null, "", link.hash);
         target.focus({preventScroll: true});
         target.scrollIntoView({block:"center"});
         const panelRect = popup.getBoundingClientRect(), sourceRect = target.getBoundingClientRect();
@@ -662,8 +709,8 @@
     }
 
     function present() {
-      follow.reset();
-      if (!popup.open) popup.show();
+      thread.hidden = false;
+      composer.reset();
       thread.scrollTop = 0;
       title.focus({preventScroll:true});
       if (window.MathJax?.typesetPromise && answer.querySelector(".math:not(:has(math, mjx-container))")) {
@@ -671,37 +718,32 @@
       }
     }
 
-    const first = questionForm("Your question", "Ask about this reading…", currentReading);
-    const follow = questionForm("Ask a follow-up", "Enter a question or a line of work…", () => activeTopic || currentReading(), true);
-    let pendingScroll = false;
-    window.addEventListener("scroll", () => {
-      if (pendingScroll || !box.open || popup.open) return;
-      pendingScroll = true;
-      requestAnimationFrame(() => { pendingScroll = false; first.update(); });
-    }, {passive:true});
-    box.append(trigger, first.form);
-    popup.append(bar, thread, follow.form);
-    document.body.append(box, popup);
+    const composer = questionForm();
+    popup.append(bar, thread, composer.form);
+    document.body.append(trigger, popup);
+    trigger.addEventListener("click", () => {
+      popup.show();
+      trigger.hidden = true;
+      trigger.setAttribute("aria-expanded", "true");
+      composer.update();
+      composer.field.focus({preventScroll:true});
+    });
     function hidePanel() {
       popup.close();
-      box.open = false;
-      minimized = true;
-      trigger.textContent = "Resume help";
+      if (composer.field.type === "password") composer.field.value = "";
+      trigger.hidden = false;
+      trigger.setAttribute("aria-expanded", "false");
+      trigger.textContent = asked.textContent ? "Resume help" : "Ask for help";
       trigger.focus({preventScroll:true});
     }
-    box.addEventListener("toggle", () => {
-      if (!box.open || popup.open) return;
-      if (minimized) {
-        minimized = false;
-        popup.show();
-        title.focus({preventScroll:true});
-      } else first.field.focus({preventScroll:true});
-    });
     popup.addEventListener("keydown", e => {
       if (e.key === "Escape") { e.preventDefault(); hidePanel(); }
     });
-    box.addEventListener("keydown", e => {
-      if (e.key === "Escape") { box.open = false; trigger.focus(); }
-    });
+    let pendingScroll = false;
+    window.addEventListener("scroll", () => {
+      if (pendingScroll || !popup.open || activeTopic) return;
+      pendingScroll = true;
+      requestAnimationFrame(() => { pendingScroll = false; composer.update(); });
+    }, {passive:true});
   });
 })();
