@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <radialGradient id="sky-sun-glow">
+      <stop offset=".56" stop-color="#ffae3e" stop-opacity=".54"/>
+      <stop offset=".75" stop-color="#ff9a39" stop-opacity=".19"/>
+      <stop offset="1" stop-color="#f4843e" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sky-sun-face" cx=".39" cy=".35" r=".7">
+      <stop stop-color="#fff5b3"/><stop offset=".55" stop-color="#ffda72"/>
+      <stop offset=".88" stop-color="#f6a042"/><stop offset="1" stop-color="#dc7134"/>
+    </radialGradient>
+    <radialGradient id="sky-olive-face" cx=".3" cy=".24" r=".85">
+      <stop stop-color="#f4e6a7"/><stop offset=".43" stop-color="#bbbf76"/>
+      <stop offset=".78" stop-color="#78885b"/><stop offset="1" stop-color="#414e40"/>
+    </radialGradient>
+    <radialGradient id="sky-aqua-face" cx=".36" cy=".22" r=".82">
+      <stop stop-color="#bfeddb"/><stop offset=".4" stop-color="#69c5b2"/>
+      <stop offset=".8" stop-color="#2a837e"/><stop offset="1" stop-color="#20545e"/>
+    </radialGradient>
+    <radialGradient id="sky-lapis-face" cx=".28" cy=".24" r=".86">
+      <stop stop-color="#d4ddf6"/><stop offset=".4" stop-color="#8cabe6"/>
+      <stop offset=".78" stop-color="#556ab7"/><stop offset="1" stop-color="#333a70"/>
+    </radialGradient>
+    <radialGradient id="sky-plum-face" cx=".27" cy=".24" r=".87">
+      <stop stop-color="#ffd6cf"/><stop offset=".43" stop-color="#d88aa6"/>
+      <stop offset=".78" stop-color="#935e8d"/><stop offset="1" stop-color="#563e65"/>
+    </radialGradient>
+    <radialGradient id="sky-ember-face" cx=".28" cy=".24" r=".83">
+      <stop stop-color="#f8d298"/><stop offset=".4" stop-color="#e2a368"/>
+      <stop offset=".8" stop-color="#b96b4b"/><stop offset="1" stop-color="#784643"/>
+    </radialGradient>
+    <radialGradient id="sky-limb-shadow" cx=".25" cy=".22" r=".85">
+      <stop offset=".54" stop-color="#172138" stop-opacity="0"/>
+      <stop offset=".83" stop-color="#18233a" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#141d35" stop-opacity=".4"/>
+    </radialGradient>
+    <linearGradient id="sky-ring" x1="0" x2="1" y1="0" y2=".6">
+      <stop stop-color="#9295be"/><stop offset=".23" stop-color="#e6d6d1"/>
+      <stop offset=".58" stop-color="#e3caac"/><stop offset=".88" stop-color="#b7a7ba"/>
+      <stop offset="1" stop-color="#8584ab"/>
+    </linearGradient>
+    <clipPath id="sky-disk"><circle cx="50" cy="50" r="34"/></clipPath>
+    <clipPath id="sky-ringed-disk"><circle cx="50" cy="50" r="28"/></clipPath>
+  </defs>
+
+  <symbol id="sky-calculus" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="49" fill="url(#sky-sun-glow)"/>
+    <g fill="none" stroke="#f9a74f" stroke-linecap="round">
+      <path d="M23 33c-6-3-8-8-6-9 3-2 5 4 11 5m38-8c0-7 3-11 5-10 2 2-3 6-1 13m10 31c8 0 11 4 9 6-2 2-5-3-12-2M39 80c-1 5-4 9-6 8-2-2 3-5 2-10" stroke-width="2.2"/>
+      <path d="m14 45-4-1m42-32 1-4m29 21 3-2M19 72l-4 3m52 7 2 5" stroke-width="1.5" opacity=".75"/>
+    </g>
+    <circle cx="50" cy="50" r="32" fill="url(#sky-sun-face)" stroke="#ffca64" stroke-width="1.4"/>
+    <g fill="none" stroke-linecap="round">
+      <path d="M23 49c3-9 5-14 13-17m2-4c5-2 9-3 13-2m-17 35 5-2 4 1 7-4m9-1 5-6 4-1m-5 17 4-3" stroke="#ffec98" stroke-width="1.8" opacity=".86"/>
+      <path d="M28 48l4-5 5-1 4-6m4 17 5-5-1-4m12-10 3 3m-4 26 6-4 2-5M38 68l5-2" stroke="#e8a34b" stroke-width="1.5" opacity=".6"/>
+    </g>
+  </symbol>
+
+  <symbol id="sky-foundations" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="34" fill="url(#sky-olive-face)"/>
+    <g clip-path="url(#sky-disk)">
+      <path d="M13 46c11 0 14-9 24-8 11 1 10-7 17-9 6-2 14 1 17-1l9-10-3 22-13 7-11-2-8 6-14-2-9 12-9 3z" fill="#6c8664" opacity=".66"/>
+      <path d="M24 65c5 1 12-4 16-2 4 2 5 9 12 10l15 1 1 10-35 5z" fill="#b7ac79"/>
+      <path d="M52 31c-6 0-8 6-12 6-3 0-6-2-10 1m16 9 6-4 9 1m-23 23c3-1 5 0 7 4" fill="none" stroke="#e2d697" stroke-linecap="round" stroke-width="1.15" opacity=".84"/>
+      <g fill="#697a53" opacity=".64">
+        <ellipse cx="56" cy="57" rx="4" ry="2.6" transform="rotate(-17 56 57)"/>
+        <ellipse cx="62" cy="51" rx="1.6" ry="1.3"/>
+        <ellipse cx="35" cy="28" rx="2.3" ry="1.4" transform="rotate(-33 35 28)"/>
+      </g>
+      <circle cx="50" cy="50" r="34" fill="url(#sky-limb-shadow)"/>
+    </g>
+    <path d="M18 44a33 33 0 0 1 32-27" fill="none" stroke="#e9df9d" opacity=".7" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="sky-limits" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="34" fill="url(#sky-aqua-face)"/>
+    <g clip-path="url(#sky-disk)" transform="rotate(-15 50 50)">
+      <path d="M12 33c15 7 26 7 37 1 10-6 20-5 33-1v4c-13-4-24-5-34 1-13 7-24 6-36 0z" fill="#d5f1df" opacity=".72"/>
+      <path d="M11 49c13 7 26 8 42 2 7-3 16-4 22-1-10 0-14 3-23 6-12 4-25 6-41 0z" fill="#248d88" opacity=".74"/>
+      <path d="M14 59c13 6 26 6 40 1 13-5 19-4 29-2" fill="none" stroke="#a4e2ce" stroke-width="2.1" opacity=".72"/>
+      <path d="M22 69c13 3 20 4 34 0l22-6-3 8c-16 7-31 10-48 7z" fill="#76bfb2" opacity=".8"/>
+      <path d="M29 27c8 3 15 2 21 0m7 20c6-2 11-3 17-1" fill="none" stroke="#dcf4df" stroke-width="1.4" stroke-linecap="round" opacity=".8"/>
+    </g>
+    <circle cx="50" cy="50" r="34" fill="url(#sky-limb-shadow)"/>
+    <path d="M18 44a33 33 0 0 1 32-27" fill="none" stroke="#d4efdd" opacity=".72" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="sky-differentiation" viewBox="0 0 100 100">
+    <g transform="rotate(-25 50 50)">
+      <ellipse cx="50" cy="50" rx="45" ry="11.8" fill="none" stroke="url(#sky-ring)" stroke-width="5.5"/>
+    </g>
+    <circle cx="50" cy="50" r="28" fill="url(#sky-lapis-face)"/>
+    <g clip-path="url(#sky-ringed-disk)">
+      <g transform="rotate(-24 50 50)">
+        <path d="M18 40c19 7 44 8 65-1v5c-18 8-42 8-64 1z" fill="#b9c2ea" opacity=".86"/>
+        <path d="M18 58c18 6 41 8 64 1v4c-20 7-42 7-63 0z" fill="#788cc8"/>
+        <path d="M28 34c12 4 27 5 40 2" fill="none" stroke="#e3e4ee" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M19 49q32 14 69 1" fill="none" stroke="#343a6c" stroke-width="3" opacity=".25"/>
+      </g>
+      <circle cx="50" cy="50" r="28" fill="url(#sky-limb-shadow)"/>
+    </g>
+    <g transform="rotate(-25 50 50)" fill="none">
+      <path d="M5 50a45 11.8 0 0 0 90 0" stroke="url(#sky-ring)" stroke-width="5.5"/>
+      <path d="M5.3 51a45 11.8 0 0 0 89.4 0" stroke="#fff3d6" stroke-width=".85" opacity=".78"/>
+    </g>
+  </symbol>
+
+  <symbol id="sky-shape" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="34" fill="url(#sky-plum-face)"/>
+    <g clip-path="url(#sky-disk)">
+      <g transform="rotate(22 50 50)">
+        <path d="M10 37c14 0 19 6 33 5 14-1 20-5 42 1v5c-17-3-25-5-38-1-16 3-23-5-37-4z" fill="#f4b9bc" opacity=".8"/>
+        <path d="M12 50c17-3 19 4 35 6 11 1 17-2 19-7 5-5 14-4 24 0l-3 6c-9-4-14-2-18 2-7 8-20 7-33 3-7-3-14-5-24-3z" fill="#9a5983" opacity=".82"/>
+        <ellipse cx="58" cy="52" rx="7.2" ry="3.8" fill="#d47e91"/>
+        <path d="M53 52c3-3 7-3 9-.8m-37 13c12-2 19 6 34 4m-26-38c9 4 16 3 26 1" fill="none" stroke="#f9c3bf" stroke-width="1.8" stroke-linecap="round"/>
+      </g>
+      <circle cx="50" cy="50" r="34" fill="url(#sky-limb-shadow)"/>
+    </g>
+    <path d="M18 44a33 33 0 0 1 32-27" fill="none" stroke="#ffd6ce" opacity=".66" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="sky-applications" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="34" fill="url(#sky-ember-face)"/>
+    <g clip-path="url(#sky-disk)">
+      <path d="M11 60c13-2 22-7 30-3 6 3 7 8 16 9 7 2 14-8 26-3l-1 17-62 5z" fill="#be765b" opacity=".68"/>
+      <g fill="#a9664d">
+        <ellipse cx="38" cy="41" rx="8" ry="6.2" transform="rotate(-27 38 41)"/>
+        <ellipse cx="62" cy="58" rx="6" ry="5.3" transform="rotate(20 62 58)"/>
+        <ellipse cx="64" cy="30" rx="3.5" ry="2.3" transform="rotate(33 64 30)"/>
+        <ellipse cx="30" cy="60" rx="3" ry="2.4"/>
+        <circle cx="53" cy="48" r="1.7"/><circle cx="55" cy="69" r="1.7"/>
+      </g>
+      <g fill="none" stroke="#f6c589" stroke-linecap="round" stroke-width="1.6">
+        <path d="M32 46c4 3 11-.5 13-5m13 19c2 4 7 5 10 3m-41-1c2 2 4 1 5 0m29-31 3 2"/>
+      </g>
+      <path d="M47 18l-2 8 3 5-3 5m-25 16 4-3 2 1m43 20-3-4 2-3" fill="none" stroke="#ad6b50" stroke-width="1" opacity=".64"/>
+      <circle cx="50" cy="50" r="34" fill="url(#sky-limb-shadow)"/>
+    </g>
+    <path d="M18 44a33 33 0 0 1 32-27" fill="none" stroke="#f7d397" opacity=".73" stroke-linecap="round"/>
+  </symbol>
+</svg>

@@ -11,7 +11,7 @@ const results = byId("results");
 const zoomIn = byId("in");
 const zoomOut = byId("out");
 const zoomLevel = byId("zoom-level");
-const minZoom = .16;
+const minZoom = .10;
 const maxZoom = 3.6;
 let selected = null;
 let selectedPart = null;
@@ -129,6 +129,7 @@ function drawCamera() {
   const view = d3.zoomTransform(viewport);
   world.attr("transform", view);
   drawInterior(view);
+  drawSystem(view);
   if (view.k === renderedScale) return;
   world.style("--parent-scale", Math.min(1, 1.20 * detailScale(view.k) / view.k));
   world.style("--disk-scale", Math.min(2, Math.max(1, .68 / view.k)));
@@ -159,6 +160,7 @@ const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
   .on("start", (event) => {
     if (!event.sourceEvent) return;
     gesturing = true;
+    setSystemIntent(event.sourceEvent);
     if (hovered !== null) {
       hovered = null;
       paint();
@@ -178,9 +180,12 @@ const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
           rebasingPinch = false;
         }
       }
-      zoomAnchor = event.sourceEvent.type === "wheel"
-        ? d3.pointer(event.sourceEvent, viewport)
-        : null;
+      const source = event.sourceEvent;
+      if (source.touches?.length === 2) {
+        const fingers = Array.from(source.touches, touch => d3.pointer(touch, viewport));
+        zoomAnchor = [(fingers[0][0] + fingers[1][0]) / 2, (fingers[0][1] + fingers[1][1]) / 2];
+        if (!systemIntent) setSystemIntent(source);
+      } else zoomAnchor = source.type === "wheel" ? d3.pointer(source, viewport) : null;
       cameraMode = "manual";
       if (drawFrame === null) drawFrame = requestAnimationFrame(drawCamera);
     } else {
@@ -191,8 +196,13 @@ const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
   })
   .on("end", event => {
     gesturing = false;
-    if (event.sourceEvent && selected && event.transform.k < 1) {
-      overview(entryFamily, true);
+    if (event.sourceEvent) {
+      const intent = systemIntent;
+      systemIntent = null;
+      if ((selected || family !== "all") && event.transform.k < groupsBoundary) overview("all", false, false, event.transform.k);
+      else if (selected && event.transform.k < 1) overview(entryFamily, true);
+      else if (intent?.kind === "groups" && event.transform.k > intent.k && event.transform.k >= groupsBoundary) overview(intent.id);
+      else if (intent?.kind === "family" && event.transform.k > intent.k && event.transform.k >= detailZoom) showTopic(intent.id);
     }
     rememberView();
   });
@@ -212,20 +222,7 @@ function move(x, y, scale) {
   svg.call(zoom.transform, view);
 }
 function frame() {
-  const items = stations.filter((s) => family === "all" || s.family === family);
-  const left = Math.min(...items.map((d) => d.x)) - 115;
-  const right = Math.max(...items.map((d) => d.x)) + 115;
-  const top = Math.min(...items.map((d) => d.y)) - 44;
-  const bottom = Math.max(...items.map((d) => d.y)) + 72;
-  const scale = Math.max(
-    minZoom,
-    Math.min(
-      2,
-      (viewport.clientWidth - 24) / (right - left),
-      (viewport.clientHeight - 75) / (bottom - top),
-    ),
-  );
-  move((left + right) / 2, (top + bottom) / 2 + 15 / scale, scale);
+  move(...courseCenter, family === "all" ? groupsScale : topicsScale);
 }
 function nearby(id) {
   return connections.filter((e) => e.source === id || e.target === id);
@@ -316,11 +313,12 @@ function showTopic(id, slug = null, fromLocation = false) {
   else if (!sameTopic || d3.zoomTransform(viewport).k < detailZoom) {
     move(topic.x, topic.y, Math.max(detailZoom + .03, d3.zoomTransform(viewport).k));
   } else drawCamera();
-  if (!matchMedia("(max-width: 760px)").matches) heading.focus({preventScroll: true});
+  if (!matchMedia("(max-width: 760px), (max-width: 1000px) and (orientation: portrait)").matches) heading.focus({preventScroll: true});
 }
-function overview(which = "all", restore = false, fromLocation = false) {
+function overview(which = "all", restore = false, fromLocation = false, scale = null) {
   rememberView();
-  const next = which === "all" ? "" : "#family/" + which;
+  const atRoot = scale !== null && scale < courseBoundary;
+  const next = which === "all" ? (atRoot ? "#calculus" : skyView ? "#groups" : "") : "#family/" + which;
   setRoute(next, fromLocation);
   selected = null;
   selectedPart = null;
@@ -336,7 +334,10 @@ function overview(which = "all", restore = false, fromLocation = false) {
   byId("class-questions").open = false;
   paint();
   const previous = routeViews.get(next);
-  if (restore && previous) {
+  if (scale !== null) {
+    cameraMode = "manual";
+    move(...courseCenter, scale);
+  } else if (restore && previous) {
     cameraMode = "manual";
     move(...previous);
   } else frame();
@@ -389,11 +390,23 @@ function scaleBy(factor) {
   zoomAnchor = null;
   cameraMode = "manual";
   svg.call(zoom.scaleBy, factor);
-  if (selected && d3.zoomTransform(viewport).k < 1) overview(entryFamily, true);
+  const k = d3.zoomTransform(viewport).k;
+  if (selected && k < 1) overview(entryFamily, true);
+  else if (!selected && family !== "all" && k < groupsBoundary) overview("all", false, false, k);
 }
 zoomIn.onclick = () => scaleBy(1.35);
 zoomOut.onclick = () => scaleBy(1 / 1.35);
-byId("fit").onclick = () => overview();
+function exitPath() {
+  overview();
+  viewport.focus({preventScroll:true});
+}
+byId("fit").onclick = exitPath;
+byId("exit-path").onclick = exitPath;
+viewport.addEventListener("click", event => {
+  if (event.defaultPrevented || (family === "all" && !selected && !insideId)) return;
+  if (event.target.closest("button, [role=button], a, .orbit-face, .orbit-name")) return;
+  exitPath();
+});
 byId("close").onclick = () => {
   if (detail.classList.contains("reading")) setReading(false);
   else if (selectedPart) showTopic(selected);
@@ -506,16 +519,12 @@ document.addEventListener("keydown", (e) => {
     } else if (!results.hidden) {
       lookup.focus();
       results.hidden = true;
-    } else if (selected) byId("close").click();
+    } else if (detail.classList.contains("reading")) setReading(false);
+    else if (selected || family !== "all" || insideId) exitPath();
   }
 });
 function initialFrame() {
-  if (viewport.clientWidth < 620) {
-    // Start near the definition of the derivative at a readable phone scale.
-    move(481 * horizontalSpacing, 268, .84);
-  } else {
-    frame();
-  }
+  move(...courseCenter, skyView ? courseScale : groupsScale);
 }
 new ResizeObserver(() => {
   // Opening the panel already measured and used its new viewport.
@@ -528,13 +537,18 @@ new ResizeObserver(() => {
   else if (cameraMode === "selected" && selected) {
     const node = byTopic.get(selected);
     move(node.x, node.y, d3.zoomTransform(viewport).k);
+  } else {
+    const view = d3.zoomTransform(viewport);
+    const center = view.invert([cameraWidth / 2, cameraHeight / 2]);
+    move(...center, view.k);
   }
 }).observe(viewport);
 function openLocation() {
   const [id, slug] = location.hash.slice(1).split("/");
   if (byTopic.has(id)) showTopic(id, slug, true);
   else if (id === "family" && Object.hasOwn(families, slug)) overview(slug, true, true);
-  else if (ready) overview("all", true, true);
+  else if (id === "calculus" || (skyView && ready && !id)) overview("all", false, true, courseScale);
+  else if (id === "groups" || ready) overview("all", true, true);
   else {
     cameraMode = "initial";
     paint();

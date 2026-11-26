@@ -384,7 +384,7 @@ aside {
   overflow: hidden;
   clip-path: inset(50%);
 }
-@media (max-width: 760px) {
+@media (max-width: 760px), (max-width: 1000px) and (orientation: portrait) {
   .mainbar {
     padding: 9px 12px;
     gap: 8px;
@@ -558,7 +558,7 @@ summary:focus-visible { outline: 2px solid #257569; outline-offset: 2px; }
 .question-list a { display: block; padding: 10px; text-decoration: none; border-radius: 4px; }
 .question-list a:hover, .question-list a:focus-visible { background: #eaf0e9; }
 .gesture-hint { color: var(--muted); font-size: 12px; }
-@media (max-width: 760px) {
+@media (max-width: 760px), (max-width: 1000px) and (orientation: portrait) {
   .gesture-hint { display: none; }
   #detail .note-prose { font-size: 18px; }
   .explore-tools { padding: 6px 10px; }
@@ -655,7 +655,7 @@ summary:focus-visible { outline: 2px solid #257569; outline-offset: 2px; }
   .focus-heading strong { font-size: 21px; }
 }
 #sheet-toggle, #reader-label { display: none; }
-@media (max-width: 760px) {
+@media (max-width: 760px), (max-width: 1000px) and (orientation: portrait) {
   #canvas { touch-action: auto; }
   .focus-content { touch-action: pan-y; }
   .topic-open header nav:not(#trail) { display: none; }

@@ -47,7 +47,7 @@ Original notes, organized by date.
 :::
 :::
 
-[Open the calculus concept map](map/){.home-primary}
+[Open the calculus concept map](map/){.home-primary} · [Explore the celestial demo](map/?view=sky)
 
 ::: {.home-start}
 Starting the course? [Begin with Chapter 1](lectures/01-introduction.qmd) or revisit [Appendix A: precalculus](lectures/00-functions.qmd).

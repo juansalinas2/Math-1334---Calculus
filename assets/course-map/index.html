@@ -4,13 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f9f8f2">
+    <script src="./theme.js"></script>
     <title>Calculus concept map · MATH 1334</title>
     <link rel="stylesheet" href="./map.css">
     <link rel="stylesheet" href="./math.css">
+    <link rel="stylesheet" href="./theme.css">
+    <link rel="stylesheet" href="./systems.css">
+    <link rel="stylesheet" href="./orbit.css">
     <script defer src="./vendor/d3.v7.min.js"></script>
     <script defer src="./topics.js"></script>
     <script defer src="./graph.js"></script>
+    <script defer src="./orbit.js"></script>
     <script defer src="./interior.js"></script>
+    <script defer src="./systems.js"></script>
     <script defer src="./search.js"></script>
     <script defer src="./map.js"></script>
   </head>
@@ -50,6 +56,8 @@
             aria-controls="results"
           ><div id="results" hidden></div>
         </div>
+        <a class="view-switch" id="view-switch" href="?view=sky">Celestial demo</a>
+        <label class="map-theme-control" title="Theme"><span>Theme</span><select id="map-theme" aria-label="Map theme"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option><option value="paper">Paper</option><option value="darker">Darker</option></select></label>
       </div>
       <nav aria-label="Focus the map by topic">
         <button class="family overview" data-family="all" aria-pressed="true">
@@ -68,11 +76,17 @@
         >
           <svg id="drawing" width="100%" height="100%" aria-label="Concept graph">
           <!-- node marks -->
+          <!-- sky symbols -->
+          <g id="sky-stars" aria-hidden="true"></g>
           <g id="world">
             <g id="rails"></g>
             <g id="stops"></g>
           </g>
           </svg>
+          <div id="systems" role="group" hidden>
+            <svg id="system-lines" aria-hidden="true" width="100%" height="100%"></svg>
+            <div id="system-nodes"></div>
+          </div>
           <section id="inside-topic" class="focus-card" hidden></section>
         </div>
         <div class="explore-tools" id="explore-tools">
@@ -104,7 +118,9 @@
           <button id="fit" title="Fit whole map" aria-label="Fit whole map">
             Fit map
           </button>
+          <button id="exit-path" hidden title="Exit path (Esc)">Exit path</button>
         </div>
+        <output id="map-level" aria-live="polite" aria-atomic="true"></output>
       </section>
       <aside id="detail" hidden aria-label="Selected concept">
         <div id="reader">

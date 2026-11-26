@@ -1,0 +1,125 @@
+/* A separate toolbar row leaves the complete graph available to the pointer. */
+.stage, .topic-open .stage { grid-template-rows: auto minmax(0,1fr) auto; }
+.stage #canvas, .topic-open #canvas { grid-row: 2; grid-column: 1; }
+.stage .explore-tools { grid-row: 3; grid-column: 1; }
+.stage .controls, .topic-open .stage .controls {
+  grid-area: 1 / 1; position: relative; justify-self: start; inset: auto;
+  margin: 8px 10px 0; z-index: 1;
+}
+#map-level {
+  grid-area: 1 / 1; justify-self: end; align-self: center; margin: 8px 16px 0 0;
+  font: 600 13px/1.2 var(--ui); color: var(--muted); pointer-events: none;
+}
+#exit-path { padding: 0 9px; font-size: 13px; font-weight: 650; color: var(--link); border-left: 1px solid var(--line); }
+.view-switch {
+  white-space: nowrap; color: var(--link); font: 600 14px var(--ui); padding: 0 12px;
+  display: inline-flex; align-items: center; justify-content: center; min-height: 44px;
+  text-decoration: none; border: 1px solid var(--line); border-radius: 8px;
+}
+.view-switch:hover { background: var(--surface-hover); }
+.mainbar .searchbox { margin-left: auto; }
+.mainbar { gap: 10px; }
+#systems, #system-lines, #system-nodes { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.cluster-button {
+  --art-size: 58px; position: absolute; top: 0; left: 0; pointer-events: auto;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px; width: 165px; min-height: 50px; border: 0; border-radius: 12px;
+  background: transparent; padding: 3px; cursor: pointer; color: var(--ink); line-height: 1.15;
+}
+.cluster-button:hover .cluster-label, .cluster-button:focus-visible .cluster-label { text-decoration: underline; text-underline-offset: 3px; }
+.cluster-button:focus-visible { outline-offset: 1px; }
+.cluster-label, .cluster-count {
+  display: block; max-width: 100%; text-align: center; overflow-wrap: anywhere; text-wrap: balance;
+  padding: 1px 4px; border-radius: 4px; background: var(--paper);
+}
+.cluster-label { color: var(--ink); font: 700 22px/1.05 var(--serif); }
+.cluster-count { color: var(--muted); font: 550 13px/1.2 var(--ui); }
+.cluster-symbol { width: var(--art-size); height: var(--art-size); position: relative; display: grid; place-items: center; }
+.cluster-symbol > svg { width: 100%; height: 100%; }
+.cluster-symbol .focus-mark circle { fill: var(--surface); stroke: var(--accent); stroke-width: 1.5; }
+.cluster-symbol .focus-mark { color: var(--accent); }
+.aggregate-mark { border: 1px solid color-mix(in srgb,var(--accent) 46%,transparent); border-radius: 50%; }
+.aggregate-mark > .focus-mark { width: 75%; height: 75%; }
+.aggregate-mark .satellite { position:absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 2px var(--paper); }
+.satellite:nth-last-child(3) { top: 5%; left: 14%; }
+.satellite:nth-last-child(2) { right: -3%; top: 45%; width: 6px; height: 6px; }
+.satellite:last-child { bottom: -3%; left: 37%; }
+[data-level="course"] .cluster-button { --art-size: 100px; width: 202px; }
+[data-level="course"] .cluster-label { font-size: 36px; }
+[data-level="family"] .cluster-button { --art-size: 43px; width: min(170px, 23vw); }
+[data-level="family"] .cluster-label { font: 650 15px/1.18 var(--ui); }
+.system-connection, .system-orbit { fill: none; stroke: var(--strong-line); stroke-width: 1.2px; vector-effect: non-scaling-stroke; }
+.system-orbit { stroke-dasharray: 2 5; opacity: .75; }
+.system-connection { opacity: .70; }
+@media (prefers-reduced-motion:no-preference) {
+  .cluster-symbol, .orbit-face { animation: body-arrive .18s ease-out; }
+  @keyframes body-arrive { from { opacity: .45; } to { opacity: 1; } }
+}
+/* The sky is the demo's drawing surface. The toolbar and notes use the reader's theme. */
+body[data-view="sky"] .stage {
+  background: radial-gradient(ellipse at 43% 38%,#213047 0, #111d32 47%, #0b1425 82%); 
+}
+body[data-view="sky"] .cluster-label, body[data-view="sky"] .cluster-count {
+  color: #f3f3ec; background: #152136ea;
+}
+body[data-view="sky"] .cluster-count, body[data-view="sky"] #map-level { color: #c4d3e2; }
+body[data-view="sky"] .system-orbit { stroke: #91a9c8; opacity: .37; stroke-dasharray: none; }
+body[data-view="sky"] .system-connection { stroke: #84a2c6; opacity: .45; }
+body[data-view="sky"] .cluster-symbol { --art-size: 80px; }
+body[data-view="sky"][data-level="course"] .cluster-symbol { --art-size: 128px; }
+body[data-view="sky"][data-level="family"] .cluster-symbol { --art-size: 46px; }
+body[data-view="sky"] .cluster-symbol .sky-art + .focus-mark {
+  position:absolute; bottom:-3px; right:-12px; width:27px; height:27px; color: #f8fafc;
+}
+body[data-view="sky"] .cluster-symbol .sky-art + .focus-mark circle { fill:#1a2940; stroke:#b9d0e5; }
+body[data-view="sky"] .station text { fill:#eff5fa; stroke:#152137; }
+body[data-view="sky"] .track { stroke:#97b3cd; }
+body[data-view="sky"] .topic-orbit { --orbit-paper:#152137; --orbit-ink:#f3f4ee; --orbit-line:#68859c; --orbit-wash:#213349; }
+body[data-view="sky"] .orbit-hint { color:#c1d4e2; }
+body[data-view="sky"] .orbit-planet .orbit-face { position:relative; background:transparent; border:none; box-shadow:none; }
+body[data-view="sky"] .orbit-planet .sky-art { width:125%;height:125%; }
+body[data-view="sky"] .orbit-planet .sky-art + .focus-mark {
+  position:absolute; width:54%; height:54%; bottom:-2px; right:-5px; color:white; border-radius:50%; background:#213149;
+}
+body[data-view="sky"] .orbit-moon .orbit-face { color:#e9eff7; background:radial-gradient(circle at 28% 23%,#8192a5,#48596f 44%,#263448 78%); border-color:#bacbde; }
+body[data-view="sky"] .orbit-tracks ellipse { stroke:#9caec7; }
+body[data-view="sky"] .has-interior #stops { opacity:.54; }
+@media (max-width: 760px), (max-width:1000px) and (orientation:portrait) {
+  #lookup { font-size:16px; height:44px; }
+  .stage .controls button, .topic-open .stage .controls button, #close, #sheet-toggle { min-height:44px; }
+  #close { min-width:44px; }
+  .family { min-height:44px; }
+  .topic-open .stage .controls, .stage .controls { margin:4px 6px 0; }
+  #map-level { margin:4px 8px 0 0; font-size:12px; }
+  #detail { padding-bottom:env(safe-area-inset-bottom); }
+  .explore-tools { gap:8px; padding-bottom:max(6px, env(safe-area-inset-bottom)); }
+  .gesture-hint { display:inline; font-size:12px; text-align:right; }
+  .cluster-button { width:min(140px, 37vw); --art-size:48px; }
+  .cluster-label { font-size:19px; }
+  [data-level="family"] .cluster-button { width:min(158px, 40vw); --art-size:38px; }
+  body[data-view="sky"] .cluster-symbol { --art-size:62px; }
+  body[data-view="sky"][data-level="family"] .cluster-symbol { --art-size:40px; }
+}
+@media (max-width: 600px) {
+  .mainbar { display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:5px 7px; padding:6px 10px; }
+  .mainbar .identity { grid-row:1; grid-column:1/3; }
+  .mainbar .map-theme-control { grid-row:1; grid-column:3; margin:0; }
+  .mainbar .searchbox { grid-row:2; grid-column:1; width:100%; min-width:0; margin:0; }
+  .mainbar .view-switch { grid-row:2; grid-column:2/4; font-size:13px; padding:0 9px; }
+  header nav { padding-bottom:3px; }
+  #trail { gap:0 4px; }
+}
+@media (max-width: 370px) { .topic-open #map-level { display:none; } }
+@media (max-height: 480px) and (orientation: landscape) {
+  .mainbar { padding-block:3px; }
+  .mainbar h1 { font-size:21px; }
+  .mark { width:28px; height:28px; }
+  header nav:not(#trail) { display:none; }
+  main { flex-direction:row; }
+  #detail { flex:0 0 38%; min-height:0; padding:0 10px; border-left:1px solid var(--line); overflow:auto; }
+  .topic-open #detail-body > * { display:revert; }
+  #sheet-toggle { display:inline-flex; }
+  .topic-open .stage .controls, .stage .controls { margin-block:2px; }
+  .stage #map-level { display:none; }
+  .explore-tools { padding-block:2px; }
+}

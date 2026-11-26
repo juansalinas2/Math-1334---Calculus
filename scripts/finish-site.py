@@ -45,6 +45,8 @@ subprocess.run([*runner, 'scripts/render-map-math.js', str(map_output), json.dum
 map_index = map_output / 'index.html'
 marks = Path('scripts/figures/map-node-marks.svg').read_text()
 map_html = map_index.read_text().replace('<!-- node marks -->', marks)
+sky = Path('scripts/figures/map-sky.svg').read_text()
+map_html = map_html.replace('<!-- sky symbols -->', sky[sky.index('>') + 1:sky.rindex('</svg>')])
 # Ship the shell and its interdependent scripts together so cached documents
 # keep their matching controls, geometry, and typeset notation.
 def inline_script(name):
@@ -58,7 +60,8 @@ map_html = re.sub(script_tag, '', map_html)
 runtime = '\n'.join(inline_script(name) for name in names if name != 'search.js')
 search_version = hashlib.sha256((map_output / 'search.js').read_bytes()).hexdigest()[:12]
 map_html = map_html.replace('</body>', runtime + f'\n<script async src="./search.js?v={search_version}"></script>\n</body>')
-for name in ('map.css', 'math.css'):
+map_html = map_html.replace('<script src="./theme.js"></script>', inline_script('theme.js'))
+for name in ('map.css', 'math.css', 'theme.css', 'systems.css', 'orbit.css'):
     css = (map_output / name).read_text()
     map_html = map_html.replace(f'<link rel="stylesheet" href="./{name}">', '<style>\n' + css + '\n</style>')
 map_index.write_text(map_html)

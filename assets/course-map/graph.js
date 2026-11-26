@@ -1,11 +1,11 @@
 // Coordinates keep each concept in the same place across visits.
 // The short labels belong to the diagram; topics.js holds the lecture text.
 const families = {
-  foundations: { label: "Precalculus", color: "#616b36" },
-  limits: { label: "Limits & continuity", color: "#127c73" },
-  differentiation: { label: "Differentiation", color: "#4054ae" },
-  shape: { label: "Shape & extrema", color: "#965387" },
-  applications: { label: "Applications", color: "#b35729" },
+  foundations: { label: "Precalculus", color: "var(--family-foundations, #616b36)" },
+  limits: { label: "Limits & continuity", color: "var(--family-limits, #127c73)" },
+  differentiation: { label: "Differentiation", color: "var(--family-differentiation, #4054ae)" },
+  shape: { label: "Shape & extrema", color: "var(--family-shape, #965387)" },
+  applications: { label: "Applications", color: "var(--family-applications, #b35729)" },
 };
 
 const horizontalSpacing = 1.2;
