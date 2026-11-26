@@ -156,14 +156,14 @@
   {
     "topic": "lhospital",
     "level": 3,
-    "prompt": "Suppose \\(f\\) is twice differentiable near zero, \\(f(0)=f^{\\prime}(0)=0\\), and \\(f^{\\prime\\prime}\\) is continuous at zero with value 6. What is \\(\\displaystyle\\lim_{x\\to0}f(x)/(1-\\cos x)\\)?",
+    "prompt": "Suppose \\(f\\) is twice differentiable near zero, \\(f(0)=f^{\\prime}(0)=0\\), and \\(f^{\\prime'}\\) is continuous at zero with value 6. What is \\(\\displaystyle\\lim_{x\\to0}f(x)/(1-\\cos x)\\)?",
     "choices": [
       "\\(6\\)",
       "\\(3\\)",
       "\\(12\\)",
       "\\(0\\)"
     ],
-    "why": "The original quotient has form \\(0/0\\), as does \\(f^{\\prime}(x)/\\sin x\\) after one differentiation. Apply the rule again to obtain \\(f^{\\prime\\prime}(x)/\\cos x\\to6\\).",
+    "why": "The original quotient has form \\(0/0\\), as does \\(f^{\\prime}(x)/\\sin x\\) after one differentiation. Apply the rule again to obtain \\(f^{\\prime'}(x)/\\cos x\\to6\\).",
     "source": "../lectures/lhopitals-rule.html#lhospitals-theorem",
     "section": "4.7",
     "pdf": "../downloads/lhopitals-rule.pdf"
@@ -484,5 +484,37 @@
     "capstone": true,
     "pdfPage": 87,
     "pdf": "../downloads/lhopitals-rule.pdf"
+  },
+  {
+    "topic": "lhospital",
+    "section": "4.7",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "level": 2,
+    "prompt": "Find \\(\\lim_{x\\to\\pi^-}\\sin x/(1-\\cos x)\\). Which evaluation settles it immediately?",
+    "choices": [
+      "\\(0/2=0\\)",
+      "\\(1/0=+\\infty\\)",
+      "\\(0/0\\), so use l’Hospital’s rule.",
+      "\\(0/(-1)=0\\)"
+    ],
+    "why": "At \\(x=\\pi\\) the sine is zero and the cosine is \\(-1\\). The denominator tends to \\(1-(-1)=2\\).",
+    "handoutPage": 3
+  },
+  {
+    "topic": "lhospital",
+    "section": "4.7",
+    "source": "../lectures/lhopitals-rule.html#infinity-over-infinity",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "level": 2,
+    "prompt": "For \\(\\ln x/\\sqrt{x}\\) as \\(x\\to\\infty\\), the lecture obtains \\(2/\\sqrt{x}\\) after one application of l’Hospital’s rule. What is the original limit?",
+    "choices": [
+      "\\(0\\)",
+      "\\(2\\)",
+      "\\(1/2\\)",
+      "\\(+\\infty\\)"
+    ],
+    "why": "The new numerator is constant and the denominator grows without bound, so the derivative quotient tends to zero.",
+    "handoutPage": 3
   }
 ]

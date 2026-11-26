@@ -880,5 +880,57 @@
     "capstone": true,
     "pdfPage": 38,
     "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+  },
+  {
+    "topic": "rules",
+    "section": "3.3",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "level": 2,
+    "prompt": "For the lecture polynomial \\(p(x)=4x^3-2x+7\\), what is the slope at the point with \\(x=0\\)?",
+    "choices": [
+      "\\(-2\\)",
+      "\\(7\\)",
+      "\\(0\\)",
+      "\\(12\\)"
+    ],
+    "why": "Its derivative is \\(12x^2-2\\). At zero the cubic term contributes no slope, leaving \\(-2\\).",
+    "handoutPage": 2
+  },
+  {
+    "topic": "exp",
+    "section": "3.9",
+    "source": "../lectures/17-exponential-logarithmic.html#the-general-calculation",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "level": 3,
+    "prompt": "For \\(y=(\\sin x)^x\\) on \\((0,\\pi)\\), which formula gives \\(y'/y\\)?",
+    "choices": [
+      "\\(\\ln(\\sin x)+x\\cot x\\)",
+      "\\(x\\cot x\\)",
+      "\\(\\ln(\\sin x)+\\cot x\\)",
+      "\\(x\\ln(\\sin x)\\cos x\\)"
+    ],
+    "why": "Taking logs gives \\(\\ln y=x\\ln(\\sin x)\\). The product rule yields one term from the variable exponent and one from the variable base.",
+    "handoutPage": 6,
+    "reference": "Exam 2 review worksheet · 9(a)",
+    "reviewPdf": "../downloads/exam-2-review-worksheet.pdf#page=6"
+  },
+  {
+    "topic": "exp",
+    "section": "3.9",
+    "source": "../lectures/17-exponential-logarithmic.html#the-general-calculation",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "level": 3,
+    "prompt": "Let \\(y=x^{\\sqrt{x}}\\) for \\(x>0\\). At \\(x=4\\), which expression gives the tangent slope?",
+    "choices": [
+      "\\(8+4\\ln 4\\)",
+      "\\(8+\\ln 4\\)",
+      "\\(4+8\\ln 4\\)",
+      "\\(16+4\\ln 4\\)"
+    ],
+    "why": "Differentiate \\(\\ln y=\\sqrt{x}\\ln x\\) to get \\(y'/y=(\\ln x)/(2\\sqrt{x})+1/\\sqrt{x}\\). At 4 this is \\((\\ln4)/4+1/2\\), and \\(y=16\\).",
+    "handoutPage": 6,
+    "reference": "Exam 2 review worksheet · 9(b)",
+    "reviewPdf": "../downloads/exam-2-review-worksheet.pdf#page=6"
   }
 ]

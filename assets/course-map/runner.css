@@ -1,6 +1,5 @@
 /* A side-scrolling course drawn in ink on a sheet of graph paper. */
-#rails.runner-scene { display:block; width:100%; height:auto; aspect-ratio:600/210; background:#f4edda; overflow:hidden; }
-#rails.runner-scene[data-frame="close"] { aspect-ratio:408/210; }
+#rails.runner-scene { display:block; width:100%; height:auto; background:#f4edda; overflow:hidden; }
 .runner-scene { --r-paper:#f4edda; --r-wash:#cee4da; --r-hill:#a8c9be; --r-ink:#213c40; --r-platform:#dbe1c3; --r-sun:#f6c36e; --r-scarf:#df624c; }
 .runner-scene[data-chapter="1"] { --r-paper:#f6e8cd; --r-wash:#f1d5a4; --r-hill:#bbcbab; --r-platform:#e7ddaf; --r-sun:#eeac67; }
 .runner-scene[data-chapter="2"] { --r-paper:#f1e4dc; --r-wash:#e8ccca; --r-hill:#b3bcc3; --r-platform:#d6d5c4; --r-sun:#efa47e; }
@@ -23,8 +22,10 @@
 #rails[data-difficulty="hard"] { --r-wash:#d45b39; --r-platform:#d79978; --r-scarf:#ffe08b; --r-ink:#312631; }
 #rails[data-difficulty="insane"] { --r-wash:#ee663d; --r-platform:#d98366; --r-scarf:#9fe8ce; --r-ink:#322137; }
 #rails:is([data-difficulty="hard"],[data-difficulty="insane"]) #run-hero { filter:drop-shadow(0 0 1.25px #fff1cb); }
-.runner-eclipse { display:none; }
+.runner-eclipse, .runner-lava-sky { display:none; }
 [data-difficulty="insane"] .runner-eclipse { display:inline; }
+[data-difficulty="hard"] .runner-lava-sky { display:inline; }
+[data-difficulty="insane"] #run-daylight { display:none; }
 .runner-scene .crater-vent { --delay:0s; }
 .runner-scene .vent-1 { --delay:-1.65s; }
 .runner-scene { --gust-time:13s; --crater-time:3.7s; --idle-pace:1.05s; }
@@ -34,6 +35,9 @@
 .runner-scene #run-weather { color:#6d827b; }
 .runner-scene[data-phase="miss"] #run-sun .eclipse-eyes { fill:#79243b; }
 .runner-scene .runner-soot { display:none; }
+.runner-scene[data-finale="crowned"] .champion-crown { filter:drop-shadow(0 0 2px #ffe5a0); }
+.runner-scene[data-finale="launch"] #run-weather, .runner-scene[data-finale="crowned"] #run-weather { visibility:hidden; }
+.runner-scene[data-phase="victory"] .festival-shell { opacity:0; }
 .runner-scene[data-difficulty="easy"][data-impact="on"] .chicken-hat { display:none; }
 .runner-scene:is([data-difficulty="hard"],[data-difficulty="insane"])[data-impact="on"] .runner-soot { display:inline; }
 @media (prefers-reduced-motion:no-preference) {
@@ -41,6 +45,15 @@
   .runner-scene .lava-cinders { animation:runner-embers var(--crater-time) ease-out var(--delay) infinite; }
   .runner-scene[data-difficulty="insane"] .eclipse-eyes { transform-origin:0 -5px; animation:runner-glare 6.2s ease-in-out infinite; }
   .runner-scene .victory-paper { animation:runner-confetti 1.9s ease-out var(--delay) both; }
+  .runner-scene .rift-flame { animation:runner-lava var(--crater-time) ease-in-out infinite; }
+  .runner-scene .rift-debris { animation:runner-rift 2.7s ease-in var(--rift-delay) infinite; }
+  .runner-scene[data-intensity="3"] .rift-debris { animation-duration:1.9s; }
+  .runner-scene[data-finale="eruption"] .lava-jet { animation-duration:.85s; }
+  .runner-scene:is([data-finale="launch"],[data-finale="crowned"]) .lava-cinders { animation-duration:1.55s; }
+  .runner-scene .festival-sparks { animation:runner-fireworks 2.8s ease-out var(--burst-delay) infinite backwards; }
+  .runner-scene .festival-shell { animation:runner-firework-rise 2.8s ease-out var(--burst-delay) infinite backwards; }
+  .runner-scene[data-finale="crowned"] .champion-crown { animation:runner-gold 2.4s ease-in-out infinite alternate; }
+  .runner-scene[data-dance="on"] #run-lean { animation:runner-dance 1.4s ease-in-out infinite; }
   .runner-scene:is([data-phase="home"],[data-phase="ready"]) #run-lean {
     transform-origin:0 0; animation:runner-breathe var(--idle-pace) ease-in-out infinite alternate;
   }
@@ -73,6 +86,12 @@
   @keyframes runner-star { from {transform:translateY(.5px) rotate(-4deg)} to {transform:translateY(-3px) rotate(4deg)} }
   @keyframes runner-cloud { from {transform:translate(-12px,1px)} to {transform:translate(21px,-1px)} }
   @keyframes runner-birds { from {transform:translate(12px,-2px)} to {transform:translate(-16px,5px)} }
+  @keyframes runner-rift { 0%,15% {opacity:0;transform:translate(3px,-1px)} 23% {opacity:1} 53% {transform:translate(0,3px) rotate(12deg)} 85%,100% {opacity:0;transform:translate(5px,24px) rotate(27deg)} }
+  @keyframes runner-lava { 0%,100% {transform:scale(.91,.68)} 33% {transform:scale(1.08,1.15)} 67% {transform:scale(.85,.8)} }
+  @keyframes runner-firework-rise { 0% {opacity:0;transform:translateY(33px) scale(.6,.3)} 15% {opacity:.85} 30%,100% {opacity:0;transform:translateY(0) scale(.7,.3)} }
+  @keyframes runner-fireworks { 0%,23% {opacity:0;transform:scale(.12)} 34% {opacity:1;transform:scale(.65)} 61% {opacity:.85;transform:translateY(2px) scale(1)} 84%,100% {opacity:0;transform:translateY(8px) scale(1.12)} }
+  @keyframes runner-gold { from {filter:drop-shadow(0 0 1px #ffe5a0)} to {filter:drop-shadow(0 0 4px #fff1b3)} }
+  @keyframes runner-dance { 0%,42%,100% {transform:translateY(0) rotate(-1deg)} 60% {transform:translateY(-7px) rotate(3deg)} 80% {transform:translateY(0) rotate(-2deg)} }
   @keyframes runner-wind { 0% {opacity:0;transform:translate(-35px,7px) rotate(-6deg)} 22%,73% {opacity:.85} 100% {opacity:0;transform:translate(62px,-4px) rotate(5deg)} }
   @keyframes runner-rise { 0% {opacity:0;transform:translate(-12px,29px)} 25%,66% {opacity:.9} 100% {opacity:0;transform:translate(24px,-15px)} }
   @keyframes runner-meteor { 0%,45% {opacity:0;transform:translate(50px,-26px)} 57%,78% {opacity:.9} 94%,100% {opacity:0;transform:translate(-42px,29px)} }

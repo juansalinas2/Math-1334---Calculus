@@ -1379,5 +1379,36 @@
     "capstone": true,
     "pdfPage": 34,
     "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+  },
+  {
+    "topic": "motion",
+    "section": "3.4",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "level": 3,
+    "prompt": "A cart has \\(s(t)=t^3-9t^2+24t\\) on \\([0,6]\\). Find its average velocity on the whole interval and its instantaneous velocity at \\(t=6\\), in that order.",
+    "choices": [
+      "\\(6\\) and \\(24\\) m/s",
+      "\\(6\\) and \\(6\\) m/s",
+      "\\(36\\) and \\(24\\) m/s",
+      "\\(24\\) and \\(6\\) m/s"
+    ],
+    "why": "The displacement is \\(s(6)-s(0)=36\\) m, so its average over 6 s is 6 m/s. Substituting 6 into \\(3t^2-18t+24\\) gives 24 m/s.",
+    "handoutPage": 1,
+    "reference": "Exam 2 review worksheet · 6(e)",
+    "reviewPdf": "../downloads/exam-2-review-worksheet.pdf#page=4"
+  },
+  {
+    "topic": "motion",
+    "section": "3.4",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "level": 4,
+    "prompt": "A cart has position \\(s(t)=t^3-9t^2+24t\\) on \\([0,6]\\). Using its changes of direction, find the total distance traveled in meters.",
+    "answer": "44",
+    "why": "Factor \\(v(t)=3(t-2)(t-4)\\). The positions at \\(t=0,2,4,6\\) are \\(0,20,16,36\\). Add the distances \\(20+4+20\\).",
+    "handoutPage": 1,
+    "reference": "Exam 2 review worksheet · 6(b–e)",
+    "reviewPdf": "../downloads/exam-2-review-worksheet.pdf#page=4"
   }
 ]

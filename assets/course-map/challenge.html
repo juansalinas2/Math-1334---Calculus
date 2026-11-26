@@ -2,45 +2,44 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#101b22">
-<title>Critical Point · Calculus concept map</title>
+<title>Critical Point · MATH 1334</title>
 <link href="./math.css" rel="stylesheet"><link href="./challenge.css" rel="stylesheet"><link href="./runner.css" rel="stylesheet">
 <script defer src="./scores.js"></script><script defer src="./runner.js"></script><script defer src="./game-graphs.js"></script><script defer src="./challenge-rules.js"></script><script defer src="./challenge.js"></script>
 </head><body data-bank="./challenge-bank.json" data-edition="DECK_VERSION">
 <div class="cabinet">
 <header><a class="back" href="./">‹ Concept map</a><nav aria-label="Game controls"><button class="quiet" id="home" hidden>Start page</button><button class="quiet" id="enlarge" aria-pressed="false">Enlarge</button><button class="quiet" id="fullscreen" aria-pressed="false">Full screen</button></nav></header><p id="screen-status" role="status" hidden></p>
 <main>
-<div class="mast"><h1>Critical <em>Point</em></h1><div class="record">Class best streak <b id="record">…</b></div></div>
+<div class="mast"><h1>Critical <em>Point</em></h1><div class="record"><span>Personal best streak</span><b id="personal-best" title="Longest streak on this device">0</b><a href="#board" id="open-board" aria-haspopup="dialog">Class best streak</a><span id="crown-record" hidden>☀ Sun Crown</span></div></div>
 <div class="console">
 <div class="display">
-  <div class="scorebar"><span id="round">At the starting line</span><span id="clock" role="timer" aria-label="Seconds remaining" hidden><span id="seconds">30</span>s</span><span id="score"><span id="streak">Streak 0</span> · Score <b>0</b> <span id="award" hidden></span></span></div>
+  <div class="scorebar"><span id="round">At the starting line</span><span id="score"><span id="streak">Streak 0</span> · Score <b>0</b> <span id="award" hidden></span></span></div>
   <svg id="rails" viewBox="0 0 680 200" role="img" aria-label="A stick figure on a graph-paper obstacle course"></svg>
 </div>
 <div id="panel">
   <section id="lobby"><div class="setup-grid"><div class="course-settings"><h2>Choose a course</h2>
     <div class="modes" role="group" aria-label="Review mode"><button type="button" data-mode="exam3" aria-pressed="true">Exam 3</button><button type="button" data-mode="final" aria-pressed="false">Final review</button><button type="button" data-mode="lecture" aria-pressed="false">One lecture</button><button type="button" data-mode="theory" aria-pressed="false">Theory</button><button type="button" data-mode="vocab" aria-pressed="false">Vocabulary</button></div>
-    <div id="lecture-picker" hidden><label for="line">Lecture</label><select id="line"></select></div>
+    <div id="lecture-picker" hidden><label for="line">Section in the lecture PDF</label><select id="line"></select></div>
     <p id="scope"></p>
     <div id="pace" hidden><span id="target"></span> <button type="button" id="dismiss-pace" class="quiet">Fresh course</button></div>
     </div><div class="play-settings"><h2>Run settings</h2><div class="run-settings">
-      <label>Difficulty<select id="difficulty"><option value="easy">Easy</option><option value="medium" selected>Normal</option><option value="hard">Hard</option><option id="insane" value="insane" disabled>Insane · locked</option></select></label>
+      <label>Difficulty<select id="difficulty"><option value="easy">Easy</option><option value="medium" selected>Normal</option><option value="hard">Hard</option></select></label>
       <label>Question order<select id="order"><option value="shuffled">Shuffled</option><option value="ordered">In order</option></select></label>
       <label>Pace<select id="clock-mode"><option value="timed">Timed run</option><option value="practice">Untimed practice</option></select></label>
     </div>
     <p id="rules-hint"></p>
     <button type="button" class="primary" id="start" disabled>Start run</button> <button type="button" class="quiet" id="invite" disabled>Race friends</button></div></div>
-    <details class="howto"><summary>How to play</summary><p>Choose a landing with A–D or tap an answer. Each correct answer earns 1 point plus 2 for each full second left. The clock starts when the question appears. Untimed practice earns 1 point per correct answer. Clear the route to try an optional bonus question. Your streak counts consecutive correct answers and resets on a miss. Class standings show the longest streak for each course, difficulty and question order. In a friend race, everyone gets the same questions and answer positions.</p></details>
+    <details class="howto"><summary>How to play</summary><p>Choose a landing with A–D or tap an answer. Each landing earns the base points shown for your difficulty. Timed runs also earn 2 points per full second left. Untimed practice has no time limit. Clear the route to try an optional bonus question. Your streak counts consecutive correct answers and resets on a miss. Open Class best streak to see the shared record and the ten highest timed scores. In a friend race, everyone gets the same questions and answer positions.</p></details>
     <p id="load-state" role="status">Loading questions…</p>
   </section>
-  <section id="play" hidden><h2 id="prompt" tabindex="-1"></h2><div id="prompt-graph" hidden></div><div class="choices" id="choices"></div>
+  <section id="play" hidden><div id="clock" role="timer" aria-label="Time remaining" hidden><div class="clock-head"><span class="clock-label">Time remaining</span><span class="clock-digit"><b id="seconds">65</b> sec</span></div><div class="clock-track"><div id="clock-fill"></div></div></div><h2 id="prompt" tabindex="-1"></h2><div id="prompt-graph" hidden></div><div class="choices" id="choices"></div>
     <form id="numeric" hidden><label for="number-answer">Your answer</label><div class="number-field"><input id="number-answer" type="text" maxlength="32" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Integer or fraction" aria-describedby="number-hint"><button class="primary" type="submit">Submit answer</button></div><span id="number-hint" role="status"></span></form>
     <button id="signal" class="quiet" hidden>Use eraser · remove two choices</button>
     <details id="previous" hidden><summary>Previous jump · Show solution</summary><div id="previous-content"></div></details>
   </section>
-  <section id="feedback" hidden><h2 id="verdict" tabindex="-1"></h2><div id="result"></div><div id="bonus-offer" hidden><h3>Extra credit</h3><p id="bonus-description"></p><button class="primary" id="take-bonus">Try bonus jump</button> <button class="quiet" id="skip-bonus">Skip bonus</button></div>
-    <form id="save-score" hidden><label for="adjective">Your scoreboard nickname</label><div class="alias-field"><select id="adjective" aria-label="Nickname adjective"></select><select id="noun" aria-label="Nickname noun"></select><button type="button" id="roll" class="quiet">Roll</button></div>
-    <button type="submit" class="primary">Save nickname</button></form><p id="saved" role="status"></p><div class="actions"><button class="primary" id="advance">Run again</button><button class="quiet" id="share" hidden>Copy a challenge link</button><button class="quiet" id="change" hidden>Change course</button><a id="review" target="_blank" rel="noopener">Review concept (new tab)</a></div><p id="share-state" role="status"></p><input id="race-link" aria-label="Challenge link" readonly hidden></section>
+  <section id="feedback" hidden><h2 id="verdict" tabindex="-1"></h2><div id="prize-panel" hidden><span id="prize-symbol" aria-hidden="true"></span><div><strong id="prize-name"></strong><p id="prize-detail"></p><button id="insane-start" class="quiet" hidden>Play Insane</button></div></div><div id="result"></div><details id="recap" hidden><summary>Review this run’s solutions</summary><ol id="recap-list"></ol></details><div id="bonus-offer" hidden><h3>Extra credit</h3><p id="bonus-description"></p><button class="primary" id="take-bonus">Try bonus jump</button> <button class="quiet" id="skip-bonus">Skip bonus</button></div>
+    <form id="save-score" hidden novalidate><label for="nickname">Scoreboard nickname</label><div class="alias-field"><input id="nickname" type="text" maxlength="5" minlength="1" pattern="[A-Za-z]{1,5}" autocapitalize="characters" autocomplete="off" spellcheck="false" aria-describedby="name-hint name-error" placeholder="ABCDE"><button type="submit" class="quiet">Save nickname</button></div><span id="name-hint">1–5 letters</span><p id="name-error" role="status"></p></form><p id="saved" role="status"></p><div class="actions"><button class="primary" id="advance">Run again</button><button class="quiet" id="share" hidden>Copy a challenge link</button><button class="quiet" id="change" hidden>Change course</button><a id="review" target="_blank" rel="noopener">Review concept (new tab)</a></div><p id="share-state" role="status"></p><input id="race-link" aria-label="Challenge link" readonly hidden></section>
   <noscript>This game needs JavaScript. <a href="./">Return to the concept map</a>.</noscript>
 </div></div>
 <section id="room-panel" hidden><h2>Friend race</h2><p id="room-name"></p><button id="room-copy" class="quiet">Copy invite</button> <button id="leave-room" class="quiet">Leave race</button><p id="room-status" role="status"></p><input id="invite-link" aria-label="Friend race invitation" readonly hidden><ol id="racers"></ol></section>
-<details id="board"><summary>Class standings <span id="board-mode">Exam 3</span></summary><div class="board-body"><p id="board-caption">Loading class standings…</p><ol id="leaders"></ol><p id="board-empty">First run? Set the score to beat.</p></div></details>
+<dialog id="board" aria-labelledby="board-title"><div class="board-head"><h2 id="board-title">Class leaderboard</h2><button class="quiet" type="button" id="close-board">Close</button></div><div class="class-record">Class best streak <strong id="record">…</strong></div><h3>Top 10 scores</h3><p id="board-caption" role="status">Loading class scores…</p><ol id="leaders"></ol><p id="board-empty" hidden>The first timed score takes the lead.</p></dialog>
 </main></div></body></html>

@@ -81,19 +81,19 @@
   },
   {
     "topic": "squeeze",
-    "level": 3,
-    "prompt": "Near 1, \\(5-(x-1)^2\\le f(x)\\le5+(x-1)^2\\). Which limit is forced?",
-    "choices": [
-      "\\(\\lim_{x\\to1}(f(x)-5)/(x-1)=0\\)",
-      "\\(\\lim_{x\\to1}(f(x)-5)/(x-1)^2=0\\)",
-      "\\(\\lim_{x\\to1}(f(x)-5)/(x-1)^2=1\\)",
-      "\\(\\lim_{x\\to1}(f(x)-5)/(x-1)=1\\)"
-    ],
-    "why": "The absolute value of the first quotient is at most \\(|x-1|\\). Dividing by \\((x-1)^2\\) instead only bounds the quotient between \\(-1\\) and 1.",
-    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
     "section": "2.4",
-    "pdfPage": 16,
-    "pdf": "../downloads/september-30-revised-class-notes.pdf"
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "level": 3,
+    "prompt": "Suppose \\(5-(x-1)^2\\le f(x)\\le5+(x-1)^2\\). For \\(x<1\\), what upper bound on \\(|(f(x)-5)/(x-1)|\\) proves a limit of zero?",
+    "choices": [
+      "\\(1-x\\)",
+      "\\(x-1\\)",
+      "\\((1-x)^2\\)",
+      "\\(1/(1-x)\\)"
+    ],
+    "why": "The numerator in absolute value is at most \\((x-1)^2\\). Divide by \\(|x-1|=1-x\\) to bound the quotient in absolute value by \\(1-x\\), which tends to zero.",
+    "handoutPage": 6
   },
   {
     "topic": "limitmethods",
@@ -1071,20 +1071,20 @@
     "pdf": "../downloads/september-30-revised-class-notes.pdf"
   },
   {
-    "topic": "laws",
-    "level": 2,
-    "prompt": "If \\(f(x)\\to2\\) and \\(g(x)\\to3\\), find the limit of \\(\\sqrt{f(x)-1}/(g(x))^2\\).",
-    "choices": [
-      "\\(1/9\\)",
-      "\\(1/3\\)",
-      "\\(1/\\sqrt3\\)",
-      "\\(2/9\\)"
-    ],
-    "why": "The radicand tends to \\(2-1=1\\) and the denominator tends to \\(3^2=9\\). The quotient law applies.",
-    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "topic": "limitmethods",
     "section": "2.3",
-    "pdfPage": 12,
-    "pdf": "../downloads/september-30-revised-class-notes.pdf"
+    "source": "../lectures/04-limit-laws.html#practice",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "level": 2,
+    "prompt": "For \\(r(x)=(x^2-x-2)/(x^2-4)\\), which number does the limit law give at \\(x=1\\)?",
+    "choices": [
+      "\\(2/3\\)",
+      "\\(-2/3\\)",
+      "\\(3/2\\)",
+      "\\(0\\)"
+    ],
+    "why": "Substitution gives \\(-2\\) in the numerator and \\(-3\\) in the denominator. Their ratio is \\(2/3\\).",
+    "handoutPage": 4
   },
   {
     "topic": "limitmethods",
@@ -1168,19 +1168,19 @@
   },
   {
     "topic": "squeeze",
-    "level": 2,
-    "prompt": "To squeeze \\(x^2\\sin(1/x)\\) as \\(x\\to0\\), which two bounds work on both sides?",
-    "choices": [
-      "\\(-x^2\\) and \\(x^2\\)",
-      "\\(0\\) and \\(x^2\\)",
-      "\\(-x\\) and \\(x\\)",
-      "\\(-x^2\\) and \\(0\\)"
-    ],
-    "why": "Since \\(x^2\\ge0\\), multiplying \\(-1\\le\\sin(1/x)\\le1\\) by \\(x^2\\) preserves the inequality. Both bounds tend to zero.",
-    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
     "section": "2.4",
-    "pdfPage": 16,
-    "pdf": "../downloads/september-30-revised-class-notes.pdf"
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "level": 2,
+    "prompt": "Suppose \\(5-(x-1)^2\\le f(x)\\le5+(x-1)^2\\). When \\(x=1.1\\), how far can \\(f(x)\\) be from 5?",
+    "choices": [
+      "At most \\(0.01\\).",
+      "At most \\(0.001\\).",
+      "Exactly \\(0.01\\).",
+      "Exactly \\(0\\)."
+    ],
+    "why": "The bounds give \\(|f(x)-5|\\le(x-1)^2\\). At this input the upper bound on the error is \\(0.1^2=0.01\\).",
+    "handoutPage": 6
   },
   {
     "topic": "squeeze",
@@ -1215,19 +1215,19 @@
   },
   {
     "topic": "limitmethods",
-    "level": 2,
-    "prompt": "In radians, evaluate \\(\\lim_{x\\to0}\\sin(5x)/(2x)\\).",
-    "choices": [
-      "\\(5/2\\)",
-      "\\(2/5\\)",
-      "\\(1\\)",
-      "\\(0\\)"
-    ],
-    "why": "Rewrite as \\((5/2)\\sin(5x)/(5x)\\). The normalized sine ratio approaches 1.",
-    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
     "section": "2.4",
-    "pdfPage": 17,
-    "pdf": "../downloads/september-30-revised-class-notes.pdf"
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "level": 2,
+    "prompt": "For \\(t\\) near zero, which identity simplifies \\(\\sin t/\\tan t\\) before you take the limit?",
+    "choices": [
+      "It equals \\(\\cos t\\).",
+      "It equals \\(1/\\cos t\\).",
+      "It equals \\(\\sin^2 t\\).",
+      "It equals \\(1\\)."
+    ],
+    "why": "Substitute \\(\\tan t=\\sin t/\\cos t\\). At sufficiently small nonzero inputs the sine factor cancels.",
+    "handoutPage": 5
   },
   {
     "topic": "limitmethods",
@@ -1329,7 +1329,7 @@
     "topic": "laws",
     "section": "2.3",
     "level": 2,
-    "prompt": "The worksheet zooms in on \\(H(x)=x^2/(x^2+10^{-2026})\\) by setting \\(x=10^{-1013}t\\). Which formula appears in the zoomed coordinates?",
+    "prompt": "The worksheet zoom sets \\(x=10^{-1013}t\\). After substitution, \\(H(x)\\) becomes \\(10^{-2026}t^2/[10^{-2026}(t^2+1)]\\). Which formula remains after cancellation?",
     "choices": [
       "\\(t^2/(t^2+1)\\)",
       "\\(t^2/(t^2+10^{-1013})\\)",
@@ -1968,5 +1968,85 @@
     "source": "../lectures/08-exam-practice.html#problem-4",
     "handoutPage": 2,
     "pdf": "../downloads/october-5-exam-practice.pdf"
+  },
+  {
+    "topic": "sides",
+    "section": "2.1",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "level": 2,
+    "prompt": "The lecture table for \\((x^2-4)/|x-2|\\) shows outputs near \\(-4\\) on the left of 2 and near 4 on the right. What does it suggest about the two-sided limit?",
+    "choices": [
+      "It does not exist.",
+      "It equals 0.",
+      "It equals 4.",
+      "It equals \\(-4\\)."
+    ],
+    "why": "A two-sided limit needs the same height from both sides. The left and right values suggest different heights.",
+    "handoutPage": 3
+  },
+  {
+    "topic": "sides",
+    "section": "2.1",
+    "source": "../lectures/02-limits.html#practice",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "level": 2,
+    "prompt": "A graph approaches the open point \\((2,3)\\) from both sides and has a filled point at \\((2,-1)\\). How much larger is its limit at 2 than its value there?",
+    "choices": [
+      "\\(4\\)",
+      "\\(2\\)",
+      "\\(3\\)",
+      "\\(-4\\)"
+    ],
+    "why": "Read the limiting height from the branches and the function value from the filled point. Their difference is \\(3-(-1)=4\\).",
+    "handoutPage": 4
+  },
+  {
+    "topic": "infinite",
+    "section": "2.2",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "level": 2,
+    "prompt": "In \\(B(x)=-1/(x+1)^2\\), the denominator gets small and positive on both sides of \\(-1\\). Where do the two branches go?",
+    "choices": [
+      "Both fall toward \\(-\\infty\\).",
+      "Both rise toward \\(+\\infty\\).",
+      "The left rises and the right falls.",
+      "Both approach zero."
+    ],
+    "why": "A fixed negative numerator divided by a small positive number is large and negative.",
+    "handoutPage": 5
+  },
+  {
+    "topic": "limitmethods",
+    "section": "2.7",
+    "source": "../lectures/08-exam-practice.html#problem-3",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "level": 2,
+    "prompt": "In the exam-practice limit of \\((\\sqrt{4+x}-\\sqrt{4-x})/x\\), multiplying the numerator by its conjugate gives what?",
+    "choices": [
+      "\\(2x\\)",
+      "\\(0\\)",
+      "\\(8\\)",
+      "\\(x^2\\)"
+    ],
+    "why": "The product is the difference of the radicands, \\((4+x)-(4-x)=2x\\).",
+    "handoutPage": 2
+  },
+  {
+    "topic": "infinite",
+    "section": "2.7",
+    "source": "../lectures/08-exam-practice.html#problem-2",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "level": 2,
+    "prompt": "For \\(H(x)=-2/[(x+2)(x-1)^2]\\), which denominator factor changes sign as \\(x\\) passes through \\(-2\\)?",
+    "choices": [
+      "Only \\(x+2\\).",
+      "Only \\((x-1)^2\\).",
+      "Both factors.",
+      "Neither factor."
+    ],
+    "why": "The factor \\(x+2\\) crosses zero. The squared factor stays positive near \\(-2\\).",
+    "handoutPage": 1
   }
 ]

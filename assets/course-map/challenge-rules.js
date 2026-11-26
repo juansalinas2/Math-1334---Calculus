@@ -17,37 +17,48 @@ window.junctionRules = (() => {
     }
     return copy;
   }
-  function makeRoute(lectures, key, seed, difficulty, order) {
-    const random = generator(seed);
+  function questionPools(lectures,key,difficulty) {
     const exam = key === "final" || key === "exam3";
     const section = key.startsWith("s") && /^s[234]\.\d+$/.test(key) ? key.slice(1) : "";
     const sources = lectures.filter(l => section ? !l.review : exam ? l.exams.includes(key) : l.id === key);
     const eligible = q => !q.capstone && (!section || q.section === section) &&
       (difficulty === "easy" ? q.level === 1 : difficulty === "hard" ? q.level === 3 : difficulty === "insane" ? q.level === 4 : q.level === 2);
-    const pools = sources.map(l => shuffle(l.questions.filter(eligible), random));
-    const available = pools.reduce((n,p) => n + p.length, 0);
+    return sources.map(lecture=>({lecture,questions:lecture.questions.filter(eligible)}));
+  }
+  function poolSize(lectures,key,difficulty) {
+    return questionPools(lectures,key,difficulty).reduce((count,pool)=>count+pool.questions.length,0);
+  }
+  function makeRoute(lectures, key, seed, difficulty, order) {
+    const random=generator(seed), poolsByLecture=questionPools(lectures,key,difficulty);
+    const sources=poolsByLecture.map(pool=>pool.lecture);
+    const ordered=order==="ordered";
+    const pools=poolsByLecture.map(({questions})=>ordered ? [...questions].reverse() : shuffle(questions,random));
+    const exam=key==="final" || key==="exam3";
+    const available=pools.reduce((n,p)=>n+p.length,0);
     const limit = Math.min(available, {easy:8,medium:10,hard:exam ? 20 : 12,insane:exam ? 15 : (key === "theory" || key === "vocab") ? 12 : 8}[difficulty]);
     const deck = [];
     // Rotate among lectures so a ten-question review covers the course.
     while (deck.length < limit) {
-      for (const pool of shuffle(pools.filter(p => p.length),random)) {
+      const remaining=pools.filter(p=>p.length);
+      for (const pool of ordered ? remaining : shuffle(remaining,random)) {
         deck.push(pool.pop());
         if (deck.length === limit) break;
       }
     }
     // Include a graph when a mixed review has one at this difficulty.
     if (exam && !deck.some(q => q.graphChoices || q.graphPrompt)) {
-      const plots = sources.flatMap(l => l.questions.filter(q => eligible(q) && (q.graphChoices || q.graphPrompt)));
-      if (plots.length) deck[deck.length-1] = plots[Math.floor(random()*plots.length)];
+      const plots = poolsByLecture.flatMap(p=>p.questions.filter(q=>q.graphChoices || q.graphPrompt));
+      if (plots.length) deck[deck.length-1] = plots[ordered?0:Math.floor(random()*plots.length)];
     }
     if (order === "shuffled") return shuffle(deck, random);
     const chosen = new Set(deck);
-    const ordered = [...sources].sort((a,b) => sequence.indexOf(a.id)-sequence.indexOf(b.id))
+    const sorted = [...sources].sort((a,b) => sequence.indexOf(a.id)-sequence.indexOf(b.id))
       .flatMap(l => l.questions.filter(q => chosen.has(q)));
-    return ordered.sort((a,b) => (a.section || "").localeCompare(b.section || "", "en", {numeric:true}));
+    return sorted.sort((a,b) => (a.section || "").localeCompare(b.section || "", "en", {numeric:true}));
   }
   const levels = ["easy","medium","hard","insane"];
-  const seconds = {easy:30,medium:25,hard:20,insane:15};
+  const seconds = {easy:75,medium:65,hard:55,insane:45};
+  const basePoints = {easy:50,medium:100,hard:200,insane:350};
   const nextLevel = current => levels[Math.min(levels.indexOf(current)+1,3)];
   function bonusQuestion(lectures,key,seed,current) {
     const random = generator(seed ^ 0x64d3b00);
@@ -78,7 +89,7 @@ window.junctionRules = (() => {
     const a=rational(input),b=rational(answer);
     return a && b ? a[0]*b[1]===b[0]*a[1] : false;
   }
-  const earned = left => 1+2*left;
+  const earned = (difficulty,left) => basePoints[difficulty]+2*left;
   const options = (seed, jump) => shuffle([0,1,2,3],generator((seed ^ Math.imul(jump+1,2654435761)) >>> 0));
   function newRun(difficulty) {
     return {difficulty, cleared:0, points:0, streak:0, best:0, feather:difficulty === "easy", eraser:false, erasersUsed:0, missed:-1, ended:false};
@@ -100,18 +111,18 @@ window.junctionRules = (() => {
       run.feather = false; run.missed = index;
       return {retry:true};
     }
-    let earned = 0, checkpoint = false;
+    let points = 0, checkpoint = false;
     if (hit) {
       run.cleared++;
-      earned = 1+2*left;
+      points = earned(run.difficulty,left);
       run.best = Math.max(run.best, ++run.streak);
-      run.points += earned;
+      run.points += points;
       run.missed = -1;
       checkpoint = run.difficulty === "medium" && run.cleared%3 === 0 && run.cleared<length && !run.eraser;
       if (checkpoint) run.eraser = true;
     }
     run.ended = !hit || run.cleared === length;
-    return {hit, earned, checkpoint};
+    return {hit, earned:points, checkpoint};
   }
-  return {makeRoute, options, newRun, land, erasedChoices, nextLevel, seconds, bonusQuestion, rational, equivalent, earned};
+  return {poolSize, makeRoute, options, newRun, land, erasedChoices, nextLevel, seconds, basePoints, bonusQuestion, rational, equivalent, earned};
 })();

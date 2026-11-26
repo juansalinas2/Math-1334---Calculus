@@ -340,5 +340,23 @@
     "capstone": true,
     "pdfPage": 40,
     "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+  },
+  {
+    "topic": "chain",
+    "section": "3.6",
+    "source": "../lectures/14-chain-rule.html#combining-differentiation-rules",
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "level": 3,
+    "prompt": "For \\(F(x)=\\sqrt{1+\\sin^2 x}\\), which derivative has the correct contribution from all three layers?",
+    "choices": [
+      "\\(\\sin x\\cos x/\\sqrt{1+\\sin^2 x}\\)",
+      "\\(\\cos x/\\sqrt{1+\\sin^2 x}\\)",
+      "\\(2\\sin x\\cos x/\\sqrt{1+\\sin^2 x}\\)",
+      "\\(\\sin x\\cos x/(1+\\sin^2 x)\\)"
+    ],
+    "why": "The square root contributes \\(1/(2\\sqrt{1+\\sin^2x})\\). The derivative of its inside contributes \\(2\\sin x\\cos x\\).",
+    "handoutPage": 4,
+    "reference": "Exam 2 review worksheet · 4(a)",
+    "reviewPdf": "../downloads/exam-2-review-worksheet.pdf#page=3"
   }
 ]

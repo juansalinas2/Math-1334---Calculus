@@ -716,19 +716,19 @@
   },
   {
     "topic": "implicit",
-    "level": 3,
-    "prompt": "On \\(x^2+xy+y^2=3\\), find all points whose tangents have slope \\(-1\\).",
-    "choices": [
-      "\\((1,1)\\) and \\((-1,-1)\\)",
-      "\\((1,-1)\\) and \\((-1,1)\\)",
-      "\\((1,-2)\\) and \\((-1,2)\\)",
-      "\\((\\sqrt3,0)\\) and \\((-\\sqrt3,0)\\)"
-    ],
-    "why": "Setting \\(-(2x+y)/(x+2y)=-1\\) forces \\(x=y\\). Substitution gives \\(3x^2=3\\), and the derivative denominator is nonzero at both points.",
-    "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
     "section": "3.8",
-    "pdfPage": 49,
-    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+    "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "level": 3,
+    "prompt": "For the ellipse \\(x^2+xy+y^2=3\\), the two horizontal and two vertical tangent lines bound a rectangle. What is its area?",
+    "choices": [
+      "\\(16\\)",
+      "\\(8\\)",
+      "\\(12\\)",
+      "\\(4\\)"
+    ],
+    "why": "Horizontal tangents occur when \\(2x+y=0\\). Substituting \\(y=-2x\\) gives heights \\(y=\\pm2\\). Interchanging \\(x\\) and \\(y\\) shows the vertical tangents are \\(x=\\pm2\\). The rectangle is \\(4\\) by \\(4\\).",
+    "handoutPage": 7
   },
   {
     "topic": "implicit",
@@ -1204,5 +1204,86 @@
     "capstone": true,
     "pdfPage": 56,
     "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
+  },
+  {
+    "topic": "implicit",
+    "section": "3.8",
+    "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "level": 2,
+    "prompt": "For \\(x^2-y^2=9\\) the notes obtain \\(dx/dy=y/x\\). At \\((3,0)\\) this derivative is zero. What is the tangent line there?",
+    "choices": [
+      "\\(x=3\\)",
+      "\\(y=0\\)",
+      "\\(x=0\\)",
+      "\\(y=3\\)"
+    ],
+    "why": "As a function of \\(y\\), the horizontal coordinate has zero rate of change there. The tangent of the plane curve is vertical through \\((3,0)\\).",
+    "handoutPage": 6
+  },
+  {
+    "topic": "implicit",
+    "section": "3.8",
+    "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "level": 2,
+    "prompt": "For the ellipse \\(x^2+xy+y^2=3\\), the tangent slope is \\(-(2x+y)/(x+2y)\\). At \\((1,1)\\), which direction does the tangent take as \\(x\\) increases?",
+    "choices": [
+      "Down one unit for each unit to the right.",
+      "Up one unit for each unit to the right.",
+      "Horizontally to the right.",
+      "Vertically upward."
+    ],
+    "why": "At \\((1,1)\\) the slope is \\(-3/3=-1\\).",
+    "handoutPage": 7
+  },
+  {
+    "topic": "inverse",
+    "section": "3.7",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "level": 3,
+    "prompt": "Let \\(f\\) be the inverse of \\(g(u)=u+\\ln u\\) for \\(u>0\\), and put \\(H(x)=\\ln(f(x))\\). What is \\(H'(e+1)\\)?",
+    "choices": [
+      "\\(1/(e+1)\\)",
+      "\\(e/(e+1)\\)",
+      "\\(1/e\\)",
+      "\\((e+1)/e\\)"
+    ],
+    "why": "Since \\(g(e)=e+1\\), the inverse has value \\(e\\) there. Its slope is \\(1/g'(e)=e/(e+1)\\). Divide by \\(f(e+1)=e\\) to get the log derivative.",
+    "handoutPage": 2,
+    "reference": "Exam 2 review worksheet · 7(c)",
+    "reviewPdf": "../downloads/exam-2-review-worksheet.pdf#page=5"
+  },
+  {
+    "topic": "invtrig",
+    "section": "3.7",
+    "source": "../lectures/15-inverse-functions.html#derivatives-of-inverse-trigonometric-functions",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "level": 3,
+    "prompt": "For \\(r(x)=\\arcsin(x^2)\\) on \\((-1,1)\\), where is the graph falling, and what derivative proves it?",
+    "choices": [
+      "On \\((-1,0)\\) since \\(r'(x)=2x/\\sqrt{1-x^4}\\).",
+      "On \\((0,1)\\) since \\(r'(x)=-2x/\\sqrt{1-x^4}\\).",
+      "Nowhere since \\(r'(x)=1/\\sqrt{1-x^4}\\).",
+      "On both sides since \\(r'(x)=-1/(1+x^4)\\)."
+    ],
+    "why": "The inverse-sine rule and the chain rule give \\(2x/\\sqrt{1-(x^2)^2}\\). The denominator is positive on the given domain, so the sign equals the sign of \\(x\\).",
+    "handoutPage": 4,
+    "reference": "Exam 2 review worksheet · 4(c)",
+    "reviewPdf": "../downloads/exam-2-review-worksheet.pdf#page=3"
+  },
+  {
+    "topic": "inverse",
+    "section": "3.7",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "level": 4,
+    "prompt": "For the inverse \\(f\\) of \\(g(u)=u+\\ln u\\) on \\(u>0\\), put \\(H(x)=\\ln(f(x))\\). Compute the second derivative of \\(H\\) at 1.",
+    "answer": "-1/8",
+    "why": "The inverse rule gives \\(f'=f/(1+f)\\), so \\(H'=1/(1+f)\\). At 1, \\(f(1)=1\\) and \\(f'(1)=1/2\\). The derivative of \\(H'\\) is \\(-f'/(1+f)^2\\), giving \\(-1/8\\).",
+    "handoutPage": 2,
+    "reference": "Exam 2 review worksheet · 7(a,c)",
+    "reviewPdf": "../downloads/exam-2-review-worksheet.pdf#page=5"
   }
 ]

@@ -9,7 +9,7 @@
   let blocked = [], aiming = -1;
   let difficulty = "medium";
   let celebrating = false;
-  let compact = false;
+  let compact = false, frameWidth = 600, frameLeft = 0;
   scene.classList.add("runner-scene");
   scene.setAttribute("viewBox", "0 0 600 210");
   scene.innerHTML = `
@@ -24,6 +24,7 @@
       <linearGradient id="lava-sky" x2="0" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#24182c"/><stop offset=".62" stop-color="#7e3542"/><stop offset="1" stop-color="#e9834e"/></linearGradient>
       <linearGradient id="ash-sky" x2="0" y2="1"><stop stop-color="#241327"/><stop offset=".48" stop-color="#80283c"/><stop offset="1" stop-color="#f67338"/></linearGradient>
       <radialGradient id="sun-fire" cx=".4" cy=".38" r=".7"><stop stop-color="#ffe99b"/><stop offset=".66" stop-color="#ffae4f"/><stop offset="1" stop-color="#ed5836"/></radialGradient>
+      <linearGradient id="run-dawn" x2="0" y2="1"><stop stop-color="#493a62"/><stop offset=".68" stop-color="#d87667"/><stop offset="1" stop-color="#ffe29b"/></linearGradient>
       <g id="eruption-jet">
         <path d="M-14 1q4-13-7-23 11 4 15 12-2-19-8-31 11 7 15 23 2-18 12-33-3 16-4 31 6-8 17-14-10 14-12 32z" fill="#f86636"/>
         <path d="M-7 1q1-8-4-17 7 4 10 11l3-20 2 19 8-8-5 15z" fill="#ffd275"/>
@@ -48,26 +49,65 @@
       <g id="run-smoke" fill="#564153" stroke="#322934" stroke-width="1.8"><path d="M-28 1q-6-10 5-14-2-13 12-13 3-9 12-6 11-5 16 7 14 0 12 12 9 8-1 15z"/><path d="M-15-10q2-7 10-6m9-7q8-2 10 7" fill="none" stroke="#9a7776"/></g>
       <g id="run-star-rays" fill="none" stroke-width="2.4"><path d="M9 1l4 1m-9 6 2 4m-12-4-2 4m-3-12-4-1m9-8-2-4m12 4 2-4" stroke="#865319"/><path d="M9-5l4-2m-12 16 1 4m-12-12-4-1m10-10-1-4" stroke="#ffdb7e"/></g>
       <g id="run-sky-trails" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".58"><path d="M-17 0q8-4 18 0t21 0m-29 5h12"/></g>
+      <g id="sun-crown" stroke="#5b3435" stroke-width="1.7">
+        <path d="m-13-3-3-13 10 7 4-14 7 14 10-9-3 15z" fill="#ffd567"/>
+        <path d="m-13-4 26-1-1 5-24 1z" fill="#eaa348"/>
+        <path d="m-3-13 4-5 4 6-4 4z" fill="#8fffe1"/>
+        <path d="m-8-1 3-.3m9-.5 3-.3" fill="none" stroke="#fff2ae" stroke-width="1.3"/>
+      </g>
+      <g id="flick-palm" stroke="#3e3943" stroke-width="2.4">
+        <path d="m-15-14 19-4q9-5 24-11 8-3 11 2 2 5-5 9l-13 8 20-5q9-3 11 3 1 5-9 9l-15 7q-13 12-31 6l-12 1z" fill="#fff0cd"/>
+        <path d="M6 13q8 3 17-3l9-7q7-7 1-10-5-2-11 4l-6 4m9 6 8-5" fill="#edc999"/>
+        <path d="M-17-15h12l2 35h-15z" fill="#96c9bd"/><path d="m-16-9 10-1m-9 23 11-1" stroke="#487875"/>
+        <path d="m-38-14 20-1 1 35-24 4z" fill="#396669"/>
+      </g>
+      <g id="flick-loaded" fill="#fff0cd" stroke="#3e3943" stroke-width="2.4">
+        <path d="M7-8q5-9 11-13 7-5 13 1l6 8q4 6-2 11-5 3-9-2l-5-7-7 6"/>
+        <path d="m22-10 4 7q5 7 11 3l11-9q6-5 2-9-4-4-9 0l-9 6-2-3"/>
+      </g>
+      <g id="flick-extended" fill="#fff0cd" stroke="#3e3943" stroke-width="2.4">
+        <path d="M4-9q8-10 20-10l40-5q8-1 9 4 1 4-7 6L26-4l-9 8"/>
+        <path d="M14 5q11 3 19-2l12-9q5-5 1-8-4-4-9 0l-8 6"/>
+        <path d="m58-19 5-.6" fill="none" stroke="#b18d79" stroke-width="1.4"/>
+      </g>
+      <g id="flick-spark" fill="none" stroke="#603939" stroke-width="2.4">
+        <path d="m-5-5-8-7m16 5 2-9m4 16 10-7m-7 14 7 4"/>
+        <path d="m-5-5-8-7m16 5 2-9m4 16 10-7m-7 14 7 4" transform="translate(1 -1)" stroke="#ffe79a"/>
+      </g>
+      <g id="festival-burst" fill="none" stroke="currentColor" stroke-width="2.4">
+        <path d="M0-10v-19m5 20 11-16M10-4l18-7M10 3l18 8M5 8l11 17M-1 10l-2 18M-6 8l-12 14M-10 2l-18 4m19-11-14-10m18 7-8-18"/>
+        <g fill="#ffe6a5" stroke="none"><circle cy="-33" r="2.4"/><circle cx="31" cy="-11" r="2"/><circle cx="-30" cy="6" r="2.3"/><circle cx="18" cy="27" r="2"/></g>
+      </g>
     </defs>
-    <rect width="600" height="210" fill="var(--r-paper)"/>
-    <rect width="600" height="210" fill="url(#run-grid)"/>
-    <rect class="runner-eclipse" width="600" height="210" fill="url(#ash-sky)"/>
+    <rect x="-100%" width="300%" height="210" fill="var(--r-paper)"/>
+    <rect x="-100%" width="300%" height="210" fill="url(#run-grid)"/>
+    <rect class="runner-lava-sky" x="-100%" width="300%" height="210" fill="url(#lava-sky)"/>
+    <rect class="runner-eclipse" x="-100%" width="300%" height="210" fill="url(#ash-sky)"/>
+    <rect id="run-afterglow" x="-100%" width="300%" height="210" fill="url(#run-dawn)" opacity="0"/>
+    <g id="run-daylight" transform="translate(450 46)"><circle r="29" fill="var(--r-sun)" stroke="#af8759"/><circle r="29" fill="url(#run-sunset)"/></g>
     <g id="run-far"></g><g id="run-weather" aria-hidden="true"></g>
     <g class="runner-eclipse">
       <g id="run-sun" transform="translate(494 53)">
         <path d="m0-42 5 10 9-7 1 10 12-4-2 10 12-1-6 8 11 6-12 3 7 10-12-1 2 11-10-5-2 11-8-8-7 11-5-12-10 6 1-11-12 2 5-9-11-4 10-6-10-7 12-2-4-11 10 4 2-11 8 8z" fill="#fc7744"/>
         <circle r="31" fill="url(#sun-fire)" stroke="#601f34" stroke-width="2"/>
-        <g class="eclipse-eyes" fill="#391c31">
+        <g id="run-sun-glare"><g class="eclipse-eyes" fill="#391c31">
           <path d="M-23-12q11 1 21 10-10 5-18-1zM23-12Q12-11 2-2q10 5 18-1z"/>
           <path d="m-12-5 4 2-3 1zm24 0-4 2 3 1z" fill="#fff4bc"/>
         </g>
         <path d="m-1-3-3 9 6-1" fill="none" stroke="#ad4b3d" stroke-width="2"/>
         <path d="M-19 7q17 11 38-1-5 19-18 18T-19 7z" fill="#451b2c"/>
-        <path d="m-13 11 6 2-1 6zm20 2 7-3-5 9zm-7 9 3-4 2 5z" fill="#fff0b8"/>
+        <path d="m-13 11 6 2-1 6zm20 2 7-3-5 9zm-7 9 3-4 2 5z" fill="#fff0b8"/></g>
+        <g id="run-sun-surprise" fill="#421d35" data-runner-hidden="">
+          <path d="M-19-10q6-5 12-3m14 0q7-4 12 0" fill="none" stroke="#763339" stroke-width="2.5"/>
+          <ellipse cx="-11" cy="-3" rx="5" ry="6"/><ellipse cx="11" cy="-3" rx="5" ry="6"/>
+          <circle cx="-13" cy="-5" r="1.6" fill="#fff2bd"/><circle cx="9" cy="-5" r="1.6" fill="#fff2bd"/>
+          <ellipse cy="13" rx="5" ry="6"/>
+        </g>
       </g>
     </g>
     <g id="run-near"></g>
-    <path d="M0 196q108-3 215 0t191 0 194-1v15H0z" fill="var(--r-wash)"/>
+    <g id="run-festival" aria-hidden="true"></g>
+    <rect x="-100%" y="196" width="300%" height="14" fill="var(--r-wash)"/>
     <g id="run-world"></g>
     <g id="run-incident" pointer-events="none"></g>
     <ellipse id="run-shadow" cx="91" cy="158" rx="14" ry="2.5" fill="#283e39" opacity=".22"/>
@@ -82,6 +122,11 @@
         <path d="m-12-31 7 2m-10.5 4 11 2" stroke="#785d3f" stroke-width="1.2"/>
         <g id="run-arm-back" transform="translate(-1,-32)"><path class="runner-appendage runner-distant-leg" d="m0 0-6 7-5-3"/></g>
         <g id="run-arm-front" transform="translate(1,-32)"><path class="runner-appendage" d="m0 0 7 7 5-5"/></g>
+        <g id="run-win-arms" data-runner-hidden="" fill="none">
+          <path d="m-1-32-11-7-5-9m18 16 12-5 8-12" stroke="#fff1c8" stroke-width="4.7"/>
+          <path d="m-1-32-11-7-5-9m18 16 12-5 8-12" class="runner-appendage"/>
+          <path d="m-17-48-1-4m1 4-4-2m42 1 1-4m-1 4 4-2" stroke="var(--r-ink)" stroke-width="1.8"/>
+        </g>
         <path id="run-scarf" d="m2-36-8 2-11-3-6 3 6-7 9 1z" fill="var(--r-scarf)" stroke="var(--r-ink)" stroke-width="1.3"/>
         <g id="run-head">
           <path d="M-7-43q-3-11 7-14 10-2 15 7 3 9-7 13-9 3-15-6z" fill="#fff1cd" stroke="var(--r-ink)" stroke-width="2.8"/>
@@ -89,19 +134,27 @@
           <path id="run-eyes" d="m5-50 .3 1.3m6-1.7 .2 1.3" fill="none" stroke="var(--r-ink)" stroke-width="2"/>
           <path id="run-mouth" d="M5-44q3 2 6-.5" stroke="var(--r-ink)" stroke-width="1.4" fill="none"/>
           <g class="chicken-hat"><use href="#run-chicken"/></g>
+          <use id="run-prize" class="champion-crown" href="#sun-crown" transform="translate(3 -57) scale(.9)" data-runner-hidden=""/>
           <path class="runner-soot" d="m-5-45 4 2m0 2 2 1m10-3 2-1" fill="none" stroke="#82625e" stroke-width="2.5"/>
         </g>
       </g>
     </g>
     <g id="run-fx" pointer-events="none"></g>
+    <g id="run-crown-flight" data-runner-hidden="" pointer-events="none">
+      <g fill="none" stroke="#ffeba2" stroke-width="1.5"><path d="M9 1q13 6 21 3m-19 1q10 8 18 9m-11-18h9"/></g>
+      <use href="#sun-crown"/>
+    </g>
     <g id="run-choice" data-runner-hidden=""><path class="runner-thought" d="M0-8q0-4 4-4h12q5 0 5 5v8q0 4-5 4H7l-5 4 1-5q-3 0-3-4z"/><text class="runner-digit" x="10" y="2"></text></g>
   `;
   const get = id => scene.querySelector("#run-" + id);
   const far = get("far"), near = get("near"), world = get("world"), fx = get("fx");
   const incident = get("incident"), weather = get("weather"), sun = get("sun");
+  const festival = get("festival"), flyingCrown = get("crown-flight");
+  const crown = get("prize"), glare = get("sun-glare"), surprise = get("sun-surprise"), afterglow = get("afterglow");
   const hero = get("hero"), lean = get("lean"), shadow = get("shadow");
   const legBack = get("leg-back"), legFront = get("leg-front");
   const armBack = get("arm-back"), armFront = get("arm-front");
+  const winArms = get("win-arms");
   const scarf = get("scarf"), head = get("head"), mouth = get("mouth");
   const eyes = get("eyes");
   const choice = get("choice");
@@ -111,17 +164,26 @@
   const clamp = t => Math.max(0, Math.min(1, t));
   const ease = t => t*t*(3-2*t);
 
+  const sunX = () => Math.round(frameLeft+frameWidth*(compact ? .838 : .823));
   function fitScene(size) {
-    const nextCompact = size > 0 && size < 530;
-    if (nextCompact === compact) return;
-    compact = nextCompact;
-    set(scene,"viewBox",compact ? "0 0 408 210" : "0 0 600 210");
-    set(scene,"data-frame",compact ? "close" : "wide");
-    transform(sun,`translate(${compact ? 342 : 494} 53)`);
-  }
-  fitScene(scene.clientWidth);
-  if (typeof ResizeObserver !== "undefined") {
-    new ResizeObserver(([entry])=>fitScene(entry.contentRect.width)).observe(scene);
+    if (!size) return;
+    const nextCompact = size < 530;
+    const heightLimit = Math.max(138,Math.min(size>=1400 ? 410 : 315,(window.innerHeight || 900)*(size>=1400 ? .39 : .32)));
+    const nextWidth = nextCompact ? 408 : Math.max(600,Math.round(size*210/heightLimit));
+    if (nextWidth === frameWidth) return;
+    compact = nextCompact; frameWidth = nextWidth;
+    // Show more terrain on both sides; keep the runner in the left third.
+    frameLeft = -Math.round(Math.max(0,frameWidth-600)*.32);
+    set(scene,"viewBox",`${frameLeft} 0 ${frameWidth} 210`);
+    set(scene,"data-frame",compact ? "close" : frameWidth>600 ? "panorama" : "wide");
+    transform(sun,`translate(${sunX()} 53)`);
+    transform(get("daylight"),`translate(${sunX()-34} 46)`);
+    backdrop(); courseWeather(); setTerrain(); cameraAt(camera);
+    if (active?.hit) {
+      active.star=world.querySelector('[data-star-at="'+cleared+'"]');
+      if (active.star && active.collected) hide(active.star,true);
+    }
+    if (celebrating?.epic) { openFestival(); if (!frameId) victoryPose(1); }
   }
   if (typeof IntersectionObserver !== "undefined") {
     new IntersectionObserver(([entry])=>set(scene,"data-offscreen",entry.isIntersecting ? "no" : "yes")).observe(scene);
@@ -132,14 +194,14 @@
     const progress = total > 1 ? cleared/(total-1) : 0;
     const intensity = progress >= .82 ? 3 : progress >= .52 ? 2 : progress >= .26 ? 1 : 0;
     set(scene,"data-intensity",intensity);
-    const key = difficulty + intensity;
+    const key = difficulty + intensity + ":" + frameWidth;
     if (key === weatherKey) return;
     weatherKey = key;
     const volcanic = difficulty === "hard" || difficulty === "insane";
     const objects = [];
-    const count = (difficulty === "insane" ? 4 : 2) + 2*intensity;
+    const count = Math.ceil(((difficulty === "insane" ? 4 : 2) + 2*intensity)*Math.max(1,frameWidth/600));
     for (let i=0; i<count; i++) {
-      const x = 65+i*113%530, y = 21+i*37%80;
+      const x = frameLeft+44+(i*137+i*i*11)%(frameWidth-80), y = 21+i*37%80;
       let symbol, drift, scale;
       if (volcanic) {
         const meteor = i%3===1 && intensity>0;
@@ -160,19 +222,17 @@
   function backdrop() {
     // Two repeat distances give the skyline a slower drift than the graph-paper hills.
     let horizon = "", hills = "";
-    for (let i = -1; i <= 2; i++) {
+    for (let i = Math.floor(frameLeft/510)-1; i <= Math.ceil((frameLeft+frameWidth)/510)+1; i++) {
       if (difficulty === "hard" || difficulty === "insane") {
-        const sky = difficulty === "hard" ? '<rect width="601" height="210" fill="url(#lava-sky)"/><circle cx="486" cy="48" r="25" fill="#ffac6a"/>' : "";
         const cones = ["translate(-38 3)", "translate(270 18) scale(.95)"].map((place,j) => {
           const eruption = difficulty === "insane" ? `<g transform="translate(180 47)" class="crater-vent vent-${j}"><use class="lava-jet" href="#eruption-jet"/><use class="lava-cinders" href="#eruption-cinders"/></g>` : "";
           return `<g transform="${place}">${eruption}<use href="#run-crater"/></g>`;
         }).join("");
-        horizon += `<g transform="translate(${i*600})">${sky}${cones}</g>`;
+        horizon += `<g transform="translate(${i*600})">${cones}</g>`;
         hills += `<g transform="translate(${i*510})"><path d="m0 141 48-23 13-27 15 19 8-8 24 27 47-6 32-22 12-31 8 24 19 4 5 19 39 18 40-6 29-21 21 9 54-23 20 26 66 21v58H0z" fill="#3b2735"/><path d="m73 126 24 13 43 1m60-36 3 14 13 4m118 17 21-11" fill="none" stroke="#8d4d4d" stroke-width="1.7"/></g>`;
         continue;
       }
       horizon += `<g transform="translate(${i*600})">
-        <g transform="translate(450 46)"><circle r="29" fill="var(--r-sun)" stroke="#af8759" stroke-width="1"/><circle r="29" fill="url(#run-sunset)"/></g>
         <g class="cloud-drift"><use href="#run-cloud" transform="translate(78 34) scale(.83)"/><use href="#run-cloud" transform="translate(491 66) scale(.7)"/></g>
         <g class="birds-drift"><use href="#run-birds" transform="translate(270 35)"/></g>
         <path d="M0 128Q46 86 74 88q41-1 76 33 43-35 61-30 31 5 53 18 37-71 69-67 18 1 42 32 26-41 49-34 23 5 53 48 45-27 74-8 29 15 49 48v63H0z" fill="var(--r-wash)" stroke="#829e90" stroke-width="1.3"/>
@@ -204,7 +264,7 @@
   }
   function setTerrain() {
     let tiles = "";
-    for (let i = cleared-1; i <= cleared+3; i++) {
+    for (let i = cleared+Math.floor(frameLeft/stride)-1; i <= cleared+Math.ceil((frameLeft+frameWidth)/stride)+1; i++) {
       const solid = total > 0 && i >= total;
       const left = -41, right = solid ? stride-40 : 182;
       const terrain = `M${left} ${floor}H${right}l-3 11 3 9-6 10-2 12Q${right-21} 189 ${right-41} 194T${right-98} 195 ${left+68} 193 ${left+6} 197l-4-15-3-9 2-10z`;
@@ -213,13 +273,18 @@
         const fracture = i/(total-1)>=.82 ? "m51 156 7 5-4 6 10 7m-12-6-4 2M136 156l-5 6 7 7-9 10m8-11 8 3" : "m131 156-3 5 6 6-4 5";
         cracks = `<path d="${fracture}" class="runner-fractures"/>`;
       }
+      const volcanic=difficulty==="hard" || difficulty==="insane";
+      const lateGap = !solid && total>1 && i/(total-1)>=.52;
+      const splinters = lateGap ? `<g transform="translate(193 165)" fill="${volcanic?"#ffe197":"#ac9378"}" stroke="${volcanic?"#d55535":"#756856"}">
+        <g class="rift-debris" style="--rift-delay:${-(Math.abs(i)%4)*.6}s"><path d="m0 0 5-3 2 5-5 2zm14 6 4-3 3 3-5 2zm21-12 3-2 2 3-3 1z"/></g></g>` : "";
       tiles += `<g transform="translate(${i*stride})"><path d="${terrain}" class="runner-ground"/>
         <path d="m${left+1} 161q57 2 111 0t${right-left-112} 0" class="runner-pencil"/>
         <path d="M${left+5} 172h${right-left-12}l-4 13q-38-8-72-1t-65 0-61 3z" fill="url(#run-hatch)" opacity=".85"/>
         <path d="m-26 184 9 2 11-3m83-12 10 1 5-2m48 16 7-3" class="runner-contour"/>
         <path d="m52 156 2-3 3 3m64 0 2-4 2 3 2-2 1 3" class="runner-pencil"/>
         ${cracks}
-        ${(difficulty === "hard" || difficulty === "insane") && !solid ? '<path d="M180 190q12-7 30-2t39-1v23h-69z" fill="#ffa346"/><path d="M184 192q10-5 24-2t30 0" fill="none" stroke="#ffe49a" stroke-width="2"/><use href="#run-flame" transform="translate(218 190) scale(.68)"/>' : ''}
+        ${volcanic && !solid ? '<path d="M180 190q12-7 30-2t39-1v23h-69z" fill="#ffa346"/><path d="M184 192q10-5 24-2t30 0" fill="none" stroke="#ffe49a" stroke-width="2"/><g transform="translate(218 190) scale(.68)"><use class="rift-flame" href="#run-flame"/></g>' : ''}
+        ${splinters}
         ${i>=0 && !solid ? obstacle(i) : ''}
         ${i>=0 && !solid ? '<g data-star-at="'+i+'" transform="translate(216 74)"><use href="#run-star"/></g>' : ''}
         ${i>=0 && (i===0 || (i>0 && i%3===0 && !solid) || i===total) ? flag(i===total && total>0 ? 109 : 36,i===total && total>0) : ''}
@@ -242,6 +307,7 @@
     transform(legFront,'rotate(' + (-swing*40 + jump*58) + ')');
     transform(armBack,'translate(-1,-32) rotate(' + (-swing*41 + jump*58 + (cheer?105:0)) + ')');
     transform(armFront,'translate(1,-32) rotate(' + (swing*42 - jump*90 - (cheer?91:0)) + ')');
+    hide(winArms,!cheer); hide(armBack,cheer); hide(armFront,cheer);
     transform(head,'rotate(' + (wipeout?17:jump*-12-swing*3) + ' 2 -39)');
     set(scarf,'d',`m2-36-8 2-11 ${-3-lift*5+swing*1.5}-6 3 6-7 9 1z`);
     set(mouth,'d',wipeout ? 'M5-42q3-2 6-.8' : jump ? 'M6-43q3 3 4-1z' : 'M5-44q3 2 6-.5');
@@ -263,6 +329,11 @@
     active=null; celebrating=false; frameId=0; cleared=Math.max(0,Math.trunc(done||0)); total=Math.max(0,Math.trunc(length||0));
     set(scene,"data-phase",total ? "ready" : "home");
     set(scene,"data-impact","off");
+    set(scene,"data-finale","none");
+    hide(flyingCrown,true);
+    hide(crown,true); hide(glare,false); hide(surprise,true);
+    set(afterglow,"opacity",0); set(scene,"data-dance","off");
+    festival.replaceChildren();
     set(eyes,"d","m5-50 .3 1.3m6-1.7 .2 1.3");
     set(mouth,"fill","none");
     blocked=[]; aim(-1);
@@ -321,7 +392,7 @@
         airY = 151-37*impact; airOpacity = Math.min(1,impact*3)*(.9-.46*impact); break;
       case "insane": {
         const incoming = ease(clamp((t-.16)/.47));
-        const fromX = compact ? 342 : 494;
+        const fromX = sunX();
         propX = fromX+(gap-fromX)*incoming; propY=57+122*incoming;
         propScale=.28+.95*incoming; propAngle=-8+21*incoming;
         y += 20*lift; angle += 28*lift-69*impact;
@@ -342,40 +413,100 @@
     const trailStart = difficulty==="insane" ? .16 : difficulty==="easy" ? .43 : .54;
     set(active.prop,"opacity",clamp((t-trailStart)/.08));
   }
-  function victoryPose(t) {
-    // Bring the finish banner into the center as the runner makes three happy hops.
-    const pan = clamp(t/.42), eased = pan*pan*(3-2*pan);
-    const x = startX+120*eased;
-    cameraAt(total*stride-120*eased);
-    const hop = Math.abs(Math.sin(Math.PI*3*t));
-    pose(x, floor-32*hop, {lift:hop, jump:.40*hop, angle:-3*hop, cheer:true});
-    set(mouth,"d","M2-45q5 2 11-1-1 7-6 7-4 0-5-6z");
+  // The cocked finger waits at the runner's shoulder before the snap. Keep the
+  // existing landing for each difficulty, including Easy's feather rescue.
+  function flickFrame(t) {
+    const snapAt = .32;
+    const approach = ease(clamp(t/.22));
+    const released = t >= snapAt;
+    const flight = clamp((t-snapAt)/(1-snapAt));
+    const recoil = Math.sin(Math.PI*clamp(flight/.19));
+    const retreat = ease(clamp((flight-.17)/.31));
+    missFrame(Math.pow(flight,.74));
+    const edge = frameLeft-87;
+    const x = reducedMotion.matches ? 1 : edge+(24-edge)*approach+(edge-24)*retreat;
+    transform(active.hand,`translate(${x-3*recoil} ${127+19*(1-approach)+8*retreat}) rotate(${-6*approach+5*recoil})`);
+    hide(active.hand,retreat===1 && !reducedMotion.matches);
+    hide(active.loaded,released); hide(active.extended,!released);
+    const glint = clamp(flight/.22);
+    transform(active.contact,`translate(92 101) scale(${.65+1.35*glint})`);
+    set(active.contact,"opacity",released ? 1-glint : 0);
+    if (!released) {
+      pose(startX,floor,{angle:3*approach});
+      set(mouth,"d","M4-43q3-2 6-.5");
+    }
   }
-  function celebrate() {
+  function firework(x,y,size,color,delay) {
+    return `<g transform="translate(${x} ${y}) scale(${size})" style="color:${color};--burst-delay:${delay}s">
+      <g class="festival-shell"><path d="M0 71Q-3 33 0 0" fill="none" stroke="currentColor" stroke-width="1.7"/><circle r="2.5" fill="#fff3cb"/></g>
+      <g class="festival-sparks"><use href="#festival-burst"/></g></g>`;
+  }
+  function openFestival() {
+    const palette = ["#ffdb83","#91f0d1","#ffb3a5"];
+    const count = Math.max(4,Math.ceil(frameWidth/116));
+    festival.innerHTML = Array.from({length:count},(_,i)=>{
+      const x = frameLeft+((i+.5)/count)*frameWidth;
+      return firework(Math.round(x),[48,26,42,79,55][i%5],[.82,.56,.86,.54][i%4],palette[i%3],[0,1.12,.45,1.46,.24][i%5]);
+    }).join("");
+  }
+  function victoryPose(t) {
+    const epic = celebrating.epic;
+    // Leave the sky clear over the champion during the last, higher leap.
+    const pan = clamp(t/.42), eased = pan*pan*(3-2*pan);
+    const shift = epic ? frameLeft+frameWidth*.5-startX : 120;
+    const x = startX+shift*eased;
+    cameraAt(total*stride-shift*eased);
+    const hops = epic ? 4 : 3;
+    const hop = Math.abs(Math.sin(Math.PI*hops*t));
+    const y = floor-(epic ? 40 : 32)*hop;
+    pose(x, y, {lift:hop, jump:.40*hop, angle:-3*hop, cheer:true});
+    set(mouth,"d","M2-45q5 2 11-1-1 7-6 7-4 0-5-6z");
+    if (t===1) set(scene,"data-dance","on");
+    if (!epic) return;
+    const crowned = t >= .76;
+    set(scene,"data-finale", crowned ? "crowned" : t>=.24 ? "launch" : "eruption");
+    hide(crown,!crowned); hide(glare,t>=.24); hide(surprise,t<.24);
+    set(afterglow,"opacity",.86*ease(clamp((t-.23)/.47)));
+    const zoom = 1+.21*eased;
+    transform(hero,`translate(${x} ${y}) scale(${zoom})`);
+    const u = ease(clamp((t-.24)/.52));
+    const fromX = sunX();
+    const crownX = fromX + (x+3*zoom-fromX)*u;
+    const crownY = 31+(y-57*zoom-31)*u-27*Math.sin(Math.PI*u);
+    const bloom = clamp(t/.12);
+    transform(flyingCrown,`translate(${crownX} ${crownY}) rotate(${-20*Math.sin(Math.PI*u)}) scale(${(.78+.31*u)*bloom})`);
+    hide(flyingCrown,crowned || !bloom);
+  }
+  function celebrate(epic=false) {
     if (active || celebrating || !total || cleared+1 < total) return;
-    const celebration = {};
+    const celebration = {epic:epic && difficulty==="insane"};
     celebrating=celebration;
+    set(scene,"data-impact","off"); incident.replaceChildren();
     set(scene,"data-phase","victory");
-    set(scene,"aria-label",`All ${total} hurdles cleared. The runner jumps for joy under a shower of confetti!`);
+    set(scene,"aria-label",celebration.epic
+      ? "Insane course cleared! The volcanoes erupt in fireworks. The startled sun gives up its golden Sun Crown, and the smiling runner leaps up to claim it."
+      : `All ${total} hurdles cleared. The runner jumps for joy under a shower of confetti!`);
     set(eyes,"d","m2-50q2-3 4 0m3-.5q2-3 4-.5");
     set(mouth,"fill","var(--r-ink)");
     const colors=["#ffbf53","#e26457","#5aa8a3","#e5d4f3","#fff2b4"];
-    fx.innerHTML=Array.from({length:34},(_,i)=>{
-      const x=22+(i*149)%553, y=13+(i*i*17+i*37)%96;
+    fx.innerHTML=Array.from({length:Math.max(24,Math.round(frameWidth/17))},(_,i)=>{
+      const x=frameLeft+22+(i*149)%(frameWidth-44), y=13+(i*i*17+i*37)%96;
       const shape=i%4===0 ? "m-3-2q4-2 3 1t3 2" : "m-2-1 4 2";
       return `<g transform="translate(${x} ${y})"><g class="victory-paper" style="--delay:${i%7*45}ms"><path transform="rotate(${i*37%180})" d="${shape}" fill="none" stroke="${colors[i%5]}" stroke-width="${2+i%3}"/></g></g>`;
     }).join("");
+    if (celebration.epic) openFestival();
     const start=performance.now();
     function tick(now) {
       if (celebrating!==celebration) return;
-      const t=reducedMotion.matches || document.hidden ? 1 : clamp((now-start)/2350);
+      const duration=celebration.epic ? 4200 : 2350;
+      const t=reducedMotion.matches || document.hidden ? 1 : clamp((now-start)/duration);
       victoryPose(t);
       frameId=t<1 ? requestAnimationFrame(tick) : 0;
     }
     tick(start);
   }
   function drawFrame(t) {
-    if (!active.hit) { missFrame(t); return; }
+    if (!active.hit) { if(active.hand) flickFrame(t); else missFrame(t); return; }
     const {star}=active, smooth=ease(t);
     const distance=stride*smooth;
     const worldX=startX+cleared*stride+distance;
@@ -399,13 +530,13 @@
     if (!active) return;
     if (frameId) cancelAnimationFrame(frameId);
     drawFrame(1);
-    const {hit,finish}=active;
+    const {hit,finish,hand}=active;
     active=null; frameId=0;
     set(scene,"data-phase",hit ? "landed" : "missed");
-    set(scene,"aria-label",hit ? `Hurdle cleared. ${cleared+1} of ${total} complete.` : misses[difficulty].label);
+    set(scene,"aria-label",hit ? `Hurdle cleared. ${cleared+1} of ${total} complete.` : (hand ? "Time expired. A giant hand flicks the runner off the platform. " : "")+misses[difficulty].label);
     finish();
   }
-  function travel(index, hit, finish) {
+  function travel(index, hit, finish, timeout=false) {
     if (active || celebrating || !total) return;
     aim(-1);
     set(scene,"data-phase",hit ? "jump" : "miss");
@@ -415,10 +546,13 @@
       active={hit,finish,spark:get("pop"),star:world.querySelector('[data-star-at="'+cleared+'"]')};
     } else {
       incident.innerHTML=`<g id="run-landing">${miss.landing}</g>`;
-      fx.innerHTML=`<g id="run-prop">${miss.prop}</g><g id="run-air">${miss.air}</g>`;
+      const hand = timeout ? `<g id="run-hand"><path d="M${frameLeft-130} -17 L-20 -14 -18 20 ${frameLeft-130} 27Z" fill="#396669" stroke="#3e3943" stroke-width="2.4"/>
+        <use href="#flick-palm"/><use id="run-loaded" href="#flick-loaded"/><use id="run-extended" href="#flick-extended" data-runner-hidden=""/></g><g id="run-contact" opacity="0"><use href="#flick-spark"/></g>` : "";
+      fx.innerHTML=`<g id="run-prop">${miss.prop}</g><g id="run-air">${miss.air}</g>${hand}`;
       active={hit,finish,landing:get("landing"),prop:get("prop"),air:get("air")};
+      if (timeout) Object.assign(active,{hand:get("hand"),loaded:get("loaded"),extended:get("extended"),contact:get("contact")});
     }
-    const jump=active, started=performance.now(), duration=hit ? 1030 : miss.duration;
+    const jump=active, started=performance.now(), duration=hit ? 1030 : miss.duration+(timeout ? 650 : 0);
     function tick(now) {
       if (active!==jump) return;
       const t=clamp((now-started)/duration);
@@ -443,4 +577,9 @@
   window.junctionRunner = {reset:length=>stage(0,length),home:()=>stage(0,0),stage,travel,aim,close,celebrate,difficulty:setDifficulty};
   set(scene,"data-difficulty",difficulty);
   stage(0,0);
+  fitScene(scene.clientWidth);
+  if (typeof ResizeObserver !== "undefined") {
+    new ResizeObserver(([entry])=>fitScene(entry.contentRect.width)).observe(scene);
+  }
+  window.addEventListener?.("resize",()=>fitScene(scene.clientWidth));
 })();

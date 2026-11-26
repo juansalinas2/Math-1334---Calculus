@@ -452,5 +452,16 @@
     "capstone": true,
     "pdfPage": 82,
     "pdf": "../downloads/optimization-worksheet.pdf"
+  },
+  {
+    "topic": "optimization",
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "level": 4,
+    "prompt": "Fit \\(y=mx+2\\) to \\((0,0),(1,1),(2,5)\\) using the sum of squared vertical errors. If the slope is \\(1/2\\) above the best slope, how much larger is the sum of squared errors than its minimum?",
+    "answer": "5/4",
+    "why": "The error is \\(4+(m+1)^2+(2m-3)^2=5(m-1)^2+9\\). Moving \\(1/2\\) from its minimizing slope increases the error by \\(5(1/2)^2=5/4\\).",
+    "handoutPage": 2
   }
 ]

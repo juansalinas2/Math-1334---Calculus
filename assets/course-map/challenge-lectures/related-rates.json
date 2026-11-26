@@ -318,9 +318,9 @@
     "section": "4.1",
     "topic": "rates",
     "level": 4,
-    "prompt": "The foot of a 10-ft ladder moves away from the wall at a constant 2 ft/s. Let \\(\\theta\\) be the angle between ladder and floor. When the foot is 6 ft from the wall, find \\(\\theta^{\\prime\\prime}\\) in rad/s².",
+    "prompt": "The foot of a 10-ft ladder moves away from the wall at a constant 2 ft/s. Let \\(\\theta\\) be the angle between ladder and floor. When the foot is 6 ft from the wall, find \\(\\theta^{\\prime'}\\) in rad/s².",
     "answer": "-3/64",
-    "why": "From \\(x=10\\cos\\theta\\) and height \\(y=8\\), \\(x^{\\prime}=-y\\theta^{\\prime}\\) gives \\(\\theta^{\\prime}=-1/4\\). Differentiate again to get \\(0=-x(\\theta^{\\prime})^2-y\\theta^{\\prime\\prime}\\).",
+    "why": "From \\(x=10\\cos\\theta\\) and height \\(y=8\\), \\(x^{\\prime}=-y\\theta^{\\prime}\\) gives \\(\\theta^{\\prime}=-1/4\\). Differentiate again to get \\(0=-x(\\theta^{\\prime})^2-y\\theta^{\\prime'}\\).",
     "source": "../lectures/related-rates.html#ladder",
     "pdfPage": 61,
     "pdf": "../downloads/related-rates-examples-practice.pdf"
@@ -331,7 +331,7 @@
     "level": 4,
     "prompt": "A pulley is 3 m above a boat’s bow. The boat approaches horizontally at a constant 1 m/s. When the horizontal distance is 4 m, find the second time derivative of the length of taut rope in m/s².",
     "answer": "9/125",
-    "why": "From \\(L^2=x^2+9\\), \\(L=5\\) and \\(L^{\\prime}=-4/5\\). A second differentiation gives \\(5L^{\\prime\\prime}=1-(4/5)^2=9/25\\).",
+    "why": "From \\(L^2=x^2+9\\), \\(L=5\\) and \\(L^{\\prime}=-4/5\\). A second differentiation gives \\(5L^{\\prime'}=1-(4/5)^2=9/25\\).",
     "source": "../lectures/related-rates.html#boat",
     "pdfPage": 62,
     "pdf": "../downloads/related-rates-examples-practice.pdf"
@@ -340,9 +340,9 @@
     "section": "4.1",
     "topic": "rates",
     "level": 4,
-    "prompt": "The 6-m cone with top radius 2 m fills at a constant \\(\\pi\\) m³/min. At water depth 3 m, compute \\(A^{\\prime\\prime}/\\pi\\) for the circular water-surface area \\(A\\). Use meters and minutes.",
+    "prompt": "The 6-m cone with top radius 2 m fills at a constant \\(\\pi\\) m³/min. At water depth 3 m, compute \\(A^{\\prime'}/\\pi\\) for the circular water-surface area \\(A\\). Use meters and minutes.",
     "answer": "-2/9",
-    "why": "\\(V=\\pi h^3/27\\) gives \\(h^{\\prime}=9/h^2\\) and then \\(h^{\\prime\\prime}=-18h^{\\prime}/h^3=-2/3\\) at depth 3. Since \\(A=\\pi h^2/9\\), \\(A^{\\prime\\prime}/\\pi=2(1+3(-2/3))/9\\).",
+    "why": "\\(V=\\pi h^3/27\\) gives \\(h^{\\prime}=9/h^2\\) and then \\(h^{\\prime'}=-18h^{\\prime}/h^3=-2/3\\) at depth 3. Since \\(A=\\pi h^2/9\\), \\(A^{\\prime'}/\\pi=2(1+3(-2/3))/9\\).",
     "source": "../lectures/related-rates.html#cone",
     "pdfPage": 63,
     "pdf": "../downloads/related-rates-examples-practice.pdf"
@@ -364,7 +364,7 @@
     "level": 4,
     "prompt": "Air enters a spherical balloon at a constant \\(12\\pi\\) cm³/s. Find the signed radial acceleration in cm/s² at radius 2 cm.",
     "answer": "-9/16",
-    "why": "The volume rate gives \\(r^2r^{\\prime}=3\\), hence \\(r^{\\prime}=3/4\\). Differentiating again gives \\(r^{\\prime\\prime}=-2(r^{\\prime})^2/r=-9/16\\).",
+    "why": "The volume rate gives \\(r^2r^{\\prime}=3\\), hence \\(r^{\\prime}=3/4\\). Differentiating again gives \\(r^{\\prime'}=-2(r^{\\prime})^2/r=-9/16\\).",
     "source": "../lectures/related-rates.html#balloon",
     "pdfPage": 60,
     "pdf": "../downloads/related-rates-examples-practice.pdf"
@@ -373,9 +373,9 @@
     "section": "4.1",
     "topic": "rates",
     "level": 4,
-    "prompt": "A point on \\(xy=12\\) passes through \\((3,4)\\). At that instant \\(y^{\\prime}=-2\\), and its horizontal velocity is constant. Find \\(y^{\\prime\\prime}\\).",
+    "prompt": "A point on \\(xy=12\\) passes through \\((3,4)\\). At that instant \\(y^{\\prime}=-2\\), and its horizontal velocity is constant. Find \\(y^{\\prime'}\\).",
     "answer": "2",
-    "why": "\\(xy^{\\prime}+yx^{\\prime}=0\\) gives \\(x^{\\prime}=3/2\\). Another derivative gives \\(xy^{\\prime\\prime}+2x^{\\prime}y^{\\prime}+yx^{\\prime\\prime}=0\\). With \\(x^{\\prime\\prime}=0\\), solve for \\(y^{\\prime\\prime}\\).",
+    "why": "\\(xy^{\\prime}+yx^{\\prime}=0\\) gives \\(x^{\\prime}=3/2\\). Another derivative gives \\(xy^{\\prime'}+2x^{\\prime}y^{\\prime}+yx^{\\prime'}=0\\). With \\(x^{\\prime'}=0\\), solve for \\(y^{\\prime'}\\).",
     "source": "../lectures/related-rates.html#constant-product",
     "pdfPage": 59,
     "pdf": "../downloads/related-rates-examples-practice.pdf"
@@ -386,7 +386,7 @@
     "level": 4,
     "prompt": "A rectangle’s length increases at 3 cm/s and its width decreases at 1 cm/s, both constantly. At length 8 and width 5, what is the second time derivative of the aspect ratio \\(L/W\\) in s⁻²?",
     "answer": "46/125",
-    "why": "\\(R^{\\prime}=(3W+L)/W^2\\). Its numerator is constant in time because \\(3W^{\\prime}+L^{\\prime}=0\\). Thus \\(R^{\\prime\\prime}=2(3W+L)/W^3=46/125\\).",
+    "why": "\\(R^{\\prime}=(3W+L)/W^2\\). Its numerator is constant in time because \\(3W^{\\prime}+L^{\\prime}=0\\). Thus \\(R^{\\prime'}=2(3W+L)/W^3=46/125\\).",
     "source": "../lectures/related-rates.html#rectangle",
     "pdfPage": 60,
     "pdf": "../downloads/related-rates-examples-practice.pdf"
@@ -397,7 +397,7 @@
     "level": 4,
     "prompt": "A point on \\(x^2+y^2=25\\) moves through \\((3,4)\\) with horizontal velocity 2 and horizontal acceleration 1. Find its signed vertical acceleration.",
     "answer": "-37/16",
-    "why": "The first derivative gives \\(y^{\\prime}=-3/2\\). The second gives \\(4y^{\\prime\\prime}=-((x^{\\prime})^2+(y^{\\prime})^2+xx^{\\prime\\prime})=-(4+9/4+3)\\).",
+    "why": "The first derivative gives \\(y^{\\prime}=-3/2\\). The second gives \\(4y^{\\prime'}=-((x^{\\prime})^2+(y^{\\prime})^2+xx^{\\prime'})=-(4+9/4+3)\\).",
     "source": "../lectures/related-rates.html#circle",
     "pdfPage": 59,
     "pdf": "../downloads/related-rates-examples-practice.pdf"
@@ -408,10 +408,26 @@
     "level": 4,
     "prompt": "The base of a 10-ft ladder moves away from a wall at a constant 2 ft/s. When its base is 6 ft out, what is the third time derivative of the top’s height in ft/s³?",
     "answer": "-225/512",
-    "why": "Write \\(v=x^{\\prime}=2\\) and \\(y=8\\). Differentiating \\(x^2+y^2=100\\) gives \\(y^{\\prime}=-xv/y\\), then \\(y^{\\prime\\prime}=-100v^2/y^3\\). Differentiate again to obtain \\(y^{\\prime\\prime\\prime}=-300xv^3/y^5\\).",
+    "why": "Write \\(v=x^{\\prime}=2\\) and \\(y=8\\). Differentiating \\(x^2+y^2=100\\) gives \\(y^{\\prime}=-xv/y\\), then \\(y^{\\prime'}=-100v^2/y^3\\). Differentiate again to obtain \\(y^{\\prime'\\prime}=-300xv^3/y^5\\).",
     "source": "../lectures/related-rates.html#ladder",
     "capstone": true,
     "pdfPage": 61,
     "pdf": "../downloads/related-rates-examples-practice.pdf"
+  },
+  {
+    "topic": "rates",
+    "section": "4.1",
+    "source": "../lectures/related-rates.html#cube",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "level": 2,
+    "prompt": "For the draining cube, \\(dV/dt=3s^2\\,ds/dt\\). Its side is 2 m and its volume is decreasing at 12 m³/s. What is its signed side-length rate?",
+    "choices": [
+      "\\(-1\\) m/s",
+      "\\(1\\) m/s",
+      "\\(-4\\) m/s",
+      "\\(-12\\) m/s"
+    ],
+    "why": "Insert the signed volume rate and side length: \\(-12=3(2)^2\\,ds/dt=12\\,ds/dt\\).",
+    "handoutPage": 1
   }
 ]

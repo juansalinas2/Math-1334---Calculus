@@ -945,5 +945,37 @@
     "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
     "pdfPage": 23,
     "pdf": "../downloads/october-2-continuity-class-notes.pdf"
+  },
+  {
+    "topic": "continuity",
+    "section": "2.7",
+    "source": "../lectures/08-exam-practice.html#problem-5",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "level": 2,
+    "prompt": "In the exam-practice piecewise function, the left branch is \\(x^2+1\\) up to 1 and the middle branch starts at \\(G(1)=a+b\\). What must \\(a+b\\) equal for continuity at 1?",
+    "choices": [
+      "\\(2\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(3\\)"
+    ],
+    "why": "The middle branch’s value must match the left-hand limit \\(1^2+1=2\\).",
+    "handoutPage": 3
+  },
+  {
+    "topic": "ivt",
+    "section": "2.6",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "level": 2,
+    "prompt": "A polynomial has \\(p(0)=-2\\) and \\(p(2)=12\\). Which target height is the IVT guaranteed to hit strictly between these inputs?",
+    "choices": [
+      "\\(5\\)",
+      "\\(13\\)",
+      "\\(-3\\)",
+      "\\(14\\)"
+    ],
+    "why": "The polynomial is continuous, and \\(-2<5<12\\). The theorem guarantees an interior input with value 5.",
+    "handoutPage": 6
   }
 ]
