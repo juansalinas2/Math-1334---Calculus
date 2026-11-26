@@ -25,11 +25,12 @@
   const goal=()=>routeLength()||Infinity;
   const settings=()=>({key:scope(),diff:diff(),order:order(),length:routeLength(),version:7});
   let character=board.stored("character")||"pip", cycle=0, offset=0, banked=false, settingTarget=false;
+  const showPortrait=()=>{el("runner-portrait").innerHTML=runner.portrait(character,diff());};
   function selectCharacter(id){
     character=runner.characters.some(a=>a.id===id)?id:"pip";
     runner.character(character);
     for(const select of ["character","lobby-character"])el(select).value=character;
-    el("runner-portrait").innerHTML=runner.portrait(character);
+    showPortrait();
     board.stored("character",character);
   }
   for(const id of ["character","lobby-character"]){
@@ -127,7 +128,7 @@
   function changeCourse(next) {
     course=next;el("lecture-picker").hidden=next!=="lecture";
     el("course").value=next;
-    runner.difficulty(diff());gate();
+    runner.difficulty(diff());showPortrait();gate();
     const length=routeLength(), distance=length?length+" jumps":"Endless";
     const count=rules.poolSize(lectures,scope(),diff());
     el("rules-hint").textContent=distance+" · "+count+" "+difficultyName(diff())+" questions · "+(timed()?rules.seconds[diff()]+" seconds per question":"No time limit")+". "+rules.basePoints[diff()]+" points per landing"+(timed()?" + 2 per second left. ":". ")+hints[diff()];

@@ -9,7 +9,7 @@
   // wear the chicken hat, take a tumble and receive the Sun Crown.
   const avatars = {
     pip: {name:"Pip", color:"#f45d9e",
-      head:'<path d="M-7-43q-3-11 7-14 10-2 15 7 3 9-7 13-9 3-15-6z" fill="#fff1cd"/><path d="m-1-57-3-5 6 3 3-3 2 4" fill="none" stroke-width="1.9"/>', coat:""},
+      head:'<path d="M-7-43q-3-11 7-14 10-2 15 7 3 9-7 13-9 3-15-6z" fill="#fff1cd"/>', coat:""},
     fox: {name:"Juniper", color:"#e9914c",
       head:'<path d="m-9-48-1-13 10 6q4-2 7 0l7-8 1 12 6 5-5 7-9 4-11-3-5-6z" fill="#ed9255"/><path d="m-7-57 5 3-4 3zm16 3 4-5 0 7z" fill="#613e45" stroke="none"/><path d="m-7-46 6 4 5-3 6 1 7-3-3 7-8 4-9-4z" fill="#fff2d1" stroke="none"/><path d="m14-46 4 0-2 2z" fill="#3a3438" stroke="none"/>',
       coat:'<path d="M-6-22q-12 5-18-9 0 17 15 17l6-3z" fill="#ea8348"/><path d="m-24-31 7 10-4-1 3 5q-6-4-6-14z" fill="#ffeac6" stroke="none"/><path d="m-4-33 9 0 2 14-12 1z" fill="#398881"/><path d="m-4-29 9-1" fill="none" stroke="#a6e1c3"/>'},
@@ -29,13 +29,23 @@
   const characters = Object.keys(avatars).map(id=>({id,name:avatars[id].name}));
   const avatarId = id => Object.hasOwn(avatars,id) ? id : "pip";
   let localCharacter = "pip";
-  const bow = '<path d="M-1 0C-4-2-8-6-9-4c-2 3-1 7 0 8 2 1 6-1 8-3zm2 0c3-2 7-5 9-4 2 2 2 6 1 8-2 1-7-1-10-3z" fill="#ff278e"/><path d="m-7-2 4 2m7 0 3-2" fill="none" stroke="#ffb8da"/><rect x="-2" y="-2" width="4" height="5" rx="1.4" fill="#ff65b1"/>';
-  const bowPose = 'translate(-9 -56) rotate(-23) scale(.86)';
-  const drawBow = '<g transform="'+bowPose+'" stroke="#752044" stroke-width="1.35">'+bow+'</g>';
+  // The original head ribbon meets at (2, -59), just above Pip's hairline.
+  const bow = `<g class="head-bow" stroke="#752044" stroke-width="1.1">
+    <path d="M2-59Q-1-62-4-62q-1 3 1 6 3 0 5-2 3 2 6 1 1-3-1-6-3 0-5 4Z" fill="#ff278e"/>
+    <path d="m-2-60 2 1m4 0 2-2" stroke="#ffb8da" stroke-width=".8" fill="none"/>
+    <rect x=".6" y="-60.6" width="2.9" height="3.4" rx=".9" fill="#ff65b1"/>
+  </g>`;
+  const chicken = `<g stroke="#51382f" stroke-width="1.4">
+        <path d="M-3-64q-5-6-2-8 3-1 5 4 0-8 4-7 3 1 2 7 5-5 7-2 1 3-6 7" fill="#e65a49"/>
+        <path d="M-11-51q-1-15 10-16 13-3 18 11l-4 3q-9-3-16 0l-4 6-3-1z" fill="#fff6d7"/>
+        <path d="m13-59 11 4-11 2z" fill="#f5ae42"/><circle cx="10" cy="-61" r="1.35" fill="#332d2c" stroke="none"/>
+      </g>`;
+  const headwear = bow+'<use class="chicken-hat" href="#run-chicken"/>';
   const relaxedFace = '<g fill="none" stroke="#243740"><path d="m5-50 .3 1.3m6-1.7 .2 1.3" stroke-width="2.2"/><path d="M5-44q3 2 6-.5" stroke-width="1.4"/></g>';
-  function portrait(id) {
+  function portrait(id,level) {
     const a=avatars[avatarId(id)];
-    return '<svg class="runner-portrait" xmlns="http://www.w3.org/2000/svg" viewBox="-23 -72 50 45" width="44" height="40" aria-hidden="true" focusable="false"><g stroke="#243740" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2">'+a.head+relaxedFace+drawBow+'</g></svg>';
+    const easy=level==="easy";
+    return '<svg class="runner-portrait" xmlns="http://www.w3.org/2000/svg" viewBox="'+(easy?"-23 -78 50 51":"-23 -72 50 45")+'" width="44" height="40" aria-hidden="true" focusable="false"><g stroke="#243740" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2">'+a.head+relaxedFace+(easy?chicken:bow)+'</g></svg>';
   }
   let cleared = 0, total = 0, camera = 0, active = null, frameId = 0;
   let blocked = [], aiming = -1;
@@ -70,11 +80,7 @@
       </g>
       <g id="run-flame"><path d="M-9 0c-8-12 3-13 0-23 6 4 6 9 6 12 4-5 6-12 4-18 15 13 1 16 10 18 4-2 4-6 4-7 4 9 3 15-3 18z" fill="#f06537"/><path d="M-3 0q-5-7 1-13 0 5 3 6l4-8q4 10 1 15z" fill="#ffce75"/></g>
       <g id="run-feather"><path d="M-9 6q1-14 15-14 1 10-9 14z" fill="#fff4cf" stroke="#8e7454" stroke-width="1.3"/><path d="m-11 9 14-14" fill="none" stroke="#8e7454"/></g>
-      <g id="run-chicken"><g stroke="#51382f" stroke-width="1.4">
-        <path d="M-3-64q-5-6-2-8 3-1 5 4 0-8 4-7 3 1 2 7 5-5 7-2 1 3-6 7" fill="#e65a49"/>
-        <path d="M-11-51q-1-15 10-16 13-3 18 11l-4 3q-9-3-16 0l-4 6-3-1z" fill="#fff6d7"/>
-        <path d="m13-59 11 4-11 2z" fill="#f5ae42"/><circle cx="10" cy="-61" r="1.35" fill="#332d2c" stroke="none"/>
-      </g></g>
+      <g id="run-chicken">${chicken}</g>
       <g id="run-leaf"><path d="m-8-7 14-2 4 12-13 4z" fill="#fff3d2" stroke="#776d5d" stroke-width="1.2"/><path d="m-4-3 7-1m-6 5 8-1" stroke="#71978b" stroke-width="1.3"/></g>
       <g id="run-plane"><path d="m-13 2 25-9-10 17-2-8-7 4z" fill="#fff0c6" stroke="#8c7861" stroke-width="1.4"/><path d="m0 2 12-9" stroke="#8c7861"/></g>
       <g id="run-meteor"><path d="M-5-2C7-8 12-23 42-34c-9 7-8 13-15 18 13-2 18-8 26-8C37-12 25-2 6 6z" fill="#fc7145"/><path d="M-2-1q11-13 29-22-10 12-13 13 7-1 12-3Q15 0 4 5z" fill="#ffcf6c"/><path d="m-7-5 7-4 7 3 2 7-5 6-8-1-5-5z" fill="#552c3c" stroke="#ffb75b" stroke-width="2"/><path d="m-3-4 3 3 4-1m-4 1-2 5" fill="none" stroke="#d8754c"/></g>
@@ -184,9 +190,8 @@
           <g id="run-face-shape" stroke="var(--r-ink)" stroke-width="2.6">${avatars.pip.head}</g>
           <path id="run-eyes" d="m5-50 .3 1.3m6-1.7 .2 1.3" fill="none" stroke="var(--r-ink)" stroke-width="2"/>
           <path id="run-mouth" d="M5-44q3 2 6-.5" stroke="var(--r-ink)" stroke-width="1.4" fill="none"/>
-          <g class="chicken-hat"><use href="#run-chicken"/></g>
+          ${headwear}
           <use id="run-prize" class="champion-crown" href="#sun-crown" transform="translate(3 -57) scale(.9)" data-runner-hidden=""/>
-          <g id="run-bow" transform="${bowPose}" stroke="#752044" stroke-width="1.35">${bow}</g>
           <path class="runner-soot" d="m-5-45 4 2m0 2 2 1m10-3 2-1" fill="none" stroke="#82625e" stroke-width="2.5"/>
         </g>
       </g>
@@ -243,7 +248,7 @@
           <path d="m0-17 2-17m-2 3-7 7-5-3m14-4 6 6 5-4"/>
         </g>
         <path d="M-1-33q-10-5-12 1l-1 7 12 3z" fill="#cea15a" stroke-width="1.9"/>
-        ${a.coat}${a.head}${relaxedFace}<g class="chicken-hat"><use href="#run-chicken"/></g>${drawBow}
+        ${a.coat}${a.head}${relaxedFace}${headwear}
       </g>
       <g id="run-rival-tag-${r.seat}" class="rival-marker">
         <rect width="38" height="15" x="-19" y="-68" rx="7"/><circle cx="-11" cy="-60.5" r="3.2" fill="${a.color}"/>

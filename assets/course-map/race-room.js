@@ -18,7 +18,7 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
     el("racers").replaceChildren(...sorted.map(s=>{
       const row=document.createElement("li"),name=document.createElement("b"),status=document.createElement("span"),points=document.createElement("span"),bar=document.createElement("progress");
       name.className="racer-name";const avatar=runner.characters.find(a=>a.id===s.character)||runner.characters[0];
-      name.innerHTML=runner.portrait(avatar.id);
+      name.innerHTML=runner.portrait(avatar.id,r.diff);
       name.append(avatar.name+" · P"+s.seat+(s.seat===seat?" (you)":""));
       status.className="racer-status";status.textContent=s.status==="waiting"?(s.ready?"Ready":"Getting ready"):
         ({playing:"On course",finished:"Finished",out:"Run over",left:"Left the room"}[s.status]||"Waiting");
