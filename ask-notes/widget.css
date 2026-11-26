@@ -59,3 +59,19 @@ body:has(.rr-help-popup[open]) .rr-help-box {visibility:hidden;}
 .rr-self-check summary {cursor:pointer;}
 .rr-help-popup > form {margin-top:1rem; padding-top:.7rem; border-top:1px solid var(--reading-border);}
 @media print {.rr-help-box,.rr-help-popup {display:none!important;}}
+
+/* A modeless reading companion. Only the answer scrolls inside the panel. */
+.rr-help-popup {position:fixed; inset:auto max(.65rem,env(safe-area-inset-right)) max(.65rem,env(safe-area-inset-bottom)) auto; z-index:20; width:min(25rem,calc(100vw - 1rem)); max-height:66dvh; margin:0; overflow:hidden; padding:.85rem 1rem; box-shadow:0 .25rem 1.4rem #0002;}
+.rr-help-popup[open] {display:flex; flex-direction:column;}
+.rr-help-popup header {flex:none; gap:.4rem; margin:0; padding-bottom:.5rem; border-bottom:1px solid var(--reading-border); cursor:grab; touch-action:none; user-select:none;}
+.rr-help-popup header:active,.rr-help-popup .rr-move:active {cursor:grabbing;}
+.rr-help-popup h2 {flex:1; font-size:1.12em;}
+.rr-help-popup .rr-move {cursor:grab;}
+.rr-help-popup > [aria-live] {min-height:0; overflow:auto; overscroll-behavior:contain; padding:.55rem .12rem .25rem;}
+.rr-help-popup > form {flex:none; margin-top:.3rem; padding-top:.45rem;}
+.rr-help-answer .rr-sample {margin:.15em .4em .15em 0;}
+@media(max-width:580px), (max-height:550px) {
+ .rr-help-popup {width:min(24rem,calc(100vw - 1rem)); max-height:50dvh; padding:.6rem .75rem;}
+ .rr-help-popup header button {min-height:2.2rem;}
+}
+@media (max-height:400px) {.rr-help-popup {max-height:72dvh;}}

@@ -18,7 +18,8 @@
       "match": "plug|substitut|instant|measurements?|t_?0",
       "explanation": "A measurement such as \\(x(t_0)=6\\) holds at a particular time. First differentiate the equation that holds throughout the motion. Then evaluate the resulting rate equation at \\(t_0\\).",
       "step": 0
-    }
+    },
+    "starter": "Draw the situation at a general time \\(t\\). Label the quantities that change and identify the rate you know and the rate you want."
   },
   "parabola": {
     "question": "On y = x², which derivative tells you how fast y changes with time?",
@@ -39,7 +40,8 @@
       "match": "chain rule|dx\\s*/\\s*dt|2x|differentiat",
       "explanation": "Along the motion, \\(y(t)=x(t)^2\\). Differentiating with respect to \\(t\\) gives \\(\\frac{dy}{dt}=2x\\,\\frac{dx}{dt}\\). The factor \\(dx/dt\\) supplies the horizontal rate.",
       "step": 2
-    }
+    },
+    "starter": "Write \\(y(t)=x(t)^2\\). Differentiate both sides with respect to time before using \\(x=3\\). Which factor records how fast \\(x\\) changes?"
   },
   "constant-product": {
     "question": "The point moves while xy = 12. Which equation relates its two rates?",
@@ -60,7 +62,8 @@
       "match": "product|two terms|differentiat|xy",
       "explanation": "Both coordinates change with time. From \\(x(t)y(t)=12\\), the product rule gives \\(y\\,\\frac{dx}{dt}+x\\,\\frac{dy}{dt}=0\\). The right-hand side is zero because 12 stays fixed.",
       "step": 2
-    }
+    },
+    "starter": "Write \\(x(t)y(t)=12\\). Both factors change. What two terms do you get when you differentiate their product?"
   },
   "circle": {
     "question": "The point (3, 4) moves to the right on x² + y² = 25. What sign should dy/dt have?",
@@ -81,7 +84,8 @@
       "match": "negative|down|decreas|sign",
       "explanation": "At \\((3,4)\\), both coordinates are positive. Moving right increases \\(x^2\\). Since \\(x^2+y^2=25\\) stays fixed, \\(y\\) must decrease near that point, giving \\(dy/dt<0\\).",
       "step": 2
-    }
+    },
+    "starter": "Start with \\(x^2+y^2=25\\). The radius is fixed as the point moves. Differentiate both sides with respect to \\(t\\) before using the point \\((3,4)\\)."
   },
   "cube": {
     "question": "The cube loses 12 m³ of volume per second. Which rate is given?",
@@ -102,7 +106,8 @@
       "match": "negative|minus|loses|decreas|sign|given rate",
       "explanation": "The given rate describes volume loss: \\(\\frac{dV}{dt}=-12\\,\\mathrm{m^3/s}\\). To find the edge-length rate, differentiate \\(V=s^3\\) first.",
       "step": 1
-    }
+    },
+    "starter": "Let \\(s\\) be the edge length. Write \\(V=s^3\\). The given rate describes a loss of volume. What sign should \\(dV/dt\\) have?"
   },
   "balloon": {
     "question": "Air enters at 12π cm³/s. What units should the answer for dr/dt have?",
@@ -123,7 +128,8 @@
       "match": "units?|cm/s|cm³|cubic|dimension",
       "explanation": "A radius is a length, so \\(dr/dt\\) has units of \\(\\mathrm{cm/s}\\). In \\(\\frac{dV}{dt}=4\\pi r^2\\,\\frac{dr}{dt}\\), multiplying by area gives the volume-rate units \\(\\mathrm{cm^3/s}\\).",
       "step": 2
-    }
+    },
+    "starter": "The air entering gives \\(dV/dt\\), while the question asks for \\(dr/dt\\). Start with \\(V=\\tfrac43\\pi r^3\\). How can you relate the two rates?"
   },
   "rectangle": {
     "question": "If the length grows while the width shrinks, which expression decides whether the area increases?",
@@ -144,7 +150,8 @@
       "match": "shrink|decreas|width|product|area.*grow",
       "explanation": "For \\(A=LW\\), the rate is \\(W\\,\\frac{dL}{dt}+L\\,\\frac{dW}{dt}\\). Here the growing length contributes \\(5(3)\\), and the shrinking width contributes \\(8(-1)\\), in \\(\\mathrm{cm^2/s}\\). Comparing them determines the sign.",
       "step": 2
-    }
+    },
+    "starter": "Write \\(A=LW\\). Both dimensions vary, so differentiate using the product rule. Which term accounts for the shrinking width?"
   },
   "triangle": {
     "question": "The base and height of the triangle both change. Why does a factor of one-half remain in the area rate?",
@@ -165,7 +172,8 @@
       "match": "one.half|half|1\\s*/\\s*2|½|factor of two|two terms|product rule",
       "explanation": "The area is \\(A=\\tfrac12 bh\\) at every instant. The constant stays outside the derivative: \\(\\frac{dA}{dt}=\\tfrac12\\bigl(h\\,\\frac{db}{dt}+b\\,\\frac{dh}{dt}\\bigr)\\). Both the base and height can change.",
       "step": 2
-    }
+    },
+    "starter": "Write \\(A=\\tfrac12 bh\\). The base and height both change. Keep both variable as you differentiate, and leave the factor \\(\\tfrac12\\) in front."
   },
   "ladder": {
     "question": "The foot of the ladder is 6 ft from the wall at one instant. Which quantity can you replace with a number before differentiating?",
@@ -186,7 +194,19 @@
       "match": "plug|substitut|too early|(?:use|replace).*?(?:6|six).*?(?:first|before)|constant.*length",
       "explanation": "The ladder stays 10 ft long, so \\(x^2+y^2=100\\) holds throughout the motion. The foot is 6 ft from the wall at one instant: \\(x(t_0)=6\\). Keep \\(x(t)\\) in the equation while differentiating. Substituting 6 first would erase the term \\(x\\,dx/dt\\).",
       "step": 2
-    }
+    },
+    "starter": "Let \\(x\\) be the distance of the foot from the wall and \\(y\\) the height of the top. The ladder is the fixed hypotenuse. What equation relates \\(x\\), \\(y\\), and 10?",
+    "partHints": {
+      "a": "The foot moves away from the wall, so \\(dx/dt>0\\). Differentiate the fixed-length equation. Which rate describes the top?",
+      "b": "The top moves downward, so \\(dy/dt=-3\\) ft/s. Use the same differentiated equation as in part (a), this time solving for \\(dx/dt\\)."
+    },
+    "answers": [
+      {
+        "match": "why.*(?:negative|minus|down)|why.*(?:dy\\s*/\\s*dt).*less",
+        "step": 3,
+        "text": "The height \\(y\\) decreases as the foot moves away from the wall. That makes \\(dy/dt<0\\). In part (a), \\(dy/dt=-\\tfrac32\\,\\mathrm{ft/s}\\) means the top moves downward at a speed of \\(\\tfrac32\\,\\mathrm{ft/s}\\)."
+      }
+    ]
   },
   "boat": {
     "question": "Which rate equals −1 m/s when the rope is pulled in at 1 m/s?",
@@ -207,7 +227,8 @@
       "match": "negative|minus|signed|d[lL]/dt|pulled in|rope.*rate",
       "explanation": "\\(L\\) measures the taut rope from the pulley to the boat. Pulling it in shortens that length, giving \\(dL/dt=-1\\,\\mathrm{m/s}\\). The horizontal rate \\(dx/dt\\) is a different unknown.",
       "step": 1
-    }
+    },
+    "starter": "Draw the right triangle from the pulley to the boat. Label the rope \\(L\\), the horizontal distance \\(x\\), and the fixed vertical side 3 m. Which length is getting shorter?"
   },
   "similar-triangles": {
     "question": "The small triangle has sides a, b, c corresponding to A, B, C. What is the scaling factor from the large triangle to the small one?",
@@ -228,7 +249,8 @@
       "match": "scal|ratio|correspond|proportion|small|large",
       "explanation": "To scale the large triangle to the small one, multiply each large side by \\(\\frac aA\\). Corresponding sides give \\(\\frac aA=\\frac bB=\\frac cC\\).",
       "step": 0
-    }
+    },
+    "starter": "Match the corresponding sides, starting with \\(a\\) in the small triangle and \\(A\\) in the large triangle. Which factor takes \\(A\\) to \\(a\\)?"
   },
   "cone": {
     "question": "In the 6-m tank of radius 2 m, which relation stays true as the water rises?",
@@ -246,10 +268,33 @@
     "correct": 0,
     "help": {
       "question": "Why is the radius one-third of the depth?",
-      "match": "one.third|third|h\\s*/\\s*3|similar|ratio|radius.*depth|depth.*radius",
+      "match": "one.third|third|h\\s*/\\s*3|similar|ratio|radius.*depth|depth.*radius|triangles?",
       "explanation": "Take an axial cross section through the tip. The water and the full tank give similar triangles, so radius divided by height is the same in both: \\(\\frac{r}{h}=\\frac{2}{6}\\). Thus \\(r=h/3\\) at every water depth.",
       "step": 2
-    }
+    },
+    "starter": "Draw a vertical slice through the tip of the tank. Label the water depth \\(h\\) and surface radius \\(r\\). The full tank has radius 2 m and height 6 m. What ratio of corresponding sides relates \\(r\\) and \\(h\\)?",
+    "partHints": {
+      "a": "Draw a vertical slice through the tip of the tank. Label the water depth \\(h\\) and surface radius \\(r\\). The full tank has radius 2 m and height 6 m. What ratio of corresponding sides relates \\(r\\) and \\(h\\)?",
+      "b": "Use your volume formula \\(V(h)\\). Differentiate with respect to time, then use \\(h=3\\) and the known inflow \\(dV/dt=\\pi\\). What rate remains unknown?",
+      "c": "The tank has the same shape and the water is at the same depth. Draining reverses the sign of \\(dV/dt\\). What should happen to the sign of \\(dh/dt\\)?"
+    },
+    "answers": [
+      {
+        "match": "d\\s*v\\s*/\\s*d\\s*t|volume rate|rate of (?:change of )?volume",
+        "step": 1,
+        "text": "\\(dV/dt\\) tells you how many cubic meters of water enter or leave each minute. In part (b) it is \\(+\\pi\\;\\mathrm{m^3/min}\\); in part (c) it is \\(-\\pi\\;\\mathrm{m^3/min}\\). The rate you want is \\(dh/dt\\), the change in depth."
+      },
+      {
+        "match": "why.*(?:negative|minus|drain)|why.*(?:falls?|falling)",
+        "step": 3,
+        "text": "When water drains, \\(dV/dt<0\\). At the same depth the water-surface area is still positive, so \\(dh/dt\\) also becomes negative. The minus sign records the falling water level."
+      },
+      {
+        "match": "(?:how fast|how (?:quickly|rapidly)).*(?:ris|fill)|(?:ris|fill).*how fast",
+        "step": 3,
+        "text": "When \\(h=3\\,\\mathrm m\\), the rate equation is \\(dV/dt=\\pi\\,dh/dt\\). The tank fills at \\(\\pi\\,\\mathrm{m^3/min}\\), so the water level rises at \\(1\\,\\mathrm{m/min}\\)."
+      }
+    ]
   },
   "shadow": {
     "question": "Let x be the distance from light to person and s the shadow length. Which rate measures motion of the shadow tip away from the light?",
@@ -270,6 +315,18 @@
       "match": "tip|x\\s*\\+\\s*s|shadow length|distance from the light",
       "explanation": "From the light to the person is \\(x\\); from the person to the tip is \\(s\\). The tip is therefore \\(x+s\\) from the light. Its rate is \\(\\frac{d}{dt}(x+s)=\\frac{dx}{dt}+\\frac{ds}{dt}\\).",
       "step": 1
-    }
+    },
+    "starter": "Draw the triangle from the lamp to the shadow tip. If \\(x\\) is the lamp-to-person distance and \\(s\\) is the shadow length, what is the base of the large triangle?",
+    "partHints": {
+      "a": "Use similar triangles to relate \\(s\\) to \\(x\\). The question asks for the rate of the shadow length, \\(ds/dt\\).",
+      "b": "The tip is \\(x+s\\) from the lamp. Which two rates contribute to the speed of the tip?"
+    },
+    "answers": [
+      {
+        "match": "(?:how fast|speed).*(?:tip|end)|(?:tip|end).*how fast",
+        "step": 3,
+        "text": "The tip is \\(x+s\\) from the light. The person walks at \\(dx/dt=2\\,\\mathrm{m/s}\\) and the shadow length grows at \\(ds/dt=1\\,\\mathrm{m/s}\\), so the tip moves at \\(3\\,\\mathrm{m/s}\\)."
+      }
+    ]
   }
 }

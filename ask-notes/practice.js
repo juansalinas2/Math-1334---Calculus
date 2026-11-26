@@ -1,5 +1,9 @@
 (() => {
   const checks = /* COURSE_CHECKS */ null;
+  const routing = /* COURSE_ROUTING */ null;
+  const refPattern = new RegExp(routing.ref, "i");
+  const partPattern = new RegExp(routing.part, "i");
+  const startPattern = new RegExp(routing.start, "i");
   const script = document.currentScript;
   const endpoint = script.dataset.endpoint;
 
@@ -123,13 +127,67 @@
     return panel;
   }
 
-  const names = {
-    parabola: /\bparabol/, circle: /\bcirc(?:le|ular)/, "constant-product": /constant product|\bxy\b/,
-    balloon: /\bballoon|\bsphere/, cube: /\bcube\b/, rectangle: /\brectang/,
-    triangle: /\btriangle\b|\bbase and height\b/, ladder: /\bladder\b/, boat: /\bboat\b|\brope\b|\bdock\b/,
-    cone: /\bcone\b|\bconical\b|\btank\b/, shadow: /\bshadow\b|\blamppost\b/,
-    "similar-triangles": /similar triangles|scaling factor/, "the-three-steps": /three steps|what (?:are|is) (?:a |the )?related.?rates?/
-  };
+  const names = Object.fromEntries(Object.entries(routing.aliases).map(([key, pattern]) => [key, new RegExp(pattern, "i")]));
+
+  // Keep the panel on screen after dragging, rotating the phone, or opening its keyboard.
+  function movablePanel(panel, header, moveButton) {
+    let drag;
+    let moved = false;
+    let placed = false;
+    function bounds() {
+      const v = window.visualViewport;
+      const x = (v?.offsetLeft || 0) + 8;
+      const y = (v?.offsetTop || 0) + 8;
+      return {x, y, right: Math.max(x, x + (v?.width || innerWidth) - panel.offsetWidth - 16),
+        bottom: Math.max(y, y + (v?.height || innerHeight) - panel.offsetHeight - 16)};
+    }
+    function place(x, y) {
+      const b = bounds();
+      panel.style.left = Math.min(b.right, Math.max(b.x, x)) + "px";
+      panel.style.top = Math.min(b.bottom, Math.max(b.y, y)) + "px";
+      panel.style.right = "auto";
+      panel.style.bottom = "auto";
+      placed = true;
+    }
+    header.addEventListener("pointerdown", e => {
+      if (!e.isPrimary || e.button !== 0 || e.target.closest("button") && !moveButton.contains(e.target)) return;
+      const rect = panel.getBoundingClientRect();
+      moved = false;
+      drag = {id: e.pointerId, x: e.clientX, y: e.clientY, left: rect.left, top: rect.top};
+      e.target.setPointerCapture(e.pointerId);
+    });
+    header.addEventListener("pointermove", e => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (!moved && Math.hypot(dx, dy) < 4) return;
+      moved = true;
+      place(drag.left + dx, drag.top + dy);
+    });
+    header.addEventListener("lostpointercapture", () => { drag = null; });
+    moveButton.addEventListener("click", e => {
+      if (moved && e.detail) { moved = false; return; }
+      const b = bounds(), r = panel.getBoundingClientRect();
+      if (b.right - b.x < 80) place(b.x, r.top < (b.y + b.bottom) / 2 ? b.bottom : b.y);
+      else place(r.left < (b.x + b.right) / 2 ? b.right : b.x, r.top);
+    });
+    moveButton.addEventListener("keydown", e => {
+      const delta = {ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1]}[e.key];
+      if (!delta) return;
+      e.preventDefault();
+      const r = panel.getBoundingClientRect();
+      place(r.left + 32 * delta[0], r.top + 32 * delta[1]);
+    });
+    function fit() {
+      if (!panel.open) return;
+      const b = bounds();
+      const r = panel.getBoundingClientRect();
+      if (placed || r.top < b.y - 1 || r.top > b.bottom + 1 || r.left < b.x - 1 || r.left > b.right + 1) place(r.left, r.top);
+    }
+    new ResizeObserver(fit).observe(panel);
+    window.addEventListener("resize", fit);
+    window.visualViewport?.addEventListener("resize", fit);
+    window.visualViewport?.addEventListener("scroll", fit);
+  }
 
   document.addEventListener("DOMContentLoaded", () => {
     const topics = new Map();
@@ -139,7 +197,20 @@
       const heading = node.querySelector("h2, h3");
       const steps = [...node.querySelectorAll(".rr-step-label")];
       steps.forEach((s, i) => { s.id = key + "-study-step-" + (i + 1); });
-      topics.set(key, {node, heading, title: heading.childNodes[0].textContent.trim(), steps});
+      const title = heading.childNodes[0].textContent.trim();
+      const parts = new Map();
+      const paragraphs = steps.map((label, i) => {
+        const group = [];
+        let p = label.closest("p").nextElementSibling;
+        while (p?.tagName === "P" && !p.querySelector(".rr-step-label")) {
+          const mark = /^\(([a-z])\)/i.exec(p.textContent.trim());
+          if (mark) parts.set(mark[1], {step:i + 1, paragraph:p});
+          group.push(p);
+          p = p.nextElementSibling;
+        }
+        return group;
+      });
+      topics.set(key, {node, title, steps, paragraphs, parts, numbered:/^(example|practice)\s+(\d+)/i.exec(title)});
     }
     if (!topics.has("the-three-steps")) return;
 
@@ -154,10 +225,16 @@
     const title = element("h2", "From the notes");
     title.id = "rr-answer-title";
     title.tabIndex = -1;
-    const close = element("button", "Close");
-    close.type = "button";
-    close.addEventListener("click", () => popup.close());
-    bar.append(title, close);
+    const move = element("button", "Move");
+    move.type = "button";
+    move.className = "rr-move";
+    move.title = "Drag to move. Click to switch sides, or use the arrow keys.";
+    move.setAttribute("aria-label", move.title);
+    const hide = element("button", "Hide");
+    hide.type = "button";
+    hide.addEventListener("click", hidePanel);
+    bar.append(title, move, hide);
+    movablePanel(popup, bar, move);
     const asked = element("p");
     asked.className = "rr-asked";
     const answer = element("div");
@@ -166,6 +243,8 @@
     thread.setAttribute("aria-live", "polite");
     thread.append(asked, answer);
     let activeTopic = "";
+    let activeStep = 0;
+    let minimized = false;
     const attempts = new Map();
 
     function questionForm(labelText, placeholder, submit) {
@@ -203,6 +282,8 @@
     }
 
     function chooseReading(q, context) {
+      if (["cone", "shadow"].includes(context) && /triangles?/.test(q) &&
+          !/scaling factor|area|base and height|shadow|tank|cone|conical/.test(q)) return context;
       const named = ["cone", "shadow", "similar-triangles", ...topics.keys()].find(k => names[k]?.test(q));
       if (named) return named;
       if (context !== "the-three-steps") return context;
@@ -215,15 +296,19 @@
       link.href = "#" + target.id;
       link.addEventListener("click", event => {
         event.preventDefault();
-        popup.close();
-        box.open = false;
         for (let p = target.parentElement; p && p !== topic.node; p = p.parentElement) {
           if (p.tagName === "DETAILS") p.open = true;
         }
         target.tabIndex = -1;
         history.replaceState(null, "", link.hash);
         target.focus({preventScroll: true});
-        target.scrollIntoView({block: "center"});
+        target.scrollIntoView({block:"center"});
+        const panelRect = popup.getBoundingClientRect(), sourceRect = target.getBoundingClientRect();
+        if (sourceRect.left < panelRect.right && sourceRect.right > panelRect.left &&
+            sourceRect.top < panelRect.bottom && sourceRect.bottom > panelRect.top) {
+          const y = panelRect.top > innerHeight / 2 - 12 ? panelRect.top / 2 : (panelRect.bottom + innerHeight) / 2;
+          window.scrollBy(0, sourceRect.top - y);
+        }
       });
       answer.append(link);
     }
@@ -234,93 +319,176 @@
       answer.append(copy);
     }
 
+    function numbered(q) {
+      const match = refPattern.exec(q);
+      if (!match) return null;
+      const [, rawKind = "", rawNumber, suffix, packed] = match;
+      const number = /^\d+$/.test(rawNumber) ? Number(rawNumber) : routing.words.indexOf(rawNumber);
+      const kind = /^(practice|exercise)/.test(rawKind) ? "practice" : rawKind.startsWith("ex") ? "example" : "";
+      const candidates = [...topics.keys()].filter(k => {
+        const h = topics.get(k).numbered;
+        return h && Number(h[2]) === number && (!kind || h[1].toLowerCase() === kind);
+      });
+      return {match, candidates, part: suffix || packed || ""};
+    }
+
+    function action(text, fn) {
+      const button = element("button", text);
+      button.type = "button";
+      button.className = "rr-sample";
+      button.addEventListener("click", fn);
+      answer.append(button);
+    }
+
+    function authored(html) {
+      const p = element("p");
+      p.innerHTML = html; // Authored mathematics compiled at build time; questions remain plain text.
+      answer.append(p);
+    }
+
     function show(question, context) {
       const q = normalized(question);
-      const definition = /what (?:are|is) (?:a |the )?related.?rates?/.test(q);
-      const key = definition ? "the-three-steps" : chooseReading(q, context);
-      const topic = topics.get(key);
-      const item = checks[key];
-      activeTopic = key;
+      const ref = numbered(q);
       asked.textContent = question;
       answer.replaceChildren();
-      const general = topics.get("the-three-steps");
-      let target = topic.node;
+      if (ref && ref.candidates.length !== 1) {
+        const choices = ref.candidates;
+        answer.append(element("p", choices.length ? "Which reading do you mean?" :
+          "That numbered problem isn’t in §4.1. Use an Example or Practice heading from this page."));
+        for (const k of choices) {
+          const name = topics.get(k).title;
+          action(name, () => show(q.replace(ref.match[0], name.split(".")[0] + (ref.part || "")), k));
+        }
+        activeTopic = "";
+        activeStep = 0;
+        present();
+        return;
+      }
+      const definition = /what (?:are|is) (?:a |the )?related.?rates?/.test(q);
+      const reading = /\b(?:this|current) (?:example|practice|problem|reading)\b/.test(q) ? currentReading() : context;
+      const key = ref?.candidates[0] || (definition ? "the-three-steps" : chooseReading(q, reading));
+      const topic = topics.get(key), item = checks[key];
+      const previous = key === activeTopic ? activeStep : 0;
+      const remainder = ref ? q.replace(ref.match[0], "").trim() : q;
+      const partMatch = partPattern.exec(remainder);
+      const part = partMatch?.slice(1).find(Boolean) || ref?.part || "";
+      activeTopic = key;
+      activeStep = 0;
       let supported = true;
-      if (definition) {
-        excerpt(general.node.querySelectorAll(":scope > p")[1]);
+      let step = 0;
+      const next = /^(?:(?:ok(?:ay)?[, ]*|and )?(?:what(?:'s| is)? )?(?:comes? )?next(?: step)?|then what|go on|continue)$/.test(q);
+      const hints = item.partHints || {};
+      const authoredIndex = (item.answers || []).findIndex(a => new RegExp(a.match, "i").test(q));
+      const detail = /\b(?:why|what (?:is|does)|how fast|how much|units?|differentiat\w*|equation)\b/.test(q);
+      const starter = /\bhint\b/.test(q) || (startPattern.test(q) && !detail) ||
+        (ref && !remainder.replace(/[.,;:!?]/g, "") && !part);
+      if (part && !hints[part]) {
+        supported = false;
+        answer.append(element("p", topic.title + " has no part (" + part + "). " +
+          (Object.keys(hints).length ? "Choose " + Object.keys(hints).map(p => "(" + p + ")").join(" or ") + "." : "Ask about its setup or rate equation.")));
+      } else if (starter) {
+        authored(part ? item[part] : item.starterHtml);
+        step = topic.steps.length ? 1 : 0;
+        if (part) step = topic.parts.get(part)?.step || step;
+      } else if (definition) {
+        excerpt(topics.get("the-three-steps").node.querySelectorAll(":scope > p")[1]);
+      } else if (part && topic.parts.has(part)) {
+        const hit = topic.parts.get(part);
+        step = hit.step;
+        excerpt(hit.paragraph);
+      } else if (next || /\bstep\s*[123]\b/.test(q)) {
+        step = next ? Math.min(previous + 1, 3) : Number(q.match(/\bstep\s*([123])\b/)[1]);
+        showStep(topic, step);
+      } else if (authoredIndex >= 0) {
+        authored(item["answer" + authoredIndex]);
+        step = item.answers[authoredIndex].step;
       } else if (new RegExp(item.help.match, "i").test(q)) {
-        const para = element("p");
-        para.innerHTML = item.answerHtml; // Only pre-rendered instructor math enters HTML.
-        answer.append(para);
-        target = topic.steps[item.help.step - 1] || topic.node;
+        authored(item.answerHtml);
+        step = item.help.step;
       } else {
-        const setup = /get started|where.*start|how.*start|set.?up|givens?|sketch|draw|label|hint|first step/;
+        const setup = /what (?:is|does).*d[a-z]\s*\/\s*dt|set.?up|givens?|given rate|sketch|draw|label|what.*(?:finding|find|asked)|what.*(?:stand for|represent)|what does.*mean/;
         const relation = /differentiat|chain rule|product rule|equation|relate the rates|relation|formula/;
         const values = /negative|positive|sign\b|increas|decreas|how fast|speed|plug|substitut|numerical|how (?:quickly|rapidly)/;
-        let step = setup.test(q) ? 1 : relation.test(q) ? 2 : values.test(q) ? 3 : 0;
+        step = setup.test(q) ? 1 : relation.test(q) ? 2 : values.test(q) ? 3 : 0;
         if (key === "the-three-steps" && /three steps/.test(q)) {
-          excerpt(general.node.querySelector(".rr-method ol"));
-        } else if (key === "the-three-steps" && step) {
-          const line = general.node.querySelectorAll(".rr-method li")[step - 1];
-          const p = element("p");
-          for (const child of line.childNodes) p.append(child.cloneNode(true));
-          answer.append(p);
-        } else if (step && topic.steps[step - 1]) {
-          target = topic.steps[step - 1];
-          let part = target.closest("p").nextElementSibling;
-          const subpart = /part\s*\(?([abc])\b/.exec(q)?.[1] ||
-            (key === "ladder" && /negative|downward|slides? down/.test(q) ? "a" : "");
-          while (part?.tagName === "P" && !part.querySelector(".rr-step-label")) {
-            const marker = /^\(([abc])\)/.exec(part.textContent.trim());
-            if (!marker || !subpart || marker[1] === subpart) excerpt(part);
-            part = part.nextElementSibling;
-          }
+          excerpt(topic.node.querySelector(".rr-method ol"));
+        } else if (step && (topic.steps.length || key === "the-three-steps")) {
+          showStep(topic, step);
         } else {
           supported = false;
-          answer.append(element("p", "I couldn’t find an answer to that in §4.1. Name the example and the step you’re asking about, or try this question."));
-          const sample = element("button", item.help.question);
-          sample.type = "button";
-          sample.className = "rr-sample";
-          sample.addEventListener("click", () => show(item.help.question, key));
-          answer.append(sample);
+          answer.append(element("p", "I couldn’t match that to a worked step. Try naming the example or asking about its equation."));
+          action(item.help.question, () => show(item.help.question, key));
         }
       }
       if (supported) {
-        cite(topic, target);
+        activeStep = step;
+        cite(topic, topic.steps[step - 1] || topic.node);
+        if (starter && !part && Object.keys(hints).length) {
+          for (const letter of Object.keys(hints)) action("Hint for (" + letter + ")", () => show("Hint for part (" + letter + ")", key));
+        } else if (step && step < 3 && topic.steps.length) {
+          action("Next step", () => show("Next step", key));
+        }
         if (!attempts.has(key)) attempts.set(key, practicePanel(key));
         answer.append(attempts.get(key));
       }
       if (endpoint) {
-        const live = element("button", "Ask the course AI");
-        live.type = "button";
-        live.addEventListener("click", () => {
-          popup.close();
-          document.dispatchEvent(new CustomEvent("course-tutor-question", {detail: {question, section: key}}));
+        action("Ask the course AI", () => {
+          hidePanel();
+          document.dispatchEvent(new CustomEvent("course-tutor-question", {detail: {question, section:key}}));
         });
-        answer.append(live);
       }
+      present();
+    }
+
+    function showStep(topic, step) {
+      const blocks = topic.paragraphs[step - 1];
+      if (blocks?.length) {
+        for (const p of blocks) excerpt(p);
+      } else if (topic.node.id === "the-three-steps") {
+        const row = topic.node.querySelectorAll(".rr-method li")[step - 1];
+        const p = element("p");
+        for (const node of row.childNodes) p.append(node.cloneNode(true));
+        answer.append(p);
+      } else {
+        authored(checks[topic.node.id].starterHtml);
+      }
+    }
+
+    function present() {
       follow.field.value = "";
-      if (!popup.open) popup.showModal();
-      popup.scrollTop = 0;
-      title.focus({preventScroll: true});
+      if (!popup.open) popup.show();
+      thread.scrollTop = 0;
+      title.focus({preventScroll:true});
       if (window.MathJax?.typesetPromise && answer.querySelector(".math:not(:has(math, mjx-container))")) {
         window.MathJax.typesetPromise([answer]).catch(() => {});
       }
     }
 
     const first = questionForm("Your question", "Why can’t I plug in 6 first?", q => show(q, currentReading()));
-    const follow = questionForm("Ask a follow-up", "What is still unclear?", q => show(q, activeTopic));
+    const follow = questionForm("Ask a follow-up", "What is still unclear?", q => show(q, activeTopic || currentReading()));
     box.append(trigger, first.form);
     popup.append(bar, thread, follow.form);
     document.body.append(box, popup);
-    box.addEventListener("toggle", () => { if (box.open && !popup.open) first.field.focus({preventScroll: true}); });
-    popup.addEventListener("click", event => {
-      if (event.target !== popup) return;
-      const r = popup.getBoundingClientRect();
-      if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) popup.close();
+    function hidePanel() {
+      popup.close();
+      box.open = false;
+      minimized = true;
+      trigger.textContent = "Resume help";
+      trigger.focus({preventScroll:true});
+    }
+    box.addEventListener("toggle", () => {
+      if (!box.open || popup.open) return;
+      if (minimized) {
+        minimized = false;
+        popup.show();
+        title.focus({preventScroll:true});
+      } else first.field.focus({preventScroll:true});
     });
-    box.addEventListener("keydown", event => {
-      if (event.key === "Escape") { box.open = false; trigger.focus(); }
+    popup.addEventListener("keydown", e => {
+      if (e.key === "Escape") { e.preventDefault(); hidePanel(); }
+    });
+    box.addEventListener("keydown", e => {
+      if (e.key === "Escape") { box.open = false; trigger.focus(); }
     });
   });
 })();

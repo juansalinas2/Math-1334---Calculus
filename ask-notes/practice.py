@@ -9,6 +9,52 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 
 
+# Shared syntax for references typed by students. The index itself comes from the
+# published headings, so moving an example does not require a second lookup table.
+WORDS = "zero one two three four five six seven eight nine ten eleven twelve".split()
+NUMBER = r"(\d+|" + "|".join(WORDS) + r")"
+REFERENCE = (r"(?:\b(example|ex\.?|practice(?:\s+problem)?|exercise|problem|question)"
+             r"\s*(?:(?:number|no\.)\s*)?#?\s*|#\s*)" + NUMBER +
+             r"(?:\s*\(([a-z])\)|([a-z])\b)?(?![a-z0-9])")
+START = (r"\b(?:stuck|lost|confused|hint|start(?:ed|ing)?|begin|first step|"
+         r"walk me through|help|don't (?:get|understand)|"
+         r"do not (?:get|understand))\b")
+ALIASES = {
+    "parabola": r"\bparabol",
+    "circle": r"\bcirc(?:le|ular)",
+    "constant-product": r"constant product|\bxy\b",
+    "balloon": r"\bballoon|\bsphere",
+    "cube": r"\bcube\b",
+    "rectangle": r"\brectang",
+    "triangle": r"\btriangle\b|\bbase and height\b",
+    "ladder": r"\bladder\b",
+    "boat": r"\bboat\b|\brope\b|\bdock\b",
+    "cone": r"\bcone\b|\bconical\b|\btank\b",
+    "shadow": r"\bshadow\b|\blamppost\b",
+    "similar-triangles": r"similar triangles|scaling factor",
+    "the-three-steps": r"three steps|what (?:are|is) (?:a |the )?related.?rates?",
+}
+PART = r"(?:\bpart\s*\(?([a-z])\b|\(([abc])\)|^\s*([a-z])\s*[?.!]?$)"
+
+
+def reference_matches(question, book):
+    found = re.search(REFERENCE, question, re.I)
+    if not found:
+        return None
+    kind, number, suffix, letter = found.groups()
+    number = number.lower()
+    number = str(WORDS.index(number)) if number in WORDS else str(int(number))
+    kind = (kind or "").lower()
+    family = ("practice" if kind.startswith(("practice", "exercise")) else
+              "example" if kind.startswith("ex") else None)
+    keys = []
+    for key, passage in book.items():
+        heading = re.match(r"(example|practice)\s+(\d+)\b", passage["title"], re.I)
+        if heading and heading[2] == number and (family is None or family == heading[1].lower()):
+            keys.append(key)
+    return found, keys, (suffix or letter or "").lower()
+
+
 @lru_cache()
 def checks():
     items = json.loads((HERE / "checks.json").read_text())
@@ -25,12 +71,19 @@ def checks():
 def browser_script():
     # Render only the authored explanations at build time. Student inputs never enter HTML.
     items = checks()
-    paragraphs = "\n\n".join(item["help"]["explanation"] for item in items.values())
+    fields = [(key, field, text) for key, item in items.items()
+              for field, text in {"answerHtml": item["help"]["explanation"], "starterHtml": item["starter"],
+                                  **item.get("partHints", {}),
+                                  **{f"answer{i}": v["text"] for i, v in enumerate(item.get("answers", []))}}.items()]
+    paragraphs = "\n\n".join(text for _, _, text in fields)
     result = subprocess.run(["quarto", "pandoc", "-f", "markdown+tex_math_single_backslash-raw_html",
                              "-t", "html5", "--mathml", "--wrap=none"], input=paragraphs,
                             text=True, capture_output=True, check=True)
     rendered = re.findall(r"<p>(.*?)</p>", result.stdout, re.S)
-    catalog = {key: {**item, "answerHtml": paragraph} for (key, item), paragraph
-               in zip(items.items(), rendered, strict=True)}
+    catalog = {key: dict(item) for key, item in items.items()}
+    for (key, field, _), paragraph in zip(fields, rendered, strict=True):
+        catalog[key][field] = paragraph
     data = json.dumps(catalog, ensure_ascii=False).replace("<", r"\u003c")
-    return (HERE / "practice.js").read_text().replace("/* COURSE_CHECKS */ null", data)
+    routing = json.dumps({"ref": REFERENCE, "words": WORDS, "start": START, "part": PART, "aliases": ALIASES})
+    return (HERE / "practice.js").read_text().replace("/* COURSE_CHECKS */ null", data).replace(
+        "/* COURSE_ROUTING */ null", routing)
