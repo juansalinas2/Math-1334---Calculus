@@ -10,3 +10,4 @@
 
 .note-example { margin: 1.1rem 0; }
 .note-example img { display: block; width: auto; max-width: 100%; height: auto; max-height: 24rem; margin: .7rem auto; object-fit: contain; }
+.note-example img[src$=".svg"] { width: 100%; }

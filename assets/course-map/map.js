@@ -16,6 +16,7 @@ const maxZoom = 3.6;
 let selected = null;
 let selectedPart = null;
 let family = "all";
+let entryFamily = "all";
 let cameraMode = "overview";
 let cameraWidth = 0;
 let cameraHeight = 0;
@@ -70,7 +71,10 @@ function setReading(open, jump = false) {
   const example = byId("detail-body").querySelector(".note-example");
   toggle.setAttribute("aria-expanded", String(open));
   toggle.textContent = open ? "Back to map" : example ? "Read example" : "Read note";
-  if (open && jump && example) example.scrollIntoView({block: "start"});
+  if (open && jump && example) {
+    const margin = byId("reader-tools").offsetHeight + 8;
+    reader.scrollTop += example.getBoundingClientRect().top - reader.getBoundingClientRect().top - margin;
+  }
   else { reader.scrollTop = 0; detail.scrollTop = 0; }
 }
 byId("sheet-toggle").onclick = () => setReading(!detail.classList.contains("reading"), true);
@@ -187,7 +191,7 @@ const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
   .on("end", event => {
     gesturing = false;
     if (event.sourceEvent && selected && event.transform.k < 1) {
-      overview(byTopic.get(selected).family, true);
+      overview(entryFamily, true);
     }
     rememberView();
   });
@@ -261,6 +265,7 @@ function showTopic(id, slug = null, fromLocation = false) {
   if (!topic) return;
   const part = topic.parts.find((item) => partSlug(item) === slug || item.oldSlugs?.includes(slug));
   const sameTopic = selected === id;
+  if (!selected) entryFamily = family;
   rememberView();
   selected = id;
   selectedPart = part ? partSlug(part) : null;
@@ -278,6 +283,7 @@ function showTopic(id, slug = null, fromLocation = false) {
   detail.style.setProperty("--accent", families[topic.family].color);
   const body = byId("detail-body");
   const note = part || topic;
+  byId("reader-label").textContent = note.title;
   const heading = el("h2", note.title);
   heading.tabIndex = -1;
   const context = families[topic.family].label + (note.kind ? " · " + note.kind : "");
@@ -384,7 +390,7 @@ function scaleBy(factor) {
   zoomAnchor = null;
   cameraMode = "manual";
   svg.call(zoom.scaleBy, factor);
-  if (selected && d3.zoomTransform(viewport).k < 1) overview(byTopic.get(selected).family, true);
+  if (selected && d3.zoomTransform(viewport).k < 1) overview(entryFamily, true);
 }
 zoomIn.onclick = () => scaleBy(1.35);
 zoomOut.onclick = () => scaleBy(1 / 1.35);
