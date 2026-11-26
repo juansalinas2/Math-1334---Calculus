@@ -8,9 +8,9 @@ css: assets/homepage.css
 ::: {.course-home}
 [Begin with Chapter 1](lectures/01-introduction.qmd){.home-start-link} · [Download the lecture notes (PDF)](downloads/math-1334-calculus-lecture-notes.pdf)
 
-## Exam review {.unnumbered}
+## Latest class {.unnumbered}
 
-[Exam 3 review](lectures/exam-3-review.qmd) ([worksheet PDF](downloads/exam-3-review-worksheet.pdf)) · [Exam 2 review](lectures/exam-2-review.qmd)
+[Exam 3 review](lectures/exam-3-review.qmd)
 
 ## Reference {.unnumbered}
 
