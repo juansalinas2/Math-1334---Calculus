@@ -8,6 +8,7 @@
   let cleared = 0, total = 0, camera = 0, active = null, frameId = 0;
   let blocked = [], aiming = -1;
   let difficulty = "medium";
+  let celebrating = false;
   scene.classList.add("runner-scene");
   scene.setAttribute("viewBox", "0 0 600 210");
   scene.innerHTML = `
@@ -20,6 +21,13 @@
       <g id="run-star"><path class="runner-spark" d="m0-8 2.5 5.2 5.9.8-4.3 4.3.9 6L0 5.5-5.4 8.3l1-6L-8.6-2l6.1-.8z" fill="#f8cd68"/><path d="m-2.4-1 .9-2" fill="none" stroke="#fff8da" stroke-width="1.6"/></g>
       <g id="run-birds" fill="none" stroke="#50665c" stroke-width="1.3"><path d="M0 3q4-3 8 2 2-5 7-5m10 6q3-2 6 1 2-3 5-3"/></g>
       <linearGradient id="lava-sky" x2="0" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#24182c"/><stop offset=".62" stop-color="#7e3542"/><stop offset="1" stop-color="#e9834e"/></linearGradient>
+      <linearGradient id="ash-sky" x2="0" y2="1"><stop stop-color="#241327"/><stop offset=".48" stop-color="#80283c"/><stop offset="1" stop-color="#f67338"/></linearGradient>
+      <radialGradient id="sun-fire" cx=".4" cy=".38" r=".7"><stop stop-color="#ffe99b"/><stop offset=".66" stop-color="#ffae4f"/><stop offset="1" stop-color="#ed5836"/></radialGradient>
+      <g id="eruption-jet">
+        <path d="M-14 1q4-13-7-23 11 4 15 12-2-19-8-31 11 7 15 23 2-18 12-33-3 16-4 31 6-8 17-14-10 14-12 32z" fill="#f86636"/>
+        <path d="M-7 1q1-8-4-17 7 4 10 11l3-20 2 19 8-8-5 15z" fill="#ffd275"/>
+      </g>
+      <g id="eruption-cinders" fill="#ffc178"><path d="m-20-26-4-6 5 4zm31-10 4-8 1 6zm14 8 5-4-2 5zm-32-17-3-6 4 3z"/><circle cx="5" cy="-43" r="1.4"/></g>
       <g id="run-crater">
         <path d="M0 166 58 121 102 113 165 44 180 50 196 43 257 109 284 122 343 166Z" fill="#502a3b"/>
         <path d="m165 44 15 6 16-7 12 13-16-6-3 16-10 11-2 15-7 12 3-25 10-15-1-9-13-5z" fill="#ffad55"/>
@@ -30,6 +38,20 @@
     </defs>
     <rect width="600" height="210" fill="var(--r-paper)"/>
     <rect width="600" height="210" fill="url(#run-grid)"/>
+    <g class="runner-eclipse">
+      <rect width="600" height="210" fill="url(#ash-sky)"/>
+      <g transform="translate(494 53)">
+        <path d="m0-42 5 10 9-7 1 10 12-4-2 10 12-1-6 8 11 6-12 3 7 10-12-1 2 11-10-5-2 11-8-8-7 11-5-12-10 6 1-11-12 2 5-9-11-4 10-6-10-7 12-2-4-11 10 4 2-11 8 8z" fill="#fc7744"/>
+        <circle r="31" fill="url(#sun-fire)" stroke="#601f34" stroke-width="2"/>
+        <g class="eclipse-eyes" fill="#391c31">
+          <path d="M-23-12q11 1 21 10-10 5-18-1zM23-12Q12-11 2-2q10 5 18-1z"/>
+          <path d="m-12-5 4 2-3 1zm24 0-4 2 3 1z" fill="#fff4bc"/>
+        </g>
+        <path d="m-1-3-3 9 6-1" fill="none" stroke="#ad4b3d" stroke-width="2"/>
+        <path d="M-19 7q17 11 38-1-5 19-18 18T-19 7z" fill="#451b2c"/>
+        <path d="m-13 11 6 2-1 6zm20 2 7-3-5 9zm-7 9 3-4 2 5z" fill="#fff0b8"/>
+      </g>
+    </g>
     <g id="run-far"></g><g id="run-near"></g>
     <path d="M0 196q108-3 215 0t191 0 194-1v15H0z" fill="var(--r-wash)"/>
     <g id="run-world"></g>
@@ -49,7 +71,7 @@
         <g id="run-head">
           <path d="M-7-43q-3-11 7-14 10-2 15 7 3 9-7 13-9 3-15-6z" fill="#fff1cd" stroke="var(--r-ink)" stroke-width="2.8"/>
           <path d="m-1-57-3-5 6 3 3-3 2 4" fill="none" stroke="var(--r-ink)" stroke-width="1.9"/>
-          <path d="m5-50 .3 1.3m6-1.7 .2 1.3" stroke="var(--r-ink)" stroke-width="2"/>
+          <path id="run-eyes" d="m5-50 .3 1.3m6-1.7 .2 1.3" fill="none" stroke="var(--r-ink)" stroke-width="2"/>
           <path id="run-mouth" d="M5-44q3 2 6-.5" stroke="var(--r-ink)" stroke-width="1.4" fill="none"/>
           <g class="chicken-hat" stroke="#51382f" stroke-width="1.4">
             <path d="M-3-64q-5-6-2-8 3-1 5 4 0-8 4-7 3 1 2 7 5-5 7-2 1 3-6 7" fill="#e65a49"/>
@@ -69,6 +91,7 @@
   const legBack = get("leg-back"), legFront = get("leg-front");
   const armBack = get("arm-back"), armFront = get("arm-front");
   const scarf = get("scarf"), head = get("head"), mouth = get("mouth");
+  const eyes = get("eyes");
   const choice = get("choice");
   const set = (el, attr, value) => el.setAttribute(attr, value);
   const transform = (el, val) => set(el, "transform", val);
@@ -79,8 +102,13 @@
     // Two repeat distances give the skyline a slower drift than the graph-paper hills.
     let horizon = "", hills = "";
     for (let i = -1; i <= 2; i++) {
-      if (difficulty === "hard") {
-        horizon += `<g transform="translate(${i*600})"><rect width="601" height="210" fill="url(#lava-sky)"/><circle cx="486" cy="48" r="25" fill="#ffac6a"/><use href="#run-crater" transform="translate(-38 3)"/><use href="#run-crater" transform="translate(270 18) scale(.95)"/></g>`;
+      if (difficulty === "hard" || difficulty === "insane") {
+        const sky = difficulty === "hard" ? '<rect width="601" height="210" fill="url(#lava-sky)"/><circle cx="486" cy="48" r="25" fill="#ffac6a"/>' : "";
+        const cones = ["translate(-38 3)", "translate(270 18) scale(.95)"].map((place,j) => {
+          const eruption = difficulty === "insane" ? `<g transform="translate(180 47)" class="crater-vent vent-${j}"><use class="lava-jet" href="#eruption-jet"/><use class="lava-cinders" href="#eruption-cinders"/></g>` : "";
+          return `<g transform="${place}">${eruption}<use href="#run-crater"/></g>`;
+        }).join("");
+        horizon += `<g transform="translate(${i*600})">${sky}${cones}</g>`;
         hills += `<g transform="translate(${i*510})"><path d="m0 141 48-23 13-27 15 19 8-8 24 27 47-6 32-22 12-31 8 24 19 4 5 19 39 18 40-6 29-21 21 9 54-23 20 26 66 21v58H0z" fill="#3b2735"/><path d="m73 126 24 13 43 1m60-36 3 14 13 4m118 17 21-11" fill="none" stroke="#8d4d4d" stroke-width="1.7"/></g>`;
         continue;
       }
@@ -126,7 +154,7 @@
         <path d="M${left+5} 172h${right-left-12}l-4 13q-38-8-72-1t-65 0-61 3z" fill="url(#run-hatch)" opacity=".85"/>
         <path d="m-26 184 9 2 11-3m83-12 10 1 5-2m48 16 7-3" class="runner-contour"/>
         <path d="m52 156 2-3 3 3m64 0 2-4 2 3 2-2 1 3" class="runner-pencil"/>
-        ${difficulty === "hard" && !solid ? '<path d="M180 190q12-7 30-2t39-1v23h-69z" fill="#ffa346"/><path d="M184 192q10-5 24-2t30 0" fill="none" stroke="#ffe49a" stroke-width="2"/><use href="#run-flame" transform="translate(218 190) scale(.68)"/>' : ''}
+        ${(difficulty === "hard" || difficulty === "insane") && !solid ? '<path d="M180 190q12-7 30-2t39-1v23h-69z" fill="#ffa346"/><path d="M184 192q10-5 24-2t30 0" fill="none" stroke="#ffe49a" stroke-width="2"/><use href="#run-flame" transform="translate(218 190) scale(.68)"/>' : ''}
         ${i>=0 && !solid ? obstacle(i) : ''}
         ${i>=0 && !solid ? '<g data-star-at="'+i+'" transform="translate(216 74)"><use href="#run-star"/></g>' : ''}
         ${i>=0 && (i===0 || (i>0 && i%3===0 && !solid) || i===total) ? flag(i===total && total>0 ? 109 : 36,i===total && total>0) : ''}
@@ -167,10 +195,12 @@
   }
   function stage(done, length) {
     if (frameId) cancelAnimationFrame(frameId);
-    active=null; frameId=0; cleared=Math.max(0,Math.trunc(done||0)); total=Math.max(0,Math.trunc(length||0));
+    active=null; celebrating=false; frameId=0; cleared=Math.max(0,Math.trunc(done||0)); total=Math.max(0,Math.trunc(length||0));
+    set(eyes,"d","m5-50 .3 1.3m6-1.7 .2 1.3");
+    set(mouth,"fill","none");
     blocked=[]; aim(-1);
     set(scene,"data-chapter",total?Math.min(2,Math.floor(cleared/total*3)):0);
-    const character = difficulty === "easy" ? "Runner in a chicken hat" : difficulty === "hard" ? "Runner on a volcanic course" : "Stick figure on the course";
+    const character = ({easy:"Runner in a chicken hat", hard:"Runner on a volcanic course", insane:"Runner beneath an angry sun and erupting volcanoes"})[difficulty] || "Stick figure on the course";
     set(scene,"aria-label",total ? `${character}, ${cleared} of ${total} hurdles cleared.` : "A stick figure waits at the starting flag.");
     setTerrain(); cameraAt(cleared*stride); fx.replaceChildren(); pose(startX,floor);
   }
@@ -193,6 +223,35 @@
       confetti.push(`<path d="M-1-2l2 4" transform="translate(${px} ${py}) rotate(${i*37+t*119})" stroke="${color}" stroke-width="3"/>`);
     }
     fx.innerHTML=confetti.join("");
+  }
+  function victoryPose(t) {
+    // Bring the finish banner into the center as the runner makes three happy hops.
+    const pan = clamp(t/.42), eased = pan*pan*(3-2*pan);
+    const x = startX+120*eased;
+    cameraAt(total*stride-120*eased);
+    const hop = Math.abs(Math.sin(Math.PI*3*t));
+    pose(x, floor-32*hop, {lift:hop, jump:.40*hop, angle:-3*hop, cheer:true});
+    set(mouth,"d","M2-45q5 2 11-1-1 7-6 7-4 0-5-6z");
+  }
+  function celebrate() {
+    if (active || celebrating || !total || cleared+1 < total) return;
+    celebrating=true;
+    set(scene,"aria-label",`All ${total} hurdles cleared. The runner jumps for joy under a shower of confetti!`);
+    set(eyes,"d","m2-50q2-3 4 0m3-.5q2-3 4-.5");
+    set(mouth,"fill","var(--r-ink)");
+    const colors=["#ffbf53","#e26457","#5aa8a3","#e5d4f3","#fff2b4"];
+    fx.innerHTML=Array.from({length:34},(_,i)=>{
+      const x=22+(i*149)%553, y=13+(i*i*17+i*37)%96;
+      const shape=i%4===0 ? "m-3-2q4-2 3 1t3 2" : "m-2-1 4 2";
+      return `<g transform="translate(${x} ${y})"><g class="victory-paper" style="--delay:${i%7*45}ms"><path transform="rotate(${i*37%180})" d="${shape}" fill="none" stroke="${colors[i%5]}" stroke-width="${2+i%3}"/></g></g>`;
+    }).join("");
+    const start=performance.now();
+    function tick(now) {
+      const t=reducedMotion.matches || document.hidden ? 1 : clamp((now-start)/2350);
+      victoryPose(t);
+      frameId=t<1 ? requestAnimationFrame(tick) : 0;
+    }
+    tick(start);
   }
   function drawFrame(t) {
     const {hit,star}=active, smooth=t*t*(3-2*t);
@@ -226,7 +285,7 @@
     drawFrame(1);
     const {hit,finish}=active;
     active=null; frameId=0;
-    set(scene,"aria-label",hit ? `Hurdle cleared. ${cleared+1} of ${total} complete.` : difficulty === "hard" ? "The runner misses the volcanic ledge." : "The runner tumbles into the paper gap.");
+    set(scene,"aria-label",hit ? `Hurdle cleared. ${cleared+1} of ${total} complete.` : ["hard","insane"].includes(difficulty) ? "The runner misses the volcanic ledge." : "The runner tumbles into the paper gap.");
     finish();
   }
   function travel(index, hit, finish) {
@@ -242,7 +301,11 @@
     }
     tick(started);
   }
-  document.addEventListener("visibilitychange",() => { if (document.hidden) settle(); });
+  document.addEventListener("visibilitychange",() => {
+    if (!document.hidden) return;
+    settle();
+    if (celebrating && frameId) { cancelAnimationFrame(frameId); frameId=0; victoryPose(1); }
+  });
   backdrop();
   function setDifficulty(value) {
     if (value === difficulty) return;
@@ -250,6 +313,6 @@
     set(scene,"data-difficulty",value);
     backdrop();stage(cleared,total);
   }
-  window.junctionRunner = {reset:length=>stage(0,length),stage,travel,aim,close,difficulty:setDifficulty};
+  window.junctionRunner = {reset:length=>stage(0,length),stage,travel,aim,close,celebrate,difficulty:setDifficulty};
   stage(0,0);
 })();

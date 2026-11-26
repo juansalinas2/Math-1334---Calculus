@@ -1,0 +1,1136 @@
+[
+  {
+    "topic": "derivative",
+    "level": 3,
+    "prompt": "For \\(f(x)=\\sqrt{x+5}\\), what is the slope of the secant through inputs \\(4\\) and \\(4+h\\), before taking the limit? Assume \\(h\\ne0\\) and \\(4+h\\) is in the domain.",
+    "choices": [
+      "\\(\\dfrac1{\\sqrt{9+h}+3}\\)",
+      "\\(\\dfrac1{\\sqrt{9+h}-3}\\)",
+      "\\(\\dfrac h{\\sqrt{9+h}+3}\\)",
+      "\\(\\dfrac1{2\\sqrt{9+h}}\\)"
+    ],
+    "why": "Multiply \\((\\sqrt{9+h}-3)/h\\) by its conjugate over itself. The new numerator is \\(h\\), which cancels.",
+    "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 3,
+    "prompt": "For the lecture graph \\(f(x)=\\sqrt{x+5}\\), where does the tangent at \\(x=4\\) cross the horizontal axis?",
+    "choices": [
+      "\\((-14,0)\\)",
+      "\\((-18,0)\\)",
+      "\\((-2,0)\\)",
+      "\\((22,0)\\)"
+    ],
+    "why": "Rationalizing the difference quotient gives slope \\(1/6\\) at \\((4,3)\\). Set \\(0-3=(x-4)/6\\) and solve.",
+    "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 4,
+    "prompt": "A line through \\((4,3)\\) is tangent to \\(y=\\sqrt{x+5}\\) there. Which identity gives its exact vertical distance above the graph for a nearby input \\(4+h\\)?",
+    "choices": [
+      "\\(3+h/6-\\sqrt{9+h}=\\dfrac{h^2}{6(\\sqrt{9+h}+3)^2}\\)",
+      "\\(3+h/6-\\sqrt{9+h}=\\dfrac{h}{6(\\sqrt{9+h}+3)^2}\\)",
+      "\\(3+h/6-\\sqrt{9+h}=\\dfrac{h^2}{6(\\sqrt{9+h}+3)}\\)",
+      "\\(3+h/6-\\sqrt{9+h}=-\\dfrac{h^2}{6(\\sqrt{9+h}+3)^2}\\)"
+    ],
+    "why": "Write \\(\\sqrt{9+h}-3=h/(\\sqrt{9+h}+3)\\). Subtraction leaves \\(h(\\sqrt{9+h}-3)/[6(\\sqrt{9+h}+3)]\\). Rationalize once more.",
+    "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative2",
+    "level": 3,
+    "prompt": "Set \\(f(x)=(x+1)^2\\) for \\(x\\ne-1\\) but \\(f(-1)=1\\). What are the left and right limits, respectively, of the difference quotient defining \\(f'(-1)\\)?",
+    "choices": [
+      "\\(+\\infty,\\ -\\infty\\)",
+      "\\(-\\infty,\\ +\\infty\\)",
+      "\\(0,\\ 0\\)",
+      "\\(1,\\ 1\\)"
+    ],
+    "why": "For \\(h\\ne0\\) the quotient is \\((h^2-1)/h=h-1/h\\). Its one-sided limits have opposite signs.",
+    "source": "../lectures/10-derivative-function.html#practice",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative2",
+    "level": 3,
+    "prompt": "For \\(f(x)=\\sqrt{x+6}\\), use the tangent at \\(x=3\\) to estimate \\(f(3.12)\\). Which estimate and slope go together?",
+    "choices": [
+      "\\(3.02\\), slope \\(1/6\\)",
+      "\\(3.02\\), slope \\(1/3\\)",
+      "\\(3.12\\), slope \\(1\\)",
+      "\\(3.72\\), slope \\(6\\)"
+    ],
+    "why": "The point is \\((3,3)\\) and the derivative there is \\(1/6\\). The tangent predicts an increase of \\(0.12/6=0.02\\).",
+    "source": "../lectures/10-derivative-function.html#practice",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative2",
+    "level": 4,
+    "prompt": "Keep \\(f(x)=(x+1)^2\\) to the left of \\(-1\\). To the right, including \\(-1\\), use \\(f(x)=m(x+1)+b\\). Which pair makes \\(f\\) differentiable at \\(-1\\)?",
+    "choices": [
+      "\\(m=0,\\ b=0\\)",
+      "\\(m=0,\\ b=1\\)",
+      "\\(m=1,\\ b=0\\)",
+      "Any \\(m\\) with \\(b=0\\)"
+    ],
+    "why": "Continuity forces \\(b=0\\). The left difference quotient is \\(h\\), with limit zero, while the right quotient is \\(m\\). Matching slopes forces \\(m=0\\).",
+    "source": "../lectures/10-derivative-function.html#practice",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative",
+    "level": 3,
+    "prompt": "For \\(f(x)=3x-x^2\\), the secant over \\([a,a+h]\\) has slope \\(3-2a-h\\). At what input is the instantaneous slope equal to that secant slope?",
+    "choices": [
+      "\\(a+h/2\\)",
+      "\\(a-h/2\\)",
+      "\\(a+h\\)",
+      "\\(a+2h\\)"
+    ],
+    "why": "Differentiate to get \\(f'(c)=3-2c\\). Equating the two slopes gives \\(2c=2a+h\\).",
+    "source": "../lectures/10-derivative-function.html#section-3.2-the-derivative-function",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative",
+    "level": 4,
+    "prompt": "For \\(f(x)=3x-x^2\\), the tangent at \\(x=a\\) is measured again at \\(x=a+h\\). How much higher than the graph is the tangent there?",
+    "choices": [
+      "\\(h^2\\)",
+      "\\(2h^2\\)",
+      "\\((3-2a)h\\)",
+      "\\(-h^2\\)"
+    ],
+    "why": "Expand \\(f(a+h)=f(a)+(3-2a)h-h^2\\). The first two terms give the tangent height, so the difference is \\(h^2\\).",
+    "source": "../lectures/10-derivative-function.html#section-3.2-the-derivative-function",
+    "section": "3.2"
+  },
+  {
+    "topic": "motion",
+    "level": 3,
+    "prompt": "A particle has \\(s(t)=t^3-6t^2+9t+2\\) on \\([0,4]\\). On which open intervals does it speed up?",
+    "choices": [
+      "\\((1,2)\\cup(3,4)\\)",
+      "\\((0,1)\\cup(2,3)\\)",
+      "\\((1,3)\\)",
+      "\\((2,4)\\)"
+    ],
+    "why": "Velocity is \\(3(t-1)(t-3)\\) and acceleration is \\(6(t-2)\\). Their signs agree precisely on \\((1,2)\\) and \\((3,4)\\).",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 3,
+    "prompt": "For \\(s(t)=t^3-6t^2+9t+2\\), what happens as time passes through \\(t=2\\)?",
+    "choices": [
+      "Motion stays negative while speed changes from increasing to decreasing.",
+      "Motion reverses from negative to positive.",
+      "Motion stays positive while speed reaches a minimum.",
+      "The particle is momentarily at rest with nonzero acceleration."
+    ],
+    "why": "Velocity is \\(-3\\) at \\(t=2\\) and stays negative nearby. Acceleration changes from negative to positive, so speed has a local maximum.",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 4,
+    "prompt": "For \\(s(t)=t^3-6t^2+9t+2\\) meters on \\([0,4]\\), find total distance and displacement, respectively.",
+    "choices": [
+      "\\(12\\) m and \\(4\\) m",
+      "\\(4\\) m and \\(12\\) m",
+      "\\(8\\) m and \\(4\\) m",
+      "\\(12\\) m and \\(0\\) m"
+    ],
+    "why": "Velocity changes sign at \\(1,3\\). The successive positions are \\(2,6,2,6\\), so distance is \\(4+4+4\\) and displacement is \\(6-2\\).",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 3,
+    "prompt": "A ball has height \\(H(t)=96-16t-16t^2\\) feet until impact. What are its average velocity over the flight and its velocity just before impact, respectively?",
+    "choices": [
+      "\\(-48\\) ft/s and \\(-80\\) ft/s",
+      "\\(-80\\) ft/s and \\(-48\\) ft/s",
+      "\\(48\\) ft/s and \\(80\\) ft/s",
+      "\\(-32\\) ft/s and \\(-80\\) ft/s"
+    ],
+    "why": "The physical root of \\(H(t)=0\\) is \\(t=2\\). The secant slope is \\((0-96)/2=-48\\), and \\(H'(2)=-16-32(2)=-80\\).",
+    "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 3,
+    "prompt": "A car follows \\(s(t)=t^2-2t-3\\) feet for \\(t\\ge0\\). At which times, and with which velocities, does it pass position \\(-3\\) ft?",
+    "choices": [
+      "\\(t=0,2\\) with velocities \\(-2,2\\) ft/s",
+      "\\(t=0,2\\) with velocities \\(2,2\\) ft/s",
+      "\\(t=1\\) only, with velocity \\(0\\) ft/s",
+      "\\(t=3\\) only, with velocity \\(4\\) ft/s"
+    ],
+    "why": "Set \\(t^2-2t=0\\) to find both admissible times. Substituting each into \\(2t-2\\) gives opposite velocities.",
+    "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 4,
+    "prompt": "For the same flight model \\(H(t)=96-16t-16t^2\\), at what height is the downward speed exactly half its impact speed?",
+    "choices": [
+      "\\(75\\) ft",
+      "\\(48\\) ft",
+      "\\(64\\) ft",
+      "\\(80\\) ft"
+    ],
+    "why": "Impact occurs at \\(t=2\\), so the impact speed is \\(80\\). Solve \\(16+32t=40\\) to get \\(t=3/4\\). Then \\(H(3/4)=96-12-9=75\\).",
+    "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 3,
+    "prompt": "For \\(s(t)=-t^3+9t^2-24t+5\\) on \\([0,5]\\), when is the particle moving left and speeding up?",
+    "choices": [
+      "\\((4,5)\\)",
+      "\\((0,2)\\)",
+      "\\((2,3)\\)",
+      "\\((3,4)\\)"
+    ],
+    "why": "Moving left and speeding up requires both \\(v=-3(t-2)(t-4)<0\\) and \\(a=-6(t-3)<0\\). Only \\((4,5)\\) satisfies both.",
+    "source": "../lectures/12-rates-of-change.html#practice",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 3,
+    "prompt": "For \\(s(t)=-t^3+9t^2-24t+5\\) on \\([0,5]\\), which instants are reversals, and which instant changes acceleration sign without a reversal?",
+    "choices": [
+      "Reversals at \\(2,4\\); acceleration changes sign at \\(3\\).",
+      "Reversal at \\(3\\); acceleration changes sign at \\(2,4\\).",
+      "Reversals at \\(2,3,4\\); acceleration never changes sign.",
+      "Reversal at \\(4\\) only; acceleration changes sign at \\(2\\)."
+    ],
+    "why": "Velocity is \\(-3(t-2)(t-4)\\) and changes sign at both roots. Acceleration vanishes at \\(3\\), where velocity is positive.",
+    "source": "../lectures/12-rates-of-change.html#practice",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 4,
+    "prompt": "For \\(s(t)=-t^3+9t^2-24t+5\\) meters on \\([0,5]\\), what is average speed?",
+    "choices": [
+      "\\(28/5\\) m/s",
+      "\\(4\\) m/s",
+      "\\(-4\\) m/s",
+      "\\(24/5\\) m/s"
+    ],
+    "why": "At times \\(0,2,4,5\\) the positions are \\(5,-15,-11,-15\\). Total distance is \\(20+4+4=28\\) meters over five seconds.",
+    "source": "../lectures/12-rates-of-change.html#practice",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 4,
+    "prompt": "For \\(s(t)=t^3-6t^2+9t+2\\) on \\([0,4]\\), at which two times is the instantaneous velocity equal to the average velocity over the full interval?",
+    "choices": [
+      "\\(2\\pm2\\sqrt3/3\\)",
+      "\\(2\\pm\\sqrt3/3\\)",
+      "\\(1,3\\)",
+      "\\(2\\pm\\sqrt2\\)"
+    ],
+    "why": "Average velocity is \\((6-2)/4=1\\). Solve \\(3(t-2)^2-3=1\\) to obtain both times.",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4"
+  },
+  {
+    "topic": "derivative",
+    "level": 3,
+    "prompt": "For \\(f(x)=\\lvert x\\rvert\\), the secant joining \\(-h\\) to \\(h\\) has slope zero for every \\(h>0\\). Why does this fail to give \\(f'(0)=0\\)?",
+    "choices": [
+      "The secants from \\(0\\) to \\(h\\) and from \\(0\\) to \\(-h\\) have different limiting slopes.",
+      "The derivative is zero because all symmetric secants are horizontal.",
+      "The derivative is one because the graph lies above the horizontal axis.",
+      "The derivative fails because the function is discontinuous at zero."
+    ],
+    "why": "The derivative requires the difference quotient based at \\(0\\). It equals \\(1\\) on the right and \\(-1\\) on the left, while the symmetric quotient always compares equal heights.",
+    "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+    "section": "3.1"
+  },
+  {
+    "topic": "tangent",
+    "level": 4,
+    "prompt": "For the lecture parabola \\(f(x)=3x-x^2\\), which two lines through \\((0,1)\\) are tangent to the graph?",
+    "choices": [
+      "\\(y=x+1\\) and \\(y=5x+1\\)",
+      "\\(y=x+1\\) and \\(y=-x+1\\)",
+      "\\(y=2x+1\\) and \\(y=4x+1\\)",
+      "\\(y=3x+1\\) only"
+    ],
+    "why": "At \\(a\\) the slope is \\(3-2a\\). The tangent is \\(y=(3-2a)x+a^2\\). Its intercept is \\(1\\) when \\(a=\\pm1\\), giving slopes \\(1,5\\).",
+    "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 4,
+    "prompt": "A differentiable position function satisfies \\(s'(2)=-4\\). What is \\(\\lim_{h\\to0}[s(2+2h)-s(2-h)]/h\\)?",
+    "choices": [
+      "\\(-12\\)",
+      "\\(-4\\)",
+      "\\(-8\\)",
+      "\\(12\\)"
+    ],
+    "why": "Insert \\(s(2)\\) between the two terms. The forward increment divided by \\(h\\) tends to \\(2s'(2)\\), and the backward difference divided by \\(h\\) tends to \\(s'(2)\\). Add the limits.",
+    "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 3,
+    "prompt": "For the lecture function \\(f(x)=\\sqrt{x+5}\\), pick the value of \\(h\\ne0\\) for which the secant from \\(4\\) to \\(4+h\\) has slope \\(1/7\\).",
+    "choices": [
+      "\\(7\\)",
+      "\\(1\\)",
+      "\\(-5\\)",
+      "\\(13\\)"
+    ],
+    "why": "Rationalization gives the secant slope \\(1/(\\sqrt{9+h}+3)\\). Equate the denominator to \\(7\\) and solve \\(\\sqrt{9+h}=4\\).",
+    "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative2",
+    "level": 4,
+    "prompt": "For \\(f(x)=3x-x^2\\), evaluate \\([f(a+h)-2f(a)+f(a-h)]/h^2\\) for \\(h\\ne0\\).",
+    "choices": [
+      "\\(-2\\) for every \\(a,h\\).",
+      "\\(-2\\) only after taking \\(h\\to0\\).",
+      "\\(3-2a\\) for every \\(a,h\\).",
+      "\\(-1\\) for every \\(a,h\\)."
+    ],
+    "why": "The linear terms in \\(h\\) cancel when \\(f(a+h)\\) and \\(f(a-h)\\) are added. Each contributes \\(-h^2\\), leaving the exact quotient \\(-2\\).",
+    "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative",
+    "level": 3,
+    "prompt": "Suppose \\(f(1)=3\\) and \\(f'(1)=-2\\). Evaluate \\(\\lim_{h\\to0}[f(1+h)^2-9]/h\\).",
+    "choices": [
+      "\\(-12\\)",
+      "\\(-6\\)",
+      "\\(4\\)",
+      "\\(-2\\)"
+    ],
+    "why": "Factor the numerator into \\([f(1+h)-3][f(1+h)+3]\\). The first factor divided by \\(h\\) tends to \\(-2\\). Differentiability gives continuity, so the second tends to \\(6\\).",
+    "source": "../lectures/10-derivative-function.html#differentiability-implies-continuity",
+    "section": "3.2"
+  },
+  {
+    "topic": "motion",
+    "level": 3,
+    "prompt": "A car has \\(s(t)=t^2-2t-3\\) feet for \\(t\\ge0\\). Find its average velocity between passing the origin and reaching \\(s=5\\) ft.",
+    "choices": [
+      "\\(5\\) ft/s",
+      "\\(4\\) ft/s",
+      "\\(6\\) ft/s",
+      "\\(1\\) ft/s"
+    ],
+    "why": "The physical solutions of \\(s(t)=0\\) and \\(s(t)=5\\) are \\(3\\) and \\(4\\) seconds. The car changes position by \\(5\\) ft in \\(1\\) second.",
+    "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
+    "section": "3.4"
+  },
+  {
+    "topic": "tangent",
+    "level": 1,
+    "prompt": "For \\(f(x)=3x-x^2\\), what is the slope of the secant joining \\((1,2)\\) and \\((2,2)\\)?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(2\\)",
+      "\\(-1\\)"
+    ],
+    "why": "Both points are at height \\(2\\). The change in height divided by the change in input is zero.",
+    "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
+    "section": "3.1"
+  },
+  {
+    "topic": "tangent",
+    "level": 1,
+    "prompt": "A secant to \\(f(x)=3x-x^2\\) runs from \\(x=1\\) to \\(x=1.5\\). What horizontal change belongs in the denominator of its slope?",
+    "choices": [
+      "\\(0.5\\)",
+      "\\(1.5\\)",
+      "\\(2.5\\)",
+      "\\(-1.5\\)"
+    ],
+    "why": "Subtract the starting input from the ending input to get \\(1.5-1=0.5\\).",
+    "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
+    "section": "3.1"
+  },
+  {
+    "topic": "tangent",
+    "level": 2,
+    "prompt": "For \\(f(x)=3x-x^2\\), which expression gives the secant slope between \\(1\\) and a different input \\(x\\)?",
+    "choices": [
+      "\\(2-x\\)",
+      "\\(x-2\\)",
+      "\\(3-x\\)",
+      "\\(3-2x\\)"
+    ],
+    "why": "Factor \\(3x-x^2-2=-(x-1)(x-2)\\), then divide by \\(x-1\\).",
+    "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 1,
+    "prompt": "The graph of \\(f(x)=mx+b\\) has what instantaneous slope at \\(x=2\\)?",
+    "choices": [
+      "\\(m\\)",
+      "\\(b\\)",
+      "\\(2m+b\\)",
+      "\\(2m\\)"
+    ],
+    "why": "The slope of a line is constant. Its difference quotient is \\(mh/h=m\\) for \\(h\\ne0\\).",
+    "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 1,
+    "prompt": "For \\(f(x)=\\sqrt{x+5}\\), what point on the graph do you use when forming the tangent at \\(x=4\\)?",
+    "choices": [
+      "\\((4,3)\\)",
+      "\\((3,4)\\)",
+      "\\((4,9)\\)",
+      "\\((4,2)\\)"
+    ],
+    "why": "Evaluate \\(f(4)=\\sqrt9=3\\) and put the input first in the ordered pair.",
+    "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 2,
+    "prompt": "For \\(f(x)=\\lvert x\\rvert\\), what are the right-hand and left-hand slopes at zero, in that order?",
+    "choices": [
+      "\\(1,-1\\)",
+      "\\(-1,1\\)",
+      "\\(0,0\\)",
+      "\\(1,1\\)"
+    ],
+    "why": "For \\(h>0\\), \\(\\lvert h\\rvert/h=1\\). For \\(h<0\\), \\(\\lvert h\\rvert/h=-1\\).",
+    "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative2",
+    "level": 1,
+    "prompt": "The first derivative of \\(f(x)=3x-x^2\\) is \\(3-2x\\). What is \\(f''(x)\\)?",
+    "choices": [
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(-2x\\)",
+      "\\(0\\)"
+    ],
+    "why": "The constant \\(3\\) differentiates to zero and the derivative of \\(-2x\\) is \\(-2\\).",
+    "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative2",
+    "level": 1,
+    "prompt": "For \\(f(x)=3x-x^2\\), which is its third derivative?",
+    "choices": [
+      "\\(0\\)",
+      "\\(-2\\)",
+      "\\(3-2x\\)",
+      "\\(-2x\\)"
+    ],
+    "why": "Its second derivative is the constant \\(-2\\). The derivative of a constant is zero.",
+    "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative2",
+    "level": 2,
+    "prompt": "For \\(f(x)=3x-x^2\\), at which input does the graph have horizontal tangent line \\(y=9/4\\)?",
+    "choices": [
+      "\\(3/2\\)",
+      "\\(-3/2\\)",
+      "\\(9/4\\)",
+      "\\(3\\)"
+    ],
+    "why": "Set \\(3-2x=0\\), which gives \\(x=3/2\\). Substitution into the original function gives \\(9/2-9/4=9/4\\).",
+    "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative2",
+    "level": 1,
+    "prompt": "If \\(y=f(x)\\), which notation means the same thing as \\(f'''(x)\\)?",
+    "choices": [
+      "\\(d^3y/dx^3\\)",
+      "\\((dy/dx)^3\\)",
+      "\\(dy/d(x^3)\\)",
+      "\\(3\\,dy/dx\\)"
+    ],
+    "why": "The superscripts in the third derivative notation count differentiations with respect to \\(x\\).",
+    "source": "../lectures/10-derivative-function.html#notation",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative",
+    "level": 2,
+    "prompt": "In \\(\\lim_{h\\to0}[(1+h)^2-1]/h\\), if \\(f(x)=x^2\\), which input and derivative value does the quotient describe?",
+    "choices": [
+      "\\(a=1\\) and \\(f'(a)=2\\)",
+      "\\(a=0\\) and \\(f'(a)=1\\)",
+      "\\(a=2\\) and \\(f'(a)=1\\)",
+      "\\(a=1\\) and \\(f'(a)=0\\)"
+    ],
+    "why": "The numerator is \\(f(1+h)-f(1)\\). Expanding gives \\(2h+h^2\\), so the quotient tends to \\(2\\).",
+    "source": "../lectures/10-derivative-function.html#practice",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative",
+    "level": 2,
+    "prompt": "For \\(f(x)=\\sqrt{x+6}\\), which line is tangent to the graph at \\(x=3\\)?",
+    "choices": [
+      "\\(y=x/6+5/2\\)",
+      "\\(y=x/3+2\\)",
+      "\\(y=6x-15\\)",
+      "\\(y=x/6+3\\)"
+    ],
+    "why": "The point is \\((3,3)\\) and rationalizing the difference quotient gives slope \\(1/6\\). Expand \\(y-3=(x-3)/6\\).",
+    "source": "../lectures/10-derivative-function.html#practice",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative",
+    "level": 2,
+    "prompt": "A function equals \\((x+1)^2\\) except that \\(f(-1)=1\\). What makes it discontinuous at \\(-1\\)?",
+    "choices": [
+      "The limit is \\(0\\) and the function value is \\(1\\).",
+      "The limit is \\(1\\) and the function value is \\(0\\).",
+      "The left limit is \\(-1\\) and the right limit is \\(1\\).",
+      "The function has no value at \\(-1\\)."
+    ],
+    "why": "Nearby values are \\((x+1)^2\\), which approach \\(0\\). The assigned height at \\(-1\\) is \\(1\\).",
+    "source": "../lectures/10-derivative-function.html#practice",
+    "section": "3.2"
+  },
+  {
+    "topic": "motion",
+    "level": 1,
+    "prompt": "A particle has position \\(s(t)=3t-t^2\\) meters. What is its velocity at \\(t=1\\) second?",
+    "choices": [
+      "\\(1\\) m/s",
+      "\\(2\\) m/s",
+      "\\(-2\\) m/s",
+      "\\(3\\) m/s"
+    ],
+    "why": "Differentiate to get \\(v(t)=3-2t\\), and substitute \\(t=1\\).",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 1,
+    "prompt": "If velocity is \\(-3\\) m/s at an instant, what is the speed?",
+    "choices": [
+      "\\(3\\) m/s",
+      "\\(-3\\) m/s",
+      "\\(0\\) m/s",
+      "\\(9\\) m/s"
+    ],
+    "why": "Speed is the magnitude of velocity, so take the absolute value.",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 1,
+    "prompt": "For \\(s(t)=3t-t^2\\) meters, when is the particle momentarily at rest?",
+    "choices": [
+      "\\(3/2\\) s",
+      "\\(0\\) s",
+      "\\(3\\) s",
+      "\\(2/3\\) s"
+    ],
+    "why": "Rest means zero velocity. Solving \\(3-2t=0\\) gives \\(t=3/2\\).",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 2,
+    "prompt": "For \\(s(t)=3t-t^2\\), what happens on \\(3/2<t<3\\)?",
+    "choices": [
+      "It travels in the negative direction and speeds up.",
+      "It travels in the negative direction and slows down.",
+      "It travels in the positive direction and speeds up.",
+      "It stays at rest."
+    ],
+    "why": "Velocity \\(3-2t\\) is negative and acceleration is \\(-2\\). They have the same sign, so the magnitude of the velocity increases.",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 1,
+    "prompt": "The height of the ball is \\(H(t)=96-16t-16t^2\\) ft. Which equation finds the instant it hits the ground?",
+    "choices": [
+      "\\(H(t)=0\\) with \\(t\\ge0\\)",
+      "\\(H'(t)=0\\) with \\(t\\ge0\\)",
+      "\\(H''(t)=0\\) with \\(t\\ge0\\)",
+      "\\(H(t)=96\\) with \\(t>0\\)"
+    ],
+    "why": "Ground contact specifies a height of zero. Time is measured from release, so only nonnegative roots describe this flight.",
+    "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 2,
+    "prompt": "For \\(H(t)=96-16t-16t^2\\) feet, what is the physical impact time?",
+    "choices": [
+      "\\(2\\) s",
+      "\\(3\\) s",
+      "\\(-3\\) s",
+      "\\(6\\) s"
+    ],
+    "why": "Ground contact requires \\(-16(t+3)(t-2)=0\\). Only \\(t=2\\) lies in the flight interval.",
+    "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 2,
+    "prompt": "For \\(s(t)=t^2-2t-3\\) feet with \\(t\\ge0\\), what is the velocity at the instant the car passes position \\(5\\) ft?",
+    "choices": [
+      "\\(6\\) ft/s",
+      "\\(8\\) ft/s",
+      "\\(4\\) ft/s",
+      "\\(5\\) ft/s"
+    ],
+    "why": "Solve \\(t^2-2t-8=(t-4)(t+2)=0\\), giving \\(t=4\\) seconds. Then \\(v(4)=2(4)-2=6\\).",
+    "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 2,
+    "prompt": "For \\(s(t)=-t^3+9t^2-24t+5\\) meters, what is the acceleration at \\(t=2\\) s?",
+    "choices": [
+      "\\(6\\) m/s\\(^2\\)",
+      "\\(0\\) m/s\\(^2\\)",
+      "\\(-6\\) m/s\\(^2\\)",
+      "\\(12\\) m/s\\(^2\\)"
+    ],
+    "why": "Differentiate twice to get \\(a(t)=-6t+18\\). At \\(t=2\\), this is \\(6\\).",
+    "source": "../lectures/12-rates-of-change.html#practice",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 4,
+    "prompt": "For \\(s(t)=3t-t^2\\) on \\(0\\le t\\le3\\), what is the total length of time for which speed exceeds \\(2\\) m/s?",
+    "choices": [
+      "\\(1\\) second",
+      "\\(1/2\\) second",
+      "\\(2\\) seconds",
+      "\\(3/2\\) seconds"
+    ],
+    "why": "Solve \\(\\lvert3-2t\\rvert>2\\). On the physical interval this gives \\(0\\le t<1/2\\) and \\(5/2<t\\le3\\). Each interval lasts half a second.",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 4,
+    "prompt": "For the falling ball \\(H(t)=96-16t-16t^2\\) feet, determine its downward speed at the instant it has fallen exactly half its initial height.",
+    "choices": [
+      "\\(16\\sqrt{13}\\) ft/s",
+      "\\(48\\) ft/s",
+      "\\(40\\) ft/s",
+      "\\(16\\sqrt7\\) ft/s"
+    ],
+    "why": "Set \\(H(t)=48\\) to get \\(t^2+t=3\\). The positive value of \\(2t+1\\) satisfies \\((2t+1)^2=13\\). During the flight the speed is \\(16(2t+1)\\).",
+    "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
+    "section": "3.4"
+  },
+  {
+    "topic": "tangent",
+    "level": 3,
+    "prompt": "On \\(y=3x-x^2\\) the endpoints of a secant are at \\(x=1\\) and \\(x=b\\). Which \\(b\\ne1\\) gives a secant parallel to \\(y=5-2x\\)?",
+    "choices": [
+      "\\(4\\)",
+      "\\(2\\)",
+      "\\(3\\)",
+      "\\(-4\\)"
+    ],
+    "why": "The secant slope from \\(1\\) to \\(b\\) simplifies to \\(2-b\\). Equating it to \\(-2\\) gives \\(b=4\\).",
+    "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
+    "section": "3.1"
+  },
+  {
+    "topic": "tangent",
+    "level": 3,
+    "prompt": "The secant of \\(y=3x-x^2\\) through the points at \\(x=0,3\\) is horizontal. How far above that line is the parallel tangent?",
+    "choices": [
+      "\\(9/4\\)",
+      "\\(3/2\\)",
+      "\\(3\\)",
+      "\\(0\\)"
+    ],
+    "why": "The secant is \\(y=0\\). A parallel tangent has \\(3-2x=0\\), hence height \\(3(3/2)-(3/2)^2=9/4\\).",
+    "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
+    "section": "3.1"
+  },
+  {
+    "topic": "tangent",
+    "level": 4,
+    "prompt": "On \\(y=3x-x^2\\), draw tangents at the two zeros. Where do those tangents intersect?",
+    "choices": [
+      "\\((3/2,9/2)\\)",
+      "\\((3/2,9/4)\\)",
+      "\\((0,0)\\)",
+      "\\((3/2,3/2)\\)"
+    ],
+    "why": "At \\(x=0,3\\) the slopes are \\(3,-3\\). The tangents are \\(y=3x\\) and \\(y=-3(x-3)\\). Set them equal to obtain the intersection.",
+    "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
+    "section": "3.1"
+  },
+  {
+    "topic": "tangent",
+    "level": 4,
+    "prompt": "How many different tangent lines to \\(y=3x-x^2\\) pass through the point \\((1,1)\\)?",
+    "choices": [
+      "None.",
+      "Exactly one.",
+      "Exactly two.",
+      "Infinitely many."
+    ],
+    "why": "The tangent at \\(a\\) is \\(y=(3-2a)x+a^2\\). At \\(x=1\\) its height is \\(2+(a-1)^2\\), at least \\(2\\). It therefore cannot pass through \\((1,1)\\).",
+    "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 3,
+    "prompt": "Suppose \\(f(3)=5\\) and \\(f'(3)=-2\\). Which limit is determined by these data: \\(\\lim_{x\\to3}[f(x)-5]/(x^2-9)\\)?",
+    "choices": [
+      "\\(-1/3\\)",
+      "\\(-2/3\\)",
+      "\\(-3\\)",
+      "\\(-12\\)"
+    ],
+    "why": "Factor \\(x^2-9=(x-3)(x+3)\\). The first quotient tends to \\(f'(3)=-2\\), then divide by the limit \\(6\\).",
+    "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 3,
+    "prompt": "Suppose \\(f'(a)=3\\). What is \\(\\lim_{h\\to0}[f(a+h^2)-f(a)]/h\\)?",
+    "choices": [
+      "\\(0\\)",
+      "\\(3\\)",
+      "\\(9\\)",
+      "The limit diverges."
+    ],
+    "why": "Write it as \\(h\\) times the difference quotient with increment \\(h^2\\). The quotient tends to \\(3\\) and \\(h\\) tends to zero.",
+    "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 4,
+    "prompt": "Suppose \\(f'(a)=2\\) and \\(g'(a)=-3\\). Find \\(\\lim_{x\\to a}[f(x)-f(a)]/[g(x)-g(a)]\\) from the definition of derivative.",
+    "choices": [
+      "\\(-2/3\\)",
+      "\\(-3/2\\)",
+      "\\(-6\\)",
+      "The values \\(f(a),g(a)\\) must also be known."
+    ],
+    "why": "Divide both numerator and denominator by \\(x-a\\). The two difference quotients tend to \\(2,-3\\). Since the denominator limit is nonzero, their quotient tends to \\(-2/3\\).",
+    "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 3,
+    "prompt": "For \\(f(x)=\\sqrt{x+5}\\), compare the secant slopes from \\(4\\) to \\(3\\) and from \\(4\\) to \\(5\\), in that order, with the tangent slope at \\(4\\).",
+    "choices": [
+      "Left secant \\(>1/6>\\) right secant.",
+      "Left secant \\(<1/6<\\) right secant.",
+      "Both secants have slope \\(1/6\\).",
+      "Both slopes exceed \\(1/6\\)."
+    ],
+    "why": "Rationalizing gives slopes \\(1/(3+\\sqrt8)\\) and \\(1/(3+\\sqrt{10})\\). Their denominators lie on opposite sides of \\(6\\).",
+    "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 3,
+    "prompt": "Use the derivative definition for \\(f(x)=\\sqrt{x+5}\\) at its left endpoint \\(x=-5\\). What happens to its right-hand secant slopes?",
+    "choices": [
+      "They increase without bound as the second point approaches \\(-5\\).",
+      "They tend to zero.",
+      "They tend to \\(1/2\\).",
+      "They decrease without bound."
+    ],
+    "why": "At an increment \\(h>0\\) the slope is \\(\\sqrt h/h=1/\\sqrt h\\). This grows without bound, giving a vertical endpoint tangent.",
+    "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 3,
+    "prompt": "For \\(g(x)=x\\lvert x\\rvert\\), why does \\(g'(0)\\) exist even though the absolute-value factor has a corner?",
+    "choices": [
+      "Its difference quotient at zero equals \\(\\lvert h\\rvert\\) and tends to zero.",
+      "The left and right slopes are \\(-1\\) and \\(1\\).",
+      "Every product of continuous functions is differentiable.",
+      "The difference quotient equals \\(\\lvert h\\rvert/h\\) and tends to one."
+    ],
+    "why": "Since \\(g(0)=0\\), the quotient is \\(h\\lvert h\\rvert/h\\). Cancel the nonzero increment before taking its limit.",
+    "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 3,
+    "prompt": "A line \\(y=mx+b\\) is tangent to \\(y=\\sqrt{x+5}\\) at \\(x=4\\). What is \\(m+b\\)?",
+    "choices": [
+      "\\(5/2\\)",
+      "\\(7/3\\)",
+      "\\(19/6\\)",
+      "\\(3\\)"
+    ],
+    "why": "The conjugate calculation gives \\(m=1/6\\). Since the line contains \\((4,3)\\), its intercept is \\(7/3\\), yielding \\(m+b=15/6\\).",
+    "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 4,
+    "prompt": "Two points on \\(y=\\sqrt{x+5}\\) have heights \\(2\\) and \\(4\\). At what point does the tangent have the same slope as their secant?",
+    "choices": [
+      "\\((4,3)\\)",
+      "\\((5,3)\\)",
+      "\\((5,\\sqrt{10})\\)",
+      "\\((3,\\sqrt8)\\)"
+    ],
+    "why": "The inputs are \\(-1,11\\), so the secant slope is \\(2/12=1/6\\). Rationalizing the general difference quotient gives \\(f'(x)=1/[2\\sqrt{x+5}]\\). Setting it to \\(1/6\\) gives the stated point.",
+    "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative",
+    "level": 4,
+    "prompt": "For \\(f(x)=\\sqrt{x+5}\\), evaluate \\(\\lim_{h\\to0}[(f(4+h)-f(4))/h-1/6]/h\\).",
+    "choices": [
+      "\\(-1/216\\)",
+      "\\(-1/108\\)",
+      "\\(1/216\\)",
+      "\\(0\\)"
+    ],
+    "why": "The inner quotient is \\(1/(\\sqrt{9+h}+3)\\). Subtract \\(1/6\\), then use \\(3-\\sqrt{9+h}=-h/(3+\\sqrt{9+h})\\). After cancellation the limit is \\(-1/[6(3+3)^2]\\).",
+    "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+    "section": "3.1"
+  },
+  {
+    "topic": "derivative2",
+    "level": 3,
+    "prompt": "Suppose a polynomial \\(g\\) satisfies \\(g''=-2\\) everywhere and \\(g(0)=0\\), as does the lecture parabola \\(3x-x^2\\). What extra datum forces those polynomials to agree?",
+    "choices": [
+      "\\(g'(0)=3\\)",
+      "\\(g'''(0)=0\\)",
+      "\\(g''(1)=-2\\)",
+      "\\(g(0)=0\\) again"
+    ],
+    "why": "A polynomial with second derivative \\(-2\\) and zero constant term has the form \\(-x^2+bx\\). Its first derivative at zero determines \\(b\\).",
+    "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative2",
+    "level": 3,
+    "prompt": "For \\(f(x)=3x-x^2\\), where do the graphs of \\(f'\\) and \\(f''\\) intersect?",
+    "choices": [
+      "\\((5/2,-2)\\)",
+      "\\((3/2,0)\\)",
+      "\\((1,-2)\\)",
+      "\\((-2,5/2)\\)"
+    ],
+    "why": "Set \\(3-2x=-2\\) to find \\(x=5/2\\). Both derivative graphs have height \\(-2\\) there.",
+    "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative2",
+    "level": 3,
+    "prompt": "For \\(f(x)=3x-x^2\\), find all inputs where \\(f(x)\\) equals \\(f'(x)\\).",
+    "choices": [
+      "\\((5-\\sqrt{13})/2\\) and \\((5+\\sqrt{13})/2\\)",
+      "\\((3-\\sqrt5)/2\\) and \\((3+\\sqrt5)/2\\)",
+      "\\(1,3\\)",
+      "\\(3/2\\) only"
+    ],
+    "why": "Set \\(3x-x^2=3-2x\\), giving \\(x^2-5x+3=0\\). Apply the quadratic formula.",
+    "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative2",
+    "level": 4,
+    "prompt": "Suppose \\(p\\) is cubic with \\(p'''=6\\), \\(p''(0)=-2\\), \\(p'(0)=3\\), and \\(p(0)=0\\). At which point do its graph and the lecture parabola \\(3x-x^2\\) have the same value and first two derivatives?",
+    "choices": [
+      "\\((0,0)\\) only",
+      "\\((0,0)\\) and \\((1,2)\\)",
+      "\\((1,2)\\) only",
+      "At every point."
+    ],
+    "why": "The data give \\(p=x^3-x^2+3x\\). Its difference from the parabola is \\(x^3\\), whose value and first two derivatives all vanish at \\(0\\) and nowhere else.",
+    "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative",
+    "level": 3,
+    "prompt": "If \\(f\\) is differentiable at \\(a\\) and \\(f(a)\\ne0\\), find \\(\\lim_{h\\to0}[1/f(a+h)-1/f(a)]/h\\).",
+    "choices": [
+      "\\(-f'(a)/f(a)^2\\)",
+      "\\(1/f'(a)\\)",
+      "\\(f'(a)/f(a)^2\\)",
+      "\\(-1/f(a)^2\\)"
+    ],
+    "why": "A common denominator gives the negative difference quotient of \\(f\\) divided by \\(f(a+h)f(a)\\). By continuity the latter tends to \\(f(a)^2\\ne0\\).",
+    "source": "../lectures/10-derivative-function.html#differentiability-implies-continuity",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative",
+    "level": 3,
+    "prompt": "Suppose \\(f(0)=0\\), \\(g(0)=0\\), \\(f'(0)=2\\) and \\(g'(0)=5\\). Find \\(\\lim_{h\\to0}f(h)g(h)/h^2\\).",
+    "choices": [
+      "\\(10\\)",
+      "\\(7\\)",
+      "\\(0\\)",
+      "\\(2/5\\)"
+    ],
+    "why": "Write the expression as \\([f(h)/h][g(h)/h]\\). Each bracket is a difference quotient at zero, so the limits multiply.",
+    "source": "../lectures/10-derivative-function.html#differentiability-implies-continuity",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative",
+    "level": 4,
+    "prompt": "Let \\(f\\) be differentiable at \\(a\\) with \\(f'(a)=-2\\). Which is the limit of \\(\\lvert f(a+h)-f(a)\\rvert/\\lvert h\\rvert\\) as \\(h\\to0\\), and does \\(\\lvert f(a+h)-f(a)\\rvert/h\\) also have a two-sided limit?",
+    "choices": [
+      "The first limit is \\(2\\). The second has no two-sided limit.",
+      "Both limits equal \\(2\\).",
+      "Both limits equal \\(-2\\).",
+      "The first has no limit, and the second equals \\(2\\)."
+    ],
+    "why": "The first expression is the absolute value of the difference quotient and tends to \\(2\\). The second multiplies that expression by \\(\\lvert h\\rvert/h\\), which has opposite signs on the two sides.",
+    "source": "../lectures/10-derivative-function.html#differentiability-implies-continuity",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative2",
+    "level": 3,
+    "prompt": "Consider \\(f(x)=(x+1)^2\\) for \\(x\\ne-1\\) and \\(f(-1)=1\\). At which inputs \\(a\\) is \\(f'(a)=0\\)?",
+    "choices": [
+      "At no input.",
+      "At \\(-1\\) only.",
+      "At \\(0\\) only.",
+      "At every input except \\(-1\\)."
+    ],
+    "why": "Away from \\(-1\\) the derivative is \\(2(x+1)\\), which has no zero there. At \\(-1\\) the jump between the assigned height and the limiting height prevents differentiability.",
+    "source": "../lectures/10-derivative-function.html#practice",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative2",
+    "level": 3,
+    "prompt": "For \\(f(x)=\\sqrt{x+6}\\), find an input where its tangent is perpendicular to a line of slope \\(-4\\).",
+    "choices": [
+      "\\(-2\\)",
+      "\\(-5\\)",
+      "\\(2\\)",
+      "\\(10\\)"
+    ],
+    "why": "The desired slope is \\(1/4\\). The derivative \\(1/(2\\sqrt{x+6})\\) equals \\(1/4\\) precisely when \\(x+6=4\\).",
+    "source": "../lectures/10-derivative-function.html#practice",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative2",
+    "level": 3,
+    "prompt": "For \\(f(x)=\\sqrt{x+6}\\), the tangent at \\(x=3\\) estimates \\(f(3+h)\\) by \\(3+h/6\\). When \\(h=7\\), by how much does that estimate exceed the exact value?",
+    "choices": [
+      "\\(1/6\\)",
+      "\\(1/3\\)",
+      "\\(1/2\\)",
+      "\\(0\\)"
+    ],
+    "why": "At \\(x=10\\) the tangent estimate is \\(25/6\\) and the exact function value is \\(4\\). Their difference is \\(1/6\\).",
+    "source": "../lectures/10-derivative-function.html#practice",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative2",
+    "level": 4,
+    "prompt": "Join \\(f(x)=(x+1)^2\\) for \\(x\\le-1\\) to \\(f(x)=A(x+1)^2+B(x+1)+C\\) for \\(x>-1\\). Which coefficients make \\(f\\) twice differentiable at \\(-1\\)?",
+    "choices": [
+      "\\(A=1,\\ B=C=0\\)",
+      "Any \\(A\\) with \\(B=C=0\\)",
+      "\\(A=B=0,\\ C=1\\)",
+      "Any \\(A,B\\) with \\(C=0\\)"
+    ],
+    "why": "Continuity forces \\(C=0\\), and agreement of first derivatives forces \\(B=0\\). The left and right difference quotients of \\(f'\\) at the join then tend to \\(2\\) and \\(2A\\), so \\(A=1\\).",
+    "source": "../lectures/10-derivative-function.html#practice",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative2",
+    "level": 4,
+    "prompt": "Let \\(g(x)=x\\lvert x\\rvert\\). Which description of differentiability at the origin is correct?",
+    "choices": [
+      "\\(g'(0)=0\\), but \\(g''(0)\\) does not exist.",
+      "Both \\(g'(0)\\) and \\(g''(0)\\) equal zero.",
+      "\\(g'(0)\\) does not exist.",
+      "\\(g''(0)=2\\)."
+    ],
+    "why": "The first derivative is \\(2\\lvert x\\rvert\\) for \\(x\\ne0\\), and the original difference quotient gives \\(g'(0)=0\\). The graph of \\(g'\\) therefore has left and right slopes \\(-2,2\\) at zero.",
+    "source": "../lectures/10-derivative-function.html#the-converse-is-false",
+    "section": "3.2"
+  },
+  {
+    "topic": "derivative2",
+    "level": 4,
+    "prompt": "A product is defined by \\(F(x)=\\lvert x\\rvert p(x)\\) with \\(p\\) differentiable near \\(0\\). What condition is necessary and sufficient for \\(F\\) to be differentiable at \\(0\\)?",
+    "choices": [
+      "\\(p(0)=0\\)",
+      "\\(p'(0)=0\\)",
+      "\\(p'(0)=1\\)",
+      "\\(p\\) must vanish identically near zero."
+    ],
+    "why": "The right difference quotient tends to \\(p(0)\\) and the left one to \\(-p(0)\\) by continuity of \\(p\\). They are equal exactly when \\(p(0)=0\\).",
+    "source": "../lectures/10-derivative-function.html#the-converse-is-false",
+    "section": "3.2"
+  },
+  {
+    "topic": "motion",
+    "level": 3,
+    "prompt": "For \\(s(t)=t^3-6t^2+9t+2\\) on \\([0,4]\\), which instants give the largest speed?",
+    "choices": [
+      "\\(t=0\\) and \\(t=4\\)",
+      "\\(t=1\\) and \\(t=3\\)",
+      "\\(t=2\\) only",
+      "\\(t=1,2,3\\)"
+    ],
+    "why": "Velocity is \\(3(t-2)^2-3\\). Its range on the interval is \\([-3,9]\\), so the largest speed is \\(9\\) at the endpoints.",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 3,
+    "prompt": "For \\(s(t)=3t-t^2\\) meters on \\([0,3]\\), compare total distance and the numerical magnitude of displacement.",
+    "choices": [
+      "Distance is \\(9/2\\) m and displacement is \\(0\\) m.",
+      "Both are \\(0\\) m.",
+      "Distance is \\(9/4\\) m and displacement is \\(0\\) m.",
+      "Distance and displacement are both \\(9/2\\) m."
+    ],
+    "why": "The endpoints are both at the origin. The particle rises to \\(s(3/2)=9/4\\) and then returns, traveling that distance twice.",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 4,
+    "prompt": "For \\(s(t)=t^3-6t^2+9t+2\\) on \\([0,4]\\), at which times does the particle pass its starting position, and what happens at its last visit?",
+    "choices": [
+      "\\(0,3\\). At \\(3\\) it reverses direction.",
+      "\\(0,3\\). At \\(3\\) it crosses with nonzero velocity.",
+      "\\(0,1,3\\). At \\(3\\) it reverses direction.",
+      "\\(0,4\\). At \\(4\\) its speed is zero."
+    ],
+    "why": "Solve \\(s(t)-s(0)=t(t-3)^2=0\\). At the repeated root \\(3\\), \\(v=3(t-1)(t-3)\\) changes from negative to positive.",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 3,
+    "prompt": "For the car \\(s(t)=t^2-2t-3\\) on \\(t\\ge0\\), which positions occur at two distinct nonnegative times?",
+    "choices": [
+      "\\(-4<s\\le-3\\)",
+      "\\(-4\\le s<-3\\)",
+      "\\(s<-4\\)",
+      "\\(-3<s<0\\)"
+    ],
+    "why": "Rewrite as \\(s=(t-1)^2-4\\). Distinct times are \\(1\\pm\\sqrt{s+4}\\). Both are nonnegative exactly when \\(0<s+4\\le1\\).",
+    "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 3,
+    "prompt": "A ball falls according to \\(H(t)=96-16t-16t^2\\). How far does it fall during the last half second before impact?",
+    "choices": [
+      "\\(36\\) ft",
+      "\\(40\\) ft",
+      "\\(32\\) ft",
+      "\\(24\\) ft"
+    ],
+    "why": "Impact is at \\(2\\) seconds. Half a second earlier its height was \\(96-16(1.5)-16(1.5)^2=36\\) ft, which it loses by impact.",
+    "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 3,
+    "prompt": "For \\(s(t)=-t^3+9t^2-24t+5\\), what is the displacement from the first direction reversal to the next?",
+    "choices": [
+      "\\(4\\) m",
+      "\\(-4\\) m",
+      "\\(20\\) m",
+      "\\(0\\) m"
+    ],
+    "why": "The velocity \\(-3(t-2)(t-4)\\) changes sign at \\(2,4\\). Subtract \\(s(2)=-15\\) from \\(s(4)=-11\\).",
+    "source": "../lectures/12-rates-of-change.html#practice",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 4,
+    "prompt": "For \\(s(t)=-t^3+9t^2-24t+5\\) on \\([0,5]\\), at which time after the first reversal does the particle first return to the position of that reversal?",
+    "choices": [
+      "\\(5\\) s",
+      "\\(3\\) s",
+      "\\(4\\) s",
+      "It never returns on this interval."
+    ],
+    "why": "The first reversal is at \\(2\\) and \\(s(2)=-15\\). Solve \\(s(t)+15=-(t-2)^2(t-5)=0\\). The root greater than \\(2\\) is \\(5\\).",
+    "source": "../lectures/12-rates-of-change.html#practice",
+    "section": "3.4"
+  }
+]

@@ -48,3 +48,15 @@ button:focus-visible,a:focus-visible,select:focus-visible,summary:focus-visible{
 #rules-hint{margin:.65rem 0 0}#save-score .primary{margin-top:.5rem}#saved:empty{display:none}
 [data-state="retry"] #verdict{color:var(--gold)}
 @media(max-width:380px){.run-settings{gap:.5rem}.run-settings select{padding-left:.5rem}}
+header #fullscreen{min-height:36px;padding:.25rem .75rem;font:600 .84rem var(--ui)}
+#previous,#room-panel{margin-top:1rem;border-top:1px solid var(--edge);padding-top:.6rem}
+#previous summary{color:var(--mint);cursor:pointer;min-height:44px;align-content:center}
+#previous p,#result p{overflow-wrap:anywhere}
+#room-panel{border:1px solid var(--edge);border-radius:12px;background:var(--paper);padding:1rem}
+#room-panel h2{font-size:1.2rem;margin-bottom:.25rem}#room-panel p{margin:.4rem 0}
+#racers{padding-left:1.6rem}#racers li{margin:.35rem 0}
+#invite-link{width:100%;margin-top:.6rem}
+.alias-field{grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto}
+html:fullscreen,html:-webkit-full-screen{overflow:auto;background:#0d161d}
+body.full-window{position:fixed;inset:0;overflow:auto;z-index:100;overscroll-behavior:contain}
+#board-mode{float:none;display:block;font-size:.78rem}#board-caption:empty{display:none}

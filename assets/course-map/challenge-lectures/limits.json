@@ -1,0 +1,1654 @@
+[
+  {
+    "topic": "sides",
+    "level": 3,
+    "prompt": "Let \\(s(x)=(x^2-9)/|x-3|\\). Find the ordered pair of one-sided limits of \\(1/s(x)\\) at 3, left first.",
+    "choices": [
+      "\\((-1/6,1/6)\\)",
+      "\\((1/6,1/6)\\)",
+      "\\((-6,6)\\)",
+      "\\((1/6,-1/6)\\)"
+    ],
+    "why": "For \\(x<3\\), \\(s(x)=-(x+3)\\), and for \\(x>3\\), \\(s(x)=x+3\\). The limiting heights are nonzero, so their reciprocals give the new limits.",
+    "source": "../lectures/02-limits.html#practice",
+    "section": "2.1"
+  },
+  {
+    "topic": "sides",
+    "level": 4,
+    "prompt": "Let \\(s(x)=(x^2-9)/|x-3|\\). For which real \\(b\\) does \\(\\lim_{x\\to3}(s(x)^2+b\\,s(x))\\) exist, and what is that limit?",
+    "choices": [
+      "\\(b=0\\), limit 36",
+      "\\(b=0\\), limit 6",
+      "\\(b=6\\), limit 0",
+      "Every \\(b\\), limit 36"
+    ],
+    "why": "The two one-sided values of \\(s\\) are \\(-6\\) and \\(6\\). The new one-sided limits are \\(36-6b\\) and \\(36+6b\\), so equality forces \\(b=0\\).",
+    "source": "../lectures/02-limits.html#practice",
+    "section": "2.1"
+  },
+  {
+    "topic": "infinite",
+    "level": 3,
+    "prompt": "For \\(F(x)=(x-1)/(x^2(x+1))\\), find \\(\\lim_{x\\to0} F(x)\\) and \\(\\lim_{x\\to-1^-} F(x)\\) in that order.",
+    "choices": [
+      "\\(-\\infty,\\ +\\infty\\)",
+      "\\(-\\infty,\\ -\\infty\\)",
+      "\\(+\\infty,\\ +\\infty\\)",
+      "DNE, \\(-\\infty\\)"
+    ],
+    "why": "Near zero, the numerator is negative and the denominator is positive on both sides. Just left of \\(-1\\), the numerator is negative and \\(x^2(x+1)\\) tends to zero through negative values.",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "section": "2.2"
+  },
+  {
+    "topic": "limit",
+    "level": 3,
+    "prompt": "Which pair of positive sequences proves that \\(\\lim_{x\\to0^+}\\sin(1/x)\\) does not exist?",
+    "choices": [
+      "\\(x_n=1/(2\\pi n+\\pi/2)\\) and \\(y_n=1/(2\\pi n+3\\pi/2)\\)",
+      "\\(x_n=1/(2\\pi n)\\) and \\(y_n=1/(\\pi n)\\)",
+      "\\(x_n=1/(2\\pi n+\\pi/2)\\) and \\(y_n=1/(2\\pi n+5\\pi/2)\\)",
+      "\\(x_n=2\\pi n+\\pi/2\\) and \\(y_n=2\\pi n+3\\pi/2\\)"
+    ],
+    "why": "Both reciprocal sequences approach zero from the right. Their sine values stay at 1 and \\(-1\\), respectively.",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "section": "2.2"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "Fix \\(a\\ne0\\). Without derivatives, evaluate \\(\\lim_{h\\to0}\\dfrac{1/(a+h)-1/a}{h}\\).",
+    "choices": [
+      "\\(-1/a^2\\)",
+      "\\(1/a^2\\)",
+      "\\(-1/a\\)",
+      "\\(0\\)"
+    ],
+    "why": "The common numerator is \\(a-(a+h)=-h\\). Cancel \\(h\\) away from zero to obtain \\(-1/[a(a+h)]\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "After the first-order change in \\(1/(a+h)\\) is removed, what remains? For fixed \\(a\\ne0\\), evaluate \\(\\displaystyle\\lim_{h\\to0}\\frac{1/(a+h)-1/a+h/a^2}{h^2}\\).",
+    "choices": [
+      "\\(1/a^3\\)",
+      "\\(-1/a^3\\)",
+      "\\(2/a^3\\)",
+      "\\(0\\)"
+    ],
+    "why": "Combine the first two terms to get \\(-h/[a(a+h)]\\). Adding \\(h/a^2\\) gives \\(h^2/[a^2(a+h)]\\). Cancel \\(h^2\\) before passing to the limit.",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "For \\(a>0\\), evaluate \\(\\displaystyle\\lim_{h\\to0}\\frac{\\sqrt{a+h}-\\sqrt a}{1/(a+h)-1/a}\\).",
+    "choices": [
+      "\\(-a\\sqrt a/2\\)",
+      "\\(-1/(2a\\sqrt a)\\)",
+      "\\(a\\sqrt a/2\\)",
+      "\\(-2a\\sqrt a\\)"
+    ],
+    "why": "Rationalization turns the numerator into \\(h/(\\sqrt{a+h}+\\sqrt a)\\). The denominator is \\(-h/[a(a+h)]\\). Cancelling gives \\(-a(a+h)/(\\sqrt{a+h}+\\sqrt a)\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "Where are the hole and the vertical asymptote of \\(r(x)=(x^2-x-2)/(x^2-4)\\)?",
+    "choices": [
+      "Hole at \\((2,3/4)\\) and asymptote \\(x=-2\\).",
+      "Hole at \\((-2,3/4)\\) and asymptote \\(x=2\\).",
+      "Hole at \\((2,0)\\) and asymptote \\(x=-2\\).",
+      "Vertical asymptotes at both excluded inputs."
+    ],
+    "why": "For \\(x\\ne\\pm2\\), \\(r(x)=(x+1)/(x+2)\\). Its limit at 2 is \\(3/4\\). The remaining denominator vanishes at \\(-2\\) while its numerator is nonzero.",
+    "source": "../lectures/04-limit-laws.html#practice",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "Let \\(r(x)=(x^2-x-2)/(x^2-4)\\). Evaluate \\(\\displaystyle\\lim_{x\\to2}\\frac{r(x)-3/4}{x-2}\\).",
+    "choices": [
+      "\\(1/16\\)",
+      "\\(1/4\\)",
+      "\\(3/16\\)",
+      "\\(0\\)"
+    ],
+    "why": "Cancel the common factor to get \\(r(x)=(x+1)/(x+2)\\). Subtracting \\(3/4\\) gives \\((x-2)/[4(x+2)]\\). A second cancellation leaves \\(1/[4(x+2)]\\).",
+    "source": "../lectures/04-limit-laws.html#practice",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to0}\\frac{\\sqrt{9+x}-3-x/6}{x^2}\\).",
+    "choices": [
+      "\\(-1/216\\)",
+      "\\(1/216\\)",
+      "\\(-1/108\\)",
+      "\\(0\\)"
+    ],
+    "why": "Write \\(u=\\sqrt{9+x}\\). Since \\(x=(u-3)(u+3)\\), the quotient equals \\(-(u-3)^2/[6x^2]=-1/[6(u+3)^2]\\) for \\(x\\ne0\\). Then \\(u\\to3\\).",
+    "source": "../lectures/04-limit-laws.html#practice-1",
+    "section": "2.3"
+  },
+  {
+    "topic": "squeeze",
+    "level": 3,
+    "prompt": "Near 1, \\(5-(x-1)^2\\le f(x)\\le5+(x-1)^2\\). Which limit is forced?",
+    "choices": [
+      "\\(\\lim_{x\\to1}(f(x)-5)/(x-1)=0\\)",
+      "\\(\\lim_{x\\to1}(f(x)-5)/(x-1)^2=0\\)",
+      "\\(\\lim_{x\\to1}(f(x)-5)/(x-1)^2=1\\)",
+      "\\(\\lim_{x\\to1}(f(x)-5)/(x-1)=1\\)"
+    ],
+    "why": "The absolute value of the first quotient is at most \\(|x-1|\\). Dividing by \\((x-1)^2\\) instead only bounds the quotient between \\(-1\\) and 1.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "section": "2.4"
+  },
+  {
+    "topic": "squeeze",
+    "level": 4,
+    "prompt": "For \\(x\\ne1\\), set \\(f(x)=5+(x-1)^2\\sin(1/(x-1))\\). What happens as \\(x\\to1\\) to \\((f(x)-5)/(x-1)\\) and \\((f(x)-5)/(x-1)^2\\), respectively?",
+    "choices": [
+      "The first tends to zero, and the second has no limit.",
+      "Both tend to zero.",
+      "The first has no limit, and the second tends to zero.",
+      "The first tends to zero, and the second tends to 1."
+    ],
+    "why": "The first is \\((x-1)\\sin(1/(x-1))\\), whose absolute value is bounded by \\(|x-1|\\). The second is the oscillating sine itself.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "section": "2.4"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "Using the conjugate of \\(1-\\cos x\\), find \\(\\displaystyle\\lim_{x\\to0}(1-\\cos x)/x^2\\) in radians.",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(2\\)"
+    ],
+    "why": "The quotient equals \\((\\sin x/x)^2/(1+\\cos x)\\). The numerator tends to 1 and the denominator to 2.",
+    "source": "../lectures/05-squeeze-theorem.html#difficult",
+    "section": "2.4"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "Using trigonometric identities and the sine limit, evaluate \\(\\displaystyle\\lim_{x\\to0}(\\tan x-\\sin x)/x^3\\) in radians.",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1/2\\)"
+    ],
+    "why": "Factor \\(\\tan x-\\sin x=\\sin x(1-\\cos x)/\\cos x\\). The conjugate gives \\((1-\\cos x)/x^2=(\\sin x/x)^2/(1+\\cos x)\\to1/2\\). The remaining factor \\(\\sin x/(x\\cos x)\\) tends to 1.",
+    "source": "../lectures/05-squeeze-theorem.html#difficult",
+    "section": "2.4"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "In radians, find \\(\\displaystyle\\lim_{x\\to0}\\frac{1-\\cos(3x)}{\\sqrt{4+x^2}-2}\\).",
+    "choices": [
+      "\\(18\\)",
+      "\\(9/2\\)",
+      "\\(9\\)",
+      "\\(6\\)"
+    ],
+    "why": "Conjugate the denominator to get \\((\\sqrt{4+x^2}+2)(1-\\cos(3x))/x^2\\). The first factor tends to 4. The second is \\(9(\\sin(3x)/(3x))^2/(1+\\cos(3x))\\to9/2\\).",
+    "source": "../lectures/05-squeeze-theorem.html#difficult",
+    "section": "2.4"
+  },
+  {
+    "topic": "infinite",
+    "level": 3,
+    "prompt": "For \\(H(x)=-2/[(x+2)(x-1)^2]\\), list the limits at \\(-2^-\\), \\(-2^+\\), \\(1^-\\) and \\(1^+\\) in order.",
+    "choices": [
+      "\\(+\\infty,-\\infty,-\\infty,-\\infty\\)",
+      "\\(-\\infty,+\\infty,-\\infty,-\\infty\\)",
+      "\\(+\\infty,-\\infty,+\\infty,-\\infty\\)",
+      "\\(-\\infty,-\\infty,+\\infty,+\\infty\\)"
+    ],
+    "why": "The factor \\(x+2\\) changes sign at \\(-2\\). Near 1 it stays positive and the squared factor approaches zero through positive values on both sides.",
+    "source": "../lectures/08-exam-practice.html#problem-2",
+    "section": "2.7"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "Find \\(\\displaystyle\\lim_{x\\to0}\\frac{\\sqrt{4+x}-\\sqrt{4-x}}{x}\\).",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(1/4\\)",
+      "\\(0\\)",
+      "\\(1\\)"
+    ],
+    "why": "The conjugate gives numerator \\((4+x)-(4-x)=2x\\). After cancellation the limit is \\(2/(2+2)=1/2\\).",
+    "source": "../lectures/08-exam-practice.html#problem-3",
+    "section": "2.7"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "Find \\(\\displaystyle\\lim_{x\\to0}\\frac{1/(1+x)-1/(1-x)}{x}\\).",
+    "choices": [
+      "\\(-2\\)",
+      "\\(2\\)",
+      "\\(-1\\)",
+      "\\(0\\)"
+    ],
+    "why": "Combine the fractions. Their numerator is \\((1-x)-(1+x)=-2x\\), so the expression simplifies to \\(-2/(1-x^2)\\).",
+    "source": "../lectures/08-exam-practice.html#problem-3",
+    "section": "2.7"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "In radians, find \\(\\displaystyle\\lim_{x\\to0}\\frac{\\tan(2x)}{\\sin(3x)}\\).",
+    "choices": [
+      "\\(2/3\\)",
+      "\\(3/2\\)",
+      "\\(1\\)",
+      "\\(0\\)"
+    ],
+    "why": "Write the quotient as \\(\\frac23(\\sin(2x)/(2x))(3x/\\sin(3x))/\\cos(2x)\\). Each variable factor tends to 1.",
+    "source": "../lectures/08-exam-practice.html#problem-4",
+    "section": "2.7"
+  },
+  {
+    "topic": "squeeze",
+    "level": 3,
+    "prompt": "For \\(q(x)=2+x\\sin(1/x)\\) and every nonzero \\(x\\) near zero, which bounds squeeze \\(q(x)\\) to 2?",
+    "choices": [
+      "\\(2-|x|\\le q(x)\\le2+|x|\\)",
+      "\\(2-x\\le q(x)\\le2+x\\)",
+      "\\(2-x^2\\le q(x)\\le2+x^2\\)",
+      "\\(2\\le q(x)\\le2+|x|\\)"
+    ],
+    "why": "Since \\(|x\\sin(1/x)|\\le|x|\\), these bounds hold for either sign of \\(x\\). Both approach 2.",
+    "source": "../lectures/08-exam-practice.html#problem-8",
+    "section": "2.7"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "The circles \\((x-1)^2+y^2=1\\) and \\(x^2+y^2=r^2\\) meet at the upper point \\(Q\\), where \\(0<r<1\\). The line through \\((0,r)\\) and \\(Q\\) has horizontal intercept \\(a(r)\\). Where does \\(a(r)\\) go as \\(r\\to0^+\\)?",
+    "choices": [
+      "\\(4\\)",
+      "\\(0\\)",
+      "\\(2\\)",
+      "\\(+\\infty\\)"
+    ],
+    "why": "Subtract the circle equations to get \\(x_Q=r^2/2\\) and \\(y_Q=r\\sqrt{1-r^2/4}\\). The line gives \\(a(r)=(r^2/2)/(1-\\sqrt{1-r^2/4})=2(1+\\sqrt{1-r^2/4})\\to4\\).",
+    "source": "../lectures/08-exam-practice.html#problem-10-where-does-the-intercept-go",
+    "section": "2.7"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "In the shrinking-circle construction, replace the fixed circle by \\((x-c)^2+y^2=c^2\\), with \\(c>0\\). As \\(r\\to0^+\\), where does the line from \\((0,r)\\) through its upper intersection with \\(x^2+y^2=r^2\\) meet the horizontal axis in the limit?",
+    "choices": [
+      "\\(4c\\)",
+      "\\(2c\\)",
+      "\\(4c^2\\)",
+      "\\(0\\)"
+    ],
+    "why": "Subtract the equations to get \\(x_Q=r^2/(2c)\\) and \\(y_Q=r\\sqrt{1-r^2/(4c^2)}\\). Rationalizing \\(r x_Q/(r-y_Q)\\) gives \\(2c(1+\\sqrt{1-r^2/(4c^2)})\\to4c\\).",
+    "source": "../lectures/08-exam-practice.html#problem-10-where-does-the-intercept-go",
+    "section": "2.7"
+  },
+  {
+    "topic": "limit",
+    "level": 3,
+    "prompt": "A line has a hole at \\((2,4)\\) and a filled point at \\((2,7)\\). Off the hole its formula is \\(g(x)=x+2\\). What are \\(\\lim_{h\\to0^-}[g(2+h)-g(2)]/h\\) and the corresponding right-hand limit?",
+    "choices": [
+      "\\(+\\infty,-\\infty\\)",
+      "\\(1,1\\)",
+      "\\(-\\infty,+\\infty\\)",
+      "\\(4,7\\)"
+    ],
+    "why": "For \\(h\\ne0\\) the quotient is \\((4+h-7)/h=1-3/h\\). Approach from each side separately.",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "section": "2.1"
+  },
+  {
+    "topic": "limit",
+    "level": 3,
+    "prompt": "For \\(x\\ne2\\), let \\(f(x)=(x^2-4)/(x-2)\\). A point is added at \\((2,b)\\). Which \\(b\\) makes the secant slopes from that point to \\((2+h,f(2+h))\\) approach a finite number, and what number?",
+    "choices": [
+      "\\(b=4\\), slope \\(1\\)",
+      "\\(b=4\\), slope \\(4\\)",
+      "\\(b=1\\), slope \\(4\\)",
+      "Every \\(b\\), slope \\(1\\)"
+    ],
+    "why": "The secant slope is \\((4+h-b)/h=1+(4-b)/h\\). It has a finite limit precisely when \\(4-b=0\\).",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "section": "2.1"
+  },
+  {
+    "topic": "limit",
+    "level": 3,
+    "prompt": "The function \\(g\\) equals \\(x+2\\) except that \\(g(2)=7\\). Find \\(\\lim_{x\\to0}g(g(x))\\) and \\(g(g(0))\\) in order.",
+    "choices": [
+      "\\(4,7\\)",
+      "\\(7,4\\)",
+      "\\(4,4\\)",
+      "\\(7,7\\)"
+    ],
+    "why": "Nearby, \\(g(x)=2+x\\ne2\\), so \\(g(g(x))=4+x\\). At zero the inner value is exactly 2, making the outer value 7.",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "section": "2.1"
+  },
+  {
+    "topic": "limit",
+    "level": 3,
+    "prompt": "Suppose \\(g(x)=x+2\\) except at \\(x=2\\), where \\(g(2)=7\\). For \\(x\\ne2\\), which expression equals \\([g(x)-4]/|x-2|\\), and what follows about its limit?",
+    "choices": [
+      "It is \\((x-2)/|x-2|\\), so the limit does not exist.",
+      "It is 1, so the limit is 1.",
+      "It is \\((x+2)/|x-2|\\), so the limit is infinite.",
+      "It is 0, so the limit is 0."
+    ],
+    "why": "The isolated height 7 never enters the quotient. Its left value is \\(-1\\) and its right value is 1.",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "section": "2.1"
+  },
+  {
+    "topic": "limit",
+    "level": 4,
+    "prompt": "Let \\(g(x)=x+2\\) except at \\(x=2\\), where \\(g(2)=7\\). An inner function \\(u(x)\\) equals 2 for rational \\(x\\) and \\(2+x\\) for irrational \\(x\\). Find \\(\\lim_{x\\to0}u(x)\\) and determine whether \\(\\lim_{x\\to0}g(u(x))\\) exists.",
+    "choices": [
+      "The first is 2 and the second does not exist.",
+      "The first is 2 and the second is 4.",
+      "The first is 2 and the second is 7.",
+      "Neither limit exists."
+    ],
+    "why": "Both inner branches approach 2. Along rational inputs the composite is 7, while along nearby irrational inputs it is \\(4+x\\to4\\).",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "section": "2.1"
+  },
+  {
+    "topic": "limit",
+    "level": 4,
+    "prompt": "Off \\(x=2\\), a graph equals \\(x+2\\) except at \\(x=2+1/n\\), where it equals \\(4+(-1)^n/n\\) for positive integers \\(n\\). What is \\(\\lim_{x\\to2}f(x)\\), and why?",
+    "choices": [
+      "It is 4 because \\(|f(x)-4|=|x-2|\\) on both kinds of input.",
+      "It fails because infinitely many points were changed.",
+      "It equals 5 because the first changed input is 3.",
+      "Only the left limit exists because the right branch oscillates."
+    ],
+    "why": "At a changed input the vertical distance is \\(1/n\\), exactly the horizontal distance. The unchanged line has the same distance property.",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "section": "2.1"
+  },
+  {
+    "topic": "sides",
+    "level": 3,
+    "prompt": "The two branches of \\(f\\) are \\(2-x\\) for \\(x<0\\) and \\(x^2-3\\) for \\(x\\ge0\\). What are the limits of \\(f(-x)\\) as \\(x\\to0^-\\) and \\(x\\to0^+\\), respectively?",
+    "choices": [
+      "\\(-3,2\\)",
+      "\\(2,-3\\)",
+      "\\(3,-2\\)",
+      "\\(-2,3\\)"
+    ],
+    "why": "As \\(x\\) approaches zero from below, \\(-x\\) approaches from above, so the quadratic branch applies. The other side uses the line.",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "section": "2.1"
+  },
+  {
+    "topic": "sides",
+    "level": 3,
+    "prompt": "Let \\(f(x)=2-x\\) for \\(x<0\\) and \\(f(x)=x^2-3\\) for \\(x\\ge0\\). Which pair is \\((\\lim_{x\\to0}f(-x^2),\\lim_{x\\to0}f(x^2))\\)?",
+    "choices": [
+      "\\((2,-3)\\)",
+      "\\((-3,2)\\)",
+      "\\((2,2)\\)",
+      "Both limits fail to exist."
+    ],
+    "why": "Every nonzero input gives \\(-x^2<0\\) and \\(x^2>0\\). Each composition samples only one branch.",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "section": "2.1"
+  },
+  {
+    "topic": "sides",
+    "level": 3,
+    "prompt": "Suppose \\(f\\) approaches 2 from the left of zero and \\(-3\\) from the right. What is \\(\\lim_{x\\to0}[f(x)+f(-x)]\\)?",
+    "choices": [
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(-6\\)",
+      "Does not exist."
+    ],
+    "why": "The summands exchange roles across zero. Their one-sided sums are both \\(2+(-3)=-1\\).",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "section": "2.1"
+  },
+  {
+    "topic": "sides",
+    "level": 3,
+    "prompt": "If \\(f(x)\\) approaches 2 and \\(-3\\) from the left and right of zero, find the two one-sided limits of \\(f(x)/f(-x)\\), left first.",
+    "choices": [
+      "\\(-2/3,-3/2\\)",
+      "\\(-3/2,-2/3\\)",
+      "\\(1,1\\)",
+      "\\(-1,-1\\)"
+    ],
+    "why": "On the left the numerator approaches 2 and the reflected input samples the right branch. On the right the numerator and denominator exchange roles.",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "section": "2.1"
+  },
+  {
+    "topic": "sides",
+    "level": 4,
+    "prompt": "For \\(x<0\\) let \\(g(x)=-x^2\\), and for \\(x>0\\) let \\(g(x)=\\sqrt x\\). What is \\(\\lim_{x\\to0}g(g(x))/|x|^{1/4}\\)?",
+    "choices": [
+      "It does not exist because the left and right limits are 0 and 1.",
+      "\\(0\\)",
+      "\\(1\\)",
+      "Does not exist: the left and right limits are \\(-1\\) and 1."
+    ],
+    "why": "For \\(x<0\\) the composite is \\(-x^4\\). For \\(x>0\\) it is \\(x^{1/4}\\). Dividing each by \\(|x|^{1/4}\\) gives the stated limits.",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "section": "2.1"
+  },
+  {
+    "topic": "sides",
+    "level": 4,
+    "prompt": "Let \\(f\\) have one-sided limits 2 and \\(-3\\) at zero. For which real \\(a,b\\) does \\(\\lim_{x\\to0}[a f(x)+b f(-x)]\\) exist and equal 4?",
+    "choices": [
+      "\\(a=b=-4\\)",
+      "\\(a=b=4\\)",
+      "\\(a=2,b=-3\\)",
+      "\\(a=-3,b=2\\)"
+    ],
+    "why": "The left and right limits are \\(2a-3b\\) and \\(-3a+2b\\). Equating them gives \\(a=b\\), and their common value is then \\(-a\\).",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "section": "2.1"
+  },
+  {
+    "topic": "sides",
+    "level": 3,
+    "prompt": "For \\(x<2\\) take \\(r(x)=x+1\\) and for \\(x>2\\) take \\(r(x)=5-x\\). Evaluate \\(\\lim_{x\\to2}[3-r(x)]/|x-2|\\).",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(0\\)",
+      "Does not exist."
+    ],
+    "why": "The numerator equals \\(2-x\\) on the left and \\(x-2\\) on the right. Both agree with \\(|x-2|\\).",
+    "source": "../lectures/02-limits.html#practice",
+    "section": "2.1"
+  },
+  {
+    "topic": "sides",
+    "level": 3,
+    "prompt": "The graph of \\(r\\) consists of \\(x+1\\) for \\(x<2\\) and \\(5-x\\) for \\(x>2\\). Assign \\(r(2)=3\\). What are the left and right limits of \\([r(x)-r(2)]/(x-2)\\)?",
+    "choices": [
+      "\\(1,-1\\)",
+      "\\(-1,1\\)",
+      "\\(1,1\\)",
+      "\\(0,0\\)"
+    ],
+    "why": "The left numerator is \\(x-2\\). The right numerator is \\(2-x\\). Cancelling off the point gives opposite slopes.",
+    "source": "../lectures/02-limits.html#practice",
+    "section": "2.1"
+  },
+  {
+    "topic": "sides",
+    "level": 3,
+    "prompt": "Let \\(s(x)=(x^2-9)/|x-3|\\). Without evaluating \\(s(3)\\), find \\(\\lim_{h\\to0^+}[s(3+h)+s(3-h)]/h\\).",
+    "choices": [
+      "\\(2\\)",
+      "\\(0\\)",
+      "\\(12\\)",
+      "Does not exist."
+    ],
+    "why": "For \\(h>0\\), the two terms are \\(6+h\\) and \\(-(6-h)\\). Their sum is \\(2h\\).",
+    "source": "../lectures/02-limits.html#practice",
+    "section": "2.1"
+  },
+  {
+    "topic": "sides",
+    "level": 4,
+    "prompt": "With \\(s(x)=(x^2-9)/|x-3|\\), which is the two-sided limit of \\([s(x)^2-36]/(x-3)\\) as \\(x\\to3\\)?",
+    "choices": [
+      "\\(12\\)",
+      "\\(6\\)",
+      "\\(0\\)",
+      "Does not exist."
+    ],
+    "why": "Although \\(s\\) has a jump, for \\(x\\ne3\\) its square is \\((x+3)^2\\). Subtracting 36 gives \\((x-3)(x+9)\\).",
+    "source": "../lectures/02-limits.html#practice",
+    "section": "2.1"
+  },
+  {
+    "topic": "sides",
+    "level": 4,
+    "prompt": "For \\(x\\ne3\\), set \\(s(x)=(x^2-9)/|x-3|\\). Which function \\(P(t)\\) makes \\(P(s(x))/(x-3)\\) have finite one-sided limits of opposite sign at \\(3\\)?",
+    "choices": [
+      "\\(P(t)=t-36/t\\)",
+      "\\(P(t)=t^2-36\\)",
+      "\\(P(t)=|t|-6\\)",
+      "\\(P(t)=t\\)"
+    ],
+    "why": "Nearby, \\(s(x)=\\pm(x+3)\\) and \\(s(x)^2-36=(x-3)(x+9)\\). The chosen quotient simplifies to \\((x+9)/s(x)\\), which tends to \\(-2\\) and \\(2\\). The quadratic gives 12 on both sides, the unsigned difference gives 1, and \\(s(x)/(x-3)\\) diverges.",
+    "source": "../lectures/02-limits.html#practice",
+    "section": "2.1"
+  },
+  {
+    "topic": "infinite",
+    "level": 3,
+    "prompt": "Let \\(F(x)=-1/(x+1)^2+3/(x+1)\\). What is its two-sided limit at \\(-1\\)?",
+    "choices": [
+      "\\(-\\infty\\)",
+      "\\(+\\infty\\)",
+      "Does not exist because the one-sided signs differ.",
+      "\\(3\\)"
+    ],
+    "why": "The common denominator is positive. The numerator \\(-1+3(x+1)\\) tends to \\(-1\\), so both sides diverge negatively.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 3,
+    "prompt": "If \\(A(x)=1/(x+1)\\), what are the left and right limits of \\(A(x)/|A(x)|\\) at \\(-1\\)?",
+    "choices": [
+      "\\(-1,1\\)",
+      "\\(1,-1\\)",
+      "\\(-\\infty,+\\infty\\)",
+      "\\(1,1\\)"
+    ],
+    "why": "Dividing a nonzero value by its magnitude records its sign. \\(A\\) is negative to the left of \\(-1\\) and positive to the right.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 3,
+    "prompt": "Consider \\(G(x)=(x+1)^2/[(x+1)^3(x-2)]\\). Which ordered pair gives its limits at \\(-1^-\\) and \\(-1^+\\)?",
+    "choices": [
+      "\\(+\\infty,-\\infty\\)",
+      "\\(-\\infty,+\\infty\\)",
+      "\\(-\\infty,-\\infty\\)",
+      "\\(0,0\\)"
+    ],
+    "why": "First cancel two factors. Near \\(-1\\) the factor \\(x-2\\) stays negative, while the remaining factor \\(x+1\\) changes sign.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 3,
+    "prompt": "For \\(F(x)=-1/(x+1)^2\\), take the reciprocal square root \\(1/\\sqrt{-F(x)}\\). What does it equal near \\(-1\\), and what is its limit?",
+    "choices": [
+      "\\(|x+1|\\), with limit 0.",
+      "\\(x+1\\), with limit 0 on both sides and equality on both sides.",
+      "\\(1/|x+1|\\), with infinite limit.",
+      "\\(-(x+1)^2\\), with limit 0."
+    ],
+    "why": "The positive square root of \\(1/(x+1)^2\\) is \\(1/|x+1|\\). Taking the reciprocal leaves the absolute value.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "At \\(x=-1\\), consider \\(R_k(x)=[(x+1)^2+k(x+1)]/(x+1)^4\\). Which \\(k\\) makes the two-sided limit \\(+\\infty\\)?",
+    "choices": [
+      "Only \\(k=0\\).",
+      "Every \\(k\\ge0\\).",
+      "Every \\(k>0\\).",
+      "No real \\(k\\)."
+    ],
+    "why": "If \\(k=0\\), cancellation leaves the positive even pole \\(1/(x+1)^2\\). Otherwise the expression is \\((x+1+k)/(x+1)^3\\), with opposite one-sided infinite limits.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "Find the two-sided limit at \\(x=-1\\) of \\(\\sqrt{1+(x+1)^{-2}}-|x+1|^{-1}\\).",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(+\\infty\\)",
+      "Does not exist."
+    ],
+    "why": "The conjugate turns this difference into \\(1/[\\sqrt{1+(x+1)^{-2}}+|x+1|^{-1}]\\). Its denominator tends to positive infinity.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "Write \\(A(x)=1/(x+1)\\). As \\(x\\to-1\\), what are the two one-sided limits of \\(\\sqrt{A(x)^2+1}+A(x)\\), left first?",
+    "choices": [
+      "\\(0,+\\infty\\)",
+      "\\(+\\infty,0\\)",
+      "\\(+\\infty,+\\infty\\)",
+      "\\(0,0\\)"
+    ],
+    "why": "On the left \\(A\\to-\\infty\\) and rationalization gives \\(1/(\\sqrt{A^2+1}-A)\\to0\\). On the right both terms are positive and unbounded.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 3,
+    "prompt": "For \\(F(x)=(x-1)/[x^2(x+1)]\\), find the finite limit of \\(x^2F(x)\\) and determine the sign of \\(F(x)\\) near zero.",
+    "choices": [
+      "Limit \\(-1\\) and \\(F(x)<0\\) on both sides.",
+      "Limit \\(-1\\) and \\(F(x)\\) changes sign.",
+      "Limit \\(1\\) and \\(F(x)>0\\) on both sides.",
+      "Limit 0 and \\(F(x)<0\\) on both sides."
+    ],
+    "why": "Cancelling \\(x^2\\) gives \\((x-1)/(x+1)\\to-1\\). Away from the point, \\(x^2>0\\) leaves the sign negative.",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 3,
+    "prompt": "For \\(F(x)=(x-1)/[x^2(x+1)]\\), what are \\(\\lim_{x\\to-1}(x+1)F(x)\\) and \\(\\lim_{x\\to0}1/F(x)\\)?",
+    "choices": [
+      "\\(-2,0\\)",
+      "\\(2,0\\)",
+      "\\(0,-1\\)",
+      "Both limits diverge."
+    ],
+    "why": "The first product reduces to \\((x-1)/x^2\\). Near zero the reciprocal is \\(x^2(x+1)/(x-1)\\) and tends to zero.",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 3,
+    "prompt": "Which function is unbounded near zero but has neither one-sided limit equal to \\(+\\infty\\) or \\(-\\infty\\)?",
+    "choices": [
+      "\\(\\sin^2(1/x)/x^2\\)",
+      "\\(1/x^2\\)",
+      "\\(1/x\\)",
+      "\\(-1/|x|\\)"
+    ],
+    "why": "On either side it vanishes at infinitely many points approaching zero. At points where sine has magnitude 1 it equals \\(1/x^2\\), which is unbounded.",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 3,
+    "prompt": "As \\(x\\to0^+\\), set \\(u(x)=\\sin(1/x)\\). Which transformation has a finite limit as \\(x\\) tends to zero from the right?",
+    "choices": [
+      "\\(x[1+u(x)^2]\\)",
+      "\\(1+u(x)^2\\)",
+      "\\(u(x)^2\\)",
+      "\\(|u(x)|\\)"
+    ],
+    "why": "Since \\(0\\le u^2\\le1\\), the first expression lies between \\(x\\) and \\(2x\\). The other three expressions take two distinct fixed values along suitable sequences.",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "For \\(F(x)=(x-1)/[x^2(x+1)]\\), evaluate \\(\\lim_{x\\to0}x[F(x)+1/x^2]\\).",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(0\\)",
+      "Does not exist."
+    ],
+    "why": "Inside the brackets the numerator becomes \\((x-1)+(x+1)=2x\\). Multiplication by \\(x\\) leaves \\(2/(x+1)\\to2\\).",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "Let \\(T(x)=[2+\\sin(1/x)]/x\\) for \\(x\\ne0\\). Which conclusion follows even though \\(\\sin(1/x)\\) has no limit?",
+    "choices": [
+      "The left limit is \\(-\\infty\\) and the right limit is \\(+\\infty\\).",
+      "Neither one-sided limit has a definite infinite sign.",
+      "Both sides tend to \\(+\\infty\\).",
+      "There are sequences approaching zero on which \\(T\\) is zero."
+    ],
+    "why": "The numerator stays between 1 and 3. For \\(x>0\\), \\(T\\ge1/x\\). For \\(x<0\\), \\(T\\le1/x\\).",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "Why does \\((1+\\sin(1/x))/x^2\\) fail to tend to \\(+\\infty\\) as \\(x\\to0^+\\), although it is nonnegative and unbounded there?",
+    "choices": [
+      "Along \\(x_n=1/(3\\pi/2+2\\pi n)\\) the expression is zero.",
+      "Along \\(x_n=1/(\\pi/2+2\\pi n)\\) the expression is zero.",
+      "A nonnegative function cannot tend to infinity.",
+      "Its denominator changes sign infinitely often."
+    ],
+    "why": "The sine equals \\(-1\\) along the first sequence. Along the sequence with phase \\(\\pi/2\\) it equals 1, giving \\(2/x_n^2\\to+\\infty\\).",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 3,
+    "prompt": "The one-sided limits of \\(F(x)=-2/(x-1)^3\\) are opposite infinities. What are the one-sided limits of \\(F/(1+|F|)\\) at 1, left first?",
+    "choices": [
+      "\\(1,-1\\)",
+      "\\(-1,1\\)",
+      "\\(1,1\\)",
+      "\\(0,0\\)"
+    ],
+    "why": "The magnitude ratio \\(|F|/(1+|F|)\\) tends to 1. \\(F\\) is positive to the left and negative to the right.",
+    "source": "../lectures/03-infinite-limits.html#practice",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 3,
+    "prompt": "For \\(F(x)=-2/(x-1)^3\\), choose the smallest nonnegative integer \\(m\\) for which \\((x-1)^mF(x)\\) has a finite two-sided limit at 1. Give that limit.",
+    "choices": [
+      "\\(m=3\\), limit \\(-2\\).",
+      "\\(m=2\\), limit 0.",
+      "\\(m=1\\), limit \\(-2\\).",
+      "\\(m=4\\), limit 0."
+    ],
+    "why": "For \\(m<3\\) a power of \\(x-1\\) remains in the denominator. With \\(m=3\\) the product is exactly \\(-2\\) on the punctured interval.",
+    "source": "../lectures/03-infinite-limits.html#practice",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "For \\(F(x)=-2/(x-1)^3\\), what are the one-sided limits of \\(|x-1|^3F(x)\\) at 1?",
+    "choices": [
+      "\\(2,-2\\)",
+      "\\(-2,-2\\)",
+      "\\(2,2\\)",
+      "\\(-2,2\\)"
+    ],
+    "why": "The magnitudes cancel exactly. The ratio \\(|x-1|^3/(x-1)^3\\) is \\(-1\\) on the left and 1 on the right.",
+    "source": "../lectures/03-infinite-limits.html#practice",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "Suppose a rational function has no cancelled factors at \\(a\\) or \\(b\\) where \\(a<b\\). It approaches \\(+\\infty\\) on both sides of \\(a\\), and approaches \\(+\\infty\\) from the left and \\(-\\infty\\) from the right of \\(b\\). Which formula fits?",
+    "choices": [
+      "\\(-1/[(x-a)^2(x-b)]\\)",
+      "\\(1/[(x-a)^2(x-b)]\\)",
+      "\\(1/[(x-a)(x-b)^2]\\)",
+      "\\(-1/[(x-a)(x-b)]\\)"
+    ],
+    "why": "Near \\(a\\), the squared factor is positive and \\(x-b\\) is negative, so the quotient is positive. Near \\(b\\), the squared factor stays positive and the sign reverses as required.",
+    "source": "../lectures/03-infinite-limits.html#practice",
+    "section": "2.2"
+  },
+  {
+    "topic": "laws",
+    "level": 3,
+    "prompt": "Suppose \\(f(x)\\to2\\) and \\(g(x)\\to3\\) as \\(x\\to a\\). Which limit can be evaluated directly by the real root and quotient laws?",
+    "choices": [
+      "\\(\\sqrt{g-f}/(f+g)\\to1/5\\)",
+      "\\(\\sqrt{f-g}/(f+g)\\to1/5\\)",
+      "\\((g-f)/(g-3)\\to0\\)",
+      "\\((f-2)/(g-3)\\to1\\)"
+    ],
+    "why": "The first radicand tends to 1, hence is positive nearby, and the denominator tends to 5. The other cases have an eventually negative radicand or a denominator tending to zero.",
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "section": "2.3"
+  },
+  {
+    "topic": "laws",
+    "level": 3,
+    "prompt": "Suppose \\(f(x)\\to2\\), \\(g(x)\\to3\\), and \\(f(x)\\ne2\\) near \\(a\\) except possibly at \\(a\\). Find \\(\\lim_{x\\to a}(f^2-4)/[(f-2)g]\\).",
+    "choices": [
+      "\\(4/3\\)",
+      "\\(0\\)",
+      "\\(2/3\\)",
+      "The given limits never determine this quotient."
+    ],
+    "why": "Off the point, factor \\(f^2-4=(f-2)(f+2)\\) and cancel. The remaining denominator approaches 3.",
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "section": "2.3"
+  },
+  {
+    "topic": "laws",
+    "level": 3,
+    "prompt": "If \\(f\\to2\\), \\(g\\to3\\), evaluate \\((\\sqrt{g+1}-\\sqrt{f+2})/(g-f-1)\\) in the limit, assuming \\(g-f-1\\ne0\\) throughout a punctured neighborhood.",
+    "choices": [
+      "\\(1/4\\)",
+      "\\(1/2\\)",
+      "\\(0\\)",
+      "\\(4\\)"
+    ],
+    "why": "Conjugation gives \\((g+1)-(f+2)=g-f-1\\). The quotient becomes \\(1/(\\sqrt{g+1}+\\sqrt{f+2})\\to1/4\\).",
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "section": "2.3"
+  },
+  {
+    "topic": "laws",
+    "level": 4,
+    "prompt": "Given only \\(f\\to2\\) and \\(g\\to3\\), a student claims \\((f-2)/(g-3)\\to1\\). Which pair of examples at \\(x\\to0\\) shows both a finite limit different from 1 and a nonexistent two-sided limit?",
+    "choices": [
+      "Use \\(g=3+x\\) for both, with \\(f=2+2x\\) and then \\(f=2+|x|\\).",
+      "Use \\(g=3+x\\) for both, with \\(f=2+x\\) and then \\(f=2+x^2\\).",
+      "Use \\(f=2+x\\), \\(g=3+x\\) in both examples.",
+      "Use \\(g=3\\) identically and \\(f=2+x\\) in both examples."
+    ],
+    "why": "The first pair gives quotients \\(2\\) and \\(|x|/x\\). The latter takes opposite values on the two sides.",
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "For \\(f(x)=(x^2-2x+1)/(x^2-1)\\), evaluate \\(\\lim_{x\\to1}f(x)/(x-1)\\).",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(0\\)",
+      "\\(2\\)",
+      "Does not exist."
+    ],
+    "why": "The original expression reduces to \\((x-1)/(x+1)\\) off the excluded points. Dividing once more leaves \\(1/(x+1)\\).",
+    "source": "../lectures/04-limit-laws.html#three-possibilities-when-we-substitute",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "For \\(f(x)=(x^2-2x+1)/(x^2-1)\\), which pair gives \\(\\lim_{x\\to-1}(x+1)f(x)\\) and \\(\\lim_{x\\to1}1/f(x)\\)?",
+    "choices": [
+      "\\(-2\\) and DNE.",
+      "\\(2\\) and DNE.",
+      "\\(-2\\) and 0.",
+      "\\(0\\) and \\(+\\infty\\)."
+    ],
+    "why": "The first product simplifies to \\(x-1\\). The reciprocal equals \\((x+1)/(x-1)\\), which diverges to opposite infinities at 1.",
+    "source": "../lectures/04-limit-laws.html#three-possibilities-when-we-substitute",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "For which \\(k\\) does \\(\\lim_{x\\to1}(x^2+kx+1)/(x^2-1)\\) exist as a finite real number, and what is the limit?",
+    "choices": [
+      "\\(k=-2\\), limit 0.",
+      "\\(k=-2\\), limit 1.",
+      "\\(k=2\\), limit 0.",
+      "Every \\(k\\), limit \\(1/2\\)."
+    ],
+    "why": "Finiteness requires \\(1+k+1=0\\). With \\(k=-2\\), the quotient reduces to \\((x-1)/(x+1)\\to0\\).",
+    "source": "../lectures/04-limit-laws.html#three-possibilities-when-we-substitute",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "Choose \\(a,b\\) so that \\(\\lim_{x\\to1}(x^2+ax+b)/(x^2-1)=3\\).",
+    "choices": [
+      "\\(a=4,b=-5\\)",
+      "\\(a=2,b=-3\\)",
+      "\\(a=4,b=5\\)",
+      "\\(a=-4,b=3\\)"
+    ],
+    "why": "Vanishing of the numerator requires \\(b=-1-a\\). Factor it as \\((x-1)(x+a+1)\\). The limit is \\((a+2)/2\\), giving \\(a=4\\) and \\(b=-5\\).",
+    "source": "../lectures/04-limit-laws.html#three-possibilities-when-we-substitute",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "For fixed \\(a\\ne0\\), evaluate \\(\\lim_{h\\to0}[1/(a+2h)-1/(a-h)]/h\\).",
+    "choices": [
+      "\\(-3/a^2\\)",
+      "\\(3/a^2\\)",
+      "\\(-1/a^2\\)",
+      "\\(-3/a\\)"
+    ],
+    "why": "The common numerator is \\((a-h)-(a+2h)=-3h\\). After cancellation the denominator approaches \\(a^2\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "For \\(a>0\\), compute \\(\\lim_{h\\to0}(\\sqrt{a+2h}-\\sqrt{a-h})/h\\).",
+    "choices": [
+      "\\(3/(2\\sqrt a)\\)",
+      "\\(1/(2\\sqrt a)\\)",
+      "\\(3/\\sqrt a\\)",
+      "\\(-3/(2\\sqrt a)\\)"
+    ],
+    "why": "Multiplication by the conjugate gives numerator \\(3h\\). The radical sum approaches \\(2\\sqrt a\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "Find \\(\\lim_{t\\to0}(\\sin t-\\tan t)/\\tan t\\) through nearby nonzero inputs, and identify a valid simplification.",
+    "choices": [
+      "It is 0 because the quotient equals \\(\\cos t-1\\).",
+      "It is 1 because the quotient equals \\(\\cos t\\).",
+      "It is \\(-1\\) because the quotient equals \\(-\\cos t\\).",
+      "It does not exist because \\(\\tan0=0\\)."
+    ],
+    "why": "Separate the quotient as \\(\\sin t/\\tan t-1\\). Both factors of sine may be cancelled for sufficiently small \\(t\\ne0\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "Evaluate \\(\\lim_{h\\to0}[(2+h)^3-8-12h]/h^2\\).",
+    "choices": [
+      "\\(6\\)",
+      "\\(12\\)",
+      "\\(4\\)",
+      "\\(0\\)"
+    ],
+    "why": "Expand the cube to get \\(8+12h+6h^2+h^3\\). After the two subtractions, division gives \\(6+h\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "For \\(a>0\\), find \\(\\lim_{h\\to0}[(\\sqrt{a+h}-\\sqrt a)/h-1/(2\\sqrt a)]/h\\).",
+    "choices": [
+      "\\(-1/(8a\\sqrt a)\\)",
+      "\\(-1/(4a\\sqrt a)\\)",
+      "\\(1/(8a\\sqrt a)\\)",
+      "\\(0\\)"
+    ],
+    "why": "The inner quotient is \\(1/(\\sqrt{a+h}+\\sqrt a)\\). Subtracting the constant introduces the factor \\(\\sqrt a-\\sqrt{a+h}\\). A second conjugation leaves \\(-1/[2\\sqrt a(\\sqrt{a+h}+\\sqrt a)^2]\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "Take \\(f(x)=(x^2-4)/(x-2)\\) near 2. Evaluate \\(\\lim_{x\\to2}[1/f(x)-1/4]/[\\sqrt{f(x)}-2]\\).",
+    "choices": [
+      "\\(-1/4\\)",
+      "\\(1/4\\)",
+      "\\(-1/16\\)",
+      "\\(-4\\)"
+    ],
+    "why": "Set \\(u=\\sqrt{f(x)}\\to2\\). The quotient is \\((4-u^2)/[4u^2(u-2)]=-(u+2)/(4u^2)\\) for nearby \\(x\\ne2\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "section": "2.3"
+  },
+  {
+    "topic": "squeeze",
+    "level": 3,
+    "prompt": "Near 1, \\(5-(x-1)^2\\le f(x)\\le5+(x-1)^2\\). Evaluate \\(\\lim_{x\\to1}[f(x)^2-25]/|x-1|\\).",
+    "choices": [
+      "\\(0\\)",
+      "\\(5\\)",
+      "\\(10\\)",
+      "The bounds give no conclusion."
+    ],
+    "why": "The bounds imply \\(f\\to5\\) and \\(|f-5|\\le(x-1)^2\\). After factoring, the absolute quotient is at most \\(|x-1|\\,|f+5|\\), which tends to zero.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "section": "2.4"
+  },
+  {
+    "topic": "squeeze",
+    "level": 3,
+    "prompt": "For \\(0<|x|<1\\), let \\(F(x)=x^2\\sin(1/x)/(1+x\\sin(1/x))\\). What is the limit as \\(x\\to0\\)?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "Does not exist."
+    ],
+    "why": "The numerator is bounded in magnitude by \\(x^2\\). The denominator tends to 1 because \\(|x\\sin(1/x)|\\le|x|\\).",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "section": "2.4"
+  },
+  {
+    "topic": "squeeze",
+    "level": 3,
+    "prompt": "Suppose \\(|f(x)-5|\\le(x-1)^2\\) near 1. Which pair of limits follows for \\(\\sqrt{f(x)}\\) and \\((f(x)-5)/\\sqrt{|x-1|}\\)?",
+    "choices": [
+      "\\(\\sqrt5,0\\)",
+      "\\(5,0\\)",
+      "\\(\\sqrt5,1\\)",
+      "The square root need not be defined near 1."
+    ],
+    "why": "Squeezing gives \\(f\\to5>0\\). The second expression has magnitude at most \\(|x-1|^{3/2}\\).",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "section": "2.4"
+  },
+  {
+    "topic": "squeeze",
+    "level": 3,
+    "prompt": "For \\(x\\ne0\\) set \\(q(x)=\\sin(x^2)\\sin(1/x)/x\\). In radians, what is \\(\\lim_{x\\to0}q(x)\\)?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "Does not exist."
+    ],
+    "why": "The unit-circle bound gives \\(|\\sin(x^2)|\\le x^2\\) near 0. The whole quotient has magnitude at most \\(|x|\\) even though \\(\\sin(1/x)\\) oscillates.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "section": "2.4"
+  },
+  {
+    "topic": "squeeze",
+    "level": 4,
+    "prompt": "Suppose \\(|f(x)-5|\\le(x-1)^2\\). For which real exponents \\(p\\) do these bounds alone force \\((f(x)-5)/|x-1|^p\\to0\\) for every such \\(f\\)?",
+    "choices": [
+      "Exactly \\(p<2\\).",
+      "Exactly \\(p\\le2\\).",
+      "Exactly \\(p>2\\).",
+      "Every real \\(p\\)."
+    ],
+    "why": "The quotient is bounded in magnitude by \\(|x-1|^{2-p}\\). Taking \\(f(x)=5+(x-1)^2\\) shows that equality or a larger exponent fails.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "section": "2.4"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "In radians, compute \\(\\lim_{x\\to0}\\sin(2x)\\sin(5x)/[x\\sin(3x)]\\).",
+    "choices": [
+      "\\(10/3\\)",
+      "\\(3/10\\)",
+      "\\(7/3\\)",
+      "\\(0\\)"
+    ],
+    "why": "Divide each sine by its argument. The remaining coefficient is \\((2\\cdot5)/3\\), and all normalized sine factors tend to 1.",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "section": "2.4"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "Find \\(\\lim_{x\\to0}\\sin(5x^2)/(2x\\tan(3x))\\) in radians.",
+    "choices": [
+      "\\(5/6\\)",
+      "\\(5/3\\)",
+      "\\(5/2\\)",
+      "\\(0\\)"
+    ],
+    "why": "Match \\(5x^2\\) in the numerator and \\(3x\\) in the tangent, writing \\(\\tan(3x)/(3x)\\to1\\). The remaining coefficient is \\(5/6\\).",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "section": "2.4"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "Given \\(k>0\\) and \\(\\lim_{x\\to0}\\sin(kx)/\\tan(2x)=3\\), determine \\(k\\).",
+    "choices": [
+      "\\(6\\)",
+      "\\(3/2\\)",
+      "\\(3\\)",
+      "\\(1/6\\)"
+    ],
+    "why": "After normalizing the angles, the limit is \\(k/2\\). Solving \\(k/2=3\\) gives 6.",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "section": "2.4"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "In radians, evaluate the one-sided limits of \\(\\sin(4x)/|\\sin(2x)|\\) at zero, left first.",
+    "choices": [
+      "\\(-2,2\\)",
+      "\\(2,2\\)",
+      "\\(-1,1\\)",
+      "\\(2,-2\\)"
+    ],
+    "why": "The magnitude of the quotient tends to 2 after matching angles. The numerator is negative on the left and positive on the right.",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "section": "2.4"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "Using the fundamental sine limit twice, compute \\(\\lim_{x\\to0}\\sin(\\sin(3x))/\\tan(5x)\\).",
+    "choices": [
+      "\\(3/5\\)",
+      "\\(1/5\\)",
+      "\\(5/3\\)",
+      "\\(0\\)"
+    ],
+    "why": "Factor using \\(\\sin(\\sin(3x))/\\sin(3x)\\to1\\), \\(\\sin(3x)/(3x)\\to1\\), and \\(\\tan(5x)/(5x)\\to1\\).",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "section": "2.4"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "Compute \\(\\lim_{x\\to0}(1-\\cos(2x))/(1-\\cos(3x))\\) in radians.",
+    "choices": [
+      "\\(4/9\\)",
+      "\\(2/3\\)",
+      "\\(9/4\\)",
+      "\\(0\\)"
+    ],
+    "why": "Conjugating each difference expresses the ratio as \\((\\sin(2x)/\\sin(3x))^2(1+\\cos(3x))/(1+\\cos(2x))\\). Its limit is \\((2/3)^2\\).",
+    "source": "../lectures/05-squeeze-theorem.html#difficult",
+    "section": "2.4"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "Find \\(\\lim_{x\\to0^+}\\sqrt{1-\\cos x}/x\\) in radians.",
+    "choices": [
+      "\\(1/\\sqrt2\\)",
+      "\\(1/2\\)",
+      "\\(0\\)",
+      "\\(\\sqrt2\\)"
+    ],
+    "why": "For positive \\(x\\), the quotient is the positive square root of \\((1-\\cos x)/x^2\\). Conjugation shows that the radicand tends to \\(1/2\\).",
+    "source": "../lectures/05-squeeze-theorem.html#difficult",
+    "section": "2.4"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "Evaluate \\(\\lim_{x\\to0}[\\cos(2x)-\\cos(5x)]/x^2\\) in radians.",
+    "choices": [
+      "\\(21/2\\)",
+      "\\(3/2\\)",
+      "\\(-21/2\\)",
+      "\\(29/2\\)"
+    ],
+    "why": "Write the numerator as \\((1-\\cos(5x))-(1-\\cos(2x))\\). After a conjugate, each quotient \\((1-\\cos(kx))/x^2\\) tends to \\(k^2/2\\).",
+    "source": "../lectures/05-squeeze-theorem.html#difficult",
+    "section": "2.4"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "Evaluate \\(\\lim_{x\\to0}(1-\\cos x)^2/[x^2(1-\\cos(2x))]\\) in radians.",
+    "choices": [
+      "\\(1/8\\)",
+      "\\(1/4\\)",
+      "\\(1/2\\)",
+      "\\(0\\)"
+    ],
+    "why": "Divide numerator and denominator by \\(x^4\\). The numerator becomes \\([(1-\\cos x)/x^2]^2\\to1/4\\). The denominator becomes \\((1-\\cos(2x))/x^2\\to2\\).",
+    "source": "../lectures/05-squeeze-theorem.html#difficult",
+    "section": "2.4"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "In radians, for which \\(k\\) does the two-sided limit \\(\\lim_{x\\to0}[1-\\cos(2x)-k\\sin^2x]/x^4\\) exist as a finite number, and what is it?",
+    "choices": [
+      "\\(k=2\\), limit 0.",
+      "\\(k=2\\), limit \\(1/2\\).",
+      "\\(k=1\\), limit 0.",
+      "\\(k=4\\), limit 0."
+    ],
+    "why": "The numerator is exactly \\((2-k)\\sin^2x\\). Unless \\(k=2\\), its quotient is \\((2-k)(\\sin x/x)^2/x^2\\), which is unbounded. When \\(k=2\\) it vanishes identically.",
+    "source": "../lectures/05-squeeze-theorem.html#difficult",
+    "section": "2.4"
+  },
+  {
+    "topic": "limit",
+    "level": 1,
+    "prompt": "A graph follows the line \\(y=x+2\\) with an open circle at \\((2,4)\\). What height does the graph approach as \\(x\\) approaches 2?",
+    "choices": [
+      "\\(4\\)",
+      "\\(2\\)",
+      "\\(0\\)",
+      "No height is approached."
+    ],
+    "why": "On the line, inputs approaching 2 give outputs approaching \\(2+2=4\\).",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "section": "2.1"
+  },
+  {
+    "topic": "limit",
+    "level": 1,
+    "prompt": "For \\(g(x)=x+2\\) when \\(x\\ne2\\) and \\(g(2)=7\\), which point is filled in on the graph at \\(x=2\\)?",
+    "choices": [
+      "\\((2,7)\\)",
+      "\\((2,4)\\)",
+      "\\((7,2)\\)",
+      "\\((4,2)\\)"
+    ],
+    "why": "The filled point represents the actual function value, so it has coordinates \\((2,g(2))=(2,7)\\).",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "section": "2.1"
+  },
+  {
+    "topic": "limit",
+    "level": 2,
+    "prompt": "The table for \\((x^2-4)/(x-2)\\) gives outputs \\(3.999\\) and \\(4.001\\) on opposite sides of 2. Which calculation justifies the exact limit suggested by these data?",
+    "choices": [
+      "For \\(x\\ne2\\), the quotient equals \\(x+2\\), which tends to 4.",
+      "Averaging any two table entries proves the limit is 4.",
+      "Substitution gives \\(0/0=4\\).",
+      "The denominator tends to 0, so the limit must be infinite."
+    ],
+    "why": "Factor \\(x^2-4=(x-2)(x+2)\\) and cancel at nearby inputs. This covers every such input on both sides.",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "section": "2.1"
+  },
+  {
+    "topic": "sides",
+    "level": 1,
+    "prompt": "Which sequence of inputs approaches 3 from the left?",
+    "choices": [
+      "\\(2.9,\\,2.99,\\,2.999,\\ldots\\)",
+      "\\(3.1,\\,3.01,\\,3.001,\\ldots\\)",
+      "\\(3,\\,3,\\,3,\\ldots\\)",
+      "\\(2,\\,1,\\,0,\\ldots\\)"
+    ],
+    "why": "Left-hand inputs stay below 3 while their distance from 3 shrinks to zero.",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "section": "2.1"
+  },
+  {
+    "topic": "sides",
+    "level": 2,
+    "prompt": "Let \\(g(x)=-x^2\\) for \\(x<0\\), \\(g(0)=2\\), and \\(g(x)=\\sqrt{x}\\) for \\(x>0\\). What are \\(\\lim_{x\\to0}g(x)\\) and \\(g(0)\\), in order?",
+    "choices": [
+      "\\(0,2\\)",
+      "\\(2,0\\)",
+      "\\(0,0\\)",
+      "The limit fails, and \\(g(0)=2\\)."
+    ],
+    "why": "Both branches approach 0. The point value comes from the separate middle case.",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "section": "2.1"
+  },
+  {
+    "topic": "sides",
+    "level": 2,
+    "prompt": "For \\(s(x)=(x^2-9)/|x-3|\\), which formula applies just to the left of \\(3\\), and what is the left-hand limit?",
+    "choices": [
+      "\\(-(x+3)\\), limit \\(-6\\).",
+      "\\(x+3\\), limit \\(6\\).",
+      "\\(-(x-3)\\), limit \\(0\\).",
+      "\\(x-3\\), limit \\(0\\)."
+    ],
+    "why": "At inputs below 3, \\(|x-3|=-(x-3)\\). Cancelling the factor \\(x-3\\) from the numerator introduces a minus sign.",
+    "source": "../lectures/02-limits.html#practice",
+    "section": "2.1"
+  },
+  {
+    "topic": "infinite",
+    "level": 1,
+    "prompt": "Which line is the vertical asymptote of \\(A(x)=1/(x+1)\\)?",
+    "choices": [
+      "\\(x=-1\\)",
+      "\\(x=1\\)",
+      "\\(y=-1\\)",
+      "\\(y=0\\)"
+    ],
+    "why": "The denominator vanishes at \\(x=-1\\) while the numerator stays 1. The magnitude grows without bound near that input.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 1,
+    "prompt": "As \\(x\\) approaches \\(-1\\) from the right, is \\(1/(x+1)\\) large positive, large negative, close to 1, or close to 0?",
+    "choices": [
+      "Large positive.",
+      "Large negative.",
+      "Close to 1.",
+      "Close to 0."
+    ],
+    "why": "On the right, \\(x+1\\) is positive and gets arbitrarily close to zero.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 1,
+    "prompt": "What is \\(\\lim_{x\\to-1}-1/(x+1)^2\\)?",
+    "choices": [
+      "\\(-\\infty\\)",
+      "\\(+\\infty\\)",
+      "\\(0\\)",
+      "\\(-1\\)"
+    ],
+    "why": "The squared denominator approaches zero through positive values on either side. The negative numerator fixes the sign.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "section": "2.2"
+  },
+  {
+    "topic": "sides",
+    "level": 2,
+    "prompt": "A graph approaches height 1 as \\(x\\to3^-\\) and height 4 as \\(x\\to3^+\\). The point at \\(x=3\\) is missing. Which change would make the two-sided limit exist?",
+    "choices": [
+      "Change a nearby branch so both sides approach the same height.",
+      "Fill \\((3,1)\\) only.",
+      "Fill \\((3,4)\\) only.",
+      "Fill \\((3,5/2)\\) only."
+    ],
+    "why": "Adding a point at the exact input does not affect either approach. Matching the heights of the branches gives a common limit.",
+    "source": "../lectures/03-infinite-limits.html#limits-to-graphs",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 2,
+    "prompt": "Why does \\(\\lim_{x\\to0}\\sin(1/x)\\) fail to exist?",
+    "choices": [
+      "Inputs arbitrarily close to zero yield both 1 and \\(-1\\).",
+      "The outputs grow past every bound.",
+      "All positive inputs yield 1.",
+      "Every function undefined at zero lacks a limit there."
+    ],
+    "why": "Reciprocal inputs can produce angles \\(\\pi/2+2\\pi n\\) or \\(3\\pi/2+2\\pi n\\). Their sines remain 1 and \\(-1\\) as those inputs approach zero.",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "section": "2.2"
+  },
+  {
+    "topic": "infinite",
+    "level": 2,
+    "prompt": "Near zero, what sign do the numerator and denominator of \\((x-1)/[x^2(x+1)]\\) have, and what limit follows?",
+    "choices": [
+      "Negative over positive, giving \\(-\\infty\\).",
+      "Negative over negative, giving \\(+\\infty\\).",
+      "Positive over positive, giving \\(+\\infty\\).",
+      "Negative over opposite signs, giving different one-sided limits."
+    ],
+    "why": "The numerator approaches \\(-1\\). For all sufficiently small nonzero \\(x\\), both denominator factors are positive and the denominator tends to zero.",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "section": "2.2"
+  },
+  {
+    "topic": "laws",
+    "level": 1,
+    "prompt": "What is \\(\\lim_{x\\to2}(3x^2-2x+1)\\)?",
+    "choices": [
+      "\\(9\\)",
+      "\\(5\\)",
+      "\\(11\\)",
+      "\\(13\\)"
+    ],
+    "why": "Substitute 2 in the polynomial to get \\(12-4+1=9\\).",
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "section": "2.3"
+  },
+  {
+    "topic": "laws",
+    "level": 1,
+    "prompt": "If \\(f(x)\\to2\\) and \\(g(x)\\to3\\), what is the limit of \\(g(x)-f(x)\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(5\\)",
+      "\\(6\\)"
+    ],
+    "why": "The difference law gives \\(3-2=1\\).",
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "section": "2.3"
+  },
+  {
+    "topic": "laws",
+    "level": 2,
+    "prompt": "If \\(f(x)\\to2\\) and \\(g(x)\\to3\\), find the limit of \\(\\sqrt{f(x)-1}/(g(x))^2\\).",
+    "choices": [
+      "\\(1/9\\)",
+      "\\(1/3\\)",
+      "\\(1/\\sqrt3\\)",
+      "\\(2/9\\)"
+    ],
+    "why": "The radicand tends to \\(2-1=1\\) and the denominator tends to \\(3^2=9\\). The quotient law applies.",
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 1,
+    "prompt": "Direct substitution in a rational expression gives \\(0/0\\). What does that calculation establish?",
+    "choices": [
+      "More work is needed to find the limit.",
+      "The limit is zero.",
+      "The limit is one.",
+      "The limit is infinite."
+    ],
+    "why": "The form \\(0/0\\) is indeterminate. The behavior nearby depends on how the numerator and denominator approach zero.",
+    "source": "../lectures/04-limit-laws.html#three-possibilities-when-we-substitute",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 2,
+    "prompt": "For \\(f(x)=(x^2-2x+1)/(x^2-1)\\), which input gives a nonzero numerator over zero when substituted?",
+    "choices": [
+      "\\(x=-1\\)",
+      "\\(x=1\\)",
+      "\\(x=2\\)",
+      "\\(x=0\\)"
+    ],
+    "why": "At \\(-1\\), the numerator is 4 and the denominator is zero. At 1 both vanish. The other two denominators are nonzero.",
+    "source": "../lectures/04-limit-laws.html#three-possibilities-when-we-substitute",
+    "section": "2.3"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 2,
+    "prompt": "Evaluate \\(\\lim_{x\\to2}(x^2-x-2)/(x^2-4)\\).",
+    "choices": [
+      "\\(3/4\\)",
+      "\\(2/3\\)",
+      "\\(1\\)",
+      "\\(0\\)"
+    ],
+    "why": "Factor top and bottom and cancel \\(x-2\\) at nearby inputs. The remaining quotient \\((x+1)/(x+2)\\) tends to \\(3/4\\).",
+    "source": "../lectures/04-limit-laws.html#practice",
+    "section": "2.3"
+  },
+  {
+    "topic": "squeeze",
+    "level": 1,
+    "prompt": "Near \\(x=1\\), \\(5-(x-1)^2\\le f(x)\\le5+(x-1)^2\\). What common number do the bounds approach?",
+    "choices": [
+      "\\(5\\)",
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(25\\)"
+    ],
+    "why": "The squared term tends to zero on both sides, so both bounds approach 5.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "section": "2.4"
+  },
+  {
+    "topic": "squeeze",
+    "level": 1,
+    "prompt": "Which bound for \\(\\sin(1/x)\\) holds at every nonzero real \\(x\\)?",
+    "choices": [
+      "\\(-1\\le\\sin(1/x)\\le1\\)",
+      "\\(0\\le\\sin(1/x)\\le1\\)",
+      "\\(-1\\le\\sin(1/x)\\le0\\)",
+      "\\(-|x|\\le\\sin(1/x)\\le|x|\\)"
+    ],
+    "why": "Sine stays between \\(-1\\) and 1 for every real angle.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "section": "2.4"
+  },
+  {
+    "topic": "squeeze",
+    "level": 2,
+    "prompt": "To squeeze \\(x^2\\sin(1/x)\\) as \\(x\\to0\\), which two bounds work on both sides?",
+    "choices": [
+      "\\(-x^2\\) and \\(x^2\\)",
+      "\\(0\\) and \\(x^2\\)",
+      "\\(-x\\) and \\(x\\)",
+      "\\(-x^2\\) and \\(0\\)"
+    ],
+    "why": "Since \\(x^2\\ge0\\), multiplying \\(-1\\le\\sin(1/x)\\le1\\) by \\(x^2\\) preserves the inequality. Both bounds tend to zero.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "section": "2.4"
+  },
+  {
+    "topic": "squeeze",
+    "level": 1,
+    "prompt": "Under which angle convention does \\(\\lim_{\\theta\\to0}\\sin(\\theta)/\\theta=1\\)?",
+    "choices": [
+      "Radians.",
+      "Degrees.",
+      "Turns.",
+      "Gradians."
+    ],
+    "why": "In radians, a unit-circle sector of angle \\(\\theta\\) has area \\(\\theta/2\\), giving the normalization used in the proof.",
+    "source": "../lectures/05-squeeze-theorem.html#the-fundamental-trigonometric-limit",
+    "section": "2.4"
+  },
+  {
+    "topic": "squeeze",
+    "level": 2,
+    "prompt": "For \\(0<\\theta<\\pi/2\\), which inequality squeezes \\(\\sin\\theta/\\theta\\) directly to 1?",
+    "choices": [
+      "\\(\\cos\\theta\\le\\sin\\theta/\\theta\\le1\\)",
+      "\\(1\\le\\sin\\theta/\\theta\\le\\cos\\theta\\)",
+      "\\(0\\le\\sin\\theta/\\theta\\le\\sin\\theta\\)",
+      "\\(\\theta\\le\\sin\\theta/\\theta\\le2\\)"
+    ],
+    "why": "Comparing areas gives \\(\\sin\\theta\\le\\theta\\le\\tan\\theta\\). Rearranging the two inequalities traps the ratio between \\(\\cos\\theta\\) and 1.",
+    "source": "../lectures/05-squeeze-theorem.html#the-fundamental-trigonometric-limit",
+    "section": "2.4"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 2,
+    "prompt": "In radians, evaluate \\(\\lim_{x\\to0}\\sin(5x)/(2x)\\).",
+    "choices": [
+      "\\(5/2\\)",
+      "\\(2/5\\)",
+      "\\(1\\)",
+      "\\(0\\)"
+    ],
+    "why": "Rewrite as \\((5/2)\\sin(5x)/(5x)\\). The normalized sine ratio approaches 1.",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "section": "2.4"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 1,
+    "prompt": "Evaluate \\(\\lim_{x\\to2}(x^2+3)/(x+1)\\).",
+    "choices": [
+      "\\(7/3\\)",
+      "\\(4/3\\)",
+      "\\(7/2\\)",
+      "\\(3/7\\)"
+    ],
+    "why": "Since \\(x+1\\) tends to 3, direct substitution gives \\((4+3)/(2+1)=7/3\\).",
+    "source": "../lectures/08-exam-practice.html#problem-3",
+    "section": "2.7"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 2,
+    "prompt": "Which factor cancels to evaluate \\(\\lim_{x\\to3}(x^2-2x-3)/(x^2-9)\\), and what is the result?",
+    "choices": [
+      "\\(x-3\\), limit \\(2/3\\).",
+      "\\(x+3\\), limit \\(2/3\\).",
+      "\\(x-3\\), limit \\(3/2\\).",
+      "\\(x-1\\), limit \\(1\\)."
+    ],
+    "why": "Factoring yields \\((x-3)(x+1)/[(x-3)(x+3)]\\). The nearby quotient tends to \\(4/6\\).",
+    "source": "../lectures/08-exam-practice.html#problem-3",
+    "section": "2.7"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "For \\(D(x)=1/(1+x)-1/(1-x)\\), the leading term near zero is \\(-2x\\). Find \\(\\lim_{x\\to0}[D(x)+2x]/x^3\\).",
+    "choices": [
+      "\\(-2\\)",
+      "\\(2\\)",
+      "\\(-1\\)",
+      "\\(0\\)"
+    ],
+    "why": "Combining the fractions gives \\(D(x)=-2x/(1-x^2)\\). Adding \\(2x\\) gives \\(-2x^3/(1-x^2)\\).",
+    "source": "../lectures/08-exam-practice.html#problem-3",
+    "section": "2.7"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "For small nonzero \\(u\\), consider \\(B(u)=\\sqrt{2+u}-\\sqrt{2-u}\\). After removing its leading term, what is \\(\\lim_{u\\to0}[B(u)-u/\\sqrt2]/u^3\\)?",
+    "choices": [
+      "\\(1/(32\\sqrt2)\\)",
+      "\\(-1/(32\\sqrt2)\\)",
+      "\\(1/(8\\sqrt2)\\)",
+      "\\(0\\)"
+    ],
+    "why": "Set \\(S=\\sqrt{2+u}+\\sqrt{2-u}\\). The quotient is \\((2\\sqrt2-S)/(\\sqrt2\\,S\\,u^2)\\). Since \\(8-S^2=2u^2/(2+\\sqrt{4-u^2})\\), rationalization gives \\(2/[\\sqrt2\\,S(2\\sqrt2+S)(2+\\sqrt{4-u^2})]\\). Now let \\(S\\to2\\sqrt2\\).",
+    "source": "../lectures/08-exam-practice.html#problem-3",
+    "section": "2.7"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 2,
+    "prompt": "Using radians, evaluate \\(\\lim_{x\\to0}\\sin(3x)/\\sin(2x)\\).",
+    "choices": [
+      "\\(3/2\\)",
+      "\\(2/3\\)",
+      "\\(1\\)",
+      "\\(0\\)"
+    ],
+    "why": "Write the expression as \\((3/2)[\\sin(3x)/(3x)]/[\\sin(2x)/(2x)]\\). Both normalized factors tend to 1.",
+    "source": "../lectures/08-exam-practice.html#problem-4",
+    "section": "2.7"
+  },
+  {
+    "topic": "squeeze",
+    "level": 2,
+    "prompt": "Let \\(q(x)=2+x\\sin(1/x)\\). For which inputs does the bound \\(|q(x)-2|\\le0.01\\) follow directly from \\(|\\sin(1/x)|\\le1\\)?",
+    "choices": [
+      "All inputs with \\(0<|x|\\le0.01\\).",
+      "All inputs with \\(0.01\\le|x|<1\\).",
+      "Only positive inputs with \\(0<x\\le0.01\\).",
+      "Only the input \\(x=0\\)."
+    ],
+    "why": "The deviation is \\(|x|\\,|\\sin(1/x)|\\le|x|\\). Both positive and negative inputs work when their magnitude is at most \\(0.01\\).",
+    "source": "../lectures/08-exam-practice.html#problem-8",
+    "section": "2.7"
+  },
+  {
+    "topic": "infinite",
+    "level": 3,
+    "prompt": "Let \\(H(x)=-2/[(x+2)(x-1)^2]\\). Which factor can multiply \\(H\\) so the product has a finite, nonzero two-sided limit at each of its two original poles?",
+    "choices": [
+      "\\((x+2)(x-1)^2\\)",
+      "\\((x+2)^2(x-1)^2\\)",
+      "\\((x+2)(x-1)\\)",
+      "\\((x+2)^2(x-1)\\)"
+    ],
+    "why": "Exactly one zero at \\(-2\\) and exactly two at 1 cancel the poles without leaving zeros in the product there. The resulting product equals \\(-2\\) on its domain.",
+    "source": "../lectures/08-exam-practice.html#problem-2",
+    "section": "2.7"
+  },
+  {
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "For the practice circles \\((x-1)^2+y^2=1\\) and \\(x^2+y^2=r^2\\), the line through \\((0,r)\\) and their upper intersection meets the horizontal axis at \\(a(r)\\), which approaches 4. Determine \\(\\lim_{r\\to0^+}(4-a(r))/r^2\\).",
+    "choices": [
+      "\\(1/4\\)",
+      "\\(1/2\\)",
+      "\\(1/8\\)",
+      "\\(0\\)"
+    ],
+    "why": "Subtract the circle equations to get \\(Q_x=r^2/2\\), then \\(Q_y=rv\\) with \\(v=\\sqrt{1-r^2/4}\\). The line slope is \\(2(v-1)/r\\), so \\(a(r)=r^2/[2(1-v)]=2(1+v)\\). Conjugating once more gives \\((4-a(r))/r^2=1/[2(1+v)]\\to1/4\\).",
+    "source": "../lectures/08-exam-practice.html#problem-10-where-does-the-intercept-go",
+    "section": "2.7"
+  }
+]

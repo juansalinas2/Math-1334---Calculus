@@ -22,10 +22,11 @@ function addLecturePractice(intro, topicId) {
         return response.json();
       }).catch(error => { lectureBank = null; throw error; });
       const lecture = (await lectureBank).find(item => item.id === lectureId);
-      let deck = practiceDecks.get(lectureId);
+      let deck = practiceDecks.get(topicId);
       if (!deck?.length) {
-        deck = [...lecture.questions];
-        practiceDecks.set(lectureId, deck);
+        deck = lecture.questions.filter(q => q.topic === topicId && q.level < 4);
+        if (!deck.length) deck = lecture.questions.filter(q => q.topic === topicId);
+        practiceDecks.set(topicId, deck);
       }
       const index = Math.floor(Math.random() * deck.length);
       const [question] = deck.splice(index, 1);
@@ -44,7 +45,7 @@ function addLecturePractice(intro, topicId) {
       const answer = document.createElement("p");
       answer.innerHTML = question.choices[0] + " · " + question.why;
       const link = document.createElement("a");
-      link.href = "./challenge.html?lecture=" + encodeURIComponent(lectureId);
+      link.href = "./challenge.html?lecture=" + encodeURIComponent("s" + question.section);
       link.textContent = "Play this lecture in Junction Run";
       details.append(summary, answer);
       card.replaceChildren(prompt, options, details, link);

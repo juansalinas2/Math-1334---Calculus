@@ -5,14 +5,14 @@
 <title>Junction Run · Calculus concept map</title>
 <link href="./math.css" rel="stylesheet"><link href="./challenge.css" rel="stylesheet"><link href="./runner.css" rel="stylesheet">
 <script defer src="./scores.js"></script><script defer src="./runner.js"></script><script defer src="./challenge-rules.js"></script><script defer src="./challenge.js"></script>
-</head><body data-bank="./challenge-bank.json" data-edition="DECK_VERSION" data-classic="CLASSIC_VERSION">
+</head><body data-bank="./challenge-bank.json" data-edition="DECK_VERSION">
 <div class="cabinet">
-<header><a class="back" href="./">‹ Concept map</a><span>MATH 1334</span></header>
+<header><a class="back" href="./">‹ Concept map</a><button class="quiet" id="fullscreen" aria-pressed="false">Full screen</button></header>
 <main>
-<div class="mast"><h1>Junction <em>Run</em></h1><div class="record">Best streak <b id="record">0</b></div></div>
+<div class="mast"><h1>Junction <em>Run</em></h1><div class="record">Class best streak <b id="record">…</b></div></div>
 <div class="console">
 <div class="display">
-  <div class="scorebar"><span id="round">At the starting line</span><span id="score">Score <b>0</b></span></div>
+  <div class="scorebar"><span id="round">At the starting line</span><span id="score"><span id="streak">Streak 0</span> · Score <b>0</b></span></div>
   <svg id="rails" viewBox="0 0 680 200" role="img" aria-label="A stick figure on a graph-paper obstacle course"></svg>
 </div>
 <div id="panel">
@@ -22,23 +22,23 @@
     <p id="scope"></p>
     <div id="pace" hidden><span id="target"></span> <button type="button" id="dismiss-pace" class="quiet">Fresh course</button></div>
     <div class="run-settings">
-      <label>Difficulty<select id="difficulty"><option value="easy">Easy</option><option value="medium" selected>Medium</option><option value="hard">Hard</option></select></label>
+      <label>Difficulty<select id="difficulty"><option value="easy">Easy</option><option value="medium" selected>Medium</option><option value="hard">Hard</option><option id="insane" value="insane" disabled>Insane · locked</option></select></label>
       <label>Question order<select id="order"><option value="shuffled">Shuffled</option><option value="ordered">In order</option></select></label>
     </div>
     <p id="rules-hint"></p>
-    <button type="button" class="primary" id="start" disabled>Start run</button>
-    <details class="howto"><summary>How to play</summary><p>Choose a landing with A–D or tap an answer. Landings earn 100 points, plus 50 on every third jump. A rescued jump or a jump with an eraser earns 75 points before the bonus. Shared challenges use the same questions and answer positions.</p></details>
+    <button type="button" class="primary" id="start" disabled>Start run</button> <button type="button" class="quiet" id="invite" disabled>Race friends</button>
+    <details class="howto"><summary>How to play</summary><p>Choose a landing with A–D or tap an answer. Each correct answer earns one point. Your streak counts consecutive correct answers and resets on a miss. Class standings show the longest streak for each course, difficulty and question order. In a friend race, everyone gets the same questions and answer positions.</p></details>
     <p id="load-state" role="status">Loading questions…</p>
   </section>
   <section id="play" hidden><h2 id="prompt" tabindex="-1"></h2><div class="choices" id="choices"></div>
     <button id="signal" class="quiet" hidden>Use eraser · remove two choices</button>
+    <details id="previous" hidden><summary>Previous jump · Show solution</summary><div id="previous-content"></div></details>
   </section>
   <section id="feedback" hidden><h2 id="verdict" tabindex="-1"></h2><div id="result"></div>
-    <form id="save-score" hidden><label for="nickname">Nickname for the scoreboard</label><div class="alias-field"><input id="nickname" type="text" maxlength="28" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Choose a nickname" aria-describedby="name-error"><button type="button" id="roll" class="quiet">Roll a name</button></div>
-    <div id="name-error" role="alert"></div>
-    <div id="bonk" hidden><img src="./bonk.svg" alt="A Shiba taps another Shiba with a foam bat. BONK!" width="158" height="88"></div>
-    <button type="submit" class="primary">Save score</button></form><p id="saved" role="status"></p><div class="actions"><button class="primary" id="advance">Next jump</button><button class="quiet" id="share" hidden>Copy a challenge link</button><button class="quiet" id="change" hidden>Change course</button><a id="review" target="_blank" rel="noopener">Review concept (new tab)</a></div><p id="share-state" role="status"></p><input id="race-link" aria-label="Challenge link" readonly hidden></section>
+    <form id="save-score" hidden><label for="adjective">Your scoreboard nickname</label><div class="alias-field"><select id="adjective" aria-label="Nickname adjective"></select><select id="noun" aria-label="Nickname noun"></select><button type="button" id="roll" class="quiet">Roll</button></div>
+    <button type="submit" class="primary">Save nickname</button></form><p id="saved" role="status"></p><div class="actions"><button class="primary" id="advance">Run again</button><button class="quiet" id="share" hidden>Copy a challenge link</button><button class="quiet" id="change" hidden>Change course</button><a id="review" target="_blank" rel="noopener">Review concept (new tab)</a></div><p id="share-state" role="status"></p><input id="race-link" aria-label="Challenge link" readonly hidden></section>
   <noscript>This game needs JavaScript. <a href="./">Return to the concept map</a>.</noscript>
 </div></div>
-<details id="board"><summary>High scores <span id="board-mode">Exam 3</span></summary><div class="board-body"><p id="board-caption">Top runs on this device</p><ol id="leaders"></ol><p id="board-empty">First run? Set the score to beat.</p></div></details>
+<section id="room-panel" hidden><h2>Friend race</h2><p id="room-name"></p><button id="room-copy" class="quiet">Copy invite</button> <button id="leave-room" class="quiet">Leave race</button><p id="room-status" role="status"></p><input id="invite-link" aria-label="Friend race invitation" readonly hidden><ol id="racers"></ol></section>
+<details id="board"><summary>Class standings <span id="board-mode">Exam 3</span></summary><div class="board-body"><p id="board-caption">Loading class standings…</p><ol id="leaders"></ol><p id="board-empty">First run? Set the score to beat.</p></div></details>
 </main></div></body></html>

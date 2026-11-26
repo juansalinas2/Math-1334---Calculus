@@ -1,0 +1,414 @@
+[
+  {
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "section": "2.3"
+  },
+  {
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "section": "2.3"
+  },
+  {
+    "source": "../lectures/04-limit-laws.html#practice",
+    "section": "2.3"
+  },
+  {
+    "source": "../lectures/04-limit-laws.html#recap-limits",
+    "section": "2.3"
+  },
+  {
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "section": "2.3"
+  },
+  {
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "section": "2.3"
+  },
+  {
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "section": "2.4"
+  },
+  {
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "section": "2.4"
+  },
+  {
+    "source": "../lectures/04-limit-laws.html#three-possibilities-when-we-substitute",
+    "section": "2.3"
+  },
+  {
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "section": "3.6"
+  },
+  {
+    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+    "section": "3.6"
+  },
+  {
+    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+    "section": "3.6"
+  },
+  {
+    "source": "../lectures/14-chain-rule.html#powers-of-functions",
+    "section": "3.6"
+  },
+  {
+    "source": "../lectures/14-chain-rule.html#powers-of-functions",
+    "section": "3.6"
+  },
+  {
+    "source": "../lectures/14-chain-rule.html#powers-of-functions",
+    "section": "3.6"
+  },
+  {
+    "source": "../lectures/14-chain-rule.html#combining-differentiation-rules",
+    "section": "3.6"
+  },
+  {
+    "source": "../lectures/14-chain-rule.html#three-or-more-layers",
+    "section": "3.6"
+  },
+  {
+    "source": "../lectures/14-chain-rule.html#practice-1",
+    "section": "3.6"
+  },
+  {
+    "source": "../lectures/section-4-3.html#first-derivative-test",
+    "section": "4.3"
+  },
+  {
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "section": "4.3"
+  },
+  {
+    "source": "../lectures/section-4-3.html#concavity",
+    "section": "4.3"
+  },
+  {
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "section": "4.3"
+  },
+  {
+    "source": "../lectures/section-4-3.html#the-second-derivative-test",
+    "section": "4.3"
+  },
+  {
+    "source": "../lectures/section-4-3.html#second-derivative-test",
+    "section": "4.3"
+  },
+  {
+    "source": "../lectures/section-4-3.html#the-second-derivative-test",
+    "section": "4.3"
+  },
+  {
+    "source": "../lectures/section-4-3.html#the-second-derivative-test",
+    "section": "4.3"
+  },
+  {
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "section": "4.3"
+  },
+  {
+    "source": "../lectures/related-rates.html#ladder",
+    "section": "4.1"
+  },
+  {
+    "source": "../lectures/related-rates.html#shadow",
+    "section": "4.1"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#related-rates-a-moving-shadow",
+    "section": "4.1"
+  },
+  {
+    "source": "../lectures/related-rates.html#balloon",
+    "section": "4.1"
+  },
+  {
+    "source": "../lectures/related-rates.html#constant-product",
+    "section": "4.1"
+  },
+  {
+    "source": "../lectures/related-rates.html#cone",
+    "section": "4.1"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#compare-the-tests",
+    "section": "4.2"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#the-domain-matters",
+    "section": "4.2"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#the-domain-matters",
+    "section": "4.2"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#a-missing-point",
+    "section": "4.2"
+  },
+  {
+    "source": "../lectures/18-maxima-and-minima.html#closed-interval-method",
+    "section": "4.2"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#what-does-the-derivative-tell-us",
+    "section": "4.2"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#optimization-folding-a-box",
+    "section": "4.6"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#optimization-folding-a-box",
+    "section": "4.6"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#optimization-folding-a-box",
+    "section": "4.6"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#optimization-a-printed-flyer",
+    "section": "4.6"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#optimization-a-printed-flyer",
+    "section": "4.6"
+  },
+  {
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
+    "section": "4.4"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#from-a-formula-to-a-graph",
+    "section": "4.5"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#from-a-formula-to-a-graph",
+    "section": "4.5"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#from-a-formula-to-a-graph",
+    "section": "4.5"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#from-a-formula-to-a-graph",
+    "section": "4.5"
+  },
+  {
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
+    "section": "4.4"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#choosing-a-limit-method",
+    "section": "4.7"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#choosing-a-limit-method",
+    "section": "4.7"
+  },
+  {
+    "source": "../lectures/exam-3-review.html#choosing-a-limit-method",
+    "section": "4.7"
+  },
+  {
+    "source": "../lectures/lhopitals-rule.html#infinity-over-infinity",
+    "section": "4.7"
+  },
+  {
+    "source": "../lectures/lhopitals-rule.html#products",
+    "section": "4.7"
+  },
+  {
+    "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
+    "section": "4.7"
+  },
+  {
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "section": "2.5"
+  },
+  {
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "section": "2.1"
+  },
+  {
+    "source": "../lectures/06-continuity.html#types-of-discontinuities",
+    "section": "2.5"
+  },
+  {
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "source": "../lectures/06-continuity.html#types-of-discontinuities",
+    "section": "2.5"
+  },
+  {
+    "source": "../lectures/exam-2-review.html#limits",
+    "section": "3.4"
+  },
+  {
+    "source": "../lectures/10-derivative-function.html#differentiability-implies-continuity",
+    "section": "3.2"
+  },
+  {
+    "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
+    "section": "3.1"
+  },
+  {
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4"
+  },
+  {
+    "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
+    "section": "3.1"
+  },
+  {
+    "source": "../lectures/exam-2-review.html#motion",
+    "section": "3.4"
+  },
+  {
+    "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
+    "section": "3.3"
+  },
+  {
+    "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
+    "section": "3.3"
+  },
+  {
+    "source": "../lectures/13-trigonometric-derivatives.html#using-quotients-to-explain-the-new-formulas",
+    "section": "3.5"
+  },
+  {
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "section": "3.5"
+  },
+  {
+    "source": "../lectures/17-exponential-logarithmic.html#worked-examples",
+    "section": "3.9"
+  },
+  {
+    "source": "../lectures/exam-2-review.html#tangent-lines",
+    "section": "3.3"
+  },
+  {
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "section": "3.7"
+  },
+  {
+    "source": "../lectures/15-inverse-functions.html#using-inverse-trigonometric-derivatives",
+    "section": "3.7"
+  },
+  {
+    "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+    "section": "3.8"
+  },
+  {
+    "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
+    "section": "3.8"
+  },
+  {
+    "source": "../lectures/17-exponential-logarithmic.html#examples-of-logarithmic-differentiation",
+    "section": "3.9"
+  },
+  {
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "section": "2.1"
+  },
+  {
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "section": "2.4"
+  },
+  {
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "section": "2.5"
+  },
+  {
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "source": "../lectures/18-maxima-and-minima.html#extreme-value-theorem",
+    "section": "4.2"
+  },
+  {
+    "source": "../lectures/10-derivative-function.html#differentiability-implies-continuity",
+    "section": "3.2"
+  },
+  {
+    "source": "../lectures/18-maxima-and-minima.html#fermat",
+    "section": "4.2"
+  },
+  {
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "section": "4.3"
+  },
+  {
+    "source": "../lectures/18-maxima-and-minima.html#fermat",
+    "section": "4.2"
+  },
+  {
+    "source": "../lectures/section-4-3.html#first-derivative-test",
+    "section": "4.3"
+  },
+  {
+    "source": "../lectures/section-4-3.html#second-derivative-test",
+    "section": "4.3"
+  },
+  {
+    "source": "../lectures/lhopitals-rule.html#lhospitals-theorem",
+    "section": "4.7"
+  },
+  {
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "section": "2.1"
+  },
+  {
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "section": "2.1"
+  },
+  {
+    "source": "../lectures/06-continuity.html#types-of-discontinuities",
+    "section": "2.5"
+  },
+  {
+    "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
+    "section": "3.1"
+  },
+  {
+    "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
+    "section": "3.1"
+  },
+  {
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4"
+  },
+  {
+    "source": "../lectures/18-maxima-and-minima.html#critical-number",
+    "section": "4.2"
+  },
+  {
+    "source": "../lectures/18-maxima-and-minima.html#local-extrema",
+    "section": "4.2"
+  },
+  {
+    "source": "../lectures/section-4-3.html#inflection-point",
+    "section": "4.3"
+  },
+  {
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptote",
+    "section": "4.4"
+  },
+  {
+    "source": "../lectures/optimization.html#title-block-header",
+    "section": "4.6"
+  },
+  {
+    "source": "../lectures/optimization.html#title-block-header",
+    "section": "4.6"
+  },
+  {
+    "source": "../lectures/lhopitals-rule.html#indeterminate-form",
+    "section": "4.7"
+  }
+]

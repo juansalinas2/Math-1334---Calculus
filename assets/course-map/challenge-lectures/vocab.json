@@ -1,0 +1,338 @@
+[
+  {
+    "topic": "critical",
+    "level": 3,
+    "prompt": "For \\(f(x)=2+(x-5)^3\\), choose the correct use of “critical number,” “critical value,” and “extremum” at the horizontal tangent.",
+    "choices": [
+      "Critical number 5, critical value 2, neither a local maximum nor a local minimum.",
+      "Critical number 2, critical value 5, neither a local maximum nor a local minimum.",
+      "Critical number 5, critical value 2, local minimum.",
+      "Critical number 5, critical value 0, local maximum."
+    ],
+    "why": "The critical number is the input where \\(f'\\) vanishes. The critical value is \\(f(5)=2\\). The increasing cubic passes through that height.",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "section": "4.2"
+  },
+  {
+    "topic": "derivatives",
+    "level": 3,
+    "prompt": "For the position \\(s(t)=3t-t^2\\), which quantity is the acceleration at \\(t=1\\)?",
+    "choices": [
+      "\\(s''(1)=-2\\).",
+      "\\([s'(1)]^2=1\\).",
+      "\\(s'(1)=1\\).",
+      "\\(s(1)=2\\)."
+    ],
+    "why": "Acceleration evaluates the second derivative of position. Squaring the first derivative produces squared velocity and has different units.",
+    "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
+    "section": "3.2"
+  },
+  {
+    "topic": "motion",
+    "level": 3,
+    "prompt": "In the lecture, \\(v(t)=3(t-1)(t-3)\\) and \\(a(t)=6(t-2)\\). Which phrase describes \\(t=2\\)?",
+    "choices": [
+      "A local maximum of speed while moving in the negative direction.",
+      "A direction reversal at rest.",
+      "A local maximum of velocity while moving in the positive direction.",
+      "An instant of zero speed and nonzero acceleration."
+    ],
+    "why": "Velocity is negative on \\((1,3)\\). Its magnitude increases up to 2 and then decreases; velocity itself has a local minimum.",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4"
+  },
+  {
+    "topic": "motion",
+    "level": 3,
+    "prompt": "A car has \\(s(t)=t^2-2t-3\\) feet for \\(t\\ge0\\). What does “instantaneous velocity at position 5 feet” denote?",
+    "choices": [
+      "\\(s'(4)\\), because \\(s(4)=5\\).",
+      "\\(s'(5)\\), since the given number is 5.",
+      "\\(s(5)/5\\), the average velocity up to time 5.",
+      "\\(s''(4)\\), the rate of change of velocity at that position."
+    ],
+    "why": "The position condition gives \\((t-4)(t+2)=0\\), leaving \\(t=4\\). The derivative uses time as its input.",
+    "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
+    "section": "3.4"
+  },
+  {
+    "topic": "inverse",
+    "level": 3,
+    "prompt": "Suppose \\(f(2)=5\\) and \\(f'(2)=-3\\), with a differentiable local inverse. Which ordered pair gives the point of tangency and the tangent slope on the inverse graph?",
+    "choices": [
+      "\\((5,2)\\) and \\(-1/3\\).",
+      "\\((2,5)\\) and \\(-1/3\\).",
+      "\\((5,2)\\) and \\(-3\\).",
+      "\\((2,5)\\) and \\(1/3\\)."
+    ],
+    "why": "Reflection in \\(y=x\\) interchanges coordinates and takes a nonzero slope to its reciprocal, preserving its sign.",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "section": "3.7"
+  },
+  {
+    "topic": "rates",
+    "level": 3,
+    "prompt": "In the shadow problem \\(x\\) is the person’s distance from the pole and \\(s\\) is shadow length. If \\(ds/dt=1\\) and \\(dx/dt=2\\) in m/s, which phrase names the 3 m/s rate?",
+    "choices": [
+      "Speed of the tip relative to the pole.",
+      "Speed of the tip relative to the person.",
+      "Rate of growth of the shadow length.",
+      "Speed of the person relative to the pole."
+    ],
+    "why": "The tip’s position measured from the pole is \\(x+s\\). Its derivative is \\(2+1\\). Relative to the person its speed is just \\(ds/dt\\).",
+    "source": "../lectures/related-rates.html#shadow",
+    "section": "4.1"
+  },
+  {
+    "topic": "chain",
+    "level": 3,
+    "prompt": "In \\(y=\\sin^3(\\cos(2x))\\), which expression spells out the function-composition notation exactly?",
+    "choices": [
+      "\\([\\sin(\\cos(2x))]^3\\).",
+      "\\(\\sin(\\sin(\\sin(\\cos(2x))))\\).",
+      "\\(\\sin([\\cos(2x)]^3)\\).",
+      "\\(\\sin(\\cos(2x^3))\\)."
+    ],
+    "why": "The superscript on the trigonometric function cubes its output. The cube is the outermost layer in the derivative.",
+    "source": "../lectures/14-chain-rule.html#three-or-more-layers",
+    "section": "3.6"
+  },
+  {
+    "topic": "optimization",
+    "level": 3,
+    "prompt": "For the fixed-intercept fit with \\(E(m)=5(m-1)^2+9\\), which pair correctly identifies the minimizer and the minimum of the objective?",
+    "choices": [
+      "Minimizer \\(m=1\\); minimum squared error \\(9\\).",
+      "Minimizer \\(m=9\\); minimum squared error \\(1\\).",
+      "Minimizer \\(m=2\\); minimum squared error \\(9\\).",
+      "Minimizer \\(m=1\\); minimum squared error \\(0\\)."
+    ],
+    "why": "The minimizer is an input. The minimum is the output attained there. The fixed intercept \\(2\\) is neither quantity.",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "section": "4.6"
+  },
+  {
+    "topic": "exp",
+    "level": 3,
+    "prompt": "Suppose an amount \\(P\\) is 200 grams and \\(P'/P=0.03\\) per hour at noon. Which statement translates the relative growth rate at that instant?",
+    "choices": [
+      "Its instantaneous increase is 6 grams per hour.",
+      "Its instantaneous increase is 0.03 grams per hour.",
+      "It must gain exactly 6 grams during the next hour.",
+      "Its value one hour later must be \\(200e^{0.03}\\) grams."
+    ],
+    "why": "Relative rate means \\(P'/P\\). Multiplying by the current amount gives \\(P'=6\\). The given rate describes one instant.",
+    "source": "../lectures/17-exponential-logarithmic.html#relative-growth",
+    "section": "3.9"
+  },
+  {
+    "topic": "breaks",
+    "level": 3,
+    "prompt": "On \\([2,4]\\) take \\(f(x)=(x^2-9)/(x-3)\\) for \\(x\\ne3\\) and \\(f(3)=2\\). Which two labels both apply at \\(x=3\\)?",
+    "choices": [
+      "A removable discontinuity and a critical number.",
+      "A jump discontinuity and a stationary point.",
+      "An infinite discontinuity and a vertical tangent.",
+      "A removable discontinuity and a point of differentiability."
+    ],
+    "why": "The punctured graph follows \\(y=x+3\\) with limiting height 6. Since the actual value is 2, \\(f\\) is discontinuous and its derivative fails to exist at this domain point.",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "section": "4.2"
+  },
+  {
+    "topic": "concavity",
+    "level": 3,
+    "prompt": "On an interval, all tangent slopes of a smooth curve are negative but grow from \\(-5\\) toward \\(-1\\). Which two descriptions can hold throughout?",
+    "choices": [
+      "Decreasing and concave up.",
+      "Increasing and concave down.",
+      "Decreasing and concave down.",
+      "Increasing and concave up."
+    ],
+    "why": "The sign of the slopes determines decrease. Their increase, even through negative values, determines concavity up.",
+    "source": "../lectures/section-4-3.html#concavity",
+    "section": "4.3"
+  },
+  {
+    "topic": "endbehavior",
+    "level": 3,
+    "prompt": "For \\(f(x)=\\sqrt{4x^2+1}/x\\), identify the left and right horizontal asymptotes, in that order.",
+    "choices": [
+      "\\(y=-2\\) and \\(y=2\\).",
+      "\\(y=2\\) and \\(y=-2\\).",
+      "\\(y=2\\) and \\(y=2\\).",
+      "\\(x=-2\\) and \\(x=2\\)."
+    ],
+    "why": "Write \\(f(x)=(\\lvert x\\rvert/x)\\sqrt{4+1/x^2}\\). The first factor records the sign of the input, so the two end heights differ.",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
+    "section": "4.4"
+  },
+  {
+    "topic": "functions",
+    "level": 4,
+    "prompt": "How would you translate “range” for the lecture’s \\(f(x)=2x^2/(x^2-1)\\) into an exact set of attained outputs?",
+    "choices": [
+      "\\((-\\infty,0]\\cup(2,\\infty)\\).",
+      "\\((-\\infty,0)\\cup[2,\\infty)\\).",
+      "\\(\\mathbb R\\setminus\\{-1,1\\}\\).",
+      "\\(\\mathbb R\\setminus\\{2\\}\\)."
+    ],
+    "why": "Solving \\(y=2x^2/(x^2-1)\\) gives \\(x^2=y/(y-2)\\). This is nonnegative exactly for \\(y\\le0\\) or \\(y>2\\); the deleted inputs describe the domain, not the range.",
+    "source": "../lectures/curve-sketching.html#example-8",
+    "section": "4.5"
+  },
+  {
+    "topic": "local",
+    "level": 4,
+    "prompt": "For \\(f(x)=x^3(4-x)\\) on \\([-1,4]\\), what labels apply to the right endpoint value \\(f(4)=0\\) under the notes’ domain-relative definition?",
+    "choices": [
+      "A strict local minimum, but neither global extremum.",
+      "A global minimum because this is the smallest endpoint input.",
+      "Neither a local nor a global extremum because \\(f'(4)\\ne0\\).",
+      "A local maximum because the derivative is negative immediately to the left."
+    ],
+    "why": "For \\(x<4\\) close to 4 the output is positive, so the endpoint is locally lowest. Elsewhere \\(f(-1)=-5\\) and \\(f(3)=27\\).",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "section": "4.2"
+  },
+  {
+    "topic": "inflect",
+    "level": 4,
+    "prompt": "For \\(g(x)=x^3/(x^2+1)\\), \\(g'\\) vanishes only at zero and \\(g''\\) changes sign at \\(-\\sqrt3,0,\\sqrt3\\). Which description gives the intersection of “stationary point” and “inflection point”?",
+    "choices": [
+      "Only \\((0,0)\\) has both labels.",
+      "All three inflection points have both labels.",
+      "Neither label applies at zero because \\(g\\) increases through it.",
+      "Only the two nonzero inflection points have both labels."
+    ],
+    "why": "A stationary point requires a horizontal tangent. All three points change concavity, but \\(g'\\) vanishes only at the origin.",
+    "source": "../lectures/curve-sketching.html#example-9",
+    "section": "4.5"
+  },
+  {
+    "topic": "rationaltails",
+    "level": 4,
+    "prompt": "For \\(g(x)=x^3/(x^2+1)\\), the difference \\(g(x)-x=-x/(x^2+1)\\) vanishes at zero and tends to zero at both ends. Which two terms apply to \\(y=x\\)?",
+    "choices": [
+      "A slant asymptote and a line intersecting the graph at the origin.",
+      "A tangent at the origin and a slant asymptote.",
+      "A horizontal asymptote and a secant through two distinct graph points.",
+      "A tangent at the origin and a line never crossed by the curve."
+    ],
+    "why": "The difference tends to zero at the ends, which defines the slant asymptote. It changes sign at zero, where the graph crosses it. The tangent there has slope zero.",
+    "source": "../lectures/curve-sketching.html#example-9",
+    "section": "4.5"
+  },
+  {
+    "topic": "implicit",
+    "level": 4,
+    "prompt": "For \\(x^2+xy+y^2=3\\), \\(dy/dx=-(2x+y)/(x+2y)\\). At \\((-2,1)\\) which phrase and line equation agree?",
+    "choices": [
+      "A vertical tangent, \\(x=-2\\).",
+      "A vertical tangent, \\(y=1\\).",
+      "A horizontal tangent, \\(y=1\\).",
+      "A horizontal tangent, \\(x=-2\\)."
+    ],
+    "why": "The point satisfies the curve equation. Here \\(x+2y=0\\) and \\(2x+y=-3\\), so \\(dx/dy=0\\). The vertical line through the point fixes \\(x\\).",
+    "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
+    "section": "3.8"
+  },
+  {
+    "topic": "forms",
+    "level": 4,
+    "prompt": "As \\(x\\to0^+\\), the lecture combines \\(1/x-1/(e^x-1)\\) into one fraction. Which ordered pair names the original form and then the new form?",
+    "choices": [
+      "\\(\\infty-\\infty\\), then \\(0/0\\).",
+      "\\(\\infty-\\infty\\), then \\(\\infty/\\infty\\).",
+      "\\(0/0\\), then \\(0\\cdot\\infty\\).",
+      "\\(0/0\\), then \\(\\infty-\\infty\\)."
+    ],
+    "why": "Both reciprocals tend to positive infinity. The combined numerator \\(e^x-1-x\\) and denominator \\(x(e^x-1)\\) both tend to zero.",
+    "source": "../lectures/lhopitals-rule.html#differences",
+    "section": "4.7"
+  },
+  {
+    "topic": "optimization",
+    "level": 4,
+    "prompt": "The lecture cuts 24 cm of wire into positive lengths for a circle and square. As the square’s length tends to zero, total area tends to \\(144/\\pi\\), above every feasible area. Which phrase describes \\(144/\\pi\\)?",
+    "choices": [
+      "A least upper bound that is never attained.",
+      "The global maximum attained by a feasible cut.",
+      "A local maximum at the critical cut.",
+      "The minimum area when both shapes have positive perimeter."
+    ],
+    "why": "Feasible cuts can approach that number arbitrarily closely from below. Putting all the wire in the circle would be required for equality.",
+    "source": "../lectures/optimization.html#harder-problems",
+    "section": "4.6"
+  },
+  {
+    "topic": "inverse",
+    "level": 4,
+    "prompt": "Let \\(f(x)=x^2\\) on \\(x>0\\). Which list gives, in order, \\(f^{-1}(4)\\), \\((f^{-1})'(4)\\), and \\(1/f'(4)\\)?",
+    "choices": [
+      "\\(2,\\;1/4,\\;1/8\\).",
+      "\\(1/16,\\;1/8,\\;1/4\\).",
+      "\\(2,\\;1/8,\\;1/8\\).",
+      "\\(2,\\;4,\\;1/8\\)."
+    ],
+    "why": "The inverse is the square root, and its derivative at 4 uses \\(1/f'(2)\\). The last expression evaluates the original derivative at 4 instead.",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "section": "3.7"
+  },
+  {
+    "topic": "chain",
+    "level": 4,
+    "prompt": "The lecture table gives \\(f(0)=2\\), \\(g(0)=1\\), \\(f'(0)=3\\), \\(f'(1)=5\\), \\(g'(0)=-2\\), \\(g'(2)=4\\). Read these three notations in order: \\((f\\circ g)'(0)\\), \\((f'\\circ g)(0)\\), \\((g\\circ f)'(0)\\). What are their values?",
+    "choices": [
+      "\\((-10,5,12)\\).",
+      "\\((5,-10,12)\\).",
+      "\\((-10,5,-6)\\).",
+      "\\((12,5,-10)\\)."
+    ],
+    "why": "The first differentiates the composition, giving \\(5(-2)\\). The second composes the derivative with \\(g\\), giving \\(f'(1)=5\\). The third reverses the functions in the chain rule and gives \\(4(3)\\).",
+    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+    "section": "3.6"
+  },
+  {
+    "topic": "rates",
+    "level": 4,
+    "prompt": "In the conical tank \\(r=h/3\\) and \\(V=\\pi h^3/27\\). It drains at \\(\\pi\\) cubic meters per minute when \\(h=3\\) m. Which triple gives \\((dV/dh,dh/dt,dr/dt)\\) in square meters, meters per minute, and meters per minute, respectively?",
+    "choices": [
+      "\\((\\pi,-1,-1/3)\\).",
+      "\\((-\\pi,-1,-1/3)\\).",
+      "\\((\\pi,-1,-3)\\).",
+      "\\((-\\pi,1,1/3)\\)."
+    ],
+    "why": "Volume increases with depth, so \\(dV/dh=\\pi h^2/9=\\pi\\). During drainage the time derivative is \\(dV/dt=-\\pi\\). Dividing gives \\(dh/dt=-1\\), and differentiating \\(r=h/3\\) gives \\(dr/dt=-1/3\\).",
+    "source": "../lectures/related-rates.html#cone",
+    "section": "4.1"
+  },
+  {
+    "topic": "breaks",
+    "level": 4,
+    "prompt": "For \\(H(x)=-2/((x+2)(x-1)^2)\\), which inputs give vertical asymptotes and which give a two-sided limit of negative infinity?",
+    "choices": [
+      "Both \\(-2\\) and \\(1\\) give vertical asymptotes; only \\(1\\) gives a two-sided limit of negative infinity.",
+      "Both give vertical asymptotes and both give a two-sided limit of negative infinity.",
+      "Only \\(1\\) gives a vertical asymptote because opposite one-sided infinities cancel at \\(-2\\).",
+      "Both give vertical asymptotes; only \\(-2\\) gives a two-sided limit of negative infinity."
+    ],
+    "why": "At \\(-2\\) the factor \\(x+2\\) switches sign, giving positive infinity from the left and negative infinity from the right. At \\(1\\) the squared factor stays positive on both sides and so does \\(x+2\\), giving negative infinity from both sides.",
+    "source": "../lectures/08-exam-practice.html#problem-2",
+    "section": "2.7"
+  },
+  {
+    "topic": "logdiff",
+    "level": 4,
+    "prompt": "For the lecture’s \\(f(x)=x^x\\) on \\(x>0\\), evaluate \\((\\ln f)'(e)\\) and \\(\\ln(f'(e))\\), in that order.",
+    "choices": [
+      "\\(2\\) and \\(e+\\ln2\\).",
+      "\\(e+\\ln2\\) and \\(2\\).",
+      "\\(2\\) and \\(\\ln2\\).",
+      "\\(e\\) and \\(2e^e\\)."
+    ],
+    "why": "The first differentiates \\(x\\ln x\\), giving \\(1+\\ln e=2\\). For the second, \\(f'(e)=e^e(1+\\ln e)=2e^e\\). Taking its logarithm gives \\(\\ln2+e\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#the-general-calculation",
+    "section": "3.9"
+  }
+]

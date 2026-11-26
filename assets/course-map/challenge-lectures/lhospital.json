@@ -1,0 +1,436 @@
+[
+  {
+    "topic": "lhospital",
+    "level": 3,
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to0}(\\tan x-x)/x^3\\).",
+    "choices": [
+      "\\(1/3\\)",
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(1/6\\)"
+    ],
+    "why": "The form is \\(0/0\\). Differentiate numerator and denominator once, then use \\(\\sec^2x-1=\\tan^2x\\). The quotient becomes \\((\\tan x/x)^2/3\\to1/3\\).",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "section": "4.7"
+  },
+  {
+    "topic": "lhospital",
+    "level": 3,
+    "prompt": "For \\(x\\to\\infty\\), both \\(2x+\\sin x\\) and \\(x\\) tend to infinity. What is the limit of their quotient, and what happens to the quotient of their derivatives?",
+    "choices": [
+      "The original tends to 2. The derivative quotient oscillates.",
+      "Both tend to 2.",
+      "Both fail to converge.",
+      "The original diverges, but the derivative quotient tends to 2."
+    ],
+    "why": "The original equals \\(2+\\sin x/x\\to2\\) by squeezing. The derivative quotient \\(2+\\cos x\\) has no limit, so l’Hospital’s rule gives no conclusion here.",
+    "source": "../lectures/exam-3-review.html#choosing-a-limit-method",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 3,
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to-\\infty}(\\sqrt{x^2+4x}+x)\\).",
+    "choices": [
+      "\\(-2\\)",
+      "\\(2\\)",
+      "\\(0\\)",
+      "\\(-\\infty\\)"
+    ],
+    "why": "Rationalize to \\(4x/(\\sqrt{x^2+4x}-x)\\). For negative \\(x\\), \\(\\sqrt{x^2+4x}=(-x)\\sqrt{1+4/x}\\). The quotient tends to \\(-4/(1+1)=-2\\).",
+    "source": "../lectures/exam-3-review.html#choosing-a-limit-method",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 3,
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to\\infty}(\\sqrt{x^2+4x}-x)\\).",
+    "choices": [
+      "\\(2\\)",
+      "\\(4\\)",
+      "\\(0\\)",
+      "\\(+\\infty\\)"
+    ],
+    "why": "Multiply by the conjugate to obtain \\(4x/(\\sqrt{x^2+4x}+x)\\). Divide by \\(x>0\\) to get \\(4/(\\sqrt{1+4/x}+1)\\to2\\).",
+    "source": "../lectures/lhopitals-rule.html#differences",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 3,
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to\\infty}x\\ln(1+1/x)\\).",
+    "choices": [
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(e\\)",
+      "\\(+\\infty\\)"
+    ],
+    "why": "Put \\(u=1/x\\to0^+\\). The quotient \\(\\ln(1+u)/u\\) has form \\(0/0\\). The derivative quotient \\(1/(1+u)\\) tends to 1.",
+    "source": "../lectures/exam-3-review.html#products-and-powers",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 3,
+    "prompt": "Find \\(\\displaystyle\\lim_{x\\to0^+}\\sqrt{x}\\ln x\\) and decide whether the product is positive or negative for small positive \\(x\\).",
+    "choices": [
+      "It approaches 0 through negative values.",
+      "It approaches 0 through positive values.",
+      "It diverges to negative infinity.",
+      "It approaches \\(-2\\)."
+    ],
+    "why": "Write \\(\\ln x/x^{-1/2}\\). The derivative quotient is \\(-2\\sqrt{x}\\), which tends to zero. The original product is negative for \\(0<x<1\\).",
+    "source": "../lectures/lhopitals-rule.html#products",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 3,
+    "prompt": "Find \\(\\displaystyle\\lim_{x\\to0^+}(1+2x)^{1/x}\\), taking care to return from the logarithm to the original limit.",
+    "choices": [
+      "\\(e^2\\)",
+      "\\(2\\)",
+      "\\(e^{1/2}\\)",
+      "\\(1\\)"
+    ],
+    "why": "With \\(y=(1+2x)^{1/x}\\), \\(\\ln y=\\ln(1+2x)/x\\to2\\) by l’Hospital’s rule. Exponentiating gives \\(e^2\\).",
+    "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 3,
+    "prompt": "Let \\(y=x^{1/x}\\) for \\(x>1\\). What is its limit as \\(x\\to\\infty\\), and does it approach through values above or below that limit?",
+    "choices": [
+      "It approaches 1 from above.",
+      "It approaches 1 from below.",
+      "It approaches 0 from above.",
+      "It approaches \\(e\\) from below."
+    ],
+    "why": "\\(\\ln y=(\\ln x)/x\\to0\\) by l’Hospital’s rule, so \\(y\\to1\\). Since \\(x>1\\) and \\(1/x>0\\), we have \\(y>1\\).",
+    "source": "../lectures/exam-3-review.html#products-and-powers",
+    "section": "4.7"
+  },
+  {
+    "topic": "lhospital",
+    "level": 3,
+    "prompt": "As \\(x\\to\\infty\\), evaluate \\(\\displaystyle\\frac{(\\ln x)^2}{\\sqrt{x}}\\).",
+    "choices": [
+      "\\(0\\)",
+      "\\(4\\)",
+      "\\(8\\)",
+      "\\(+\\infty\\)"
+    ],
+    "why": "Both numerator and denominator tend to infinity. The first derivative quotient simplifies to \\(4\\ln x/\\sqrt{x}\\). A second application gives \\(8/\\sqrt{x}\\to0\\).",
+    "source": "../lectures/lhopitals-rule.html#infinity-over-infinity",
+    "section": "4.7"
+  },
+  {
+    "topic": "lhospital",
+    "level": 3,
+    "prompt": "For a fixed real number \\(k\\ne0\\), evaluate \\(\\displaystyle\\lim_{x\\to0}\\frac{\\tan(kx)-kx}{x^3}\\).",
+    "choices": [
+      "\\(k^3/3\\)",
+      "\\(k/3\\)",
+      "\\(k^2/3\\)",
+      "\\(1/(3k^3)\\)"
+    ],
+    "why": "Set \\(u=kx\\). The quotient is \\(k^3(\\tan u-u)/u^3\\). The lecture limit equals \\(1/3\\), from \\(\\sec^2u-1=\\tan^2u\\).",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "section": "4.7"
+  },
+  {
+    "topic": "lhospital",
+    "level": 3,
+    "prompt": "Suppose \\(f\\) is twice differentiable near zero, \\(f(0)=f^{\\prime}(0)=0\\), and \\(f^{\\prime\\prime}\\) is continuous at zero with value 6. What is \\(\\displaystyle\\lim_{x\\to0}f(x)/(1-\\cos x)\\)?",
+    "choices": [
+      "\\(6\\)",
+      "\\(3\\)",
+      "\\(12\\)",
+      "\\(0\\)"
+    ],
+    "why": "The original quotient has form \\(0/0\\), as does \\(f^{\\prime}(x)/\\sin x\\) after one differentiation. Apply the rule again to obtain \\(f^{\\prime\\prime}(x)/\\cos x\\to6\\).",
+    "source": "../lectures/lhopitals-rule.html#lhospitals-theorem",
+    "section": "4.7"
+  },
+  {
+    "topic": "lhospital",
+    "level": 3,
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to0}\\frac{1-\\cos(3x)}{1-\\cos(2x)}\\).",
+    "choices": [
+      "\\(9/4\\)",
+      "\\(3/2\\)",
+      "\\(4/9\\)",
+      "\\(1\\)"
+    ],
+    "why": "Two applications of l’Hospital’s rule give \\(3\\sin(3x)/(2\\sin(2x))\\), then \\(9\\cos(3x)/(4\\cos(2x))\\to9/4\\).",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 4,
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to0^+}\\left(\\frac1x-\\frac1{e^x-1}\\right)\\).",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1/2\\)"
+    ],
+    "why": "Combine the fractions to get \\((e^x-1-x)/(x(e^x-1))\\). The first derivative quotient is \\((e^x-1)/(e^x-1+xe^x)\\), still \\(0/0\\). The next is \\(e^x/(2e^x+xe^x)\\to1/2\\).",
+    "source": "../lectures/lhopitals-rule.html#differences",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 4,
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to0}(\\cos x)^{1/x^2}\\).",
+    "choices": [
+      "\\(e^{-1/2}\\)",
+      "\\(-1/2\\)",
+      "\\(e^{-1}\\)",
+      "\\(1\\)"
+    ],
+    "why": "Near zero the base is positive. The logarithm is \\(\\ln(\\cos x)/x^2\\). Applying l’Hospital’s rule gives \\(-\\tan x/(2x)\\to-1/2\\). Exponentiate to recover the limit.",
+    "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 4,
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to0^+}\\left(\\frac1{\\ln(1+x)}-\\frac1x\\right)\\).",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(-1/2\\)",
+      "\\(1\\)",
+      "\\(0\\)"
+    ],
+    "why": "Combine to \\((x-\\ln(1+x))/(x\\ln(1+x))\\). One derivative quotient, after multiplying top and bottom by \\(1+x\\), is \\(x/((1+x)\\ln(1+x)+x)\\). The next is \\(1/(\\ln(1+x)+2)\\to1/2\\).",
+    "source": "../lectures/lhopitals-rule.html#differences",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 4,
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to0}\\left(\\frac{\\sin x}{x}\\right)^{1/x^2}\\).",
+    "choices": [
+      "\\(e^{-1/6}\\)",
+      "\\(e^{-1/2}\\)",
+      "\\(e^{1/6}\\)",
+      "\\(1\\)"
+    ],
+    "why": "The base is positive near zero. The log is \\(\\ln(\\sin x/x)/x^2\\). One l’Hospital step gives \\((x\\cos x-\\sin x)/(2x^2\\sin x)\\). A second gives \\(-x\\sin x/(4x\\sin x+2x^2\\cos x)\\to-1/6\\) after division by \\(x^2\\). Exponentiate.",
+    "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 4,
+    "prompt": "For \\(a>0\\), which value of \\(a\\) makes \\(\\displaystyle\\lim_{x\\to0}(\\cos(ax))^{1/(3x^2)}=e^{-6}\\)?",
+    "choices": [
+      "\\(6\\)",
+      "\\(3\\)",
+      "\\(\\sqrt6\\)",
+      "\\(18\\)"
+    ],
+    "why": "The logarithm is \\(\\ln(\\cos(ax))/(3x^2)\\). Its derivative quotient is \\(-a\\tan(ax)/(6x)\\to-a^2/6\\). Solve \\(-a^2/6=-6\\) and use \\(a>0\\).",
+    "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
+    "section": "4.7"
+  },
+  {
+    "topic": "lhospital",
+    "level": 4,
+    "prompt": "Find the constant \\(c\\) for which \\(\\displaystyle\\lim_{x\\to0}\\frac{e^x-1-x-cx^2}{x^3}\\) is finite. What is the limit?",
+    "choices": [
+      "\\(c=1/2\\), limit \\(1/6\\)",
+      "\\(c=1\\), limit \\(1/6\\)",
+      "\\(c=1/2\\), limit \\(1/3\\)",
+      "\\(c=0\\), limit \\(1/6\\)"
+    ],
+    "why": "After two differentiations the quotient is \\((e^x-2c)/(6x)\\). If \\(1-2c\\ne0\\), the one-sided limits diverge with opposite signs. Otherwise differentiate again to obtain \\(e^x/6\\to1/6\\).",
+    "source": "../lectures/lhopitals-rule.html#differences",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 4,
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to-\\infty}x\\left(\\sqrt{x^2+4x}+x+2\\right)\\).",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(0\\)",
+      "\\(+\\infty\\)"
+    ],
+    "why": "Rationalize the expression in parentheses using \\(\\sqrt{x^2+4x}-(x+2)\\). The product becomes \\(-4x/(\\sqrt{x^2+4x}-x-2)\\). Divide by \\(-x\\) to get \\(4/(\\sqrt{1+4/x}+1+2/x)\\to2\\).",
+    "source": "../lectures/exam-3-review.html#choosing-a-limit-method",
+    "section": "4.7"
+  },
+  {
+    "topic": "lhospital",
+    "level": 4,
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to0}\\frac{\\tan x-\\sin x}{x^3}\\) using the trig limits from lecture.",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(1/3\\)",
+      "\\(1/6\\)",
+      "\\(0\\)"
+    ],
+    "why": "Factor as \\((\\sin x/x)((1-\\cos x)/x^2)/\\cos x\\). The first and last factors tend to 1. The middle factor tends to \\(1/2\\) by two applications of l’Hospital’s rule.",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "section": "4.7"
+  },
+  {
+    "topic": "lhospital",
+    "level": 3,
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to\\pi^-}\\frac{\\sin x}{(\\pi-x)(1-\\cos x)}\\).",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(-1/2\\)",
+      "\\(0\\)",
+      "\\(+\\infty\\)"
+    ],
+    "why": "Write \\(h=\\pi-x\\). Then \\(\\sin x=\\sin h\\) and \\(1-\\cos x=1+\\cos h\\). The quotient tends to \\(1/2\\) by the fundamental trig limit.",
+    "source": "../lectures/lhopitals-rule.html#infinity-over-infinity",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 3,
+    "prompt": "For positive \\(x\\) approaching zero, evaluate \\(\\displaystyle\\lim_{x\\to0^+}\\frac{x^x-1}{x\\ln x}\\).",
+    "choices": [
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-1\\)",
+      "\\(e\\)"
+    ],
+    "why": "Put \\(u=x\\ln x\\). Since \\(u\\to0\\) and \\(x^x=e^u\\), the quotient becomes \\((e^u-1)/u\\). Its limit is the derivative of the exponential at zero, equal to 1.",
+    "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
+    "section": "4.7"
+  },
+  {
+    "topic": "lhospital",
+    "level": 3,
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to0}\\frac{\\ln(1+x)-x+x^2/2}{x^3}\\).",
+    "choices": [
+      "\\(1/3\\)",
+      "\\(1/6\\)",
+      "\\(-1/3\\)",
+      "\\(0\\)"
+    ],
+    "why": "Both parts vanish. Differentiation yields \\((1/(1+x)-1+x)/(3x^2)\\). The numerator simplifies to \\(x^2/(1+x)\\), so the quotient tends to \\(1/3\\).",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 4,
+    "prompt": "As \\(x\\) approaches zero, \\((1+2x)^{3/x}\\) approaches \\(e^6\\). Evaluate its first correction, \\(\\displaystyle\\lim_{x\\to0}\\frac{(1+2x)^{3/x}-e^6}{x}\\).",
+    "choices": [
+      "\\(-6e^6\\)",
+      "\\(-3e^6\\)",
+      "\\(6e^6\\)",
+      "\\(0\\)"
+    ],
+    "why": "Write \\(u=3\\ln(1+2x)/x\\). Since \\((e^u-e^6)/(u-6)\\to e^6\\), find \\((u-6)/x=3(\\ln(1+2x)-2x)/x^2\\). One l’Hospital step gives \\(-6/(1+2x)\\to-6\\). Multiply the limits.",
+    "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 4,
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to0}\\frac{1}{x^2}\\left(\\frac{\\ln(1+x)}{x}-\\frac{2}{2+x}\\right)\\).",
+    "choices": [
+      "\\(1/12\\)",
+      "\\(1/3\\)",
+      "\\(1/4\\)",
+      "\\(-1/12\\)"
+    ],
+    "why": "Combine the fractions to get \\(F(x)/(x^3(2+x))\\) with \\(F=(2+x)\\ln(1+x)-2x\\). Then \\(F^{\\prime}=\\ln(1+x)-x/(1+x)\\) and \\(F^{\\prime\\prime}=x/(1+x)^2\\). Both parts and their first two derivatives vanish at zero. The third derivatives there are 1 and 12.",
+    "source": "../lectures/lhopitals-rule.html#differences",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 1,
+    "prompt": "Which quotient form is indeterminate and is among the forms handled by l’Hospital’s rule?",
+    "choices": [
+      "\\(0/0\\)",
+      "\\(0/5\\)",
+      "\\(1/2\\)",
+      "\\(3/1\\)"
+    ],
+    "why": "Vanishing numerator and denominator do not specify their relative rates of change.",
+    "source": "../lectures/lhopitals-rule.html#indeterminate-form",
+    "section": "4.7"
+  },
+  {
+    "topic": "lhospital",
+    "level": 1,
+    "prompt": "For \\(\\lim_{x\\to1}x^2/x\\), what does direct substitution give?",
+    "choices": [
+      "\\(1\\)",
+      "\\(0/0\\)",
+      "\\(2\\)",
+      "\\(+\\infty\\)"
+    ],
+    "why": "The denominator approaches 1, so the quotient is continuous at the point.",
+    "source": "../lectures/lhopitals-rule.html#check-the-form",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 1,
+    "prompt": "For the positive expression \\(y=x^x\\), which equality is the first step in analyzing its limit as \\(x\\to0^+\\)?",
+    "choices": [
+      "\\(\\ln y=x\\ln x\\)",
+      "\\(\\ln y=x+x\\)",
+      "\\(\\ln y=x/\\ln x\\)",
+      "\\(\\ln y=(\\ln x)^x\\)"
+    ],
+    "why": "Taking logarithms turns the exponent into a factor.",
+    "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
+    "section": "4.7"
+  },
+  {
+    "topic": "lhospital",
+    "level": 2,
+    "prompt": "Evaluate \\(\\lim_{x\\to2}(x^2-4)/(x-2)\\) using the derivative quotient in l’Hospital’s rule.",
+    "choices": [
+      "\\(4\\)",
+      "\\(2\\)",
+      "\\(0\\)",
+      "\\(1\\)"
+    ],
+    "why": "The form is \\(0/0\\), and the derivative quotient is \\(2x/1\\to4\\).",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "section": "4.7"
+  },
+  {
+    "topic": "lhospital",
+    "level": 2,
+    "prompt": "How does \\(e^x/x^2\\) behave as \\(x\\to+\\infty\\)?",
+    "choices": [
+      "It tends to positive infinity.",
+      "It tends to zero.",
+      "It tends to 1.",
+      "It tends to 2."
+    ],
+    "why": "Two valid applications of l’Hospital’s rule give \\(e^x/(2x)\\) and then \\(e^x/2\\), which grows without bound.",
+    "source": "../lectures/lhopitals-rule.html#infinity-over-infinity",
+    "section": "4.7"
+  },
+  {
+    "topic": "forms",
+    "level": 2,
+    "prompt": "Find \\(\\lim_{x\\to0^+}x\\ln x\\) after rewriting it as \\((\\ln x)/(1/x)\\).",
+    "choices": [
+      "\\(0\\)",
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(-\\infty\\)"
+    ],
+    "why": "The quotient has divergent numerator and denominator. The derivative quotient \\((1/x)/(-1/x^2)=-x\\) tends to zero.",
+    "source": "../lectures/lhopitals-rule.html#products",
+    "section": "4.7"
+  }
+]

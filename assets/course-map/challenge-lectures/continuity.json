@@ -1,0 +1,898 @@
+[
+  {
+    "topic": "breaks",
+    "level": 3,
+    "prompt": "For \\(x\\ne-1/2\\), \\(f(x)=(6x^2-x-2)/(2x+1)\\), while \\(f(-1/2)=-3\\). Which change makes \\(f\\) continuous there?",
+    "choices": [
+      "Replace \\(-3\\) by \\(-7/2\\).",
+      "Replace \\(-3\\) by \\(-5/2\\).",
+      "Replace \\(-3\\) by \\(0\\).",
+      "No change at one point can repair this break."
+    ],
+    "why": "Factor \\(6x^2-x-2=(2x+1)(3x-2)\\). The nearby formula is \\(3x-2\\), whose value at \\(-1/2\\) is \\(-7/2\\).",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "section": "2.5"
+  },
+  {
+    "topic": "breaks",
+    "level": 4,
+    "prompt": "For \\(x\\ne-1/2\\), let \\(f(x)=(6x^2+bx-2)/(2x+1)\\). For which pair \\((b,c)\\) does setting \\(f(-1/2)=c\\) make \\(f\\) continuous?",
+    "choices": [
+      "\\((-1,-7/2)\\)",
+      "\\((1,-5/2)\\)",
+      "\\((-1,-3)\\)",
+      "\\((1,0)\\)"
+    ],
+    "why": "A finite limit requires the numerator to vanish at \\(-1/2\\). Substitution gives \\(-1/2-b/2=0\\), so \\(b=-1\\). The numerator then factors as \\((2x+1)(3x-2)\\), giving \\(c=-7/2\\).",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "For \\(k\\le5\\), put \\(H(x)=3x+1\\) for \\(x<k\\) and \\(H(x)=x-3\\) for \\(k\\le x\\le5\\). Which values of \\(k\\) make \\(H\\) continuous everywhere on its domain?",
+    "choices": [
+      "\\(k=-2\\) only.",
+      "\\(k=-2\\) and \\(k=5\\).",
+      "\\(k=2\\) only.",
+      "Every \\(k\\le5\\)."
+    ],
+    "why": "The left limit \\(3k+1\\) must equal the value \\(k-3\\), even when \\(k=5\\) is the endpoint. Solving gives \\(k=-2\\).",
+    "source": "../lectures/06-continuity.html#problems-choosing-constants-for-continuity",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "Let \\(P(x)=(x^2-4)/(x-2)\\) for \\(x<2\\), \\(P(2)=b\\), and \\(P(x)=mx-1\\) for \\(x>2\\). Which ordered pair \\((m,b)\\) makes \\(P\\) continuous?",
+    "choices": [
+      "\\((5/2,4)\\)",
+      "\\((4,5/2)\\)",
+      "\\((3/2,4)\\)",
+      "\\((5/2,0)\\)"
+    ],
+    "why": "The left branch simplifies to \\(x+2\\) and tends to 4. The right branch tends to \\(2m-1\\). Continuity requires \\(2m-1=b=4\\).",
+    "source": "../lectures/06-continuity.html#problems-choosing-constants-for-continuity",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "Let \\(P\\) equal \\((x^2-4)/(x-2)\\) to the left of 2 and \\(mx+b\\) to the right. Set \\(P(2)=4\\). Which \\((m,b)\\) makes \\(P\\) continuous and also makes \\(\\lim_{x\\to2}(P(x)-4)/(x-2)\\) exist?",
+    "choices": [
+      "\\((1,2)\\)",
+      "\\((5/2,-1)\\)",
+      "\\((2,0)\\)",
+      "\\((0,4)\\)"
+    ],
+    "why": "Continuity requires \\(2m+b=4\\). Then the right-hand quotient equals \\(m\\), while on the left \\(P(x)=x+2\\) and the quotient equals 1. Thus \\(m=1\\) and \\(b=2\\).",
+    "source": "../lectures/06-continuity.html#problems-choosing-constants-for-continuity",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "On exactly which subset of the real line is \\(F(x)=\\sqrt{(x-1)/(x+2)}\\) defined and continuous?",
+    "choices": [
+      "\\((-\\infty,-2)\\cup[1,\\infty)\\)",
+      "\\((-\\infty,-2]\\cup[1,\\infty)\\)",
+      "\\((-2,1]\\)",
+      "\\([1,\\infty)\\)"
+    ],
+    "why": "The quotient under the root must be nonnegative, and its denominator must be nonzero. A sign chart gives \\(x<-2\\) or \\(x\\ge1\\). The root and quotient are continuous throughout this domain.",
+    "source": "../lectures/06-continuity.html#operations-that-preserve-continuity",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "On its original real domain let \\(F(x)=\\sqrt{(x^2-1)/(x-1)}/(x-2)\\). At which excluded input can a single value extend \\(F\\) continuously, and what is it?",
+    "choices": [
+      "At \\(x=1\\), with value \\(-\\sqrt2\\).",
+      "At \\(x=1\\), with value \\(\\sqrt2\\).",
+      "At \\(x=2\\), with value \\(\\sqrt3\\).",
+      "At both \\(x=1\\) and \\(x=2\\), with value zero."
+    ],
+    "why": "For \\(x\\ne1,2\\) in the domain, \\(F(x)=\\sqrt{x+1}/(x-2)\\). At 1 this tends to \\(-\\sqrt2\\). At 2 the numerator tends to \\(\\sqrt3\\) and the denominator tends to zero with opposite signs.",
+    "source": "../lectures/06-continuity.html#operations-that-preserve-continuity",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "Let \\(g(x)\\to-1\\) as \\(x\\to0\\), let \\(g(0)=2\\), and set \\(F(u)=u^2-2u+1\\). Which comparison correctly tests \\(F\\circ g\\) for continuity at zero?",
+    "choices": [
+      "The limit is 4 and the function value is 1.",
+      "The limit is 1 and the function value is 4.",
+      "The limit and function value are both 4.",
+      "The limit does not exist because \\(g\\) is discontinuous."
+    ],
+    "why": "Continuity of the polynomial gives the limit \\(F(-1)=4\\). The actual value is \\(F(g(0))=F(2)=1\\).",
+    "source": "../lectures/06-continuity.html#continuity-and-composition",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "Suppose \\(g(x)\\to-1\\) as \\(x\\to0\\) and \\(F(u)=(u-1)^2\\). Which set gives every possible value of \\(g(0)\\) for which \\(F\\circ g\\) is continuous at 0?",
+    "choices": [
+      "\\(\\{-1,3\\}\\)",
+      "\\(\\{-1\\}\\)",
+      "\\(\\{-1,1\\}\\)",
+      "\\(\\{3\\}\\)"
+    ],
+    "why": "The composite tends to \\(F(-1)=4\\). For its value to equal its limit, solve \\((g(0)-1)^2=4\\), giving \\(g(0)=-1\\) or \\(3\\).",
+    "source": "../lectures/06-continuity.html#continuity-and-composition",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "As \\(x\\to a\\) from the left and right, \\(g(x)\\) approaches 1 and 4 respectively. Let \\(F(t)=t^2+bt\\). For which \\(b\\) and which values of \\(g(a)\\) is \\(F\\circ g\\) continuous at \\(a\\)?",
+    "choices": [
+      "\\(b=-5\\) and \\(g(a)\\in\\{1,4\\}\\).",
+      "\\(b=5\\) and \\(g(a)\\in\\{1,4\\}\\).",
+      "\\(b=-5\\) and \\(g(a)=-4\\) only.",
+      "\\(b=-3\\) and \\(g(a)=5/2\\) only."
+    ],
+    "why": "Equal one-sided limits require \\(1+b=16+4b\\), hence \\(b=-5\\). The common height is \\(-4\\). The value condition is \\(g(a)^2-5g(a)+4=0\\), so \\(g(a)\\) is 1 or 4.",
+    "source": "../lectures/06-continuity.html#continuity-and-composition",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "Let \\(r(x)=x+1\\) for \\(x<2\\), \\(r(2)=-1\\), and \\(r(x)=5-x\\) for \\(x>2\\). What are \\(\\lim_{x\\to2}r(r(x))\\) and \\(r(r(2))\\), in that order?",
+    "choices": [
+      "\\(2,0\\)",
+      "\\(3,-1\\)",
+      "\\(2,2\\)",
+      "\\(0,2\\)"
+    ],
+    "why": "On both sides of 2 the inner values approach 3, and are greater than 2 near the joining point. The outer formula is therefore \\(5-r(x)\\to2\\). At the point, \\(r(r(2))=r(-1)=0\\).",
+    "source": "../lectures/02-limits.html#practice",
+    "section": "2.1"
+  },
+  {
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "Consider \\(f(x)=\\sqrt{(x-1)(x-4)}\\) on its full real domain. At each of the two finite domain endpoints, which one-sided limit is required for continuity?",
+    "choices": [
+      "The left limit at 1 and the right limit at 4.",
+      "The right limit at 1 and the left limit at 4.",
+      "The right limit at both points.",
+      "Both one-sided limits at both points."
+    ],
+    "why": "The domain is \\((-\\infty,1]\\cup[4,\\infty)\\). One approaches 1 from below and 4 from above within the domain. Both limits are zero, the assigned values.",
+    "source": "../lectures/06-continuity.html#one-sided-continuity",
+    "section": "2.5"
+  },
+  {
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "For the lecture polynomial \\(p(x)=4x^3-6x^2+3x-2\\), which pair of evaluations proves by the IVT that a zero lies in \\((1,3/2)\\)?",
+    "choices": [
+      "\\(p(1)=-1\\) and \\(p(3/2)=5/2\\).",
+      "\\(p(1)=-1\\) and \\(p(3/2)=0\\).",
+      "\\(p(0)=-2\\) and \\(p(2)=12\\).",
+      "\\(p(1)=-1\\) and \\(p(3/2)=-5/2\\)."
+    ],
+    "why": "Direct substitution gives \\(p(1)=-1\\) and \\(p(3/2)=27/2-27/2+9/2-2=5/2\\). The polynomial is continuous on the shorter interval.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "Two travelers move along the same path with continuous positions \\(A(t)\\) and \\(B(t)\\) for \\(0\\le t\\le1\\). The first goes from 0 to 6 km, the second from 6 to 0. Which equation is guaranteed at some interior time?",
+    "choices": [
+      "\\(A(t)-B(t)=2\\)",
+      "\\(A(t)=B(t)=3\\)",
+      "\\(A(t)+B(t)=3\\)",
+      "\\(A(t)-B(t)=7\\)"
+    ],
+    "why": "The continuous difference starts at \\(-6\\) and ends at \\(6\\), so it attains 2. This reasoning does not prescribe the location at a meeting or all possible sums.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "For \\(p(x)=4x^3-6x^2+3x-2\\), the IVT gives a zero. Which identity also gives its exact value and proves it is the only real zero?",
+    "choices": [
+      "\\(2p(x)=(2x-1)^3-3\\), giving \\(x=(1+\\sqrt[3]3)/2\\).",
+      "\\(2p(x)=(2x-1)^3-3\\), giving \\(x=\\sqrt[3]{2}\\).",
+      "\\(2p(x)=(2x+1)^3-3\\), giving \\(x=(-1+\\sqrt[3]3)/2\\).",
+      "\\(2p(x)=(2x-1)^3-1\\), giving \\(x=1\\)."
+    ],
+    "why": "Expanding \\((2x-1)^3-3\\) gives \\(8x^3-12x^2+6x-4\\). A real cube equals 3 at exactly one real input.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "Let continuous \\(A,B:[0,1]\\to[0,L]\\) have \\(A(0)=B(1)=0\\) and \\(A(1)=B(0)=L>0\\). For which real \\(k\\) is a time \\(t\\in(0,1)\\) with \\(A(t)=kB(t)\\) guaranteed for every such pair?",
+    "choices": [
+      "Exactly \\(k>0\\).",
+      "Exactly \\(k\\ge0\\).",
+      "Exactly \\(0<k\\le1\\).",
+      "Every real \\(k\\)."
+    ],
+    "why": "For \\(k>0\\), \\(A-kB\\) starts at \\(-kL\\) and ends at \\(L\\), so it vanishes inside. For \\(k\\le0\\), take \\(A(t)=Lt\\) and \\(B(t)=L(1-t)\\), which are both positive inside. The equality fails there.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "breaks",
+    "level": 3,
+    "prompt": "At \\(x=-1\\) a graph approaches 1 from both sides but has value 3. At \\(x=1\\) its left and right limits are \\(-1\\) and 3, and its value is 3. Which points can be made continuous by changing just the value there?",
+    "choices": [
+      "Only \\(-1\\), by assigning value 1.",
+      "Only 1, by assigning value \\(-1\\).",
+      "Both, by assigning value 1 at each.",
+      "Neither, since both are already defined."
+    ],
+    "why": "The first point has a removable discontinuity. The second has unequal one-sided limits that persist under every change at that single point.",
+    "source": "../lectures/08-exam-practice.html#problem-1",
+    "section": "2.7"
+  },
+  {
+    "topic": "breaks",
+    "level": 4,
+    "prompt": "A graph has one-sided limits \\(-1\\) and 3 at \\(x=1\\) and actual value 3 there. For which \\(c\\) does \\(x\\mapsto|f(x)-c|\\) become continuous at 1?",
+    "choices": [
+      "\\(c=1\\)",
+      "\\(c=-1\\)",
+      "\\(c=2\\)",
+      "\\(c=3\\)"
+    ],
+    "why": "The two limiting distances are \\(|-1-c|\\) and \\(|3-c|\\). They agree exactly at the midpoint \\(c=1\\). The function value there uses the right-hand height 3, so it also agrees.",
+    "source": "../lectures/08-exam-practice.html#problem-1",
+    "section": "2.7"
+  },
+  {
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "Let \\(G(x)=x^2+1\\) for \\(x<1\\), \\(G(x)=ax+b\\) for \\(1\\le x<3\\), \\(G(3)=c\\), and \\(G(x)=2x\\) for \\(x>3\\). Which \\((a,b,c)\\) makes \\(G\\) continuous on \\(\\mathbb R\\)?",
+    "choices": [
+      "\\((2,0,6)\\)",
+      "\\((1,1,4)\\)",
+      "\\((2,0,3)\\)",
+      "\\((3,-1,8)\\)"
+    ],
+    "why": "Matching both joins requires \\(a+b=2\\) and \\(3a+b=c=6\\). Subtracting gives \\(2a=4\\), then \\(b=0\\).",
+    "source": "../lectures/08-exam-practice.html#problem-5",
+    "section": "2.7"
+  },
+  {
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "Replace the middle branch in the two-join lecture problem by \\(ax^2+b\\). The outside branches are \\(x^2+1\\) for \\(x<1\\) and \\(2x\\) for \\(x>3\\). For continuity, what must the value of the middle branch be at \\(x=2\\)?",
+    "choices": [
+      "\\(7/2\\)",
+      "\\(4\\)",
+      "\\(3\\)",
+      "\\(9/2\\)"
+    ],
+    "why": "The joins require \\(a+b=2\\) and \\(9a+b=6\\). Hence \\(a=1/2\\) and \\(b=3/2\\). At 2 the branch equals \\(4a+b=7/2\\).",
+    "source": "../lectures/08-exam-practice.html#problem-5",
+    "section": "2.7"
+  },
+  {
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "Which pair of continuous functions on \\([-2,2]\\) has the same endpoint values 3, with the first having no zeros and the second exactly two?",
+    "choices": [
+      "\\(f(x)=3\\) and \\(g(x)=x^2-1\\)",
+      "\\(f(x)=3\\) and \\(g(x)=x^2+1\\)",
+      "\\(f(x)=x^2-1\\) and \\(g(x)=3\\)",
+      "\\(f(x)=3\\) and \\(g(x)=3-x^2\\)"
+    ],
+    "why": "The constant 3 never vanishes. The second function takes value 3 at both endpoints and has the two zeros \\(-1\\) and 1. Positive endpoint values alone do not determine whether a zero exists.",
+    "source": "../lectures/08-exam-practice.html#problem-7",
+    "section": "2.7"
+  },
+  {
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "On \\([-2,2]\\), let \\(f_c(x)=3+c(x^2-4)\\). Every member has both endpoint values 3. For which \\(c\\) does it have exactly two distinct zeros inside?",
+    "choices": [
+      "\\(c>3/4\\)",
+      "\\(c\\ge3/4\\)",
+      "\\(0<c<3/4\\)",
+      "\\(c<0\\)"
+    ],
+    "why": "The equation gives \\(x^2=4-3/c\\) when \\(c\\ne0\\). Two interior roots require \\(0<4-3/c<4\\), which is equivalent to \\(c>3/4\\). At equality there is just one root, at zero.",
+    "source": "../lectures/08-exam-practice.html#problem-7",
+    "section": "2.7"
+  },
+  {
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "To prove \\(\\cos x=x\\) somewhere inside \\((0,\\pi/2)\\), which function, endpoint values and conclusion correctly apply the IVT?",
+    "choices": [
+      "\\(h(x)=\\cos x-x\\) has \\(h(0)=1\\) and \\(h(\\pi/2)=-\\pi/2\\), so it has at least one interior zero.",
+      "\\(h(x)=\\cos x-x\\) has \\(h(0)h(\\pi/2)<0\\), so the IVT gives exactly one zero.",
+      "\\(h(x)=\\cos x+x\\) has two positive endpoint values, so it has a zero.",
+      "\\(h(x)=\\cos x/x\\) has a defined value at 0 and takes both signs on the interval."
+    ],
+    "why": "Subtract the two sides. The resulting function is continuous and changes sign. A separate argument would be needed to establish uniqueness.",
+    "source": "../lectures/08-exam-practice.html#problem-9",
+    "section": "2.7"
+  },
+  {
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "For \\(0\\le x\\le2\\) and \\(x\\ne1\\), let \\(H(x)=(x^3-1)/(x-1)\\), and set \\(H(1)=0\\). Although \\(H(0)=1\\) and \\(H(2)=7\\), which statement about the intermediate height 3 is correct?",
+    "choices": [
+      "It is missed because the only candidate in \\([0,2]\\) is the redefined input 1.",
+      "It is attained exactly once by the IVT.",
+      "It is attained at \\(x=1\\) because the limit there is 3.",
+      "It is attained at \\(x=\\sqrt3\\)."
+    ],
+    "why": "The nearby polynomial is \\(x^2+x+1\\). Setting this equal to 3 gives \\((x-1)(x+2)=0\\). Only 1 is in the interval, and \\(H(1)=0\\). The missing hypothesis of the IVT is continuity at 1.",
+    "source": "../lectures/08-exam-practice.html#problem-6",
+    "section": "2.7"
+  },
+  {
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "A bridge formula \\(ax+b\\) joins \\(x^2\\) for \\(x\\le-1\\) to \\(1/x\\) for \\(x\\ge2\\). Which \\((a,b)\\) makes the resulting function continuous at both ends of the bridge?",
+    "choices": [
+      "\\((-1/6,5/6)\\)",
+      "\\((-1/2,1/2)\\)",
+      "\\((1/6,7/6)\\)",
+      "\\((1/2,3/2)\\)"
+    ],
+    "why": "The bridge must pass through \\((-1,1)\\) and \\((2,1/2)\\). Its slope is \\((1/2-1)/3=-1/6\\). Substituting the first point gives \\(b=5/6\\).",
+    "source": "../lectures/06-continuity.html#problems-choosing-constants-for-continuity",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "Set \\(H(x)=x^2\\) for \\(x<k\\) and \\(H(x)=3x-2\\) for \\(k\\le x\\le b\\), with \\(k\\le b\\). If \\(b=3/2\\), which choices of \\(k\\) make \\(H\\) continuous on its whole domain?",
+    "choices": [
+      "\\(k=1\\) only",
+      "\\(k=2\\) only",
+      "\\(k=1\\) or \\(2\\)",
+      "\\(k=3/2\\) only"
+    ],
+    "why": "Matching the branches gives \\(k^2=3k-2\\), so \\(k=1\\) or \\(k=2\\). Only 1 lies in the permitted range. At \\(k=b\\) the same matching equation is necessary for left continuity.",
+    "source": "../lectures/06-continuity.html#problems-choosing-constants-for-continuity",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "A continuous function \\(F\\) equals \\((x^2+ax+b)/(x^2-1)\\) except possibly at \\(x=\\pm1\\). What must \\((a,b,F(-1),F(1))\\) be?",
+    "choices": [
+      "\\((0,-1,1,1)\\)",
+      "\\((0,1,1,1)\\)",
+      "\\((0,-1,-1,1)\\)",
+      "\\((2,1,0,1)\\)"
+    ],
+    "why": "Both denominator zeros must also kill the numerator. Substitution gives \\(1-a+b=1+a+b=0\\), hence \\(a=0,b=-1\\). The quotient then equals 1 away from the two holes.",
+    "source": "../lectures/06-continuity.html#problems-choosing-constants-for-continuity",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "On \\([-1,2]\\) let \\(f(x)=(x^2-x-2)/(x+1)\\) for \\(-1<x<2\\), with \\(f(-1)=A\\) and \\(f(2)=B\\). What must \\((A,B)\\) be for continuity on this closed interval?",
+    "choices": [
+      "\\((-3,0)\\)",
+      "\\((0,-3)\\)",
+      "\\((-2,0)\\)",
+      "\\((0,0)\\)"
+    ],
+    "why": "On the open interval, cancelling \\(x+1\\) leaves \\(x-2\\). Its right limit at \\(-1\\) is \\(-3\\) and its left limit at 2 is 0.",
+    "source": "../lectures/06-continuity.html#one-sided-continuity",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "What is the largest interval containing zero on which \\(1/\\sqrt{4-\\sqrt{x^2+9}}\\) is real and continuous?",
+    "choices": [
+      "\\((-\\sqrt7,\\sqrt7)\\)",
+      "\\([-\\sqrt7,\\sqrt7]\\)",
+      "\\((-7,7)\\)",
+      "All real numbers"
+    ],
+    "why": "The inner root is always defined. The outer root belongs to the denominator, so \\(\\sqrt{x^2+9}<4\\). Squaring gives \\(x^2<7\\).",
+    "source": "../lectures/06-continuity.html#operations-that-preserve-continuity",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "For \\(x\\ne0\\), put \\(F(x)=a(x)x+b(x)|x|\\), where \\(a(x)=1/x\\) and \\(b(x)=c/x\\). For which \\((c,F(0))\\) is \\(F\\) continuous at zero?",
+    "choices": [
+      "\\((0,1)\\)",
+      "\\((1,2)\\)",
+      "\\((-1,0)\\)",
+      "Every \\(c\\) with \\(F(0)=1+c\\)"
+    ],
+    "why": "The factors separately fail the continuity test at zero. For nonzero inputs the expression becomes \\(1+c|x|/x\\), whose left and right limits are \\(1-c\\) and \\(1+c\\). These agree only when \\(c=0\\).",
+    "source": "../lectures/06-continuity.html#operations-that-preserve-continuity",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "Which is the largest interval containing \\(x=0\\) on which \\(\\tan(\\sqrt{x+1})\\) is defined and continuous?",
+    "choices": [
+      "\\([-1,\\pi^2/4-1)\\)",
+      "\\((-1,\\pi/2-1)\\)",
+      "\\([-1,\\pi^2/4-1]\\)",
+      "\\([0,\\pi^2/4)\\)"
+    ],
+    "why": "The root is defined at and to the right of \\(-1\\). Its first nonnegative tangent pole is reached at \\(\\sqrt{x+1}=\\pi/2\\). Thus the left endpoint is included and the right endpoint is excluded.",
+    "source": "../lectures/06-continuity.html#continuity-of-the-trigonometric-functions",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "A function \\(g\\) equals 0 to the left of \\(a\\), equals \\(\\pi\\) to the right, and has \\(g(a)=\\pi/2\\). For \\(F(t)=A\\cos t+B\\sin t+C\\), when is \\(F\\circ g\\) continuous at \\(a\\)?",
+    "choices": [
+      "Exactly when \\(A=B=0\\), for every \\(C\\).",
+      "Exactly when \\(A=0\\), for every \\(B,C\\).",
+      "Exactly when \\(B=0\\), for every \\(A,C\\).",
+      "Exactly when \\(A=B\\), for every \\(C\\)."
+    ],
+    "why": "The composite has left limit \\(A+C\\), right limit \\(-A+C\\), and point value \\(B+C\\). Equality of its limits forces \\(A=0\\), after which matching the point value forces \\(B=0\\).",
+    "source": "../lectures/06-continuity.html#continuity-of-the-trigonometric-functions",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "A function \\(g\\) has one-sided limits \\(-1\\) and 3 at \\(a\\), with \\(g(a)=0\\). For \\(F(t)=t^3+pt^2+qt\\), which \\((p,q)\\) makes \\(F\\circ g\\) continuous there?",
+    "choices": [
+      "\\((-2,-3)\\)",
+      "\\((2,3)\\)",
+      "\\((-2,3)\\)",
+      "\\((2,-3)\\)"
+    ],
+    "why": "Since \\(F(0)=0\\), continuity requires \\(F(-1)=F(3)=0\\). The monic cubic must therefore be \\(t(t+1)(t-3)=t^3-2t^2-3t\\).",
+    "source": "../lectures/06-continuity.html#continuity-and-composition",
+    "section": "2.5"
+  },
+  {
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "For the lecture cubic \\(p(x)=4x^3-6x^2+3x-2\\), start with the sign-changing interval \\([1,3/2]\\). Which subinterval remains after two midpoint tests, always keeping opposite endpoint signs?",
+    "choices": [
+      "\\([9/8,5/4]\\)",
+      "\\([1,9/8]\\)",
+      "\\([5/4,11/8]\\)",
+      "\\([11/8,3/2]\\)"
+    ],
+    "why": "The first midpoint is \\(5/4\\), where \\(p=3/16>0\\). The next is \\(9/8\\), where \\(p=-67/128<0\\). The two midpoints now bracket a root.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "Continuous \\(f\\) has \\(f(0)=3\\), \\(f(1)=0\\), \\(f(2)=-1\\), and \\(f(3)=2\\). What is the smallest possible number of distinct zeros on \\([0,3]\\)?",
+    "choices": [
+      "2",
+      "1",
+      "3",
+      "4"
+    ],
+    "why": "One root is given at 1. Opposite signs at 2 and 3 force another strictly between them. Joining consecutive data points with line segments achieves exactly these two roots.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "Continuous positions \\(A,B\\) in kilometers obey \\(A(0)=0\\), \\(B(0)=8\\), \\(A(1)=10\\), and \\(B(1)=3\\). Which signed separations \\(d\\) are forced at some strictly interior time by these data alone?",
+    "choices": [
+      "Exactly \\(-8<d<7\\)",
+      "Exactly \\(0<d<7\\)",
+      "Exactly \\(-8\\le d\\le7\\)",
+      "Exactly \\(-7<d<8\\)"
+    ],
+    "why": "Apply the theorem to \\(A-B\\), whose endpoint values are \\(-8\\) and 7. The differences of linear journeys attain the endpoint separations only at their endpoints and never leave that range.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "Two continuous graphs have values \\(f(0)=1\\), \\(g(0)=4\\), \\(f(2)=7\\), \\(g(2)=3\\). Which pair of numbers proves they cross the line of separation \\(f(x)=g(x)+2\\) inside \\((0,2)\\)?",
+    "choices": [
+      "\\(-5\\) and \\(2\\)",
+      "\\(-3\\) and \\(4\\)",
+      "\\(1\\) and \\(7\\)",
+      "\\(-1\\) and \\(6\\)"
+    ],
+    "why": "Subtract both \\(g\\) and 2 from \\(f\\). The continuous difference is \\(1-4-2=-5\\) at zero and \\(7-3-2=2\\) at 2. Its zero is precisely the required crossing.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "For \\(R(x)=(x-1)/(x-2)\\), which sign-changing bracket validly proves a zero by the IVT?",
+    "choices": [
+      "\\([0,3/2]\\)",
+      "\\([3/2,5/2]\\)",
+      "\\([3/2,4]\\)",
+      "\\([3/2,3]\\)"
+    ],
+    "why": "On \\([0,3/2]\\) the denominator is nonzero and the endpoint values are \\(1/2\\) and \\(-1\\). Each other interval contains the pole at 2, so its sign change cannot justify the theorem.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "Only ranges for the endpoint values of continuous \\(F\\) are known. Which pair of ranges guarantees that \\(F(x)=3\\) for some interior \\(x\\), regardless of the endpoints' exact values?",
+    "choices": [
+      "\\(F(0)\\in[0,2]\\) and \\(F(1)\\in[4,7]\\)",
+      "\\(F(0)\\in[0,3]\\) and \\(F(1)\\in[4,7]\\)",
+      "\\(F(0)\\in[0,2]\\) and \\(F(1)\\in[3,7]\\)",
+      "\\(F(0)\\in[2,4]\\) and \\(F(1)\\in[4,7]\\)"
+    ],
+    "why": "The first choice places every possible left endpoint strictly below 3 and every possible right endpoint strictly above it. In the other choices a line segment can avoid 3 throughout the open interval.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "A continuous campus-distance function \\(f:[0,1]\\to\\mathbb R\\) satisfies \\(f(0)=6\\), \\(f(1/2)=1\\), \\(f(1)=7\\). What is the widest set of heights guaranteed to occur at least twice at distinct times?",
+    "choices": [
+      "\\(1<h\\le6\\)",
+      "\\(1\\le h\\le6\\)",
+      "\\(1<h<6\\)",
+      "\\(1<h\\le7\\)"
+    ],
+    "why": "For \\(1<h\\le6\\), each half of the trip hits \\(h\\), and their only common time has height 1. The piecewise linear trip through the data hits 1 only at the midpoint and heights above 6 at most once.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "A continuous map \\(T:[2,5]\\to[2,5]\\) has \\(T(2)=4\\) and \\(T(5)=3\\). Which endpoint pair forces a point where \\(T(x)=x\\)?",
+    "choices": [
+      "\\(T(2)-2=2\\) and \\(T(5)-5=-2\\)",
+      "\\(T(2)-5=-1\\) and \\(T(5)-2=1\\)",
+      "\\(T(2)+2=6\\) and \\(T(5)+5=8\\)",
+      "\\(T(2)-3=1\\) and \\(T(5)-3=0\\)"
+    ],
+    "why": "A fixed point is a zero of \\(T(x)-x\\). This continuous difference changes sign strictly, so at least one fixed point is interior.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "On \\([0,1]\\) let \\(f(x)=x\\) except \\(f(1/2)=2\\). Which target between \\(f(0)\\) and \\(f(1)\\) is missed, and which IVT hypothesis fails?",
+    "choices": [
+      "\\(1/2\\), continuity at \\(1/2\\).",
+      "\\(2\\), continuity at 1.",
+      "\\(0\\), continuity at 0.",
+      "No intermediate target is missed."
+    ],
+    "why": "The only original input with height \\(1/2\\) was sent to 2. Both one-sided limits there equal \\(1/2\\) while the new point value is 2.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "A continuous path has position \\(P(0)=0\\), \\(P(1)=10\\). Which time ordering is guaranteed, even if the traveler backtracks?",
+    "choices": [
+      "Some time at 3 comes before a later time at 8.",
+      "Every time at 3 comes before every time at 8.",
+      "The first time at 8 is necessarily \\(0.8\\).",
+      "The traveler reaches 8 only once."
+    ],
+    "why": "First obtain a time \\(v\\) with \\(P(v)=8\\) by the IVT. Apply it again on \\([0,v]\\) to find a strictly earlier time at 3. Backtracking can defeat the other ordering and uniqueness claims.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "A continuous temperature \\(T\\) on \\([0,24]\\) has \\(T(0)=T(24)\\). Which conclusion about temperatures 12 hours apart follows for every such \\(T\\)?",
+    "choices": [
+      "\\(T(t)=T(t+12)\\) for some \\(t\\in[0,12]\\).",
+      "The equality must occur for \\(0<t<12\\).",
+      "The equality must occur at \\(t=6\\).",
+      "Both temperatures must be the daily mean."
+    ],
+    "why": "Set \\(D(t)=T(t)-T(t+12)\\). Then \\(D(12)=-D(0)\\), giving either an endpoint zero or an interior zero. For \\(T(t)=\\sin(\\pi t/12)\\), the only zeros of this difference on \\([0,12]\\) are its endpoints.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "A continuous path \\(s:[0,1]\\to\\mathbb R\\) has \\(s(0)=0\\), \\(s(1)=9\\). Why must some third of an hour produce a net change of exactly 3?",
+    "choices": [
+      "The continuous \\(D(t)=s(t+1/3)-s(t)\\) has \\(D(0)+D(1/3)+D(2/3)=9\\), so its values straddle or equal 3.",
+      "One of the three sampled changes must equal their average.",
+      "Every third of an hour has net change 3.",
+      "The terminal displacement fixes the speed at 9 everywhere."
+    ],
+    "why": "The sampled changes telescope. If no sample is 3, there is a sample below and one above the average. Applying the IVT between those sample times gives \\(D(t)=3\\).",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "A continuous \\(f\\) takes values \\(1,-3,4,-2\\) at \\(x=0,1,2,3\\), respectively. How many distinct solutions of \\(f(x)^2=4\\) are forced at minimum?",
+    "choices": [
+      "5",
+      "3",
+      "4",
+      "6"
+    ],
+    "why": "On the first interval \\(f\\) must hit \\(-2\\). On the second it must hit both \\(-2\\) and \\(2\\). On the third it must hit \\(2\\) in its interior and \\(-2\\) at its right endpoint. Linear interpolation achieves exactly five.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "Continuous \\(f\\) satisfies \\(f(-2)=-3\\), \\(f(0)=1\\), and \\(f(2)=-1\\). For which slopes \\(m\\) do the endpoint data force two distinct intersections of \\(f(x)\\) and \\(mx\\) in the open intervals \\((-2,0)\\) and \\((0,2)\\)?",
+    "choices": [
+      "\\(-1/2<m<3/2\\)",
+      "\\(-3/2<m<1/2\\)",
+      "\\(-1/2\\le m\\le3/2\\)",
+      "\\(m< -1/2\\) or \\(m>3/2\\)"
+    ],
+    "why": "The middle difference \\(f(0)-m\\cdot0\\) is positive. The other differences are \\(-3+2m\\) and \\(-1-2m\\), both strictly negative precisely on the stated range. Connecting the data linearly shows that outside it an open-interval intersection may be absent.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "Let \\(T:[0,1]\\to[0,1]\\) be continuous and \\(T(0)>0\\), \\(T(1)<1\\). What can be guaranteed about solutions of \\(T(T(x))=x\\)?",
+    "choices": [
+      "There is at least one interior solution, since an interior fixed point of \\(T\\) is also a solution.",
+      "There must be two distinct interior solutions.",
+      "Every solution belongs to a pair of distinct points interchanged by \\(T\\).",
+      "No fixed point of \\(T\\) can solve this equation."
+    ],
+    "why": "The continuous function \\(T(x)-x\\) is strictly positive at 0 and strictly negative at 1. At a zero \\(c\\), \\(T(T(c))=T(c)=c\\). The constant map \\(T(x)=1/2\\) shows one solution can be all.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "Suppose \\(f\\) is continuous on \\([0,1]\\), with \\(f(0)=-2\\) and \\(f(1)=4\\). For which values of \\(m\\) must \\(f(x)=mx+1\\) at an interior point for every such \\(f\\)?",
+    "choices": [
+      "All \\(m<3\\)",
+      "All \\(m\\le3\\)",
+      "Only \\(-2<m<4\\)",
+      "All \\(m>3\\)"
+    ],
+    "why": "The difference \\(f(x)-mx-1\\) starts at \\(-3\\) and ends at \\(3-m\\). Strictly opposite signs suffice for \\(m<3\\). For \\(m\\ge3\\), the admissible line \\(f(x)=-2+6x\\) has no interior intersection.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "continuity",
+    "level": 1,
+    "prompt": "Suppose \\(\\lim_{x\\to a}f(x)=8\\) and \\(f(a)=8\\). Which property is guaranteed?",
+    "choices": [
+      "\\(f\\) is continuous at \\(a\\).",
+      "\\(f\\) is constant near \\(a\\).",
+      "\\(f\\) has a horizontal tangent at \\(a\\).",
+      "\\(f\\) is increasing near \\(a\\)."
+    ],
+    "why": "The function value exists and equals the finite limit. That is precisely continuity at the point.",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "section": "2.5"
+  },
+  {
+    "topic": "breaks",
+    "level": 1,
+    "prompt": "If two finite one-sided limits at \\(a\\) are unequal, what kind of discontinuity occurs there?",
+    "choices": [
+      "Jump.",
+      "Removable.",
+      "Infinite.",
+      "Oscillatory."
+    ],
+    "why": "A jump has distinct finite heights as the input approaches from opposite sides.",
+    "source": "../lectures/06-continuity.html#types-of-discontinuities",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 1,
+    "prompt": "Which limit checks the continuity of \\(f(x)=\\sqrt{x}\\) at the endpoint \\(0\\) of its real domain?",
+    "choices": [
+      "\\(\\lim_{x\\to0^+}\\sqrt{x}\\)",
+      "\\(\\lim_{x\\to0^-}\\sqrt{x}\\)",
+      "\\(\\lim_{x\\to1}\\sqrt{x}\\)",
+      "\\(\\lim_{x\\to+\\infty}\\sqrt{x}\\)"
+    ],
+    "why": "Its domain starts at 0, so nearby inputs in the domain approach from the right.",
+    "source": "../lectures/06-continuity.html#one-sided-continuity",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 2,
+    "prompt": "On which real domain is \\(\\sqrt{x-1}/(x-3)\\) continuous?",
+    "choices": [
+      "\\([1,3)\\cup(3,\\infty)\\)",
+      "\\((1,3)\\cup(3,\\infty)\\)",
+      "\\([1,\\infty)\\)",
+      "\\((-\\infty,1]\\cup(3,\\infty)\\)"
+    ],
+    "why": "The even root requires \\(x\\ge1\\), and the denominator excludes 3. The quotient of these continuous functions is continuous throughout the resulting domain.",
+    "source": "../lectures/06-continuity.html#operations-that-preserve-continuity",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 2,
+    "prompt": "Suppose \\(g(x)\\to-1\\) as \\(x\\to0\\) and \\(F(t)=t^2-2t+1\\). Find \\(\\lim_{x\\to0} F(g(x))\\).",
+    "choices": [
+      "\\(4\\)",
+      "\\(0\\)",
+      "\\(-2\\)",
+      "\\(2\\)"
+    ],
+    "why": "The outer polynomial is continuous, so evaluate \\(F(-1)=1+2+1=4\\).",
+    "source": "../lectures/06-continuity.html#continuity-and-composition",
+    "section": "2.5"
+  },
+  {
+    "topic": "continuity",
+    "level": 2,
+    "prompt": "A piecewise function is \\(3x+1\\) to the left of \\(k\\) and \\(x-3\\) at and to the right of \\(k\\). Which equation expresses continuity at the join?",
+    "choices": [
+      "\\(3k+1=k-3\\)",
+      "\\(3k+1=0\\)",
+      "\\(3k+1=-(k-3)\\)",
+      "\\(k-3=0\\)"
+    ],
+    "why": "The left-hand limit is \\(3k+1\\). Both the point value and the right-hand limit are \\(k-3\\), so they must equal the left-hand limit.",
+    "source": "../lectures/06-continuity.html#problems-choosing-constants-for-continuity",
+    "section": "2.5"
+  },
+  {
+    "topic": "ivt",
+    "level": 1,
+    "prompt": "A continuous function has \\(f(0)=-2\\) and \\(f(2)=12\\). Which target height must occur between the endpoints?",
+    "choices": [
+      "\\(0\\)",
+      "\\(13\\)",
+      "\\(-3\\)",
+      "\\(20\\)"
+    ],
+    "why": "Zero lies strictly between the endpoint heights. The IVT guarantees an interior input with output zero.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 1,
+    "prompt": "To apply the Intermediate Value Theorem on \\([a,b]\\), which hypothesis about \\(f\\) is needed?",
+    "choices": [
+      "It is continuous on \\([a,b]\\).",
+      "It is increasing on \\([a,b]\\).",
+      "It is differentiable on \\([a,b]\\).",
+      "It has a horizontal tangent inside \\([a,b]\\)."
+    ],
+    "why": "Continuity throughout the interval guarantees the intermediate heights. Derivatives and monotonicity are unnecessary.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 1,
+    "prompt": "The IVT proves that a continuous function has a zero between two endpoints with opposite signs. How many zeros does that conclusion guarantee?",
+    "choices": [
+      "At least one.",
+      "Exactly one.",
+      "Exactly two.",
+      "Infinitely many."
+    ],
+    "why": "The theorem gives existence. The graph may cross or touch the axis again elsewhere in the interval.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 2,
+    "prompt": "For \\(p(x)=4x^3-6x^2+3x-2\\), what is the smallest endpoint calculation needed, along with polynomial continuity, to prove a zero in \\((0,2)\\)?",
+    "choices": [
+      "\\(p(0)=-2\\) and \\(p(2)=12\\).",
+      "\\(p(0)=-2\\) and \\(p(2)=-12\\).",
+      "\\(p(0)=2\\) and \\(p(2)=12\\).",
+      "\\(p(0)=-2\\) alone."
+    ],
+    "why": "Substitution gives \\(p(2)=32-24+6-2=12\\). The continuous function takes opposite signs at the endpoints.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 2,
+    "prompt": "One traveler goes from home to campus in an hour, another returns along the same path during the corresponding hour. Their continuous route positions are \\(A(t)\\) and \\(B(t)\\). Which function changes sign when they swap order?",
+    "choices": [
+      "\\(A(t)-B(t)\\)",
+      "\\(A(t)+B(t)\\)",
+      "\\((A(t)-B(t))^2\\)",
+      "\\(|A(t)-B(t)|\\)"
+    ],
+    "why": "Using distance along the route from home, the difference starts negative and ends positive. A zero means equal positions at the same elapsed time.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "ivt",
+    "level": 2,
+    "prompt": "A continuous function takes values \\(5\\) at \\(x=1\\) and \\(2\\) at \\(x=4\\). What does the IVT guarantee about height 3?",
+    "choices": [
+      "It occurs at least once in \\((1,4)\\).",
+      "It occurs exactly at \\(x=3\\).",
+      "It occurs exactly once in \\((1,4)\\).",
+      "The theorem applies only when the left endpoint is lower."
+    ],
+    "why": "The target is strictly between 2 and 5. The IVT works in either order and gives an interior point, without specifying which input.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6"
+  },
+  {
+    "topic": "continuity",
+    "level": 1,
+    "prompt": "In the practice graph, line segments meet at a filled corner at \\((-2,2)\\). Their heights on both sides approach 2. Is the function continuous at \\(-2\\)?",
+    "choices": [
+      "Yes, the common limit is the filled height.",
+      "No, every corner is a discontinuity.",
+      "No, a corner always has different one-sided limits.",
+      "Only if its height is zero."
+    ],
+    "why": "Continuity compares heights as inputs approach the point. A change in slope at the corner is compatible with continuity.",
+    "source": "../lectures/08-exam-practice.html#problem-1",
+    "section": "2.7"
+  },
+  {
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "Near \\(x=-2\\), the practice graph is a line of slope 1 on the left and slope \\(-1\\) on the right, meeting at \\((-2,2)\\). For small \\(h>0\\), what is the secant slope from input \\(-2-h\\) to input \\(-2+2h\\)?",
+    "choices": [
+      "\\(-1/3\\)",
+      "\\(0\\)",
+      "\\(1/3\\)",
+      "\\(-1\\)"
+    ],
+    "why": "The two heights are \\(2-h\\) and \\(2-2h\\). The vertical change is \\(-h\\) over horizontal change \\(3h\\), giving \\(-1/3\\).",
+    "source": "../lectures/08-exam-practice.html#problem-1",
+    "section": "2.7"
+  },
+  {
+    "topic": "continuity",
+    "level": 1,
+    "prompt": "Both one-sided limits at \\(x=2\\) are 3 and \\(f(2)=-1\\). What single change repairs continuity?",
+    "choices": [
+      "Set \\(f(2)=3\\).",
+      "Set \\(f(2)=0\\).",
+      "Set \\(f(2)=1\\).",
+      "Remove the point at \\(x=2\\)."
+    ],
+    "why": "Matching one-sided limits give a two-sided limit of 3. The filled point must have that same height.",
+    "source": "../lectures/08-exam-practice.html#problem-6",
+    "section": "2.7"
+  }
+]
