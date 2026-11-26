@@ -211,7 +211,7 @@ main {
   pointer-events: none;
 }
 .station .label {
-  font: 600 17px var(--ui);
+  font: 600 var(--label-size, 17px) var(--ui);
   fill: var(--ink);
   paint-order: stroke;
   stroke: var(--paper);
@@ -219,7 +219,7 @@ main {
   stroke-linejoin: round;
 }
 .station.hub .label {
-  font: bold 24px var(--serif);
+  font: bold var(--hub-size, 24px) var(--serif);
 }
 .station .formula {
   fill: white;

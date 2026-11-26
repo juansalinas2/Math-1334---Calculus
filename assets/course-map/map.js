@@ -10,7 +10,12 @@ const results = byId("results");
 let selected = null;
 let family = "all";
 let cameraMode = "overview";
-const bounds = { left: -15, top: 10, right: 1450, bottom: 842 };
+const bounds = {
+  left: -15 * horizontalSpacing,
+  top: 10,
+  right: 1450 * horizontalSpacing,
+  bottom: 842,
+};
 
 function trackPath(edge) {
   const a = byTopic.get(edge.source);
@@ -59,6 +64,10 @@ const zoom = d3.zoom().scaleExtent([.16, 3.6]).clickDistance(5).on(
   "zoom",
   (event) => {
     world.attr("transform", event.transform);
+    // Keep labels readable when the entire desktop map fits on screen.
+    const labelScale = Math.max(.55, event.transform.k);
+    world.style("--label-size", Math.max(17, 13 / labelScale) + "px")
+      .style("--hub-size", Math.max(24, 18 / labelScale) + "px");
     byId("zoom-level").textContent = Math.round(100 * event.transform.k) + "%";
     if (event.sourceEvent) cameraMode = "manual";
   },
@@ -328,7 +337,7 @@ document.addEventListener("keydown", (e) => {
 function initialFrame() {
   if (viewport.clientWidth < 620) {
     // Start near the definition of the derivative at a readable phone scale.
-    move(481, 268, .84, false);
+    move(481 * horizontalSpacing, 268, .84, false);
   } else {
     frame(false);
   }

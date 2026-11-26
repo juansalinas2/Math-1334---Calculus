@@ -7,6 +7,7 @@ const families = {
   applications: { label: "Applications", color: "#b35729" },
 };
 
+const horizontalSpacing = 1.2;
 const stations = [
   // Topic, family, position, map label, and optional mathematical symbol for a hub.
   ["sides", "limits", 94, 236, "One-sided limits"],
@@ -41,7 +42,7 @@ const stations = [
 ].map(([id, family, x, y, label, symbol]) => ({
   id,
   family,
-  x,
+  x: x * horizontalSpacing,
   y,
   label,
   symbol,
