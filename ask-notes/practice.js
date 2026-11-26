@@ -275,7 +275,12 @@
       try {
         const data = await chat.ask(question, section, history, classCode);
         answer.replaceChildren();
-        const body = element("p", data.answer);
+        const body = element("p");
+        // Format model emphasis as text nodes. No generated content enters innerHTML.
+        for (const part of data.answer.split(/(\*\*[^*\n]+\*\*)/)) {
+          if (part.startsWith("**") && part.endsWith("**")) body.append(element("strong", part.slice(2,-2)));
+          else body.append(document.createTextNode(part));
+        }
         body.className = "rr-generated-answer";
         answer.append(body);
         activeTopic = topics.has(data.section) ? data.section : section;
@@ -283,6 +288,13 @@
         for (const source of data.sources || []) {
           const key = source.href.split("#")[1];
           if (topics.has(key)) cite(topics.get(key), topics.get(key).node);
+        }
+        const prior = history.filter(turn => turn.section === activeTopic);
+        if (prior.length) {
+          const earlier = element("details");
+          earlier.append(element("summary", "Earlier in this example"));
+          for (const turn of prior) earlier.append(element("strong", turn.question), element("p", turn.answer));
+          answer.append(earlier);
         }
         if (data.sources?.length) remember(question, data.answer, activeTopic);
         action("Open worked hints", () => show("First step", activeTopic));

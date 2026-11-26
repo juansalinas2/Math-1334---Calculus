@@ -104,10 +104,15 @@ class PilotTests(unittest.TestCase):
     def test_no_grounding(self):
         self.assertEqual(app.generate("What is integration?", "", [])["sources"], [])
         self.cloud.converse.assert_not_called()
-        for text, stop in [("Unsupported [9]", "end_turn"), ("Guess", "end_turn"), ("NO_EVIDENCE", "end_turn"),
+        for text, stop in [("Unsupported [9]", "end_turn"), ("NO_EVIDENCE", "end_turn"),
                            ("Truncated [1]", "max_tokens"), ("CLARIFY", "end_turn")]:
             self.cloud.converse.return_value = {"output": {"message": {"content": [{"text": text}]}}, "stopReason": stop}
             self.assertEqual(app.generate("question", "", ["ladder"])["sources"], [])
+
+    def test_server_attaches_the_single_grounding_source(self):
+        self.cloud.converse.return_value = {"stopReason": "end_turn", "output": {"message":
+            {"content": [{"text": "The units describe volume per second."}]}}}
+        self.assertTrue(app.generate("Which rate?", "cube", ["cube"])["sources"][0]["href"].endswith("#cube"))
 
     def test_failure_and_unknown_context(self):
         self.cloud.converse.side_effect = RuntimeError("offline")

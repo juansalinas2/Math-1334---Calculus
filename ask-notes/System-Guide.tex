@@ -1,0 +1,90 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[top=.82in,bottom=.85in,left=1.02in,right=1.02in]{geometry}
+\usepackage{amsmath,hyperref}
+\hypersetup{hidelinks,pdftitle={Ask the Notes},pdfauthor={Juan Salinas}}
+\ifdefined\XeTeXversion
+  \IfFileExists{/System/Library/Fonts/Monaco.ttf}{
+    \DeclareFontFamily{TU}{coursemono}{}
+    \DeclareFontShape{TU}{coursemono}{m}{n}{<-> "[/System/Library/Fonts/Monaco.ttf]"}{}
+    \renewcommand{\ttdefault}{coursemono}
+  }{}
+\fi
+\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\emergencystretch}{2em}
+\newcommand{\pagehead}[2]{{\small MATH 1334 \quad / \quad Instructor guide}\par
+  \vspace{9pt}{\LARGE\bfseries #1}\par{\large #2}\par\vspace{6pt}\hrule\medskip}
+\newcommand{\subhead}[1]{\par\medskip{\large\bfseries #1}\par}
+\newcommand{\code}[1]{{\small\texttt{\detokenize{#1}}}}
+\newcommand{\stage}[1]{\fbox{\strut\hspace{4pt}#1\hspace{4pt}}}
+\begin{document}
+\pagehead{Ask the Notes}{1. What a student sees}
+On the \href{https://juansalinas2.github.io/Math-1334---Calculus/lectures/related-rates.html\#ladder}{related-rates lecture}, open \textbf{Ask for help} in the lower-right corner. Press \textbf{Tab} or tap a suggested question to fill the box. Enter the class code and choose \textbf{Ask AI} for a conversation. \textbf{Use worked hints} opens the instructor’s written steps without a code. The answer panel stays open as you scroll or follow a source. Drag its title bar, or use the arrow keys on \textbf{Move}. \textbf{Hide} and \textbf{Resume help} preserve your answer.
+\subhead{A student checks Example 6}
+\emph{I wrote $r/h=6/2$. Is my proportion right?} A student can test the equation against the full tank, whose radius is 2 m and whose height is 6 m:
+\[
+  r=3h \implies r=18\text{ m at }h=6\text{ m},\qquad
+  \frac rh=\frac26 \implies r=2\text{ m at }h=6\text{ m}.
+\]
+The written hint asks what radius the repaired ratio predicts at a depth of 3 m. A student who types \emph{1 m} can then use $r=h/3$ in the volume formula.
+\subhead{Where the answer comes from}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{c@{\hspace{.42in}}c}
+\multicolumn{2}{c}{\stage{Question and open example}}\\
+$\swarrow$&$\searrow$\\
+Ask AI with class code&Use worked hints\\
+$\searrow$&$\swarrow$\\
+\multicolumn{2}{c}{\stage{Explanation in the lecture popup}}\\
+\end{tabular}
+\end{center}
+Try \emph{I added the length and width rates. What does my 2 mean?} in Example 4. Then ask \emph{Why multiply by 5?} The AI receives up to three recent exchanges about that reading. The written hints and their Next step button run in the browser.
+\newpage
+\pagehead{Build and repair}{2. From the lecture to the popup}
+\textbf{1. Edit the content.} In the course checkout, open \code{ask-notes/checks.json}. Find the reading's identifier, such as \code{ladder}. Its \code{help} entry and each \code{answers} entry with a \code{question} provide suggestions. Each pairs a prompt with an explanation, a wording pattern, and a source step. An optional \code{reply} handles a short response to the preceding teaching question. Step 0 links to the whole reading.
+ 
+\textbf{2. Build.} From the folder containing \code{_quarto.yml}, run the commands below. Use Quarto and Python 3.11 or newer. Install Beautiful Soup 4 to build the offline preview.
+\begin{small}\begin{verbatim}
+quarto render
+python3 -m unittest discover -s ask-notes -p 'test_*.py'
+python3 ask-notes/preview.py
+\end{verbatim}\end{small}
+The render turns authored LaTeX into MathML. The build attaches the help box to the related-rates page. Open \code{ask-notes/build/try-the-pilot.html} to test the lecture locally.
+ 
+\textbf{3. Verify and publish.} In Example 6, use Tab to fill the suggested question. Press Enter and try \emph{It becomes 9}. Ask for a hint on part (c), then for another hint. Follow the cited step. Test the same exchange at phone width. Publish through the course's existing GitHub Pages workflow.
+\subhead{When something goes wrong}
+\textbf{The answer cites the wrong example.} Reproduce it with the student's wording and note which example was on screen. Check the number against the lecture heading. Both routes use the reference patterns in \code{practice.py}. Verify the cited step in the catalog.
+ 
+\textbf{An equation looks wrong.} Inspect the LaTeX in the catalog. JSON stores each backslash twice. Rebuild and check the formula and its units in the popup.
+ 
+\textbf{The box is missing.} Check the latest Pages build. The file \code{site_assets.py} adds the script to the rendered lecture. A cache refresh should load its new version after publication.
+\subhead{Who sees student responses?}
+The class code stays in the tab. Ask AI sends the current question and recent turns to AWS. Sharing a specific exchange with Juan requires a separate click. The feedback table keeps a shared exchange for 90 days. An unshared receipt contains a digest and expires after two hours.
+
+\newpage
+\pagehead{The conversational tutor}{3. Operations and interview notes}
+The build packages 13 readings from the public related-rates lecture. Each heading has a stable identifier. A request for Example 6 selects the conical tank even when the student is viewing the ladder. A short reply uses the current reading and the recent conversation.
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{c@{\hspace{.4in}}c}
+\multicolumn{2}{c}{\stage{Class code and example checked}}\\
+\multicolumn{2}{c}{$\downarrow$}\\
+\multicolumn{2}{c}{\stage{DynamoDB reserves the call's cost}}\\
+$\swarrow$&$\searrow$\\
+Allowance available&Allowance exhausted\\
+$\downarrow$&$\downarrow$\\
+Bedrock + source link&Free worked hints\\
+\end{tabular}
+\end{center}
+\textbf{The spending rule.} Lambda reserves a conservative upper estimate before inference, allowing for the entire input, message overhead and at most 350 output tokens. The conditional write serializes competing reservations in each UTC month. After success it releases excess using the model's token counts. An uncertain call retains its reservation.
+\par The model allowance is \$2 per month using ceiling prices of \$0.40 input and \$3.00 output per million tokens. Review prices when changing the model or region. The \$5 AWS Budget tracks the account bill after charges accrue. API, storage and other AWS activity can add to that bill.
+\subhead{Deploy and diagnose}
+In Oregon CloudShell, extract the instructor ZIP. From its top-level folder run
+\begin{small}\begin{verbatim}
+python3 deploy.py --prepared --metered --verify-feedback \
+  --class-code-file ~/.math1334-class-code
+\end{verbatim}\end{small}
+A 403 means the class code failed. A 429 means the allowance or API rate limit was reached. For a 503, check the Lambda log and Bedrock access to the US Nova 2 Lite inference profile. The model receives one passage directly. The deployment creates no vector index.
+\par\textbf{Interview example.} Describe the rectangle student's $3-1=2$. A useful reply identifies $d(L+W)/dt$ and explains why $dA/dt$ also needs the two side lengths. Test the next turn, its math and its source.
+\end{document}
