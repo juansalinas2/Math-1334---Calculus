@@ -1,0 +1,93 @@
+{
+  "the-three-steps": {
+    "question": "A measurement says “when x = 6.” When do you use that 6 in the rate calculation?",
+    "hint": "Which equations describe the entire motion, and which values describe one instant?",
+    "choices": ["Replace x with 6 before differentiating.", "Differentiate the relation, then evaluate at x = 6.", "Set dx/dt = 6."],
+    "feedback": ["That would treat x as constant and erase its rate. The measurement specifies one instant.", "Yes. Keep x(t) variable while differentiating. Then use x(t₀) = 6 in the equation relating the rates.", "The 6 is a position. A rate would have units of position per unit of time."],
+    "correct": 1
+  },
+  "parabola": {
+    "question": "On y = x², which derivative tells you how fast y changes with time?",
+    "hint": "The point moves, so x itself depends on time.",
+    "choices": ["dy/dt = 2x", "dy/dt = (dx/dt)²", "dy/dt = 2x · dx/dt"],
+    "feedback": ["2x is dy/dx. Convert change per unit of x to change per unit of time.", "Squaring the rate does not differentiate the square of a moving coordinate. Apply the chain rule.", "Yes. The factor dx/dt accounts for how fast the point moves horizontally."],
+    "correct": 2
+  },
+  "constant-product": {
+    "question": "The point moves while xy = 12. Which equation relates its two rates?",
+    "hint": "Both factors can change even though their product stays fixed.",
+    "choices": ["y · dx/dt + x · dy/dt = 0", "(dx/dt)(dy/dt) = 0", "x · dy/dt = 12"],
+    "feedback": ["Yes. The two product-rule terms add to zero because the derivative of 12 is zero.", "Differentiate a product by changing one factor at a time and adding the two contributions.", "Both factors vary. The derivative of the fixed right-hand side is zero."],
+    "correct": 0
+  },
+  "circle": {
+    "question": "The point (3, 4) moves to the right on x² + y² = 25. What sign should dy/dt have?",
+    "hint": "In the first quadrant, what must happen to y if x increases and the radius stays fixed?",
+    "choices": ["Positive", "Negative", "Zero"],
+    "feedback": ["Increasing both coordinates would increase x² + y².", "Yes. Near (3, 4), increasing x forces y to decrease along the fixed circle.", "The radius stays fixed. The vertical coordinate changes as the point moves right."],
+    "correct": 1
+  },
+  "cube": {
+    "question": "The cube loses 12 m³ of volume per second. Which rate is given?",
+    "hint": "Read the units, then decide whether the quantity is increasing or decreasing.",
+    "choices": ["ds/dt = −12 m/s", "dV/dt = +12 m³/s", "dV/dt = −12 m³/s"],
+    "feedback": ["Cubic meters measure volume. The side-length rate is the unknown.", "The units are right. Losing volume makes its signed rate negative.", "Yes. Start with this signed volume rate and differentiate V = s³ to relate it to ds/dt."],
+    "correct": 2
+  },
+  "balloon": {
+    "question": "Air enters at 12π cm³/s. What units should the answer for dr/dt have?",
+    "hint": "The requested quantity is a radius.",
+    "choices": ["cm/s", "cm²/s", "cm³/s"],
+    "feedback": ["Yes. A radius is a length. In dV/dt = 4πr² · dr/dt, area times length per second gives volume per second.", "Square centimeters per second would describe a changing area.", "These are the units of the given volume rate. The requested rate describes a length."],
+    "correct": 0
+  },
+  "rectangle": {
+    "question": "If the length grows while the width shrinks, which expression decides whether the area increases?",
+    "hint": "Differentiate A = LW and track the sign of each contribution.",
+    "choices": ["(dL/dt)(dW/dt)", "W · dL/dt + L · dW/dt", "dL/dt + dW/dt"],
+    "feedback": ["The derivative of a product has two additive terms. Multiplying the rates also gives the wrong time units.", "Yes. The first term measures the gain from the length. The second is negative as the width shrinks.", "These terms each measure length per second. The dimensions L and W convert them to area per second."],
+    "correct": 1
+  },
+  "triangle": {
+    "question": "The base and height of the triangle both change. Why does a factor of one-half remain in the area rate?",
+    "hint": "Start with the area formula before applying the product rule.",
+    "choices": ["Only one of the two lengths changes at an instant.", "The derivatives of the base and height are equal.", "The area is one-half of base times height at every instant."],
+    "feedback": ["The base and height change simultaneously. The product rule includes both rates.", "The lecture gives different signed rates for the base and height. The one-half comes from geometry.", "Yes. A = ½bh throughout the motion. Its constant factor multiplies both product-rule terms."],
+    "correct": 2
+  },
+  "ladder": {
+    "question": "The foot of the ladder is 6 ft from the wall at one instant. Which quantity can you replace with a number before differentiating?",
+    "hint": "Picture the ladder a moment later. Which length must still be the same?",
+    "choices": ["The 10-ft ladder length", "The 6-ft distance from the wall", "The 8-ft height of the top"],
+    "feedback": ["Yes. The ladder stays 10 ft long throughout the motion, so x² + y² = 100. Keep x and y variable until after differentiating.", "The foot is moving. Writing x = 6 for the whole motion would incorrectly give dx/dt = 0.", "The top is sliding. Its height is 8 ft only when the foot is 6 ft from the wall."],
+    "correct": 0
+  },
+  "boat": {
+    "question": "Which rate equals −1 m/s when the rope is pulled in at 1 m/s?",
+    "hint": "Use L for the taut rope and x for the horizontal distance.",
+    "choices": ["dx/dt", "dL/dt", "The rate of change of the 3-m vertical separation"],
+    "feedback": ["The boat’s horizontal speed is the quantity to find. The given speed describes the rope.", "Yes. The taut rope shortens. Use its negative rate in L · dL/dt = x · dx/dt.", "The vertical separation stays fixed, so its rate of change is zero."],
+    "correct": 1
+  },
+  "similar-triangles": {
+    "question": "The small triangle has sides a, b, c corresponding to A, B, C. What is the scaling factor from the large triangle to the small one?",
+    "hint": "Multiplying the large side A by the factor must give a.",
+    "choices": ["A/a", "a/B", "a/A"],
+    "feedback": ["This scales the small side up to the large side. Check the direction in the question.", "Match corresponding sides. Here a corresponds to A.", "Yes. Multiplying A by a/A gives a. The same ratio equals b/B and c/C."],
+    "correct": 2
+  },
+  "cone": {
+    "question": "In the 6-m tank of radius 2 m, which relation stays true as the water rises?",
+    "hint": "Compare radius to height in an axial cross section of the water and of the whole tank.",
+    "choices": ["r/h = 2/6", "r = 2", "r/h = 6/2"],
+    "feedback": ["Yes. Similar triangles give the same radius-to-height ratio, so r = h/3 at every depth.", "2 m is the radius of the full tank. The water-surface radius changes with the depth.", "Use the same order for both triangles. The left side is radius divided by height."],
+    "correct": 0
+  },
+  "shadow": {
+    "question": "Let x be the distance from light to person and s the shadow length. Which rate measures motion of the shadow tip away from the light?",
+    "hint": "Write the distance from the light to the tip before differentiating.",
+    "choices": ["ds/dt", "d(x + s)/dt", "dx/dt"],
+    "feedback": ["This is the change in shadow length measured from the moving person. Include the person’s distance from the light.", "Yes. The distance from the light to the tip is x + s. Both terms change as the person walks.", "This is the person’s walking rate. The shadow tip lies beyond the person."],
+    "correct": 1
+  }
+}

@@ -8,6 +8,7 @@ import json
 import re
 import shutil
 import subprocess
+import sys
 from book_navigation import rebuild_sidebar
 from course_search import write_search_index
 
@@ -105,3 +106,6 @@ for page in [site / 'index.html', site / 'lecture-pdfs.html', *site.glob('lectur
                for path, version in versions.items()]
     html = re.sub(r'<script defer data-course-search [^>]+></script>\n?', '', html)
     page.write_text(html.replace('</head>', '\n'.join(scripts) + '\n</head>', 1))
+
+# Install in-section practice on the related-rates lecture.
+subprocess.run([sys.executable, "ask-notes/site_assets.py", str(site)], check=True)

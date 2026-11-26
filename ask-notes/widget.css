@@ -1,0 +1,32 @@
+.ask-notes { margin: .55rem 0; }
+.ask-notes summary { cursor: pointer; color: var(--reading-link, LinkText); padding: .25rem 0; }
+.ask-notes summary small { color: var(--reading-muted); }
+.ask-notes form { display: grid; gap: .55rem; margin: .6rem 0; }
+.ask-notes label { display: grid; gap: .2rem; }
+.ask-notes label[hidden] { display: none; }
+.ask-notes textarea, .ask-notes input { width: 100%; box-sizing: border-box; padding: .42rem; color: inherit; background: var(--reading-panel); border: 1px solid var(--reading-border); border-radius: .25rem; font: inherit; }
+.ask-notes button { justify-self: start; }
+.ask-notes [role=status]:empty, .ask-answer:empty { display: none; }
+.ask-answer { padding-block: .4rem; overflow-wrap: anywhere; }
+.ask-answer p { white-space: pre-line; }
+.ask-answer a { color: var(--reading-link, LinkText); }
+
+.ask-example { font: inherit; font-size: .85em; color: var(--reading-link, LinkText); background: transparent; border: 1px solid var(--reading-border, #aaa); border-radius: .25rem; padding: .1em .5em; }
+.ask-feedback { margin-top: .7rem; }
+.ask-feedback summary { display: list-item; }
+.ask-feedback form p { font-size: .9em; margin: 0; }
+
+
+/* The lecture already styles details.proof, its disclosure marker and its type. */
+.rr-self-check fieldset { margin: .75em 0; padding: 0; border: 0; min-width: 0; }
+.rr-self-check legend { float: none; width: auto; margin: 0 0 .4em; font: inherit; font-weight: bold; }
+.rr-self-check button { margin: .25em 0; padding: .24em .65em; font: inherit; color: var(--reading-text,CanvasText); background: var(--reading-bg,Canvas); border: 1px solid var(--reading-border,GrayText); border-radius: .22em; }
+.rr-self-check fieldset button { display: block; text-align: start; }
+.rr-self-check button:hover:enabled { border-color: var(--reading-link,LinkText); }
+.rr-self-check :focus-visible { outline: 2px solid var(--reading-link,LinkText); outline-offset: 2px; }
+.rr-self-check :disabled { opacity: .7; }
+.rr-self-check details { margin: .45em 0; }
+.rr-self-check form, .rr-self-check label { display: grid; gap: .25em; }
+.rr-self-check form button, .rr-self-check > details button { justify-self: start; }
+.rr-self-check input, .rr-self-check textarea { width: 100%; box-sizing: border-box; font: inherit; color: inherit; background: var(--reading-bg,Canvas); border: 1px solid var(--reading-border); padding: .36em; }
+.rr-self-check [role=status]:empty { display: none; }
