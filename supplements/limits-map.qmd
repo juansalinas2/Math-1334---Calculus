@@ -521,7 +521,7 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
       edges.forEach(edge => edge.classList.toggle('is-connected', edge.dataset.from === id || edge.dataset.to === id));
       panel.replaceChildren();
       addText('h3', concept.title);
-      addText('strong', 'Definition');
+      if (concept.kind) addText('strong', concept.kind);
       addText('p', concept.definition);
       addText('p', concept.formula, 'map-equation');
       addText('strong', 'Idea');
@@ -547,6 +547,10 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
       link.href = concept.href;
       link.textContent = 'Read this in the notes →';
       p.appendChild(link);
+      const explore = document.createElement('a');
+      explore.href = '../map/#' + id;
+      explore.textContent = 'Explore on the full map';
+      p.append(document.createTextNode(' · '), explore);
       panel.appendChild(p);
       panel.hidden = false;
       panel.scrollIntoView({block: 'nearest', behavior: 'smooth'});

@@ -189,12 +189,12 @@ function el(tag, text, className) {
   else element.textContent = text;
   return element;
 }
-function showTopic(id, slug = null) {
+function showTopic(id, slug = null, fromLocation = false) {
   const topic = byTopic.get(id);
   if (!topic) return;
-  const part = topic.parts.find((item) => partSlug(item) === slug);
+  const part = topic.parts.find((item) => partSlug(item) === slug || item.oldSlugs?.includes(slug));
   selected = id;
-  selectedPart = part ? slug : null;
+  selectedPart = part ? partSlug(part) : null;
   interiorPage = part
     ? pagesOf(topic.parts).findIndex((page) => page.includes(part))
     : 0;
@@ -203,12 +203,15 @@ function showTopic(id, slug = null) {
   cameraMode = "selected";
   family = "all";
   detail.hidden = false;
+  byId("class-questions").open = false;
+  byId("explore-tools").hidden = true;
   detail.style.setProperty("--accent", families[topic.family].color);
   const body = byId("detail-body");
   const note = part || topic;
   const heading = el("h2", note.title);
   heading.tabIndex = -1;
-  body.replaceChildren(el("p", families[topic.family].label, "family-name"));
+  const context = families[topic.family].label + (note.kind ? " · " + note.kind : "");
+  body.replaceChildren(el("p", context, "family-name"));
   if (part) {
     const back = el("button", "← " + topic.title, "parent-link");
     back.onclick = () => showTopic(topic.id);
@@ -216,16 +219,29 @@ function showTopic(id, slug = null) {
   }
   const link = el("a", "Read the lecture notes", "note-link");
   link.href = part?.href || topic.href;
-  body.append(
-    heading,
-    el("h3", "Definition"),
-    el("p", note.definition),
-    el("div", note.formula, "equation"),
-    el("h3", "Idea"),
-    el("p", note.idea),
-    link,
-  );
-  body.append(el("h3", "Inside " + topic.label), el("div", "", "part-links"));
+  body.append(heading, el("p", note.definition, "note-prose"), el("div", note.formula, "equation"));
+  if (part && note.kind === "Example") {
+    const reasoning = el("details", "", "lecture-disclosure");
+    reasoning.append(el("summary", "Show the reasoning"), el("p", note.idea, "note-prose"));
+    body.append(reasoning);
+  } else {
+    body.append(el("h3", "Idea"), el("p", note.idea, "note-prose"));
+  }
+  if (note.figure) {
+    const figure = el("details", "", "lecture-disclosure");
+    const img = document.createElement("img");
+    img.src = "../lectures/assets/" + note.figure.file;
+    img.alt = note.figure.alt;
+    img.loading = "lazy";
+    figure.append(el("summary", "See the lecture figure"), img);
+    body.append(figure);
+  }
+  if (note.example) {
+    const example = el("details", "", "lecture-disclosure");
+    example.append(el("summary", "Class example"), el("p", note.example, "note-prose"));
+    body.append(example);
+  }
+  body.append(link, el("h3", "Explore " + topic.label), el("div", "", "part-links"));
   const parts = body.lastElementChild;
   for (const item of topic.parts) {
     const button = el("button", item.title);
@@ -233,10 +249,7 @@ function showTopic(id, slug = null) {
     button.onclick = () => showTopic(id, partSlug(item));
     parts.append(button);
   }
-  if (!part || part.example) {
-    body.append(el("h3", "From class"), el("p", note.example));
-  }
-  body.append(el("h3", "Follow a connection"));
+  body.append(el("h3", "Connected concepts"));
   nearby(id).forEach((edge) => {
     const other = byTopic.get(edge.source === id ? edge.target : edge.source);
     const button = el("button", "", "neighbor");
@@ -247,7 +260,11 @@ function showTopic(id, slug = null) {
   detail.scrollTop = 0;
   results.hidden = true;
   lookup.value = "";
-  history.replaceState(null, "", "#" + id + (part ? "/" + slug : ""));
+  const hash = "#" + id + (part ? "/" + selectedPart : "");
+  if (location.hash !== hash) {
+    if (fromLocation) history.replaceState(null, "", hash);
+    else history.pushState(null, "", hash);
+  }
   paint();
   move(
     topic.x,
@@ -267,7 +284,9 @@ function overview(which = "all") {
   family = which;
   cameraMode = "overview";
   detail.hidden = true;
-  history.replaceState(null, "", location.pathname + location.search);
+  byId("explore-tools").hidden = false;
+  byId("class-questions").open = false;
+  if (location.hash) history.pushState(null, "", location.pathname + location.search);
   paint();
   frame();
 }
@@ -354,6 +373,7 @@ const aliases = {
   monotonic: "MVT monotonicity",
   exp: "ln x e^x",
   lhospital: "L'Hopital L'Hôpital L'Hospital",
+  limitmethods: "algebraic limits algebraic limit methods limit strategies",
 };
 function normalizeQuery(text) {
   return text.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "")
@@ -408,6 +428,7 @@ lookup.onkeydown = (event) => {
 };
 document.addEventListener("pointerdown", (e) => {
   if (!e.target.closest(".searchbox")) results.hidden = true;
+  if (!e.target.closest(".class-questions")) byId("class-questions").open = false;
 });
 document.addEventListener("focusin", (e) => {
   if (!e.target.closest(".searchbox")) results.hidden = true;
@@ -422,7 +443,10 @@ document.addEventListener("keydown", (e) => {
     scaleBy(e.key === "-" ? 1 / 1.35 : 1.35);
   }
   if (e.key === "Escape") {
-    if (!results.hidden) {
+    if (byId("class-questions").open) {
+      byId("class-questions").open = false;
+      byId("class-questions").querySelector("summary").focus();
+    } else if (!results.hidden) {
       lookup.focus();
       results.hidden = true;
     } else if (selected) byId("close").click();
@@ -451,13 +475,14 @@ new ResizeObserver(() => {
 }).observe(viewport);
 function openLocation() {
   const [id, slug] = location.hash.slice(1).split("/");
-  if (byTopic.has(id)) showTopic(id, slug);
+  if (byTopic.has(id)) showTopic(id, slug, true);
   else {
     selected = null;
     selectedPart = null;
     zoomAnchor = null;
     family = "all";
     detail.hidden = true;
+    byId("explore-tools").hidden = false;
     cameraMode = "initial";
     paint();
     initialFrame();

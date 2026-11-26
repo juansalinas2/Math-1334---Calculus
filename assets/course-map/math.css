@@ -1,22 +1,9 @@
-/* Course Map Math is a web subset of STIX Two Math 2.13, under the SIL OFL
-   distributed in ../assets/fonts/STIX-OFL.txt. Prefer the full local face. */
-@font-face {
-  font-family: CourseMath;
-  src: local("STIX Two Math"), url("../assets/fonts/course-map-math.woff2") format("woff2");
-  font-display: swap;
-}
-.course-math {
-  font-family: CourseMath, "Cambria Math", math;
-  font-weight: normal;
-  letter-spacing: normal;
-}
-:is(.equation, .map-equation) .course-math {
-  display: block;
-  math-style: normal;
-  margin: .28em auto;
-  width: max-content;
-  font-size: 1.18rem;
-}
-:is(.equation, .map-equation) .course-math + .course-math {
-  margin-top: .58em;
+/* The build prefixes this stylesheet with MathJax’s own CHTML layout and font rules. */
+.map-notation { position: relative; letter-spacing: normal; font-weight: normal; }
+.map-notation.inline { white-space: nowrap; }
+.map-notation.display { display: block; min-width: max-content; }
+.map-notation.display mjx-container[display] { margin: .3em 0; }
+.map-notation .math-reading {
+  position: absolute; width: 1px; height: 1px; padding: 0;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
 }

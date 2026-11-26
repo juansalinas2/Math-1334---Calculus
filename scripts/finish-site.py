@@ -5,8 +5,8 @@ import os
 import hashlib
 import re
 import shutil
+import subprocess
 from book_navigation import rebuild_sidebar
-from map_math import write_topics
 
 site = Path(os.environ.get('QUARTO_PROJECT_OUTPUT_DIR', '_site'))
 # Older cached HTML still points at its original, hashed stylesheet.
@@ -34,7 +34,9 @@ shutil.copy2('assets/glossary-redirect.html', site / 'supplements/glossary.html'
 map_source = Path('assets/course-map')
 map_output = site / 'map'
 shutil.copytree(map_source, map_output, dirs_exist_ok=True, ignore=shutil.ignore_patterns('notes.json'))
-write_topics(map_source, map_output / 'topics.js')
+node = shutil.which('node')
+runner = [node] if node else ['quarto', 'run']
+subprocess.run([*runner, 'scripts/render-map-math.js', str(map_output)], check=True)
 # Change asset URLs with their contents so returning students see a coherent release.
 map_index = map_output / 'index.html'
 map_html = map_index.read_text()
@@ -46,7 +48,9 @@ for asset in map_source.rglob('*'):
         map_html = map_html.replace(f'"{url}"', f'"{url}?v={version}"')
 map_index.write_text(map_html)
 guide = site / 'supplements/limits-map.html'
-topics_version = hashlib.sha256((map_output / 'topics.js').read_bytes()).hexdigest()[:12]
-guide.write_text(re.sub(r'(src="\.\./map/topics\.js)(?:\?v=[^"]*)?"',
-                        lambda match: match.group(1) + '?v=' + topics_version + '"',
-                        guide.read_text()))
+guide_html = guide.read_text()
+for name in ('topics.js', 'math.css'):
+    version = hashlib.sha256((map_output / name).read_bytes()).hexdigest()[:12]
+    guide_html = re.sub(r'("\.\./map/' + re.escape(name) + r')(?:\?v=[^"]*)?"',
+                        lambda m: m.group(1) + '?v=' + version + '"', guide_html)
+guide.write_text(guide_html)
