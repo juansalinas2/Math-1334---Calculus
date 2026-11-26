@@ -4,6 +4,8 @@
   const refPattern = new RegExp(routing.ref, "i");
   const partPattern = new RegExp(routing.part, "i");
   const startPattern = new RegExp(routing.start, "i");
+  const walkPattern = new RegExp(routing.walk, "i");
+  const walkVerb = new RegExp(routing.walkVerb, "i");
   const script = document.currentScript;
   const endpoint = script.dataset.endpoint;
 
@@ -356,7 +358,13 @@
     }
 
     function normalized(text) {
-      return text.toLowerCase().replace(/[’‘]/g, "'").replace(/[?!.,]+$/g, "").trim();
+      return text.toLowerCase().replace(/[’‘]/g, "'").trim().replace(/[?!.,:;*]+$/g, "").trim();
+    }
+
+    function wantsWalkthrough(remainder, key, ref) {
+      const name = new RegExp("(?:" + names[key].source + ")\\w*", "i");
+      const words = remainder.replace(partPattern, " ").replace(name, " ").replace(/^[\s.,!?:;*()–—\-]+|[\s.,!?:;*()–—\-]+$/g, "");
+      return (ref || name.test(remainder) || walkVerb.test(words)) && (!words || walkPattern.test(words));
     }
 
     function chooseReading(q, context) {
@@ -452,7 +460,7 @@
       const previous = key === activeTopic ? activeStep : 0;
       const remainder = ref ? q.replace(ref.match[0], "").trim() : q;
       const partMatch = partPattern.exec(remainder);
-      const next = /^(?:(?:ok(?:ay)?[, ]*|and )?(?:what(?:'s| is)? )?(?:comes? )?next(?: step)?|then what|go on|continue)$/.test(q);
+      const next = /^(?:ok(?:ay)?[, ]+|and )?(?:what do (?:i|we) do next|(?:what(?:'s| is)? )?(?:the |comes? )?next(?: step)?|then what|and then|go on|continue)(?: please)?$/.test(q);
       const another = /^(?:(?:can|could) i (?:get|have) |give me )?(?:another|one more|next|second) hint(?: please)?$/.test(q);
       const part = partMatch?.slice(1).find(Boolean) || ref?.part || ((another || next) && key === activeTopic ? activePart : "");
       const continuingHint = another && key === activeTopic && hintLevel > 0;
@@ -473,8 +481,8 @@
         q.split(/\s+/).length <= 9 && !/^(?:what|why|how|where|which|when)\b/.test(q) &&
         new RegExp(lastReply.rule.match, "i").test(q);
       const detail = /\b(?:why|what (?:is|does)|how fast|how much|units?|differentiat\w*|equation)\b/.test(q);
-      const starter = /\bhint\b/.test(q) || (startPattern.test(q) && !detail && authoredIndex < 0 && !exact) ||
-        (ref && !remainder.replace(/[.,;:!?]/g, "") && !part);
+      const starter = /\bhint\b/.test(q) || (!exact && !next && !definition && wantsWalkthrough(remainder, key, ref)) ||
+        (startPattern.test(q) && !detail && authoredIndex < 0 && !exact);
       if (part && !hints[part]) {
         supported = false;
         answer.append(element("p", topic.title + " has no part (" + part + "). " +
@@ -515,12 +523,17 @@
         else showStep(topic, step);
       } else {
         const setup = /what (?:is|does).*d[a-z]\s*\/\s*dt|set.?up|givens?|given rate|sketch|draw|label|what.*(?:finding|find|asked)|what.*(?:stand for|represent)|what does.*mean/;
-        const relation = /differentiat|chain rule|product rule|equation|relate the rates|relation|formula/;
+        const relation = /differentiat|derivative|chain rule|product rule|equation|relate the rates|relation|formula/;
         const values = /negative|positive|sign\b|increas|decreas|how fast|speed|plug|substitut|numerical|how (?:quickly|rapidly)/;
         step = setup.test(q) ? 1 : relation.test(q) ? 2 : values.test(q) ? 3 : 0;
         if (key === "the-three-steps" && /three steps/.test(q)) {
           excerpt(topic.node.querySelector(".rr-method ol"));
         } else if (step && (topic.steps.length || key === "the-three-steps")) {
+          showStep(topic, step);
+        } else if (topic.steps.length && (ref || names[key].test(q))) {
+          // We located a worked exercise. Offer its actual setup even for unfamiliar wording.
+          answer.append(element("p", "Here is the setup from " + topic.title + "."));
+          step = 1;
           showStep(topic, step);
         } else {
           supported = false;

@@ -219,8 +219,33 @@
         "step": 2
       }
     },
-    "starter": "Write \\(A=LW\\). Both dimensions vary, so differentiate using the product rule. Which term accounts for the shrinking width?",
+    "starter": "The rectangle is 8 cm long and 5 cm wide at this instant. Its length grows at \\(3\\,\\mathrm{cm/s}\\), and its width shrinks at \\(1\\,\\mathrm{cm/s}\\), so \\(dW/dt=-1\\). We want the area rate \\(dA/dt\\). What equation connects the area \\(A\\) to the length \\(L\\) and width \\(W\\)?",
     "answers": [
+      {
+        "match": "\\b(?:40\\s*(?:cm|square)|(?:area is|area of|i got|a\\s*=)\\s*40\\b|8\\s*(?:[*×x·]|times)\\s*5\\b)|^40$",
+        "step": 1,
+        "text": "\\(8\\cdot5=40\\,\\mathrm{cm^2}\\) gives the area at this instant. The question asks how many square centimeters the area gains each second. Keep the dimensions variable in \\(A(t)=L(t)W(t)\\), then differentiate with respect to time."
+      },
+      {
+        "match": "\\ba\\s*=\\s*(?:l\\s*\\+\\s*w|w\\s*\\+\\s*l)\\b|(?:length plus width|add the length and width)",
+        "step": 1,
+        "text": "Adding length and width gives a length in centimeters. Area has square centimeters as its units. Multiplying the two side lengths gives \\(A=LW\\). Keep both sides variable as you take the time derivative."
+      },
+      {
+        "match": "\\ba\\s*=\\s*(?:l\\s*[×x*·]?\\s*w|w\\s*[×x*·]?\\s*l)\\b|\\b(?:length\\s*(?:times|multiplied by|[×x*·])\\s*width|l\\s*(?:times|[×x*·])\\s*w|lw)\\b|^multiply (?:the (?:two )?sides|them)(?: together)?$",
+        "step": 2,
+        "text": "Use \\(A=LW\\). Both dimensions change, so the product rule gives \\(dA/dt=W\\,dL/dt+L\\,dW/dt\\). The first term accounts for the growing length, the second for the shrinking width. Substitute the signed rates to get \\(5(3)+8(-1)\\). What area rate does that give?",
+        "reply": {
+          "match": "^(?:i (?:get|got)|is it|so|the area rate is)?\\s*[+−-]?\\d+(?:\\.\\d+)?(?:\\s*(?:cm(?:\\^?2|²)|square centimet(?:er|re)s?)(?:\\s*/\\s*s(?:ec(?:ond)?)?| per second)?)?$",
+          "step": 3,
+          "text": "The growing length adds \\(5(3)=15\\) square centimeters per second. The shrinking width removes \\(8(1)=8\\). Their net contribution is \\(dA/dt=15-8=7\\,\\mathrm{cm^2/s}\\), so at that instant the area is increasing."
+        }
+      },
+      {
+        "match": "^(?:i (?:get|got)|is it|so|the area rate is)?\\s*[+−-]?(?:7|23)(?:\\s*(?:cm(?:\\^?2|²)|square centimet(?:er|re)s?)(?:\\s*/\\s*s(?:ec(?:ond)?)?| per second)?)?\\s*(?:right|is that right)?$|\\b15\\s*[-−]\\s*8\\s*=\\s*7\\b",
+        "step": 3,
+        "text": "The growing length adds \\(5(3)=15\\) square centimeters per second. The shrinking width removes \\(8(1)=8\\). Their net contribution is \\(dA/dt=15-8=7\\,\\mathrm{cm^2/s}\\), so at that instant the area is increasing."
+      },
       {
         "question": "Can the area increase while the width gets smaller?",
         "match": "shrink|smaller|area.*(?:grow|increas)|gets narrower",

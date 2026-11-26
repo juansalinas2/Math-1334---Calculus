@@ -17,8 +17,18 @@ REFERENCE = (r"(?:\b(example|ex\.?|practice(?:\s+problem)?|exercise|problem|ques
              r"\s*(?:(?:number|no\.)\s*)?#?\s*|#\s*)" + NUMBER +
              r"(?:\s*\(([a-z])\)|([a-z])\b)?(?![a-z0-9])")
 START = (r"\b(?:stuck|lost|confused|hint|start(?:ed|ing)?|begin|first step|"
-         r"walk me through|help|don't (?:get|understand)|"
+         r"help|don't (?:get|understand)|"
          r"do not (?:get|understand))\b")
+# A whole-exercise request has no mathematical detail left after its reference is removed.
+# Test the entire remainder so "walk through why the sign changes" keeps its specific intent.
+REQUEST_WORDS = (r"can|could|would|will|shall|may|how|do|does|did|to|of|for|on|in|at|with|about|"
+                 r"let'?s|let|please|pls|i|i'd|i'm|we|us|you|me|my|the|a|an|this|that|it|one|"
+                 r"want|like|need|give|show|tell|take|help|see|try|solve|solving|work|worked|"
+                 r"walk|walkthrough|talk|think|go|look|explain|explanation|understand|review|"
+                 r"tackle|break|through|thru|over|out|down|step|steps|by|again|together|"
+                 r"from|start|beginning|solution|setup|example|exercise|problem|practice|reading|first")
+WALKTHROUGH = r"^(?:(?:" + REQUEST_WORDS + r")\b[\s.,!?:;*()–—\-]*)+$"
+WALK_VERB = r"\b(?:walk(?:through)?|talk|go|work|solve|explain|review|break|tackle|step[ -]by[ -]step)\b"
 ALIASES = {
     "parabola": r"\bparabol",
     "circle": r"\bcirc(?:le|ular)",
@@ -35,6 +45,14 @@ ALIASES = {
     "the-three-steps": r"three steps|what (?:are|is) (?:a |the )?related.?rates?",
 }
 PART = r"(?:\bpart\s*\(?([a-z])\b|\(([abc])\)|^\s*([a-z])\s*[?.!]?$)"
+
+
+def walkthrough_request(remainder, section, has_ref):
+    name = re.compile("(?:" + ALIASES[section] + r")\w*", re.I)
+    has_target = has_ref or name.search(remainder)
+    words = name.sub(" ", re.sub(PART, " ", remainder, flags=re.I)).strip(" \t\n.,!?:;*()–—-")
+    return bool((has_target or re.search(WALK_VERB, words, re.I)) and
+                (not words or re.fullmatch(WALKTHROUGH, words, re.I)))
 
 
 def reference_matches(question, book):
@@ -87,6 +105,7 @@ def browser_script():
     for (key, field, _), paragraph in zip(fields, rendered, strict=True):
         catalog[key][field] = paragraph
     data = json.dumps(catalog, ensure_ascii=False).replace("<", r"\u003c")
-    routing = json.dumps({"ref": REFERENCE, "words": WORDS, "start": START, "part": PART, "aliases": ALIASES})
+    routing = json.dumps({"ref": REFERENCE, "words": WORDS, "start": START, "part": PART,
+                          "walk": WALKTHROUGH, "walkVerb": WALK_VERB, "aliases": ALIASES})
     return (HERE / "practice.js").read_text().replace("/* COURSE_CHECKS */ null", data).replace(
         "/* COURSE_ROUTING */ null", routing)
