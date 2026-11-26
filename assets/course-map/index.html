@@ -156,9 +156,13 @@
       </aside>
     </main>
     <dialog id="zoom-definition" aria-labelledby="definition-title">
-      <button type="button" id="definition-back">← Back to map</button>
+      <div class="definition-tools">
+        <button type="button" id="definition-back">← Back to map</button>
+        <kbd aria-hidden="true">Esc</kbd>
+      </div>
       <div class="definition-page">
         <article>
+          <p id="definition-context"></p>
           <h2 id="definition-title" tabindex="-1" autofocus></h2>
           <div id="definition-text"></div>
         </article>

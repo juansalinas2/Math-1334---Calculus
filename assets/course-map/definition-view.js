@@ -1,6 +1,8 @@
 "use strict";
 const definitionDialog = document.getElementById("zoom-definition");
 const definitionPage = definitionDialog.querySelector(".definition-page");
+let previousWheelTime = null;
+let wheelStartedAtEnd = false;
 let definitionAim = null;
 let lastGestureScale = 0;
 let returnView = null;
@@ -65,6 +67,9 @@ function openZoomDefinition(note, point, previous) {
   }
   const title = document.getElementById("definition-title");
   writeMapText(title, note.title);
+  const parent = !note.parts && stations.find(topic => topic.parts.includes(note));
+  const kind = note.kind === "Example" ? "Class example" : note.kind;
+  document.getElementById("definition-context").textContent = parent ? parent.title + " · " + kind : kind;
   const text = document.getElementById("definition-text");
   text.replaceChildren(mapTextElement("p", note.definition));
   if (["Definition", "Theorem", "Rule"].includes(note.kind) && note.formula && !note.illustrativeFormula) {
@@ -73,6 +78,7 @@ function openZoomDefinition(note, point, previous) {
   definitionDialog.dataset.size = note.parts ? "topic" : "subtopic";
   definitionDialog.showModal();
   definitionPage.scrollTop = 0;
+  previousWheelTime = null;
 }
 
 function closeZoomDefinition() {
@@ -81,30 +87,64 @@ function closeZoomDefinition() {
 document.getElementById("definition-back").onclick = closeZoomDefinition;
 definitionDialog.addEventListener("keydown", event => {
   event.stopPropagation();
-  if (!event.metaKey && !event.ctrlKey && !event.altKey && event.key === "-") {
+  if (!event.metaKey && !event.ctrlKey && !event.altKey && ["-", "Escape"].includes(event.key)) {
     event.preventDefault();
     closeZoomDefinition();
   }
 });
+function definitionAtEnd() {
+  return definitionPage.scrollHeight - definitionPage.clientHeight - definitionPage.scrollTop <= 2;
+}
 definitionDialog.addEventListener("wheel", event => {
-  if (isSidewaysScroll(event) || event.deltaY <= 0) return;
-  // Let students scroll long definitions at their chosen text size.
-  if (!event.ctrlKey && definitionPage.scrollHeight > definitionPage.clientHeight + 1) return;
+  if (isSidewaysScroll(event) || !event.deltaY) return;
+  // Keep the wheel stroke that reads the last line separate from the next
+  // stroke. Trackpad momentum can continue long after the page stops moving.
+  if (previousWheelTime === null || event.timeStamp - previousWheelTime > 150) {
+    wheelStartedAtEnd = definitionAtEnd();
+  }
+  previousWheelTime = event.timeStamp;
+  if (event.deltaY < 0) {
+    wheelStartedAtEnd = false;
+    return;
+  }
+  const scrollsText = definitionPage.contains(event.target) &&
+    definitionPage.scrollHeight > definitionPage.clientHeight + 2;
+  const canExitAtEnd = definitionAtEnd() && (wheelStartedAtEnd || event.deltaMode !== 0);
+  if (!event.ctrlKey && scrollsText && !canExitAtEnd) return;
   event.preventDefault();
   closeZoomDefinition();
 }, {passive:false});
 
 let pinchStart = 0;
+let swipeStart = null;
 function fingerDistance(touches) {
   const [a, b] = touches;
   return Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
 }
 definitionDialog.addEventListener("touchstart", event => {
-  if (event.touches.length === 2) pinchStart = fingerDistance(event.touches);
-}, {passive:true});
+  swipeStart = null;
+  if (event.touches.length === 2) {
+    pinchStart = fingerDistance(event.touches);
+    if (event.cancelable) event.preventDefault();
+  } else if (event.touches.length === 1 && definitionAtEnd() && definitionPage.contains(event.target)) {
+    const finger = event.touches[0];
+    swipeStart = [finger.clientX, finger.clientY];
+  }
+}, {passive:false});
 definitionDialog.addEventListener("touchmove", event => {
   if (!pinchStart || event.touches.length !== 2) return;
   event.preventDefault();
   if (fingerDistance(event.touches) < .8 * pinchStart) closeZoomDefinition();
 }, {passive:false});
-definitionDialog.addEventListener("close", () => { pinchStart = 0; });
+definitionDialog.addEventListener("touchend", event => {
+  if (swipeStart && !event.touches.length) {
+    const finger = event.changedTouches[0];
+    const up = swipeStart[1] - finger.clientY;
+    if (up > 64 && up > 2 * Math.abs(finger.clientX - swipeStart[0]) && definitionAtEnd()) closeZoomDefinition();
+  }
+  swipeStart = null;
+  pinchStart = 0;
+});
+function resetDefinitionTouches() { swipeStart = null; pinchStart = 0; }
+definitionDialog.addEventListener("touchcancel", resetDefinitionTouches);
+definitionDialog.addEventListener("close", resetDefinitionTouches);

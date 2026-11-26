@@ -6,51 +6,23 @@ css: assets/homepage.css
 ---
 
 ::: {.course-home}
-Lecture notes, worked examples, and practice.
+[Begin with Chapter 1](lectures/01-introduction.qmd){.home-start-link} · [Download the lecture notes (PDF)](downloads/math-1334-calculus-lecture-notes.pdf)
 
-[Download the lecture notes (PDF)](downloads/math-1334-calculus-lecture-notes.pdf)
+## Exam review {.unnumbered}
 
-::: {.home-latest}
-[Latest class material · November 23]{.home-eyebrow}
+[Exam 3 review](lectures/exam-3-review.qmd) ([worksheet PDF](downloads/exam-3-review-worksheet.pdf)) · [Exam 2 review](lectures/exam-2-review.qmd)
 
-## Exam 3 review {.unnumbered}
+## Reference {.unnumbered}
 
-Related rates, extrema, optimization, curve sketching, and limits.
+- [Definitions](supplements/definitions.qmd)
+- [Theorems and rules](supplements/theorems.qmd)
+- [Worksheets](supplements/worksheets.qmd)
+- [Lecture PDFs by date](lecture-pdfs.qmd)
 
-[Read the review](lectures/exam-3-review.qmd){.home-primary} · [Download the worksheet](downloads/exam-3-review-worksheet.pdf)
+## Interactive {.unnumbered}
 
-[Exam 2 review](lectures/exam-2-review.qmd) · [l’Hospital’s rule](lectures/lhopitals-rule.qmd)
-:::
-
-## Look up {.unnumbered}
-
-::: {.home-tools}
-::: {.home-tool}
-[Definitions](supplements/definitions.qmd)
-
-Precise meanings and assumptions.
-:::
-::: {.home-tool}
-[Theorems & rules](supplements/theorems.qmd)
-
-Key results and when they apply.
-:::
-::: {.home-tool}
-[Practice & worksheets](supplements/worksheets.qmd)
-
-Class handouts for working through problems.
-:::
-::: {.home-tool}
-[Lecture PDFs](lecture-pdfs.qmd)
-
-Original notes, organized by date.
-:::
-:::
-
-[Open the calculus concept map](map/){.home-primary}
-
-::: {.home-start}
-Starting the course? [Begin with Chapter 1](lectures/01-introduction.qmd) or revisit [Appendix A: precalculus](lectures/00-functions.qmd).
+- [Calculus concept map](map/)
+- [*Critical Point*](map/challenge.html)
 :::
 
 <details class="home-references">
@@ -61,4 +33,3 @@ Starting the course? [Begin with Chapter 1](lectures/01-introduction.qmd) or rev
 - Michael Spivak, [*Calculus*](https://mathpop.com/products/calculus-4th-edition-digital-edition). Publish or Perish.
 
 </details>
-:::
