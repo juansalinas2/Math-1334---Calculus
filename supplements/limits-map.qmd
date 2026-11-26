@@ -5,12 +5,26 @@ description: "See how the main ideas of differential calculus connect."
 ---
 
 ::: {.source-note}
-**An optional guide to the big ideas.** Follow the arrows to see how concepts from the course fit together. Use the links below each map to return to the notes. On a narrow screen, scroll sideways to see each map.
+**An optional guide to the big ideas.** Select a concept to see what it means, a class example, and its connections. Follow a connection or open the lecture notes. On a narrow screen, scroll sideways to see each map.
 :::
 
 ```{=html}
 <style>
 .idea-map { margin: 1.2rem 0 .7rem; }
+.idea-node { cursor: pointer; }
+.idea-node:hover rect, .idea-node:focus rect, .idea-node[aria-pressed="true"] rect { stroke: var(--reading-link, #285d80); stroke-width: 3; fill: var(--reading-panel, #f3f6f8); }
+.idea-node:focus { outline: none; }
+.idea-edge.is-connected > path { stroke: var(--reading-link, #285d80); stroke-width: 2.5; }
+.idea-edge.is-connected .edge-label { fill: var(--reading-link, #285d80); font-weight: 600; }
+.idea-detail { border-left: 3px solid var(--reading-link, #285d80); background: var(--reading-panel, #f7f7f7); padding: .9rem 1.1rem; margin: .7rem 0 1rem; }
+.idea-detail[hidden] { display: none; }
+.idea-detail h3 { font-size: 1.2rem; margin: 0 0 .45rem; }
+.idea-detail p { margin: .35rem 0 .7rem; }
+.idea-detail .related-ideas { display: flex; flex-wrap: wrap; gap: .45rem; }
+.idea-detail button { font: inherit; color: var(--reading-link, #285d80); background: var(--reading-bg, #fff); border: 1px solid var(--reading-border, #aaa); border-radius: 4px; padding: .3rem .55rem; cursor: pointer; }
+.idea-detail button:hover, .idea-detail button:focus-visible { border-color: var(--reading-link, #285d80); text-decoration: underline; }
+.idea-prompt { color: var(--reading-muted, #555); font-size: .9rem; margin-bottom: .4rem; }
+@media print { .idea-detail { display: none; } }
 .idea-map svg { width: 100%; height: auto; display: block; }
 .idea-map rect { fill: var(--reading-bg, #fff); stroke: var(--reading-border, #999); stroke-width: 1.5; }
 .idea-map path { fill: none; stroke: var(--reading-muted, #555); stroke-width: 1.6; }
@@ -32,39 +46,46 @@ description: "See how the main ideas of differential calculus connect."
 How do we describe a function near a point, and how does that lead to a derivative?
 
 ```{=html}
-<div class="idea-map" aria-hidden="true"><svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg">
-<defs><marker id="arrow420" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" style="fill: var(--reading-muted, #555); stroke: none"/></marker></defs>
-<path d="M310 80 L170 170" marker-end="url(#arrow420)"/><text class="edge-label" x="198" y="118">defines via a difference quotient</text>
-<path d="M410 80 L550 170" marker-end="url(#arrow420)"/><text class="edge-label" x="535" y="118">compares with the point value</text>
-<path d="M220 205 L500 205" marker-end="url(#arrow420)"/><text class="edge-label" x="360" y="194">differentiability implies continuity</text>
-<path d="M600 240 L600 325" marker-end="url(#arrow420)"/><text class="edge-label" x="600" y="284">on a closed interval, enables</text>
-<rect x="260" y="10" width="200" height="70" rx="5"/><text class="node-title" x="360" y="39">Limit</text><text class="node-sub" x="360" y="61">behavior near a point</text>
-<rect x="20" y="170" width="200" height="70" rx="5"/><text class="node-title" x="120" y="199">Derivative</text><text class="node-sub" x="120" y="221">instantaneous rate</text>
-<rect x="500" y="170" width="200" height="70" rx="5"/><text class="node-title" x="600" y="199">Continuity</text><text class="node-sub" x="600" y="221">limit equals function value</text>
-<rect x="500" y="325" width="200" height="70" rx="5"/><text class="node-title" x="600" y="354">Intermediate Value</text><text class="node-sub" x="600" y="376">Theorem: values between</text>
+<div class="idea-map" aria-hidden="true" data-idea-map="0"><svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="idea-arrow-0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" style="fill: var(--reading-muted, #555); stroke: none"/></marker></defs>
+<g class="idea-edge" data-from="limit" data-to="derivative"><path d="M310 80 L170 170" marker-end="url(#idea-arrow-0)"/><text class="edge-label" x="198" y="118">defines via a difference quotient</text></g>
+<g class="idea-edge" data-from="limit" data-to="continuity"><path d="M410 80 L550 170" marker-end="url(#idea-arrow-0)"/><text class="edge-label" x="535" y="118">compares with the point value</text></g>
+<g class="idea-edge" data-from="derivative" data-to="continuity"><path d="M220 205 L500 205" marker-end="url(#idea-arrow-0)"/><text class="edge-label" x="360" y="194">differentiability implies continuity</text></g>
+<g class="idea-edge" data-from="derivative" data-to="lhospital"><path d="M120 240 L120 325" marker-end="url(#idea-arrow-0)"/><text class="edge-label" x="120" y="284">is used in</text></g>
+<g class="idea-edge" data-from="continuity" data-to="ivt"><path d="M600 240 L600 325" marker-end="url(#idea-arrow-0)"/><text class="edge-label" x="600" y="284">on a closed interval, enables</text></g>
+<g class="idea-node" data-concept="limit"><rect x="260" y="10" width="200" height="70" rx="5"/><text class="node-title" x="360" y="39">Limit</text><text class="node-sub" x="360" y="61">behavior near a point</text></g>
+<g class="idea-node" data-concept="derivative"><rect x="20" y="170" width="200" height="70" rx="5"/><text class="node-title" x="120" y="199">Derivative</text><text class="node-sub" x="120" y="221">instantaneous rate</text></g>
+<g class="idea-node" data-concept="continuity"><rect x="500" y="170" width="200" height="70" rx="5"/><text class="node-title" x="600" y="199">Continuity</text><text class="node-sub" x="600" y="221">limit equals function value</text></g>
+<g class="idea-node" data-concept="lhospital"><rect x="20" y="325" width="200" height="70" rx="5"/><text class="node-title" x="120" y="354">l’Hospital’s rule</text><text class="node-sub" x="120" y="376">some indeterminate limits</text></g>
+<g class="idea-node" data-concept="ivt"><rect x="500" y="325" width="200" height="70" rx="5"/><text class="node-title" x="600" y="354">Intermediate Value</text><text class="node-sub" x="600" y="376">Theorem: values between</text></g>
 </svg></div>
+<div class="idea-detail" hidden aria-live="polite"></div>
 ```
 - A [limit](../lectures/02-limits.qmd) of difference quotients defines the [derivative](../lectures/09-derivative-at-a-point.qmd).
 - [Continuity](../lectures/06-continuity.qmd) at a point means the limit equals the function value. Differentiability implies continuity; the converse need not hold.
 - Continuity on a closed interval allows us to apply the [Intermediate Value Theorem](../lectures/07-intermediate-value.qmd).
+- For certain indeterminate limits, [l’Hospital’s rule](../lectures/lhopitals-rule.qmd) uses derivatives to help evaluate the limit.
 
 ## 2. Computing and interpreting derivatives
 
 The derivative has several meanings. The rules give us ways to calculate it.
 
 ```{=html}
-<div class="idea-map" aria-hidden="true"><svg viewBox="0 0 720 410" xmlns="http://www.w3.org/2000/svg">
-<defs><marker id="arrow410" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" style="fill: var(--reading-muted, #555); stroke: none"/></marker></defs>
-<path d="M310 80 L170 160" marker-end="url(#arrow410)"/><text class="edge-label" x="185" y="117">gives the slope of a</text>
-<path d="M360 80 L360 160" marker-end="url(#arrow410)"/><text class="edge-label" x="360" y="120">describes</text>
-<path d="M410 80 L550 160" marker-end="url(#arrow410)"/><text class="edge-label" x="540" y="117">is calculated using</text>
-<path d="M600 230 L600 315" marker-end="url(#arrow410)"/><text class="edge-label" x="600" y="273">include the</text>
-<rect x="260" y="10" width="200" height="70" rx="5"/><text class="node-title" x="360" y="39">Derivative</text><text class="node-sub" x="360" y="61">instantaneous rate</text>
-<rect x="20" y="160" width="200" height="70" rx="5"/><text class="node-title" x="120" y="189">Tangent line</text><text class="node-sub" x="120" y="211">slope at a point</text>
-<rect x="260" y="160" width="200" height="70" rx="5"/><text class="node-title" x="360" y="189">Motion</text><text class="node-sub" x="360" y="211">velocity and acceleration</text>
-<rect x="500" y="160" width="200" height="70" rx="5"/><text class="node-title" x="600" y="189">Differentiation rules</text><text class="node-sub" x="600" y="211">calculate derivatives</text>
-<rect x="500" y="315" width="200" height="70" rx="5"/><text class="node-title" x="600" y="344">Chain rule</text><text class="node-sub" x="600" y="366">differentiate a composition</text>
+<div class="idea-map" aria-hidden="true" data-idea-map="1"><svg viewBox="0 0 720 410" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="idea-arrow-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" style="fill: var(--reading-muted, #555); stroke: none"/></marker></defs>
+<g class="idea-edge" data-from="derivative2" data-to="tangent"><path d="M310 80 L170 160" marker-end="url(#idea-arrow-1)"/><text class="edge-label" x="185" y="117">gives the slope of a</text></g>
+<g class="idea-edge" data-from="derivative2" data-to="motion"><path d="M360 80 L360 160" marker-end="url(#idea-arrow-1)"/><text class="edge-label" x="360" y="120">describes</text></g>
+<g class="idea-edge" data-from="derivative2" data-to="rules"><path d="M410 80 L550 160" marker-end="url(#idea-arrow-1)"/><text class="edge-label" x="540" y="117">is calculated using</text></g>
+<g class="idea-edge" data-from="rules" data-to="chain"><path d="M550 230 L420 315" marker-end="url(#idea-arrow-1)"/><text class="edge-label" x="535" y="273">include the</text></g>
+<g class="idea-edge" data-from="chain" data-to="rates"><path d="M260 350 H220" marker-end="url(#idea-arrow-1)"/><text class="edge-label" x="240" y="337">used in</text></g>
+<g class="idea-node" data-concept="derivative2"><rect x="260" y="10" width="200" height="70" rx="5"/><text class="node-title" x="360" y="39">Derivative</text><text class="node-sub" x="360" y="61">instantaneous rate</text></g>
+<g class="idea-node" data-concept="tangent"><rect x="20" y="160" width="200" height="70" rx="5"/><text class="node-title" x="120" y="189">Tangent line</text><text class="node-sub" x="120" y="211">slope at a point</text></g>
+<g class="idea-node" data-concept="motion"><rect x="260" y="160" width="200" height="70" rx="5"/><text class="node-title" x="360" y="189">Motion</text><text class="node-sub" x="360" y="211">velocity and acceleration</text></g>
+<g class="idea-node" data-concept="rules"><rect x="500" y="160" width="200" height="70" rx="5"/><text class="node-title" x="600" y="189">Differentiation rules</text><text class="node-sub" x="600" y="211">calculate derivatives</text></g>
+<g class="idea-node" data-concept="chain"><rect x="260" y="315" width="200" height="70" rx="5"/><text class="node-title" x="360" y="344">Chain rule</text><text class="node-sub" x="360" y="366">differentiate a composition</text></g>
+<g class="idea-node" data-concept="rates"><rect x="20" y="315" width="200" height="70" rx="5"/><text class="node-title" x="120" y="344">Related rates</text><text class="node-sub" x="120" y="366">relate changing quantities</text></g>
 </svg></div>
+<div class="idea-detail" hidden aria-live="polite"></div>
 ```
 - The [derivative](../lectures/09-derivative-at-a-point.qmd) gives the slope of a [tangent line](../lectures/11-differentiation-rules.qmd) and describes instantaneous rates of change, including [velocity and acceleration](../lectures/12-rates-of-change.qmd).
 - [Differentiation rules](../lectures/11-differentiation-rules.qmd) calculate derivatives. The [chain rule](../lectures/14-chain-rule.qmd) handles compositions and is used in [implicit differentiation](../lectures/16-implicit-differentiation.qmd) and [related rates](../lectures/related-rates.qmd).
@@ -74,25 +95,28 @@ The derivative has several meanings. The rules give us ways to calculate it.
 How does information about derivatives help us answer questions about the original function?
 
 ```{=html}
-<div class="idea-map" aria-hidden="true"><svg viewBox="0 0 720 410" xmlns="http://www.w3.org/2000/svg">
-<defs><marker id="arrow410" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" style="fill: var(--reading-muted, #555); stroke: none"/></marker></defs>
-<path d="M310 80 L170 160" marker-end="url(#arrow410)"/><text class="edge-label" x="185" y="117">first derivative describes</text>
-<path d="M360 80 L360 160" marker-end="url(#arrow410)"/><text class="edge-label" x="360" y="120">second derivative describes</text>
-<path d="M410 80 L550 160" marker-end="url(#arrow410)"/><text class="edge-label" x="542" y="117">help us find</text>
-<path d="M120 230 L200 315" marker-end="url(#arrow410)"/><text class="edge-label" x="125" y="272">helps with</text>
-<path d="M360 230 L290 315" marker-end="url(#arrow410)"/><text class="edge-label" x="360" y="272">helps with</text>
-<path d="M600 230 L585 315" marker-end="url(#arrow410)"/><text class="edge-label" x="608" y="272">help locate extrema for</text>
-<rect x="260" y="10" width="200" height="70" rx="5"/><text class="node-title" x="360" y="39">Derivatives</text><text class="node-sub" x="360" y="61">first and second</text>
-<rect x="20" y="160" width="200" height="70" rx="5"/><text class="node-title" x="120" y="189">Increasing / decreasing</text><text class="node-sub" x="120" y="211">sign of the first derivative</text>
-<rect x="260" y="160" width="200" height="70" rx="5"/><text class="node-title" x="360" y="189">Concavity</text><text class="node-sub" x="360" y="211">sign of the second derivative</text>
-<rect x="500" y="160" width="200" height="70" rx="5"/><text class="node-title" x="600" y="189">Critical numbers</text><text class="node-sub" x="600" y="211">candidates for extrema</text>
-<rect x="135" y="315" width="200" height="70" rx="5"/><text class="node-title" x="235" y="344">Curve sketching</text><text class="node-sub" x="235" y="366">combine information about f</text>
-<rect x="485" y="315" width="200" height="70" rx="5"/><text class="node-title" x="585" y="344">Optimization</text><text class="node-sub" x="585" y="366">find the best feasible value</text>
+<div class="idea-map" aria-hidden="true" data-idea-map="2"><svg viewBox="0 0 720 555" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="idea-arrow-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" style="fill: var(--reading-muted, #555); stroke: none"/></marker></defs>
+<g class="idea-edge" data-from="derivatives" data-to="monotonic"><path d="M310 80 L170 160" marker-end="url(#idea-arrow-2)"/><text class="edge-label" x="185" y="117">first derivative describes</text></g>
+<g class="idea-edge" data-from="derivatives" data-to="concavity"><path d="M360 80 L360 160" marker-end="url(#idea-arrow-2)"/><text class="edge-label" x="360" y="120">second derivative describes</text></g>
+<g class="idea-edge" data-from="derivatives" data-to="critical"><path d="M410 80 L550 160" marker-end="url(#idea-arrow-2)"/><text class="edge-label" x="542" y="117">help us find</text></g>
+<g class="idea-edge" data-from="monotonic" data-to="sketch"><path d="M120 230 L200 315" marker-end="url(#idea-arrow-2)"/><text class="edge-label" x="125" y="272">helps with</text></g>
+<g class="idea-edge" data-from="concavity" data-to="sketch"><path d="M360 230 L290 315" marker-end="url(#idea-arrow-2)"/><text class="edge-label" x="360" y="272">helps with</text></g>
+<g class="idea-edge" data-from="critical" data-to="optimization"><path d="M600 230 L585 315" marker-end="url(#idea-arrow-2)"/><text class="edge-label" x="608" y="272">help locate extrema for</text></g>
+<g class="idea-edge" data-from="endbehavior" data-to="sketch"><path d="M120 465 L190 385" marker-end="url(#idea-arrow-2)"/><text class="edge-label" x="115" y="428">helps with</text></g>
+<g class="idea-node" data-concept="derivatives"><rect x="260" y="10" width="200" height="70" rx="5"/><text class="node-title" x="360" y="39">Derivatives</text><text class="node-sub" x="360" y="61">first and second</text></g>
+<g class="idea-node" data-concept="monotonic"><rect x="20" y="160" width="200" height="70" rx="5"/><text class="node-title" x="120" y="189">Increasing / decreasing</text><text class="node-sub" x="120" y="211">sign of the first derivative</text></g>
+<g class="idea-node" data-concept="concavity"><rect x="260" y="160" width="200" height="70" rx="5"/><text class="node-title" x="360" y="189">Concavity</text><text class="node-sub" x="360" y="211">sign of the second derivative</text></g>
+<g class="idea-node" data-concept="critical"><rect x="500" y="160" width="200" height="70" rx="5"/><text class="node-title" x="600" y="189">Critical numbers</text><text class="node-sub" x="600" y="211">candidates for extrema</text></g>
+<g class="idea-node" data-concept="sketch"><rect x="135" y="315" width="200" height="70" rx="5"/><text class="node-title" x="235" y="344">Curve sketching</text><text class="node-sub" x="235" y="366">combine information about f</text></g>
+<g class="idea-node" data-concept="optimization"><rect x="485" y="315" width="200" height="70" rx="5"/><text class="node-title" x="585" y="344">Optimization</text><text class="node-sub" x="585" y="366">find the best feasible value</text></g>
+<g class="idea-node" data-concept="endbehavior"><rect x="20" y="465" width="200" height="70" rx="5"/><text class="node-title" x="120" y="494">End behavior</text><text class="node-sub" x="120" y="516">limits and asymptotes</text></g>
 </svg></div>
+<div class="idea-detail" hidden aria-live="polite"></div>
 ```
 - The sign of the first derivative describes where a function is [increasing or decreasing](../lectures/section-4-3.qmd); the sign of the second derivative describes concavity. Both help with [curve sketching](../lectures/curve-sketching.qmd).
 - [Critical numbers](../lectures/18-maxima-and-minima.qmd) are candidates for extrema. Together with endpoints when appropriate, they help us solve [optimization problems](../lectures/optimization.qmd).
-- For some indeterminate limits, [l'Hospital's rule](../lectures/lhopitals-rule.qmd) uses derivatives to help evaluate a limit. Check its hypotheses first.
+- Limits describe [end behavior and asymptotes](../lectures/19-end-behaviour-and-curve-sketching.qmd), which help us sketch a graph.
 
 ```{=html}
 <details class="map-guide-details"><summary>Methods and worked examples</summary><div class="concept-guides">
@@ -453,4 +477,77 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
 
 ```{=html}
 </div></details>
+```
+
+```{=html}
+<script>
+(() => {
+  const concepts = {"limit":{"title":"Limit","summary":"A limit describes the values of a function near an input; the function’s value at that input may be different or undefined.","example":"For (x² − 4)/(x − 2), the limit as x approaches 2 is 4, even though the original expression is undefined at 2.","href":"../lectures/02-limits.html#limits-and-function-values"},"derivative":{"title":"Derivative at a point","summary":"The derivative is the limit of a difference quotient, when that limit exists. It gives an instantaneous rate and the slope of a tangent line.","example":"For f(x) = |x| at 0, the left and right slopes are different, so f′(0) does not exist.","href":"../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point"},"continuity":{"title":"Continuity","summary":"A function is continuous at a point when its limit there exists and equals its value. Differentiability implies continuity; the converse need not hold.","example":"The function |x| is continuous at 0, but it is not differentiable there.","href":"../lectures/06-continuity.html#continuity-at-a-point"},"ivt":{"title":"Intermediate Value Theorem","summary":"If f is continuous on [a, b], then every value between f(a) and f(b) is attained on that interval. The theorem guarantees existence, not uniqueness.","example":"For f(x) = 4x³ − 6x² + 3x − 2, the values at 0 and 2 have opposite signs, so f has a zero between them.","href":"../lectures/07-intermediate-value.html#the-intermediate-value-theorem"},"lhospital":{"title":"l’Hospital’s rule","summary":"For a quotient in the form 0/0 or ∞/∞, under the theorem’s hypotheses a limit of derivatives can help determine the original limit.","example":"As x → ∞, eˣ/x² → ∞. Repeated differentiation compares the growth of the exponential and polynomial.","href":"../lectures/lhopitals-rule.html#infinity-over-infinity"},"derivative2":{"title":"Derivative","summary":"The derivative gives an instantaneous rate of change. It also produces a new function f′, which can itself be differentiated.","example":"For position s(t), velocity is s′(t) and acceleration is s″(t).","href":"../lectures/10-derivative-function.html"},"tangent":{"title":"Tangent line","summary":"At x = a, the derivative f′(a) is the tangent slope. Combine it with the point (a, f(a)).","example":"For f(x) = 3/x² + 1 at x = 1, the point is (1, 4) and the slope is −6.","href":"../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes"},"motion":{"title":"Motion","summary":"Position, velocity, and acceleration are connected by differentiation. Velocity gives direction; speed is the absolute value of velocity.","example":"For s(t) = t³ − 6t² + 9t + 2, compare the signs of v(t) and a(t) to find when the particle speeds up or slows down.","href":"../lectures/12-rates-of-change.html"},"rules":{"title":"Differentiation rules","summary":"The power, product, quotient, and other rules let us calculate derivatives without returning to the limit definition each time.","example":"For f(x) = x(3 − x), the product rule gives f′(x) = (3 − x) − x = 3 − 2x.","href":"../lectures/11-differentiation-rules.html#section-3.3-the-rules-we-will-use"},"chain":{"title":"Chain rule","summary":"To differentiate a composition, differentiate the outer function at the inner expression and multiply by the derivative of the inner function.","example":"For y = cos⁴x, the derivative is −4 cos³x sin x.","href":"../lectures/14-chain-rule.html#the-chain-rule"},"rates":{"title":"Related rates","summary":"Relate quantities with an equation, differentiate with respect to time, and then substitute values at the specified instant.","example":"If y = x², x = 3, and dx/dt = 2, then dy/dt = 2x dx/dt = 12.","href":"../lectures/related-rates.html#the-three-steps"},"derivatives":{"title":"First and second derivatives","summary":"The first derivative describes rate of change. The second derivative describes how the first derivative changes. Their signs help us analyze a graph.","example":"For g(x) = x³ + 1, g′(x) = 3x² and g″(x) = 6x.","href":"../lectures/section-4-3.html#concavity-and-inflection-points"},"monotonic":{"title":"Increasing and decreasing","summary":"On an interval, f′ > 0 implies f is increasing; f′ < 0 implies f is decreasing. A sign change can help classify an interior critical number.","example":"For f(x) = 4x³ − 12x + 12, f′ changes from positive to negative at x = −1 and from negative to positive at x = 1.","href":"../lectures/section-4-3.html#the-first-derivative-test"},"concavity":{"title":"Concavity","summary":"Where f″ > 0 on an interval the graph is concave up; where f″ < 0 it is concave down. An inflection point requires a change in concavity.","example":"For g(x) = x³ + 1, g″(x) = 6x changes sign at 0, giving the inflection point (0, 1).","href":"../lectures/section-4-3.html#concavity-and-inflection-points"},"critical":{"title":"Critical numbers","summary":"A critical number c lies in the domain of f and satisfies f′(c) = 0 or f′(c) does not exist. It is a candidate for an extremum, not a guarantee.","example":"For f(x) = x³, 0 is critical, but f has neither a local maximum nor a local minimum there.","href":"../lectures/18-maxima-and-minima.html#finding-global-extrema"},"sketch":{"title":"Curve sketching","summary":"Combine domain, intercepts, asymptotes, increasing and decreasing intervals, extrema, and concavity to understand the shape of a graph.","example":"In the notes, f(x) = x/(x + 1) is analyzed using its domain, asymptotes, and derivatives.","href":"../lectures/curve-sketching.html#curve-sketching-steps"},"optimization":{"title":"Optimization","summary":"Identify the objective and constraints, reduce to an allowed domain, and justify the global maximum or minimum. Check endpoints when appropriate.","example":"For x, y ≥ 0 with x + y = 6, the maximum of xy is 9, attained at (3, 3).","href":"../lectures/optimization.html#primer"},"endbehavior":{"title":"End behavior and asymptotes","summary":"Limits as x → ±∞ describe behavior far to the left or right. A slant asymptote y = mx + b requires f(x) − (mx + b) → 0 at the relevant end.","example":"For f(x) = (x² − 1)/x = x − 1/x, the line y = x is a slant asymptote at both ends.","href":"../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes"}};
+  document.querySelectorAll('[data-idea-map]').forEach(map => {
+    const svg = map.querySelector('svg');
+    const panel = map.nextElementSibling;
+    panel.setAttribute('tabindex', '-1');
+    const nodes = [...map.querySelectorAll('.idea-node')];
+    const edges = [...map.querySelectorAll('.idea-edge')];
+    const available = new Map(nodes.map(node => [node.dataset.concept, node]));
+    const titleFor = id => concepts[id].title;
+    const addText = (tag, text, className) => {
+      const el = document.createElement(tag);
+      if (className) el.className = className;
+      el.textContent = text;
+      panel.appendChild(el);
+      return el;
+    };
+    function select(id) {
+      const concept = concepts[id];
+      if (!concept || !available.has(id)) return;
+      nodes.forEach(node => node.setAttribute('aria-pressed', String(node.dataset.concept === id)));
+      edges.forEach(edge => edge.classList.toggle('is-connected', edge.dataset.from === id || edge.dataset.to === id));
+      panel.replaceChildren();
+      addText('h3', concept.title);
+      addText('p', concept.summary);
+      const example = document.createElement('p');
+      const label = document.createElement('strong');
+      label.textContent = 'From class: ';
+      example.append(label, document.createTextNode(concept.example));
+      panel.appendChild(example);
+      const related = [...new Set(edges.filter(edge => edge.dataset.from === id || edge.dataset.to === id).map(edge => edge.dataset.from === id ? edge.dataset.to : edge.dataset.from))];
+      if (related.length) {
+        addText('p', 'Connected ideas:');
+        const box = document.createElement('div');
+        box.className = 'related-ideas';
+        related.forEach(other => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.textContent = titleFor(other);
+          button.addEventListener('click', () => { select(other); panel.focus({preventScroll: true}); });
+          box.appendChild(button);
+        });
+        panel.appendChild(box);
+      }
+      const p = document.createElement('p');
+      const link = document.createElement('a');
+      link.href = concept.href;
+      link.textContent = 'Read this in the notes →';
+      p.appendChild(link);
+      panel.appendChild(p);
+      panel.hidden = false;
+      panel.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+    }
+    map.removeAttribute('aria-hidden');
+    svg.setAttribute('role', 'group');
+    svg.setAttribute('aria-label', 'Select a concept to explore its connections');
+    nodes.forEach(node => {
+      node.setAttribute('role', 'button');
+      node.setAttribute('tabindex', '0');
+      node.setAttribute('aria-label', titleFor(node.dataset.concept));
+      node.setAttribute('aria-pressed', 'false');
+      node.addEventListener('click', () => select(node.dataset.concept));
+      node.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); select(node.dataset.concept); }
+      });
+    });
+  });
+})();
+</script>
 ```
