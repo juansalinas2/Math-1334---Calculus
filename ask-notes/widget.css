@@ -61,7 +61,7 @@ body:has(.rr-help-popup[open]) .rr-help-box {visibility:hidden;}
 @media print {.rr-help-box,.rr-help-popup {display:none!important;}}
 
 /* A modeless reading companion. Only the answer scrolls inside the panel. */
-.rr-help-popup {position:fixed; inset:auto max(.65rem,env(safe-area-inset-right)) max(.65rem,env(safe-area-inset-bottom)) auto; z-index:20; width:min(25rem,calc(100vw - 1rem)); max-height:66dvh; margin:0; overflow:hidden; padding:.85rem 1rem; box-shadow:0 .25rem 1.4rem #0002;}
+.rr-help-popup {position:fixed; inset:auto max(.65rem,env(safe-area-inset-right)) max(.65rem,env(safe-area-inset-bottom)) auto; z-index:110; width:min(25rem,calc(100vw - 1rem)); max-height:66dvh; margin:0; overflow:hidden; padding:.85rem 1rem; box-shadow:0 .25rem 1.4rem #0002;}
 .rr-help-popup[open] {display:flex; flex-direction:column;}
 .rr-help-popup header {flex:none; gap:.4rem; margin:0; padding-bottom:.5rem; border-bottom:1px solid var(--reading-border); cursor:grab; touch-action:none; user-select:none;}
 .rr-help-popup header:active,.rr-help-popup .rr-move:active {cursor:grabbing;}

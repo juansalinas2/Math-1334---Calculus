@@ -134,12 +134,14 @@
     let drag;
     let moved = false;
     let placed = false;
+    const nav = document.querySelector(".reading-controls");
     function bounds() {
       const v = window.visualViewport;
       const x = (v?.offsetLeft || 0) + 8;
-      const y = (v?.offsetTop || 0) + 8;
+      const viewportTop = v?.offsetTop || 0;
+      const y = Math.max(viewportTop, nav?.getBoundingClientRect().bottom || 0) + 8;
       return {x, y, right: Math.max(x, x + (v?.width || innerWidth) - panel.offsetWidth - 16),
-        bottom: Math.max(y, y + (v?.height || innerHeight) - panel.offsetHeight - 16)};
+        bottom: Math.max(y, viewportTop + (v?.height || innerHeight) - panel.offsetHeight - 8)};
     }
     function place(x, y) {
       const b = bounds();
