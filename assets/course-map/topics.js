@@ -39,7 +39,13 @@ function appendMapNote(parent, note, formulaClass, sectionHeading) {
   const el = mapTextElement;
   const prose = text => el("p", text, "note-prose");
   const intro = el("div", "", "note-intro");
-  intro.append(prose(note.idea));
+  intro.append(
+    prose(note.definition),
+    el("div", note.formula, formulaClass),
+    el(sectionHeading, "Idea"),
+    prose(note.idea),
+  );
+  parent.append(intro);
 
   function disclosure(container, label, ...children) {
     const details = el("details", "", "lecture-disclosure");
@@ -47,16 +53,6 @@ function appendMapNote(parent, note, formulaClass, sectionHeading) {
     container.append(details);
     return details;
   }
-  const lectureLabels = {
-    Definition: "Definition and notation",
-    Example: "Example setup",
-    Method: "Method and formula",
-    Rule: "Rule and formula",
-    Theorem: "Theorem statement",
-  };
-  disclosure(intro, lectureLabels[note.kind], prose(note.definition), el("div", note.formula, formulaClass));
-  parent.append(intro);
-
   const figure = note.figure;
   if (figure) {
     const example = el("section", "", "note-example");
