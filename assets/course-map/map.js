@@ -30,6 +30,7 @@ const routeViews = new Map();
 let route = "";
 let ready = false;
 const reader = byId("reader");
+const resetSheetGesture = installNoteSheet(detail, reader, setReading);
 
 function rememberView() {
   if (!ready || !viewport.clientWidth) return;
@@ -67,6 +68,7 @@ function breadcrumb(topic, part) {
   if (part) crumb(part.title);
 }
 function setReading(open, jump = false) {
+  resetSheetGesture();
   detail.classList.toggle("reading", open);
   const toggle = byId("sheet-toggle");
   const example = byId("detail-body").querySelector(".note-example");
@@ -377,6 +379,7 @@ function overview(which = "all", restore = false, fromLocation = false, scale = 
   family = which;
   cameraMode = "overview";
   document.body.classList.remove("topic-open");
+  resetSheetGesture();
   detail.classList.remove("reading");
   detail.hidden = true;
   breadcrumb();
@@ -470,9 +473,23 @@ function exitPath() {
 }
 byId("fit").onclick = exitPath;
 byId("exit-path").onclick = exitPath;
-viewport.addEventListener("click", event => {
-  if (event.defaultPrevented || (family === "all" && !selected && !insideId)) return;
-  if (event.target.closest("button, [role=button], a, .orbit-face, .orbit-name")) return;
+// D3 sends both mouse double-clicks and recognized touch double-taps here.
+// Remember both presses so a node tap followed by a tap on the newly exposed
+// background cannot immediately undo the selection.
+const doubleZoom = svg.on("dblclick.zoom");
+let previousBackdrop = null, currentBackdrop = null;
+document.addEventListener("pointerdown", event => {
+  previousBackdrop = currentBackdrop;
+  const background = viewport.contains(event.target) &&
+    !event.target.closest("button, [role=button], a, .orbit-face, .orbit-name");
+  currentBackdrop = background && event.isPrimary && event.button === 0 ? route : null;
+}, true);
+viewport.addEventListener("pointercancel", () => { currentBackdrop = null; });
+svg.on("dblclick.zoom", function(event, ...args) {
+  if (byId("exit-path").hidden) return doubleZoom.call(this, event, ...args);
+  if (previousBackdrop !== route || currentBackdrop !== route) return;
+  event.preventDefault();
+  currentBackdrop = previousBackdrop = null;
   exitPath();
 });
 byId("close").onclick = () => {

@@ -7,6 +7,7 @@
   const letters = "ABCD";
   let cleared = 0, total = 0, camera = 0, active = null, frameId = 0;
   let blocked = [], aiming = -1;
+  let difficulty = "medium";
   scene.classList.add("runner-scene");
   scene.setAttribute("viewBox", "0 0 600 210");
   scene.innerHTML = `
@@ -18,6 +19,14 @@
       <g id="run-cloud" fill="var(--r-paper)" stroke="var(--r-ink)" stroke-width="1.05"><path d="M-4 1C-3-5 3-7 8-5c0-8 13-12 18-4 5-2 9 1 10 5 6-2 10 1 11 5z"/><path d="M7 4h18m6 0h6" fill="none"/></g>
       <g id="run-star"><path class="runner-spark" d="m0-8 2.5 5.2 5.9.8-4.3 4.3.9 6L0 5.5-5.4 8.3l1-6L-8.6-2l6.1-.8z" fill="#f8cd68"/><path d="m-2.4-1 .9-2" fill="none" stroke="#fff8da" stroke-width="1.6"/></g>
       <g id="run-birds" fill="none" stroke="#50665c" stroke-width="1.3"><path d="M0 3q4-3 8 2 2-5 7-5m10 6q3-2 6 1 2-3 5-3"/></g>
+      <linearGradient id="lava-sky" x2="0" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#24182c"/><stop offset=".62" stop-color="#7e3542"/><stop offset="1" stop-color="#e9834e"/></linearGradient>
+      <g id="run-crater">
+        <path d="M0 166 58 121 102 113 165 44 180 50 196 43 257 109 284 122 343 166Z" fill="#502a3b"/>
+        <path d="m165 44 15 6 16-7 12 13-16-6-3 16-10 11-2 15-7 12 3-25 10-15-1-9-13-5z" fill="#ffad55"/>
+        <path d="m154 62-25 40-16 11m94-44 22 36 15 8" fill="none" stroke="#9b4a4a" stroke-width="2"/>
+        <g fill="#ffd27b"><path d="m170 32-3-6 5 4zm14 2 3-9 1 6zm10-6 5-6-2 7z"/><circle cx="176" cy="18" r="1.6"/></g>
+      </g>
+      <g id="run-flame"><path d="M-9 0c-8-12 3-13 0-23 6 4 6 9 6 12 4-5 6-12 4-18 15 13 1 16 10 18 4-2 4-6 4-7 4 9 3 15-3 18z" fill="#f06537"/><path d="M-3 0q-5-7 1-13 0 5 3 6l4-8q4 10 1 15z" fill="#ffce75"/></g>
     </defs>
     <rect width="600" height="210" fill="var(--r-paper)"/>
     <rect width="600" height="210" fill="url(#run-grid)"/>
@@ -42,6 +51,12 @@
           <path d="m-1-57-3-5 6 3 3-3 2 4" fill="none" stroke="var(--r-ink)" stroke-width="1.9"/>
           <path d="m5-50 .3 1.3m6-1.7 .2 1.3" stroke="var(--r-ink)" stroke-width="2"/>
           <path id="run-mouth" d="M5-44q3 2 6-.5" stroke="var(--r-ink)" stroke-width="1.4" fill="none"/>
+          <g class="chicken-hat" stroke="#51382f" stroke-width="1.4">
+            <path d="M-3-64q-5-6-2-8 3-1 5 4 0-8 4-7 3 1 2 7 5-5 7-2 1 3-6 7" fill="#e65a49"/>
+            <path d="M-11-51q-1-15 10-16 13-3 18 11l-4 3q-9-3-16 0l-4 6-3-1z" fill="#fff6d7"/>
+            <path d="m13-59 11 4-11 2z" fill="#f5ae42"/>
+            <circle cx="10" cy="-61" r="1.35" fill="#332d2c" stroke="none"/>
+          </g>
         </g>
       </g>
     </g>
@@ -64,6 +79,11 @@
     // Two repeat distances give the skyline a slower drift than the graph-paper hills.
     let horizon = "", hills = "";
     for (let i = -1; i <= 2; i++) {
+      if (difficulty === "hard") {
+        horizon += `<g transform="translate(${i*600})"><rect width="601" height="210" fill="url(#lava-sky)"/><circle cx="486" cy="48" r="25" fill="#ffac6a"/><use href="#run-crater" transform="translate(-38 3)"/><use href="#run-crater" transform="translate(270 18) scale(.95)"/></g>`;
+        hills += `<g transform="translate(${i*510})"><path d="m0 141 48-23 13-27 15 19 8-8 24 27 47-6 32-22 12-31 8 24 19 4 5 19 39 18 40-6 29-21 21 9 54-23 20 26 66 21v58H0z" fill="#3b2735"/><path d="m73 126 24 13 43 1m60-36 3 14 13 4m118 17 21-11" fill="none" stroke="#8d4d4d" stroke-width="1.7"/></g>`;
+        continue;
+      }
       horizon += `<g transform="translate(${i*600})">
         <g transform="translate(450 46)"><circle r="29" fill="var(--r-sun)" stroke="#af8759" stroke-width="1"/><circle r="29" fill="url(#run-sunset)"/></g>
         <use href="#run-cloud" transform="translate(78 34) scale(.83)"/><use href="#run-cloud" transform="translate(491 66) scale(.7)"/>
@@ -106,6 +126,7 @@
         <path d="M${left+5} 172h${right-left-12}l-4 13q-38-8-72-1t-65 0-61 3z" fill="url(#run-hatch)" opacity=".85"/>
         <path d="m-26 184 9 2 11-3m83-12 10 1 5-2m48 16 7-3" class="runner-contour"/>
         <path d="m52 156 2-3 3 3m64 0 2-4 2 3 2-2 1 3" class="runner-pencil"/>
+        ${difficulty === "hard" && !solid ? '<path d="M180 190q12-7 30-2t39-1v23h-69z" fill="#ffa346"/><path d="M184 192q10-5 24-2t30 0" fill="none" stroke="#ffe49a" stroke-width="2"/><use href="#run-flame" transform="translate(218 190) scale(.68)"/>' : ''}
         ${i>=0 && !solid ? obstacle(i) : ''}
         ${i>=0 && !solid ? '<g data-star-at="'+i+'" transform="translate(216 74)"><use href="#run-star"/></g>' : ''}
         ${i>=0 && (i===0 || (i>0 && i%3===0 && !solid) || i===total) ? flag(i===total && total>0 ? 109 : 36,i===total && total>0) : ''}
@@ -149,7 +170,8 @@
     active=null; frameId=0; cleared=Math.max(0,Math.trunc(done||0)); total=Math.max(0,Math.trunc(length||0));
     blocked=[]; aim(-1);
     set(scene,"data-chapter",total?Math.min(2,Math.floor(cleared/total*3)):0);
-    set(scene,"aria-label",total ? `Stick figure on the course, ${cleared} of ${total} hurdles cleared.` : "A stick figure waits at the starting flag.");
+    const character = difficulty === "easy" ? "Runner in a chicken hat" : difficulty === "hard" ? "Runner on a volcanic course" : "Stick figure on the course";
+    set(scene,"aria-label",total ? `${character}, ${cleared} of ${total} hurdles cleared.` : "A stick figure waits at the starting flag.");
     setTerrain(); cameraAt(cleared*stride); fx.replaceChildren(); pose(startX,floor);
   }
   function spark(x,y,radius,fade) {
@@ -204,7 +226,7 @@
     drawFrame(1);
     const {hit,finish}=active;
     active=null; frameId=0;
-    set(scene,"aria-label",hit ? `Hurdle cleared. ${cleared+1} of ${total} complete.` : "The runner tumbles into the paper gap.");
+    set(scene,"aria-label",hit ? `Hurdle cleared. ${cleared+1} of ${total} complete.` : difficulty === "hard" ? "The runner misses the volcanic ledge." : "The runner tumbles into the paper gap.");
     finish();
   }
   function travel(index, hit, finish) {
@@ -222,6 +244,12 @@
   }
   document.addEventListener("visibilitychange",() => { if (document.hidden) settle(); });
   backdrop();
-  window.junctionRunner = {reset:length=>stage(0,length),stage,travel,aim,close};
+  function setDifficulty(value) {
+    if (value === difficulty) return;
+    difficulty = value;
+    set(scene,"data-difficulty",value);
+    backdrop();stage(cleared,total);
+  }
+  window.junctionRunner = {reset:length=>stage(0,length),stage,travel,aim,close,difficulty:setDifficulty};
   stage(0,0);
 })();

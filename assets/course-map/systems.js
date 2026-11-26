@@ -118,7 +118,7 @@ function drawSystem(view) {
   const tier = topicWeight>=.5 ? (insideId ? "detail":"topics") : groupWeight>=.5 ? "groups":"course";
   if (document.body.dataset.level!==tier) {
     document.body.dataset.level=tier;
-    byId("map-level").textContent={course:"Calculus",groups:"5 topic groups",topics:stations.length+" concepts",detail:"Subtopics"}[tier];
+    byId("map-level").textContent={course:"Calculus",groups:"5 topic groups",topics:"",detail:"Subtopics"}[tier];
     const touch=matchMedia("(pointer: coarse)").matches;
     document.querySelector(".gesture-hint").textContent={
       course:"Open Calculus to explore", groups:"Choose a group to explore",

@@ -47,13 +47,20 @@ marks = Path('scripts/figures/map-node-marks.svg').read_text()
 map_html = map_index.read_text().replace('<!-- node marks -->', marks)
 deck = (map_output / 'challenge-bank.json').read_bytes()
 bank_url = './challenge-bank.json?v=' + hashlib.sha256(deck).hexdigest()[:12]
-practice = {q['topic']: lecture['id'] for lecture in json.loads(deck) for q in lecture['questions']}
+practice = {q['topic']: lecture['id'] for lecture in json.loads(deck) if not lecture.get('review') for q in lecture['questions']}
 map_html = map_html.replace('<!-- practice data -->', '<script type="application/json" id="practice-data">' +
                             json.dumps({'bank':bank_url, 'topics':practice}) + '</script>')
 arcade = map_output / 'challenge.html'
 edition = hashlib.sha256((map_source / 'challenge-questions.json').read_bytes()).hexdigest()[:10]
-arcade_html = arcade.read_text().replace('./challenge-bank.json', bank_url).replace('DECK_VERSION', edition)
-for name in ('math.css', 'challenge.css', 'runner.css', 'scores.js', 'runner.js', 'challenge.js', 'bonk.svg'):
+# Older shared challenges use the original lecture bank and Medium rules.
+classic_decks = [lecture for lecture in json.loads((map_source / 'challenge-questions.json').read_bytes()) if not lecture.get('review')]
+for lecture in classic_decks:
+    for question in lecture['questions']:
+        question.pop('level', None)
+classic_source = json.dumps(classic_decks, indent=2, ensure_ascii=False) + '\n'
+classic_version = hashlib.sha256(classic_source.encode()).hexdigest()[:10]
+arcade_html = arcade.read_text().replace('CLASSIC_VERSION', classic_version).replace('./challenge-bank.json', bank_url).replace('DECK_VERSION', edition)
+for name in ('math.css', 'challenge.css', 'runner.css', 'scores.js', 'runner.js', 'challenge-rules.js', 'challenge.js', 'bonk.svg'):
     version = hashlib.sha256((map_output / name).read_bytes()).hexdigest()[:12]
     arcade_html = arcade_html.replace('./' + name + '"', './' + name + '?v=' + version + '"')
 arcade.write_text(arcade_html)

@@ -1,27 +1,44 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101b22"><title>Junction Run · Calculus concept map</title>
+<meta name="theme-color" content="#101b22">
+<title>Junction Run · Calculus concept map</title>
 <link href="./math.css" rel="stylesheet"><link href="./challenge.css" rel="stylesheet"><link href="./runner.css" rel="stylesheet">
-<script defer src="./scores.js"></script><script defer src="./runner.js"></script><script defer src="./challenge.js"></script>
-</head><body data-bank="./challenge-bank.json" data-edition="DECK_VERSION">
-<div class="cabinet"><header><a class="back" href="./">‹ Concept map</a><span>MATH 1334</span></header>
-<main><div class="mast"><h1>Junction <em>Run</em></h1><div class="record">Best streak <b id="record">0</b></div></div>
-<div class="console"><div class="display"><div class="scorebar"><span id="round">At the starting line</span><span id="score">Score <b>0</b></span></div>
-<svg id="rails" viewBox="0 0 680 200" role="img" aria-label="A stick figure on a graph-paper obstacle course"></svg></div>
-<div id="panel"><section id="lobby"><h2>Choose your course</h2>
-<div class="modes" role="group" aria-label="Review mode"><button type="button" data-mode="exam3" aria-pressed="true">Exam 3</button><button type="button" data-mode="final" aria-pressed="false">Final review</button><button type="button" data-mode="lecture" aria-pressed="false">One lecture</button></div>
-<div id="lecture-picker" hidden><label for="line">Lecture</label><select id="line"></select></div><p id="scope"></p>
-<div id="pace" hidden><p id="target"></p><button type="button" id="keep-score" class="quiet">Add this run to my board</button> <button type="button" id="dismiss-pace" class="quiet">Fresh course</button></div>
-<form id="enter"><label for="nickname">Arcade nickname</label><div class="alias-field"><input id="nickname" type="text" maxlength="28" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Choose a nickname" aria-describedby="name-error"><button type="button" id="roll" class="quiet">Roll a name</button></div>
-<div id="name-error" role="alert"></div><div id="bonk" hidden><img src="./bonk.svg" alt="A Shiba taps another Shiba with a foam bat. BONK!" width="158" height="88"></div>
-<button type="submit" class="primary" id="start" disabled>Start run</button></form>
-<details class="howto"><summary>How to play</summary><p>Choose A–D to make the jump. A miss ends the run. Each landing earns 100 points, with 50 extra at every third jump. Those checkpoints also give you one eraser. Using it removes two wrong choices and makes that jump worth 75 points before the bonus.</p></details>
-<p id="load-state" role="status">Loading questions…</p></section>
-<section id="play" hidden><h2 id="prompt" tabindex="-1"></h2><div class="choices" id="choices"></div><button id="signal" class="quiet" hidden>Use eraser · remove two choices</button></section>
-<section id="feedback" hidden><h2 id="verdict" tabindex="-1"></h2><div id="result"></div>
-<div class="actions"><button class="primary" id="advance">Next jump</button><button class="quiet" id="share" hidden>Copy a challenge link</button><button class="quiet" id="change" hidden>Change course</button><a id="review" target="_blank" rel="noopener">Review concept (new tab)</a></div>
-<p id="share-state" role="status"></p><input id="race-link" aria-label="Challenge link" readonly hidden></section>
-<noscript>This game needs JavaScript. <a href="./">Return to the concept map</a>.</noscript></div></div>
+<script defer src="./scores.js"></script><script defer src="./runner.js"></script><script defer src="./challenge-rules.js"></script><script defer src="./challenge.js"></script>
+</head><body data-bank="./challenge-bank.json" data-edition="DECK_VERSION" data-classic="CLASSIC_VERSION">
+<div class="cabinet">
+<header><a class="back" href="./">‹ Concept map</a><span>MATH 1334</span></header>
+<main>
+<div class="mast"><h1>Junction <em>Run</em></h1><div class="record">Best streak <b id="record">0</b></div></div>
+<div class="console">
+<div class="display">
+  <div class="scorebar"><span id="round">At the starting line</span><span id="score">Score <b>0</b></span></div>
+  <svg id="rails" viewBox="0 0 680 200" role="img" aria-label="A stick figure on a graph-paper obstacle course"></svg>
+</div>
+<div id="panel">
+  <section id="lobby"><h2>Choose your course</h2>
+    <div class="modes" role="group" aria-label="Review mode"><button type="button" data-mode="exam3" aria-pressed="true">Exam 3</button><button type="button" data-mode="final" aria-pressed="false">Final review</button><button type="button" data-mode="lecture" aria-pressed="false">One lecture</button><button type="button" data-mode="theory" aria-pressed="false">Theory</button><button type="button" data-mode="vocab" aria-pressed="false">Vocabulary</button></div>
+    <div id="lecture-picker" hidden><label for="line">Lecture</label><select id="line"></select></div>
+    <p id="scope"></p>
+    <div id="pace" hidden><span id="target"></span> <button type="button" id="dismiss-pace" class="quiet">Fresh course</button></div>
+    <div class="run-settings">
+      <label>Difficulty<select id="difficulty"><option value="easy">Easy</option><option value="medium" selected>Medium</option><option value="hard">Hard</option></select></label>
+      <label>Question order<select id="order"><option value="shuffled">Shuffled</option><option value="ordered">In order</option></select></label>
+    </div>
+    <p id="rules-hint"></p>
+    <button type="button" class="primary" id="start" disabled>Start run</button>
+    <details class="howto"><summary>How to play</summary><p>Choose a landing with A–D or tap an answer. Landings earn 100 points, plus 50 on every third jump. A rescued jump or a jump with an eraser earns 75 points before the bonus. Shared challenges use the same questions and answer positions.</p></details>
+    <p id="load-state" role="status">Loading questions…</p>
+  </section>
+  <section id="play" hidden><h2 id="prompt" tabindex="-1"></h2><div class="choices" id="choices"></div>
+    <button id="signal" class="quiet" hidden>Use eraser · remove two choices</button>
+  </section>
+  <section id="feedback" hidden><h2 id="verdict" tabindex="-1"></h2><div id="result"></div>
+    <form id="save-score" hidden><label for="nickname">Nickname for the scoreboard</label><div class="alias-field"><input id="nickname" type="text" maxlength="28" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Choose a nickname" aria-describedby="name-error"><button type="button" id="roll" class="quiet">Roll a name</button></div>
+    <div id="name-error" role="alert"></div>
+    <div id="bonk" hidden><img src="./bonk.svg" alt="A Shiba taps another Shiba with a foam bat. BONK!" width="158" height="88"></div>
+    <button type="submit" class="primary">Save score</button></form><p id="saved" role="status"></p><div class="actions"><button class="primary" id="advance">Next jump</button><button class="quiet" id="share" hidden>Copy a challenge link</button><button class="quiet" id="change" hidden>Change course</button><a id="review" target="_blank" rel="noopener">Review concept (new tab)</a></div><p id="share-state" role="status"></p><input id="race-link" aria-label="Challenge link" readonly hidden></section>
+  <noscript>This game needs JavaScript. <a href="./">Return to the concept map</a>.</noscript>
+</div></div>
 <details id="board"><summary>High scores <span id="board-mode">Exam 3</span></summary><div class="board-body"><p id="board-caption">Top runs on this device</p><ol id="leaders"></ol><p id="board-empty">First run? Set the score to beat.</p></div></details>
 </main></div></body></html>

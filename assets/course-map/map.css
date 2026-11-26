@@ -663,22 +663,33 @@ summary:focus-visible { outline: 2px solid #257569; outline-offset: 2px; }
   .topic-open .controls { margin: 4px 9px 0; }
   .topic-open .controls button { height: 36px; }
   #detail { flex: 0 0 clamp(145px, 24dvh, 215px); position: static; padding: 0; min-height: 0; overflow: visible; }
+  #detail:not(.reading):not(.sheet-moving) #detail-body > :not(.family-name, h2, .note-intro) { display: none; }
+  #detail .family-name { margin: 0 0 3px; }
+  #detail h2 { font-size: 23px; margin-bottom: 6px; }
+}
+@media (max-width: 760px), (max-width: 1000px) and (orientation: portrait), (max-height: 480px) and (orientation: landscape) {
   #reader { height: 100%; background: #fffef9; padding: 0 16px 18px; overflow-y: auto; overscroll-behavior: contain; }
-  #detail.reading #reader { position: fixed; inset: 0; height: 100dvh; z-index: 5; padding-bottom: max(18px, env(safe-area-inset-bottom)); }
+  #detail:not(.reading) #reader { touch-action: pan-x pinch-zoom; }
+  #detail:is(.reading, .sheet-moving) #reader {
+    position: fixed; inset: var(--sheet-top, 0) 0 0 var(--sheet-left, 0);
+    height: auto; z-index: 5; padding-bottom: max(18px, env(safe-area-inset-bottom));
+  }
   #detail.reading #close { display: none; }
   #detail.reading #reader-label { display: block; margin-left: 8px; font: 700 17px/1.15 var(--serif); text-align: right; }
   #detail.reading .reader-tools { padding-block: 10px; border-bottom: 1px solid var(--line); }
   .reader-tools {
     display: flex; align-items: center; justify-content: space-between; gap: 8px;
-    position: sticky; top: 0; z-index: 1; padding: 5px 0; background: #fffef9;
+    position: sticky; top: 0; z-index: 1; padding: 10px 0 5px; background: #fffef9;
+    touch-action: pan-x pinch-zoom;
+  }
+  .reader-tools::before {
+    content: ""; position: absolute; top: 3px; left: 50%; transform: translateX(-50%);
+    width: 32px; height: 3px; border-radius: 2px; background: var(--strong-line);
   }
   #sheet-toggle {
     display: inline-block; min-height: 36px; padding: 4px 13px; border: 0; border-radius: 5px;
     font: 600 14px var(--ui); color: #fff; background: #204c47;
   }
   #close { position: static; }
-  #detail:not(.reading) #detail-body > :not(.family-name, h2, .note-intro) { display: none; }
-  #detail .family-name { margin: 0 0 3px; }
-  #detail h2 { font-size: 23px; margin-bottom: 6px; }
   #detail .note-example { scroll-margin-top: 52px; }
 }

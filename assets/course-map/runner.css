@@ -15,6 +15,9 @@
 .runner-scene .runner-thought { fill:var(--r-paper); stroke:var(--r-ink); stroke-width:1.25; }
 .runner-scene .runner-appendage { fill:none; stroke:var(--r-ink); stroke-width:3.4; }
 .runner-scene .runner-distant-leg { stroke:#596c65; }
+.runner-scene .chicken-hat { display:none; }
+.runner-scene[data-difficulty="easy"] .chicken-hat { display:inline; }
+#rails[data-difficulty="hard"] { --r-wash:#d45b39; --r-platform:#d79978; --r-scarf:#ffe08b; --r-ink:#312631; }
 .runner-scene .runner-shoe { stroke:var(--r-ink); stroke-width:4.5; fill:none; }
 .runner-scene [data-runner-hidden] { display:none; }
 @media (forced-colors:active) { #rails.runner-scene { forced-color-adjust:none; } }
