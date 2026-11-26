@@ -62,5 +62,9 @@ def install(site, endpoint):
 if __name__ == "__main__":
     import os
     import sys
-    endpoint = os.environ.get("COURSE_ASK_ENDPOINT", "") if os.environ.get("COURSE_ASK_BILLING_MODE") == "metered" else ""
+    config = HERE / "pilot-endpoint.txt"
+    published = config.read_text().strip() if config.exists() else ""
+    endpoint = os.environ.get("COURSE_ASK_ENDPOINT") or published
+    if os.environ.get("COURSE_ASK_BILLING_MODE", "metered") != "metered":
+        endpoint = ""
     install(Path(sys.argv[1]), endpoint)

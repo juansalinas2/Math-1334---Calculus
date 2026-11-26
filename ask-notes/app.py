@@ -230,8 +230,9 @@ def handler(event, _context):
         if payload.get("mode") == "conversation":
             if result is None or result.get("sources"):
                 result = None
-                check = checks().get(section, {}).get("reviewed_comparison")
-                if check and re.search(check["match"], question, re.I):
+                entries = checks().get(section, {}).get("reviewed_answers", [])
+                check = next((entry for entry in entries if re.search(entry["match"], question, re.I)), None)
+                if check:
                     result = {"answer": check["answer"], "sources": source_links([section]),
                               "reviewed": True}
         if result is None:

@@ -255,7 +255,13 @@
         "step": 3
       }
     ],
-    "teaching_note": "Length and width rates sum to d(L+W)/dt = 2 cm/s, half the perimeter rate. The perimeter grows at 4 cm/s. The area gains 15 and loses 8 square centimeters per second. Each centimeter of new length adds a strip as wide as the rectangle (5 cm)."
+    "teaching_note": "Length and width rates sum to d(L+W)/dt = 2 cm/s, half the perimeter rate. The perimeter grows at 4 cm/s. The area gains 15 and loses 8 square centimeters per second. Each centimeter of new length adds a strip as wide as the rectangle (5 cm).",
+    "reviewed_answers": [
+      {
+        "match": "(?:where|why|what|how).{0,55}(?:\\b5\\b|five).{0,55}(?:come|first term|multiply|width)|(?:why|how).{0,25}multiply.{0,20}(?:\\b5\\b|five|width)",
+        "answer": "The 5 is the rectangle’s width at that instant. Each additional centimeter of length adds a strip of area \\(5\\,\\mathrm{cm}\\times1\\,\\mathrm{cm}=5\\,\\mathrm{cm^2}\\). The length grows at \\(3\\,\\mathrm{cm/s}\\), so its contribution is \\(5\\cdot3=15\\,\\mathrm{cm^2/s}\\). The changing width contributes the separate second term."
+      }
+    ]
   },
   "triangle": {
     "question": "The base and height of the triangle both change. Why does a factor of one-half remain in the area rate?",
@@ -384,10 +390,16 @@
       }
     ],
     "teaching_note": "The vertical gap is constant throughout. The horizontal motion changes only the rope component parallel to its own length: dL/dt = (x/L) dx/dt. Because 0 < x/L < 1, the horizontal distance changes more than the rope length, also over any finite pull while the rope stays taut and the gap positive. At x=4 and L=5, the signed rates are -1 m/s for rope and -1.25 m/s for the boat. The instantaneous factor 5/4 varies over a finite pull.",
-    "reviewed_comparison": {
-      "match": "(?:pull|haul|reel|shorten).{0,65}(?:met(?:er|re)|foot|feet|yard).{0,80}(?:boat|horizont|travel|closer|same|exact)|(?:boat|horizontal).{0,55}(?:more|less|same|exactly|faster|slower|farther|further).{0,40}(?:rope|pull|met(?:er|re)|feet|foot)|(?:which|what).{0,35}(?:rate|speed|magnitude).{0,35}(?:larger|bigger|greater|faster|smaller)|(?:rope|boat).{0,35}(?:move|travel).{0,30}(?:one.to.one|same (?:distance|speed))",
-      "answer": "The bow moves horizontally while the rope stays slanted. Only part of the bow’s motion shortens the rope, so the boat travels farther than the amount of rope pulled in. The fixed height gives \\(L^2=x^2+3^2\\), hence \\(dx/dt=(L/x)\\,dL/dt\\). At the instant in the notes, the boat approaches at \\(5/4\\) m/s while the rope shortens at \\(1\\) m/s. That ratio changes as the boat moves."
-    }
+    "reviewed_answers": [
+      {
+        "match": "(?:which|what).{0,35}(?:rate|speed|magnitude).{0,35}(?:larger|bigger|greater|faster|smaller)",
+        "answer": "At the instant in the notes, the boat moves faster. The horizontal gap closes at \\(5/4=1.25\\) m/s, while the rope shortens at \\(1\\) m/s. Both signed rates are negative because both distances shrink."
+      },
+      {
+        "match": "(?:pull|haul|reel|shorten).{0,65}(?:met(?:er|re)|foot|feet|yard).{0,80}(?:boat|horizont|travel|closer|same|exact)|(?:boat|horizontal).{0,55}(?:more|less|same|exactly|faster|slower|farther|further).{0,40}(?:rope|pull|met(?:er|re)|feet|foot)|(?:rope|boat).{0,35}(?:move|travel).{0,30}(?:one.to.one|same (?:distance|speed))",
+        "answer": "The bow moves horizontally while the rope stays slanted. Only part of the bow’s motion shortens the rope, so the boat travels farther than the amount of rope pulled in. The fixed height gives \\(L^2=x^2+3^2\\), hence \\(dx/dt=(L/x)\\,dL/dt\\). At the instant in the notes, the boat approaches at \\(5/4\\) m/s while the rope shortens at \\(1\\) m/s. That ratio changes as the boat moves."
+      }
+    ]
   },
   "similar-triangles": {
     "question": "The small triangle has sides a, b, c corresponding to A, B, C. What is the scaling factor from the large triangle to the small one?",

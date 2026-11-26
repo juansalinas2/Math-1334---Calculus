@@ -116,14 +116,23 @@ class PilotTests(unittest.TestCase):
             self.assertEqual(app.generate("question", "", ["ladder"])["sources"], [])
 
     def test_boat_distance_comparison_is_reviewed_before_inference(self):
-        for question in ("If I reel in a foot of line, does my boat travel a foot?",
-                         "At the instant shown, which speed is bigger?"):
+        for question, phrase in (("If I reel in a foot of line, does my boat travel a foot?", "travels farther"),
+                                 ("At the instant shown, which speed is bigger?", "boat moves faster")):
             event = {"headers": {"x-class-code": "demo"}, "body": json.dumps(
                 {"mode": "conversation", "section": "boat", "question": question})}
             result = json.loads(app.handler(event, None)["body"])
             self.assertTrue(result["reviewed"])
-            self.assertIn("travels farther", result["answer"])
+            self.assertIn(phrase, result["answer"])
             self.assertTrue(result["sources"][0]["href"].endswith("#boat"))
+        self.cloud.converse.assert_not_called()
+
+    def test_rectangle_strip_keeps_area_and_rate_units_separate(self):
+        request = {"mode":"conversation", "section":"rectangle", "question":"So why multiply by five?"}
+        result = app.handler({"headers":{"x-class-code":"demo"}, "body":json.dumps(request)}, None)
+        answer = json.loads(result["body"])
+        self.assertTrue(answer["reviewed"])
+        self.assertIn(r"5\,\mathrm{cm^2}", answer["answer"])
+        self.assertIn(r"15\,\mathrm{cm^2/s}", answer["answer"])
         self.cloud.converse.assert_not_called()
 
     def test_server_attaches_the_single_grounding_source(self):

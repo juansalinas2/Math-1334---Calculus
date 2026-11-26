@@ -365,7 +365,7 @@
         hint.addEventListener("click", () => {
           if (!pending) show(field.value.trim() || "First step", filledReading || getReading());
         });
-        const notice = element("small", "Ask AI sends your question and recent turns to AWS. Share with Juan is optional.");
+        const notice = element("small", "Ask AI sends your question and recent turns to AWS. Check its math against the worked notes. Sharing with Juan is optional.");
         notice.className = "rr-ai-notice";
         form.append(codeLabel, hint, notice);
       }
