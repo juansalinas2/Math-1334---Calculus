@@ -1,114 +1,29 @@
-/* The map and sky share the same course notation and stationary orbital diagram. */
-.focus-card:has(> .topic-orbit) {
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+.moon-track { fill:none; stroke:var(--accent); stroke-opacity:.45; stroke-width:1.3; stroke-dasharray:2 4; pointer-events:none; }
+.map-moon { cursor:pointer; color:var(--accent); }
+.map-moon .moon-disc { fill:var(--surface-raised); stroke:var(--accent); stroke-width:1.8; }
+.map-moon text { font:600 12px var(--ui); fill:var(--ink); stroke:var(--paper); stroke-width:4px; stroke-linejoin:round; paint-order:stroke; }
+.map-moon:is(:focus-visible,:hover,[aria-pressed="true"]) .moon-disc { stroke-width:3.5; }
+.map-moon:focus-visible { outline:none; }
+.map-moon:focus-visible text { text-decoration:underline; }
+#canvas { touch-action:none; }
+#locator { position:absolute; right:10px; bottom:10px; width:clamp(88px,12vw,148px); padding:4px; background:var(--surface); border:1px solid var(--strong-line); border-radius:6px; color:var(--ink); cursor:pointer; box-shadow:0 2px 8px #0001; }
+#locator-plot { width:100%; height:clamp(44px,7vw,79px); display:block; }
+#locator-plot line { stroke:var(--strong-line); stroke-width:12; }
+.locator-window { fill:var(--link); fill-opacity:.1; stroke:var(--link); vector-effect:non-scaling-stroke; stroke-width:1.5; }
+#locator:focus-visible { outline:2px solid var(--focus-ring); }
+[data-system-id="calculus"] { --art-size:90px; width:180px; }
+[data-system-id="calculus"] .cluster-label { font-size:34px; }
+.cluster-symbol.aggregate-mark { color:var(--accent); border-color:var(--accent); background:radial-gradient(circle at 29% 23%,var(--surface) 10%,color-mix(in srgb,var(--accent) 14%,var(--surface)) 68%,color-mix(in srgb,var(--accent) 38%,var(--surface))); box-shadow:0 0 0 4px var(--paper),0 0 0 5px color-mix(in srgb,var(--accent) 25%,transparent); }
+.aggregate-mark .focus-mark circle { stroke:none; fill:none; }
+@media(max-width:640px) {
+  .cluster-button { width:min(126px,31vw); --art-size:39px; }
+  .cluster-label { font-size:clamp(15px,4.3vw,18px); }
+  .cluster-count { font-size:12px; }
+  [data-level="groups"] .cluster-button[data-system-id="differentiation"] { width:144px; }
+  #locator { width:84px; right:6px; bottom:6px; }
 }
-.topic-orbit.focus-content {
-  --orbit-paper: var(--paper, #faf9f3);
-  --orbit-ink: var(--ink, #19363a);
-  --orbit-wash: color-mix(in srgb, var(--accent) 9%, var(--orbit-paper));
-  --orbit-line: color-mix(in srgb, var(--accent) 56%, transparent);
-  --moon-size: 41px;
-  --planet-size: 62px;
-  container-type: inline-size;
-  width: 100%;
-  min-height: 0;
-  padding: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  touch-action: pan-y;
-  scrollbar-width: thin;
-}
-.orbit-scene {
-  position: relative;
-  isolation: isolate;
-  height: 326px;
-  background: radial-gradient(ellipse 62% 59% at 50% 45%, var(--orbit-wash) 2%, var(--orbit-paper) 60%, transparent 100%);
-}
-.orbit-scene[data-moons="5"], .orbit-scene[data-moons="6"] { height: 390px; }
-.orbit-tracks { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-.orbit-tracks ellipse { fill: none; stroke: var(--orbit-line); stroke-width: 1.3px; }
-.orbit-tracks .inner-track { stroke-width: 1px; stroke-dasharray: 2 6; opacity: .54; }
-.orbit-body {
-  --face: var(--moon-size);
-  appearance: none;
-  position: absolute;
-  left: var(--x);
-  top: calc(var(--y) - var(--face) / 2);
-  transform: translateX(-50%);
-  width: min(28%, 158px);
-  min-height: 44px;
-  min-width: 44px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 12px;
-  background: none;
-  color: var(--orbit-ink);
-  font: 600 14px/1.14 var(--ui);
-  text-align: center;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-.orbit-scene[data-moons="2"] .orbit-moon,
-.orbit-scene[data-moons="3"] .orbit-moon.orbit-pole { width: min(46%, 208px); }
-.orbit-face {
-  width: var(--face);
-  height: var(--face);
-  flex: none;
-  display: grid;
-  place-items: center;
-  border: 1.5px solid var(--accent);
-  border-radius: 50%;
-  color: var(--accent);
-  background: radial-gradient(circle at 31% 25%, var(--orbit-paper) 20%, var(--orbit-wash) 62%, color-mix(in srgb, var(--accent) 36%, var(--orbit-paper)) 100%);
-  box-shadow: 0 0 0 3px var(--orbit-paper);
-}
-.orbit-face .focus-mark {
-  width: 79%;
-  height: 79%;
-  color: inherit;
-  overflow: visible;
-}
-.orbit-face .focus-mark circle { fill: none; stroke: none; }
-.orbit-planet { --face: var(--planet-size); width: min(31%, 182px); z-index: 1; }
-.orbit-planet .orbit-face {
-  border-color: var(--accent);
-  color: var(--on-accent, white);
-  background: radial-gradient(circle at 32% 25%, color-mix(in srgb, var(--accent) 85%, white) 0%, var(--accent) 46%, color-mix(in srgb, var(--accent) 74%, black) 99%);
-  box-shadow: 0 0 0 3px var(--orbit-paper), 0 0 0 4px var(--orbit-line), 0 0 22px 6px color-mix(in srgb, var(--accent) 20%, transparent);
-}
-.orbit-name, .orbit-hint {
-  max-width: 100%;
-  overflow-wrap: anywhere;
-  text-wrap: balance;
-  padding-inline: 2px;
-  background: var(--orbit-paper);
-  border-radius: 3px;
-}
-.orbit-planet .orbit-name { margin-top: 4px; font: 700 19px/1.03 var(--serif); }
-.orbit-hint { color: var(--muted); font: 500 12px/1.16 var(--ui); }
-.orbit-body:focus-visible { outline: 2px solid var(--focus-ring, var(--accent)); outline-offset: 3px; }
-.orbit-body:is(:focus-visible,[aria-pressed="true"]) .orbit-name,
-.orbit-body:hover .orbit-name { text-decoration: underline; text-underline-offset: 3px; }
-.orbit-body[aria-pressed="true"] .orbit-face {
-  border-width: 3px;
-  box-shadow: 0 0 0 2px var(--orbit-paper), 0 0 0 3px var(--accent);
-}
-@container (max-width: 450px) {
-  .orbit-scene { height: 358px; }
-  .orbit-scene[data-moons="5"], .orbit-scene[data-moons="6"] { height: 435px; }
-  .orbit-body { --moon-size: 38px; --planet-size: 54px; font-size: 14px; }
-  .orbit-planet .orbit-name { font-size: 17px; }
-}
-@container (max-width: 340px) {
-  .orbit-scene { height: 378px; }
-  .orbit-scene[data-moons="5"], .orbit-scene[data-moons="6"] { height: 460px; }
-}
+@media(max-height:450px) { .cluster-button { --art-size:34px; } #locator { width:77px; } }
+
+.station .station-mark { transform:scale(var(--parent-scale,1)); }
+
+.locator-focus { fill:none; stroke:var(--ink); vector-effect:non-scaling-stroke; stroke-width:1.6; }

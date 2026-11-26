@@ -11,12 +11,11 @@ const results = byId("results");
 const zoomIn = byId("in");
 const zoomOut = byId("out");
 const zoomLevel = byId("zoom-level");
-const minZoom = .10;
+
 const maxZoom = 3.6;
 let selected = null;
 let selectedPart = null;
 let family = "all";
-let entryFamily = "all";
 let cameraMode = "overview";
 let cameraWidth = 0;
 let cameraHeight = 0;
@@ -79,9 +78,9 @@ function setReading(open, jump = false) {
 }
 byId("sheet-toggle").onclick = () => setReading(!detail.classList.contains("reading"), true);
 
-function trackPath(edge) {
-  const a = byTopic.get(edge.source);
-  const b = byTopic.get(edge.target);
+function trackPath(edge, points = byTopic) {
+  const a = points.get(edge.source);
+  const b = points.get(edge.target);
   const curve = Math.abs(a.x - b.x) >= Math.abs(a.y - b.y)
     ? d3.curveBumpX
     : d3.curveBumpY;
@@ -90,7 +89,7 @@ function trackPath(edge) {
 const tracks = d3.select("#rails").selectAll("path").data(connections).join(
   "path",
 )
-  .attr("class", "track").attr("d", trackPath)
+  .attr("class", "track").attr("d", edge => trackPath(edge))
   .attr("stroke", (edge) => families[byTopic.get(edge.target).family].color)
   .attr("stroke-dasharray", (edge) => edge.onSelection ? "6 5" : null);
 const stops = d3.select("#stops").selectAll("g").data(stations).join("g")
@@ -130,37 +129,30 @@ function drawCamera() {
   world.attr("transform", view);
   drawInterior(view);
   drawSystem(view);
-  if (view.k === renderedScale) return;
-  world.style("--parent-scale", Math.min(1, 1.20 * detailScale(view.k) / view.k));
-  world.style("--disk-scale", Math.min(2, Math.max(1, .68 / view.k)));
-  // Only the overview uses larger labels. Panning needs no text layout.
-  const labelScale = Math.max(.55, view.k);
-  if (view.k < .8 || renderedScale < .8) {
-    world.style("--label-size", Math.max(17, 13 / labelScale) + "px")
-      .style("--hub-size", Math.max(24, 18 / labelScale) + "px");
-  }
-  const percent = Math.round(100 * view.k) + "%";
+  const fit = fullMapScale();
+  const percent = Math.round(100 * view.k / fit) + "%";
   if (zoomLevel.textContent !== percent) zoomLevel.textContent = percent;
-  zoomIn.disabled = view.k >= maxZoom;
-  zoomOut.disabled = view.k <= minZoom;
+  zoomIn.disabled = view.k >= maxZoom - .00001;
+  zoomOut.disabled = view.k <= courseScale() + .00001;
   zoomIn.title = zoomIn.disabled ? "Maximum zoom" : "Zoom in (+)";
-  zoomOut.title = zoomOut.disabled ? "Minimum zoom" : "Zoom out (−)";
+  zoomOut.title = zoomOut.disabled ? "Whole course" : "Zoom out (−)";
+  if (view.k === renderedScale) return;
+  world.style("--parent-scale", Math.min(1, 1.10 / view.k))
+    .style("--disk-scale", Math.min(2.7, Math.max(1, .54/view.k)))
+    .style("--label-size", Math.max(15, 12/Math.max(.36,view.k)) + "px")
+    .style("--hub-size", Math.max(20, 16/Math.max(.34,view.k)) + "px");
   renderedScale = view.k;
 }
-const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
+const zoom = d3.zoom().scaleExtent([courseScale(), maxZoom]).clickDistance(5)
   .filter(event => {
-    const content = event.target.closest?.(".focus-content");
-    const scrollable = content && content.scrollHeight > content.clientHeight + 1;
-    // Keep wheel and trackpad zoom working over an expanded card at every scale.
-    // A single touch can scroll the card when the mobile list exceeds its height.
-    if (scrollable && event.type === "touchstart" && event.touches.length === 1) return false;
+    if (event.target.closest?.("#locator")) return false;
     return (!event.ctrlKey || event.type === "wheel") && !event.button;
   })
   .duration(0)
   .on("start", (event) => {
     if (!event.sourceEvent) return;
     gesturing = true;
-    setSystemIntent(event.sourceEvent);
+
     if (hovered !== null) {
       hovered = null;
       paint();
@@ -172,7 +164,7 @@ const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
       // Reset the pinch origin at a bound so reversing the fingers immediately
       // moves the map, even after they have continued spreading at maximum zoom.
       if (event.sourceEvent.type === "touchmove" && event.sourceEvent.touches.length === 2 &&
-          (event.transform.k === maxZoom || event.transform.k === minZoom)) {
+          (event.transform.k === maxZoom || event.transform.k === courseScale())) {
         rebasingPinch = true;
         try {
           svg.call(zoom.transform, event.transform);
@@ -184,7 +176,6 @@ const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
       if (source.touches?.length === 2) {
         const fingers = Array.from(source.touches, touch => d3.pointer(touch, viewport));
         zoomAnchor = [(fingers[0][0] + fingers[1][0]) / 2, (fingers[0][1] + fingers[1][1]) / 2];
-        if (!systemIntent) setSystemIntent(source);
       } else zoomAnchor = source.type === "wheel" ? d3.pointer(source, viewport) : null;
       cameraMode = "manual";
       if (drawFrame === null) drawFrame = requestAnimationFrame(drawCamera);
@@ -196,14 +187,7 @@ const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
   })
   .on("end", event => {
     gesturing = false;
-    if (event.sourceEvent) {
-      const intent = systemIntent;
-      systemIntent = null;
-      if ((selected || family !== "all") && event.transform.k < groupsBoundary) overview("all", false, false, event.transform.k);
-      else if (selected && event.transform.k < 1) leaveTopic();
-      else if (intent?.kind === "groups" && event.transform.k > intent.k && event.transform.k >= groupsBoundary) overview(intent.id);
-      else if (intent?.kind === "family" && event.transform.k > intent.k && event.transform.k >= detailZoom) showTopic(intent.id);
-    }
+    if (event.sourceEvent) settleZoom(event.transform.k);
     rememberView();
   });
 svg.call(zoom).on("wheel.mapBoundary", event => {
@@ -222,7 +206,8 @@ function move(x, y, scale) {
   svg.call(zoom.transform, view);
 }
 function frame() {
-  move(...courseCenter, family === "all" ? groupsScale : topicsScale);
+  if (family === "all") move(...courseCenterFit, fullMapScale());
+  else familyFrame(family);
 }
 function nearby(id) {
   return connections.filter((e) => e.source === id || e.target === id);
@@ -238,7 +223,7 @@ function paint(preview = selected) {
     const sameFamily = family === "all" ||
       [e.source, e.target].some((id) => byTopic.get(id).family === family);
     d3.select(this).attr("display", e.onSelection && !active ? "none" : null)
-      .attr("opacity", active ? 1 : preview || !sameFamily ? .13 : .55)
+      .attr("opacity", active ? 1 : preview || !sameFamily ? .42 : .55)
       .attr("stroke-width", active ? 4.5 : 3.4);
   });
   stops.classed("active", (d) => d.id === selected).attr(
@@ -249,8 +234,8 @@ function paint(preview = selected) {
       "opacity",
       (d) =>
         preview
-          ? (linked.has(d.id) ? 1 : .36)
-          : (family === "all" || family === d.family ? 1 : .35),
+          ? (linked.has(d.id) ? 1 : .86)
+          : (family === "all" || family === d.family ? 1 : .86),
     );
   document.querySelectorAll("[data-family]").forEach((b) =>
     b.setAttribute("aria-pressed", String(b.dataset.family === family))
@@ -261,7 +246,6 @@ function showTopic(id, slug = null, fromLocation = false) {
   if (!topic) return;
   const part = topic.parts.find((item) => partSlug(item) === slug || item.oldSlugs?.includes(slug));
   const sameTopic = selected === id;
-  if (!selected) entryFamily = family;
   rememberView();
   selected = id;
   selectedPart = part ? partSlug(part) : null;
@@ -311,15 +295,14 @@ function showTopic(id, slug = null, fromLocation = false) {
   syncTopicList();
   const previous = routeViews.get(next);
   if (previous && (fromLocation || (sameTopic && !part))) move(...previous);
-  else if (!sameTopic || d3.zoomTransform(viewport).k < detailZoom) {
-    move(topic.x, topic.y, Math.max(detailZoom + .03, d3.zoomTransform(viewport).k));
+  else if (!sameTopic || d3.zoomTransform(viewport).k < detailZoom()) {
+    move(topic.x, topic.y, Math.max(detailZoom() + .03, d3.zoomTransform(viewport).k));
   } else drawCamera();
   if (document.body.dataset.presentation !== "list" && !matchMedia("(max-width: 760px), (max-width: 1000px) and (orientation: portrait)").matches) heading.focus({preventScroll: true});
 }
 function overview(which = "all", restore = false, fromLocation = false, scale = null) {
   rememberView();
-  const atRoot = scale !== null && scale < courseBoundary;
-  const next = which === "all" ? (atRoot ? "#calculus" : "") : "#family/" + which;
+  const next = which === "all" ? wideRoute(scale ?? fullMapScale()) : "#family/" + which;
   setRoute(next, fromLocation);
   selected = null;
   selectedPart = null;
@@ -338,7 +321,7 @@ function overview(which = "all", restore = false, fromLocation = false, scale = 
   const previous = routeViews.get(next);
   if (scale !== null) {
     cameraMode = "manual";
-    move(...courseCenter, scale);
+    move(...courseCenterFit, scale);
   } else if (restore && previous) {
     cameraMode = "manual";
     move(...previous);
@@ -388,23 +371,28 @@ for (const [id, group] of Object.entries(families)) {
 document.querySelectorAll("[data-family]").forEach((btn) =>
   btn.onclick = () => overview(btn.dataset.family)
 );
+function wideRoute(k) {
+  const ratio = k/fullMapScale();
+  if (ratio < (courseEdge+groupFloor)/2) return "#calculus";
+  if (ratio < (groupEdge+unfoldEdge)/2) return "#groups";
+  return "";
+}
+function settleZoom(k) {
+  if ((selected || family !== "all") && k < fullMapScale()*.78) {
+    overview("all", false, true, k);
+  } else if (!selected && family === "all") {
+    setRoute(wideRoute(k), true);
+  }
+}
 function scaleBy(factor) {
   zoomAnchor = null;
   cameraMode = "manual";
   svg.call(zoom.scaleBy, factor);
-  const k = d3.zoomTransform(viewport).k;
-  if (selected && k < 1) leaveTopic();
-  else if (!selected && family !== "all" && k < groupsBoundary) overview("all", false, false, k);
+  settleZoom(d3.zoomTransform(viewport).k);
+  rememberView();
 }
 zoomIn.onclick = () => scaleBy(1.35);
 zoomOut.onclick = () => scaleBy(1 / 1.35);
-function leaveTopic() {
-  const entryRoute = entryFamily === "all" ? "" : "#family/" + entryFamily;
-  const previous = routeViews.get(entryRoute);
-  // A topic can be opened from an already magnified map. Backing away must
-  // leave the orbit even if the old camera would immediately reopen it.
-  overview(entryFamily, Boolean(previous && previous[2] < detailZoom));
-}
 function exitPath() {
   overview();
   viewport.focus({preventScroll:true});
@@ -533,9 +521,23 @@ document.addEventListener("keydown", (e) => {
   }
 });
 function initialFrame() {
-  move(...courseCenter, groupsScale);
+  move(...courseCenterFit, fullMapScale());
 }
 new ResizeObserver(() => {
+  const reoriented=orientMap();
+  zoom.scaleExtent([courseScale(),maxZoom]);
+  if (reoriented) {
+    stops.attr("transform",d=>"translate("+d.x+","+d.y+")");
+    tracks.attr("d",edge=>trackPath(edge));
+    refreshLocator();
+    if (selected) {
+      const node=byTopic.get(selected);
+      move(node.x,node.y,Math.max(detailZoom(),d3.zoomTransform(viewport).k));
+    } else if (route==="#calculus" || route==="#groups") {
+      move(...courseCenterFit,route==="#calculus"?courseScale():groupScale());
+    } else frame();
+    return;
+  }
   // Opening the panel already measured and used its new viewport.
   if (
     viewport.clientWidth === cameraWidth &&
@@ -556,14 +558,16 @@ function openLocation() {
   const [id, slug] = location.hash.slice(1).split("/");
   if (byTopic.has(id)) showTopic(id, slug, true);
   else if (id === "family" && Object.hasOwn(families, slug)) overview(slug, true, true);
-  else if (id === "calculus") overview("all", false, true, courseScale);
-  else if (id === "groups" || ready) overview("all", true, true);
+  else if (id === "calculus") overview("all", false, true, courseScale());
+  else if (id === "groups") overview("all", false, true, groupScale());
+  else if (ready) overview("all", true, true);
   else {
     cameraMode = "initial";
     paint();
     initialFrame();
   }
 }
+initializeSystems();
 initializePresentation();
 window.addEventListener("hashchange", openLocation);
 openLocation();

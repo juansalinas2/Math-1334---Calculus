@@ -1,77 +1,30 @@
-// Place each symbol on a fixed orbit. Clockwise order follows the lecture.
+// Subtopics share the same SVG and camera as their parent and its neighbors.
+function labelLines(title, limit) {
+  const lines = [];
+  for (const word of title.split(/\s+/)) {
+    const last = lines.length-1;
+    if (last>=0 && lines[last].length+word.length+1<=limit) lines[last]+=" "+word;
+    else lines.push(word);
+  }
+  return lines;
+}
 function buildTopicOrbit(topic) {
-  const root = el("div", "", "topic-orbit focus-content");
-  root.style.setProperty("--accent", families[topic.family].color);
-  root.setAttribute("role", "group");
-  root.setAttribute("aria-label", topic.title);
-  const scene = el("div", "", "orbit-scene");
-  const parts = topic.parts;
-  scene.dataset.moons = String(parts.length);
-
-  const geometry = { cx: 50, cy: 43, rx: 36.5, ry: 32 };
-  const anglesByCount = {
-    2: [-104, 76],
-    3: [-90, 30, 150],
-    4: [-147, -33, 33, 147],
-    5: [-90, -18, 54, 126, 198],
-    6: [-90, -30, 30, 90, 150, 210],
-  };
-  const svgNS = "http://www.w3.org/2000/svg";
-  const paths = document.createElementNS(svgNS, "svg");
-  paths.setAttribute("class", "orbit-tracks");
-  paths.setAttribute("viewBox", "0 0 100 100");
-  paths.setAttribute("preserveAspectRatio", "none");
-  paths.setAttribute("aria-hidden", "true");
-  for (const scale of [1, .66]) {
-    const ring = document.createElementNS(svgNS, "ellipse");
-    ring.setAttribute("cx", geometry.cx);
-    ring.setAttribute("cy", geometry.cy);
-    ring.setAttribute("rx", geometry.rx * scale);
-    ring.setAttribute("ry", geometry.ry * scale);
-    ring.setAttribute("vector-effect", "non-scaling-stroke");
-    if (scale < 1) ring.setAttribute("class", "inner-track");
-    paths.append(ring);
-  }
-  scene.append(paths);
-
-  function body(note, x, y, hint) {
-    const isPlanet = note === topic;
-    const button = el("button", "", isPlanet ? "orbit-body orbit-planet" : "orbit-body orbit-moon");
-    button.type = "button";
-    button.style.setProperty("--x", x + "%");
-    button.style.setProperty("--y", y + "%");
-    const slug = isPlanet ? null : partSlug(note);
-    if (slug) button.dataset.part = slug;
-    if (Math.abs(x - geometry.cx) < .01) button.classList.add("orbit-pole");
-    const face = el("span", "", "orbit-face");
-    face.append(focusMark(note));
-    const visibleName = isPlanet ? (topic.label || topic.title) : note.title;
-    button.append(face, el("span", visibleName, "orbit-name"));
-    if (hint) button.append(el("span", hint, "orbit-hint"));
-    if (isPlanet) button.setAttribute("aria-label", topic.title);
-    button.onclick = event => {
-      if (!event.defaultPrevented) showTopic(topic.id, slug);
-    };
-    scene.append(button);
-  }
-
-  body(topic, geometry.cx, geometry.cy);
-  let branch;
-  parts.forEach((part, i) => {
-    const angles = anglesByCount[parts.length];
-    const angle = (angles ? angles[i] : -90 + i * 360 / parts.length) * Math.PI / 180;
-    let hint = "";
-    if (topic.id === "limitmethods") {
-      if (part.branch) branch = part.branch;
-      hint = branch;
-    } else if (topic.id === "rates") {
-      hint = i < 3 ? "Step " + (i + 1) : "Supporting geometry";
-    } else if (topic.id === "sketch") {
-      hint = "Step " + (i + 1);
-    }
-    body(part, geometry.cx + Math.cos(angle) * geometry.rx,
-      geometry.cy + Math.sin(angle) * geometry.ry, hint);
+  const layer=d3.select("#subtopic-orbit");
+  layer.selectAll("*").remove();
+  layer.style("--accent",families[topic.family].color).attr("aria-label","Subtopics of "+topic.title);
+  layer.append("ellipse").attr("class","moon-track");
+  const angles=topic.parts.map((_,i)=>-Math.PI/2+2*Math.PI*i/topic.parts.length);
+  const moons=layer.selectAll("g").data(topic.parts).join("g").attr("class","map-moon")
+    .attr("role","button").attr("tabindex",0).attr("aria-label",d=>d.title)
+    .on("click",(e,d)=>{if(!e.defaultPrevented)showTopic(topic.id,partSlug(d));})
+    .on("keydown",(e,d)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();showTopic(topic.id,partSlug(d));}});
+  moons.append("title").text(d=>d.title);
+  moons.append("circle").attr("r",23).attr("fill","transparent");
+  moons.append("circle").attr("class","moon-disc").attr("r",15);
+  drawMark(moons,21);
+  moons.each(function(d) {
+    const label=d3.select(this).append("text").attr("text-anchor","middle").attr("y",29);
+    for(const [i,line] of labelLines(d.title,18).entries()) label.append("tspan").attr("x",0).attr("dy",i?"1.08em":"0").text(line);
   });
-  root.append(scene);
-  return root;
+  return {layer,moons,angles};
 }
