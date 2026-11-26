@@ -31,7 +31,7 @@
 .rr-self-check input, .rr-self-check textarea { width: 100%; box-sizing: border-box; font: inherit; color: inherit; background: var(--reading-bg,Canvas); border: 1px solid var(--reading-border); padding: .36em; }
 .rr-self-check [role=status]:empty { display: none; }
 
-.rr-help-box,.rr-help-popup {font-family: inherit; color:var(--reading-text,CanvasText); background:var(--reading-bg,Canvas); border:1px solid var(--reading-border,GrayText); border-radius:.35rem; box-sizing:border-box;}
+.rr-help-box,.rr-help-popup {font-family:var(--reading-font,Georgia,serif); color:var(--reading-text,CanvasText); background:var(--reading-bg,Canvas); border:1px solid var(--reading-border,GrayText); border-radius:.35rem; box-sizing:border-box;}
 .rr-help-box {position:fixed; inset:auto max(1rem,env(safe-area-inset-right)) max(.8rem,env(safe-area-inset-bottom)) auto; z-index:10; max-width:calc(100vw - 2rem); margin:0; font-size:1rem; line-height:1.4; box-shadow:0 2px 10px #0001;}
 .rr-help-box summary {cursor:pointer; padding:.48rem .85rem; font-weight:600;}
 .rr-help-box[open] {width:23rem;}
@@ -46,6 +46,8 @@
 .rr-help-popup::backdrop {background:rgb(0 0 0 / .34);}
 .rr-help-popup header {display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:0 0 .9rem; padding:0; border:0;}
 .rr-help-popup h2 {font-family:inherit; font-size:1.24em; font-weight:600; line-height:1.25; margin:0;}
+.rr-help-popup h2:focus {outline:none;}
+body:has(.rr-help-popup[open]) .rr-help-box {visibility:hidden;}
 .rr-help-popup header button {font-size:.86em;}
 .rr-asked {font-style:italic; margin:.2em 0 .65em;}
 .rr-help-answer p {margin:.45em 0;}

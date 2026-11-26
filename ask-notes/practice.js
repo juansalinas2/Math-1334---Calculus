@@ -151,7 +151,7 @@
     popup.className = "rr-help-popup";
     popup.setAttribute("aria-labelledby", "rr-answer-title");
     const bar = element("header");
-    const title = element("h2", "Help with related rates");
+    const title = element("h2", "From the notes");
     title.id = "rr-answer-title";
     title.tabIndex = -1;
     const close = element("button", "Close");
@@ -236,7 +236,8 @@
 
     function show(question, context) {
       const q = normalized(question);
-      const key = chooseReading(q, context);
+      const definition = /what (?:are|is) (?:a |the )?related.?rates?/.test(q);
+      const key = definition ? "the-three-steps" : chooseReading(q, context);
       const topic = topics.get(key);
       const item = checks[key];
       activeTopic = key;
@@ -245,7 +246,7 @@
       const general = topics.get("the-three-steps");
       let target = topic.node;
       let supported = true;
-      if (/what (?:are|is) (?:a |the )?related.?rates?/.test(q)) {
+      if (definition) {
         excerpt(general.node.querySelectorAll(":scope > p")[1]);
       } else if (new RegExp(item.help.match, "i").test(q)) {
         const para = element("p");
@@ -267,10 +268,10 @@
         } else if (step && topic.steps[step - 1]) {
           target = topic.steps[step - 1];
           let part = target.closest("p").nextElementSibling;
-          const subpart = /part\s*\(?([ab])\)?\b/.exec(q)?.[1] ||
+          const subpart = /part\s*\(?([abc])\b/.exec(q)?.[1] ||
             (key === "ladder" && /negative|downward|slides? down/.test(q) ? "a" : "");
           while (part?.tagName === "P" && !part.querySelector(".rr-step-label")) {
-            const marker = /^\(([ab])\)/.exec(part.textContent.trim());
+            const marker = /^\(([abc])\)/.exec(part.textContent.trim());
             if (!marker || !subpart || marker[1] === subpart) excerpt(part);
             part = part.nextElementSibling;
           }
