@@ -159,6 +159,8 @@ dialog .board-head .quiet { min-height:36px; }
 #leaders li:first-child .place { color:var(--gold); }
 #room-panel { margin:auto; max-width:71rem; padding:clamp(1rem,2.4vw,1.65rem); }
 .room-top { align-items:start; flex-wrap:wrap; }
+#room-picker { display:flex; align-items:center; gap:.5rem; }
+#room-character { width:auto; margin:0; }
 .room-top p { margin:.25rem 0; }
 .room-ticket { display:grid; border-inline-start:2px solid var(--strong-line); padding-inline:.75rem .1rem; line-height:1.25; }
 .room-ticket span { font-size:.8rem; color:var(--muted); }

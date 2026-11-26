@@ -66,10 +66,11 @@
     return '<svg class="runner-portrait" data-headpiece="'+piece+'" xmlns="http://www.w3.org/2000/svg" viewBox="'+viewBox+'" width="44" height="40" aria-hidden="true" focusable="false"><g stroke="#243740" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2">'+a.head+relaxedFace+gearArt[piece]+'</g></svg>';
   }
   let cleared = 0, total = 0, camera = 0, active = null, frameId = 0;
+  let landedAt = null, awaitingAnswer=false;
   let blocked = [], aiming = -1;
   let difficulty = "medium";
   let celebrating = false;
-  let compact = false, frameWidth = 600, frameLeft = 0;
+  let frameWidth = 600, frameLeft = 0;
   scene.classList.add("runner-scene");
   scene.setAttribute("viewBox", "0 0 600 210");
   scene.innerHTML = `
@@ -275,7 +276,7 @@
     if(celebrating?.epic && equippedCrown!==(value===true))celebrating.gearChanged=true;
     equippedCrown=value===true;
     showLocalGear();
-    if(!total) set(scene,"aria-label",avatars[localCharacter].name+(equippedCrown?" wears the Sun Crown at the starting flag.":" waits at the starting flag."));
+    if(awaitingAnswer) describeStage();
   }
   function setCharacter(value) {
     const id=avatarId(value);
@@ -283,7 +284,7 @@
     get("face-shape").innerHTML=avatars[id].head;
     get("outfit").innerHTML=avatars[id].coat;
     set(hero,"data-character",id);
-    if(!total) set(scene,"aria-label",avatars[id].name+(equippedCrown?" wears the Sun Crown at the starting flag.":" waits at the starting flag."));
+    if(awaitingAnswer) describeStage();
   }
   function ghostSprite(r) {
     const a=avatars[r.character];
@@ -397,18 +398,22 @@
     tickRivals(now);
   }
 
-  const sunX = () => Math.round(frameLeft+frameWidth*(compact ? .838 : .823));
+  const sunX = () => Math.round(frameLeft+frameWidth*(.838-.015*clamp((frameWidth-408)/192)));
   function fitScene(size) {
     if (!size) return;
     const nextCompact = size < 530;
-    const heightLimit = Math.max(138,Math.min(size>=1400 ? 410 : 315,(window.innerHeight || 900)*(size>=1400 ? .39 : .32)));
-    const nextWidth = nextCompact ? 408 : Math.max(600,Math.round(size*210/heightLimit));
+    // A scrollbar or a longer question can change the width by only a few
+    // pixels. Blend both zoom ranges so crossing a breakpoint cannot cut away.
+    const wide=ease(clamp((size-1200)/240));
+    const heightLimit=Math.max(138,Math.min(315+95*wide,(window.innerHeight||900)*(.32+.07*wide)));
+    const fullWidth=Math.max(600,size*210/heightLimit);
+    const nextWidth=Math.round(408+(fullWidth-408)*ease(clamp((size-430)/180)));
     if (nextWidth === frameWidth) return;
-    compact = nextCompact; frameWidth = nextWidth;
+    frameWidth = nextWidth;
     // Show more terrain on both sides; keep the runner in the left third.
     frameLeft = -Math.round(Math.max(0,frameWidth-600)*.32);
     set(scene,"viewBox",`${frameLeft} 0 ${frameWidth} 210`);
-    set(scene,"data-frame",compact ? "close" : frameWidth>600 ? "panorama" : "wide");
+    set(scene,"data-frame",nextCompact ? "close" : frameWidth>600 ? "panorama" : "wide");
     transform(sun,`translate(${sunX()} 53)`);
     transform(get("daylight"),`translate(${sunX()-34} 46)`);
     backdrop(); courseWeather(); setTerrain(); cameraAt(camera);
@@ -422,22 +427,30 @@
     new IntersectionObserver(([entry])=>set(scene,"data-offscreen",entry.isIntersecting ? "no" : "yes")).observe(scene);
   }
 
-  let weatherKey = "";
+  let weatherKey = "", weatherDifficulty="";
   function courseWeather() {
     const progress = courseProgress(cleared);
     const intensity = progress >= .82 ? 3 : progress >= .52 ? 2 : progress >= .26 ? 1 : 0;
     set(scene,"data-intensity",intensity);
-    const key = difficulty + intensity + ":" + frameWidth;
+    const key = difficulty + ":" + frameWidth;
     if (key === weatherKey) return;
     weatherKey = key;
     const volcanic = difficulty === "hard" || difficulty === "insane";
     const objects = [];
-    const count = Math.ceil(((difficulty === "insane" ? 4 : 2) + 2*intensity)*Math.max(1,frameWidth/600));
+    const density=Math.max(1,frameWidth/600), base=difficulty==="insane"?4:2;
+    const count = Math.ceil((base+6)*density);
+    const reposition=weatherDifficulty===difficulty && weather.children.length===count;
+    weatherDifficulty=difficulty;
     for (let i=0; i<count; i++) {
       const x = frameLeft+44+(i*137+i*i*11)%(frameWidth-80), y = 21+i*37%80;
+      const tier = Math.max(0,Math.floor((i/density-base)/2)+1);
+      if(reposition){
+        transform(weather.children[i],`translate(${x} ${y})`);
+        set(weather.children[i],"data-weather-tier",tier);continue;
+      }
       let symbol, drift, scale;
       if (volcanic) {
-        const meteor = i%3===1 && intensity>0;
+        const meteor = i>=base && i%3===1;
         symbol = meteor ? "run-meteor" : "eruption-cinders";
         drift = meteor ? "sky-meteor" : "sky-embers";
         scale = .62;
@@ -447,15 +460,20 @@
         drift = "sky-wind";
         scale = .8;
       }
-      objects.push(`<g transform="translate(${x} ${y})"><g class="${drift}" style="--drift-delay:-${(i*31)%97/10}s"><use href="#${symbol}" transform="scale(${scale})"/></g></g>`);
+      objects.push(`<g data-weather-tier="${tier}" transform="translate(${x} ${y})"><g class="${drift}" style="--drift-delay:-${(i*31)%97/10}s"><use href="#${symbol}" transform="scale(${scale})"/></g></g>`);
     }
-    weather.innerHTML = objects.join("");
+    if(!reposition) weather.innerHTML = objects.join("");
   }
 
+  let skylineKey="";
   function backdrop() {
     // Two repeat distances give the skyline a slower drift than the graph-paper hills.
+    const first=Math.floor(frameLeft/510)-1,last=Math.ceil((frameLeft+frameWidth)/510)+1;
+    const key=difficulty+":"+first+":"+last;
+    if(skylineKey===key)return;
+    skylineKey=key;
     let horizon = "", hills = "";
-    for (let i = Math.floor(frameLeft/510)-1; i <= Math.ceil((frameLeft+frameWidth)/510)+1; i++) {
+    for (let i=first;i<=last;i++) {
       if (difficulty === "hard" || difficulty === "insane") {
         const cones = ["translate(-38 3)", "translate(270 18) scale(.95)"].map((place,j) => {
           const eruption = difficulty === "insane" ? `<g transform="translate(180 47)" class="crater-vent vent-${j}"><use class="lava-jet" href="#eruption-jet"/><use class="lava-cinders" href="#eruption-cinders"/></g>` : "";
@@ -495,9 +513,17 @@
       <path d="M1-48c10-4 16 6 31 0l-2 16c-12 6-18-5-30-1z" fill="${finish ? 'url(#run-checks)' : 'var(--r-scarf)'}" stroke="var(--r-ink)" stroke-width="1.6"/>
       ${finish ? '' : '<path d="m8-40 3 2 5-4" class="runner-pencil"/>'}</g>`;
   }
+  const tiles=new Map();
   function setTerrain() {
-    let tiles = "";
-    for (let i = cleared+Math.floor(frameLeft/stride)-1; i <= cleared+Math.ceil((frameLeft+frameWidth)/stride)+1; i++) {
+    const first=cleared+Math.floor(frameLeft/stride)-1;
+    const last=cleared+Math.ceil((frameLeft+frameWidth)/stride)+1;
+    for(const [i,tile] of tiles){
+      if(i<first || i>last){tile.remove();tiles.delete(i);}
+    }
+    // Keep the live nodes for visible platforms. Dropping a tile outside the
+    // camera and adding one ahead never restarts nearby stars, flames or debris.
+    for (let i=first;i<=last;i++) {
+      if(tiles.has(i)) continue;
       const solid = total > 0 && i >= total;
       const left = -41, right = solid ? stride-40 : 182;
       const terrain = `M${left} ${floor}H${right}l-3 11 3 9-6 10-2 12Q${right-21} 189 ${right-41} 194T${right-98} 195 ${left+68} 193 ${left+6} 197l-4-15-3-9 2-10z`;
@@ -510,7 +536,9 @@
       const lateGap = !solid && courseProgress(i)>=.52;
       const splinters = lateGap ? `<g transform="translate(193 165)" fill="${volcanic?"#ffe197":"#ac9378"}" stroke="${volcanic?"#d55535":"#756856"}">
         <g class="rift-debris" style="--rift-delay:${-(Math.abs(i)%4)*.6}s"><path d="m0 0 5-3 2 5-5 2zm14 6 4-3 3 3-5 2zm21-12 3-2 2 3-3 1z"/></g></g>` : "";
-      tiles += `<g transform="translate(${i*stride})"><path d="${terrain}" class="runner-ground"/>
+      const tile=document.createElementNS("http://www.w3.org/2000/svg","g");
+      transform(tile,`translate(${i*stride})`);
+      tile.innerHTML = `<path d="${terrain}" class="runner-ground"/>
         <path d="m${left+1} 161q57 2 111 0t${right-left-112} 0" class="runner-pencil"/>
         <path d="M${left+5} 172h${right-left-12}l-4 13q-38-8-72-1t-65 0-61 3z" fill="url(#run-hatch)" opacity=".85"/>
         <path d="m-26 184 9 2 11-3m83-12 10 1 5-2m48 16 7-3" class="runner-contour"/>
@@ -519,12 +547,12 @@
         ${volcanic && !solid ? '<path d="M180 190q12-7 30-2t39-1v23h-69z" fill="#ffa346"/><path d="M184 192q10-5 24-2t30 0" fill="none" stroke="#ffe49a" stroke-width="2"/><g transform="translate(218 190) scale(.68)"><use class="rift-flame" href="#run-flame"/></g>' : ''}
         ${splinters}
         ${i>=0 && !solid ? obstacle(i) : ''}
-        ${i>=0 && !solid ? '<g data-star-at="'+i+'" transform="translate(216 74)"><use href="#run-star"/></g>' : ''}
+        ${i>=0 && !solid ? '<g data-star-at="'+i+'" transform="translate(216 74)"'+(i<cleared?' data-runner-hidden=""':'')+'><use href="#run-star"/></g>' : ''}
         ${i>=0 && (i===0 || (i>0 && i%3===0 && !solid) || i===total) ? flag(i===total && total>0 ? 109 : 36,i===total && total>0) : ''}
         ${i===total && total>0 ? '<path d="M109 108q45 18 94-4" fill="none" class="runner-pole"/><path d="m120 112 9 2-5 9z" fill="var(--r-scarf)"/><path d="m139 115 10 0-5 10z" fill="var(--r-sun)"/><path d="m159 114 10-1-4 11z" fill="var(--r-hill)"/><path d="m180 110 9-2-2 11z" fill="var(--r-scarf)"/><path d="M204 104v51" class="runner-pole"/>' : ''}
-      </g>`;
+      `;
+      world.appendChild(tile);tiles.set(i,tile);
     }
-    world.innerHTML = tiles;
   }
   function cameraAt(distance) {
     camera = distance;
@@ -561,28 +589,38 @@
   function courseProgress(index) {
     return total>1 ? clamp(index/(Number.isFinite(total)?total-1:20)) : 0;
   }
-  function stage(done, length) {
-    if (frameId) cancelAnimationFrame(frameId);
-    active=null; celebrating=false; frameId=0; cleared=Math.max(0,Math.trunc(done||0)); total=Math.max(0,Math.trunc(length||0));
-    set(scene,"data-phase",total ? "ready" : "home");
-    set(scene,"data-impact","off");
-    set(scene,"data-finale","none");
-    hide(flyingCrown,true);
-    showLocalGear();hide(glare,false);hide(surprise,true);hide(sunSmile,true);
-    for(const r of rivals) costume(r.worn,r.crowned,r.difficulty);
-    for(const piece of [lastMeteor,parry,podium,solarHalo,coronation,landingWave]) hide(piece,true);
-    set(afterglow,"opacity",0); set(scene,"data-dance","off");
-    festival.replaceChildren();
-    set(eyes,"d","m5-50 .3 1.3m6-1.7 .2 1.3");
-    set(mouth,"fill","none");
-    blocked=[]; aim(-1);
-    set(scene,"data-chapter",Math.min(2,Math.floor(courseProgress(cleared)*3)));
+  function describeStage() {
     const outfit=equippedCrown?" wearing the Sun Crown":difficulty==="easy"?" in a chicken hat":"";
     const character=avatars[localCharacter].name+outfit;
     const backdropLabel=({hard:" on a volcanic course",insane:" beneath an angry sun and erupting volcanoes"})[difficulty]||" on the course";
     set(scene,"aria-label",total ? `${character}${backdropLabel}, ${cleared}${Number.isFinite(total)?" of "+total:""} hurdles cleared.` : character+" waits at the starting flag.");
+  }
+  function stage(done, length, reset=false) {
+    const next=Math.max(0,Math.trunc(done||0)), nextTotal=Math.max(0,Math.trunc(length||0));
+    blocked=[];aim(-1);
+    if(!reset && awaitingAnswer && !active && !celebrating && cleared===next && total===nextTotal) return;
+    const continuing=!reset && !celebrating && !active && landedAt===next && total===nextTotal;
+    cleared=next;total=nextTotal;landedAt=null;awaitingAnswer=true;
+    set(scene,"data-phase",total ? "ready" : "home");
+    if(!continuing){
+      if(frameId) cancelAnimationFrame(frameId);
+      active=null;celebrating=false;frameId=0;
+      world.replaceChildren();tiles.clear();
+      set(scene,"data-impact","off");
+      set(scene,"data-finale","none");
+      hide(flyingCrown,true);
+      showLocalGear();hide(glare,false);hide(surprise,true);hide(sunSmile,true);
+      for(const r of rivals) costume(r.worn,r.crowned,r.difficulty);
+      for(const piece of [lastMeteor,parry,podium,solarHalo,coronation,landingWave]) hide(piece,true);
+      set(afterglow,"opacity",0);set(scene,"data-dance","off");festival.replaceChildren();
+      set(eyes,"d","m5-50 .3 1.3m6-1.7 .2 1.3");set(mouth,"fill","none");
+      fx.replaceChildren();incident.replaceChildren();
+    }
+    set(scene,"data-chapter",Math.min(2,Math.floor(courseProgress(cleared)*3)));
+    describeStage();
     if(!total) setRivals([],0);
-    courseWeather(); setTerrain(); cameraAt(cleared*stride); fx.replaceChildren(); incident.replaceChildren(); pose(startX,floor);
+    courseWeather();setTerrain();
+    if(!continuing){cameraAt(cleared*stride);pose(startX,floor);}
   }
   // Build each scene once. The animation only moves existing SVG groups.
   const misses = {
@@ -758,6 +796,7 @@
   }
   function celebrate(epic=false) {
     if (active || celebrating || !total || cleared+1 < total) return;
+    awaitingAnswer=false;landedAt=null;
     const celebration = {epic:epic && difficulty==="insane",returning:equippedCrown,caught:false};
     celebrating=celebration;
     set(scene,"data-impact","off"); incident.replaceChildren();
@@ -792,15 +831,21 @@
     const {star}=active, smooth=ease(t);
     const distance=stride*smooth;
     const worldX=startX+cleared*stride+distance;
-    const scroll=stride*smooth - 37*Math.sin(Math.PI*t);
+    // The camera moves only forward. Both the camera and its lead reach
+    // zero velocity on the exact footfall shared with the following question.
+    const lead=28*Math.sin(Math.PI*smooth)**2;
+    const scroll=distance-lead;
     cameraAt(cleared*stride+scroll);
     const x = worldX-camera;
     // Take off before the torn edge and land on the next piece of graph paper.
     const airborne=clamp((distance-58)/148);
-    const height = Math.sin(Math.PI*airborne);
-    const pace = Math.sin(distance/stride*Math.PI*14)*(1-height);
+    const height = airborne===1 ? 0 : Math.sin(Math.PI*airborne);
+    const pace = Math.sin(smooth*Math.PI*8)*(1-height)*ease(clamp((stride-distance)/62));
+    const contact=clamp((distance-206)/45);
+    const compression=contact===1?0:Math.sin(Math.PI*contact);
     const y = floor-67*height-Math.abs(pace)*2;
-    pose(x,y,{swing:pace,lift:height,jump:height,angle:9*height,cheer:t===1});
+    pose(x,y,{swing:pace,lift:height,jump:height,angle:9*height+3*compression});
+    if(compression) transform(hero,`translate(${x} ${y}) scale(${1+.035*compression} ${1-.06*compression})`);
     if (distance>120) {
       if (!active.collected) { if (star) hide(star,true); active.collected=true; }
       const pop=clamp((distance-120)/51);
@@ -814,6 +859,7 @@
     drawFrame(1);
     const {hit,finish,hand}=active;
     active=null; frameId=0;
+    landedAt=hit?cleared+1:null;
     set(scene,"data-phase",hit ? "landed" : "missed");
     const missLabel=difficulty==="easy" && equippedCrown ? "Feathers scatter as the crowned runner bounces into a haystack." : misses[difficulty].label;
     set(scene,"aria-label",hit ? `Hurdle cleared. ${cleared+1}${Number.isFinite(total)?" of "+total:""} complete.` : (hand ? "Time expired. A giant hand flicks the runner off the platform. " : "")+missLabel);
@@ -821,6 +867,7 @@
   }
   function travel(index, hit, finish, timeout=false) {
     if (active || celebrating || !total) return;
+    awaitingAnswer=false;landedAt=null;
     aim(-1);
     set(scene,"data-phase",hit ? "jump" : "miss");
     const miss = misses[difficulty];
@@ -857,9 +904,9 @@
     if (value === difficulty || !Object.hasOwn(misses,value)) return;
     difficulty = value;
     set(scene,"data-difficulty",value);
-    backdrop();stage(cleared,total);
+    backdrop();stage(cleared,total,true);
   }
-  window.junctionRunner = {reset:length=>stage(0,length),home:()=>stage(0,0),stage,travel,aim,close,celebrate,difficulty:setDifficulty,
+  window.junctionRunner = {reset:length=>stage(0,length,true),home:()=>stage(0,0,true),stage,travel,aim,close,celebrate,difficulty:setDifficulty,
     characters,portrait,crownIcon,equipCrown,character:setCharacter,rivals:setRivals};
   set(scene,"data-difficulty",difficulty);
   stage(0,0);

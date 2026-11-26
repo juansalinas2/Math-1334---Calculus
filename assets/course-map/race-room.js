@@ -1,12 +1,15 @@
 // Ready rooms share a server timestamp, course seed and answer order.
 // The public code and numbered seats are separate from each player's private token.
-window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begin,depart,courseLabel,runner,character,crowned}) {
+window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begin,depart,courseLabel,runner,character,selectCharacter,crowned}) {
   const alphabet="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   let member=board.token(16),resumeCode="";
   try{if(window.performance?.getEntriesByType("navigation")[0]?.type==="reload")resumeCode=sessionStorage.getItem("critical-race-code")||"";}catch{}
   let current=null,seat=0,generation=0,poll=0,countdown=0,lastPulse=0,offset=0,startedRound=0;
   let actionPending=false,pendingProgress=null,writing=false,inviteCrown=null;
   const hub=el("race-hub");
+  const roomCharacter=el("room-character");
+  roomCharacter.replaceChildren(...runner.characters.map(a=>new Option(a.name,a.id)));
+  roomCharacter.onchange=()=>change("character",{character:roomCharacter.value});
   function newCode() {
     return Array.from(crypto.getRandomValues(new Uint8Array(6)),n=>alphabet[n%alphabet.length]).join("");
   }
@@ -42,6 +45,9 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
     el("room-course").textContent=courseLabel(r)+" · "+(r.length?r.length+" jumps":"Endless");
     el("room-name").textContent="You’re Runner "+seat+(r.host===seat?" · Host":"");
     el("room-code").textContent=r.code;
+    el("room-picker").hidden=Boolean(r.startAt);
+    roomCharacter.disabled=actionPending || Boolean(r.startAt);
+    if(me && !actionPending)roomCharacter.value=me.character;
     const toggle=el("room-ready"),launch=el("room-launch");
     toggle.hidden=Boolean(r.startAt);toggle.disabled=actionPending;
     toggle.textContent=me?.ready?"Ready ✓":"I’m ready";toggle.setAttribute("aria-pressed",String(!!me?.ready));
@@ -64,6 +70,8 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
     if(!current||reply.room.code!==current.code || reply.room.revision<current.revision)return;
     const newRound=reply.room.round!==current.round;
     current=reply.room;
+    const myRunner=current.racers.find(s=>s.seat===seat)?.character;
+    if(myRunner && myRunner!==character())selectCharacter(myRunner);
     if(newRound){pendingProgress=null;startedRound=0;enter(current);}
     runner.rivals(current.startAt?current.racers.map(s=>({...s,difficulty:current.diff,crowned:wearsCrown(s,current)})):[],seat);
     // Use the server time at the midpoint of the request, including clients with skewed clocks.
@@ -147,7 +155,11 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
     actionPending=true;draw();
     try{
       const reply=await call(action,{code:current.code,round:current.round,...fields});
-      if(stamp===generation){actionPending=false;apply(reply,sent);}
+      if(stamp===generation){
+        actionPending=false;
+        if(reply.room.revision<current.revision)draw();
+        else apply(reply,sent);
+      }
     }catch(error){if(stamp===generation){actionPending=false;draw();el("room-status").textContent=error.message;}}
   }
   async function flushProgress(){

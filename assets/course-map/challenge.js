@@ -68,7 +68,7 @@
   const edition=document.body.dataset.edition;
   const timed=()=>el("clock-mode").value!=="practice";
   const difficultyName=id=>({easy:"Easy",medium:"Normal",hard:"Hard",insane:"Insane"})[id];
-  let historyItems=[], times=[], bonus=null, extra="", bonusActive=false;
+  let historyItems=[], times=[], bonus=null, extra="", bonusActive=false, previousQuestion=null;
   let timerId=0, deadline=0, turn=0;
   let personalBest=Number(board.stored("best-streak"))||0;
   const encodeSeconds = n => n.toString(36).padStart(2,"0");
@@ -88,7 +88,7 @@
   const currentQuestion=()=>bonusActive ? bonus : route[run.cleared-offset];
   const currentLevel=()=>bonusActive ? rules.nextLevel(diff()) : diff();
   const jumpIndex=()=>run.cleared;
-  function stopClock() {clearTimeout(timerId);timerId=0;deadline=0;el("clock").hidden=true;}
+  function stopClock(keepVisible=false) {clearTimeout(timerId);timerId=0;deadline=0;if(!keepVisible)el("clock").hidden=true;}
   function remaining() {return deadline ? Math.max(0,(deadline-Date.now())/1000) : 0;}
   function startClock() {
     stopClock();
@@ -204,7 +204,7 @@
     el("length").value=r.length?String(r.length):"endless";el("clock-mode").value="timed";el("difficulty").value=r.diff;el("order").value=r.order;
     changeCourse(named?r.key:"lecture");
   }
-  const race=window.createCriticalRace({el,board,edition,runner,character:()=>character,crowned:()=>crowned,
+  const race=window.createCriticalRace({el,board,edition,runner,character:()=>character,selectCharacter,crowned:()=>crowned,
     setup:()=>({...settings(),seed:randomSeed()}),
     allowed:r=>r.diff!=="insane"||unlocked,
     courseLabel:r=>(names[r.key]||sections[r.key.slice(1)]||"Lecture")+" · "+difficultyName(r.diff),
@@ -262,11 +262,15 @@
     if(q.answer)el("number-answer").focus({preventScroll:true});
     startClock();
   }
+  el("previous").addEventListener("toggle",()=>{
+    const content=el("previous-content");
+    if(el("previous").open && previousQuestion && !content.firstChild)content.append(solution(previousQuestion));
+  });
   function start() {
     if(diff()==="insane"&&!unlocked)return;
     seed=room?.seed ?? pace?.seed ?? randomSeed();
     cycle=0;offset=0;banked=false;route=rules.makeRoute(lectures,scope(),seed,diff(),order(),routeLength());if(!route.length)return;
-    historyItems=[];el("recap").open=false;el("prize-panel").hidden=true;el("insane-start").hidden=true;
+    historyItems=[];previousQuestion=null;el("recap").open=false;el("prize-panel").hidden=true;el("insane-start").hidden=true;
     stopClock();run=rules.newRun(diff());steps=[];times=[];extra="";bonusActive=false;
     bonus=rules.bonusQuestion(lectures,scope(),seed,diff());el("bonus-offer").hidden=true;applyLevel(diff());
     saveTicket++;
@@ -376,7 +380,8 @@
     const landing=bonusActive?{hit}:rules.land(run,seed,goal(),index,assisted,left);
     if(!landing)return;
     const isBonus=bonusActive, ticket=turn, points=rules.earned(currentLevel(),left);
-    state="moving";el("bank-run").hidden=true;stopClock();
+    state="moving";el("bank-run").hidden=true;stopClock(true);
+    if(timed())el("seconds").textContent=left;
     for(const b of el("choices").children)b.disabled=true;
     if(q.choices)el("choices").children[index].classList.add("taken");
     el("number-answer").disabled=true;el("signal").hidden=true;
@@ -407,7 +412,7 @@
         el("verdict").focus({preventScroll:true});return;
       }
       if(run.ended){finish(q,hit);if(timeout)el("verdict").textContent="Time’s up";return;}
-      el("previous-content").replaceChildren(solution(q));el("previous").hidden=false;ask();
+      previousQuestion=q;el("previous-content").replaceChildren();el("previous").hidden=false;ask();
     },timeout);
   }
   el("numeric").onsubmit=e=>{e.preventDefault();submit(null);};
