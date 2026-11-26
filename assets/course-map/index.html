@@ -132,9 +132,11 @@
             <summary aria-label="Node sizes">Sizes</summary>
             <div class="map-size-menu">
               <label for="topic-size">Concepts</label>
-              <select id="topic-size"><option value="1">Standard</option><option value="1.25">Large</option><option value="1.5">Extra large</option></select>
+              <span id="topic-size-value" aria-hidden="true">100%</span>
+              <input id="topic-size" type="range" min="100" max="250" step="5" value="100" aria-valuetext="100%">
               <label for="subtopic-size">Subtopics</label>
-              <select id="subtopic-size"><option value="1">Standard</option><option value="1.25">Large</option><option value="1.5">Extra large</option></select>
+              <span id="subtopic-size-value" aria-hidden="true">100%</span>
+              <input id="subtopic-size" type="range" min="100" max="250" step="5" value="100" aria-valuetext="100%">
             </div>
           </details>
           <button id="exit-path" hidden title="Exit path (Esc)">Exit path</button>

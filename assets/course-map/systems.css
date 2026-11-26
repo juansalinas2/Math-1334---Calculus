@@ -5,8 +5,18 @@
 #map-sizes > summary::-webkit-details-marker { display:none; }
 #map-sizes[open] > summary, #map-sizes > summary:hover { background:var(--surface-hover); }
 .controls:has(#map-sizes[open]) { z-index:3; }
-.map-size-menu { position:absolute; top:calc(100% + 5px); left:0; display:grid; grid-template-columns:auto 1fr; align-items:center; gap:.45rem .9rem; width:max-content; max-width:calc(100vw - 16px); background:var(--surface-raised); border:1px solid var(--strong-line); border-radius:8px; padding:.65rem .75rem; box-shadow:0 5px 14px #0002; color:var(--ink); font:600 15px var(--ui); }
-.map-size-menu select { min-height:44px; border:1px solid var(--strong-line); border-radius:4px; padding:0 .3rem; color:var(--ink); background:var(--surface); font:normal 16px var(--ui); }
+.map-size-menu {
+  position:absolute; top:calc(100% + 5px); left:0; display:grid;
+  grid-template-columns:1fr auto; align-items:center; width:min(18rem, calc(100vw - 24px));
+  padding:.8rem 1rem .4rem; background:var(--surface-raised); color:var(--ink);
+  border:1px solid var(--strong-line); border-radius:8px; box-shadow:0 5px 14px #0002;
+  font:600 1rem var(--ui);
+}
+.map-size-menu span { font-variant-numeric:tabular-nums; }
+.map-size-menu input[type="range"] {
+  grid-column:1 / -1; width:100%; height:44px; margin:0;
+  accent-color:var(--link); cursor:pointer;
+}
 @media(max-width:510px) { .stage:has(#exit-path:not([hidden])) #map-level {position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%);} }
 #topic-list .game-entry {float:right;}
 .lecture-practice {margin:1em 0; font:normal 1rem/1.5 var(--ui);}
@@ -122,15 +132,18 @@
 .list-group > summary small { margin-left:auto; color:var(--muted); font:500 13px var(--ui); }
 .list-topic-row { margin:0 4px 2px 15px; }
 .list-topic, .list-subtopics button { width:100%; min-height:44px; border:0; border-radius:5px; text-align:left; color:var(--ink); background:transparent; font:550 15px/1.35 var(--ui); }
-.list-topic { display:flex; align-items:center; gap:10px; padding:4px 9px; }
+.list-topic { display:flex; align-items:center; gap:10px; padding:4px 9px; font-size:calc(15px * var(--topic-size, 1)); }
+.list-topic span, .list-subtopics button { overflow-wrap:anywhere; }
 .list-topic::after { content:"+"; margin-left:auto; padding:0 6px; color:var(--muted); }
 .list-topic[aria-expanded="true"]::after { content:"−"; }
-.list-topic .focus-mark { width:29px; height:29px; }
+.list-topic .focus-mark { width:1.93em; height:1.93em; flex:none; }
 .list-subtopics { margin:2px 0 9px 23px; border-left:2px solid var(--accent); padding-left:12px; }
-.list-subtopics button { padding:7px 11px; font-weight:450; }
+.list-subtopics button { padding:7px 11px; font-size:calc(15px * var(--subtopic-size, 1)); font-weight:450; }
 #topic-list button:hover, #topic-list button[aria-current] { background:var(--surface-hover); }
 #topic-list button[aria-current] { font-weight:700; }
-body[data-presentation="list"] .stage > :not(#topic-list) { visibility:hidden; }
+body[data-presentation="list"] .stage > :not(#topic-list, .controls) { visibility:hidden; }
+body[data-presentation="list"] .controls > :not(#map-sizes) { display:none; }
+body[data-presentation="list"] #topic-list { position:relative; grid-area:2 / 1 / -1; }
 body[data-presentation="list"] .stage { background:var(--paper); }
 body[data-presentation="list"] #detail h3:has(+ .part-links), body[data-presentation="list"] #detail .part-links { display:none; }
 @media(max-width:600px) {

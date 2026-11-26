@@ -3,21 +3,26 @@ const mapSizes = {topic:1, subtopic:1};
 (() => {
   const key = "calculus-map-node-sizes";
   const menu = document.getElementById("map-sizes");
-  const choices = [1, 1.25, 1.5];
   let saved = {};
   try { saved = JSON.parse(localStorage.getItem(key)) || {}; } catch {}
   for (const kind of ["topic", "subtopic"]) {
-    const select = document.getElementById(kind + "-size");
-    function apply(value) {
-      mapSizes[kind] = choices.includes(value) ? value : 1;
-      select.value = String(mapSizes[kind]);
-      document.documentElement.style.setProperty("--" + kind + "-size", select.value);
+    const slider = document.getElementById(kind + "-size");
+    const valueLabel = document.getElementById(kind + "-size-value");
+    if (Number.isFinite(saved[kind])) slider.value = String(Math.round(saved[kind] * 100));
+    function apply() {
+      mapSizes[kind] = slider.valueAsNumber / 100;
+      const percent = slider.value + "%";
+      valueLabel.textContent = percent;
+      slider.setAttribute("aria-valuetext", percent);
+      document.documentElement.style.setProperty("--" + kind + "-size", String(mapSizes[kind]));
     }
-    apply(saved[kind]);
-    select.addEventListener("change", () => {
-      apply(Number(select.value));
+    apply();
+    slider.addEventListener("input", () => {
+      apply();
+      if (drawFrame === null) drawFrame = requestAnimationFrame(drawCamera);
+    });
+    slider.addEventListener("change", () => {
       try { localStorage.setItem(key, JSON.stringify(mapSizes)); } catch {}
-      drawCamera();
     });
   }
   function closeOutside(event) {
