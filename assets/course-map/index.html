@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f9f8f2">
+    <title>Calculus concept map · MATH 1334</title>
+    <link rel="stylesheet" href="./map.css">
+    <script defer src="./vendor/d3.v7.min.js"></script>
+    <script defer src="./topics.js"></script>
+    <script defer src="./graph.js"></script>
+    <script defer src="./map.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="mainbar">
+        <div class="identity">
+          <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+            <rect width="48" height="48" rx="12" fill="#193b3c" />
+            <path
+              d="M6 33h9l13-18h14M7 16h8l13 18h13"
+              fill="none"
+              stroke="#ecd99a"
+              stroke-width="3"
+            />
+            <circle
+              cx="22"
+              cy="24"
+              r="4"
+              fill="#193b3c"
+              stroke="white"
+              stroke-width="2"
+            />
+          </svg>
+          <div>
+            <a class="back" href="../supplements/limits-map.html"
+            >← MATH 1334 course notes</a><h1>Calculus concept map</h1>
+          </div>
+        </div>
+        <div class="searchbox">
+          <label for="lookup"><span aria-hidden="true">⌕</span><span class="sr"
+            >Find a concept</span></label><input
+            id="lookup"
+            type="search"
+            placeholder="Find a concept…"
+            autocomplete="off"
+            aria-controls="results"
+          ><div id="results" hidden></div>
+        </div>
+      </div>
+      <nav aria-label="Focus the map by topic">
+        <button class="family overview" data-family="all" aria-pressed="true">
+          Whole map
+        </button><span id="families"></span>
+      </nav>
+    </header>
+    <main>
+      <section class="stage" aria-label="Interactive calculus map">
+        <svg
+          id="canvas"
+          tabindex="0"
+          role="group"
+          aria-label="Course concepts. Drag to pan, or use arrow keys. Use plus and minus to zoom."
+        >
+          <g id="world">
+            <g id="rails"></g>
+            <g id="stops"></g>
+          </g>
+        </svg>
+        <div class="hint">
+          <span aria-hidden="true">✥</span> Drag to move <i>·</i> Scroll or
+          pinch to zoom <i>·</i> Select a concept
+        </div>
+        <div class="touch-hint" aria-hidden="true">
+          Drag to move · Pinch to zoom
+        </div>
+        <div class="controls" aria-label="Map controls">
+          <button id="out" aria-label="Zoom out" title="Zoom out">
+            −
+          </button><output id="zoom-level" aria-label="Zoom level"
+          >100%</output><button id="in" aria-label="Zoom in" title="Zoom in">
+            +
+          </button>
+          <button id="fit" title="Fit whole map" aria-label="Fit whole map">
+            Fit map
+          </button>
+        </div>
+      </section>
+      <aside id="detail" hidden aria-label="Selected concept">
+        <button id="close" aria-label="Close concept details">×</button>
+        <div id="detail-body"></div>
+      </aside>
+    </main>
+    <noscript><p>
+        This map needs JavaScript for zoom and navigation. <a
+          href="../supplements/limits-map.html"
+        >Read the concept guide.</a>
+      </p></noscript>
+  </body>
+</html>

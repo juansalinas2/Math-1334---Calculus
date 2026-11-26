@@ -18,7 +18,7 @@ shutil.copy2(site / style, site / 'site_libs/bootstrap/reading-theme.css')
 # New HTML must request the matching layout CSS, not an older cached version.
 layout_version = hashlib.sha256(Path('assets/reading-layout.css').read_bytes()).hexdigest()[:12]
 for page in site.rglob('*.html'):
-    if page == site / 'supplements/glossary.html':
+    if page in (site / 'supplements/glossary.html', site / 'map/index.html'):
         continue
     html = page.read_text()
     html = re.sub(r'\s*<script src="https://cdnjs.cloudflare.com/polyfill/[^\"]+"></script>', '', html)
@@ -28,3 +28,6 @@ for page in site.rglob('*.html'):
     page.write_text(html)
 # Preserve the old glossary URL without keeping a competing reference page.
 shutil.copy2('assets/glossary-redirect.html', site / 'supplements/glossary.html')
+
+# The full-page map has its own layout and is deployed alongside the book.
+shutil.copytree('assets/course-map', site / 'map', dirs_exist_ok=True)
