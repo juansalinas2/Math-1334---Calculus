@@ -1,35 +1,104 @@
 ---
 title: "# Calculus concept map (optional) {.unnumbered}"
 css: ../assets/chain-rule.css
-description: "Choose a method, see why it applies, and connect limits to derivatives and their applications."
+description: "See how the main ideas of differential calculus connect."
 ---
 
 ::: {.source-note}
-**Optional computational strategies · Through Section 3.9.** This guide suggests ways to organize your work; you do not need to follow a particular strategy. Choose a question for a method, a worked example, and links to the notes.
+**An optional guide to the big ideas.** Follow the arrows to see how concepts from the course fit together. Use the links below each map to return to the notes. On a narrow screen, scroll sideways to see each map.
 :::
 
 ```{=html}
 <style>
-@media (min-width: 651px) { .concept-map { aspect-ratio: 900 / 1070; } }
+.idea-map { margin: 1.2rem 0 .7rem; }
+.idea-map svg { width: 100%; height: auto; display: block; }
+.idea-map rect { fill: var(--reading-bg, #fff); stroke: var(--reading-border, #999); stroke-width: 1.5; }
+.idea-map path { fill: none; stroke: var(--reading-muted, #555); stroke-width: 1.6; }
+.idea-map .node-title { fill: var(--reading-text, #222); font: 600 17px system-ui, sans-serif; text-anchor: middle; }
+.idea-map .node-sub { fill: var(--reading-muted, #555); font: 13px system-ui, sans-serif; text-anchor: middle; }
+.idea-map .edge-label { fill: var(--reading-muted, #555); font: 13px system-ui, sans-serif; text-anchor: middle; paint-order: stroke; stroke: var(--reading-bg, #fff); stroke-width: 5px; stroke-linejoin: round; }
+.map-relationships { padding-left: 1.3rem; }
+.map-relationships li { margin: .35rem 0; }
+.map-guide-details { margin: 2rem 0; border-top: 1px solid var(--reading-border, #aaa); padding-top: 1rem; }
+.map-guide-details summary { cursor: pointer; font-weight: 600; }
+.map-guide-details .concept-guides { margin-top: 1rem; }
+@media (max-width: 650px) { .idea-map { overflow-x: auto; } .idea-map svg { min-width: 650px; } }
+@media print { .idea-map { break-inside: avoid; } .map-guide-details { display: none; } }
 </style>
-<div class="concept-workbench">
-<div class="concept-choices" role="group" aria-label="What are you trying to find?">
-  <button type="button" data-route="derivative" aria-controls="route-derivative">Find a derivative</button>
-  <button type="button" data-route="chain" aria-controls="route-chain">Differentiate a composition</button>
-  <button type="button" data-route="inverse" aria-controls="route-inverse">Differentiate an inverse</button>
-  <button type="button" data-route="implicit" aria-controls="route-implicit">Differentiate an equation</button>
-  <button type="button" data-route="exponential" aria-controls="route-exponential">Differentiate exponentials and logs</button>
-  <button type="button" data-route="logarithmic" aria-controls="route-logarithmic">Differentiate a variable power</button>
-  <button type="button" data-route="motion" aria-controls="route-motion">Describe motion</button>
-  <button type="button" data-route="tangent" aria-controls="route-tangent">Find a tangent line</button>
-  <button type="button" data-route="limit" aria-controls="route-limit">Find a limit</button>
-  <button type="button" data-route="continuity" aria-controls="route-continuity">Check continuity</button>
-  <button type="button" data-route="existence" aria-controls="route-existence">Show a value is reached</button>
-</div>
-<p class="concept-status visually-hidden" role="status" aria-live="polite"></p>
-<p class="concept-jump"><a href="#connections">See how the concepts connect ↓</a></p>
-<div class="concept-guides">
 ```
+
+## 1. Limits, continuity, and the derivative
+
+How do we describe a function near a point, and how does that lead to a derivative?
+
+```{=html}
+<div class="idea-map" aria-hidden="true"><svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="arrow420" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" style="fill: var(--reading-muted, #555); stroke: none"/></marker></defs>
+<path d="M310 80 L170 170" marker-end="url(#arrow420)"/><text class="edge-label" x="198" y="118">defines via a difference quotient</text>
+<path d="M410 80 L550 170" marker-end="url(#arrow420)"/><text class="edge-label" x="535" y="118">compares with the point value</text>
+<path d="M220 205 L500 205" marker-end="url(#arrow420)"/><text class="edge-label" x="360" y="194">differentiability implies continuity</text>
+<path d="M600 240 L600 325" marker-end="url(#arrow420)"/><text class="edge-label" x="600" y="284">on a closed interval, enables</text>
+<rect x="260" y="10" width="200" height="70" rx="5"/><text class="node-title" x="360" y="39">Limit</text><text class="node-sub" x="360" y="61">behavior near a point</text>
+<rect x="20" y="170" width="200" height="70" rx="5"/><text class="node-title" x="120" y="199">Derivative</text><text class="node-sub" x="120" y="221">instantaneous rate</text>
+<rect x="500" y="170" width="200" height="70" rx="5"/><text class="node-title" x="600" y="199">Continuity</text><text class="node-sub" x="600" y="221">limit equals function value</text>
+<rect x="500" y="325" width="200" height="70" rx="5"/><text class="node-title" x="600" y="354">Intermediate Value</text><text class="node-sub" x="600" y="376">Theorem: values between</text>
+</svg></div>
+```
+- A [limit](../lectures/02-limits.qmd) of difference quotients defines the [derivative](../lectures/09-derivative-at-a-point.qmd).
+- [Continuity](../lectures/06-continuity.qmd) at a point means the limit equals the function value. Differentiability implies continuity; the converse need not hold.
+- Continuity on a closed interval allows us to apply the [Intermediate Value Theorem](../lectures/07-intermediate-value.qmd).
+
+## 2. Computing and interpreting derivatives
+
+The derivative has several meanings. The rules give us ways to calculate it.
+
+```{=html}
+<div class="idea-map" aria-hidden="true"><svg viewBox="0 0 720 410" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="arrow410" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" style="fill: var(--reading-muted, #555); stroke: none"/></marker></defs>
+<path d="M310 80 L170 160" marker-end="url(#arrow410)"/><text class="edge-label" x="185" y="117">gives the slope of a</text>
+<path d="M360 80 L360 160" marker-end="url(#arrow410)"/><text class="edge-label" x="360" y="120">describes</text>
+<path d="M410 80 L550 160" marker-end="url(#arrow410)"/><text class="edge-label" x="540" y="117">is calculated using</text>
+<path d="M600 230 L600 315" marker-end="url(#arrow410)"/><text class="edge-label" x="600" y="273">include the</text>
+<rect x="260" y="10" width="200" height="70" rx="5"/><text class="node-title" x="360" y="39">Derivative</text><text class="node-sub" x="360" y="61">instantaneous rate</text>
+<rect x="20" y="160" width="200" height="70" rx="5"/><text class="node-title" x="120" y="189">Tangent line</text><text class="node-sub" x="120" y="211">slope at a point</text>
+<rect x="260" y="160" width="200" height="70" rx="5"/><text class="node-title" x="360" y="189">Motion</text><text class="node-sub" x="360" y="211">velocity and acceleration</text>
+<rect x="500" y="160" width="200" height="70" rx="5"/><text class="node-title" x="600" y="189">Differentiation rules</text><text class="node-sub" x="600" y="211">calculate derivatives</text>
+<rect x="500" y="315" width="200" height="70" rx="5"/><text class="node-title" x="600" y="344">Chain rule</text><text class="node-sub" x="600" y="366">differentiate a composition</text>
+</svg></div>
+```
+- The [derivative](../lectures/09-derivative-at-a-point.qmd) gives the slope of a [tangent line](../lectures/11-differentiation-rules.qmd) and describes instantaneous rates of change, including [velocity and acceleration](../lectures/12-rates-of-change.qmd).
+- [Differentiation rules](../lectures/11-differentiation-rules.qmd) calculate derivatives. The [chain rule](../lectures/14-chain-rule.qmd) handles compositions and is used in [implicit differentiation](../lectures/16-implicit-differentiation.qmd) and [related rates](../lectures/related-rates.qmd).
+
+## 3. Using derivatives to understand functions
+
+How does information about derivatives help us answer questions about the original function?
+
+```{=html}
+<div class="idea-map" aria-hidden="true"><svg viewBox="0 0 720 410" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="arrow410" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" style="fill: var(--reading-muted, #555); stroke: none"/></marker></defs>
+<path d="M310 80 L170 160" marker-end="url(#arrow410)"/><text class="edge-label" x="185" y="117">first derivative describes</text>
+<path d="M360 80 L360 160" marker-end="url(#arrow410)"/><text class="edge-label" x="360" y="120">second derivative describes</text>
+<path d="M410 80 L550 160" marker-end="url(#arrow410)"/><text class="edge-label" x="542" y="117">help us find</text>
+<path d="M120 230 L200 315" marker-end="url(#arrow410)"/><text class="edge-label" x="125" y="272">helps with</text>
+<path d="M360 230 L290 315" marker-end="url(#arrow410)"/><text class="edge-label" x="360" y="272">helps with</text>
+<path d="M600 230 L585 315" marker-end="url(#arrow410)"/><text class="edge-label" x="608" y="272">help locate extrema for</text>
+<rect x="260" y="10" width="200" height="70" rx="5"/><text class="node-title" x="360" y="39">Derivatives</text><text class="node-sub" x="360" y="61">first and second</text>
+<rect x="20" y="160" width="200" height="70" rx="5"/><text class="node-title" x="120" y="189">Increasing / decreasing</text><text class="node-sub" x="120" y="211">sign of the first derivative</text>
+<rect x="260" y="160" width="200" height="70" rx="5"/><text class="node-title" x="360" y="189">Concavity</text><text class="node-sub" x="360" y="211">sign of the second derivative</text>
+<rect x="500" y="160" width="200" height="70" rx="5"/><text class="node-title" x="600" y="189">Critical numbers</text><text class="node-sub" x="600" y="211">candidates for extrema</text>
+<rect x="135" y="315" width="200" height="70" rx="5"/><text class="node-title" x="235" y="344">Curve sketching</text><text class="node-sub" x="235" y="366">combine information about f</text>
+<rect x="485" y="315" width="200" height="70" rx="5"/><text class="node-title" x="585" y="344">Optimization</text><text class="node-sub" x="585" y="366">find the best feasible value</text>
+</svg></div>
+```
+- The sign of the first derivative describes where a function is [increasing or decreasing](../lectures/section-4-3.qmd); the sign of the second derivative describes concavity. Both help with [curve sketching](../lectures/curve-sketching.qmd).
+- [Critical numbers](../lectures/18-maxima-and-minima.qmd) are candidates for extrema. Together with endpoints when appropriate, they help us solve [optimization problems](../lectures/optimization.qmd).
+- For some indeterminate limits, [l'Hospital's rule](../lectures/lhopitals-rule.qmd) uses derivatives to help evaluate a limit. Check its hypotheses first.
+
+```{=html}
+<details class="map-guide-details"><summary>Methods and worked examples</summary><div class="concept-guides">
+```
+
+The following optional guides offer more detail on methods from limits and differentiation.
 
 ::: {#route-derivative .concept-guide}
 ### Find a derivative
@@ -381,65 +450,7 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
 [Review the Intermediate Value Theorem and its example](../lectures/07-intermediate-value.qmd#the-intermediate-value-theorem)
 :::
 
+
 ```{=html}
-</div>
-<h2 id="connections">How the ideas connect</h2>
-<p class="concept-key">Follow the highlighted arrows for your selected question. Select a concept to open its notes.</p>
-<div class="concept-map" aria-label="Connections between limits, continuity, and derivatives">
-  <svg class="concept-connections" viewBox="0 0 900 1070" aria-hidden="true">
-    <defs><marker id="concept-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1 L7 4 L1 7" /></marker></defs>
-    <g data-edge="laws-limit"><path marker-end="url(#concept-arrow)" d="M100 108 V218"/><text x="112" y="166">compute</text></g>
-    <g data-edge="bounds-limit"><path marker-end="url(#concept-arrow)" d="M100 392 V302"/><text x="112" y="356">bound</text></g>
-    <g data-edge="limit-continuity"><path marker-end="url(#concept-arrow)" d="M190 260 H240 V70 H350"/><text x="240" y="131" text-anchor="middle"><tspan x="240">limit =</tspan><tspan x="240" dy="18">point value</tspan></text></g>
-    <g data-edge="continuity-ivt"><path marker-end="url(#concept-arrow)" d="M530 70 H700"/><text x="615" y="51" text-anchor="middle">continuous on [a,b]</text></g>
-    <g data-edge="limit-derivative"><path marker-end="url(#concept-arrow)" d="M190 260 H350"/><text x="270" y="322" text-anchor="middle"><tspan x="270">difference</tspan><tspan x="270" dy="18">quotient</tspan></text></g>
-    <g data-edge="derivative-continuity"><path marker-end="url(#concept-arrow)" d="M440 222 V108"/><text x="452" y="166">implies</text></g>
-    <g data-edge="derivative-rules"><path marker-end="url(#concept-arrow)" d="M530 260 H700"/><text x="615" y="207" text-anchor="middle">compute efficiently</text></g>
-    <g data-edge="rules-tangent"><path marker-end="url(#concept-arrow)" d="M790 302 V392"/><text x="775" y="350" text-anchor="end">slope + point</text></g>
-    <g data-edge="derivative-motion"><path marker-end="url(#concept-arrow)" d="M440 302 V380"/><text x="452" y="356">motion</text></g>
-    <g data-edge="rules-trig"><path marker-end="url(#concept-arrow)" d="M790 302 V335 H615 V610 H530"/><text x="630" y="525">trig formulas</text></g>
-    <g data-edge="trig-motion"><path marker-end="url(#concept-arrow)" d="M440 560 V480"/><text x="452" y="525">spring motion</text></g>
-    <g data-edge="rules-chain"><path marker-end="url(#concept-arrow)" d="M880 260 H895 V610 H880"/><text x="880" y="550" text-anchor="end">compositions</text></g>
-    <g data-edge="chain-tangent"><path marker-end="url(#concept-arrow)" d="M790 570 V475"/><text x="777" y="496" text-anchor="end">evaluate slope</text></g>
-    <g data-edge="chain-inverse"><path marker-end="url(#concept-arrow)" d="M750 660 V690 H615 V800 H530"/><text x="600" y="730" text-anchor="end"><tspan x="600">differentiate</tspan><tspan x="600" dy="18">the inverse identity</tspan></text></g>
-    <g data-edge="chain-implicit"><path marker-end="url(#concept-arrow)" d="M790 660 V750"/><text x="777" y="704" text-anchor="end">treat y as y(x)</text></g>
-    <g data-edge="inverse-exponential"><path marker-end="url(#concept-arrow)" d="M440 850 V940"/><text x="452" y="890"><tspan x="452">exponential and</tspan><tspan x="452" dy="18">logarithm are inverses</tspan></text></g>
-    <g data-edge="implicit-logarithmic"><path marker-end="url(#concept-arrow)" d="M790 850 V940"/><text x="777" y="890" text-anchor="end"><tspan x="777">differentiate</tspan><tspan x="777" dy="18">after taking logs</tspan></text></g>
-    <g data-edge="exponential-logarithmic"><path marker-end="url(#concept-arrow)" d="M530 990 H700"/><text x="615" y="1040" text-anchor="middle">use logarithm laws</text></g>
-  </svg>
-  <a class="concept-node" data-node="laws" href="../lectures/04-limit-laws.qmd" style="--x:11.11%;--y:6.54%"><strong>Limit laws</strong><span>Combine known limits</span></a>
-  <a class="concept-node" data-node="continuity" href="../lectures/06-continuity.qmd" style="--x:48.89%;--y:6.54%"><strong>Continuity</strong><span>Limit equals value</span></a>
-  <a class="concept-node" data-node="ivt" href="../lectures/07-intermediate-value.qmd" style="--x:87.78%;--y:6.54%"><strong>Intermediate values</strong><span>Guarantee existence</span></a>
-  <a class="concept-node" data-node="limits" href="../lectures/02-limits.qmd" style="--x:11.11%;--y:24.29%"><strong>Limits</strong><span>Nearby behavior</span></a>
-  <a class="concept-node" data-node="derivative" href="../lectures/09-derivative-at-a-point.qmd" style="--x:48.89%;--y:24.29%"><strong>Derivative</strong><span>Instantaneous rate</span></a>
-  <a class="concept-node" data-node="rules" href="../lectures/11-differentiation-rules.qmd" style="--x:87.78%;--y:24.29%"><strong>Derivative rules</strong><span>Power · product · quotient</span></a>
-  <a class="concept-node" data-node="tangent" href="../lectures/11-differentiation-rules.qmd#tangent-lines-and-prescribed-slopes" style="--x:87.78%;--y:40.18%"><strong>Tangent lines</strong><span>Point and slope</span></a>
-  <a class="concept-node" data-node="bounds" href="../lectures/05-squeeze-theorem.qmd" style="--x:11.11%;--y:40.18%"><strong>Squeeze theorem</strong><span>Compare with bounds</span></a>
-  <a class="concept-node" data-node="motion" href="../lectures/12-rates-of-change.qmd" style="--x:48.89%;--y:40.18%"><strong>Motion</strong><span>Velocity · acceleration · speed</span></a>
-  <a class="concept-node" data-node="trig" href="../lectures/13-trigonometric-derivatives.qmd" style="--x:48.89%;--y:57.01%"><strong>Trig derivatives</strong><span>Radian formulas · spring motion</span></a>
-  <a class="concept-node" data-node="chain" href="../lectures/14-chain-rule.qmd" style="--x:87.78%;--y:57.01%"><strong>Chain rule</strong><span>One factor from each layer</span></a>
-  <a class="concept-node" data-node="inverse" href="../lectures/15-inverse-functions.qmd" style="--x:48.89%;--y:74.77%"><strong>Inverse functions</strong><span>Reciprocal slope · inverse trig</span></a>
-  <a class="concept-node" data-node="implicit" href="../lectures/16-implicit-differentiation.qmd" style="--x:87.78%;--y:74.77%"><strong>Implicit differentiation</strong><span>Equations · tangent slopes</span></a>
-  <a class="concept-node" data-node="exponential" href="../lectures/17-exponential-logarithmic.qmd#the-natural-exponential-and-logarithm" style="--x:48.89%;--y:92.52%"><strong>Exponentials and logs</strong><span>Natural and other bases</span></a>
-  <a class="concept-node" data-node="logarithmic" href="../lectures/17-exponential-logarithmic.qmd#logarithmic-differentiation" style="--x:87.78%;--y:92.52%"><strong>Logarithmic differentiation</strong><span>Variable powers · products</span></a>
-</div>
-<div class="concept-mobile-links">
-<p><strong>The connections in words</strong></p>
-<ul>
-<li>Limit laws and bounds help compute limits.</li>
-<li>Continuity compares a limit with the function value; continuity on a closed interval gives the Intermediate Value Theorem.</li>
-<li>A limit of difference quotients defines the derivative. Differentiability implies continuity, but continuity does not imply differentiability.</li>
-<li>Derivative rules calculate derivatives; evaluating the derivative at a point gives a tangent slope.</li>
-<li>The chain rule differentiates composite functions, with one factor from each layer. Combine it with the product, quotient, or trig rules when needed; evaluating the result gives a tangent slope.</li>
-<li>The chain rule applied to the inverse identity gives the inverse-function derivative formula; inverse-trig derivatives follow from it.</li>
-<li>Implicit differentiation uses the chain rule with y as a function of x. The derivative gives tangent slopes; the original equation gives the points.</li>
-<li>The natural exponential and logarithm are inverses. Their derivatives, together with the chain rule, give the formulas for other bases and composite inputs.</li>
-<li>Logarithmic differentiation combines logarithm laws with implicit differentiation. It handles variable powers and proves the power rule for real exponents.</li>
-<li>For motion, the first derivative is velocity and the second is acceleration. Their signs determine direction and changes in speed.</li>
-<li>Trigonometric derivative formulas extend the calculation rules to sine, cosine, and related functions; they also describe spring motion.</li>
-</ul>
-</div>
-<p class="concept-caution"><strong>One-way connection:</strong> differentiability implies continuity. Continuity does not guarantee a derivative: |x| has a corner at 0.</p>
-</div>
-<script src="../assets/limits-map.js?v=20261023" defer></script>
+</div></details>
 ```
