@@ -70,7 +70,34 @@ function placeLabels(view) {
       if(cost<score) {score=cost;best={rect,dx,dy};}
       if(score===0) break;
     }
+    // When all nearby slots are busy, find the nearest free space and tether
+    // the caption to its symbol. This preserves every label on a narrow phone.
+    const busy=[...occupied,...obstacles];
+    if(compact && nearFit && busy.some(r=>overlap(best.rect,r)>0)) {
+      let found=false;
+      for(let distance=radius+12;distance<=Math.max(width,height) && !found;distance+=6) {
+        for(let i=0;i<32;i++) {
+          const angle=i*Math.PI/16;
+          const dx=Math.cos(angle)*distance,dy=Math.sin(angle)*distance;
+          const r=box(x+dx,y+dy,w,h);
+          if(r.left<bounds.left || r.right>bounds.right || r.top<bounds.top || r.bottom>bounds.bottom) continue;
+          if(busy.some(other=>overlap(other,r)>0)) continue;
+          best={rect:r,dx,dy};found=true;break;
+        }
+      }
+    }
     occupied.push(best.rect);
+    const endX=Math.max(best.rect.left,Math.min(best.rect.right,x))-x;
+    const endY=Math.max(best.rect.top,Math.min(best.rect.bottom,y))-y;
+    const length=Math.hypot(endX,endY);
+    let leader=element.querySelector(".caption-leader");
+    if(length>radius+8) {
+      if(!leader) leader=d3.select(element.querySelector(".station-mark")).insert("line",":first-child")
+        .attr("class","caption-leader").attr("stroke","var(--muted)").attr("stroke-opacity",.55)
+        .attr("vector-effect","non-scaling-stroke").attr("pointer-events","none").node();
+      d3.select(leader).attr("display",null).attr("x1",endX*radius/length/markScale).attr("y1",endY*radius/length/markScale)
+        .attr("x2",endX/markScale).attr("y2",endY/markScale);
+    } else if(leader) leader.setAttribute("display","none");
     const layout=lines.join("\n");
     if(text.dataset.lines!==layout) {
       text.replaceChildren();
