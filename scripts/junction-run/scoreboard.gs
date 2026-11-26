@@ -34,6 +34,16 @@ function classRecord(db) {
   }
   return result;
 }
+function namedRecords(db) {
+  const saved=db.getProperty('class-named-scores');
+  if(saved)return JSON.parse(saved);
+  const old=classRecord(db);
+  // Historic guest labels and deliberately entered versions of those same words
+  // were indistinguishable. Keep legacy data intact; a fresh opt-in can use any valid name.
+  const guests=['FERN','QUILL','AERO','MINT','KITE','EMBER','ORBIT','NOVA','LUNA','PANDA','WREN','RAVEN','PIP','COMET','LYNX','SPARK'];
+  const rows=old.rows.filter(row=>nicknameOK(row.alias)&&!guests.includes(row.alias));
+  return {best:rows.reduce((n,row)=>Math.max(n,row.best),0),rows:rows};
+}
 function rankScore(record,row) {
   const old=record.rows.find(r=>r.id===row.id);
   if(!old || row.points>old.points || (row.points===old.points && row.best>=old.best)) {
@@ -45,11 +55,13 @@ function rankScore(record,row) {
 }
 function doGet(e) {
   try {
-    const v=e.parameter, key=scopeKey(v), room=roomKey(v);
+    const v=e.parameter;
+    if(v.type==='room6')return roomRead(v);
+    const key=scopeKey(v),room=roomKey(v);
     const db=PropertiesService.getScriptProperties();
     const racers=room ? publicRows(list(CacheService.getScriptCache(),room)) : [];
-    if(Number(v.version)===5){
-      const record=classRecord(db);
+    if(Number(v.version)>=5){
+      const record=Number(v.version)===6?namedRecords(db):classRecord(db);
       return json({ok:true,rows:publicRows(record.rows),best:record.best,racers:racers});
     }
     return json({ok:true,rows:publicRows(list(db,key)),racers:racers});
@@ -110,8 +122,14 @@ function doPost(e) {
   const lock=LockService.getScriptLock();
   try {
     if(!e.postData||e.postData.length>1800)throw Error();
-    const v=JSON.parse(e.postData.contents), key=scopeKey(v),room=roomKey(v);
-    if (!/^[0-9a-f]{32}$/.test(v.player)||!(Number(v.version)===5 ? nicknameOK(v.alias) : Number.isInteger(v.alias)&&v.alias>=0&&v.alias<144)||
+    const v=JSON.parse(e.postData.contents);
+    if(v.type==='room6'){
+      if(!lock.tryLock(5000))return json({ok:false,error:'Room is busy. Try again.'});
+      return roomWrite(v);
+    }
+    const key=scopeKey(v),room=roomKey(v);
+    if(Number(v.version)===6 && (v.action!=='save'||v.publishName!==true))throw Error();
+    if (!/^[0-9a-f]{32}$/.test(v.player)||!(Number(v.version)>=5 ? nicknameOK(v.alias) : Number.isInteger(v.alias)&&v.alias>=0&&v.alias<144)||
         !['save','streak','progress'].includes(v.action))throw Error();
     const score=timedScore(v,replay(v),options);
     if(v.action==='save' && (score.status==='playing'||!score.cleared))throw Error();
@@ -120,6 +138,12 @@ function doPost(e) {
     const row={id:v.player,alias:v.alias,...score};
     if(!lock.tryLock(5000))return json({ok:false});
     const db=PropertiesService.getScriptProperties(),cache=CacheService.getScriptCache();
+    if(Number(v.version)===6){
+      const record=namedRecords(db);
+      record.best=Math.max(record.best,row.best);rankScore(record,row);
+      db.setProperty('class-named-scores',JSON.stringify(record));
+      return json({ok:true});
+    }
     if (v.action!=='progress' && Number(v.version)>=4) {
       const record=classRecord(db);
       record.best=Math.max(record.best,row.best);
@@ -147,8 +171,8 @@ function doPost(e) {
 // Version 4 used one base-36 digit per time. Version 5 uses two for the longer clocks.
 function timedScore(v,score,choicesAt) {
   const version=Number(v.version);
-  if(version!==4 && version!==5)return score;
-  const modern=version===5, width=modern?2:1;
+  if(version!==4 && version!==5 && version!==6)return score;
+  const modern=version>=5, width=modern?2:1;
   const level=LEVELS.indexOf(v.diff), clocks=modern?[75,65,55,45]:[30,25,20,15];
   const base=modern?[50,100,200,350]:[1,1,1,1];
   if(typeof v.times!=='string' || v.times.length!==width*v.steps.length || !/^[0-9a-z]*$/.test(v.times) ||
@@ -166,4 +190,96 @@ function timedScore(v,score,choicesAt) {
   }
   if(v.retired===true && score.status==='playing')score.status='left';
   return Object.assign(score,{points:points});
+}
+
+// A room has a public six-character code and a private random token per player.
+// Only the shared start time and numbered public seats leave the service.
+function raceKey(code) {
+  if(typeof code!=='string'||!/^[A-HJ-NP-Z2-9]{6}$/.test(code))throw Error();
+  return 'critical-room-'+code;
+}
+function roomView(r,now) {
+  return {code:r.code,edition:r.edition,key:r.key,diff:r.diff,order:r.order,seed:r.seed,length:r.length,
+    round:r.round,startAt:r.startAt,host:r.host,revision:r.revision,
+    racers:r.seats.map(s=>({seat:s.seat,ready:s.ready,status:s.status,cleared:s.cleared,points:s.points}))};
+}
+function roomReply(r,now,seat) {
+  return json({ok:true,room:roomView(r,now),now:now,seat:seat||0});
+}
+function roomRead(v) {
+  const raw=CacheService.getScriptCache().get(raceKey(v.code));
+  return raw?roomReply(JSON.parse(raw),Date.now()):json({ok:false,error:'Room expired or code not found.'});
+}
+function blankSeat(token,n,now) {
+  return {token:token,seat:n,seen:now,ready:false,status:'waiting',cleared:0,points:0,steps:'',extra:''};
+}
+function roomWrite(v) {
+  const key=raceKey(v.code), cache=CacheService.getScriptCache(),now=Date.now();
+  if(!/^[a-f0-9]{32}$/.test(v.member))throw Error();
+  const raw=cache.get(key);
+  let r=raw?JSON.parse(raw):null;
+  if(v.action==='create'){
+    if(r && r.seats[0].token!==v.member)return json({ok:false,error:'Code in use.'});
+    if(!r){
+      scopeKey(v);
+      if(!/^[0-9a-f]{12}$/.test(v.edition))throw Error();
+      replay(Object.assign({},v,{steps:''}));
+      r={code:v.code,edition:v.edition,key:v.key,diff:v.diff,order:v.order,seed:v.seed,length:v.length,
+        round:1,startAt:0,host:1,revision:0,seats:[blankSeat(v.member,1,now)]};
+    }
+  }
+  if(!r)return json({ok:false,error:'Room expired or code not found.'});
+  let self=r.seats.find(s=>s.token===v.member);
+  // Lapsed tabs must not hold up the next race or retain the host seat.
+  for(const s of r.seats)if(s!==self && now-s.seen>100000 && s.status!=='left'){s.status='left';s.ready=false;}
+  if(v.action==='join'){
+    if(v.edition!==r.edition)return json({ok:false,error:'This room uses an earlier question bank. Create a new room.'});
+    if(!self || self.status==='left'){
+      if(r.startAt)return json({ok:false,error:'This race has started. Join after the host opens a rematch.'});
+      if(!self){
+        const retired=r.seats.findIndex(s=>s.status==='left');
+        if(retired>=0){self=blankSeat(v.member,r.seats[retired].seat,now);r.seats[retired]=self;}
+        else {
+          if(r.seats.length>=12)return json({ok:false,error:'This room has reached 12 runners.'});
+          self=blankSeat(v.member,r.seats.length+1,now);r.seats.push(self);
+        }
+      }else Object.assign(self,blankSeat(v.member,self.seat,now));
+    }
+  }
+  if(!self)return json({ok:false,error:'Join the room first.'});
+  self.seen=now;
+  if(!['join','create','leave','pulse'].includes(v.action) && v.round!==r.round)return roomReply(r,now,self.seat);
+  const active=()=>r.seats.filter(s=>s.status!=='left');
+  if(!active().some(s=>s.seat===r.host))r.host=active()[0]?.seat||0;
+  switch(v.action){
+    case 'create':case 'join':case 'pulse':break;
+    case 'leave':self.status='left';self.ready=false;break;
+    case 'ready':
+      if(r.startAt || self.status==='left' || typeof v.ready!=='boolean')throw Error();
+      self.ready=v.ready;break;
+    case 'launch':
+      if(self.seat!==r.host)throw Error();
+      if(r.startAt)break;
+      if(active().length<2||active().some(s=>!s.ready))return json({ok:false,error:'At least two runners must join, and everyone must be ready.'});
+      r.startAt=now+7000;
+      for(const s of active())s.status='playing';
+      break;
+    case 'rematch':
+      if(self.seat!==r.host||!r.startAt||active().some(s=>s.status==='playing'))return json({ok:false,error:'Wait for every runner to finish.'});
+      r.startAt=0;r.round++;r.seed=(Math.random()*4294967296)>>>0;
+      for(const s of active())Object.assign(s,blankSeat(s.token,s.seat,s.seen));
+      break;
+    case 'progress':{
+      if(!r.startAt || now<r.startAt-400 || self.status==='left')throw Error();
+      const packet=Object.assign({},v,{version:6,key:r.key,diff:r.diff,order:r.order,seed:r.seed,length:r.length});
+      const result=timedScore(packet,replay(packet),options);
+      if(v.steps.startsWith(self.steps) && result.points>=self.points && (!self.extra || v.extra===self.extra)){
+        Object.assign(self,{steps:v.steps,cleared:result.cleared,points:result.points,status:result.status,extra:v.extra});
+      }
+      break;
+    }
+    default:throw Error();
+  }
+  if(!active().some(s=>s.seat===r.host))r.host=active()[0]?.seat||0;
+  r.revision++;cache.put(key,JSON.stringify(r),21600);return roomReply(r,now,self.seat);
 }
