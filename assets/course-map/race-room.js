@@ -5,7 +5,7 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
   let member=board.token(16),resumeCode="";
   try{if(window.performance?.getEntriesByType("navigation")[0]?.type==="reload")resumeCode=sessionStorage.getItem("critical-race-code")||"";}catch{}
   let current=null,seat=0,generation=0,poll=0,countdown=0,lastPulse=0,offset=0,startedRound=0;
-  let actionPending=false,pendingProgress=null,writing=false;
+  let actionPending=false,pendingProgress=null,writing=false,inviteCrown=null;
   const hub=el("race-hub");
   function newCode() {
     return Array.from(crypto.getRandomValues(new Uint8Array(6)),n=>alphabet[n%alphabet.length]).join("");
@@ -13,12 +13,18 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
   function call(action,fields={},write=true) {
     return board.request({type:"room6",version:7,...fields,...(write?{action,member}:{})},write);
   }
+  function wearsCrown(s,r) {
+    if(s.seat===seat)return crowned();
+    if(typeof s.crowned==="boolean")return s.crowned;
+    return inviteCrown?.code===r.code && inviteCrown.round===r.round &&
+      inviteCrown.seat===s.seat && inviteCrown.character===s.character && s.status!=="left";
+  }
   function drawSeats(r){
     const sorted=[...r.racers].sort((a,b)=>Number(a.status==="left")-Number(b.status==="left")||b.points-a.points||b.cleared-a.cleared||a.seat-b.seat);
     el("racers").replaceChildren(...sorted.map(s=>{
       const row=document.createElement("li"),name=document.createElement("b"),status=document.createElement("span"),points=document.createElement("span"),bar=document.createElement("progress");
       name.className="racer-name";const avatar=runner.characters.find(a=>a.id===s.character)||runner.characters[0];
-      name.innerHTML=runner.portrait(avatar.id,r.diff,s.seat===seat?crowned():s.crowned===true);
+      name.innerHTML=runner.portrait(avatar.id,r.diff,wearsCrown(s,r));
       name.append(avatar.name+" · P"+s.seat+(s.seat===seat?" (you)":""));
       status.className="racer-status";status.textContent=s.status==="waiting"?(s.ready?"Ready":"Getting ready"):
         ({playing:"On course",finished:"Finished",out:"Run over",left:"Left the room"}[s.status]||"Waiting");
@@ -59,7 +65,7 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
     const newRound=reply.room.round!==current.round;
     current=reply.room;
     if(newRound){pendingProgress=null;startedRound=0;enter(current);}
-    runner.rivals(current.startAt?current.racers.map(s=>({...s,difficulty:current.diff})):[],seat);
+    runner.rivals(current.startAt?current.racers.map(s=>({...s,difficulty:current.diff,crowned:wearsCrown(s,current)})):[],seat);
     // Use the server time at the midpoint of the request, including clients with skewed clocks.
     offset=reply.now-(sent+Date.now())/2;
     draw();tick();
@@ -92,7 +98,12 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
       if(generation===stamp)apply(reply,sent);
     }).catch(()=>{if(generation===stamp)lastPulse=0;});
   }
-  function showHub(code=""){
+  function showHub(code="",champ=null){
+    inviteCrown=null;
+    const fields=typeof champ==="string"?champ.split("."):[];
+    const [round,number,avatar]=fields;
+    if(fields.length===3 && /^[1-9]\d{0,5}$/.test(round) && /^(?:[1-9]|1[0-2])$/.test(number) && runner.characters.some(c=>c.id===avatar))
+      inviteCrown={code,round:Number(round),seat:Number(number),character:avatar};
     el("join-code").value=code;el("hub-status").textContent="";
     if(!hub.open)hub.showModal();
     (code?el("join-code"):el("host-room")).focus();
@@ -155,6 +166,7 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
     pendingProgress={...packet,code:current.code,round:current.round};flushProgress();
   }
   function leave(){
+    inviteCrown=null;
     const r=current;generation++;actionPending=false;pendingProgress=null;current=null;seat=0;startedRound=0;
     clearTimeout(countdown);clearTimeout(poll);runner.rivals([],0);el("room-countdown").hidden=true;el("room-panel").hidden=true;
     if(r){
@@ -172,7 +184,10 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
   };
   el("room-launch").onclick=()=>change(current?.startAt?"rematch":"launch");
   el("room-copy").onclick=async()=>{
-    if(!current)return;const url=new URL(location.href);url.search="";url.hash="room="+current.code;
+    if(!current)return;
+    const url=new URL(location.href), invite=new URLSearchParams({room:current.code});
+    if(crowned())invite.set("champ",[current.round,seat,character()].join("."));
+    url.search="";url.hash=invite.toString();
     try{await navigator.clipboard.writeText(url.href);el("room-status").textContent="Invite link copied.";}
     catch{const box=el("invite-link");box.hidden=false;box.value=url.href;box.focus();box.select();}
   };

@@ -263,7 +263,8 @@
   }
   function showLocalGear() {
     const epic=celebrating?.epic;
-    const crowned=epic ? celebrating.returning||celebrating.caught : equippedCrown;
+    const crowned=epic && !(celebrating.caught && celebrating.gearChanged)
+      ? celebrating.returning||celebrating.caught : equippedCrown;
     costume(worn,crowned);
     if(!epic){
       hide(worn,false);
@@ -271,6 +272,7 @@
     }
   }
   function equipCrown(value) {
+    if(celebrating?.epic && equippedCrown!==(value===true))celebrating.gearChanged=true;
     equippedCrown=value===true;
     showLocalGear();
     if(!total) set(scene,"aria-label",avatars[localCharacter].name+(equippedCrown?" wears the Sun Crown at the starting flag.":" waits at the starting flag."));

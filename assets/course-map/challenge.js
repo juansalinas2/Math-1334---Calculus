@@ -421,7 +421,8 @@
     if(!["room","race"].includes(kind)||!encoded||encoded.length>200000)return;
     const notify=msg=>{el("pace").hidden=false;el("target").textContent=msg;};
     if(kind==="room"){
-      if(/^[A-HJ-NP-Z2-9]{6}$/.test(encoded))race.showHub(encoded);
+      const params=new URLSearchParams(location.hash.slice(1)), code=params.get("room");
+      if(/^[A-HJ-NP-Z2-9]{6}$/.test(code))race.showHub(code,params.get("champ"));
       else notify("This invite is from an earlier race. Ask the host for a new room code.");
       return;
     }
