@@ -1,5 +1,4 @@
-// Critical Point's public score endpoint. Script Properties hold the top ten per course.
-// Live room progress expires from Script Cache. All displayed names are word-list indices.
+// Critical Point class scores persist in Script Properties. Friend rooms expire after six hours.
 const COURSES = ['exam3','final','theory','vocab','limits','continuity','derivative-motion','derivative-rules','chain','inverse-implicit','related-rates','global-extrema','extrema','sketch','optimize','lhospital'];
 const LEVELS = ['easy','medium','hard','insane'];
 const ORDER = ['ordered','shuffled'];
@@ -9,7 +8,7 @@ function json(value) {
 function scopeKey(v) {
   if (!COURSES.includes(v.key) && !/^s(?:2\.[1-6]|3\.[1-9]|4\.[1-7])$/.test(v.key)) throw Error();
   if (!LEVELS.includes(v.diff) || !ORDER.includes(v.order)) throw Error();
-  return [Number(v.version)===4?'board4':'board3',v.key,v.diff,v.order].join('-');
+  return [Number(v.version)===5?'board5':Number(v.version)===4?'board4':'board3',v.key,v.diff,v.order].join('-');
 }
 function roomKey(v) {
   if (!v.room) return '';
@@ -20,12 +19,40 @@ function list(store,key) { return JSON.parse((store.getProperty ? store.getPrope
 function publicRows(rows) {
   return rows.map(r => ({alias:r.alias,best:r.best,cleared:r.cleared,status:r.status,points:r.points}));
 }
+function classRecord(db) {
+  const saved=db.getProperty('class-top-scores');
+  if(saved)return JSON.parse(saved);
+  // Seed the public board with the timed scores and longest streaks already on record.
+  const result={best:0,rows:[]};
+  const properties=db.getProperties();
+  for(const key of Object.keys(properties)) {
+    if(!/^board[34]-/.test(key))continue;
+    for(const row of JSON.parse(properties[key])) {
+      result.best=Math.max(result.best,row.best||0);
+      if(row.points>0)rankScore(result,row);
+    }
+  }
+  return result;
+}
+function rankScore(record,row) {
+  const old=record.rows.find(r=>r.id===row.id);
+  if(!old || row.points>old.points || (row.points===old.points && row.best>=old.best)) {
+    record.rows=record.rows.filter(r=>r.id!==row.id).concat(row)
+      .sort((a,b)=>b.points-a.points || b.best-a.best || a.id.localeCompare(b.id)).slice(0,10);
+  } else {
+    old.alias=row.alias;
+  }
+}
 function doGet(e) {
   try {
     const v=e.parameter, key=scopeKey(v), room=roomKey(v);
-    const rows=list(PropertiesService.getScriptProperties(),key);
-    const racers=room ? list(CacheService.getScriptCache(),room) : [];
-    return json({ok:true,rows:publicRows(rows),racers:publicRows(racers)});
+    const db=PropertiesService.getScriptProperties();
+    const racers=room ? publicRows(list(CacheService.getScriptCache(),room)) : [];
+    if(Number(v.version)===5){
+      const record=classRecord(db);
+      return json({ok:true,rows:publicRows(record.rows),best:record.best,racers:racers});
+    }
+    return json({ok:true,rows:publicRows(list(db,key)),racers:racers});
   } catch (_) {return json({ok:false});}
 }
 function options(seed,jump) {
@@ -72,12 +99,19 @@ function replay(v) {
   }
   return {best,cleared,status:ended?(cleared===v.length?'finished':'out'):'playing'};
 }
+function nicknameOK(value) {
+  if(typeof value!=="string" || !/^[A-Z]{1,5}$/.test(value))return false;
+  // Check both the whole name and recognizable roots, including doubled-letter variants.
+  const exact=/^(ASS|ARS[E]?|BUM|TIT[S]?|WTF|STFU|GTFO|FML|AF|BS|BJ|KYS|KKK|NAZI[S]?|CUM[S]?|HO[E]?S?|THOT|SMD|STD|DONG|BONG|TWAT|SPERM|XXX|SMEG|TURD|JERK|ANUS|ANAL|PENIS|VAG|PORN|SEX[Y]?|COCK[S]?|HELL|DYKE[S]?|HOMO[S]?|CACA|NIG|NGA|NGR|FAG[S]?|GAYBO)$/;
+  const roots=/F[UO]C?K|FCK|FUK|PH[UO]C?K|SH[IY]T|SHAT|SHT|B[IY]T?CH|BTCH|C[UI]NT|D[IY]CK|P[IY]SS|N[IY]G[GAK]|FAGG?|WHOR|SLUT|RAPE|RAPST|SPIC|K[IY]KE|CHINK|PUSSY|PUSS|WANK|PRICK|PUT[AO]|PUTT[AO]|CUL[OA]|COJON|VERGA|JOD[EA]|PENDE|MERDE|SCREW|TWATS?|BOOB|DILDO|DAMN|CRAP|METH|TITT|KUNT|BICH|ASSH|ARSE|MUFFS|DICKS|SHITE/;
+  return ![value,value.replace(/(.)\1+/g,"$1")].some(s=>exact.test(s)||roots.test(s));
+}
 function doPost(e) {
   const lock=LockService.getScriptLock();
   try {
     if(!e.postData||e.postData.length>1800)throw Error();
     const v=JSON.parse(e.postData.contents), key=scopeKey(v),room=roomKey(v);
-    if (!/^[0-9a-f]{32}$/.test(v.player)||!Number.isInteger(v.alias)||v.alias<0||v.alias>=144||
+    if (!/^[0-9a-f]{32}$/.test(v.player)||!(Number(v.version)===5 ? nicknameOK(v.alias) : Number.isInteger(v.alias)&&v.alias>=0&&v.alias<144)||
         !['save','streak','progress'].includes(v.action))throw Error();
     const score=timedScore(v,replay(v),options);
     if(v.action==='save' && (score.status==='playing'||!score.cleared))throw Error();
@@ -86,7 +120,13 @@ function doPost(e) {
     const row={id:v.player,alias:v.alias,...score};
     if(!lock.tryLock(5000))return json({ok:false});
     const db=PropertiesService.getScriptProperties(),cache=CacheService.getScriptCache();
-    if (v.action!=='progress') {
+    if (v.action!=='progress' && Number(v.version)>=4) {
+      const record=classRecord(db);
+      record.best=Math.max(record.best,row.best);
+      if(row.points>0)rankScore(record,row);
+      db.setProperty('class-top-scores',JSON.stringify(record));
+    }
+    if (v.action!=='progress' && Number(v.version)!==5) {
       const rows=list(db,key), old=rows.find(r=>r.id===row.id);
       if(!old||row.best>old.best||(row.best===old.best&&(row.cleared>old.cleared||(row.cleared===old.cleared&&(row.points||0)>=(old.points||0))))){
         const next=rows.filter(r=>r.id!==row.id).concat(row).sort((a,b)=>b.best-a.best||b.cleared-a.cleared||(b.points||0)-(a.points||0));
@@ -104,22 +144,25 @@ function doPost(e) {
     return json({ok:true});
   } catch(_){return json({ok:false});} finally{if(lock.hasLock())lock.releaseLock();}
 }
-// Timing is transmitted as one base-36 digit per landing. Existing clients omit version.
+// Version 4 used one base-36 digit per time. Version 5 uses two for the longer clocks.
 function timedScore(v,score,choicesAt) {
-  if(Number(v.version)!==4)return score;
-  const levels=['easy','medium','hard','insane'], clocks=[30,25,20,15],level=levels.indexOf(v.diff);
-  if(typeof v.times!=='string'||v.times.length!==v.steps.length||!/^[0-9a-u]*$/.test(v.times)||
-     typeof v.extra!=='string'||!/^([0-3][0-9a-u])?$/.test(v.extra))throw Error();
+  const version=Number(v.version);
+  if(version!==4 && version!==5)return score;
+  const modern=version===5, width=modern?2:1;
+  const level=LEVELS.indexOf(v.diff), clocks=modern?[75,65,55,45]:[30,25,20,15];
+  const base=modern?[50,100,200,350]:[1,1,1,1];
+  if(typeof v.times!=='string' || v.times.length!==width*v.steps.length || !/^[0-9a-z]*$/.test(v.times) ||
+    typeof v.extra!=='string' || (v.extra!=='' && !(modern?/^[0-3][0-9a-z]{2}$/:/^[0-3][0-9a-u]$/).test(v.extra)))throw Error();
   let points=0,jump=0;
   for(let i=0;i<v.steps.length;i++){
-    const left=parseInt(v.times[i],36);
+    const left=parseInt(v.times.slice(width*i,width*(i+1)),36);
     if(left>clocks[level])throw Error();
-    if(choicesAt(v.seed,jump)[Number(v.steps[i])%4]===0){points+=1+2*left;jump++;}
+    if(choicesAt(v.seed,jump)[Number(v.steps[i])%4]===0){points+=base[level]+2*left;jump++;}
   }
   if(v.extra){
-    const left=parseInt(v.extra[1],36);
-    if(score.status!=='finished'||left>clocks[Math.min(level+1,3)])throw Error();
-    if(choicesAt(v.seed,jump)[Number(v.extra[0])]===0)points+=1+2*left;
+    const left=parseInt(v.extra.slice(1),36), next=Math.min(level+1,3);
+    if(score.status!=='finished'||left>clocks[next])throw Error();
+    if(choicesAt(v.seed,jump)[Number(v.extra[0])]===0)points+=base[next]+2*left;
   }
   if(v.retired===true && score.status==='playing')score.status='left';
   return Object.assign(score,{points:points});
