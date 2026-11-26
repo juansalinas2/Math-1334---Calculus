@@ -592,7 +592,7 @@ summary:focus-visible { outline: 2px solid #257569; outline-offset: 2px; }
 .theorem-source { display: inline-block; margin: 0 0 .45rem; color: var(--accent); font-size: 14px; }
 .lecture-disclosure .note-prose { overflow-x: auto; }
 
-#canvas { grid-row: 1; position: relative; overflow: hidden; }
+#canvas { grid-row: 1; position: relative; overflow: hidden; overscroll-behavior: contain; }
 #drawing { display: block; touch-action: none; }
 .has-interior .inside-parent { visibility: hidden; }
 .has-interior .station:not(.inside-parent) { opacity: .17; }
@@ -663,9 +663,12 @@ summary:focus-visible { outline: 2px solid #257569; outline-offset: 2px; }
   .topic-open .controls { margin: 4px 9px 0; }
   .topic-open .controls button { height: 36px; }
   #detail { flex: 0 0 clamp(145px, 24dvh, 215px); position: static; padding: 0; min-height: 0; overflow: visible; }
-  #detail:not(.reading):not(.sheet-moving) #detail-body > :not(.family-name, h2, .note-intro) { display: none; }
   #detail .family-name { margin: 0 0 3px; }
   #detail h2 { font-size: 23px; margin-bottom: 6px; }
+}
+/* A compact desktop window still has a wheel-scrollable note. */
+@media (pointer: coarse) and (max-width: 760px), (pointer: coarse) and (max-width: 1000px) and (orientation: portrait) {
+  #detail:not(.reading):not(.sheet-moving) #detail-body > :not(.family-name, h2, .note-intro) { display: none; }
 }
 @media (max-width: 760px), (max-width: 1000px) and (orientation: portrait), (max-height: 480px) and (orientation: landscape) {
   #reader { height: 100%; background: #fffef9; padding: 0 16px 18px; overflow-y: auto; overscroll-behavior: contain; }

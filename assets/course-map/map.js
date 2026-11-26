@@ -197,10 +197,16 @@ function gestureTarget(event) {
   return event.target;
 }
 
+function isSidewaysScroll(event) {
+  // Give vertical zoom priority when a trackpad gesture drifts diagonally.
+  return !event.ctrlKey && Math.abs(event.deltaX) > 2 * Math.abs(event.deltaY);
+}
+
 const zoom = d3.zoom().scaleExtent([courseScale(), maxZoom]).constrain(constrainCamera).clickDistance(5)
   .filter(event => {
-    if (event.target.closest?.("#locator")) return false;
-    if ((event.ctrlKey && event.type !== "wheel") || event.button) return false;
+    if (event.type === "wheel") {
+      if (isSidewaysScroll(event)) return false;
+    } else if (event.target.closest?.("#locator") || event.ctrlKey || event.button) return false;
     const target=gestureTarget(event);
     const group=target?.closest?.("[data-system-id]")?.dataset.systemId;
     if (familiesOnMap.has(group)) unfoldingFamily=group;
@@ -253,10 +259,16 @@ const zoom = d3.zoom().scaleExtent([courseScale(), maxZoom]).constrain(constrain
     if (event.sourceEvent) settleZoom(event.transform.k);
     rememberView();
   });
-svg.call(zoom).on("wheel.mapBoundary", event => {
-  // D3 leaves a wheel event unhandled when it starts at a scale limit.
-  // Keep it on the map so a trackpad pinch cannot start zooming the page.
-  event.preventDefault();
+svg.call(zoom).on("wheel.map", event => {
+  // D3 handles vertical scrolling. Use horizontal wheel deltas to pan.
+  const sideways = isSidewaysScroll(event);
+  if (sideways) {
+    const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? viewport.clientWidth : 1;
+    const dx = event.deltaX * unit / d3.zoomTransform(viewport).k;
+    svg.call(zoom.translateBy, -dx, 0, event);
+  }
+  // At a zoom limit, keep a trackpad pinch from zooming the browser instead.
+  if ((sideways || event.ctrlKey) && event.cancelable) event.preventDefault();
 }, { passive: false });
 
 function move(x, y, scale) {
