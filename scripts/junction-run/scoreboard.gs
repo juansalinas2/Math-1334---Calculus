@@ -256,6 +256,10 @@ function roomWrite(v) {
       }
       break;
     case 'leave':self.status='left';self.ready=false;break;
+    case 'character':
+      if(r.startAt || self.status!=='waiting')return json({ok:false,error:'The race has started. Choose a runner in the next lobby.'});
+      if(!CHARACTERS.includes(v.character))return json({ok:false,error:'Choose one of the available runners.'});
+      self.character=v.character;break;
     case 'ready':
       if(r.startAt || self.status==='left' || typeof v.ready!=='boolean')throw Error();
       self.ready=v.ready;break;
