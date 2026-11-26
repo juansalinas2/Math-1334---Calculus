@@ -30,13 +30,29 @@ async function renderMap() {
   const theorems = JSON.parse(read("theorems.json"));
   const lectures = JSON.parse(read("challenge-questions.json"));
   const sections = JSON.parse(read("challenge-sections.json"));
+  const additions = fs.readdirSync(path.join(source, "challenge-lectures"))
+    .filter(name => name.endsWith("-variety.json")).sort()
+    .map(name => JSON.parse(read("challenge-lectures/" + name)));
+  for (const group of additions) for (const key of Object.keys(group)) {
+    if (!lectures.some(l => l.id === key)) throw Error("Unknown lecture in extra game questions: " + key);
+  }
   for (const lecture of lectures) {
     lecture.questions.push(...JSON.parse(read("challenge-lectures/" + lecture.id + ".json")));
+    for (const group of additions) lecture.questions.push(...(group[lecture.id] || []));
     for (const q of lecture.questions) {
       if (!lecture.review && !sections[q.section]) throw Error("Missing note section: " + q.prompt);
       if (!/^\.\.\/lectures\/[\w-]+\.html#[\w.-]+$/.test(q.source)) throw Error("Missing lecture anchor: " + q.source);
     }
     lecture.sections = Object.fromEntries(Object.entries(sections).filter(([id]) => lecture.questions.some(q => q.section === id)));
+  }
+  // Every selectable lecture and specialist deck must support the longest fixed run.
+  const ordinary = lectures.filter(l => !l.review).flatMap(l => l.questions);
+  const routes = Object.entries(sections).map(([id,title]) => [title,ordinary.filter(q => q.section === id)]);
+  for (const l of lectures.filter(l => l.review)) routes.push([l.title,l.questions]);
+  for (const [name,pool] of routes) for (const level of [1,2,3,4]) {
+    const eligible = pool.filter(q => !q.capstone && q.level === level);
+    const prompts = new Set(eligible.map(q => JSON.stringify([q.prompt,q.graphPrompt || "",q.graphChoices || []])));
+    if (prompts.size < 15 || eligible.length !== prompts.size) throw Error("Check route length and repeated prompts: " + name + " level " + level);
   }
   const marks = fs.readFileSync(path.resolve("scripts/figures/map-node-marks.svg"), "utf8");
   const requested = { inline: new Set(), display: new Set() };

@@ -26,7 +26,7 @@
 <div class="mast"><h1>Critical <em>Point</em></h1><div class="record"><span>Personal best streak</span><b id="personal-best" title="Longest streak on this device">0</b><a href="#board" id="open-board" aria-haspopup="dialog">Class best streak</a><span id="crown-record" hidden>☀ Sun Crown</span></div></div>
 <div class="console">
 <div class="display">
-  <div class="scorebar"><span id="round">At the starting line</span><span id="score"><span id="streak">Streak 0</span> · Score <b>0</b> <span id="award" hidden></span></span></div>
+  <div class="scorebar"><span id="round">At the starting line</span><span id="pace-score" hidden></span><span id="score"><span id="streak">Streak 0</span> · Score <b>0</b> <span id="award" hidden></span></span></div>
   <svg id="rails" viewBox="0 0 680 200" role="img" aria-label="A stick figure on a graph-paper obstacle course"></svg>
 </div>
 <div id="panel">
@@ -34,30 +34,33 @@
     <div id="pace" hidden><span id="target"></span> <button type="button" id="dismiss-pace" class="quiet">Fresh course</button></div>
     <div class="launch-row">
       <label for="course">Course
-        <select id="course"><option value="exam3">Exam 3</option><option value="final">Final review</option><option value="lecture">One lecture</option><option value="theory">Theory</option><option value="vocab">Vocabulary</option></select>
+        <select id="course"><option value="final">Final review</option><option value="exam3">Exam 3</option><option value="lecture">One lecture</option><option value="theory">Theory</option><option value="vocab">Vocabulary</option></select>
       </label>
       <label for="difficulty">Difficulty
-        <select id="difficulty"><option value="easy">Easy</option><option value="medium" selected>Normal</option><option value="hard">Hard</option></select>
+        <select id="difficulty"><option value="easy" selected>Easy</option><option value="medium">Normal</option><option value="hard">Hard</option></select>
       </label>
+      <label for="length">Route length<select id="length"><option value="5">5 jumps</option><option value="10" selected>10 jumps</option><option value="15">15 jumps</option><option value="endless">Endless</option></select></label>
       <div id="lecture-picker" hidden><label for="line">Section in the lecture PDF<select id="line"></select></label></div>
-      <div class="launch-actions"><button type="button" class="primary" id="start" disabled>Start run</button><button type="button" class="quiet" id="invite" disabled>Race friends</button></div>
+      <div class="launch-actions"><button type="button" class="primary" id="start" disabled>Start run</button><button type="button" class="quiet" id="invite" disabled>Multiplayer</button></div>
     </div>
     <details id="run-options"><summary>Run options &amp; rules <span id="run-summary"></span></summary>
       <div class="option-fields">
+        <label for="lobby-character">Runner<select id="lobby-character"></select></label>
         <label for="order">Question order<select id="order"><option value="shuffled">Shuffled</option><option value="ordered">In order</option></select></label>
         <label for="clock-mode">Pace<select id="clock-mode"><option value="timed">Timed run</option><option value="practice">Untimed practice</option></select></label>
       </div>
       <p id="scope"></p><p id="rules-hint"></p>
-      <p>Tap an answer or press A–D. A cleared course earns an optional bonus jump.</p>
+      <p>Tap an answer or press A–D. Clear the route for an optional bonus jump. In Endless, bank your score whenever you land.</p>
     </details>
     <p id="load-state" role="status">Loading questions…</p>
   </section>
   <section id="play" hidden><div id="clock" role="timer" aria-label="Time remaining" hidden><div class="clock-head"><span class="clock-label">Time remaining</span><span class="clock-digit"><b id="seconds">65</b> sec</span></div><div class="clock-track"><div id="clock-fill"></div></div></div><h2 id="prompt" tabindex="-1"></h2><div id="prompt-graph" hidden></div><div class="choices" id="choices"></div>
     <form id="numeric" hidden><label for="number-answer">Your answer</label><div class="number-field"><input id="number-answer" type="text" maxlength="32" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Integer or fraction" aria-describedby="number-hint"><button class="primary" type="submit">Submit answer</button></div><span id="number-hint" role="status"></span></form>
     <button id="signal" class="quiet" hidden>Use eraser · remove two choices</button>
+    <button class="quiet" id="bank-run" type="button" hidden>Bank Endless score</button>
     <details id="previous" hidden><summary>Previous jump · Show solution</summary><div id="previous-content"></div></details>
   </section>
-  <section id="feedback" hidden><h2 id="verdict" tabindex="-1"></h2><div id="prize-panel" hidden><span id="prize-symbol" aria-hidden="true"></span><div><strong id="prize-name"></strong><p id="prize-detail"></p><button id="insane-start" class="quiet" hidden>Play Insane</button></div></div><div id="result"></div><details id="recap" hidden><summary>Review this run’s solutions</summary><ol id="recap-list"></ol></details><div id="bonus-offer" hidden><h3>Extra credit</h3><p id="bonus-description"></p><button class="primary" id="take-bonus">Try bonus jump</button> <button class="quiet" id="skip-bonus">Skip bonus</button></div>
+  <section id="feedback" hidden><h2 id="verdict" tabindex="-1"></h2><div id="prize-panel" hidden><span id="prize-symbol" aria-hidden="true"></span><div><strong id="prize-name"></strong><p id="prize-detail"></p><a id="encore" href="https://vimeo.com/681449396" target="_blank" rel="noopener noreferrer" hidden>Secret encore ↗</a><button id="insane-start" class="quiet" hidden>Play Insane</button></div></div><div id="result"></div><details id="recap" hidden><summary>Review this run’s solutions</summary><ol id="recap-list"></ol></details><div id="bonus-offer" hidden><h3>Extra credit</h3><p id="bonus-description"></p><button class="primary" id="take-bonus">Try bonus jump</button> <button class="quiet" id="skip-bonus">Skip bonus</button></div>
     <form id="save-score" hidden novalidate><label for="nickname">Nickname</label><div class="alias-field"><input id="nickname" type="text" maxlength="5" minlength="1" pattern="[A-Za-z]{1,5}" autocapitalize="characters" autocomplete="off" spellcheck="false" aria-describedby="name-hint name-error" placeholder="ABCDE"><button type="submit" class="quiet">Post to class leaderboard</button></div><span id="name-hint">1–5 letters</span><p id="name-error" role="status"></p></form><p id="saved" role="status"></p><div class="actions"><button class="primary" id="advance">Run again</button><button class="quiet" id="share" hidden>Copy a challenge link</button><button class="quiet" id="change" hidden>Change course</button><a id="review" target="_blank" rel="noopener">Review concept (new tab)</a></div><p id="share-state" role="status"></p><input id="race-link" aria-label="Challenge link" readonly hidden></section>
   <noscript>This game needs JavaScript. <a href="./">Return to the concept map</a>.</noscript>
 </div>
@@ -75,10 +78,13 @@
 </section>
 </div>
 <dialog id="race-hub" aria-labelledby="hub-title">
-  <div class="board-head"><h2 id="hub-title">Race friends</h2><button type="button" id="hub-close" class="quiet">Close</button></div>
-  <p>Race on the same questions with a shared start.</p>
+  <div class="board-head"><h2 id="hub-title">Multiplayer</h2><button type="button" id="hub-close" class="quiet">Close</button></div>
+  <div class="runner-picker"><span id="runner-portrait" aria-hidden="true"></span><label for="character">Your runner<select id="character"></select></label></div>
+  <div class="multiplayer-mode"><h3>Score challenge</h3><p>Play now. Send your score and the same jumps to a friend to beat later.</p><button id="score-challenge" class="quiet" type="button">Set a score to beat</button></div>
+  <div class="multiplayer-mode"><h3>Live race</h3><p>2–12 runners. Start together and see your friends’ shadows move between platforms.</p>
   <button id="host-room" class="primary" type="button">Create room</button>
   <form id="join-form"><label for="join-code">Join with a room code</label><div class="code-entry"><input id="join-code" type="text" maxlength="6" pattern="[A-Za-z0-9]{6}" required autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="6 characters"><button type="submit" class="quiet">Join room</button></div></form>
+  </div>
   <p id="hub-status" role="status"></p>
 </dialog>
 <dialog id="board" aria-labelledby="board-title"><div class="board-head"><h2 id="board-title">Class leaderboard</h2><button class="quiet" type="button" id="close-board">Close</button></div><div class="class-record">Class best streak <strong id="record">…</strong></div><h3>Top 10 scores</h3><p id="board-caption" role="status">Loading class scores…</p><ol id="leaders"></ol><p id="board-empty" hidden>The first timed score takes the lead.</p></dialog>

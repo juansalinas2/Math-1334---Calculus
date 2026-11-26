@@ -390,18 +390,18 @@
     "topic": "endbehavior",
     "section": "4.4",
     "level": 1,
-    "prompt": "You are approaching negative infinity. How should \\(\\sqrt{x^2}\\) be written for those negative \\(x\\)?",
+    "prompt": "On a graph, which direction does \\(x\\to-\\infty\\) describe?",
     "choices": [
-      "\\(-x\\)",
-      "\\(x\\)",
-      "\\(-x^2\\)",
-      "\\(\\pm x\\)"
+      "Far to the left",
+      "Far to the right",
+      "Straight up",
+      "Straight down"
     ],
-    "why": "The square root denotes the nonnegative root. It equals \\(\\lvert x\\rvert\\), which is \\(-x\\) for a negative input.",
-    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
-    "reference": "Exam 3 oral review · 21",
-    "pdfPage": 71,
-    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+    "why": "The input gets more and more negative as you move left.",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+    "pdfPage": 70,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "rationaltails",
@@ -621,5 +621,200 @@
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
     "pdfPage": 72,
     "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "topic": "motion",
+    "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+    "section": "3.4",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "pdfPage": 33,
+    "level": 1,
+    "prompt": "The derivative of position with respect to time is called what?",
+    "why": "Position changes at the instantaneous velocity.",
+    "choices": [
+      "Velocity",
+      "Acceleration",
+      "Distance traveled",
+      "Jerk"
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 68,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "Which calculus term describes the upward bend of this smooth U-shaped curve?",
+    "why": "Concavity describes how tangent slopes change along a curve.",
+    "graphPrompt": "bowl",
+    "choices": [
+      "Concavity",
+      "Period",
+      "Speed",
+      "Intercept"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 70,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "What name describes the horizontal dashed line that this curve approaches far from the origin?",
+    "why": "The curve’s limiting height determines its horizontal asymptote.",
+    "graphPrompt": "up-saturate",
+    "choices": [
+      "Horizontal asymptote",
+      "Vertical tangent",
+      "Critical number",
+      "Inflection point"
+    ]
+  },
+  {
+    "topic": "breaks",
+    "source": "../lectures/06-continuity.html#types-of-discontinuities",
+    "section": "2.5",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "pdfPage": 19,
+    "level": 1,
+    "prompt": "The missing point in the otherwise unbroken line is often called what?",
+    "why": "When the limit exists but the point is missing, filling that hole restores continuity.",
+    "graphPrompt": "line-hole",
+    "choices": [
+      "A hole",
+      "A pole",
+      "A maximum",
+      "A corner"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "A largest value on the entire domain is called a global what?",
+    "why": "“Global maximum” means an output at least as large as every other output.",
+    "choices": [
+      "Maximum",
+      "Minimum",
+      "Tangent",
+      "Derivative"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 3,
+    "prompt": "A continuous function on \\([0,2]\\) has highest point \\((0,5)\\) and \\(f'(x)<0\\) for \\(0<x<2\\). Which terms correctly identify 0 and 5?",
+    "why": "The two coordinates are an endpoint input and its output. The derivative sign explains the fall from that endpoint.",
+    "choices": [
+      "0 is the maximizing input; 5 is the global maximum value.",
+      "0 is the maximum value; 5 is its input.",
+      "0 is an interior critical number; 5 is its slope.",
+      "0 is an inflection input; 5 is its derivative."
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 68,
+    "handoutPage": 1,
+    "level": 3,
+    "prompt": "The pictured \\(f(x)=x^3+1\\) has a horizontal tangent at \\((0,1)\\) and changes concavity there while still rising. Which pair of descriptions applies?",
+    "why": "Its zero slope makes 0 a critical number, and the change of concavity makes \\((0,1)\\) an inflection point.",
+    "graphPrompt": "cubic-raised",
+    "choices": [
+      "Critical point and inflection point",
+      "Local maximum and inflection point",
+      "Local minimum and corner",
+      "Global maximum and horizontal asymptote"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 72,
+    "handoutPage": 3,
+    "level": 3,
+    "prompt": "For \\(f(x)=x+2+1/(x-1)\\), a student labels \\(y=x\\) the slant asymptote because \\(f(x)/x\\to1\\). Which description correctly identifies the slant asymptote at the right end?",
+    "why": "Subtracting \\(x+2\\) leaves \\(1/(x-1)\\to0\\). Subtracting \\(x\\) leaves a quantity approaching 2.",
+    "choices": [
+      "\\(y=x+2\\), because the vertical gap tends to zero.",
+      "\\(y=x\\), because a limiting slope determines the line’s height.",
+      "\\(y=2\\), because 2 appears as a constant term.",
+      "\\(x=1\\), because the denominator vanishes there."
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#finding-global-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 65,
+    "handoutPage": 2,
+    "level": 4,
+    "prompt": "For \\(f(x)=(x^2-1)^2\\), the critical numbers are \\(-1,0,1\\). How many distinct critical values are there?",
+    "why": "Critical values are outputs: \\(f(-1)=f(1)=0\\) and \\(f(0)=1\\).",
+    "answer": "2"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 68,
+    "handoutPage": 1,
+    "level": 4,
+    "prompt": "For \\(f(x)=x^3-3x\\) the stationary inputs are \\(-1,1\\) and the inflection input is 0. How many of those three inputs are both stationary and inflection inputs?",
+    "why": "The horizontal tangents occur at \\(-1\\) and 1. At zero the concavity changes but the slope is \\(-3\\).",
+    "answer": "0"
+  },
+  {
+    "topic": "breaks",
+    "source": "../lectures/06-continuity.html#types-of-discontinuities",
+    "section": "2.5",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "pdfPage": 19,
+    "level": 4,
+    "prompt": "For \\(x\\ne1,-1\\), let \\(g(x)=(x-1)/[(x-1)(x+1)]\\). Of the two excluded inputs, how many are removable discontinuities?",
+    "why": "Near 1 the quotient simplifies to \\(1/(x+1)\\) with finite limit \\(1/2\\). At \\(-1\\) it has a vertical asymptote.",
+    "answer": "1"
+  },
+  {
+    "topic": "tangent",
+    "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
+    "section": "3.1",
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "pdfPage": 24,
+    "level": 2,
+    "prompt": "Which graph has a corner at the origin, where distinct left and right tangent slopes meet?",
+    "why": "The V has left slope \\(-1\\) and right slope 1, so its derivative fails to exist at the corner.",
+    "choices": [
+      "Two straight rays meet at a V-shaped corner at the origin.",
+      "Smooth U-shaped curve with its lowest point at the origin.",
+      "An increasing S-curve that flattens at (0, 1).",
+      "Rising line through the origin and (1, 1)."
+    ],
+    "graphChoices": [
+      "corner",
+      "bowl",
+      "cubic-raised",
+      "rising-origin"
+    ]
   }
 ]

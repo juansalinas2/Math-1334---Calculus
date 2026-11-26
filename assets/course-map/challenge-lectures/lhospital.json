@@ -260,7 +260,7 @@
   },
   {
     "topic": "forms",
-    "level": 1,
+    "level": 2,
     "prompt": "For the positive expression \\(y=x^x\\), which equality is the first step in analyzing its limit as \\(x\\to0^+\\)?",
     "choices": [
       "\\(\\ln y=x\\ln x\\)",
@@ -516,5 +516,464 @@
     ],
     "why": "The new numerator is constant and the denominator grows without bound, so the derivative quotient tends to zero.",
     "handoutPage": 3
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#check-the-form",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "Direct substitution in a quotient gives \\(0/2\\). What number is that?",
+    "why": "A zero numerator divided by a nonzero denominator is zero.",
+    "choices": [
+      "\\(0\\)",
+      "\\(2\\)",
+      "\\(1\\)",
+      "Undefined"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#check-the-form",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "Direct substitution in a quotient gives \\(3/1\\). What is the limit?",
+    "why": "The denominator has a nonzero limit, so ordinary division works.",
+    "choices": [
+      "\\(3\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "No finite limit"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#lhospitals-theorem",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 84,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "If a quotient has form \\(0/0\\), does that information alone tell you its limit?",
+    "why": "The same form occurs for quotients with different limits.",
+    "choices": [
+      "No, more information is needed.",
+      "Yes, the limit must be zero.",
+      "Yes, the limit must be one.",
+      "Yes, the limit must be infinity."
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "When \\(x\\to0\\), what does the numerator \\(\\sin x\\) in \\(\\sin x/x\\) approach?",
+    "why": "Sine is continuous and \\(\\sin 0=0\\).",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(+\\infty\\)"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#infinity-over-infinity",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 3,
+    "level": 1,
+    "prompt": "As \\(x\\to+\\infty\\), what does the denominator \\(x^2\\) in \\(e^x/x^2\\) approach?",
+    "why": "Squaring a large positive input makes an even larger positive output.",
+    "choices": [
+      "\\(+\\infty\\)",
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-\\infty\\)"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#lhospitals-theorem",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 84,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "Under l’Hospital’s rule, what replaces the numerator \\(f\\) in an eligible quotient \\(f/g\\)?",
+    "why": "The rule takes the derivative of the numerator and the derivative of the denominator separately.",
+    "choices": [
+      "\\(f'\\)",
+      "\\(g'\\)",
+      "\\(f^2\\)",
+      "\\(1/f\\)"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "During an application of l’Hospital’s rule, what is the derivative of the denominator \\(x-2\\)?",
+    "why": "A line of slope one has derivative one.",
+    "choices": [
+      "\\(1\\)",
+      "\\(x\\)",
+      "\\(0\\)",
+      "\\(-2\\)"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#check-the-form",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "As \\(x\\to2\\), what does the denominator \\(x-2\\) approach?",
+    "why": "The difference approaches \\(2-2=0\\).",
+    "choices": [
+      "\\(0\\)",
+      "\\(2\\)",
+      "\\(4\\)",
+      "\\(-2\\)"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#infinity-over-infinity",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 3,
+    "level": 1,
+    "prompt": "What form does \\(x/x\\) have before simplification as \\(x\\to+\\infty\\)?",
+    "why": "Both the numerator and denominator grow without bound.",
+    "choices": [
+      "\\(\\infty/\\infty\\)",
+      "\\(0/0\\)",
+      "\\(1/0\\)",
+      "\\(0/\\infty\\)"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#check-the-form",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "For \\(\\lim_{x\\to1}x/(x+1)\\), what is the denominator’s limit?",
+    "why": "Substituting 1 gives \\(1+1=2\\).",
+    "choices": [
+      "\\(2\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-1\\)"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 87,
+    "handoutPage": 5,
+    "level": 1,
+    "prompt": "If \\(y>0\\) and \\(\\ln y=0\\), what is \\(y\\)?",
+    "why": "Exponentiating gives \\(y=e^0=1\\).",
+    "choices": [
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-1\\)",
+      "\\(e\\)"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#check-the-form",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "Which first check helps decide whether to use l’Hospital’s rule on a quotient?",
+    "why": "Their limits tell you whether you have an eligible indeterminate form.",
+    "choices": [
+      "Look at the limiting numerator and denominator.",
+      "Differentiate the entire fraction.",
+      "Square the numerator.",
+      "Drop all constants immediately."
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "What is \\(\\lim_{x\\to0}\\cos x\\), the final limit after applying l’Hospital’s rule to \\(\\sin x/x\\)?",
+    "why": "Cosine is continuous and \\(\\cos 0=1\\).",
+    "choices": [
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-1\\)",
+      "It does not exist."
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 2,
+    "prompt": "For \\(\\lim_{x\\to0}(e^x-1)/x\\), differentiating the numerator and denominator gives \\(e^x/1\\). What is the limit?",
+    "why": "The derivative quotient tends to \\(e^0=1\\).",
+    "choices": [
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(e\\)",
+      "\\(-1\\)"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 2,
+    "prompt": "As \\(x\\to0\\), both parts of \\(\\sin(2x)/x\\) vanish. By l’Hospital’s rule, its limit is \\(\\lim_{x\\to0}2\\cos(2x)\\). What is the result?",
+    "why": "At zero the cosine factor is one.",
+    "choices": [
+      "\\(2\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(4\\)"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#check-the-form",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 2,
+    "prompt": "Apply direct substitution to \\(\\lim_{x\\to1}(\\ln x+2)/(x+1)\\). What do you get?",
+    "why": "The numerator approaches 2, and so does the denominator.",
+    "choices": [
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(2\\)",
+      "An indeterminate form"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#infinity-over-infinity",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 3,
+    "level": 2,
+    "prompt": "Applying l’Hospital’s rule once to \\(\\lim_{x\\to\\infty}(\\ln x)/x\\) gives \\(\\lim_{x\\to\\infty}1/x\\). Which value follows?",
+    "why": "The reciprocal tends to zero.",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(+\\infty\\)",
+      "\\(-\\infty\\)"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#products",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 86,
+    "handoutPage": 4,
+    "level": 2,
+    "prompt": "For \\(x>0\\), which quotient equals \\(x\\ln x\\) and has form \\(\\infty/\\infty\\) in magnitude as \\(x\\to0^+\\)?",
+    "why": "Dividing by \\(1/x\\) multiplies by \\(x\\); both magnitudes diverge.",
+    "choices": [
+      "\\((\\ln x)/(1/x)\\)",
+      "\\((\\ln x)/x\\)",
+      "\\(x/(1/x)\\)",
+      "\\((1/x)/(\\ln x)\\)"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 87,
+    "handoutPage": 5,
+    "level": 2,
+    "prompt": "If \\(y(x)>0\\) and \\(\\ln y(x)\\to2\\), what does \\(y(x)\\) approach?",
+    "why": "Use \\(y=e^{\\ln y}\\) and continuity of the exponential.",
+    "choices": [
+      "\\(e^2\\)",
+      "\\(2\\)",
+      "\\(\\ln 2\\)",
+      "\\(1\\)"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 2,
+    "prompt": "For the \\(0/0\\) quotient \\((x^2-9)/(x-3)\\) as \\(x\\to3\\), what derivative quotient do you get?",
+    "why": "Differentiate top and bottom separately: \\(2x\\) and 1.",
+    "choices": [
+      "\\(2x/1\\)",
+      "\\(2x/0\\)",
+      "\\(x/1\\)",
+      "\\(1/(2x)\\)"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#infinity-over-infinity",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 3,
+    "level": 2,
+    "prompt": "For \\(e^x/x^2\\) as \\(x\\to\\infty\\), what is the form after differentiating once to obtain \\(e^x/(2x)\\)?",
+    "why": "Both the exponential and the linear denominator still grow without bound.",
+    "choices": [
+      "Still \\(\\infty/\\infty\\)",
+      "\\(0/0\\)",
+      "A nonzero constant divided by infinity",
+      "Infinity divided by zero"
+    ]
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 4,
+    "prompt": "Choose \\(a\\) so that \\(\\lim_{x\\to0}(e^{2x}-1-ax)/x^2\\) is finite. What is that finite limit?",
+    "why": "After one differentiation the numerator is \\(2e^{2x}-a\\), forcing \\(a=2\\). The second derivative quotient tends to \\(4/2=2\\).",
+    "answer": "2"
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 87,
+    "handoutPage": 5,
+    "level": 4,
+    "prompt": "For positive \\(y=(1+3x)^{2/x}\\) as \\(x\\to0^+\\), find \\(\\lim\\ln y\\).",
+    "why": "The logarithm equals \\(2\\ln(1+3x)/x\\). The derivative quotient tends to \\(2(3)=6\\).",
+    "answer": "6"
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 4,
+    "prompt": "The lecture gives \\(\\lim_{u\\to0}(\\tan u-u)/u^3=1/3\\). Find \\(\\lim_{x\\to0}(\\tan(2x)-2x)/(4x^3)\\).",
+    "why": "With \\(u=2x\\), the denominator \\(4x^3\\) is \\(u^3/2\\). Double the lecture limit.",
+    "answer": "2/3"
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 87,
+    "handoutPage": 5,
+    "level": 4,
+    "prompt": "Let \\(L=\\lim_{x\\to0^+}(\\cos x)^{6/x^2}\\). Using \\(\\lim_{x\\to0}\\ln(\\cos x)/x^2=-1/2\\), find \\(\\ln L\\).",
+    "why": "The logarithm of the power is six times the supplied quotient, so its limit is \\(6(-1/2)=-3\\).",
+    "answer": "-3"
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#products",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 86,
+    "handoutPage": 4,
+    "level": 4,
+    "prompt": "The lecture gives \\(\\lim_{u\\to0^+}[1/u-1/(e^u-1)]=1/2\\). Find \\(\\lim_{x\\to0^+}[1/x-2/(e^{2x}-1)]\\).",
+    "why": "Factor out 2 and put \\(u=2x\\). The result is twice the lecture limit.",
+    "answer": "1"
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#infinity-over-infinity",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 3,
+    "level": 4,
+    "prompt": "The quotient \\(\\ln(x^2+1)/\\ln x\\) has form \\(\\infty/\\infty\\) as \\(x\\to\\infty\\). After applying l’Hospital’s rule, find its limit.",
+    "why": "Divide \\(2x/(x^2+1)\\) by \\(1/x\\) to obtain \\(2x^2/(x^2+1)\\), whose limit is 2.",
+    "answer": "2"
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 4,
+    "prompt": "For \\(\\lim_{x\\to0}[\\sin(3x)-3x]/x^3\\), the first two derivative quotients still have form \\(0/0\\). At the third step the denominator is 6. What is the limit?",
+    "why": "The third derivative of the numerator is \\(-27\\cos(3x)\\). At zero the quotient becomes \\(-27/6=-9/2\\).",
+    "answer": "-9/2"
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#lhospitals-theorem",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 84,
+    "handoutPage": 1,
+    "level": 2,
+    "prompt": "The pictured line is the graph of \\(f(x)=x\\). For \\(x\\ne0\\), the quotient \\(f(x)/x\\) is constant. What is its limit at zero, despite the \\(0/0\\) form?",
+    "why": "Away from zero the quotient is \\(x/x=1\\) on both sides.",
+    "graphPrompt": "rising-origin",
+    "choices": [
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-1\\)",
+      "Undefined"
+    ]
   }
 ]

@@ -450,5 +450,441 @@
     "capstone": true,
     "pdfPage": 66,
     "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "Look at the bottom of the pictured parabola. What is the smallest output of \\(f(x)=x^2\\) over all real inputs?",
+    "why": "The lowest point sits on the horizontal axis.",
+    "graphPrompt": "bowl",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "There is no minimum."
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "For the pictured hump \\(f(x)=4/(x^2+3)\\), at which input does the global maximum occur?",
+    "why": "The peak sits directly above the vertical axis, and \\(x^2+3\\) is smallest at zero.",
+    "graphPrompt": "bell",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 66,
+    "handoutPage": 3,
+    "level": 1,
+    "prompt": "The only candidate outputs for a global maximum are \\(-2\\), \\(4\\), and \\(1\\). What is the global maximum value?",
+    "why": "The largest candidate output is 4.",
+    "choices": [
+      "\\(4\\)",
+      "\\(-2\\)",
+      "\\(1\\)",
+      "\\(3\\)"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 66,
+    "handoutPage": 3,
+    "level": 1,
+    "prompt": "The candidate outputs for a global minimum are \\(3\\), \\(-1\\), and \\(0\\). Which is smallest?",
+    "why": "Negative one is below both zero and three.",
+    "choices": [
+      "\\(-1\\)",
+      "\\(0\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "A function attains its highest value anywhere in its domain at \\((2,7)\\). What is its global maximum value?",
+    "why": "The value is the output, the point’s second coordinate.",
+    "choices": [
+      "\\(7\\)",
+      "\\(2\\)",
+      "\\(9\\)",
+      "\\(5\\)"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "The lowest point of a graph is \\((3,-2)\\). At which input is the global minimum attained?",
+    "why": "The input is the first coordinate.",
+    "choices": [
+      "\\(3\\)",
+      "\\(-2\\)",
+      "\\(2\\)",
+      "\\(-3\\)"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#finding-global-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 65,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "Besides interior critical numbers, which points must you check for global extrema on \\([a,b]\\)?",
+    "why": "The closed-interval method compares the endpoints and the interior critical numbers.",
+    "choices": [
+      "Both endpoints",
+      "Only the midpoint",
+      "Only the zeros of the function",
+      "Only the inflection points"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "For \\(f(x)=x\\) on \\([0,2]\\), does the global maximum occur at an endpoint or an interior point?",
+    "why": "The line increases from \\(f(0)=0\\) to \\(f(2)=2\\), and 2 belongs to the domain.",
+    "choices": [
+      "At the right endpoint",
+      "At the left endpoint",
+      "At the midpoint",
+      "At every interior point"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "For the word “local” in “local minimum,” which outputs do you compare with \\(f(c)\\)?",
+    "why": "A local comparison uses a neighborhood of the input.",
+    "choices": [
+      "Outputs at nearby points in the domain",
+      "Only the two endpoint outputs",
+      "Only positive outputs",
+      "Only the outputs far from \\(c\\)"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 66,
+    "handoutPage": 3,
+    "level": 1,
+    "prompt": "The pictured function is \\(f(x)=|x|\\). Where is its global minimum attained?",
+    "why": "The V reaches its lowest point at the origin.",
+    "graphPrompt": "corner",
+    "choices": [
+      "At \\(x=0\\)",
+      "At \\(x=1\\)",
+      "At \\(x=-1\\)",
+      "At every negative input"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "A function takes the constant value 5 everywhere. What is its global maximum value?",
+    "why": "Every output equals 5, so 5 is the greatest output.",
+    "choices": [
+      "\\(5\\)",
+      "\\(0\\)",
+      "\\(1\\)",
+      "No maximum exists."
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 66,
+    "handoutPage": 3,
+    "level": 2,
+    "prompt": "For \\(f(x)=1-x^2\\) on \\([-1,1]\\), which input gives the greatest output?",
+    "why": "The square is smallest at zero, giving \\(f(0)=1\\).",
+    "choices": [
+      "\\(0\\)",
+      "\\(-1\\) only",
+      "\\(1\\) only",
+      "Both endpoints"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 2,
+    "prompt": "On the open interval \\((0,2)\\), \\(f(x)=x\\) takes values arbitrarily close to 2. Does it have a global maximum?",
+    "why": "For any allowed input there is a larger one still below 2.",
+    "choices": [
+      "No, it never reaches 2.",
+      "Yes, the maximum is 2.",
+      "Yes, the maximum is 1.",
+      "Yes, every positive output is a maximum."
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#finding-global-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 65,
+    "handoutPage": 2,
+    "level": 2,
+    "prompt": "The only critical number in \\((-2,3)\\) is 1. How many candidate inputs should you check for extrema on \\([-2,3]\\) if \\(f\\) is continuous there?",
+    "why": "Compare \\(-2\\), 1, and 3.",
+    "choices": [
+      "\\(3\\)",
+      "\\(1\\)",
+      "\\(2\\)",
+      "\\(5\\)"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 66,
+    "handoutPage": 3,
+    "level": 2,
+    "prompt": "For \\(f(x)=2+|x|\\) on \\([-1,2]\\), what is the largest output?",
+    "why": "The largest absolute input is 2, so the maximum output is \\(2+2=4\\).",
+    "choices": [
+      "\\(4\\)",
+      "\\(3\\)",
+      "\\(2\\)",
+      "\\(1\\)"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 2,
+    "prompt": "The picture shows \\(f(x)=x\\). Restrict its domain to \\([-2,1]\\). What is its global minimum value?",
+    "why": "The line rises from left to right and the left endpoint is included.",
+    "graphPrompt": "rising-origin",
+    "choices": [
+      "\\(-2\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(2\\)"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 66,
+    "handoutPage": 3,
+    "level": 2,
+    "prompt": "For \\(f(x)=\\sin x\\) on \\([-\\pi/2,\\pi]\\), the candidate values are \\(-1,1,0\\). How far apart are the greatest and least outputs?",
+    "why": "Subtract the minimum from the maximum to obtain \\(1-(-1)=2\\).",
+    "choices": [
+      "\\(2\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(3\\)"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 66,
+    "handoutPage": 3,
+    "level": 4,
+    "prompt": "Suppose \\(f(x)=x+3\\) on \\([2,4]\\) except at 3, where \\(f(3)=k\\). If \\(f\\) has global minimum 5 and global maximum 8, what is \\(k\\)?",
+    "why": "Away from 3 the outputs lie from 5 to 7. Only the replacement value can supply the maximum of 8.",
+    "answer": "8"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 66,
+    "handoutPage": 3,
+    "level": 4,
+    "prompt": "Restrict \\(f(x)=2+|x|\\) to \\([-1,b]\\) with \\(b>1\\). If the largest output exceeds the smallest by 4, find \\(b\\).",
+    "why": "The minimum is 2 at zero, and the maximum is \\(2+b\\). Their difference is \\(b\\).",
+    "answer": "4"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 66,
+    "handoutPage": 3,
+    "level": 4,
+    "prompt": "For \\(g(x)=1-x^2\\) on \\([-1,3]\\), take \\(H(x)=|g(x)|\\). How many distinct inputs attain the global minimum of \\(H\\)?",
+    "why": "The smallest possible absolute value is zero. Both roots of \\(1-x^2\\) belong to the domain.",
+    "answer": "2"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#finding-global-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 65,
+    "handoutPage": 2,
+    "level": 4,
+    "prompt": "On \\([-1,4]\\), \\(f(x)=x^3(4-x)\\) has minimum \\(-5\\) and maximum 27. A new function \\(g(x)=a-2f(x)\\) has global maximum 16. What is its global minimum?",
+    "why": "The maximum is \\(a+10=16\\), so \\(a=6\\). At \\(f=27\\), \\(g=6-54=-48\\).",
+    "answer": "-48"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 66,
+    "handoutPage": 3,
+    "level": 4,
+    "prompt": "Change the interval for \\(f(x)=1-x^2\\) to \\([a,2]\\) with \\(a<-2\\). If its global minimum is \\(-8\\), what is \\(a\\)?",
+    "why": "The left endpoint has the larger absolute value, so \\(1-a^2=-8\\) and \\(a=-3\\).",
+    "answer": "-3"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 4,
+    "prompt": "A continuous function has range \\([-2,3]\\) on a closed interval. For \\(g(x)=(f(x)-1)^2\\), what is the difference between its greatest and least values?",
+    "why": "The range includes 1, making the minimum zero. The farthest endpoint from 1 is \\(-2\\), giving 9.",
+    "answer": "9"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 66,
+    "handoutPage": 3,
+    "level": 4,
+    "prompt": "On \\([-1,2]\\) let \\(h(x)=2+|x|\\) except that \\(h(0)=5\\). How many distinct inputs attain a global extreme value?",
+    "why": "Only zero attains the maximum. Values approach 2 without reaching it, so there is no minimum.",
+    "answer": "1"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "On the whole real line, which pictured function has a single lowest point and rises on both sides of it?",
+    "why": "The upward parabola has its unique minimum at its vertex.",
+    "choices": [
+      "Smooth U-shaped curve with its lowest point at the origin.",
+      "Downward parabola touching the origin and passing through (1, −3).",
+      "Rising line through the origin and (1, 2).",
+      "Falling line through the origin and (1, −2)."
+    ],
+    "graphChoices": [
+      "bowl",
+      "negative-bowl",
+      "slope-two",
+      "slope-neg-two"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 2,
+    "prompt": "On the pictured interval \\([0,2\\pi]\\), which function has its global maximum at both endpoints?",
+    "why": "Cosine reaches 1 at \\(0\\) and \\(2\\pi\\), and never exceeds 1.",
+    "choices": [
+      "A wave starts at 1 and reaches −1 at π.",
+      "A wave starts at 0, rises to 1 at π/2, then dips to −1 at 3π/2.",
+      "A wave starts at 0, dips to −1 at π/2, then peaks at 1 at 3π/2.",
+      "A wave starts at −1 and reaches 1 at π."
+    ],
+    "graphChoices": [
+      "cos",
+      "sin",
+      "neg-sin",
+      "neg-cos"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 66,
+    "handoutPage": 3,
+    "level": 4,
+    "prompt": "The graph shows \\(f(t)=t^3-6t^2+9t+2\\). Restrict the domain to \\([1,3]\\). The two turning points are \\((1,6)\\) and \\((3,2)\\). What is the greatest value of \\(|f(t)-5|\\) there?",
+    "why": "Between these turning points the function decreases continuously through \\([2,6]\\). Of the two ends of that range, 2 is farther from 5, at distance 3.",
+    "graphPrompt": "cubic-position",
+    "answer": "3"
   }
 ]

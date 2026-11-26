@@ -1,0 +1,1711 @@
+{
+  "limits": [
+    {
+      "section": "2.1",
+      "topic": "limit",
+      "source": "../lectures/02-limits.html#limits-and-function-values",
+      "pdfPage": 6,
+      "pdf": "../downloads/september-28-limits-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "line-redefined",
+      "prompt": "The filled dot gives \\(f(2)\\). What is its height?",
+      "why": "The filled dot is at \\((2,7)\\). The open circle belongs to the nearby line.",
+      "choices": [
+        "7",
+        "4",
+        "2",
+        "0"
+      ]
+    },
+    {
+      "section": "2.1",
+      "topic": "limit",
+      "source": "../lectures/02-limits.html#limits-and-function-values",
+      "pdfPage": 6,
+      "pdf": "../downloads/september-28-limits-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "line-hole",
+      "prompt": "Follow the line toward \\(x=2\\). Which height does it approach?",
+      "why": "Both sides approach the open circle at \\((2,4)\\).",
+      "choices": [
+        "4",
+        "2",
+        "0",
+        "8"
+      ]
+    },
+    {
+      "section": "2.1",
+      "topic": "limit",
+      "source": "../lectures/02-limits.html#limits-and-function-values",
+      "pdfPage": 6,
+      "pdf": "../downloads/september-28-limits-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "open-peak",
+      "prompt": "For the tent-shaped graph, which pair gives the limit as \\(x\\to1\\) and then the actual value \\(f(1)\\)?",
+      "why": "Both branches approach 4. The separate filled point puts the function value at 1.",
+      "choices": [
+        "\\((4,1)\\)",
+        "\\((1,4)\\)",
+        "\\((4,4)\\)",
+        "\\((1,1)\\)"
+      ]
+    },
+    {
+      "section": "2.1",
+      "topic": "sides",
+      "source": "../lectures/02-limits.html#one-sided-limits",
+      "pdfPage": 6,
+      "pdf": "../downloads/september-28-limits-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "step-mark",
+      "prompt": "Which number does \\(f(x)\\) approach as \\(x\\) tends to 1 from the right?",
+      "why": "For inputs just greater than 1, the graph follows the branch at height −1.",
+      "choices": [
+        "−1",
+        "3",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "section": "2.1",
+      "topic": "sides",
+      "source": "../lectures/02-limits.html#one-sided-limits",
+      "pdfPage": 6,
+      "pdf": "../downloads/september-28-limits-class-notes.pdf",
+      "level": 3,
+      "graphPrompt": "step-mark",
+      "prompt": "Let \\(g(x)=[f(x)-1]^2\\) for the step function shown. What happens to \\(g(x)\\) as \\(x\\to1\\)?",
+      "why": "Subtracting 1 turns the two limiting heights into 2 and −2. Both square to 4.",
+      "choices": [
+        "It approaches 4.",
+        "It approaches −4.",
+        "It has unequal one-sided limits.",
+        "It approaches 0."
+      ]
+    },
+    {
+      "section": "2.1",
+      "topic": "sides",
+      "source": "../lectures/02-limits.html#one-sided-limits",
+      "pdfPage": 6,
+      "pdf": "../downloads/september-28-limits-class-notes.pdf",
+      "level": 4,
+      "graphPrompt": "open-peak",
+      "prompt": "For the pictured function, let \\(g(x)=f(x)-f(1)\\). Find \\(\\lim_{x\\to1}g(x)^2\\).",
+      "why": "The nearby height is 4, while the filled height at 1 is 1. The square therefore approaches \\((4-1)^2=9\\).",
+      "answer": "9"
+    },
+    {
+      "section": "2.2",
+      "topic": "infinite",
+      "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+      "pdfPage": 9,
+      "pdf": "../downloads/september-28-limits-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "inverse",
+      "prompt": "The dashed vertical line is an asymptote. What is its \\(x\\)-coordinate?",
+      "why": "It passes through the tick marked −1.",
+      "choices": [
+        "−1",
+        "0",
+        "1",
+        "2"
+      ]
+    },
+    {
+      "section": "2.2",
+      "topic": "infinite",
+      "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+      "pdfPage": 9,
+      "pdf": "../downloads/september-28-limits-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "inverse-square",
+      "prompt": "Follow the right branch toward \\(x=-1\\). Which limit do you see?",
+      "why": "On the right side of the vertical asymptote the heights grow without bound.",
+      "choices": [
+        "\\(+\\infty\\)",
+        "\\(-\\infty\\)",
+        "\\(0\\)",
+        "\\(-1\\)"
+      ]
+    },
+    {
+      "section": "2.2",
+      "topic": "infinite",
+      "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+      "pdfPage": 9,
+      "pdf": "../downloads/september-28-limits-class-notes.pdf",
+      "level": 3,
+      "graphPrompt": "inverse-neg",
+      "prompt": "For the function pictured, which side of \\(x=-1\\) has \\(f(x)>100\\) sufficiently close to the asymptote?",
+      "why": "The left branch tends to positive infinity. The right branch tends to negative infinity.",
+      "choices": [
+        "Only the left side.",
+        "Only the right side.",
+        "Both sides.",
+        "Neither side."
+      ]
+    },
+    {
+      "section": "2.2",
+      "topic": "infinite",
+      "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+      "pdfPage": 9,
+      "pdf": "../downloads/september-28-limits-class-notes.pdf",
+      "level": 4,
+      "graphPrompt": "inverse-neg-square",
+      "prompt": "Both branches of \\(f\\) tend to negative infinity at \\(x=-1\\). Use the graph to find \\(\\lim_{x\\to-1}(2f(x)+1)/(3-f(x))\\).",
+      "why": "Divide top and bottom by \\(f(x)\\). Its reciprocal tends to zero, leaving \\(2/(-1)\\).",
+      "answer": "-2"
+    },
+    {
+      "section": "2.3",
+      "topic": "laws",
+      "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+      "pdfPage": 12,
+      "pdf": "../downloads/september-30-revised-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "line-intact",
+      "prompt": "The continuous line is the graph of \\(f\\). As \\(x\\to0\\), what number does \\(f(x)\\) approach?",
+      "why": "Read the intercept on the vertical axis. The line passes through \\((0,2)\\).",
+      "choices": [
+        "2",
+        "0",
+        "1",
+        "4"
+      ]
+    },
+    {
+      "section": "2.3",
+      "topic": "laws",
+      "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+      "pdfPage": 12,
+      "pdf": "../downloads/september-30-revised-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "line-hole",
+      "prompt": "Use the graph of \\(f\\) to evaluate \\(\\lim_{x\\to2}(f(x)+1)\\).",
+      "why": "The missing point has nearby height 4. Adding 1 shifts the limit to 5.",
+      "choices": [
+        "5",
+        "3",
+        "4",
+        "There is no limit."
+      ]
+    },
+    {
+      "section": "2.3",
+      "topic": "laws",
+      "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+      "pdfPage": 12,
+      "pdf": "../downloads/september-30-revised-class-notes.pdf",
+      "level": 3,
+      "graphPrompt": "step-mark",
+      "prompt": "For this step function \\(f\\), which expression has a two-sided limit at 1?",
+      "why": "Only the absolute distances from 1 coincide. The branch heights 3 and −1 are both two units from 1.",
+      "choices": [
+        "\\(|f(x)-1|\\)",
+        "\\(f(x)+1\\)",
+        "\\(2f(x)\\)",
+        "\\(1/f(x)\\)"
+      ]
+    },
+    {
+      "section": "2.4",
+      "topic": "squeeze",
+      "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+      "pdfPage": 16,
+      "pdf": "../downloads/september-30-revised-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "squeeze-five",
+      "prompt": "The two dashed bounds meet at \\((1,5)\\). What height do they squeeze the middle curve toward as \\(x\\to1\\)?",
+      "why": "The lower and upper bounds have the same limiting height, 5.",
+      "choices": [
+        "5",
+        "1",
+        "0",
+        "10"
+      ]
+    },
+    {
+      "section": "2.4",
+      "topic": "squeeze",
+      "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+      "pdfPage": 16,
+      "pdf": "../downloads/september-30-revised-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "squeeze-zero",
+      "prompt": "The solid function \\(f\\) stays between \\(-x^2\\) and \\(x^2\\). Which conclusion follows at 0?",
+      "why": "Both bounds approach zero. The squeeze theorem fixes the limit even while the middle curve oscillates.",
+      "choices": [
+        "\\(\\lim_{x\\to0}f(x)=0\\)",
+        "\\(\\lim_{x\\to0}f(x)=1\\)",
+        "\\(f\\) must be increasing near 0.",
+        "\\(f\\) must be positive near 0."
+      ]
+    },
+    {
+      "section": "2.4",
+      "topic": "squeeze",
+      "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+      "pdfPage": 16,
+      "pdf": "../downloads/september-30-revised-class-notes.pdf",
+      "level": 3,
+      "graphPrompt": "squeeze-five",
+      "prompt": "The dashed bounds are \\(5\\pm(x-1)^2\\). For \\(x\\ne1\\), what bound follows for \\(|(f(x)-5)/(x-1)|\\)?",
+      "why": "The picture gives \\(|f(x)-5|\\le (x-1)^2\\). Dividing by \\(|x-1|\\) gives the bound.",
+      "choices": [
+        "At most \\(|x-1|\\).",
+        "At least \\(|x-1|\\).",
+        "At most \\(0\\).",
+        "At least \\(1/|x-1|\\)."
+      ]
+    },
+    {
+      "section": "2.4",
+      "topic": "squeeze",
+      "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+      "pdfPage": 16,
+      "pdf": "../downloads/september-30-revised-class-notes.pdf",
+      "level": 4,
+      "graphPrompt": "squeeze-zero",
+      "prompt": "The solid function satisfies \\(|f(x)|\\le x^2\\). If \\(h(x)=2+f(x)/x\\) for \\(x\\ne0\\), find \\(\\lim_{x\\to0}h(x)\\).",
+      "why": "For nonzero \\(x\\), \\(|f(x)/x|\\le |x|\\), so this term tends to zero. The constant 2 remains.",
+      "answer": "2"
+    }
+  ],
+  "continuity": [
+    {
+      "section": "2.5",
+      "topic": "continuity",
+      "source": "../lectures/06-continuity.html#continuity-at-a-point",
+      "pdfPage": 18,
+      "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "line-hole",
+      "prompt": "What feature breaks continuity at \\(x=2\\)?",
+      "why": "The open circle marks a missing value at 2.",
+      "choices": [
+        "A hole in the line.",
+        "A sharp corner.",
+        "A vertical tangent.",
+        "A horizontal tangent."
+      ]
+    },
+    {
+      "section": "2.5",
+      "topic": "continuity",
+      "source": "../lectures/06-continuity.html#continuity-at-a-point",
+      "pdfPage": 18,
+      "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "step-mark",
+      "prompt": "The filled dot lies on the right branch. From which side is the function continuous at 1?",
+      "why": "The right-hand limit and the filled value both equal −1. The left-hand limit is 3.",
+      "choices": [
+        "From the right only.",
+        "From the left only.",
+        "From both sides.",
+        "From neither side."
+      ]
+    },
+    {
+      "section": "2.5",
+      "topic": "continuity",
+      "source": "../lectures/06-continuity.html#continuity-at-a-point",
+      "pdfPage": 18,
+      "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+      "level": 3,
+      "graphPrompt": "open-peak",
+      "prompt": "A player may move only the isolated filled dot vertically. Which move makes the graph continuous?",
+      "why": "The filled point has height 1 and the adjoining branches approach 4. Raise it by 3.",
+      "choices": [
+        "Move it up 3 units.",
+        "Move it up 4 units.",
+        "Move it down 3 units.",
+        "Move it up 1 unit."
+      ]
+    },
+    {
+      "section": "2.5",
+      "topic": "continuity",
+      "source": "../lectures/06-continuity.html#continuity-at-a-point",
+      "pdfPage": 18,
+      "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+      "level": 4,
+      "graphPrompt": "line-redefined",
+      "prompt": "Leave \\(f(2)=7\\) fixed. At every other input replace \\(f(x)\\) by \\(a f(x)-1\\). What \\(a\\) makes the new graph continuous at 2?",
+      "why": "The original nearby heights approach 4. Matching the fixed dot requires \\(4a-1=7\\), so \\(a=2\\).",
+      "answer": "2"
+    },
+    {
+      "section": "2.6",
+      "topic": "ivt",
+      "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+      "pdfPage": 23,
+      "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "ivt-path",
+      "prompt": "The continuous path starts below the horizontal axis and ends above it. Which height must it cross?",
+      "why": "The endpoint heights are −2 and 4, with 0 between them.",
+      "choices": [
+        "0",
+        "8",
+        "−5",
+        "10"
+      ]
+    },
+    {
+      "section": "2.6",
+      "topic": "ivt",
+      "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+      "pdfPage": 23,
+      "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "ivt-path",
+      "prompt": "Using only the two endpoint heights and continuity, which target value is guaranteed somewhere strictly between the endpoints?",
+      "why": "The endpoint values are −2 and 4. The value 3 lies strictly between them.",
+      "choices": [
+        "3",
+        "−3",
+        "5",
+        "6"
+      ]
+    },
+    {
+      "section": "2.6",
+      "topic": "ivt",
+      "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+      "pdfPage": 23,
+      "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+      "level": 3,
+      "graphPrompt": "step-mark",
+      "prompt": "The endpoint values on \\([0,2]\\) straddle zero, yet the graph misses zero. Which IVT hypothesis fails?",
+      "why": "There is a jump at 1, inside the interval. Every input still has an assigned value.",
+      "choices": [
+        "Continuity on the entire interval.",
+        "Having two distinct endpoints.",
+        "Having zero between the endpoint values.",
+        "Having a function value at every point."
+      ]
+    },
+    {
+      "section": "2.7",
+      "topic": "breaks",
+      "source": "../lectures/08-exam-practice.html#problem-1",
+      "pdf": "../downloads/october-5-exam-practice.pdf",
+      "level": 1,
+      "graphPrompt": "line-redefined",
+      "prompt": "In this graph-reading exercise, which mark gives the actual function value?",
+      "why": "The filled point gives the included value. The open circle marks an excluded point.",
+      "handoutPage": 1,
+      "choices": [
+        "The filled point.",
+        "The open circle.",
+        "The horizontal axis.",
+        "The nearest grid line."
+      ]
+    },
+    {
+      "section": "2.7",
+      "topic": "breaks",
+      "source": "../lectures/08-exam-practice.html#problem-1",
+      "pdf": "../downloads/october-5-exam-practice.pdf",
+      "level": 2,
+      "graphPrompt": "step-mark",
+      "prompt": "Classify the break where the two horizontal branches meet \\(x=1\\).",
+      "why": "The one-sided limits exist as different finite numbers.",
+      "handoutPage": 1,
+      "choices": [
+        "Jump discontinuity.",
+        "Removable discontinuity.",
+        "Infinite discontinuity.",
+        "Continuous corner."
+      ]
+    }
+  ],
+  "derivative-motion": [
+    {
+      "section": "3.1",
+      "topic": "tangent",
+      "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
+      "pdfPage": 24,
+      "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "tangent-one",
+      "prompt": "The dashed tangent rises as you move right. Is \\(f^{\\prime}(1)\\) positive, zero, or negative?",
+      "why": "The derivative is the slope of the tangent. A line rising to the right has positive slope.",
+      "choices": [
+        "Positive.",
+        "Zero.",
+        "Negative.",
+        "Undefined."
+      ]
+    },
+    {
+      "section": "3.1",
+      "topic": "tangent",
+      "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
+      "pdfPage": 24,
+      "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "secant01",
+      "prompt": "The dashed line joins \\((0,0)\\) and \\((2,4)\\). What is this secant slope?",
+      "why": "The rise is 4 and the run is 2, giving \\(4/2=2\\).",
+      "choices": [
+        "2",
+        "4",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "section": "3.1",
+      "topic": "tangent",
+      "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
+      "pdfPage": 24,
+      "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+      "level": 3,
+      "graphPrompt": "tangent-one",
+      "prompt": "Use the dashed tangent at \\((1,1)\\) to estimate \\(f(1.1)\\). The tangent also passes through \\((2,3)\\).",
+      "why": "The tangent slope is 2. A step of 0.1 in the input gives an estimated increase of 0.2 from 1.",
+      "choices": [
+        "1.2",
+        "1.1",
+        "1.3",
+        "2.2"
+      ]
+    },
+    {
+      "section": "3.1",
+      "topic": "tangent",
+      "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
+      "pdfPage": 24,
+      "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+      "level": 4,
+      "graphPrompt": "tangent-one",
+      "prompt": "Use the dashed tangent line \\(L\\) to the plotted curve at \\((1,1)\\). What input solves \\(L(x)=0\\)?",
+      "why": "The line rises 2 units per unit run. Starting at \\((1,1)\\), go left one-half unit to drop one unit to the axis.",
+      "answer": "1/2"
+    },
+    {
+      "section": "3.2",
+      "topic": "derivative",
+      "source": "../lectures/10-derivative-function.html#section-3.2-the-derivative-function",
+      "pdfPage": 26,
+      "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "above",
+      "prompt": "This is the graph of a constant function. What is its derivative everywhere?",
+      "why": "A horizontal line has zero slope everywhere.",
+      "choices": [
+        "0",
+        "2",
+        "1",
+        "−2"
+      ]
+    },
+    {
+      "section": "3.2",
+      "topic": "derivative",
+      "source": "../lectures/10-derivative-function.html#section-3.2-the-derivative-function",
+      "pdfPage": 26,
+      "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "corner",
+      "prompt": "Where does the pictured function \\(f(x)=|x|\\) lack a derivative?",
+      "why": "The left and right slopes differ at the corner. Each open ray is a straight line.",
+      "choices": [
+        "At 0 only.",
+        "At 1 only.",
+        "At every positive input.",
+        "At every negative input."
+      ]
+    },
+    {
+      "section": "3.2",
+      "topic": "derivative",
+      "source": "../lectures/10-derivative-function.html#section-3.2-the-derivative-function",
+      "pdfPage": 26,
+      "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+      "level": 3,
+      "graphPrompt": "first-touches",
+      "prompt": "The sign chart belongs to \\(f^{\\prime}\\). Which shape could \\(f\\) have near 0?",
+      "why": "Positive slopes on both sides force increasing behavior on each side. At 0 the tangent is horizontal.",
+      "choices": [
+        "An increasing curve that briefly flattens.",
+        "A hill with a peak.",
+        "A valley with a minimum.",
+        "A horizontal line throughout."
+      ]
+    },
+    {
+      "section": "3.4",
+      "topic": "motion",
+      "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+      "pdfPage": 34,
+      "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "two-motion",
+      "prompt": "The graph shows position increasing with time. In which direction is the particle moving?",
+      "why": "A rising position graph gives positive velocity.",
+      "choices": [
+        "Positive direction.",
+        "Negative direction.",
+        "It is at rest.",
+        "It repeatedly changes direction."
+      ]
+    },
+    {
+      "section": "3.4",
+      "topic": "motion",
+      "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+      "pdfPage": 34,
+      "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "velocity-sign",
+      "prompt": "This sign chart shows the velocity for \\(0<t<5\\). When does the particle move in the positive direction?",
+      "why": "Positive velocity appears only in the middle interval.",
+      "choices": [
+        "\\((2,4)\\)",
+        "\\((0,2)\\)",
+        "\\((4,5)\\)",
+        "Throughout \\((0,5)\\)."
+      ]
+    },
+    {
+      "section": "3.4",
+      "topic": "motion",
+      "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+      "pdfPage": 34,
+      "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+      "level": 3,
+      "graphPrompt": "velocity-fall",
+      "prompt": "The graph gives velocity. After \\(t=1.5\\), the particle has negative velocity. What happens to its speed until \\(t=3\\)?",
+      "why": "The velocity moves farther below zero. Its magnitude, the speed, increases.",
+      "choices": [
+        "It increases.",
+        "It decreases.",
+        "It stays zero.",
+        "It stays positive and constant."
+      ]
+    },
+    {
+      "section": "3.4",
+      "topic": "motion",
+      "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
+      "pdfPage": 34,
+      "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+      "level": 4,
+      "graphPrompt": "two-motion",
+      "prompt": "The graph gives position in meters against time in seconds. A second particle starts at 9 m and moves at −2 m/s. At what time do the two positions coincide?",
+      "why": "The graphed position is \\(1+2t\\). Set it equal to \\(9-2t\\); an initial gap of 8 closes at 4 m/s.",
+      "answer": "2"
+    },
+    {
+      "section": "3.1",
+      "topic": "derivative",
+      "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+      "pdfPage": 25,
+      "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+      "level": 1,
+      "prompt": "Which graph of a function has a sharp corner at the origin?",
+      "why": "The V has two distinct one-sided slopes at zero. Its corner is where those rays meet.",
+      "graphChoices": [
+        "corner",
+        "bowl",
+        "slope-two",
+        "cubic-raised"
+      ],
+      "choices": [
+        "Two rays meet in a V.",
+        "A smooth U-shaped curve.",
+        "A straight rising line.",
+        "A smooth S-shaped curve."
+      ]
+    },
+    {
+      "section": "3.2",
+      "topic": "derivative",
+      "source": "../lectures/10-derivative-function.html#section-3.2-the-derivative-function",
+      "pdfPage": 26,
+      "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+      "level": 1,
+      "prompt": "Which graph shows the derivative of the constant function \\(f(x)=7\\)?",
+      "why": "The derivative of any constant is zero everywhere.",
+      "graphChoices": [
+        "on-axis",
+        "above",
+        "below",
+        "down-origin"
+      ],
+      "choices": [
+        "Line along the horizontal axis.",
+        "Line at height 2.",
+        "Line at height −2.",
+        "Falling line through the origin."
+      ]
+    }
+  ],
+  "derivative-rules": [
+    {
+      "section": "3.3",
+      "topic": "rules",
+      "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
+      "pdfPage": 30,
+      "pdf": "../downloads/october-14-differentiation-rules.pdf",
+      "level": 1,
+      "graphPrompt": "line-mapped",
+      "prompt": "For the line \\(f(x)=2x+1\\) shown, what is \\(f^{\\prime}(x)\\)?",
+      "why": "A line has constant derivative equal to its slope, 2.",
+      "choices": [
+        "2",
+        "1",
+        "0",
+        "2x"
+      ]
+    },
+    {
+      "section": "3.3",
+      "topic": "rules",
+      "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
+      "pdfPage": 30,
+      "pdf": "../downloads/october-14-differentiation-rules.pdf",
+      "level": 2,
+      "graphPrompt": "line-mapped",
+      "prompt": "The picture shows \\(f(x)=2x+1\\). What is the derivative of \\(f(x)+7\\)?",
+      "why": "Vertical translation preserves the slope. The added constant differentiates to zero.",
+      "choices": [
+        "2",
+        "9",
+        "7",
+        "0"
+      ]
+    },
+    {
+      "section": "3.3",
+      "topic": "rules",
+      "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
+      "pdfPage": 30,
+      "pdf": "../downloads/october-14-differentiation-rules.pdf",
+      "level": 3,
+      "graphPrompt": "line-outer",
+      "prompt": "The line shown is \\(f\\). For \\(h(x)=x f(x)\\), what is \\(h^{\\prime}(1)\\)?",
+      "why": "The graph gives \\(f(1)=2\\) and \\(f^{\\prime}(1)=-1\\). The product rule gives \\(h^{\\prime}(1)=2+1(-1)=1\\).",
+      "choices": [
+        "1",
+        "2",
+        "−1",
+        "3"
+      ]
+    },
+    {
+      "section": "3.3",
+      "topic": "rules",
+      "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
+      "pdfPage": 30,
+      "pdf": "../downloads/october-14-differentiation-rules.pdf",
+      "level": 4,
+      "graphPrompt": "line-outer",
+      "prompt": "For the graphed line \\(f\\), let \\(h(x)=x/f(x)\\). Find \\(h^{\\prime}(1)\\).",
+      "why": "Read \\(f(1)=2\\) and \\(f^{\\prime}(1)=-1\\). The quotient rule gives \\([2-1(-1)]/2^2=3/4\\).",
+      "answer": "3/4"
+    },
+    {
+      "section": "3.5",
+      "topic": "trig",
+      "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+      "pdfPage": 37,
+      "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "cos",
+      "prompt": "This is the graph of \\(y=\\cos t\\). Which is its derivative?",
+      "why": "The cosine derivative is \\(-\\sin t\\). The curve begins level and then falls.",
+      "choices": [
+        "\\(-\\sin t\\)",
+        "\\(\\sin t\\)",
+        "\\(\\cos t\\)",
+        "\\(-\\cos t\\)."
+      ]
+    },
+    {
+      "section": "3.5",
+      "topic": "trig",
+      "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+      "pdfPage": 37,
+      "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "sin",
+      "prompt": "This is the graph of \\(y=\\sin t\\). Which is its derivative?",
+      "why": "The sine derivative is \\(\\cos t\\). At zero the sine curve is rising.",
+      "choices": [
+        "\\(\\cos t\\)",
+        "\\(-\\cos t\\)",
+        "\\(\\sin t\\)",
+        "\\(-\\sin t\\)"
+      ]
+    },
+    {
+      "section": "3.5",
+      "topic": "trig",
+      "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+      "pdfPage": 37,
+      "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "cos",
+      "prompt": "The graph is \\(y=\\cos t\\). Which listed input has a horizontal tangent?",
+      "why": "The curve turns at \\(\\pi\\). Its slope \\(-\\sin\\pi\\) is zero.",
+      "choices": [
+        "\\(\\pi\\)",
+        "\\(\\pi/2\\)",
+        "\\(3\\pi/2\\)",
+        "\\(\\pi/4\\)"
+      ]
+    },
+    {
+      "section": "3.5",
+      "topic": "trig",
+      "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+      "pdfPage": 37,
+      "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+      "level": 3,
+      "graphPrompt": "neg-sin",
+      "prompt": "The graph gives the derivative of \\(f\\) over one cycle. Where does \\(f\\) switch from decreasing to increasing?",
+      "why": "At \\(\\pi\\) the graphed derivative crosses from negative to positive. The original function has a local minimum there.",
+      "choices": [
+        "\\(t=\\pi\\)",
+        "\\(t=\\pi/2\\)",
+        "\\(t=3\\pi/2\\)",
+        "At every zero of the original function."
+      ]
+    },
+    {
+      "section": "3.9",
+      "topic": "exp",
+      "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+      "pdfPage": 53,
+      "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "exponential",
+      "prompt": "The curve is \\(y=e^x\\). Which expression gives its derivative?",
+      "why": "The natural exponential equals its own derivative.",
+      "choices": [
+        "\\(e^x\\)",
+        "\\(xe^{x-1}\\)",
+        "\\(1/x\\)",
+        "\\(0\\)"
+      ]
+    },
+    {
+      "section": "3.9",
+      "topic": "exp",
+      "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+      "pdfPage": 53,
+      "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "log",
+      "prompt": "The curve is \\(y=\\ln x\\). What is its tangent slope where it crosses the horizontal axis?",
+      "why": "The crossing is at \\(x=1\\). The derivative \\(1/x\\) equals 1 there.",
+      "choices": [
+        "1",
+        "0",
+        "−1",
+        "Undefined."
+      ]
+    },
+    {
+      "section": "3.9",
+      "topic": "exp",
+      "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+      "pdfPage": 53,
+      "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+      "level": 3,
+      "graphPrompt": "exponential-reverse",
+      "prompt": "The graph is \\(f(x)=e^{-x}\\). Where does its tangent at the vertical intercept meet the horizontal axis?",
+      "why": "The intercept is \\((0,1)\\) and the slope is \\(-e^0=-1\\). The tangent line \\(y=1-x\\) meets the axis at 1.",
+      "choices": [
+        "\\(x=1\\)",
+        "\\(x=-1\\)",
+        "\\(x=0\\)",
+        "It never meets the horizontal axis."
+      ]
+    },
+    {
+      "section": "3.5",
+      "topic": "trig",
+      "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+      "pdfPage": 37,
+      "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "neg-cos",
+      "prompt": "For the pictured \\(f(t)=-\\cos t\\), choose its derivative.",
+      "why": "Differentiating the negative cosine gives positive sine. The starting tangent is horizontal and the function then rises.",
+      "graphChoices": [
+        "sin",
+        "neg-sin",
+        "cos",
+        "neg-cos"
+      ],
+      "choices": [
+        "Wave starts at zero and rises.",
+        "Wave starts at zero and falls.",
+        "Wave starts at its maximum.",
+        "Wave starts at its minimum."
+      ]
+    },
+    {
+      "section": "3.9",
+      "topic": "exp",
+      "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+      "pdfPage": 53,
+      "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+      "level": 2,
+      "prompt": "Choose the graph of a positive exponential that is decreasing everywhere.",
+      "why": "The graph of \\(e^{-x}\\) stays above the horizontal axis and falls to the right. The two logarithmic graphs include negative values.",
+      "graphChoices": [
+        "exponential-reverse",
+        "exponential",
+        "log",
+        "log-neg"
+      ],
+      "choices": [
+        "Positive, falling left to right.",
+        "Positive, rising left to right.",
+        "Rising curve crossing at (1, 0).",
+        "Falling curve crossing at (1, 0)."
+      ]
+    }
+  ],
+  "chain": [
+    {
+      "section": "3.6",
+      "topic": "chain",
+      "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+      "pdfPage": 40,
+      "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "line-mapped",
+      "prompt": "The line is the inner function \\(g\\). To evaluate \\(\\cos(g(1))\\), which number goes into cosine?",
+      "why": "The marked point \\((1,3)\\) gives \\(g(1)=3\\).",
+      "choices": [
+        "3",
+        "1",
+        "2",
+        "5"
+      ]
+    },
+    {
+      "section": "3.6",
+      "topic": "chain",
+      "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+      "pdfPage": 40,
+      "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "line-outer",
+      "prompt": "The graph shows \\(g\\). For \\(h(x)=\\sin(g(x))\\), which value is the inner derivative \\(g^{\\prime}(1)\\)?",
+      "why": "The line drops one unit per unit run, so its derivative is −1.",
+      "choices": [
+        "−1",
+        "2",
+        "1",
+        "3"
+      ]
+    },
+    {
+      "section": "3.6",
+      "topic": "chain",
+      "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+      "pdfPage": 40,
+      "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+      "level": 3,
+      "graphPrompt": "line-mapped",
+      "prompt": "The graph shows \\(g\\). If \\(h(x)=g(x)^2\\), what is \\(h^{\\prime}(1)\\)?",
+      "why": "Read \\(g(1)=3\\) and slope \\(g^{\\prime}(1)=2\\). The chain rule gives \\(2(3)(2)=12\\).",
+      "choices": [
+        "12",
+        "6",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "section": "3.6",
+      "topic": "chain",
+      "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+      "pdfPage": 40,
+      "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+      "level": 4,
+      "graphPrompt": "line-outer",
+      "prompt": "The graph shows the inner function \\(g\\). At \\(x=1\\), find the derivative of \\(1/g(x)^2\\).",
+      "why": "Read \\(g(1)=2\\) and \\(g^{\\prime}(1)=-1\\). The derivative is \\(-2g^{\\prime}(1)/g(1)^3=2/8=1/4\\).",
+      "answer": "1/4"
+    }
+  ],
+  "inverse-implicit": [
+    {
+      "section": "3.7",
+      "topic": "inverse",
+      "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+      "pdfPage": 46,
+      "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "line-mapped",
+      "prompt": "The graph of \\(f\\) contains \\((1,3)\\). Which point must belong to its inverse?",
+      "why": "An inverse interchanges inputs and outputs.",
+      "choices": [
+        "\\((3,1)\\)",
+        "\\((1,3)\\)",
+        "\\((-1,3)\\)",
+        "\\((1,-3)\\)"
+      ]
+    },
+    {
+      "section": "3.7",
+      "topic": "inverse",
+      "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+      "pdfPage": 46,
+      "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "line-outer",
+      "prompt": "Use the graph of \\(f\\). What number is \\(f^{-1}(1)\\)?",
+      "why": "The marked point \\((2,1)\\) means input 2 gives output 1.",
+      "choices": [
+        "2",
+        "1",
+        "0",
+        "3"
+      ]
+    },
+    {
+      "section": "3.7",
+      "topic": "inverse",
+      "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+      "pdfPage": 46,
+      "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+      "level": 3,
+      "graphPrompt": "line-mapped",
+      "prompt": "Suppose the marked line is \\(f\\). What slope does the inverse have at the point \\((3,1)\\)?",
+      "why": "The original line rises two units per unit run. Reflection in \\(y=x\\) gives reciprocal slope.",
+      "choices": [
+        "\\(1/2\\)",
+        "\\(2\\)",
+        "\\(-2\\)",
+        "\\(-1/2\\)"
+      ]
+    },
+    {
+      "section": "3.7",
+      "topic": "inverse",
+      "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+      "pdfPage": 46,
+      "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+      "level": 4,
+      "graphPrompt": "line-mapped",
+      "prompt": "For the plotted line \\(f\\), put \\(h(x)=[f^{-1}(x)]^2\\). Compute \\(h^{\\prime}(5)\\).",
+      "why": "The marked point \\((2,5)\\) gives \\(f^{-1}(5)=2\\). The inverse slope is \\(1/2\\). The chain rule gives \\(2(2)(1/2)=2\\).",
+      "answer": "2"
+    },
+    {
+      "section": "3.8",
+      "topic": "implicit",
+      "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+      "pdfPage": 49,
+      "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "quarter-circle",
+      "prompt": "Follow the circular arc to the right from the marked interior point. Is its tangent slope positive or negative?",
+      "why": "Along this part of the circle, height decreases as the horizontal coordinate increases.",
+      "choices": [
+        "Negative.",
+        "Positive.",
+        "Zero.",
+        "Undefined."
+      ]
+    },
+    {
+      "section": "3.8",
+      "topic": "implicit",
+      "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+      "pdfPage": 49,
+      "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "quarter-circle",
+      "prompt": "The pictured arc belongs to \\(x^2+y^2=25\\). At which marked point is the tangent to the circle vertical?",
+      "why": "At \\((5,0)\\) the radius is horizontal, so the tangent is vertical.",
+      "choices": [
+        "\\((5,0)\\)",
+        "\\((0,5)\\)",
+        "\\((3,4)\\)",
+        "At all three marked points."
+      ]
+    },
+    {
+      "section": "3.8",
+      "topic": "implicit",
+      "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+      "pdfPage": 49,
+      "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+      "level": 3,
+      "graphPrompt": "quarter-circle",
+      "prompt": "On this circle, \\(dy/dx=-x/y\\) when \\(y\\ne0\\). What is the tangent slope at the marked interior point?",
+      "why": "The point is \\((3,4)\\), so the slope is \\(-3/4\\).",
+      "choices": [
+        "\\(-3/4\\)",
+        "\\(-4/3\\)",
+        "\\(3/4\\)",
+        "\\(4/3\\)"
+      ]
+    },
+    {
+      "section": "3.8",
+      "topic": "implicit",
+      "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+      "pdfPage": 49,
+      "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+      "level": 4,
+      "graphPrompt": "quarter-circle",
+      "prompt": "The tangent at the marked point \\((3,4)\\) is perpendicular to its radius from the origin. At what height does this tangent meet the vertical axis?",
+      "why": "The tangent has slope \\(-3/4\\). Moving left by 3 raises the height by \\(9/4\\), giving \\(4+9/4=25/4\\).",
+      "answer": "25/4"
+    }
+  ],
+  "related-rates": [
+    {
+      "section": "4.1",
+      "topic": "rates",
+      "source": "../lectures/related-rates.html#circle",
+      "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+      "level": 1,
+      "graphPrompt": "quarter-circle",
+      "prompt": "A point follows the pictured quarter-circle. At \\((3,4)\\) its \\(x\\)-coordinate increases. What happens to its \\(y\\)-coordinate?",
+      "why": "The arc falls as it moves right.",
+      "choices": [
+        "It decreases.",
+        "It increases.",
+        "It stays fixed.",
+        "It jumps to zero."
+      ],
+      "handoutPage": 59
+    },
+    {
+      "section": "4.1",
+      "topic": "rates",
+      "source": "../lectures/related-rates.html#the-three-steps",
+      "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+      "level": 2,
+      "graphPrompt": "line-mapped",
+      "prompt": "A point moves along the graphed line \\(y=2x+1\\). Its \\(x\\)-coordinate grows at 1 unit per second. How fast does \\(y\\) grow?",
+      "why": "The graph rises two units for each unit traveled to the right.",
+      "choices": [
+        "2 units per second.",
+        "1 unit per second.",
+        "3 units per second.",
+        "It stays fixed."
+      ],
+      "handoutPage": 58
+    },
+    {
+      "section": "4.1",
+      "topic": "rates",
+      "source": "../lectures/related-rates.html#circle",
+      "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+      "level": 3,
+      "graphPrompt": "quarter-circle",
+      "prompt": "The moving point follows \\(x^2+y^2=25\\). At \\((3,4)\\), \\(dx/dt=2\\). Use \\(x(dx/dt)+y(dy/dt)=0\\) to find \\(dy/dt\\).",
+      "why": "At the dot, \\(3(2)+4(dy/dt)=0\\). The negative sign agrees with the descending arc.",
+      "choices": [
+        "\\(-3/2\\)",
+        "\\(3/2\\)",
+        "\\(-8/3\\)",
+        "\\(-3/4\\)"
+      ],
+      "handoutPage": 59
+    },
+    {
+      "section": "4.1",
+      "topic": "rates",
+      "source": "../lectures/related-rates.html#circle",
+      "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+      "level": 4,
+      "graphPrompt": "quarter-circle",
+      "prompt": "A point follows \\(x^2+y^2=25\\) through \\((3,4)\\) with \\(dy/dt=-3\\). At that instant, what is the rate of change of the product \\(xy\\)?",
+      "why": "The radius constraint gives \\(3(dx/dt)+4(-3)=0\\), so \\(dx/dt=4\\). The product changes at \\(3(-3)+4(4)=7\\).",
+      "answer": "7",
+      "handoutPage": 59
+    }
+  ],
+  "global-extrema": [
+    {
+      "section": "4.2",
+      "topic": "global",
+      "source": "../lectures/18-maxima-and-minima.html#global-extrema",
+      "pdfPage": 64,
+      "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+      "level": 1,
+      "graphPrompt": "closed-extrema",
+      "prompt": "What is the greatest \\(y\\)-value on the pictured closed interval?",
+      "why": "The highest point is the included right endpoint \\((3,5)\\).",
+      "choices": [
+        "5",
+        "3",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "section": "4.2",
+      "topic": "global",
+      "source": "../lectures/18-maxima-and-minima.html#global-extrema",
+      "pdfPage": 64,
+      "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+      "level": 2,
+      "graphPrompt": "open-peak",
+      "prompt": "Does this pictured function attain a global maximum on \\([-1,3]\\)?",
+      "why": "Heights get arbitrarily close to 4, but the point at height 4 is missing.",
+      "choices": [
+        "No. The peak is open.",
+        "Yes, its maximum value is 4.",
+        "Yes, its maximum value is 1.",
+        "Yes, its maximum value is 3."
+      ]
+    },
+    {
+      "section": "4.2",
+      "topic": "global",
+      "source": "../lectures/18-maxima-and-minima.html#global-extrema",
+      "pdfPage": 64,
+      "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+      "level": 3,
+      "graphPrompt": "closed-extrema",
+      "prompt": "Restrict the plotted function to \\([-1,1]\\). Which input gives the global maximum there?",
+      "why": "The new interval omits the high right endpoint of the full graph. The greatest included height on the restricted interval is 3, at zero.",
+      "choices": [
+        "0",
+        "−1",
+        "1",
+        "3"
+      ]
+    },
+    {
+      "section": "4.2",
+      "topic": "global",
+      "source": "../lectures/18-maxima-and-minima.html#global-extrema",
+      "pdfPage": 64,
+      "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+      "level": 4,
+      "graphPrompt": "closed-extrema",
+      "prompt": "On the whole plotted domain, let \\(g(x)=(f(x)-2)^2\\). What is its global maximum value?",
+      "why": "The plotted heights range from 0 to 5. The greatest distance from 2 is 3, at height 5. Squaring gives 9.",
+      "answer": "9"
+    }
+  ],
+  "extrema": [
+    {
+      "section": "4.3",
+      "topic": "tests",
+      "source": "../lectures/section-4-3.html#the-first-derivative-test",
+      "pdfPage": 67,
+      "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+      "level": 1,
+      "graphPrompt": "first-alternates",
+      "prompt": "This is a sign chart for \\(f^{\\prime}\\). Is \\(f\\) increasing or decreasing between −1 and 1?",
+      "why": "The minus sign throughout the middle interval means negative slopes.",
+      "choices": [
+        "Decreasing.",
+        "Increasing.",
+        "Constant.",
+        "Undefined."
+      ]
+    },
+    {
+      "section": "4.3",
+      "topic": "tests",
+      "source": "../lectures/section-4-3.html#the-first-derivative-test",
+      "pdfPage": 67,
+      "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+      "level": 2,
+      "graphPrompt": "first-alternates",
+      "prompt": "For this differentiable \\(f\\), what occurs at \\(x=-1\\)?",
+      "why": "The first derivative switches from positive to negative there. The function goes from rising to falling.",
+      "choices": [
+        "A local maximum.",
+        "A local minimum.",
+        "An undefined function value.",
+        "A corner."
+      ]
+    },
+    {
+      "section": "4.3",
+      "topic": "tests",
+      "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+      "pdfPage": 68,
+      "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+      "level": 3,
+      "graphPrompt": "second-touches",
+      "prompt": "The sign chart shows \\(f\\) has \\(f^{\\prime\\prime}(1)=0\\). Which statement about concavity near 1 follows?",
+      "why": "The second derivative remains positive on each open side of 1, so the concavity stays the same.",
+      "choices": [
+        "It stays concave up on both sides.",
+        "It switches from up to down.",
+        "It switches from down to up.",
+        "It stays concave down on both sides."
+      ]
+    },
+    {
+      "section": "4.3",
+      "topic": "tests",
+      "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+      "pdfPage": 68,
+      "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+      "level": 4,
+      "graphPrompt": "second-alternates",
+      "prompt": "The sign chart describes \\(f^{\\prime\\prime}\\) for a twice differentiable function. Set \\(h(x)=f(2x+1)\\). What is the distance along the \\(x\\)-axis between the two inflection points of \\(h\\)?",
+      "why": "The change locations for \\(f\\) are −2 and 1. For \\(h\\), solve \\(2x+1=-2\\) and \\(2x+1=1\\) to get −3/2 and 0. The horizontal distance is 3/2.",
+      "answer": "3/2"
+    },
+    {
+      "section": "4.3",
+      "topic": "tests",
+      "source": "../lectures/section-4-3.html#the-first-derivative-test",
+      "pdfPage": 67,
+      "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+      "level": 3,
+      "graphPrompt": "first-touches",
+      "prompt": "The chart gives \\(f^{\\prime}\\). Which plotted function could have this chart across the entire picture?",
+      "why": "The derivative is zero at the origin and positive on both sides. Only the rising S-curve flattens there and keeps rising.",
+      "graphChoices": [
+        "cubic-raised",
+        "bowl",
+        "corner",
+        "negative-bowl"
+      ],
+      "choices": [
+        "Rising S-curve that flattens at zero.",
+        "A smooth bowl with its bottom at zero.",
+        "A sharp V with its tip at zero.",
+        "A smooth arch with its top at zero."
+      ]
+    }
+  ],
+  "sketch": [
+    {
+      "section": "4.4",
+      "topic": "endbehavior",
+      "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+      "pdfPage": 70,
+      "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+      "level": 1,
+      "graphPrompt": "even-three",
+      "prompt": "The horizontal dashed line is the horizontal asymptote. What is its height?",
+      "why": "Follow the horizontal guide to the vertical axis at 2.",
+      "choices": [
+        "2",
+        "−2",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "section": "4.4",
+      "topic": "endbehavior",
+      "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+      "pdfPage": 70,
+      "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+      "level": 2,
+      "graphPrompt": "even-no-pole",
+      "prompt": "As \\(x\\to+\\infty\\), the right-hand tail approaches its dashed asymptote from which side?",
+      "why": "The tail approaches height 2 while remaining below the dashed line.",
+      "choices": [
+        "Below.",
+        "Above.",
+        "Alternating sides.",
+        "It lies on the asymptote throughout."
+      ]
+    },
+    {
+      "section": "4.4",
+      "topic": "endbehavior",
+      "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+      "pdfPage": 72,
+      "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+      "level": 3,
+      "graphPrompt": "slant-pole-plus",
+      "prompt": "The dashed diagonal is \\(y=x\\). On the positive side, the displayed curve \\(f(x)=x+1/x\\) lies above it. How does the vertical gap behave as \\(x\\to+\\infty\\)?",
+      "why": "The vertical gap is \\(f(x)-x=1/x\\), which is positive and tends to zero.",
+      "choices": [
+        "Shrinks to zero.",
+        "Grows without bound.",
+        "Stays at one.",
+        "Approaches negative one."
+      ]
+    },
+    {
+      "section": "4.4",
+      "topic": "endbehavior",
+      "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+      "pdfPage": 70,
+      "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+      "level": 4,
+      "graphPrompt": "even-mirror",
+      "prompt": "Use the dashed horizontal asymptote of \\(f\\) to evaluate \\(\\lim_{x\\to+\\infty}(f(x)+1)/(f(x)-1)\\).",
+      "why": "The graph approaches −2. The quotient approaches \\((-2+1)/(-2-1)=1/3\\).",
+      "answer": "1/3"
+    },
+    {
+      "section": "4.5",
+      "topic": "sketch",
+      "source": "../lectures/curve-sketching.html#practice",
+      "pdfPage": 77,
+      "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+      "level": 1,
+      "graphPrompt": "bell",
+      "prompt": "The two sides of the pictured hump mirror each other across which axis?",
+      "why": "Left and right heights match at opposite inputs.",
+      "choices": [
+        "The vertical axis.",
+        "The horizontal axis.",
+        "Both axes.",
+        "Neither axis."
+      ]
+    },
+    {
+      "section": "4.5",
+      "topic": "sketch",
+      "source": "../lectures/curve-sketching.html#example-1",
+      "pdfPage": 74,
+      "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+      "level": 2,
+      "graphPrompt": "up-saturate",
+      "prompt": "What does the vertical dashed line at \\(x=-1\\) represent?",
+      "why": "The curve climbs or falls without bound near this vertical line.",
+      "choices": [
+        "A vertical asymptote.",
+        "A tangent to both branches.",
+        "An axis of symmetry.",
+        "A line on which the function is zero."
+      ]
+    },
+    {
+      "section": "4.5",
+      "topic": "sketch",
+      "source": "../lectures/curve-sketching.html#practice",
+      "pdfPage": 77,
+      "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+      "level": 3,
+      "graphPrompt": "bell-slope",
+      "prompt": "The pictured curve is the derivative \\(f^{\\prime}\\). For an original function with \\(f(0)=4/3\\), what feature occurs at \\((0,4/3)\\)?",
+      "why": "The graphed derivative changes from positive to negative across zero.",
+      "choices": [
+        "A strict local maximum.",
+        "A strict local minimum.",
+        "A vertical asymptote.",
+        "A jump discontinuity."
+      ]
+    },
+    {
+      "section": "4.5",
+      "topic": "sketch",
+      "source": "../lectures/curve-sketching.html#example-8",
+      "pdfPage": 75,
+      "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+      "level": 4,
+      "graphPrompt": "even-three",
+      "prompt": "Read the horizontal asymptote of the plotted \\(f\\). If \\(g(x)=(a f(x)+1)/(f(x)+1)\\) has right-hand horizontal asymptote \\(y=3\\), find \\(a\\).",
+      "why": "The graph gives \\(f(x)\\to2\\) on the right. Its transformed limit is \\((2a+1)/3=3\\), so \\(a=4\\).",
+      "answer": "4"
+    },
+    {
+      "section": "4.4",
+      "topic": "endbehavior",
+      "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+      "pdfPage": 70,
+      "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+      "level": 2,
+      "prompt": "Which graph has two vertical asymptotes and a horizontal asymptote at \\(y=-2\\)?",
+      "why": "Read the heights of the horizontal dashed guides. The outer branches that level off near −2 give the required graph.",
+      "graphChoices": [
+        "even-mirror",
+        "even-three",
+        "even-no-pole",
+        "even-swap"
+      ],
+      "choices": [
+        "Two vertical guides and a horizontal guide at −2.",
+        "Two vertical guides and outer tails above 2.",
+        "A smooth valley and a horizontal guide at 2.",
+        "Two vertical guides and outer tails below 2."
+      ]
+    }
+  ],
+  "optimize": [
+    {
+      "section": "4.6",
+      "topic": "optimization",
+      "source": "../lectures/optimization.html#primer",
+      "pdfPage": 79,
+      "pdf": "../downloads/optimization-worksheet.pdf",
+      "level": 1,
+      "graphPrompt": "objective-arch",
+      "prompt": "The graph shows the product \\(P=x(6-x)\\). Which input gives the largest product?",
+      "why": "The peak has coordinates \\((3,9)\\). Its horizontal coordinate gives the maximizing input.",
+      "choices": [
+        "3",
+        "9",
+        "0",
+        "6"
+      ]
+    },
+    {
+      "section": "4.6",
+      "topic": "optimization",
+      "source": "../lectures/optimization.html#primer",
+      "pdfPage": 79,
+      "pdf": "../downloads/optimization-worksheet.pdf",
+      "level": 2,
+      "graphPrompt": "rectangle-triangle",
+      "prompt": "The rectangle has opposite corners at \\((0,0)\\) and the marked point \\((6,4)\\). What is its area?",
+      "why": "The grid gives width 6 and height 4, so the area is 24 square units.",
+      "choices": [
+        "24",
+        "20",
+        "10",
+        "48"
+      ]
+    },
+    {
+      "section": "4.6",
+      "topic": "optimization",
+      "source": "../lectures/optimization.html#primer",
+      "pdfPage": 79,
+      "pdf": "../downloads/optimization-worksheet.pdf",
+      "level": 3,
+      "graphPrompt": "rectangle-triangle",
+      "prompt": "A rectangle of width \\(x\\) fits beneath the dashed line from \\((0,8)\\) to \\((12,0)\\). Which function gives its area?",
+      "why": "The line starts at height 8 and falls by 2 for each 3 units right. Multiply that height by the width.",
+      "choices": [
+        "\\(x(8-2x/3)\\)",
+        "\\(x(12-3x/2)\\)",
+        "\\(2(x+8-2x/3)\\)",
+        "\\(8-2x/3\\)"
+      ]
+    },
+    {
+      "section": "4.6",
+      "topic": "optimization",
+      "source": "../lectures/optimization.html#primer",
+      "pdfPage": 79,
+      "pdf": "../downloads/optimization-worksheet.pdf",
+      "level": 4,
+      "graphPrompt": "rectangle-triangle",
+      "prompt": "Slide the rectangle’s corner along the dashed line, keeping its base on the axis. Its area at width \\(x\\) is \\(A(x)=x(8-2x/3)\\). At what width does the area increase at 2 square units per unit of width?",
+      "why": "We need \\(A^{\\prime}(x)=2\\). Since \\(A^{\\prime}(x)=8-4x/3\\), solve \\(4x/3=6\\) to get \\(x=9/2\\).",
+      "answer": "9/2"
+    },
+    {
+      "section": "4.6",
+      "topic": "optimization",
+      "source": "../lectures/optimization.html#primer",
+      "pdfPage": 79,
+      "pdf": "../downloads/optimization-worksheet.pdf",
+      "level": 2,
+      "graphPrompt": "cost-fall",
+      "prompt": "The graph shows the derivative of an objective on \\([0,6]\\). Which input gives its global maximum?",
+      "why": "The derivative is positive before 3 and negative after 3. The objective rises then falls across the entire interval.",
+      "choices": [
+        "3",
+        "0",
+        "6",
+        "2"
+      ]
+    },
+    {
+      "section": "4.6",
+      "topic": "optimization",
+      "source": "../lectures/optimization.html#primer",
+      "pdfPage": 79,
+      "pdf": "../downloads/optimization-worksheet.pdf",
+      "level": 3,
+      "graphPrompt": "area-margin",
+      "prompt": "The graph is \\(C^{\\prime}(x)\\) for a cost \\(C\\) on \\([0,5]\\). Which statement about the minimum cost is justified?",
+      "why": "The derivative switches from negative to positive at 2. Its graph determines the minimizing input but does not supply the height of the cost curve.",
+      "choices": [
+        "It occurs at 2, but its value needs more information.",
+        "The minimum cost equals 2.",
+        "The minimum cost equals 0.",
+        "It occurs at 5."
+      ]
+    }
+  ],
+  "lhospital": [
+    {
+      "section": "4.7",
+      "topic": "lhospital",
+      "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+      "pdfPage": 85,
+      "pdf": "../downloads/lhopitals-rule.pdf",
+      "level": 1,
+      "graphPrompt": "paired-slopes",
+      "prompt": "The solid graph gives \\(f\\) and the dashed graph gives \\(g\\). What form does \\(f(x)/g(x)\\) have as \\(x\\to0\\)?",
+      "why": "Both lines approach height zero at the origin.",
+      "choices": [
+        "\\(0/0\\)",
+        "\\(1/0\\)",
+        "\\(0/1\\)",
+        "\\(1/1\\)"
+      ]
+    },
+    {
+      "section": "4.7",
+      "topic": "lhospital",
+      "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+      "pdfPage": 85,
+      "pdf": "../downloads/lhopitals-rule.pdf",
+      "level": 2,
+      "graphPrompt": "paired-slopes",
+      "prompt": "The solid numerator has slope 2 and the dashed denominator has slope −1. Both vanish at 0. What is their ratio near 0?",
+      "why": "The lines are \\(y=2x\\) and \\(y=-x\\). Away from zero their quotient is −2.",
+      "choices": [
+        "−2",
+        "−1/2",
+        "2",
+        "0"
+      ]
+    },
+    {
+      "section": "4.7",
+      "topic": "lhospital",
+      "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+      "pdfPage": 85,
+      "pdf": "../downloads/lhopitals-rule.pdf",
+      "level": 3,
+      "graphPrompt": "shifted-zero",
+      "prompt": "At \\(x=1\\), the solid function \\(f\\) and dashed function \\(g\\) both vanish. Use their slopes to find \\(\\lim_{x\\to1}g(x)/f(x)\\).",
+      "why": "One unit right of the shared zero, the dashed line has risen 2 and the solid line has risen 3. The numerator is the dashed line, giving a ratio of 2/3.",
+      "choices": [
+        "\\(2/3\\)",
+        "\\(3/2\\)",
+        "\\(0\\)",
+        "\\(1\\)"
+      ]
+    },
+    {
+      "section": "4.7",
+      "topic": "lhospital",
+      "source": "../lectures/lhopitals-rule.html#zero-over-zero",
+      "pdfPage": 85,
+      "pdf": "../downloads/lhopitals-rule.pdf",
+      "level": 4,
+      "graphPrompt": "shifted-zero",
+      "prompt": "The solid line is \\(f\\) and the dashed line is \\(g\\). Use the marked points to find \\(\\lim_{x\\to1}(f(x)-g(x))/(f(x)+g(x))\\).",
+      "why": "One unit right of the common zero, the rises are 3 and 2. The quotient of slope difference to slope sum is \\((3-2)/(3+2)=1/5\\).",
+      "answer": "1/5"
+    }
+  ],
+  "theory": [
+    {
+      "section": "2.5",
+      "topic": "continuity",
+      "source": "../lectures/06-continuity.html#continuity-at-a-point",
+      "pdfPage": 18,
+      "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "line-intact",
+      "prompt": "At \\(x=2\\) the unbroken line has limit 4 and function value 4. Which definition does this illustrate?",
+      "why": "The two-sided limit exists and equals the assigned function value.",
+      "choices": [
+        "Continuity at a point.",
+        "A vertical tangent.",
+        "A jump discontinuity.",
+        "A local maximum."
+      ]
+    },
+    {
+      "section": "4.3",
+      "topic": "inflect",
+      "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+      "pdfPage": 68,
+      "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+      "level": 2,
+      "graphPrompt": "second-alternates",
+      "prompt": "This chart gives \\(f^{\\prime\\prime}\\). Which feature of a smooth \\(f\\) is guaranteed at both marked inputs?",
+      "why": "The second derivative changes sign at both inputs, so concavity changes at each.",
+      "choices": [
+        "A change of concavity.",
+        "A change in direction of motion.",
+        "A horizontal tangent.",
+        "A local maximum."
+      ]
+    },
+    {
+      "section": "4.2",
+      "topic": "evt",
+      "source": "../lectures/18-maxima-and-minima.html#global-extrema",
+      "pdfPage": 64,
+      "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+      "level": 3,
+      "graphPrompt": "open-peak",
+      "prompt": "The domain is \\([-1,3]\\) but the pictured function misses a global maximum. Which hypothesis of the Extreme Value Theorem is missing?",
+      "why": "The filled value at 1 differs from the nearby height, so the function is discontinuous on the interval.",
+      "choices": [
+        "Continuity on the closed interval.",
+        "Boundedness of the interval.",
+        "Inclusion of the endpoints.",
+        "The existence of a global minimum."
+      ]
+    }
+  ],
+  "vocab": [
+    {
+      "section": "2.1",
+      "topic": "sides",
+      "source": "../lectures/02-limits.html#one-sided-limits",
+      "pdfPage": 6,
+      "pdf": "../downloads/september-28-limits-class-notes.pdf",
+      "level": 1,
+      "graphPrompt": "step-mark",
+      "prompt": "Following only the branch to the left of \\(x=1\\) gives which kind of limit?",
+      "why": "The inputs approach 1 through values smaller than 1.",
+      "choices": [
+        "Left-hand limit.",
+        "Right-hand limit.",
+        "Limit at infinity.",
+        "Derivative."
+      ]
+    },
+    {
+      "section": "3.1",
+      "topic": "tangent",
+      "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
+      "pdfPage": 24,
+      "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+      "level": 2,
+      "graphPrompt": "secant01",
+      "prompt": "What is the name of the dashed line joining the two marked points on the parabola?",
+      "why": "A secant connects two distinct points of a curve.",
+      "choices": [
+        "Secant line.",
+        "Vertical asymptote.",
+        "Horizontal asymptote.",
+        "Axis of symmetry."
+      ]
+    },
+    {
+      "section": "4.3",
+      "topic": "critical",
+      "source": "../lectures/section-4-3.html#the-first-derivative-test",
+      "pdfPage": 67,
+      "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+      "level": 3,
+      "graphPrompt": "first-touches",
+      "prompt": "The sign chart shows a derivative zero at 0, with positive slopes on both sides. Which term applies to 0?",
+      "why": "A point in the domain with derivative zero is a critical number. The lack of a sign change rules out a local extremum here.",
+      "choices": [
+        "Critical number.",
+        "Local maximum value.",
+        "Local minimum value.",
+        "Vertical asymptote."
+      ]
+    }
+  ]
+}

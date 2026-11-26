@@ -5,6 +5,38 @@
   const floor = 156, stride = 288, startX = 91;
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
   const letters = "ABCD";
+  // Head shapes share the same eye line, chin and neck so every runner can
+  // wear the chicken hat, take a tumble and receive the Sun Crown.
+  const avatars = {
+    pip: {name:"Pip", color:"#f45d9e",
+      head:'<path d="M-7-43q-3-11 7-14 10-2 15 7 3 9-7 13-9 3-15-6z" fill="#fff1cd"/><path d="m-1-57-3-5 6 3 3-3 2 4" fill="none" stroke-width="1.9"/>', coat:""},
+    fox: {name:"Juniper", color:"#e9914c",
+      head:'<path d="m-9-48-1-13 10 6q4-2 7 0l7-8 1 12 6 5-5 7-9 4-11-3-5-6z" fill="#ed9255"/><path d="m-7-57 5 3-4 3zm16 3 4-5 0 7z" fill="#613e45" stroke="none"/><path d="m-7-46 6 4 5-3 6 1 7-3-3 7-8 4-9-4z" fill="#fff2d1" stroke="none"/><path d="m14-46 4 0-2 2z" fill="#3a3438" stroke="none"/>',
+      coat:'<path d="M-6-22q-12 5-18-9 0 17 15 17l6-3z" fill="#ea8348"/><path d="m-24-31 7 10-4-1 3 5q-6-4-6-14z" fill="#ffeac6" stroke="none"/><path d="m-4-33 9 0 2 14-12 1z" fill="#398881"/><path d="m-4-29 9-1" fill="none" stroke="#a6e1c3"/>'},
+    owl: {name:"Orbit", color:"#bd9ddd",
+      head:'<path d="m-11-58 9 3q5-2 11 0l7-5-1 9q4 11-1 15-8 6-19 0-6-5-5-14z" fill="#8c73a5"/><path d="M-6-49q-1-6 4-6 4 0 6 3 5-5 10-1 4 5-1 9-6 7-13 1-5-1-6-6z" fill="#f8e7c5" stroke="#644f71" stroke-width="1.1"/><path d="m7-48 4 1-3 3z" fill="#ecab55" stroke="none"/>',
+      coat:'<path d="M-6-34q7-3 13 2l-1 12-6 4-7-6z" fill="#997eac"/><path d="m-7-32-4 10 6-3 2-7zm13 1 3 9-5-3z" fill="#675a7a"/><path d="m-3-24 2 2 2-2m0-4 2 2 2-2" fill="none" stroke="#f5d7ac" stroke-width="1.4"/>'},
+    cat: {name:"Mica", color:"#8bb6eb",
+      head:'<path d="m-10-50-1-13 10 7q5-2 9 0l7-7 2 14q2 10-9 14-14 2-18-7z" fill="#465577"/><path d="m-8-59 5 4-4 3zm19 5 3-5 1 6z" fill="#ef99aa" stroke="none"/><path d="M-2-50q6-6 9-2 5-5 8 0 2 4-1 8l-6 5-8-2z" fill="#cdc7df" stroke="none"/><path d="m-5-44-10-2m12 5-10 2m25-5 10-3m-10 5 9 1" fill="none" stroke-width="1.4"/>',
+      coat:'<path d="M-5-21q-15 5-15-7 0-5-3-3-4 4 0 12 6 9 19 4" fill="#657292"/><path d="m-5-33 11-1 2 16-15-2z" fill="#557fae"/><path d="m-4-24 10 2" fill="none" stroke="#b8dff3"/>'},
+    frog: {name:"Skip", color:"#70bd88",
+      head:'<path d="M-9-48q-1-8 5-11 6-3 9 3 6-7 11-2 4 4 1 10 6 10-6 13-14 3-20-4-3-4 0-9z" fill="#91c97d"/><path d="M-7-45q3-4 10-1 7 3 14-2 1 10-9 11-11 1-15-8z" fill="#e8e9aa" stroke="none"/><path d="m-6-52 3-1m12-1 2-1" fill="none" stroke="#4e8657" stroke-width="1.4"/>',
+      coat:'<path d="m-5-33 11-1 2 16-17 1z" fill="#e7ac56"/><path d="m-4-31 3 7 3-1 2-8" fill="none" stroke="#825047" stroke-width="1.9"/><path d="m-2-23 4-1v4l-3 1z" fill="#e8db9a" stroke-width="1"/>'},
+    robot: {name:"Bolt", color:"#6ecbcf",
+      head:'<path d="m-1-57-3-7 4-3" fill="none" stroke-width="2.1"/><circle cx="1" cy="-67" r="2.5" fill="#f8ac59" stroke-width="1.5"/><rect x="-10" y="-57" width="28" height="22" rx="5" fill="#9dafb2"/><rect x="-7" y="-54" width="23" height="16" rx="3" fill="#b7eee1" stroke="#497175" stroke-width="1.6"/><path d="m-7-39 2 0m17-15 2 0" stroke="#ecf5d8" stroke-width="1.1"/>',
+      coat:'<path d="m-6-33 13-1 1 15-15 1z" fill="#72a9ac"/><path d="m-3-24 8 0m-8 3 4 0" fill="none" stroke="#426569" stroke-width="1"/><circle cx="1" cy="-28" r="2" fill="#f9cd6c" stroke-width="1"/>'}
+  };
+  const characters = Object.keys(avatars).map(id=>({id,name:avatars[id].name}));
+  const avatarId = id => Object.hasOwn(avatars,id) ? id : "pip";
+  let localCharacter = "pip";
+  const bow = '<path d="M-1 0C-4-2-8-6-9-4c-2 3-1 7 0 8 2 1 6-1 8-3zm2 0c3-2 7-5 9-4 2 2 2 6 1 8-2 1-7-1-10-3z" fill="#ff278e"/><path d="m-7-2 4 2m7 0 3-2" fill="none" stroke="#ffb8da"/><rect x="-2" y="-2" width="4" height="5" rx="1.4" fill="#ff65b1"/>';
+  const bowPose = 'translate(-9 -56) rotate(-23) scale(.86)';
+  const drawBow = '<g transform="'+bowPose+'" stroke="#752044" stroke-width="1.35">'+bow+'</g>';
+  const relaxedFace = '<g fill="none" stroke="#243740"><path d="m5-50 .3 1.3m6-1.7 .2 1.3" stroke-width="2.2"/><path d="M5-44q3 2 6-.5" stroke-width="1.4"/></g>';
+  function portrait(id) {
+    const a=avatars[avatarId(id)];
+    return '<svg class="runner-portrait" xmlns="http://www.w3.org/2000/svg" viewBox="-23 -72 50 45" width="44" height="40" aria-hidden="true" focusable="false"><g stroke="#243740" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2">'+a.head+relaxedFace+drawBow+'</g></svg>';
+  }
   let cleared = 0, total = 0, camera = 0, active = null, frameId = 0;
   let blocked = [], aiming = -1;
   let difficulty = "medium";
@@ -103,12 +135,32 @@
           <circle cx="-13" cy="-5" r="1.6" fill="#fff2bd"/><circle cx="9" cy="-5" r="1.6" fill="#fff2bd"/>
           <ellipse cy="13" rx="5" ry="6"/>
         </g>
+        <g id="run-sun-smile" data-runner-hidden="">
+          <path d="M-19-3q5-8 12-1M7-4q6-7 12 1" fill="none" stroke="#713f39" stroke-width="3"/>
+          <ellipse cx="-18" cy="7" rx="5" ry="2.5" fill="#ec8053"/><ellipse cx="18" cy="7" rx="5" ry="2.5" fill="#ec8053"/>
+          <path d="M-9 9q9 5 19-1-2 11-9 12-7 0-10-11z" fill="#75433b"/>
+          <path d="M-4 16q5-3 10-1-5 5-10 1z" fill="#ffa382"/>
+        </g>
+        <use id="run-boss-crown" href="#sun-crown" transform="translate(0 -28) scale(.78)"/>
       </g>
     </g>
     <g id="run-near"></g>
     <g id="run-festival" aria-hidden="true"></g>
     <rect x="-100%" y="196" width="300%" height="14" fill="var(--r-wash)"/>
     <g id="run-world"></g>
+    <g id="run-podium" data-runner-hidden="" pointer-events="none">
+      <path d="M-52 16-46 6-28 5-24 0h47l6 5 17 1 8 10z" fill="#dc9b56" stroke="#513044" stroke-width="2"/>
+      <path d="M-46 6h92l7 9H-52z" fill="#8a514a"/><path d="m-40 8 13 1m55 0 12-1" stroke="#f2b366" stroke-width="2"/>
+      <ellipse cy="1" rx="25" ry="4" fill="#ffe49b" stroke="#785441" stroke-width="1.5"/>
+      <path d="m0 6 2 3 4 1-3 2v4l-3-2-3 2v-4l-3-2 4-1z" fill="#ffe49b"/>
+    </g>
+    <g id="run-solar-halo" data-runner-hidden="" pointer-events="none" fill="none">
+      <ellipse cy="-32" rx="38" ry="45" stroke="#fff2c4" stroke-width="1.2" stroke-dasharray="2 9"/>
+      <g stroke="#ffdd8c" stroke-width="2.2">
+        <path d="m-39-62-8-6m-3 24-10-1m12 23-10 4m22-63-4-8m56 9 4-8m19 29 10-4m-9 29 10 3M-18-86l-1-5m22-2 1-6"/>
+      </g>
+    </g>
+    <g id="run-rivals" pointer-events="none"></g>
     <g id="run-incident" pointer-events="none"></g>
     <ellipse id="run-shadow" cx="91" cy="158" rx="14" ry="2.5" fill="#283e39" opacity=".22"/>
     <g id="run-hero">
@@ -120,6 +172,7 @@
         <path class="runner-appendage" d="M0-17q-2-9 2-20"/>
         <path d="M-1-33q-11-6-13 2l-1 6 12 3z" fill="#d79e4f" stroke="var(--r-ink)" stroke-width="2"/>
         <path d="m-12-31 7 2m-10.5 4 11 2" stroke="#785d3f" stroke-width="1.2"/>
+        <g id="run-outfit" stroke="var(--r-ink)" stroke-width="1.7"></g>
         <g id="run-arm-back" transform="translate(-1,-32)"><path class="runner-appendage runner-distant-leg" d="m0 0-6 7-5-3"/></g>
         <g id="run-arm-front" transform="translate(1,-32)"><path class="runner-appendage" d="m0 0 7 7 5-5"/></g>
         <g id="run-win-arms" data-runner-hidden="" fill="none">
@@ -127,40 +180,40 @@
           <path d="m-1-32-11-7-5-9m18 16 12-5 8-12" class="runner-appendage"/>
           <path d="m-17-48-1-4m1 4-4-2m42 1 1-4m-1 4 4-2" stroke="var(--r-ink)" stroke-width="1.8"/>
         </g>
-        <path id="run-scarf" d="m2-36-8 2-11-3-6 3 6-7 9 1z" fill="#ef2186" stroke="#742044" stroke-width="1.3"/>
-        <g id="run-bow" transform="translate(0 -35) rotate(-9)" stroke="#752044" stroke-width="1.15">
-          <path d="M-1 0C-4-2-8-6-9-4c-2 3-1 7 0 8 2 1 6-1 8-3zm2 0c3-2 7-5 9-4 2 2 2 6 1 8-2 1-7-1-10-3z" fill="#ff278e"/>
-          <path d="m-7-2 4 2m7 0 3-2" fill="none" stroke="#ffb8da"/>
-          <rect x="-2" y="-2" width="4" height="5" rx="1.4" fill="#ff65b1"/>
-        </g>
         <g id="run-head">
-          <path d="M-7-43q-3-11 7-14 10-2 15 7 3 9-7 13-9 3-15-6z" fill="#fff1cd" stroke="var(--r-ink)" stroke-width="2.8"/>
-          <path d="m-1-57-3-5 6 3 3-3 2 4" fill="none" stroke="var(--r-ink)" stroke-width="1.9"/>
+          <g id="run-face-shape" stroke="var(--r-ink)" stroke-width="2.6">${avatars.pip.head}</g>
           <path id="run-eyes" d="m5-50 .3 1.3m6-1.7 .2 1.3" fill="none" stroke="var(--r-ink)" stroke-width="2"/>
           <path id="run-mouth" d="M5-44q3 2 6-.5" stroke="var(--r-ink)" stroke-width="1.4" fill="none"/>
           <g class="chicken-hat"><use href="#run-chicken"/></g>
           <use id="run-prize" class="champion-crown" href="#sun-crown" transform="translate(3 -57) scale(.9)" data-runner-hidden=""/>
+          <g id="run-bow" transform="${bowPose}" stroke="#752044" stroke-width="1.35">${bow}</g>
           <path class="runner-soot" d="m-5-45 4 2m0 2 2 1m10-3 2-1" fill="none" stroke="#82625e" stroke-width="2.5"/>
         </g>
       </g>
     </g>
     <g id="run-fx" pointer-events="none"></g>
+    <g id="run-last-meteor" data-runner-hidden="" pointer-events="none"><use href="#run-meteor"/></g>
+    <g id="run-parry" data-runner-hidden="" pointer-events="none">
+      <circle r="12" fill="none" stroke="#ffeab4" stroke-width="1.4"/><use href="#run-star-rays" transform="scale(1.5)"/>
+    </g>
     <g id="run-crown-flight" data-runner-hidden="" pointer-events="none">
       <g fill="none" stroke="#ffeba2" stroke-width="1.5"><path d="M9 1q13 6 21 3m-19 1q10 8 18 9m-11-18h9"/></g>
       <use href="#sun-crown"/>
     </g>
     <g id="run-choice" data-runner-hidden=""><path class="runner-thought" d="M0-8q0-4 4-4h12q5 0 5 5v8q0 4-5 4H7l-5 4 1-5q-3 0-3-4z"/><text class="runner-digit" x="10" y="2"></text></g>
+    <g id="run-rival-signs" pointer-events="none"></g>
   `;
   const get = id => scene.querySelector("#run-" + id);
   const far = get("far"), near = get("near"), world = get("world"), fx = get("fx");
   const incident = get("incident"), weather = get("weather"), sun = get("sun");
   const festival = get("festival"), flyingCrown = get("crown-flight");
   const crown = get("prize"), glare = get("sun-glare"), surprise = get("sun-surprise"), afterglow = get("afterglow");
+  const sunSmile=get("sun-smile"), bossCrown=get("boss-crown"), lastMeteor=get("last-meteor"), parry=get("parry"), podium=get("podium"), solarHalo=get("solar-halo");
   const hero = get("hero"), lean = get("lean"), shadow = get("shadow");
   const legBack = get("leg-back"), legFront = get("leg-front");
   const armBack = get("arm-back"), armFront = get("arm-front");
   const winArms = get("win-arms");
-  const scarf = get("scarf"), head = get("head"), mouth = get("mouth");
+  const head = get("head"), mouth = get("mouth");
   const eyes = get("eyes");
   const choice = get("choice");
   const set = (el, attr, value) => el.setAttribute(attr, value);
@@ -168,6 +221,126 @@
   const hide = (el, hidden) => el.toggleAttribute("data-runner-hidden", hidden);
   const clamp = t => Math.max(0, Math.min(1, t));
   const ease = t => t*t*(3-2*t);
+  const rivalLayer = get("rivals"), signLayer = get("rival-signs");
+  let rivals = [], rivalFrame = 0, rivalSignature = "";
+
+  function setCharacter(value) {
+    const id=avatarId(value);
+    localCharacter=id;
+    get("face-shape").innerHTML=avatars[id].head;
+    get("outfit").innerHTML=avatars[id].coat;
+    set(hero,"data-character",id);
+    if(!total) set(scene,"aria-label",avatars[id].name+" waits at the starting flag.");
+  }
+  function ghostSprite(r) {
+    const a=avatars[r.character];
+    return `<g id="run-rival-${r.seat}" class="runner-ghost" data-seat="${r.seat}" data-character="${r.character}">
+      <title id="run-rival-title-${r.seat}"></title>
+      <ellipse cy="1" rx="13" ry="2" fill="#30414b" opacity=".30"/>
+      <g id="run-rival-body-${r.seat}" class="runner-ghost-body" stroke="#253b43" stroke-width="2.4">
+        <g fill="none" stroke-width="3.7">
+          <path d="m0-18-6 8-2 8 5 1m4-17 5 8 1 8 5-1" />
+          <path d="m0-17 2-17m-2 3-7 7-5-3m14-4 6 6 5-4"/>
+        </g>
+        <path d="M-1-33q-10-5-12 1l-1 7 12 3z" fill="#cea15a" stroke-width="1.9"/>
+        ${a.coat}${a.head}${relaxedFace}<g class="chicken-hat"><use href="#run-chicken"/></g>${drawBow}
+      </g>
+      <g id="run-rival-tag-${r.seat}" class="rival-marker">
+        <rect width="38" height="15" x="-19" y="-68" rx="7"/><circle cx="-11" cy="-60.5" r="3.2" fill="${a.color}"/>
+        <text id="run-rival-tagtext-${r.seat}" x="3" y="-56.9">P${r.seat}</text>
+      </g></g>`;
+  }
+  function edgeSprite(r) {
+    return `<g id="run-edge-${r.seat}" class="rival-marker" data-runner-hidden="">
+      <rect width="66" height="17" x="-33" y="-8.5" rx="8"/>
+      <path id="run-rival-chevron-${r.seat}" d="m-2-3 3 3-3 3" fill="none" stroke="${avatars[r.character].color}" stroke-width="2.2"/>
+      <text id="run-edge-text-${r.seat}" y="3.6"></text></g>`;
+  }
+  function positionAt(r,now) {
+    if(now>=r.until || reducedMotion.matches || document.hidden) return r.cleared;
+    return r.from+(r.cleared-r.from)*ease(clamp(1-(r.until-now)/r.duration));
+  }
+  function drawRivals(now=performance.now()) {
+    if(!rivals.length) return false;
+    const edges=[[],[]], groups=new Map();
+    let moving=false;
+    for(const r of rivals){
+      const lane=groups.get(r.cleared)||[];
+      lane.push(r);groups.set(r.cleared,lane);
+    }
+    for(const r of rivals){
+      const position=positionAt(r,now), worldX=startX+stride*position;
+      const group=groups.get(r.cleared), index=group.indexOf(r);
+      // Adjacent shadows share one landing. Leave the center for the local runner.
+      const space=group.length>1 || r.cleared===Math.round(camera/stride);
+      const lane=space ? [-30,34,-58][Math.min(index,2)] : 0;
+      const x=worldX-camera+lane, onScreen=x>=frameLeft+18 && x<=frameLeft+frameWidth-18;
+      const inFlight=position!==r.cleared;
+      moving ||= inFlight;
+      hide(r.sprite,!onScreen || index>=3);
+      hide(r.edge,true);
+      if(!onScreen){
+        edges[x<frameLeft+18 ? 0 : 1].push(r);
+        continue;
+      }
+      if(index>=3) continue;
+      const arc=inFlight ? Math.max(0, Math.sin(Math.PI*clamp((position-Math.floor(position)-.16)/.65))) : 0;
+      transform(r.sprite,`translate(${x} ${floor-2})`);
+      transform(r.body,`translate(0 ${-41*arc}) rotate(${5*arc}) scale(.76)`);
+      transform(r.tag,`translate(0 ${-37*arc-(group.length>2&&index===2?15:0)})`);
+      const status=r.status==="finished"?"✓":r.status==="out"?"×":"";
+      r.tagText.textContent=index===2 && group.length>3 ? "+"+(group.length-2) : "P"+r.seat+status;
+    }
+    edges.forEach((list,side)=>{
+      list.sort((a,b)=>Math.abs(a.cleared-camera/stride)-Math.abs(b.cleared-camera/stride)||a.seat-b.seat);
+      list.slice(0,3).forEach((r,i)=>{
+        const sign=side?1:-1, overflow=i===2 && list.length>3;
+        const diff=r.cleared-Math.round(camera/stride);
+        const label=overflow ? (list.length-2)+" racers" : "P"+r.seat+" · "+(diff>0?"+":"")+diff;
+        hide(r.edge,false);
+        transform(r.edge,`translate(${frameLeft+(side?frameWidth-37:37)} ${15+i*20})`);
+        transform(r.chevron,`translate(${25*sign} 0) scale(${sign} 1)`);
+        set(r.edgeText,"x",-4*sign);r.edgeText.textContent=label;
+      });
+    });
+    return moving;
+  }
+  function tickRivals(now) {
+    rivalFrame=drawRivals(now) ? requestAnimationFrame(tickRivals) : 0;
+  }
+  function setRivals(roster,localSeat) {
+    const before=new Map(rivals.map(r=>[r.seat,r])), now=performance.now(), seen=new Set();
+    const next=[];
+    for(const s of Array.isArray(roster)?roster:[]){
+      if(!s || !Number.isInteger(s.seat) || s.seat<1 || s.seat>12 || s.seat===localSeat || seen.has(s.seat) || !["playing","out","finished"].includes(s.status)) continue;
+      seen.add(s.seat);
+      const progress=Number.isSafeInteger(s.cleared)&&s.cleared>=0?s.cleared:0, character=avatarId(s.character);
+      const prior=before.get(s.seat), r=prior || {seat:s.seat,cleared:progress,from:progress,until:0,duration:0};
+      if(reducedMotion.matches || document.hidden){
+        r.from=progress;r.until=0;
+      } else if(r.cleared!==progress){
+        r.from=progress<r.cleared ? progress : positionAt(r,now);
+        r.duration=Math.min(1100,580+110*Math.abs(r.from-progress));r.until=now+r.duration;
+      }
+      r.cleared=progress;r.character=character;r.status=s.status;next.push(r);
+    }
+    rivals=next.sort((a,b)=>a.seat-b.seat);
+    const signature=rivals.map(r=>r.seat+"/"+r.character).join(",");
+    if(signature!==rivalSignature){
+      rivalSignature=signature;
+      rivalLayer.innerHTML=rivals.map(ghostSprite).join("");signLayer.innerHTML=rivals.map(edgeSprite).join("");
+      for(const r of rivals){
+        r.sprite=get("rival-"+r.seat);r.body=get("rival-body-"+r.seat);r.tag=get("rival-tag-"+r.seat);r.tagText=get("rival-tagtext-"+r.seat);
+        r.title=get("rival-title-"+r.seat);r.edge=get("edge-"+r.seat);r.edgeText=get("edge-text-"+r.seat);r.chevron=get("rival-chevron-"+r.seat);
+      }
+    }
+    for(const r of rivals){
+      set(r.sprite,"data-status",r.status);
+      r.title.textContent=`Player ${r.seat}, ${avatars[r.character].name}, ${r.cleared} cleared. ${r.status==="out"?"Run over.":r.status==="finished"?"Finished.":""}`;
+    }
+    if(rivalFrame) cancelAnimationFrame(rivalFrame);
+    tickRivals(now);
+  }
 
   const sunX = () => Math.round(frameLeft+frameWidth*(compact ? .838 : .823));
   function fitScene(size) {
@@ -196,7 +369,7 @@
 
   let weatherKey = "";
   function courseWeather() {
-    const progress = total > 1 ? cleared/(total-1) : 0;
+    const progress = courseProgress(cleared);
     const intensity = progress >= .82 ? 3 : progress >= .52 ? 2 : progress >= .26 ? 1 : 0;
     set(scene,"data-intensity",intensity);
     const key = difficulty + intensity + ":" + frameWidth;
@@ -274,12 +447,12 @@
       const left = -41, right = solid ? stride-40 : 182;
       const terrain = `M${left} ${floor}H${right}l-3 11 3 9-6 10-2 12Q${right-21} 189 ${right-41} 194T${right-98} 195 ${left+68} 193 ${left+6} 197l-4-15-3-9 2-10z`;
       let cracks = "";
-      if (!solid && total>1 && i/(total-1)>=.52) {
-        const fracture = i/(total-1)>=.82 ? "m51 156 7 5-4 6 10 7m-12-6-4 2M136 156l-5 6 7 7-9 10m8-11 8 3" : "m131 156-3 5 6 6-4 5";
+      if (!solid && courseProgress(i)>=.52) {
+        const fracture = courseProgress(i)>=.82 ? "m51 156 7 5-4 6 10 7m-12-6-4 2M136 156l-5 6 7 7-9 10m8-11 8 3" : "m131 156-3 5 6 6-4 5";
         cracks = `<path d="${fracture}" class="runner-fractures"/>`;
       }
       const volcanic=difficulty==="hard" || difficulty==="insane";
-      const lateGap = !solid && total>1 && i/(total-1)>=.52;
+      const lateGap = !solid && courseProgress(i)>=.52;
       const splinters = lateGap ? `<g transform="translate(193 165)" fill="${volcanic?"#ffe197":"#ac9378"}" stroke="${volcanic?"#d55535":"#756856"}">
         <g class="rift-debris" style="--rift-delay:${-(Math.abs(i)%4)*.6}s"><path d="m0 0 5-3 2 5-5 2zm14 6 4-3 3 3-5 2zm21-12 3-2 2 3-3 1z"/></g></g>` : "";
       tiles += `<g transform="translate(${i*stride})"><path d="${terrain}" class="runner-ground"/>
@@ -303,6 +476,7 @@
     transform(world, 'translate(' + -distance + ')');
     transform(near, 'translate(' + -(distance*.33 % 510) + ')');
     transform(far, 'translate(' + -(distance*.14 % 600) + ')');
+    drawRivals();
   }
   function pose(x, y, options = {}) {
     const {swing=0, lift=0, angle=0, jump=0, cheer=false, wipeout=false} = options;
@@ -314,7 +488,6 @@
     transform(armFront,'translate(1,-32) rotate(' + (swing*42 - jump*90 - (cheer?91:0)) + ')');
     hide(winArms,!cheer); hide(armBack,cheer); hide(armFront,cheer);
     transform(head,'rotate(' + (wipeout?17:jump*-12-swing*3) + ' 2 -39)');
-    set(scarf,'d',`m2-36-8 2-11 ${-3-lift*5+swing*1.5}-6 3 6-7 9 1z`);
     set(mouth,'d',wipeout ? 'M5-42q3-2 6-.8' : jump ? 'M6-43q3 3 4-1z' : 'M5-44q3 2 6-.5');
     set(shadow,"cx",x); set(shadow,"rx",14-lift*6); set(shadow,"opacity",wipeout?0:.22-lift*.13);
     transform(choice,`translate(${x+18} ${y-62})`);
@@ -329,6 +502,10 @@
     blocked = [...indices];
     aim(aiming);
   }
+  // Endless ramps up over the first 20 platforms and keeps the far side open.
+  function courseProgress(index) {
+    return total>1 ? clamp(index/(Number.isFinite(total)?total-1:20)) : 0;
+  }
   function stage(done, length) {
     if (frameId) cancelAnimationFrame(frameId);
     active=null; celebrating=false; frameId=0; cleared=Math.max(0,Math.trunc(done||0)); total=Math.max(0,Math.trunc(length||0));
@@ -336,15 +513,17 @@
     set(scene,"data-impact","off");
     set(scene,"data-finale","none");
     hide(flyingCrown,true);
-    hide(crown,true); hide(glare,false); hide(surprise,true);
+    hide(crown,true); hide(glare,false); hide(surprise,true);hide(sunSmile,true);hide(bossCrown,false);
+    for(const piece of [lastMeteor,parry,podium,solarHalo]) hide(piece,true);
     set(afterglow,"opacity",0); set(scene,"data-dance","off");
     festival.replaceChildren();
     set(eyes,"d","m5-50 .3 1.3m6-1.7 .2 1.3");
     set(mouth,"fill","none");
     blocked=[]; aim(-1);
-    set(scene,"data-chapter",total?Math.min(2,Math.floor(cleared/total*3)):0);
-    const character = ({easy:"Runner in a chicken hat", hard:"Runner on a volcanic course", insane:"Runner beneath an angry sun and erupting volcanoes"})[difficulty] || "Stick figure on the course";
-    set(scene,"aria-label",total ? `${character}, ${cleared} of ${total} hurdles cleared.` : "A stick figure waits at the starting flag.");
+    set(scene,"data-chapter",Math.min(2,Math.floor(courseProgress(cleared)*3)));
+    const character = avatars[localCharacter].name+(({easy:" in a chicken hat", hard:" on a volcanic course", insane:" beneath an angry sun and erupting volcanoes"})[difficulty] || " on the course");
+    set(scene,"aria-label",total ? `${character}, ${cleared}${Number.isFinite(total)?" of "+total:""} hurdles cleared.` : avatars[localCharacter].name+" waits at the starting flag.");
+    if(!total) setRivals([],0);
     courseWeather(); setTerrain(); cameraAt(cleared*stride); fx.replaceChildren(); incident.replaceChildren(); pose(startX,floor);
   }
   // Build each scene once. The animation only moves existing SVG groups.
@@ -470,17 +649,36 @@
     if (!epic) return;
     const crowned = t >= .76;
     set(scene,"data-finale", crowned ? "crowned" : t>=.24 ? "launch" : "eruption");
-    hide(crown,!crowned); hide(glare,t>=.24); hide(surprise,t<.24);
-    set(afterglow,"opacity",.86*ease(clamp((t-.23)/.47)));
+    hide(crown,!crowned); hide(glare,t>=.24); hide(surprise,t<.24 || crowned);
+    hide(sunSmile,!crowned);hide(bossCrown,t>=.24);
+    set(afterglow,"opacity",ease(clamp((t-.23)/.47)));
     const zoom = 1+.21*eased;
     transform(hero,`translate(${x} ${y}) scale(${zoom})`);
     const u = ease(clamp((t-.24)/.52));
     const fromX = sunX();
+    // The last meteor skims the champion's raised hand. A shower of sparks
+    // sends it back toward the eclipse before the crown crosses the sky.
+    const contactT=.16, leaveT=.30;
+    const punchX=startX+shift*ease(contactT/.42)+22;
+    const punchY=floor-40*Math.abs(Math.sin(Math.PI*hops*contactT))-51;
+    const incoming=t<contactT, mt=clamp(incoming?t/contactT:(t-contactT)/(leaveT-contactT));
+    const travelX=incoming ? fromX+(punchX-fromX)*mt : punchX+(fromX-punchX)*mt;
+    const travelY=incoming ? 64+(punchY-64)*mt-18*Math.sin(Math.PI*mt) : punchY+(52-punchY)*mt-22*Math.sin(Math.PI*mt);
+    transform(lastMeteor,`translate(${travelX} ${travelY}) scale(${incoming ? .49 : -.60} .5) rotate(-8)`);
+    hide(lastMeteor,t>=leaveT);hide(parry,t<contactT||t>=.27);
+    const impact=clamp((t-contactT)/.11);
+    transform(parry,`translate(${punchX} ${punchY}) scale(${.8+impact*1.8})`);
+    set(parry,"opacity",1-impact);
+    const entrance=ease(clamp((t-.64)/.16));
+    hide(podium,!entrance);hide(solarHalo,!entrance);
+    transform(podium,`translate(${x} ${floor+16*(1-entrance)}) scale(${entrance} 1)`);
+    transform(solarHalo,`translate(${x} ${y}) scale(${zoom})`);
+    set(solarHalo,"opacity",entrance*.9);
     const crownX = fromX + (x+3*zoom-fromX)*u;
-    const crownY = 31+(y-57*zoom-31)*u-27*Math.sin(Math.PI*u);
+    const crownY = 25+(y-57*zoom-25)*u-27*Math.sin(Math.PI*u);
     const bloom = clamp(t/.12);
     transform(flyingCrown,`translate(${crownX} ${crownY}) rotate(${-20*Math.sin(Math.PI*u)}) scale(${(.78+.31*u)*bloom})`);
-    hide(flyingCrown,crowned || !bloom);
+    hide(flyingCrown,crowned || t<.24 || !bloom);
   }
   function celebrate(epic=false) {
     if (active || celebrating || !total || cleared+1 < total) return;
@@ -489,7 +687,7 @@
     set(scene,"data-impact","off"); incident.replaceChildren();
     set(scene,"data-phase","victory");
     set(scene,"aria-label",celebration.epic
-      ? "Insane course cleared! The volcanoes erupt in fireworks. The startled sun gives up its golden Sun Crown, and the smiling runner leaps up to claim it."
+      ? "Insane course cleared! "+avatars[localCharacter].name+" sends the last meteor back. The volcanoes burst into fireworks, the sun smiles, and the champion lands on the golden podium wearing the Sun Crown."
       : `All ${total} hurdles cleared. The runner jumps for joy under a shower of confetti!`);
     set(eyes,"d","m2-50q2-3 4 0m3-.5q2-3 4-.5");
     set(mouth,"fill","var(--r-ink)");
@@ -538,7 +736,7 @@
     const {hit,finish,hand}=active;
     active=null; frameId=0;
     set(scene,"data-phase",hit ? "landed" : "missed");
-    set(scene,"aria-label",hit ? `Hurdle cleared. ${cleared+1} of ${total} complete.` : (hand ? "Time expired. A giant hand flicks the runner off the platform. " : "")+misses[difficulty].label);
+    set(scene,"aria-label",hit ? `Hurdle cleared. ${cleared+1}${Number.isFinite(total)?" of "+total:""} complete.` : (hand ? "Time expired. A giant hand flicks the runner off the platform. " : "")+misses[difficulty].label);
     finish();
   }
   function travel(index, hit, finish, timeout=false) {
@@ -569,6 +767,7 @@
   document.addEventListener("visibilitychange",() => {
     set(scene,"data-paused",document.hidden ? "yes" : "no");
     if (!document.hidden) return;
+    if(rivalFrame){ cancelAnimationFrame(rivalFrame);rivalFrame=0;drawRivals(); }
     settle();
     if (celebrating && frameId) { cancelAnimationFrame(frameId); frameId=0; victoryPose(1); }
   });
@@ -579,7 +778,8 @@
     set(scene,"data-difficulty",value);
     backdrop();stage(cleared,total);
   }
-  window.junctionRunner = {reset:length=>stage(0,length),home:()=>stage(0,0),stage,travel,aim,close,celebrate,difficulty:setDifficulty};
+  window.junctionRunner = {reset:length=>stage(0,length),home:()=>stage(0,0),stage,travel,aim,close,celebrate,difficulty:setDifficulty,
+    characters,portrait,character:setCharacter,rivals:setRivals};
   set(scene,"data-difficulty",difficulty);
   stage(0,0);
   fitScene(scene.clientWidth);

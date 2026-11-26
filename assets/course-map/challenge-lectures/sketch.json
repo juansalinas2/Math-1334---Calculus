@@ -441,7 +441,7 @@
   },
   {
     "topic": "endbehavior",
-    "level": 1,
+    "level": 2,
     "prompt": "For a function \\(f\\), when is a line \\(y=mx+b\\) with \\(m\\ne0\\) a slant asymptote at the right end? Which expression must approach zero?",
     "choices": [
       "\\(f(x)-(mx+b)\\)",
@@ -532,7 +532,7 @@
   },
   {
     "topic": "sketch",
-    "level": 1,
+    "level": 2,
     "prompt": "What symmetry does \\(f(x)=2x^2/(x^2-1)\\) have?",
     "choices": [
       "Reflection across the vertical axis",
@@ -591,22 +591,23 @@
     "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
-    "topic": "rationaltails",
+    "topic": "endbehavior",
     "section": "4.4",
     "level": 2,
-    "prompt": "For \\(x\\ne1\\), a curve has equation \\(f(x)=2x-1+2/(x-1)\\). Does it cross the slant line \\(y=2x-1\\)?",
+    "prompt": "For the exam-review curve \\(f(x)=2x-1+2/(x-1)\\), what is the signed vertical gap \\(f(3)-(2\\cdot3-1)\\) from its slant asymptote?",
     "choices": [
-      "No. The remainder term never equals zero.",
-      "Yes, at \\(x=1\\).",
-      "Yes, at \\(x=0\\).",
-      "Yes, wherever \\(f'(x)=2\\)."
+      "\\(1\\)",
+      "\\(2\\)",
+      "\\(-1\\)",
+      "\\(0\\)"
     ],
-    "why": "The line is \\(y=2x-1\\), and the exact vertical difference is \\(2/(x-1)\\). That fraction approaches zero at both ends without ever equaling zero.",
+    "why": "The slant line cancels, leaving \\(2/(3-1)=1\\).",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
     "reference": "Exam 3 review worksheet · 9(b,f)",
     "pdfPage": 72,
     "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "breaks",
@@ -966,15 +967,16 @@
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
     "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
     "level": 2,
-    "prompt": "For \\((x+1)/(x^3-1)\\), the denominator has two more powers of \\(x\\) than the numerator. Which line is a horizontal asymptote?",
+    "prompt": "A rational function has numerator of degree 4 and denominator of degree 6. What is the power of \\(x\\) in the leading-term ratio?",
     "choices": [
-      "\\(y=0\\)",
-      "\\(y=1\\)",
-      "\\(x=0\\)",
-      "\\(y=x\\)"
+      "\\(x^{-2}\\)",
+      "\\(x^2\\)",
+      "\\(x^{10}\\)",
+      "\\(x^0\\)"
     ],
-    "why": "At either end the leading-term ratio is \\(x/x^3=1/x^2\\), which tends to zero.",
-    "handoutPage": 1
+    "why": "Subtract degrees: \\(x^4/x^6=x^{-2}\\).",
+    "handoutPage": 2,
+    "pdfPage": 71
   },
   {
     "topic": "endbehavior",
@@ -1020,5 +1022,953 @@
     "handoutPage": 4,
     "reference": "Exam 3 review worksheet · 9(b,c)",
     "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=5"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 70,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "The outer ends of this curve level off along which axis?",
+    "why": "The heights approach zero as the inputs grow in magnitude.",
+    "graphPrompt": "inverse",
+    "choices": [
+      "The horizontal axis",
+      "The vertical axis",
+      "Both axes at once",
+      "Neither axis"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 70,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "What is the height of the dashed horizontal asymptote in the picture?",
+    "why": "Read the horizontal guide’s height on the vertical axis.",
+    "graphPrompt": "up-saturate",
+    "choices": [
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-1\\)",
+      "\\(2\\)"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 72,
+    "handoutPage": 3,
+    "level": 1,
+    "prompt": "Which line is marked by the sloping dashed guide?",
+    "why": "The line rises one unit per unit right and passes through the origin.",
+    "graphPrompt": "slant-pole",
+    "choices": [
+      "\\(y=x\\)",
+      "\\(y=-x\\)",
+      "\\(y=1\\)",
+      "\\(x=1\\)"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 70,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "If \\(f(x)\\to3\\) as \\(x\\to\\infty\\), which horizontal line does the graph approach on the right?",
+    "why": "The limiting height is 3.",
+    "choices": [
+      "\\(y=3\\)",
+      "\\(x=3\\)",
+      "\\(y=x+3\\)",
+      "\\(y=0\\)"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 70,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "A horizontal asymptote is parallel to which axis?",
+    "why": "A horizontal line has equation \\(y=L\\) for a constant height \\(L\\).",
+    "choices": [
+      "The horizontal axis",
+      "The vertical axis",
+      "Both axes",
+      "Neither axis"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 70,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "What happens to \\(1/x\\) as \\(x\\) gets larger and larger and stays positive?",
+    "why": "Dividing 1 by a growing positive number gives smaller and smaller positive values.",
+    "choices": [
+      "It approaches 0.",
+      "It approaches 1.",
+      "It increases without bound.",
+      "It approaches \\(-1\\)."
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 70,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "A graph settles near height \\(-2\\) as you go farther left. What is its left-end limit?",
+    "why": "The left-end limit records the height approached.",
+    "choices": [
+      "\\(-2\\)",
+      "\\(2\\)",
+      "\\(0\\)",
+      "\\(-\\infty\\)"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 72,
+    "handoutPage": 3,
+    "level": 1,
+    "prompt": "The graph approaches the line \\(y=2x+1\\) at its right end. What kind of asymptote is this line?",
+    "why": "This line has nonzero finite slope.",
+    "choices": [
+      "Slant",
+      "Horizontal",
+      "Vertical",
+      "A circle"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 71,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "In \\(3x^2+x+1\\), which term dominates when \\(x\\) is very large and positive?",
+    "why": "The term of highest degree eventually dominates the lower powers.",
+    "choices": [
+      "\\(3x^2\\)",
+      "\\(x\\)",
+      "\\(1\\)",
+      "All three are equal."
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 70,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "Follow the right tail of the pictured hump. Which number do its heights approach?",
+    "why": "Farther to the right, the graph settles toward the horizontal axis.",
+    "graphPrompt": "bell",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 72,
+    "handoutPage": 3,
+    "level": 1,
+    "prompt": "Does the pictured slant line rise or fall when read from left to right?",
+    "why": "The dashed line has negative slope.",
+    "graphPrompt": "slant-negative",
+    "choices": [
+      "It falls.",
+      "It rises.",
+      "It stays level.",
+      "It changes from rising to falling."
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 71,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "For \\(f(x)=2+1/x\\), which term fades to zero as \\(x\\to\\infty\\)?",
+    "why": "The reciprocal tends to zero while the constant stays fixed.",
+    "choices": [
+      "\\(1/x\\)",
+      "\\(2\\)",
+      "The entire function",
+      "Neither term"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 70,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "If \\(f(x)\\) grows without bound as \\(x\\to+\\infty\\), can its right end have a horizontal asymptote?",
+    "why": "A horizontal asymptote requires a finite limiting height.",
+    "choices": [
+      "No, its height has no finite limit.",
+      "Yes, at height zero.",
+      "Yes, at height one.",
+      "Yes, at \\(x=0\\)."
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-8",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 75,
+    "handoutPage": 5,
+    "level": 1,
+    "prompt": "Which axis is a line of symmetry for the pictured graph?",
+    "why": "The branches on the right mirror the ones on the left across the vertical axis.",
+    "graphPrompt": "even-three",
+    "choices": [
+      "The vertical axis",
+      "The horizontal axis",
+      "Both axes",
+      "Neither axis"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-8",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 75,
+    "handoutPage": 5,
+    "level": 1,
+    "prompt": "Which point is common to both the axes and to this graph?",
+    "why": "The central branch passes through the origin.",
+    "graphPrompt": "even-three",
+    "choices": [
+      "\\((0,0)\\)",
+      "\\((1,0)\\)",
+      "\\((0,2)\\)",
+      "\\((-1,2)\\)"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#practice",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 77,
+    "handoutPage": 7,
+    "level": 1,
+    "prompt": "Does the pictured hump ever cross the horizontal axis if \\(f(x)=4/(x^2+3)\\)?",
+    "why": "Its numerator and denominator are positive everywhere.",
+    "graphPrompt": "bell",
+    "choices": [
+      "No, all outputs are positive.",
+      "Yes, at zero.",
+      "Yes, at one.",
+      "Yes, twice."
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-9",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 76,
+    "handoutPage": 6,
+    "level": 1,
+    "prompt": "In which quadrant is this curve when \\(x>0\\)?",
+    "why": "Its positive-input branch lies above the horizontal axis.",
+    "graphPrompt": "slant-smooth",
+    "choices": [
+      "Upper right",
+      "Lower right",
+      "Upper left",
+      "Lower left"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-8",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 75,
+    "handoutPage": 5,
+    "level": 1,
+    "prompt": "At a \\(y\\)-intercept, which coordinate equals zero?",
+    "why": "Every point on the vertical axis has \\(x=0\\).",
+    "choices": [
+      "The \\(x\\)-coordinate",
+      "The \\(y\\)-coordinate always",
+      "Both coordinates always",
+      "Neither coordinate"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-8",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 75,
+    "handoutPage": 5,
+    "level": 1,
+    "prompt": "To locate an \\(x\\)-intercept, which equation do you solve?",
+    "why": "An intercept with the horizontal axis has height zero.",
+    "choices": [
+      "\\(f(x)=0\\)",
+      "\\(f'(x)=0\\)",
+      "\\(f''(x)=0\\)",
+      "\\(x=1\\)"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#practice",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 77,
+    "handoutPage": 7,
+    "level": 1,
+    "prompt": "The dashed vertical line is one grid unit left of the vertical axis. What is its equation?",
+    "why": "A vertical line fixes the input, here at \\(-1\\).",
+    "graphPrompt": "up-saturate",
+    "choices": [
+      "\\(x=-1\\)",
+      "\\(x=1\\)",
+      "\\(y=-1\\)",
+      "\\(y=1\\)"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-9",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 76,
+    "handoutPage": 6,
+    "level": 1,
+    "prompt": "At the flat point where the illustrated curve passes through the origin, which line is tangent?",
+    "why": "A horizontal tangent through \\((0,0)\\) is \\(y=0\\).",
+    "graphPrompt": "slant-smooth",
+    "choices": [
+      "The horizontal axis",
+      "The vertical axis",
+      "\\(y=x+1\\)",
+      "\\(x=1\\)"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#practice",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 77,
+    "handoutPage": 7,
+    "level": 1,
+    "prompt": "For \\(f(x)=x/(x+1)\\), what is \\(f(0)\\)?",
+    "why": "Substitute zero to get \\(0/1=0\\).",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "Undefined"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-8",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 75,
+    "handoutPage": 5,
+    "level": 1,
+    "prompt": "If the domain excludes \\(x=1\\), can \\((1,2)\\) be on the graph?",
+    "why": "Every point on the graph must have an input in the domain.",
+    "choices": [
+      "No, that input is excluded.",
+      "Yes, all positive outputs are allowed.",
+      "Yes, because 2 is finite.",
+      "Only if the derivative vanishes."
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#practice",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 77,
+    "handoutPage": 7,
+    "level": 1,
+    "prompt": "What is the sign of the pictured hump’s tangent slope to the right of its peak?",
+    "why": "On that side, the height decreases as the input increases.",
+    "graphPrompt": "bell",
+    "choices": [
+      "Negative",
+      "Positive",
+      "Zero everywhere",
+      "Undefined everywhere"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-9",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 76,
+    "handoutPage": 6,
+    "level": 1,
+    "prompt": "A curve has odd symmetry. If \\((1,2)\\) belongs to it, which other point must belong?",
+    "why": "Odd symmetry reflects through the origin.",
+    "choices": [
+      "\\((-1,-2)\\)",
+      "\\((-1,2)\\)",
+      "\\((1,-2)\\)",
+      "\\((2,1)\\)"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 71,
+    "handoutPage": 2,
+    "level": 2,
+    "prompt": "Which horizontal asymptote does \\((3x+1)/(2x-1)\\) have?",
+    "why": "With equal degrees the limiting height is the ratio of leading coefficients.",
+    "choices": [
+      "\\(y=3/2\\)",
+      "\\(y=2/3\\)",
+      "\\(y=-1\\)",
+      "\\(y=0\\)"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 71,
+    "handoutPage": 2,
+    "level": 2,
+    "prompt": "For \\((2x^3+1)/(x^2+1)\\), which expression is the quotient of the leading terms?",
+    "why": "The leading terms are \\(2x^3\\) and \\(x^2\\), whose quotient is \\(2x\\).",
+    "choices": [
+      "\\(2x\\)",
+      "\\(2/x\\)",
+      "\\(2\\)",
+      "\\(x^2\\)"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 72,
+    "handoutPage": 3,
+    "level": 2,
+    "prompt": "A function has the form \\(f(x)=3x+2+1/x\\). How far vertically is the curve from its slant line at \\(x=2\\)?",
+    "why": "The distance from \\(3x+2\\) is the magnitude of the remainder \\(1/x\\).",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(2\\)",
+      "\\(3\\)",
+      "\\(0\\)"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 72,
+    "handoutPage": 3,
+    "level": 2,
+    "prompt": "When \\(x<0\\), what is \\(\\sqrt{x^2}/x\\)?",
+    "why": "For negative inputs \\(\\sqrt{x^2}=-x\\), so the quotient is \\(-1\\).",
+    "choices": [
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(x\\)"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 70,
+    "handoutPage": 1,
+    "level": 2,
+    "prompt": "The valley in the picture has tails approaching \\(y=2\\). After shifting the entire graph up by 3, which line do the tails approach?",
+    "why": "All heights, including limiting heights, increase by three.",
+    "graphPrompt": "even-no-pole",
+    "choices": [
+      "\\(y=5\\)",
+      "\\(y=-1\\)",
+      "\\(y=3\\)",
+      "\\(y=2\\)"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 71,
+    "handoutPage": 2,
+    "level": 2,
+    "prompt": "As \\(x\\to\\infty\\), compare \\((x^3+x)/(x+1)\\) with a power of \\(x\\). Which describes its growth?",
+    "why": "Dividing the leading powers gives \\(x^3/x=x^2\\).",
+    "choices": [
+      "Quadratic",
+      "Linear",
+      "Constant",
+      "Reciprocal"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 72,
+    "handoutPage": 3,
+    "level": 2,
+    "prompt": "The pictured curve has slant asymptote \\(y=x\\). Reflect the whole graph in the horizontal axis. What is the reflected asymptote?",
+    "why": "Reflection negates all heights, including those on the slant line.",
+    "graphPrompt": "slant-smooth",
+    "choices": [
+      "\\(y=-x\\)",
+      "\\(y=x\\)",
+      "\\(y=0\\)",
+      "\\(x=0\\)"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 71,
+    "handoutPage": 2,
+    "level": 2,
+    "prompt": "What is the limit of \\((2x+1)/(x^2+1)\\) as \\(x\\to-\\infty\\)?",
+    "why": "The denominator is one degree higher than the numerator.",
+    "choices": [
+      "\\(0\\)",
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(-\\infty\\)"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 70,
+    "handoutPage": 1,
+    "level": 2,
+    "prompt": "For \\(f(x)=1-1/x\\) with \\(x>0\\), does its right end approach 1 from above or below?",
+    "why": "It subtracts a positive quantity that shrinks toward zero.",
+    "choices": [
+      "From below",
+      "From above",
+      "From both sides alternately",
+      "It stays equal to 1."
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#practice",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 77,
+    "handoutPage": 7,
+    "level": 2,
+    "prompt": "The pictured graph of \\(4/(x^2+3)\\) has a global maximum at zero. Which is its height?",
+    "why": "At \\(x=0\\), the denominator is 3.",
+    "graphPrompt": "bell",
+    "choices": [
+      "\\(4/3\\)",
+      "\\(3/4\\)",
+      "\\(1\\)",
+      "\\(4\\)"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-8",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 75,
+    "handoutPage": 5,
+    "level": 2,
+    "prompt": "The curve \\(f(x)=2x^2/(x^2-1)\\) is undefined at how many real inputs?",
+    "why": "The denominator vanishes at \\(-1\\) and 1.",
+    "choices": [
+      "\\(2\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(3\\)"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-9",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 76,
+    "handoutPage": 6,
+    "level": 2,
+    "prompt": "If \\(g(x)=x^3/(1+x^2)\\), which of its intercepts with the horizontal axis exist?",
+    "why": "The numerator vanishes only at zero and the denominator stays positive.",
+    "choices": [
+      "Only \\((0,0)\\)",
+      "Only \\((1,0)\\)",
+      "Both \\((-1,0)\\) and \\((1,0)\\)",
+      "None"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#practice",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 77,
+    "handoutPage": 7,
+    "level": 2,
+    "prompt": "The pictured graph has vertical asymptote \\(x=-1\\). Translate it 2 units right. What is the new vertical asymptote?",
+    "why": "All inputs shift by 2, taking \\(-1\\) to 1.",
+    "graphPrompt": "up-saturate",
+    "choices": [
+      "\\(x=1\\)",
+      "\\(x=-3\\)",
+      "\\(y=1\\)",
+      "\\(x=-1\\)"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-9",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 76,
+    "handoutPage": 6,
+    "level": 2,
+    "prompt": "For the pictured \\(g(x)=x^3/(1+x^2)\\), find the signed height \\(g(1)-1\\) relative to the slant line \\(y=x\\).",
+    "why": "At 1 the function has height \\(1/2\\) and the line has height 1.",
+    "graphPrompt": "slant-smooth",
+    "choices": [
+      "\\(-1/2\\)",
+      "\\(1/2\\)",
+      "\\(0\\)",
+      "\\(-1\\)"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-8",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 75,
+    "handoutPage": 5,
+    "level": 2,
+    "prompt": "An even graph passes through \\((2,8/3)\\). What is its height at \\(-2\\)?",
+    "why": "For an even function, opposite inputs have equal outputs.",
+    "graphPrompt": "even-three",
+    "choices": [
+      "\\(8/3\\)",
+      "\\(-8/3\\)",
+      "\\(3/8\\)",
+      "\\(0\\)"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#practice",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 77,
+    "handoutPage": 7,
+    "level": 2,
+    "prompt": "What happens to the pictured \\(1/(x+1)^2\\) as \\(x\\) approaches \\(-1\\) from the left?",
+    "why": "The denominator approaches zero through positive values.",
+    "graphPrompt": "inverse-square",
+    "choices": [
+      "It grows to \\(+\\infty\\).",
+      "It falls to \\(-\\infty\\).",
+      "It approaches zero.",
+      "It approaches 1."
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-9",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 76,
+    "handoutPage": 6,
+    "level": 2,
+    "prompt": "For \\(g(x)=x^3/(1+x^2)\\), what is its domain?",
+    "why": "Adding 1 to a square makes the denominator positive.",
+    "choices": [
+      "All real numbers",
+      "All real numbers except zero",
+      "Only positive numbers",
+      "All real numbers except \\(-1\\) and 1"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 72,
+    "handoutPage": 3,
+    "level": 4,
+    "prompt": "For \\(f(x)=2x+1+3/(x-1)\\) and its slant line \\(L(x)=2x+1\\), find \\(\\lim_{x\\to\\infty}x(f(x)-L(x))\\).",
+    "why": "The expression reduces to \\(3x/(x-1)\\), whose limit is 3.",
+    "answer": "3"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 71,
+    "handoutPage": 2,
+    "level": 4,
+    "prompt": "For \\(f(x)=(3x^2+ax)/(x^2+2x)\\), the limiting height is 3. If \\(\\lim_{x\\to\\infty}x(f(x)-3)=4\\), find \\(a\\).",
+    "why": "Subtracting the horizontal asymptote leaves \\((a-6)/(x+2)\\). The scaled limit is \\(a-6=4\\).",
+    "answer": "10"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 72,
+    "handoutPage": 3,
+    "level": 4,
+    "prompt": "A rational curve \\(f(x)\\) has slant line \\(y=2x-3\\) at both ends. What is the vertical intercept of the slant line for \\(g(x)=3f(x+1)-4\\)?",
+    "why": "Substitute \\(x+1\\) in the original line and transform the height: \\(3(2x+2-3)-4=6x-7\\).",
+    "answer": "-7"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 72,
+    "handoutPage": 3,
+    "level": 4,
+    "prompt": "A curve satisfies \\(f(x)=x-1/x\\). Let \\(L(x)=x\\). At positive \\(x\\), divide the unsigned vertical gap at \\(2x\\) by that at \\(x/2\\). What is the ratio?",
+    "why": "The gaps are \\(1/(2x)\\) and \\(2/x\\); their ratio is \\(1/4\\).",
+    "answer": "1/4"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 72,
+    "handoutPage": 3,
+    "level": 4,
+    "prompt": "For \\(f(x)=\\sqrt{4x^2+1}/x\\), take the left-end limit of \\(f(x)+a\\) and set it equal to the right-end limit of \\(f(x)-a\\). What is \\(a\\)?",
+    "why": "The two limits are \\(-2+a\\) and \\(2-a\\). Equality gives \\(2a=4\\).",
+    "answer": "2"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 71,
+    "handoutPage": 2,
+    "level": 4,
+    "prompt": "The function \\(f(x)=(x^2-4)/(x^2-x+1)\\) has horizontal asymptote \\(y=1\\). At what input does the graph cross this line?",
+    "why": "Equating numerator and denominator gives \\(-4=-x+1\\), hence \\(x=5\\). The denominator there is nonzero, and the difference changes sign.",
+    "answer": "5"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 72,
+    "handoutPage": 3,
+    "level": 4,
+    "prompt": "At large positive inputs \\(f(x)=mx+b+2/x\\). The limits of \\(f(x)/x\\) and \\(f(x)-mx\\) are 3 and \\(-2\\), respectively. Find \\(\\lim_{x\\to\\infty}[f(2x)-2f(x)]\\).",
+    "why": "The terms containing \\(mx\\) cancel, leaving \\(-b\\) plus terms tending to zero. Since \\(b=-2\\), the result is 2.",
+    "answer": "2"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-9",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 76,
+    "handoutPage": 6,
+    "level": 4,
+    "prompt": "For \\(f(x)=x^3/(1+x^2)\\), the signed gap from its slant line is \\(f(x)-x=-x/(1+x^2)\\). What is this gap at \\(x=-2\\) minus its value at \\(x=2\\)?",
+    "why": "At \\(-2\\) the gap is \\(2/5\\), while at 2 it is \\(-2/5\\). Their difference is \\(4/5\\).",
+    "answer": "4/5"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#practice",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 77,
+    "handoutPage": 7,
+    "level": 4,
+    "prompt": "For \\(f(x)=4/(x^2+3)\\), the two inflection inputs are \\(-1\\) and 1. After replacing \\(x\\) by \\(2x-1\\) and subtracting 3 from the output, what is the sum of their new heights?",
+    "why": "Originally both heights are \\(4/(1+3)=1\\). The horizontal change preserves heights and subtracting 3 makes each \\(-2\\).",
+    "answer": "-4"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-8",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 75,
+    "handoutPage": 5,
+    "level": 4,
+    "prompt": "For \\(f(x)=2x^2/(x^2-1)\\) consider \\(g(x)=f(2x-1)\\). How many distinct inputs in \\([0,2]\\) are either vertical asymptotes of \\(g\\) or zeros of \\(g\\)?",
+    "why": "The asymptote inputs solve \\(2x-1=\\pm1\\), giving 0 and 1. The zero has \\(2x-1=0\\), giving \\(1/2\\).",
+    "answer": "3"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-9",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 76,
+    "handoutPage": 6,
+    "level": 4,
+    "prompt": "A transformed lecture curve is \\(g(x)=2(x-1)^3/[1+(x-1)^2]+3\\). Its untransformed curve \\(u^3/(1+u^2)\\) has slant line \\(y=u\\). At which input does the transformed slant line cross the horizontal axis?",
+    "why": "The new line is \\(y=2(x-1)+3=2x+1\\). Its zero is \\(-1/2\\).",
+    "answer": "-1/2"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#practice",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 77,
+    "handoutPage": 7,
+    "level": 4,
+    "prompt": "For \\(f(x)=x/(x+1)\\), a horizontal line \\(y=3\\) meets the left branch. What is the slope there if \\(f'(x)=1/(x+1)^2\\)?",
+    "why": "Solve \\(x=3x+3\\) to get \\(x=-3/2\\). Substitution gives \\(1/(-1/2)^2=4\\).",
+    "answer": "4"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-8",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 75,
+    "handoutPage": 5,
+    "level": 4,
+    "prompt": "For \\(f(x)=2+2/(x^2-1)\\), count the real solutions of \\(|f(x)-2|=1\\) on the graph.",
+    "why": "The equation requires \\(|x^2-1|=2\\). Only \\(x^2=3\\) gives real solutions, one of each sign.",
+    "answer": "2"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#practice",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 77,
+    "handoutPage": 7,
+    "level": 1,
+    "prompt": "Which graph has a single positive hump and tends to zero on both ends?",
+    "why": "The curve stays above the horizontal axis, and each outer tail returns toward zero.",
+    "choices": [
+      "Single positive, symmetric hump centered on the y-axis; both tails approach zero.",
+      "Single negative, symmetric trough centered on the y-axis; both tails approach zero.",
+      "One positive lobe on the left followed by a negative lobe on the right, crossing the origin.",
+      "One negative lobe on the left followed by a positive lobe on the right, crossing the origin."
+    ],
+    "graphChoices": [
+      "bell",
+      "bell-low",
+      "bell-slope",
+      "bell-neg-slope"
+    ]
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 72,
+    "handoutPage": 3,
+    "level": 2,
+    "prompt": "Which graph has the slant asymptote \\(y=-x\\)?",
+    "why": "The slant guide must descend by one unit for each unit to the right.",
+    "choices": [
+      "A decreasing curve through the origin with a flat tangent there and tails approaching y = −x.",
+      "An increasing curve through the origin with a flat tangent there and tails approaching y = x.",
+      "Two increasing branches approach x = 0 and y = x. Both cross the x-axis.",
+      "Two branches separated at x = 0 approach y = x and never cross the x-axis."
+    ],
+    "graphChoices": [
+      "slant-negative",
+      "slant-smooth",
+      "slant-pole",
+      "slant-pole-plus"
+    ]
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "source": "../lectures/curve-sketching.html#example-8",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "pdfPage": 75,
+    "handoutPage": 5,
+    "level": 4,
+    "prompt": "In the pictured \\(f(x)=2+2/(x^2-1)\\), look at the central branch. What is its greatest signed height relative to the horizontal asymptote \\(y=2\\)?",
+    "why": "For \\(-1<x<1\\), the branch peaks at \\(x=0\\) with height zero. Its signed height relative to the asymptote is \\(0-2=-2\\).",
+    "graphPrompt": "even-three",
+    "answer": "-2"
   }
 ]

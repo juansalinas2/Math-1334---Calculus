@@ -850,34 +850,36 @@
   {
     "topic": "limit",
     "level": 1,
-    "prompt": "A graph follows the line \\(y=x+2\\) with an open circle at \\((2,4)\\). What height does the graph approach as \\(x\\) approaches 2?",
+    "prompt": "Read the graph. As \\(x\\) approaches 2, what height does the line approach?",
     "choices": [
       "\\(4\\)",
-      "\\(2\\)",
       "\\(0\\)",
-      "No height is approached."
+      "\\(1\\)",
+      "\\(-1\\)"
     ],
-    "why": "On the line, inputs approaching 2 give outputs approaching \\(2+2=4\\).",
+    "why": "Both sides of the line approach the open circle at height 4.",
     "source": "../lectures/02-limits.html#limits-and-function-values",
     "section": "2.1",
     "pdfPage": 6,
-    "pdf": "../downloads/september-28-limits-class-notes.pdf"
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "graphPrompt": "line-hole"
   },
   {
     "topic": "limit",
     "level": 1,
-    "prompt": "For \\(g(x)=x+2\\) when \\(x\\ne2\\) and \\(g(2)=7\\), which point is filled in on the graph at \\(x=2\\)?",
+    "prompt": "Read the filled point. What is \\(g(2)\\)?",
     "choices": [
-      "\\((2,7)\\)",
-      "\\((2,4)\\)",
-      "\\((7,2)\\)",
-      "\\((4,2)\\)"
+      "\\(7\\)",
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)"
     ],
-    "why": "The filled point represents the actual function value, so it has coordinates \\((2,g(2))=(2,7)\\).",
+    "why": "At \\(x=2\\), the filled point is at height 7. The open circle is excluded.",
     "source": "../lectures/02-limits.html#limits-and-function-values",
     "section": "2.1",
     "pdfPage": 6,
-    "pdf": "../downloads/september-28-limits-class-notes.pdf"
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "graphPrompt": "line-redefined"
   },
   {
     "topic": "limit",
@@ -973,11 +975,12 @@
     "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
     "section": "2.2",
     "pdfPage": 9,
-    "pdf": "../downloads/september-28-limits-class-notes.pdf"
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "graphPrompt": "inverse"
   },
   {
     "topic": "infinite",
-    "level": 1,
+    "level": 2,
     "prompt": "What is \\(\\lim_{x\\to-1}-1/(x+1)^2\\)?",
     "choices": [
       "\\(-\\infty\\)",
@@ -1040,7 +1043,7 @@
   },
   {
     "topic": "laws",
-    "level": 1,
+    "level": 2,
     "prompt": "Direct substitution applies to \\(3x^2-2x+1\\). What is its limit as \\(x\\to1\\)?",
     "choices": [
       "2",
@@ -1137,18 +1140,19 @@
   {
     "topic": "squeeze",
     "level": 1,
-    "prompt": "Near \\(x=1\\), \\(5-(x-1)^2\\le f(x)\\le5+(x-1)^2\\). What common number do the bounds approach?",
+    "prompt": "A lower bound and an upper bound both approach 5. A function stays between them. What must its limit be?",
     "choices": [
       "\\(5\\)",
       "\\(0\\)",
       "\\(1\\)",
       "\\(25\\)"
     ],
-    "why": "The squared term tends to zero on both sides, so both bounds approach 5.",
+    "why": "Both bounds approach 5, so the squeeze theorem gives the same limit for the function.",
     "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
     "section": "2.4",
     "pdfPage": 16,
-    "pdf": "../downloads/september-30-revised-class-notes.pdf"
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "graphPrompt": "squeeze-five"
   },
   {
     "topic": "squeeze",
@@ -1231,7 +1235,7 @@
   },
   {
     "topic": "limitmethods",
-    "level": 1,
+    "level": 2,
     "prompt": "Evaluate \\(\\lim_{x\\to2}(x^2+3)/(x+1)\\).",
     "choices": [
       "\\(7/3\\)",
@@ -1479,7 +1483,7 @@
     "section": "2.1",
     "topic": "sides",
     "level": 4,
-    "prompt": "Near zero, \\(g(x)=-x^2\\) for \\(x<0\\) and \\(g(x)=\\sqrt{x}\\) for \\(x>0\\). What is the largest radius \\(d\\) such that \\(0<|x|<d\\) guarantees \\(|g(x)|<1/2\\)?",
+    "prompt": "For all real \\(x\\ne0\\), \\(g(x)=-x^2\\) for \\(x<0\\) and \\(g(x)=\\sqrt{x}\\) for \\(x>0\\). What is the largest radius \\(d\\) such that \\(0<|x|<d\\) guarantees \\(|g(x)|<1/2\\)?",
     "answer": "1/4",
     "why": "The positive branch requires \\(x<1/4\\). The negative branch only requires \\(|x|<1/\\sqrt2\\). The stricter bound controls both sides.",
     "source": "../lectures/02-limits.html#one-sided-limits",
@@ -2048,5 +2052,2298 @@
     ],
     "why": "The factor \\(x+2\\) crosses zero. The squared factor stays positive near \\(-2\\).",
     "handoutPage": 1
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 1,
+    "prompt": "What is \\(\\lim_{x\\to-2}3\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "A constant function stays at the same height for every input.",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 1,
+    "prompt": "What is \\(\\lim_{x\\to4}-1\\)?",
+    "choices": [
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-2\\)"
+    ],
+    "why": "A constant function stays at the same height for every input.",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 1,
+    "prompt": "What is \\(\\lim_{x\\to-2}x\\)?",
+    "choices": [
+      "\\(-2\\)",
+      "\\(2\\)",
+      "\\(-1\\)",
+      "\\(-3\\)"
+    ],
+    "why": "The output equals the input, so they approach the same number.",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 1,
+    "graphPrompt": "rising-origin"
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 1,
+    "prompt": "What is \\(\\lim_{x\\to4}x\\)?",
+    "choices": [
+      "\\(4\\)",
+      "\\(-4\\)",
+      "\\(5\\)",
+      "\\(3\\)"
+    ],
+    "why": "The output equals the input, so they approach the same number.",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 1,
+    "prompt": "From which side of 2 do the inputs \\(2.1,2.01,2.001,\\ldots\\) approach?",
+    "choices": [
+      "Right",
+      "Left",
+      "Both sides",
+      "Neither side"
+    ],
+    "why": "Each input is larger than 2.",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 1,
+    "prompt": "In \\(x\\to 3^-\\), are the nearby inputs smaller or larger than 3?",
+    "choices": [
+      "Smaller than 3",
+      "Larger than 3",
+      "Equal to 3",
+      "Alternately smaller and larger"
+    ],
+    "why": "The minus superscript means approach from the left.",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 1,
+    "prompt": "On this graph, what is \\(f(0)\\)?",
+    "choices": [
+      "Undefined",
+      "\\(2\\)",
+      "\\(0\\)",
+      "\\(4\\)"
+    ],
+    "why": "At input 0 there is an open circle and no filled point.",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 2,
+    "graphPrompt": "line-other-hole"
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 1,
+    "prompt": "What height does the graph approach as \\(x\\to0^+\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(0\\)"
+    ],
+    "why": "On the right of zero the branch is horizontal at height 1.",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3,
+    "graphPrompt": "sign"
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 1,
+    "prompt": "What height does the graph approach as \\(x\\to0^-\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(0\\)"
+    ],
+    "why": "On the left of zero the branch is horizontal at height 1.",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3,
+    "graphPrompt": "neg-sign"
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 1,
+    "prompt": "A graph approaches height 6 from the left and height 6 from the right. What is its limit?",
+    "choices": [
+      "\\(6\\)",
+      "\\(-6\\)",
+      "\\(7\\)",
+      "\\(5\\)"
+    ],
+    "why": "The one-sided limits agree.",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 1,
+    "prompt": "A graph approaches the open point \\((1,4)\\) from both sides. What is its limit at 1?",
+    "choices": [
+      "\\(4\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "Does not exist"
+    ],
+    "why": "Read the height approached by the two branches. The separate filled point gives the assigned value.",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 2,
+    "graphPrompt": "open-peak"
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 2,
+    "prompt": "The line follows \\(y=x+2\\) except possibly at \\(2\\). What is \\(\\lim_{x\\to 1} f(x)\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "Near \\(1\\), the graph follows the line, which approaches height \\(3\\).",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 2,
+    "graphPrompt": "line-hole"
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 2,
+    "prompt": "The line follows \\(y=x+2\\) except possibly at \\(0\\). What is \\(\\lim_{x\\to -1} f(x)\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(0\\)"
+    ],
+    "why": "Near \\(-1\\), the graph follows the line, which approaches height \\(1\\).",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 2,
+    "graphPrompt": "line-other-hole"
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 2,
+    "prompt": "The line follows \\(y=x+2\\) except possibly at \\(2\\). What is \\(\\lim_{x\\to 3} f(x)\\)?",
+    "choices": [
+      "\\(5\\)",
+      "\\(-5\\)",
+      "\\(6\\)",
+      "\\(4\\)"
+    ],
+    "why": "Near \\(3\\), the graph follows the line, which approaches height \\(5\\).",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 2,
+    "graphPrompt": "line-redefined"
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 2,
+    "prompt": "A graph approaches 4 as \\(x\\to2\\), but \\(f(2)=7\\). What is \\(f(2)-\\lim_{x\\to2}f(x)\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "The point value is 7 and the limiting height is 4. The difference is 3.",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 2,
+    "graphPrompt": "line-redefined"
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 2,
+    "prompt": "For the rising step shown, subtract the right-hand limit at zero from the left-hand limit.",
+    "choices": [
+      "\\(-2\\)",
+      "\\(2\\)",
+      "\\(-1\\)",
+      "\\(-3\\)"
+    ],
+    "why": "The left height is \\(-1\\) and the right height is \\(1\\). Their difference is \\(-2\\).",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3,
+    "graphPrompt": "sign"
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 2,
+    "prompt": "For the falling step shown, subtract the right-hand limit at zero from the left-hand limit.",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "The left height is \\(1\\) and the right height is \\(-1\\). Their difference is \\(2\\).",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3,
+    "graphPrompt": "neg-sign"
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 2,
+    "prompt": "For \\(x<0\\), let \\(f(x)=2-x\\). For \\(x>0\\), let \\(f(x)=x^2-3\\). What is the right-hand limit at zero?",
+    "choices": [
+      "\\(-3\\)",
+      "\\(3\\)",
+      "\\(-2\\)",
+      "\\(-4\\)"
+    ],
+    "why": "From the right we use the quadratic branch, which approaches \\(-3\\).",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 2,
+    "prompt": "A table lists values close to 4 on both sides of 2. What can this finite table establish about the limit?",
+    "choices": [
+      "It suggests 4 as a possible limit.",
+      "It proves that the limit is exactly 4.",
+      "It proves that \\(f(2)=4\\).",
+      "It proves the function is continuous at 2."
+    ],
+    "why": "A finite table samples only a few inputs. The limit concerns all sufficiently close inputs.",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 2,
+    "prompt": "When \\(x<2\\), what does \\(|x-2|/(x-2)\\) equal?",
+    "choices": [
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-2\\)"
+    ],
+    "why": "Here \\(x-2\\) is negative, so the numerator is its opposite.",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 2,
+    "prompt": "Suppose \\(f(x)=\\sqrt{x}\\) to the right of zero and \\(f(x)=-x^2\\) to the left. Which value of \\(f(0)\\) would change the two-sided limit?",
+    "choices": [
+      "No value",
+      "\\(0\\) only",
+      "\\(1\\) only",
+      "Every nonzero value"
+    ],
+    "why": "Changing one point leaves all nearby values unchanged.",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 3,
+    "prompt": "The left and right limits of \\(f\\) at zero are \\(2\\) and \\(4\\). For which \\(c\\) does \\(|f(x)-c|\\) have the same limit on both sides?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "The two distances match only at the midpoint of \\(2\\) and \\(4\\).",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 3,
+    "prompt": "The left and right limits of \\(f\\) at zero are \\(-3\\) and \\(1\\). For which \\(c\\) does \\(|f(x)-c|\\) have the same limit on both sides?",
+    "choices": [
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-2\\)"
+    ],
+    "why": "The two distances match only at the midpoint of \\(-3\\) and \\(1\\).",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 4,
+    "prompt": "The left and right limits of \\(f\\) at zero are \\(2\\) and \\(5\\). Find \\(k\\) so \\(f(x)^2+kf(x)\\) has a two-sided limit.",
+    "answer": "-7",
+    "why": "Equal limits require \\((a-b)(a+b+k)=0\\) for \\(a=2,\\ b=5\\). Since \\(a\\ne b\\), take \\(k=-a-b\\).",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 4,
+    "prompt": "The left and right limits of \\(f\\) at zero are \\(-4\\) and \\(2\\). Find \\(k\\) so \\(f(x)^2+kf(x)\\) has a two-sided limit.",
+    "answer": "2",
+    "why": "Equal limits require \\((a-b)(a+b+k)=0\\) for \\(a=-4,\\ b=2\\). Since \\(a\\ne b\\), take \\(k=-a-b\\).",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 4,
+    "prompt": "The left and right limits of \\(f\\) at zero are \\(-1\\) and \\(4\\). Find \\(k\\) so \\(f(x)^2+kf(x)\\) has a two-sided limit.",
+    "answer": "-3",
+    "why": "Equal limits require \\((a-b)(a+b+k)=0\\) for \\(a=-1,\\ b=4\\). Since \\(a\\ne b\\), take \\(k=-a-b\\).",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 4,
+    "prompt": "A graph has left branch \\(y=2+x\\) and right branch \\(y=2-x\\) at zero. What is the limiting secant slope from \\(x=-2h\\) to \\(x=h\\) as \\(h\\to0^+\\)?",
+    "answer": "1/3",
+    "why": "The rise is \\((2-1)h\\). The run is \\((2+1)h\\). Divide and cancel \\(h\\).",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 4,
+    "prompt": "A graph has left branch \\(y=2+x\\) and right branch \\(y=2-x\\) at zero. What is the limiting secant slope from \\(x=-h\\) to \\(x=3h\\) as \\(h\\to0^+\\)?",
+    "answer": "-1/2",
+    "why": "The rise is \\((1-3)h\\). The run is \\((1+3)h\\). Divide and cancel \\(h\\).",
+    "source": "../lectures/02-limits.html#limits-and-function-values",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 4,
+    "prompt": "The branches of \\(f\\) approach \\(2\\) and \\(-3\\) at zero. Find \\(k\\) so the two branches of \\(f+k/f\\) approach the same height.",
+    "answer": "-6",
+    "why": "Write \\(a+k/a=b+k/b\\). Since \\(a\\ne b\\) and both are nonzero, cancel \\(a-b\\) to get \\(k=ab=-6\\).",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.1",
+    "topic": "limit",
+    "level": 4,
+    "prompt": "The branches of \\(f\\) approach \\(-1\\) and \\(-2\\) at zero. Find \\(k\\) so the two branches of \\(f+k/f\\) approach the same height.",
+    "answer": "2",
+    "why": "Write \\(a+k/a=b+k/b\\). Since \\(a\\ne b\\) and both are nonzero, cancel \\(a-b\\) to get \\(k=ab=2\\).",
+    "source": "../lectures/02-limits.html#one-sided-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 1,
+    "prompt": "The left branch of \\(y=1/(x+1)\\) becomes unbounded near \\(x=-1\\). Which expression represents that behavior?",
+    "choices": [
+      "\\(\\lim_{x\\to-1^-}y=-\\infty\\)",
+      "\\(\\lim_{x\\to-1^-}y=0\\)",
+      "\\(\\lim_{x\\to-1^-}y=+\\infty\\)",
+      "\\(\\lim_{x\\to-1^-}y=1\\)"
+    ],
+    "why": "Approach from the left. The graph falls without bound.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5,
+    "graphPrompt": "inverse"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 1,
+    "prompt": "For the curve \\(y=1/(x+1)\\) shown, what is its sign immediately to the right of \\(x=-1\\)?",
+    "choices": [
+      "Positive",
+      "Negative",
+      "Zero",
+      "It changes sign repeatedly."
+    ],
+    "why": "The right branch is above the horizontal axis.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5,
+    "graphPrompt": "inverse"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 1,
+    "prompt": "Follow the graph of \\(y=-1/(x+1)\\). What does \\(y\\) approach as \\(x\\) approaches \\(-1\\) from the left?",
+    "choices": [
+      "\\(+\\infty\\)",
+      "\\(-\\infty\\)",
+      "\\(0\\)",
+      "\\(-1\\)"
+    ],
+    "why": "The left branch goes up without bound.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5,
+    "graphPrompt": "inverse-neg"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 1,
+    "prompt": "Follow the graph of \\(y=-1/(x+1)\\). What does \\(y\\) approach as \\(x\\) approaches \\(-1\\) from the right?",
+    "choices": [
+      "\\(-\\infty\\)",
+      "\\(+\\infty\\)",
+      "\\(0\\)",
+      "\\(-1\\)"
+    ],
+    "why": "The right branch goes down without bound.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5,
+    "graphPrompt": "inverse-neg"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 1,
+    "prompt": "Look at both branches beside the dashed vertical line. Which way do they point?",
+    "choices": [
+      "Both up",
+      "Both down",
+      "Left up and right down",
+      "Left down and right up"
+    ],
+    "why": "Both sides of the vertical asymptote rise without bound.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5,
+    "graphPrompt": "inverse-square"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 1,
+    "prompt": "Follow the graph of \\(y=1/(x+1)^2\\). What does \\(y\\) approach as \\(x\\) approaches \\(-1\\) from the right?",
+    "choices": [
+      "\\(+\\infty\\)",
+      "\\(-\\infty\\)",
+      "\\(0\\)",
+      "\\(-1\\)"
+    ],
+    "why": "The right branch goes up without bound.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5,
+    "graphPrompt": "inverse-square"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 1,
+    "prompt": "Immediately to the left of \\(x=-1\\) on this graph, are the outputs positive, negative, or zero?",
+    "choices": [
+      "Negative",
+      "Positive",
+      "Zero",
+      "They alternate between positive and negative."
+    ],
+    "why": "The entire left branch lies below the horizontal axis.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5,
+    "graphPrompt": "inverse-neg-square"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 1,
+    "prompt": "Follow the graph of \\(y=-1/(x+1)^2\\). What does \\(y\\) approach as \\(x\\) approaches \\(-1\\) from the right?",
+    "choices": [
+      "\\(-\\infty\\)",
+      "\\(+\\infty\\)",
+      "\\(0\\)",
+      "\\(-1\\)"
+    ],
+    "why": "The right branch goes down without bound.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5,
+    "graphPrompt": "inverse-neg-square"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 1,
+    "prompt": "What is the equation of the dashed vertical asymptote on this graph?",
+    "choices": [
+      "\\(x=1\\)",
+      "\\(y=1\\)",
+      "\\(x=0\\)",
+      "\\(y=0\\)"
+    ],
+    "why": "The dashed vertical line crosses the horizontal axis at 1.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5,
+    "graphPrompt": "right-pole"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 1,
+    "prompt": "In the statement \\(f(x)\\to+\\infty\\), what happens to the outputs?",
+    "choices": [
+      "They grow beyond every upper bound.",
+      "They approach zero.",
+      "They approach the input.",
+      "They eventually equal a largest real number."
+    ],
+    "why": "The positive-infinite limit describes unbounded growth.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 1,
+    "prompt": "A graph falls below every negative number as it approaches a vertical line from the left. What is its left-hand limit?",
+    "choices": [
+      "\\(-\\infty\\)",
+      "\\(+\\infty\\)",
+      "\\(0\\)",
+      "\\(1\\)"
+    ],
+    "why": "Falling without bound gives a negative-infinite limit.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 1,
+    "prompt": "The curve rises without bound as you approach the dashed line. At which input does that happen?",
+    "choices": [
+      "\\(-1\\)",
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(2\\)"
+    ],
+    "why": "The vertical asymptote crosses the input axis at −1.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5,
+    "graphPrompt": "inverse-square"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 2,
+    "prompt": "Inspect both branches of \\(y=1/(x+1)\\). What is its two-sided limit at \\(-1\\)?",
+    "choices": [
+      "Does not exist",
+      "\\(+\\infty\\)",
+      "\\(-\\infty\\)",
+      "\\(0\\)"
+    ],
+    "why": "One branch rises and the other falls without bound.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5,
+    "graphPrompt": "inverse"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 2,
+    "prompt": "Inspect both branches of \\(y=-1/(x+1)\\). What is its two-sided limit at \\(-1\\)?",
+    "choices": [
+      "Does not exist",
+      "\\(+\\infty\\)",
+      "\\(-\\infty\\)",
+      "\\(0\\)"
+    ],
+    "why": "One branch rises and the other falls without bound.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5,
+    "graphPrompt": "inverse-neg"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 2,
+    "prompt": "Inspect both branches of \\(y=1/(x+1)^2\\). What is its two-sided limit at \\(-1\\)?",
+    "choices": [
+      "\\(+\\infty\\)",
+      "\\(-\\infty\\)",
+      "Does not exist",
+      "\\(0\\)"
+    ],
+    "why": "Both branches go up without bound.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5,
+    "graphPrompt": "inverse-square"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 2,
+    "prompt": "Inspect both branches of \\(y=-1/(x+1)^2\\). What is its two-sided limit at \\(-1\\)?",
+    "choices": [
+      "\\(-\\infty\\)",
+      "\\(+\\infty\\)",
+      "Does not exist",
+      "\\(0\\)"
+    ],
+    "why": "Both branches go down without bound.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5,
+    "graphPrompt": "inverse-neg-square"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 2,
+    "prompt": "Let \\(f(x)=2/(x-3)\\). As \\(x\\) approaches \\(3\\) from the left, what is the sign of \\(f(x)\\)?",
+    "choices": [
+      "Negative",
+      "Positive",
+      "Zero",
+      "Alternating"
+    ],
+    "why": "On the left the denominator is negative. The numerator is \\(2\\).",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 2,
+    "prompt": "Let \\(f(x)=-2/(x-1)\\). As \\(x\\) approaches \\(1\\) from the left, what is the sign of \\(f(x)\\)?",
+    "choices": [
+      "Positive",
+      "Negative",
+      "Zero",
+      "Alternating"
+    ],
+    "why": "On the left the denominator is negative. The numerator is \\(-2\\).",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 2,
+    "prompt": "As \\(x\\) approaches \\(3\\), which value does \\(2/(x-3)^2\\) approach?",
+    "choices": [
+      "\\(+\\infty\\)",
+      "\\(-\\infty\\)",
+      "\\(0\\)",
+      "Does not exist"
+    ],
+    "why": "The squared denominator is positive and approaches zero. The numerator is 2.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 2,
+    "prompt": "As \\(x\\) approaches \\(2\\), which value does \\(-3/(x-2)^2\\) approach?",
+    "choices": [
+      "\\(-\\infty\\)",
+      "\\(+\\infty\\)",
+      "\\(0\\)",
+      "Does not exist"
+    ],
+    "why": "The squared denominator is positive and approaches zero. The numerator is -3.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 2,
+    "prompt": "A function has left-hand limit \\(-2\\) and right-hand limit \\(5\\) at \\(x=1\\). Does it have a vertical asymptote there?",
+    "choices": [
+      "No, both limits are finite.",
+      "Yes, because the two limits differ.",
+      "Yes, because the right limit is positive.",
+      "Yes, because the left limit is negative."
+    ],
+    "why": "A vertical asymptote needs at least one infinite one-sided limit.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 2,
+    "prompt": "A curve has left-hand limit 3 and right-hand limit positive infinity at 4. Which line must be a vertical asymptote?",
+    "choices": [
+      "\\(x=4\\)",
+      "\\(y=4\\)",
+      "\\(x=3\\)",
+      "\\(y=3\\)"
+    ],
+    "why": "One infinite one-sided limit at input 4 is sufficient.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 3,
+    "prompt": "In the graph of \\(f(x)=1/(x+1)^2\\), a point on the right branch moves from distance \\(d\\) to distance \\(d/2\\) from the pole. By what factor does its height increase?",
+    "choices": [
+      "\\(4\\)",
+      "\\(-4\\)",
+      "\\(5\\)",
+      "\\(3\\)"
+    ],
+    "why": "The denominator is a squared distance. Substitute the smaller distance in its place.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5,
+    "graphPrompt": "inverse-square"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 3,
+    "prompt": "A graph has a pole at \\(x=-1\\). For a small \\(h>0\\), its right height at distance \\(h/2\\) is eight times the height at distance \\(h\\). If \\(f(x)=1/(x+1)^n\\), find \\(n\\).",
+    "choices": [
+      "\\(3\\)",
+      "\\(2\\)",
+      "\\(4\\)",
+      "\\(8\\)"
+    ],
+    "why": "Halving the distance multiplies the height by \\(2^n\\). Since \\(8=2^3\\), the power is 3.",
+    "source": "../lectures/03-infinite-limits.html#practice",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 7
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "Let \\(F(x)=3/(x-2)\\). What is \\(F(2+3h)/F(2-h)\\) for \\(h>0\\)?",
+    "answer": "-1/3",
+    "why": "The distances in the denominators are \\(3h\\) and \\(-h\\). The ratio is \\((-1/3)\\).",
+    "source": "../lectures/03-infinite-limits.html#practice",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 7
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "Let \\(F(x)=3/(x-3)^2\\). What is \\(F(3+2h)/F(3-h)\\) for \\(h>0\\)?",
+    "answer": "1/4",
+    "why": "The distances in the denominators are \\(2h\\) and \\(-h\\). The ratio is \\((-1/2)^2\\).",
+    "source": "../lectures/03-infinite-limits.html#practice",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 7
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "Let \\(F(x)=3/(x-2)^3\\). What is \\(F(2+2h)/F(2-h)\\) for \\(h>0\\)?",
+    "answer": "-1/8",
+    "why": "The distances in the denominators are \\(2h\\) and \\(-h\\). The ratio is \\((-1/2)^3\\).",
+    "source": "../lectures/03-infinite-limits.html#practice",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 7
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "For \\(x\\ne0\\) near zero, \\(F(x)=(1+3x)/x^2\\). After removing the double-pole term \\(1/x^2\\), what multiple of \\(1/x\\) must also be subtracted to leave a finite limit?",
+    "answer": "3",
+    "why": "The decomposition is \\(F(x)=1/x^2+3/x\\). Removing both terms leaves zero.",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "For \\(x\\ne0\\) near zero, let \\(F(x)=(1+x)/x^2\\). You subtract \\(1/x^2\\), then add \\(4/x\\). What number is \\(\\lim_{x\\to0}x[F(x)-1/x^2+(4)/x]\\)?",
+    "answer": "5",
+    "why": "The first subtraction leaves \\(1/x\\). Multiplication by \\(x\\) cancels the remaining denominator, giving \\(1+(4)=5\\).",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "At the pole \\(x=-1\\), \\(F(x)=(x-1)/(x+1)^2\\). Choose \\(a\\) so \\((x+1)[F(x)-a/(x+1)^2]\\) has a finite limit. What is that limit?",
+    "answer": "1",
+    "why": "Set \\(t=x+1\\). Then \\(F=1/t-2/t^2\\). Taking \\(a=-2\\) leaves \\(1/t\\), so multiplying by \\(t\\) gives 1.",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "For \\(x\\ne0\\) near zero, let \\(F(x)=(2+x)/(x^2(1+x))\\). Choose \\(a\\) to cancel the double pole of \\(F(x)-a/x^2\\). What is \\(\\lim_{x\\to0}x[F(x)-a/x^2]\\)?",
+    "answer": "-1",
+    "why": "The leading coefficient is \\(\\lim x^2F(x)=2\\). Subtracting \\(2/x^2\\) leaves \\(-1/[x(1+x)]\\). Multiply by \\(x\\) and take the limit.",
+    "source": "../lectures/03-infinite-limits.html#harder-limits",
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 1,
+    "prompt": "As \\(x\\to a\\), \\(f(x)\\to2\\) and \\(g(x)\\to3\\). What is the limit of \\(f+g\\)?",
+    "choices": [
+      "\\(5\\)",
+      "\\(-5\\)",
+      "\\(6\\)",
+      "\\(4\\)"
+    ],
+    "why": "Use the limit law for this operation to obtain \\(2+3=5\\).",
+    "source": "../lectures/04-limit-laws.html#the-limit-laws",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 1,
+    "prompt": "As \\(x\\to a\\), \\(f(x)\\to4\\) and \\(g(x)\\to1\\). What is the limit of \\(f-g\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "Use the limit law for this operation to obtain \\(4-1=3\\).",
+    "source": "../lectures/04-limit-laws.html#the-limit-laws",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 1,
+    "prompt": "As \\(x\\to a\\), \\(f(x)\\to2\\) and \\(g(x)\\to2\\). What is the limit of \\(fg\\)?",
+    "choices": [
+      "\\(4\\)",
+      "\\(-4\\)",
+      "\\(5\\)",
+      "\\(3\\)"
+    ],
+    "why": "Use the limit law for this operation to obtain \\(2\\cdot2=4\\).",
+    "source": "../lectures/04-limit-laws.html#the-limit-laws",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 1,
+    "prompt": "As \\(x\\to a\\), \\(f(x)\\to6\\) and \\(g(x)\\to2\\). What is the limit of \\(f/g\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "Use the limit law for this operation to obtain \\(6/2=3\\).",
+    "source": "../lectures/04-limit-laws.html#the-limit-laws",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 1,
+    "prompt": "Use direct substitution. What is \\(\\lim_{x\\to 0}(x+1)\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(0\\)"
+    ],
+    "why": "The expression is a polynomial. Plugging in \\(0\\) gives \\(1\\).",
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 1,
+    "prompt": "Use direct substitution. What is \\(\\lim_{x\\to 2}(x^2)\\)?",
+    "choices": [
+      "\\(4\\)",
+      "\\(-4\\)",
+      "\\(5\\)",
+      "\\(3\\)"
+    ],
+    "why": "The expression is a polynomial. Plugging in \\(2\\) gives \\(4\\).",
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 1,
+    "prompt": "Use direct substitution. What is \\(\\lim_{x\\to 3}(2x)\\)?",
+    "choices": [
+      "\\(6\\)",
+      "\\(-6\\)",
+      "\\(7\\)",
+      "\\(5\\)"
+    ],
+    "why": "The expression is a polynomial. Plugging in \\(3\\) gives \\(6\\).",
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 1,
+    "prompt": "Use direct substitution. What is \\(\\lim_{x\\to 1}(x-1)\\)?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(1/2\\)"
+    ],
+    "why": "The expression is a polynomial. Plugging in \\(1\\) gives \\(0\\).",
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 1,
+    "prompt": "Use direct substitution. What is \\(\\lim_{x\\to -1}(x^3)\\)?",
+    "choices": [
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-2\\)"
+    ],
+    "why": "The expression is a polynomial. Plugging in \\(-1\\) gives \\(-1\\).",
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 1,
+    "prompt": "If \\(f(x)\\to9\\) and \\(f(x)>0\\) near the input, what is the limit of \\(\\sqrt{f(x)}\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "The square-root law gives \\(\\sqrt{9}=3\\).",
+    "source": "../lectures/04-limit-laws.html#the-limit-laws",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 1,
+    "prompt": "For the quotient law, which limiting value of the denominator rules out direct division?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(1/2\\)"
+    ],
+    "why": "Division by zero is undefined.",
+    "source": "../lectures/04-limit-laws.html#the-limit-laws",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 1,
+    "prompt": "If \\(f(x)\\to-2\\), what does \\(-f(x)\\) approach?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "Multiplying a function by \\(-1\\) multiplies its limit by \\(-1\\).",
+    "source": "../lectures/04-limit-laws.html#the-limit-laws",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 2,
+    "prompt": "For \\(x\\ne1\\), factor \\(x^2-1=(x-1)(x+1)\\). What is \\(\\lim_{x\\to1}(x^2-1)/(x-1)\\)?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "Cancel \\(x-1\\) for nearby inputs. The remaining \\(x+1\\) approaches \\(2\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 2,
+    "prompt": "For \\(x\\ne2\\), factor \\(x^2-4=(x-2)(x+2)\\). What is \\(\\lim_{x\\to2}(x^2-4)/(x-2)\\)?",
+    "choices": [
+      "\\(4\\)",
+      "\\(-4\\)",
+      "\\(5\\)",
+      "\\(3\\)"
+    ],
+    "why": "Cancel \\(x-2\\) for nearby inputs. The remaining \\(x+2\\) approaches \\(4\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 2,
+    "prompt": "For \\(x\\ne3\\), factor \\(x^2-9=(x-3)(x+3)\\). What is \\(\\lim_{x\\to3}(x^2-9)/(x-3)\\)?",
+    "choices": [
+      "\\(6\\)",
+      "\\(-6\\)",
+      "\\(7\\)",
+      "\\(5\\)"
+    ],
+    "why": "Cancel \\(x-3\\) for nearby inputs. The remaining \\(x+3\\) approaches \\(6\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 2,
+    "prompt": "As \\(x\\to a\\), \\(f(x)\\to2\\) and \\(g(x)\\to1\\). Find the limit of \\(f(x)^2-g(x)\\).",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "The limit laws give \\((2)^2-(1)=3\\).",
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 2,
+    "prompt": "As \\(x\\to a\\), \\(f(x)\\to-1\\) and \\(g(x)\\to3\\). Find the limit of \\(f(x)^2-g(x)\\).",
+    "choices": [
+      "\\(-2\\)",
+      "\\(2\\)",
+      "\\(-1\\)",
+      "\\(-3\\)"
+    ],
+    "why": "The limit laws give \\((-1)^2-(3)=-2\\).",
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 2,
+    "prompt": "As \\(x\\to a\\), \\(f(x)\\to3\\) and \\(g(x)\\to-2\\). Find the limit of \\(f(x)^2-g(x)\\).",
+    "choices": [
+      "\\(11\\)",
+      "\\(-11\\)",
+      "\\(12\\)",
+      "\\(10\\)"
+    ],
+    "why": "The limit laws give \\((3)^2-(-2)=11\\).",
+    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 2,
+    "prompt": "Simplify the nearby values before substituting. What is \\(\\lim_{h\\to0} [(2h+h^2)/h]\\)?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "For \\(h\\ne0\\) the quotient is \\(2+h\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 2,
+    "prompt": "Simplify the nearby values before substituting. What is \\(\\lim_{h\\to0} [(4h+h^2)/h]\\)?",
+    "choices": [
+      "\\(4\\)",
+      "\\(-4\\)",
+      "\\(5\\)",
+      "\\(3\\)"
+    ],
+    "why": "For \\(h\\ne0\\) the quotient is \\(4+h\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 2,
+    "prompt": "Suppose \\(f(x)\\to0\\) and \\(g(x)\\to0\\). Which conclusion follows from these two facts alone about \\(f(x)/g(x)\\) when \\(g(x)\\ne0\\) nearby?",
+    "choices": [
+      "More information is needed.",
+      "The limit is always zero.",
+      "The limit is always one.",
+      "The limit always fails to exist."
+    ],
+    "why": "For example, \\(x/x\\) and \\(2x/x\\) approach different numbers as \\(x\\) approaches zero.",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 4,
+    "prompt": "Choose \\(k\\) so \\((x^2+kx-2)/(x-1)\\) has a finite limit at \\(1\\). What is that limit?",
+    "answer": "3",
+    "why": "The monic numerator must factor as \\((x-1)(x+2)\\) to have the given constant term. Cancel and evaluate \\(x+2\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 4,
+    "prompt": "Choose \\(k\\) so \\((x^2+kx-6)/(x-2)\\) has a finite limit at \\(2\\). What is that limit?",
+    "answer": "5",
+    "why": "The monic numerator must factor as \\((x-2)(x+3)\\) to have the given constant term. Cancel and evaluate \\(x+3\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 4,
+    "prompt": "Choose \\(k\\) so \\((x^2+kx+2)/(x+1)\\) has a finite limit at \\(-1\\). What is that limit?",
+    "answer": "1",
+    "why": "The monic numerator must factor as \\((x+1)(x+2)\\) to have the given constant term. Cancel and evaluate \\(x+2\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 4,
+    "prompt": "Let \\(s=\\sqrt{4+3h}\\). Rationalizing gives \\((s-2)/h=3/(s+2)\\). What is \\(\\lim_{h\\to0}(s-2)^2/h^2\\)?",
+    "answer": "9/16",
+    "why": "The ratio tends to \\(3/(4)\\); its square tends to \\(9/16\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 4,
+    "prompt": "Let \\(s=\\sqrt{9+2h}\\). Rationalizing gives \\((s-3)/h=2/(s+3)\\). What is \\(\\lim_{h\\to0}(s-3)^2/h^2\\)?",
+    "answer": "1/9",
+    "why": "The ratio tends to \\(2/(6)\\); its square tends to \\(1/9\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 4,
+    "prompt": "Let \\(s=\\sqrt{1+3h}\\). Rationalizing gives \\((s-1)/h=3/(s+1)\\). What is \\(\\lim_{h\\to0}(s-1)^2/h^2\\)?",
+    "answer": "9/4",
+    "why": "The ratio tends to \\(3/(2)\\); its square tends to \\(9/4\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "2.3",
+    "topic": "laws",
+    "level": 4,
+    "prompt": "Let \\(s=\\sqrt{16+2h}\\). Rationalizing gives \\((s-4)/h=2/(s+4)\\). What is \\(\\lim_{h\\to0}(s-4)^2/h^2\\)?",
+    "answer": "1/16",
+    "why": "The ratio tends to \\(2/(8)\\); its square tends to \\(1/16\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 1,
+    "prompt": "As \\(x\\to0\\), a lower bound and an upper bound both tend to \\(-1\\). If \\(f\\) lies between them near zero, find \\(\\lim_{x\\to0}f(x)\\).",
+    "choices": [
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-2\\)"
+    ],
+    "why": "The squeeze theorem gives the common limit of the two bounds.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 1,
+    "prompt": "As \\(x\\to0\\), a lower bound and an upper bound both tend to \\(0\\). If \\(f\\) lies between them near zero, find \\(\\lim_{x\\to0}f(x)\\).",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(1/2\\)"
+    ],
+    "why": "The squeeze theorem gives the common limit of the two bounds.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 1,
+    "prompt": "As \\(x\\to0\\), a lower bound and an upper bound both tend to \\(3\\). If \\(f\\) lies between them near zero, find \\(\\lim_{x\\to0}f(x)\\).",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "The squeeze theorem gives the common limit of the two bounds.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 1,
+    "prompt": "At \\(x=0\\), what height do the curves \\(y=2+x^2\\) and \\(y=2-x^2\\) share?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "Both expressions equal \\(2\\) when \\(x=0\\).",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 1,
+    "prompt": "At \\(x=0\\), what height do the curves \\(y=4+x^2\\) and \\(y=4-x^2\\) share?",
+    "choices": [
+      "\\(4\\)",
+      "\\(-4\\)",
+      "\\(5\\)",
+      "\\(3\\)"
+    ],
+    "why": "Both expressions equal \\(4\\) when \\(x=0\\).",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 1,
+    "prompt": "Complete the fundamental sine limit in radians: \\(\\lim_{u\\to0}\\sin(u)/u=?\\)",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(0\\)"
+    ],
+    "why": "The sine of a small angle in radians divided by that angle approaches 1.",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 1,
+    "prompt": "What is the largest possible value of \\(|\\sin t|\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(0\\)"
+    ],
+    "why": "The sine wave stays between −1 and 1.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 7,
+    "graphPrompt": "sin"
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 1,
+    "prompt": "What is the smallest possible value of \\(\\sin t\\)?",
+    "choices": [
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-2\\)"
+    ],
+    "why": "The trough of the sine wave has height −1.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 7,
+    "graphPrompt": "sin"
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 1,
+    "prompt": "What height does the cosine wave approach as \\(t\\to0^+\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(0\\)"
+    ],
+    "why": "The cosine curve meets the vertical axis at height 1.",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8,
+    "graphPrompt": "cos"
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 1,
+    "prompt": "What height does the sine wave approach as \\(t\\to0^+\\)?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(1/2\\)"
+    ],
+    "why": "The sine curve starts at height zero.",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8,
+    "graphPrompt": "sin"
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 1,
+    "prompt": "The dashed bounds are \\(-x^2\\) and \\(x^2\\). As \\(x\\to0\\), what is the limit of the curve squeezed between them?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(1/2\\)"
+    ],
+    "why": "Both \\(-x^2\\) and \\(x^2\\) approach zero.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 6,
+    "graphPrompt": "squeeze-zero"
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 1,
+    "prompt": "Which theorem says that a function trapped between two bounds must share their common limit?",
+    "choices": [
+      "Squeeze theorem",
+      "Product law",
+      "Quotient law",
+      "Power law"
+    ],
+    "why": "The squeeze theorem uses a lower bound and an upper bound with the same limit.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 2,
+    "prompt": "Angles are in radians. Find \\(\\lim_{x\\to0}\\sin(2x)/x\\).",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "Multiply and divide by \\(2\\). The ratio \\(\\sin(2x)/(2x)\\) tends to 1.",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 2,
+    "prompt": "Angles are in radians. Find \\(\\lim_{x\\to0}\\sin(3x)/x\\).",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "Multiply and divide by \\(3\\). The ratio \\(\\sin(3x)/(3x)\\) tends to 1.",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 2,
+    "prompt": "Angles are in radians. Find \\(\\lim_{x\\to0}\\sin(-2x)/x\\).",
+    "choices": [
+      "\\(-2\\)",
+      "\\(2\\)",
+      "\\(-1\\)",
+      "\\(-3\\)"
+    ],
+    "why": "Multiply and divide by \\(-2\\). The ratio \\(\\sin(-2x)/(-2x)\\) tends to 1.",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 2,
+    "prompt": "At \\(x=1/2\\), a function obeys \\(3-2|x|\\le f(x)\\le3+2|x|\\). What is the largest possible value of \\(|f(x)-3|\\) at this input?",
+    "choices": [
+      "\\(1\\)",
+      "\\(1/2\\)",
+      "\\(2\\)",
+      "\\(3\\)"
+    ],
+    "why": "The distance from 3 to either bound is \\(2(1/2)=1\\).",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 2,
+    "prompt": "For \\(0<|x|\\le1\\), \\(2-5|x|\\le f(x)\\le 2+5|x|\\). At \\(x=1/2\\), how far from \\(2\\) can \\(f(x)\\) be at most?",
+    "choices": [
+      "\\(5/2\\)",
+      "\\(-5/2\\)",
+      "\\(7/2\\)",
+      "\\(3/2\\)"
+    ],
+    "why": "The distance to either bound is \\(5|x|=5/2\\).",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 2,
+    "prompt": "For \\(0<|x|\\le1\\), \\(4-3|x|\\le f(x)\\le 4+3|x|\\). At \\(x=1/2\\), how far from \\(4\\) can \\(f(x)\\) be at most?",
+    "choices": [
+      "\\(3/2\\)",
+      "\\(-3/2\\)",
+      "\\(5/2\\)",
+      "\\(1/2\\)"
+    ],
+    "why": "The distance to either bound is \\(3|x|=3/2\\).",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 2,
+    "prompt": "For \\(x\\ne0\\) let \\(q(x)=2+x^2\\sin(1/x)\\). What is its limit as \\(x\\to0\\)?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "The oscillating term is bounded in absolute value by \\(x^2\\). It vanishes, leaving \\(2\\).",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 7
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 2,
+    "prompt": "For \\(x\\ne0\\) let \\(q(x)=5+x^2\\sin(1/x)\\). What is its limit as \\(x\\to0\\)?",
+    "choices": [
+      "\\(5\\)",
+      "\\(-5\\)",
+      "\\(6\\)",
+      "\\(4\\)"
+    ],
+    "why": "The oscillating term is bounded in absolute value by \\(x^2\\). It vanishes, leaving \\(5\\).",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 7
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 2,
+    "prompt": "In radians, simplify \\(\\sin t/\\tan t\\) near zero. What is its limit as \\(t\\to0\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(0\\)"
+    ],
+    "why": "The quotient equals \\(\\cos t\\) for sufficiently small nonzero \\(t\\). Cosine tends to 1.",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 2,
+    "prompt": "If \\(0\\le |g(x)|\\le x^2\\), which expression also bounds \\(|2g(x)|\\) from above?",
+    "choices": [
+      "\\(2x^2\\)",
+      "\\(-2x^2\\)",
+      "\\(-x^2\\)",
+      "\\(-1\\)"
+    ],
+    "why": "Multiplying the inequality by 2 preserves its direction.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 3,
+    "prompt": "Angles are in radians. Use \\(1-\\cos(2u)=2\\sin^2 u\\). What is \\(\\lim_{x\\to0}(1-\\cos(4x))/\\sin^2(3x)\\)?",
+    "choices": [
+      "\\(8/9\\)",
+      "\\(-8/9\\)",
+      "\\(17/9\\)",
+      "\\(-1/9\\)"
+    ],
+    "why": "The expression is twice \\([\\sin(2x)/\\sin(3x)]^2\\). The ratio tends to \\(2/3\\).",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 3,
+    "prompt": "Angles are in radians. Use \\(1-\\cos(2u)=2\\sin^2 u\\). What is \\(\\lim_{x\\to0}(1-\\cos(6x))/\\sin^2(4x)\\)?",
+    "choices": [
+      "\\(9/8\\)",
+      "\\(-9/8\\)",
+      "\\(17/8\\)",
+      "\\(1/8\\)"
+    ],
+    "why": "The expression is twice \\([\\sin(3x)/\\sin(4x)]^2\\). The ratio tends to \\(3/4\\).",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 3,
+    "prompt": "Angles are in radians. Use \\(1-\\cos(2u)=2\\sin^2 u\\). What is \\(\\lim_{x\\to0}(1-\\cos(2x))/\\sin^2(2x)\\)?",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(-1/2\\)",
+      "\\(3/2\\)",
+      "\\(2\\)"
+    ],
+    "why": "The expression is twice \\([\\sin(x)/\\sin(2x)]^2\\). The ratio tends to \\(1/2\\).",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 4,
+    "prompt": "Angles are in radians. Given \\((1-\\cos u)/u^2\\to1/2\\) and \\(\\sin v/v\\to1\\) at zero, find \\(\\lim_{x\\to0}(1-\\cos(2x))/\\sin^2(3x)\\).",
+    "answer": "2/9",
+    "why": "Dividing numerator and denominator by \\(x^2\\) gives limiting values \\(4/2\\) and \\(9\\).",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 4,
+    "prompt": "Angles are in radians. Given \\((1-\\cos u)/u^2\\to1/2\\) and \\(\\sin v/v\\to1\\) at zero, find \\(\\lim_{x\\to0}(1-\\cos(3x))/\\sin^2(x)\\).",
+    "answer": "9/2",
+    "why": "Dividing numerator and denominator by \\(x^2\\) gives limiting values \\(9/2\\) and \\(1\\).",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 4,
+    "prompt": "Angles are in radians. Given \\((1-\\cos u)/u^2\\to1/2\\) and \\(\\sin v/v\\to1\\) at zero, find \\(\\lim_{x\\to0}(1-\\cos(x))/\\sin^2(2x)\\).",
+    "answer": "1/8",
+    "why": "Dividing numerator and denominator by \\(x^2\\) gives limiting values \\(1/2\\) and \\(4\\).",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 4,
+    "prompt": "Angles are in radians. Given \\((1-\\cos u)/u^2\\to1/2\\) and \\(\\sin v/v\\to1\\) at zero, find \\(\\lim_{x\\to0}(1-\\cos(4x))/\\sin^2(3x)\\).",
+    "answer": "8/9",
+    "why": "Dividing numerator and denominator by \\(x^2\\) gives limiting values \\(16/2\\) and \\(9\\).",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 4,
+    "prompt": "Near zero, \\(2-|x|\\le f(x)/x^2\\le 2+|x|\\) for \\(x\\ne0\\). In radians, find \\(\\lim_{x\\to0} f(x)/\\sin^2(3x)\\).",
+    "answer": "2/9",
+    "why": "The squeezed ratio \\(f(x)/x^2\\) approaches \\(2\\). Divide by \\([\\sin(3x)/x]^2\\), whose limit is \\(9\\).",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 4,
+    "prompt": "Near zero, \\(1-|x|\\le f(x)/x^2\\le 1+|x|\\) for \\(x\\ne0\\). In radians, find \\(\\lim_{x\\to0} f(x)/\\sin^2(4x)\\).",
+    "answer": "1/16",
+    "why": "The squeezed ratio \\(f(x)/x^2\\) approaches \\(1\\). Divide by \\([\\sin(4x)/x]^2\\), whose limit is \\(16\\).",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 4,
+    "prompt": "Near zero, \\(3-|x|\\le f(x)/x^2\\le 3+|x|\\) for \\(x\\ne0\\). In radians, find \\(\\lim_{x\\to0} f(x)/\\sin^2(2x)\\).",
+    "answer": "3/4",
+    "why": "The squeezed ratio \\(f(x)/x^2\\) approaches \\(3\\). Divide by \\([\\sin(2x)/x]^2\\), whose limit is \\(4\\).",
+    "source": "../lectures/05-squeeze-theorem.html#trigonometric-limits",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 1,
+    "prompt": "A graph has a hole at (2, 4) and no point above or below it at \\(x=2\\). What is \\(f(2)\\)?",
+    "choices": [
+      "Undefined",
+      "\\(4\\)",
+      "\\(2\\)",
+      "\\(0\\)"
+    ],
+    "why": "An open circle is excluded from the graph.",
+    "source": "../lectures/08-exam-practice.html#problem-1",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 1,
+    "graphPrompt": "line-hole"
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 1,
+    "prompt": "The graph bends sharply at a filled point with no break. Which statement about that point is true?",
+    "choices": [
+      "The graph can be continuous there.",
+      "Every corner is a jump discontinuity.",
+      "Every corner is a hole.",
+      "Every corner is an infinite discontinuity."
+    ],
+    "why": "A corner does not keep nearby heights from approaching the point value.",
+    "source": "../lectures/08-exam-practice.html#problem-1",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 1,
+    "graphPrompt": "corner"
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 1,
+    "prompt": "The dashed vertical line in this graph is \\(x=-1\\). What is it called?",
+    "choices": [
+      "A vertical asymptote",
+      "A horizontal asymptote",
+      "A removable hole",
+      "A zero"
+    ],
+    "why": "A branch becomes unbounded beside the dashed line.",
+    "source": "../lectures/08-exam-practice.html#problem-2",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 1,
+    "graphPrompt": "inverse"
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 1,
+    "prompt": "Which method immediately gives \\(\\lim_{x\\to2}(x^2+3)/(x+1)\\)?",
+    "choices": [
+      "Substitute 2.",
+      "Multiply by a conjugate.",
+      "Use the squeeze theorem.",
+      "Look separately at two infinite limits."
+    ],
+    "why": "The denominator approaches 3, so the quotient law permits substitution.",
+    "source": "../lectures/08-exam-practice.html#problem-3",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 1,
+    "prompt": "In \\(\\sin(3x)/\\sin(2x)\\), what do both the numerator and denominator approach as \\(x\\to0\\)?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(1/2\\)"
+    ],
+    "why": "Both angles approach 0, and the sine of zero is zero.",
+    "source": "../lectures/08-exam-practice.html#problem-4",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 1,
+    "prompt": "What is \\(\\lim_{x\\to0}1/(1+x)\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-1\\)",
+      "Does not exist"
+    ],
+    "why": "The denominator approaches 1 and the numerator stays 1.",
+    "source": "../lectures/08-exam-practice.html#problem-3",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 1,
+    "prompt": "If \\(G(x)=2x\\) for \\(x>3\\), what is its right-hand limit at 3?",
+    "choices": [
+      "\\(6\\)",
+      "\\(-6\\)",
+      "\\(7\\)",
+      "\\(5\\)"
+    ],
+    "why": "Approaching from the right uses the formula \\(2x\\).",
+    "source": "../lectures/08-exam-practice.html#problem-5",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 1,
+    "prompt": "What is the left-hand limit at 1 of \\(G(x)=x^2+1\\) for \\(x<1\\)?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "The nearby polynomial approaches \\(1^2+1=2\\).",
+    "source": "../lectures/08-exam-practice.html#problem-5",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 1,
+    "prompt": "If \\(q(x)\\) is squeezed between two functions tending to 2, what does \\(q(x)\\) approach?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "The common limit of the bounds is 2.",
+    "source": "../lectures/08-exam-practice.html#problem-8",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 1,
+    "prompt": "A continuous function goes from negative to positive. Which function value must occur in between?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(1/2\\)"
+    ],
+    "why": "Zero is between its two endpoint heights.",
+    "source": "../lectures/08-exam-practice.html#problem-9",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 1,
+    "prompt": "What is the value of the filled point at \\(x=2\\) on this graph?",
+    "choices": [
+      "\\(7\\)",
+      "\\(-7\\)",
+      "\\(8\\)",
+      "\\(6\\)"
+    ],
+    "why": "The point value is its filled height. The lower circle is open.",
+    "source": "../lectures/08-exam-practice.html#problem-1",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 1,
+    "graphPrompt": "line-redefined"
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 1,
+    "prompt": "The original formula for \\(g(x)=x/x\\) is undefined at zero. For \\(x\\ne0\\), what constant does the quotient equal?",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(0\\)"
+    ],
+    "why": "A nonzero number divided by itself is 1.",
+    "source": "../lectures/08-exam-practice.html#problem-6",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 1,
+    "prompt": "A continuous graph has height 3 at both ends of an interval. Must it cross the horizontal axis?",
+    "choices": [
+      "No, it could stay at height 3.",
+      "Yes, exactly once.",
+      "Yes, at least twice.",
+      "Yes, at both endpoints."
+    ],
+    "why": "The constant function 3 is continuous and has no zeros.",
+    "source": "../lectures/08-exam-practice.html#problem-7",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 2,
+    "prompt": "For \\(H(x)=-2/[(x+2)(x-1)^2]\\), which pair of inputs makes the denominator zero?",
+    "choices": [
+      "\\(-2,1\\)",
+      "\\(2,-1\\)",
+      "\\(-2,-1\\)",
+      "\\(2,1\\)"
+    ],
+    "why": "Solve \\(x+2=0\\) and \\(x-1=0\\) separately.",
+    "source": "../lectures/08-exam-practice.html#problem-2",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 2,
+    "prompt": "For \\(x\\ne3\\) near 3, the exam quotient \\((x^2-2x-3)/(x^2-9)\\) equals \\((x+1)/(x+3)\\). What is the limit at 3?",
+    "choices": [
+      "\\(2/3\\)",
+      "\\(-2/3\\)",
+      "\\(5/3\\)",
+      "\\(-1/3\\)"
+    ],
+    "why": "The simplified expression approaches \\(4/6=2/3\\).",
+    "source": "../lectures/08-exam-practice.html#problem-3",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 2,
+    "prompt": "In radians, \\(\\tan(2x)/(2x)\\to1\\) as \\(x\\to0\\). What is \\(\\lim_{x\\to0}\\tan(2x)/(3x)\\)?",
+    "choices": [
+      "\\(2/3\\)",
+      "\\(-2/3\\)",
+      "\\(5/3\\)",
+      "\\(-1/3\\)"
+    ],
+    "why": "The new quotient is \\(2/3\\) times the given one.",
+    "source": "../lectures/08-exam-practice.html#problem-4",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 2,
+    "prompt": "At \\(x=3\\) the piecewise function \\(G\\) has value \\(c\\). Its right branch is \\(2x\\). What must \\(c\\) be for right-continuity?",
+    "choices": [
+      "\\(6\\)",
+      "\\(-6\\)",
+      "\\(7\\)",
+      "\\(5\\)"
+    ],
+    "why": "The right-hand limit is \\(2(3)=6\\).",
+    "source": "../lectures/08-exam-practice.html#problem-5",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 2,
+    "prompt": "If \\(q(x)=2+x\\sin(1/x)\\) for \\(x\\ne0\\), at \\(x=1/10\\) how far from 2 can \\(q(x)\\) be at most?",
+    "choices": [
+      "\\(1/10\\)",
+      "\\(-1/10\\)",
+      "\\(11/10\\)",
+      "\\(-9/10\\)"
+    ],
+    "why": "The sine value is between −1 and 1, so the absolute deviation is at most \\(1/10\\).",
+    "source": "../lectures/08-exam-practice.html#problem-8",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 2,
+    "prompt": "For \\(q(x)=2+x\\sin(1/x)\\), which lower bound works for positive and negative \\(x\\ne0\\)?",
+    "choices": [
+      "\\(2-|x|\\)",
+      "\\(2+|x|\\)",
+      "\\(3+|x|\\)",
+      "\\(3+x^2\\)"
+    ],
+    "why": "The oscillating term has absolute value at most \\(|x|\\).",
+    "source": "../lectures/08-exam-practice.html#problem-8",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 2,
+    "prompt": "For \\(F(x)=\\cos x-x\\) in radians, what is the sign of \\(F(\\pi/2)\\)?",
+    "choices": [
+      "Negative",
+      "Positive",
+      "Zero",
+      "Undefined"
+    ],
+    "why": "Cosine is zero there, giving \\(-\\pi/2<0\\).",
+    "source": "../lectures/08-exam-practice.html#problem-9",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 2,
+    "prompt": "For the same input \\(x\\), the graphs \\(y=x\\) and \\(y=\\cos x\\) intersect exactly when which function equals zero?",
+    "choices": [
+      "\\(\\cos x-x\\)",
+      "\\(\\cos x+x\\)",
+      "\\(x\\cos x\\)",
+      "\\(x^2+\\cos^2 x\\)"
+    ],
+    "why": "Subtract the two heights to test equality.",
+    "source": "../lectures/08-exam-practice.html#problem-9",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 2,
+    "prompt": "After canceling, \\((x^2-4)/(x-2)\\) follows \\(x+2\\) near 2. What single assigned value repairs the hole?",
+    "choices": [
+      "\\(4\\)",
+      "\\(-4\\)",
+      "\\(5\\)",
+      "\\(3\\)"
+    ],
+    "why": "A continuous filling matches the nearby line at height 4.",
+    "source": "../lectures/08-exam-practice.html#problem-6",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 3,
+    "graphPrompt": "line-hole"
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "For \\(D(x)=1/(1+x)-1/(1-x)\\), which is \\(\\lim_{x\\to0}D(x)/x\\)?",
+    "choices": [
+      "\\(-2\\)",
+      "\\(2\\)",
+      "\\(0\\)",
+      "Does not exist"
+    ],
+    "why": "A common denominator gives \\(D(x)=-2x/(1-x^2)\\). Cancel \\(x\\) and let \\(x\\to0\\).",
+    "source": "../lectures/08-exam-practice.html#problem-3",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 3,
+    "prompt": "For \\(H(x)=-2/[(x+2)(x-1)^2]\\), which number \\(p\\) makes \\((x-1)^p H(x)\\) approach a finite, nonzero value at 1?",
+    "choices": [
+      "\\(2\\)",
+      "\\(1\\)",
+      "\\(3\\)",
+      "\\(0\\)"
+    ],
+    "why": "The pole at 1 has order two. Cancel exactly the square to leave \\(-2/(x+2)\\to-2/3\\).",
+    "source": "../lectures/08-exam-practice.html#problem-2",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "In radians, suppose \\(\\sin(2x)/\\sin(3x)\\) is filled continuously at zero. What is the square of its new point value?",
+    "answer": "4/9",
+    "why": "The fundamental sine limit gives the filled value \\(2/3\\). Squaring gives \\(4/9\\).",
+    "source": "../lectures/08-exam-practice.html#problem-4",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "In radians, let \\(A(x)=\\sin(3x)/\\sin(2x)\\). What number \\(k\\) makes \\(A(x)-k/A(x)\\) tend to zero at zero?",
+    "answer": "9/4",
+    "why": "The sine limit gives \\(A(x)\\to3/2\\). The new limit vanishes when \\(k=(3/2)^2\\).",
+    "source": "../lectures/08-exam-practice.html#problem-4",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "Let \\(s=\\sqrt{4+x}\\) and \\(t=\\sqrt{4-2x}\\). Rationalize \\((s-t)/x\\) to find its limit at zero.",
+    "answer": "3/4",
+    "why": "The difference of squares is \\(3x\\). The conjugate approaches 4.",
+    "source": "../lectures/08-exam-practice.html#problem-3",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "Let \\(F(x)=(\\sqrt{4+2x}-\\sqrt{4-x})/x\\) for \\(x\\ne0\\). What is the continuous filling value of \\(1/F\\) at zero?",
+    "answer": "4/3",
+    "why": "Conjugation gives \\(F=3/(\\sqrt{4+2x}+\\sqrt{4-x})\\). The reciprocal approaches \\(4/3\\).",
+    "source": "../lectures/08-exam-practice.html#problem-3",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "A continuous bridge \\(mx+b\\) joins \\(y=x^2+1\\) at 1 to \\(y=2x\\) at 3. Where does the extension of the bridge cross the vertical axis? Enter the height.",
+    "answer": "0",
+    "why": "The join heights are 2 and 6. The bridge slope is 2, so its equation is \\(y=2x\\).",
+    "source": "../lectures/08-exam-practice.html#problem-5",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "In a shrinking-circle construction, a line joins \\((0,r)\\) to \\((a(r),0)\\), where \\(a(r)=2(1+\\sqrt{1-r^2/4})\\). If \\(m(r)\\) is its slope, find \\(\\lim_{r\\to0^+}r/m(r)\\).",
+    "answer": "-4",
+    "why": "The slope is \\(-r/a(r)\\), so \\(r/m(r)=-a(r)\\). The intercept tends to 4.",
+    "source": "../lectures/08-exam-practice.html#problem-10-where-does-the-intercept-go",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "2.7",
+    "topic": "limitmethods",
+    "level": 4,
+    "prompt": "Two circles satisfy \\(x^2+y^2=r^2\\) and \\((x-1)^2+y^2=1\\). For \\(0<r<1\\) let \\(u(r)\\) be the common horizontal coordinate of their intersections. What is \\(\\lim_{r\\to0^+}u(r)/r^2\\)?",
+    "answer": "1/2",
+    "why": "Expanding the second equation gives \\(x^2+y^2=2x\\). The first gives \\(2u(r)=r^2\\), so the ratio is always \\(1/2\\).",
+    "source": "../lectures/08-exam-practice.html#problem-10-where-does-the-intercept-go",
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 4
   }
 ]

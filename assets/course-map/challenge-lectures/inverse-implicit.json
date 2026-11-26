@@ -214,7 +214,7 @@
   },
   {
     "topic": "inverse",
-    "level": 1,
+    "level": 2,
     "prompt": "On the principal inverse-sine branch, what is \\(\\arcsin(1/2)\\) in radians?",
     "choices": [
       "\\(\\pi/6\\)",
@@ -336,7 +336,7 @@
   },
   {
     "topic": "implicit",
-    "level": 1,
+    "level": 2,
     "prompt": "Let \\(y=y(x)\\) be differentiable. What is the derivative of the product \\(xy(x)\\) with respect to \\(x\\)?",
     "choices": [
       "\\(y+xy'\\)",
@@ -427,7 +427,7 @@
   },
   {
     "topic": "exp",
-    "level": 1,
+    "level": 2,
     "prompt": "Differentiating \\(2^{3x}\\) produces a factor from the base \\(2\\). Which one?",
     "choices": [
       "\\(\\ln 2\\)",
@@ -872,7 +872,7 @@
   {
     "topic": "inverse",
     "section": "3.7",
-    "level": 2,
+    "level": 3,
     "prompt": "Let \\(f\\) be the inverse of \\(g(u)=u+\\ln u\\). Since \\(g(1)=1\\), which is \\(f'(1)\\)?",
     "choices": [
       "\\(1/2\\)",
@@ -1285,5 +1285,1463 @@
     "handoutPage": 2,
     "reference": "Exam 2 review worksheet · 7(a,c)",
     "reviewPdf": "../downloads/exam-2-review-worksheet.pdf#page=5"
+  },
+  {
+    "section": "3.7",
+    "level": 1,
+    "topic": "inverse",
+    "prompt": "Which operation undoes \\(f(x)=x+3\\)?",
+    "choices": [
+      "Subtract 3",
+      "Add 3",
+      "Multiply by 3",
+      "Divide by 3"
+    ],
+    "why": "Subtracting three recovers the original input.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 1,
+    "topic": "inverse",
+    "prompt": "The function \\(f\\) is one-to-one and \\(f(3)=8\\). What is \\(f^{-1}(8)\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(8\\)",
+      "\\(5\\)",
+      "\\(24\\)"
+    ],
+    "why": "The inverse returns the input that produced 8.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 1,
+    "topic": "inverse",
+    "prompt": "Which line reflects the graph of a function onto the graph of its inverse?",
+    "choices": [
+      "\\(y=x\\)",
+      "\\(y=-x\\)",
+      "\\(x=0\\)",
+      "\\(y=0\\)"
+    ],
+    "why": "Reflection across the diagonal interchanges the coordinates.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 1,
+    "topic": "inverse",
+    "prompt": "Which function undoes \\(e^x\\)?",
+    "choices": [
+      "\\(\\ln x\\)",
+      "\\(-e^x\\)",
+      "\\(e^{-x}\\)",
+      "\\(1/x\\)"
+    ],
+    "why": "Natural logarithm is the inverse of the natural exponential.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 1,
+    "topic": "inverse",
+    "prompt": "If a function maps \\(4\\) to \\(7\\), which arrow occurs in its inverse?",
+    "choices": [
+      "\\(7\\) to \\(4\\)",
+      "\\(4\\) to \\(7\\)",
+      "\\(-4\\) to \\(-7\\)",
+      "\\(1/4\\) to \\(1/7\\)"
+    ],
+    "why": "The inverse reverses the original input and output.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 1,
+    "topic": "inverse",
+    "prompt": "For an invertible function \\(f\\), what is \\(f^{-1}(f(5))\\)?",
+    "choices": [
+      "\\(5\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(25\\)"
+    ],
+    "why": "The inverse undoes the original function.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 1,
+    "topic": "inverse",
+    "prompt": "The graph shown is \\(y=\\sqrt{x}\\). Which operation does this function undo for nonnegative inputs?",
+    "choices": [
+      "Squaring",
+      "Doubling",
+      "Halving",
+      "Adding one"
+    ],
+    "why": "Taking the nonnegative square root reverses squaring on that branch.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "graphPrompt": "root-right",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 1,
+    "topic": "inverse",
+    "prompt": "What does \\(f^{-1}\\) mean when \\(f\\) is a one-to-one function?",
+    "choices": [
+      "The inverse function",
+      "The derivative",
+      "The second derivative",
+      "The absolute value"
+    ],
+    "why": "The inverse recovers the starting input from the output.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 1,
+    "topic": "inverse",
+    "prompt": "Under inversion, the original range becomes which set for the inverse function?",
+    "choices": [
+      "Its domain",
+      "Its tangent line",
+      "Its derivative",
+      "Its horizontal axis"
+    ],
+    "why": "Original outputs are the allowable inputs to the inverse.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 1,
+    "topic": "inverse",
+    "prompt": "If \\(f(0)=1\\), which point on its inverse corresponds to \\((0,1)\\)?",
+    "choices": [
+      "\\((1,0)\\)",
+      "\\((0,1)\\)",
+      "\\((0,-1)\\)",
+      "\\((-1,0)\\)"
+    ],
+    "why": "Swap the input and output coordinates.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 1,
+    "topic": "inverse",
+    "prompt": "The original tangent has slope \\(2\\). If the inverse is differentiable at the corresponding point, what is its slope?",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(-1/2\\)"
+    ],
+    "why": "Reflecting across the diagonal exchanges rise and run.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 1,
+    "topic": "inverse",
+    "prompt": "Which operation undoes cubing on the real line?",
+    "choices": [
+      "Taking a cube root",
+      "Squaring",
+      "Taking a square root",
+      "Dividing by three"
+    ],
+    "why": "Cubing and taking a cube root undo one another.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.8",
+    "level": 1,
+    "topic": "implicit",
+    "prompt": "If \\(y\\) depends on \\(x\\), what does \\(dy/dx\\) measure?",
+    "choices": [
+      "The rate of change of \\(y\\) with respect to \\(x\\)",
+      "The value of \\(y\\)",
+      "The value of \\(x\\)",
+      "The product \\(xy\\)"
+    ],
+    "why": "It measures the slope as \\(x\\) varies.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 1,
+    "topic": "implicit",
+    "prompt": "On \\(x^2+y^2=1\\), what constant appears on the right after differentiating both sides with respect to \\(x\\)?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(2\\)",
+      "\\(-1\\)"
+    ],
+    "why": "The derivative of a constant is zero.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 1,
+    "topic": "implicit",
+    "prompt": "What is the derivative of the \\(x^2\\) term in the implicit equation \\(x^2-y^2=9\\)?",
+    "choices": [
+      "\\(2x\\)",
+      "\\(2y\\)",
+      "\\(x\\)",
+      "\\(x^2\\)"
+    ],
+    "why": "Apply the power rule to the term in \\(x\\).",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 1,
+    "topic": "implicit",
+    "prompt": "A smooth curve has a horizontal tangent. Which value of \\(dy/dx\\) describes this?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)"
+    ],
+    "why": "A horizontal line has zero slope.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 1,
+    "topic": "implicit",
+    "prompt": "Which equation describes the vertical line through \\((3,0)\\)?",
+    "choices": [
+      "\\(x=3\\)",
+      "\\(y=3\\)",
+      "\\(x=0\\)",
+      "\\(y=x+3\\)"
+    ],
+    "why": "Every point on a vertical line has the same horizontal coordinate.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 1,
+    "topic": "implicit",
+    "prompt": "Which equation describes a horizontal tangent through \\((1,-2)\\)?",
+    "choices": [
+      "\\(y=-2\\)",
+      "\\(x=1\\)",
+      "\\(x=-2\\)",
+      "\\(y=1\\)"
+    ],
+    "why": "A horizontal line has constant height.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 1,
+    "topic": "implicit",
+    "prompt": "If \\(y=y(x)\\) on a branch of a curve, what is \\(d(y)/dx\\)?",
+    "choices": [
+      "\\(y'\\)",
+      "\\(x\\)",
+      "\\(y^2\\)",
+      "\\(1/y\\)"
+    ],
+    "why": "A prime denotes differentiation with respect to \\(x\\).",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 1,
+    "topic": "implicit",
+    "prompt": "When taking \\(d(y^3)/dx\\) along an implicit curve, what extra factor comes from differentiating the inner variable \\(y\\)?",
+    "choices": [
+      "\\(dy/dx\\)",
+      "\\(x^3\\)",
+      "\\(3x\\)",
+      "\\(1/y\\)"
+    ],
+    "why": "The chain rule supplies the derivative of \\(y\\) with respect to \\(x\\).",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 1,
+    "topic": "implicit",
+    "prompt": "Which equation, as displayed, leaves the variable \\(y\\) unsolved?",
+    "choices": [
+      "\\(x^2+y^2=1\\)",
+      "\\(y=1+x\\)",
+      "\\(y=x^2\\)",
+      "\\(y=2x\\)"
+    ],
+    "why": "The circle equation leaves both variables together.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 1,
+    "topic": "implicit",
+    "prompt": "On a circle, how is the tangent line positioned relative to the radius at their meeting point?",
+    "choices": [
+      "Perpendicular",
+      "Parallel",
+      "On the same line",
+      "Always horizontal"
+    ],
+    "why": "At the point of contact, a tangent and radius meet at a right angle.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 1,
+    "topic": "implicit",
+    "prompt": "The tangent to a curve is vertical. Moving along that line changes which coordinate?",
+    "choices": [
+      "Only \\(y\\)",
+      "Only \\(x\\)",
+      "Neither coordinate",
+      "Both coordinates"
+    ],
+    "why": "All points on a vertical line share the same \\(x\\) value.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 1,
+    "topic": "implicit",
+    "prompt": "On a smooth curve, which slope corresponds to a tangent that rises one unit per unit to the right?",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(0\\)",
+      "\\(2\\)"
+    ],
+    "why": "Slope is rise divided by run.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.9",
+    "level": 1,
+    "topic": "exp",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(e^x\\right)\\)?",
+    "choices": [
+      "\\(e^x\\)",
+      "\\(xe^{x-1}\\)",
+      "\\(e^{x-1}\\)",
+      "\\(x e^x\\)"
+    ],
+    "why": "The natural exponential is its own derivative.",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 1,
+    "topic": "exp",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(\\ln x\\right)\\)?",
+    "choices": [
+      "\\(1/x\\)",
+      "\\(x\\)",
+      "\\(\\ln x\\)",
+      "\\(e^x\\)"
+    ],
+    "why": "For positive inputs the derivative of the natural logarithm is its reciprocal.",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 1,
+    "topic": "exp",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(2e^x\\right)\\)?",
+    "choices": [
+      "\\(2e^x\\)",
+      "\\(e^x\\)",
+      "\\(2xe^x\\)",
+      "\\(e^{2x}\\)"
+    ],
+    "why": "A constant multiple stays in front.",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 1,
+    "topic": "exp",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(e^x+1\\right)\\)?",
+    "choices": [
+      "\\(e^x\\)",
+      "\\(e^x+1\\)",
+      "\\(1\\)",
+      "\\(e^{x+1}\\)"
+    ],
+    "why": "The added constant has zero derivative.",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 1,
+    "topic": "exp",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(-\\ln x\\right)\\)?",
+    "choices": [
+      "\\(-1/x\\)",
+      "\\(1/x\\)",
+      "\\(-x\\)",
+      "\\(-e^x\\)"
+    ],
+    "why": "Keep the minus sign in front of the logarithm rule.",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 1,
+    "topic": "exp",
+    "prompt": "The graph is \\(y=e^x\\). What is its height at \\(x=0\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(2\\)",
+      "\\(-1\\)"
+    ],
+    "why": "The graph of the exponential meets the vertical axis at one.",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "graphPrompt": "exponential",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 1,
+    "topic": "exp",
+    "prompt": "The curve is \\(y=\\ln x\\). At which positive input does it cross the horizontal axis?",
+    "choices": [
+      "\\(1\\)",
+      "\\(2\\)",
+      "\\(3\\)",
+      "\\(4\\)"
+    ],
+    "why": "The natural logarithm of one is zero.",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "graphPrompt": "log",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 1,
+    "topic": "exp",
+    "prompt": "For which real inputs is \\(\\ln x\\) defined?",
+    "choices": [
+      "\\(x>0\\)",
+      "\\(x<0\\)",
+      "Only \\(x=0\\)",
+      "All real \\(x\\)"
+    ],
+    "why": "The logarithm takes positive inputs.",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "graphPrompt": "log",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 1,
+    "topic": "exp",
+    "prompt": "Which function undoes the natural logarithm?",
+    "choices": [
+      "\\(e^x\\)",
+      "\\(x^2\\)",
+      "\\(1/x\\)",
+      "\\(-\\ln x\\)"
+    ],
+    "why": "Exponentiating and taking natural logs are inverse operations.",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 1,
+    "topic": "exp",
+    "prompt": "The curve \\(y=e^x\\) rises as \\(x\\) increases. What sign does its slope have?",
+    "choices": [
+      "Positive",
+      "Negative",
+      "Zero",
+      "Undefined everywhere"
+    ],
+    "why": "The derivative is \\(e^x\\), which is always positive.",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "graphPrompt": "exponential",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 1,
+    "topic": "exp",
+    "prompt": "In \\(P(t)=P_0e^{kt}\\) with \\(P_0>0\\), which value is the initial population?",
+    "choices": [
+      "\\(P_0\\)",
+      "\\(k\\)",
+      "\\(e\\)",
+      "\\(t\\)"
+    ],
+    "why": "At time zero the exponential factor is one.",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 1,
+    "topic": "exp",
+    "prompt": "The graph shown is \\(y=\\ln x\\). At \\(x=1\\), does the graph rise, fall, or flatten?",
+    "choices": [
+      "It rises.",
+      "It falls.",
+      "It has a horizontal tangent.",
+      "It has a corner."
+    ],
+    "why": "Its derivative at one is positive.",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "graphPrompt": "log",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.7",
+    "level": 2,
+    "topic": "inverse",
+    "prompt": "The graph of \\(f\\) passes through \\((2,3)\\) with slope \\(2\\). Its inverse is differentiable near \\(3\\). What is the inverse slope there?",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(-1/2\\)",
+      "\\(3/2\\)",
+      "\\(5/2\\)"
+    ],
+    "why": "At exchanged points, tangent slopes are reciprocals.",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "pdfPage": 46,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.7",
+    "level": 2,
+    "topic": "inverse",
+    "prompt": "The graph of \\(f\\) passes through \\((-1,4)\\) with slope \\(-2\\). Its inverse is differentiable near \\(4\\). What is the inverse slope there?",
+    "choices": [
+      "\\(-1/2\\)",
+      "\\(1/2\\)",
+      "\\(-3/2\\)",
+      "\\(3/2\\)"
+    ],
+    "why": "At exchanged points, tangent slopes are reciprocals.",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "pdfPage": 46,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.7",
+    "level": 2,
+    "topic": "inverse",
+    "prompt": "The graph of \\(f\\) passes through \\((1,5)\\) with slope \\(3\\). Its inverse is differentiable near \\(5\\). What is the inverse slope there?",
+    "choices": [
+      "\\(1/3\\)",
+      "\\(-1/3\\)",
+      "\\(4/3\\)",
+      "\\(-2/3\\)"
+    ],
+    "why": "At exchanged points, tangent slopes are reciprocals.",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "pdfPage": 46,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.7",
+    "level": 2,
+    "topic": "inverse",
+    "prompt": "On \\(x\\ge0\\), \\(f(x)=x^2\\) has slope \\(4\\) at \\(x=2\\). What is the slope of its inverse at \\(4\\)?",
+    "choices": [
+      "\\(1/4\\)",
+      "\\(-1/4\\)",
+      "\\(5/4\\)",
+      "\\(-3/4\\)"
+    ],
+    "why": "Take the reciprocal of the given nonzero slope.",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "pdfPage": 46,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.7",
+    "level": 2,
+    "topic": "inverse",
+    "prompt": "On \\(x\\ge0\\), \\(f(x)=x^2\\) has slope \\(6\\) at \\(x=3\\). What is the slope of its inverse at \\(9\\)?",
+    "choices": [
+      "\\(1/6\\)",
+      "\\(-1/6\\)",
+      "\\(7/6\\)",
+      "\\(-5/6\\)"
+    ],
+    "why": "Take the reciprocal of the given nonzero slope.",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "pdfPage": 46,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.7",
+    "level": 2,
+    "topic": "inverse",
+    "prompt": "On \\(x\\ge0\\), \\(f(x)=x^2\\) has slope \\(8\\) at \\(x=4\\). What is the slope of its inverse at \\(16\\)?",
+    "choices": [
+      "\\(1/8\\)",
+      "\\(-1/8\\)",
+      "\\(9/8\\)",
+      "\\(-7/8\\)"
+    ],
+    "why": "Take the reciprocal of the given nonzero slope.",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "pdfPage": 46,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.7",
+    "level": 2,
+    "topic": "inverse",
+    "prompt": "An invertible function has negative derivative at a point. If the inverse is differentiable at its corresponding point, what sign is the inverse slope?",
+    "choices": [
+      "Negative",
+      "Positive",
+      "Zero",
+      "Always undefined"
+    ],
+    "why": "The reciprocal of a negative number is negative.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 2,
+    "topic": "inverse",
+    "prompt": "The pictured \\(y=e^x\\) rises at every input. As a function of its input, how does its inverse \\(\\ln x\\) move?",
+    "choices": [
+      "It also rises.",
+      "It falls everywhere.",
+      "It stays constant.",
+      "It reverses direction at one."
+    ],
+    "why": "Swapping input and output preserves increasing order.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "graphPrompt": "exponential",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 2,
+    "topic": "inverse",
+    "prompt": "For the inverse of \\(y=x+1\\), which equation follows by interchanging input and output and solving?",
+    "choices": [
+      "\\(y=x-1\\)",
+      "\\(y=1-x\\)",
+      "\\(y=1/x\\)",
+      "\\(y=x+1\\)"
+    ],
+    "why": "Swap to \\(x=y+1\\), then subtract one.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 2,
+    "topic": "inverse",
+    "prompt": "What is the tangent slope of \\(\\arctan x\\) at \\(x=0\\), given its derivative \\(1/(1+x^2)\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-1\\)",
+      "\\(2\\)"
+    ],
+    "why": "At zero the denominator is one.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.8",
+    "level": 2,
+    "topic": "implicit",
+    "prompt": "On the circle \\(x^2+y^2=25\\), the slope is \\(-x/y\\) when \\(y\\ne0\\). Find it at \\((3,4)\\).",
+    "choices": [
+      "\\(-3/4\\)",
+      "\\(3/4\\)",
+      "\\(1/4\\)",
+      "\\(-7/4\\)"
+    ],
+    "why": "Insert the coordinates in the given slope formula.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 2,
+    "topic": "implicit",
+    "prompt": "On the circle \\(x^2+y^2=25\\), the slope is \\(-x/y\\) when \\(y\\ne0\\). Find it at \\((4,3)\\).",
+    "choices": [
+      "\\(-4/3\\)",
+      "\\(4/3\\)",
+      "\\(-1/3\\)",
+      "\\(-7/3\\)"
+    ],
+    "why": "Insert the coordinates in the given slope formula.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 2,
+    "topic": "implicit",
+    "prompt": "On the circle \\(x^2+y^2=25\\), the slope is \\(-x/y\\) when \\(y\\ne0\\). Find it at \\((-3,4)\\).",
+    "choices": [
+      "\\(3/4\\)",
+      "\\(-3/4\\)",
+      "\\(7/4\\)",
+      "\\(-1/4\\)"
+    ],
+    "why": "Insert the coordinates in the given slope formula.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 2,
+    "topic": "implicit",
+    "prompt": "On the circle \\(x^2+y^2=25\\), the slope is \\(-x/y\\) when \\(y\\ne0\\). Find it at \\((0,5)\\).",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)"
+    ],
+    "why": "Insert the coordinates in the given slope formula.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 2,
+    "topic": "implicit",
+    "prompt": "On \\(x^2-y^2=9\\), tangent slope is \\(x/y\\) for \\(y\\ne0\\). Find the slope at \\((5,4)\\).",
+    "choices": [
+      "\\(5/4\\)",
+      "\\(-5/4\\)",
+      "\\(9/4\\)",
+      "\\(1/4\\)"
+    ],
+    "why": "Use the signed coordinates in the ratio.",
+    "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+    "pdfPage": 49,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "3.8",
+    "level": 2,
+    "topic": "implicit",
+    "prompt": "On \\(x^2-y^2=9\\), tangent slope is \\(x/y\\) for \\(y\\ne0\\). Find the slope at \\((-5,4)\\).",
+    "choices": [
+      "\\(-5/4\\)",
+      "\\(5/4\\)",
+      "\\(-1/4\\)",
+      "\\(-9/4\\)"
+    ],
+    "why": "Use the signed coordinates in the ratio.",
+    "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+    "pdfPage": 49,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "3.8",
+    "level": 2,
+    "topic": "implicit",
+    "prompt": "On \\(x^2-y^2=9\\), tangent slope is \\(x/y\\) for \\(y\\ne0\\). Find the slope at \\((-5,-4)\\).",
+    "choices": [
+      "\\(5/4\\)",
+      "\\(-5/4\\)",
+      "\\(9/4\\)",
+      "\\(1/4\\)"
+    ],
+    "why": "Use the signed coordinates in the ratio.",
+    "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+    "pdfPage": 49,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "3.8",
+    "level": 2,
+    "topic": "implicit",
+    "prompt": "On a unit circle centered at the origin, which tangent line passes through its top point \\((0,1)\\)?",
+    "choices": [
+      "\\(y=1\\)",
+      "\\(x=0\\)",
+      "\\(y=0\\)",
+      "\\(x=1\\)"
+    ],
+    "why": "The radius there is vertical, so the tangent is horizontal.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 2,
+    "topic": "implicit",
+    "prompt": "The tangent at a point of a smooth curve has \\(dy/dx=0\\). What line through the point has that slope?",
+    "choices": [
+      "A horizontal line",
+      "A vertical line",
+      "A line rising at 45 degrees",
+      "A line falling at 45 degrees"
+    ],
+    "why": "Zero slope means the tangent changes no height over a horizontal run.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.9",
+    "level": 2,
+    "topic": "exp",
+    "prompt": "For \\(f(x)=\\ln x\\), what is the tangent slope at \\(x=2\\)?",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(-1/2\\)",
+      "\\(3/2\\)",
+      "\\(5/2\\)"
+    ],
+    "why": "The derivative is \\(1/x\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 2,
+    "topic": "exp",
+    "prompt": "For \\(f(x)=\\ln x\\), what is the tangent slope at \\(x=3\\)?",
+    "choices": [
+      "\\(1/3\\)",
+      "\\(-1/3\\)",
+      "\\(4/3\\)",
+      "\\(-2/3\\)"
+    ],
+    "why": "The derivative is \\(1/x\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 2,
+    "topic": "exp",
+    "prompt": "For \\(f(x)=\\ln x\\), what is the tangent slope at \\(x=4\\)?",
+    "choices": [
+      "\\(1/4\\)",
+      "\\(-1/4\\)",
+      "\\(5/4\\)",
+      "\\(-3/4\\)"
+    ],
+    "why": "The derivative is \\(1/x\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 2,
+    "topic": "exp",
+    "prompt": "What is the slope of \\(y=e^{2x}\\) at \\(x=0\\)?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "The derivative is \\(2e^{2x}\\), and \\(e^0=1\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#worked-examples",
+    "pdfPage": 54,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.9",
+    "level": 2,
+    "topic": "exp",
+    "prompt": "What is the slope of \\(y=e^{3x}\\) at \\(x=0\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "The derivative is \\(3e^{3x}\\), and \\(e^0=1\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#worked-examples",
+    "pdfPage": 54,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.9",
+    "level": 2,
+    "topic": "exp",
+    "prompt": "What is the slope of \\(y=e^{4x}\\) at \\(x=0\\)?",
+    "choices": [
+      "\\(4\\)",
+      "\\(-4\\)",
+      "\\(5\\)",
+      "\\(3\\)"
+    ],
+    "why": "The derivative is \\(4e^{4x}\\), and \\(e^0=1\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#worked-examples",
+    "pdfPage": 54,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.9",
+    "level": 2,
+    "topic": "exp",
+    "prompt": "If \\(y=2\\ln x\\), what is the slope at \\(x=1\\)?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "The constant multiple rule gives \\(2/x\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 2,
+    "topic": "exp",
+    "prompt": "If \\(y=3\\ln x\\), what is the slope at \\(x=1\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "The constant multiple rule gives \\(3/x\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.9",
+    "level": 2,
+    "topic": "exp",
+    "prompt": "If \\(y=4\\ln x\\), what is the slope at \\(x=1\\)?",
+    "choices": [
+      "\\(4\\)",
+      "\\(-4\\)",
+      "\\(5\\)",
+      "\\(3\\)"
+    ],
+    "why": "The constant multiple rule gives \\(4/x\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.7",
+    "level": 4,
+    "topic": "inverse",
+    "prompt": "A differentiable inverse \\(g=f^{-1}\\) has \\(f(1)=3\\), \\(f'(1)=-2\\). What is the slope of \\(g(2x+1)\\) at \\(x=1\\)?",
+    "answer": "-1",
+    "why": "The inverse slope at 3 is \\(-1/2\\). The inner function adds a factor of 2.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 4,
+    "topic": "inverse",
+    "prompt": "Let \\(g=f^{-1}\\) with \\(f(1)=3\\) and \\(f'(1)=2\\). The inverse tangent at input 3 meets the horizontal axis at which input?",
+    "answer": "1",
+    "why": "The inverse point is \\((3,1)\\) and its tangent slope is \\(1/2\\). Solve \\(0=1+(x-3)/2\\).",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 4,
+    "topic": "inverse",
+    "prompt": "The invertible function \\(f\\) has \\(f(2)=3\\) and \\(f'(2)=4\\). What is the derivative at \\(3\\) of \\((f^{-1}(x))^2\\)?",
+    "answer": "1",
+    "why": "The inverse has value 2 and slope \\(1/4\\). Multiply \\(2(2)(1/4)\\).",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 4,
+    "topic": "inverse",
+    "prompt": "Two invertible differentiable functions satisfy \\(f(1)=2\\) and \\(g(2)=4\\) with slopes \\(f'(1)=-2\\), \\(g'(2)=3\\). What is the slope of the inverse of \\(g\\circ f\\) at \\(4\\)?",
+    "answer": "-1/6",
+    "why": "The composite slope at 1 is \\(-6\\). Invert that slope at the corresponding output.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 4,
+    "topic": "inverse",
+    "prompt": "Let \\(g\\) be the inverse of \\(f(x)=x^3+x\\). What is \\(g'(2)\\)?",
+    "answer": "1/4",
+    "why": "The preimage of 2 is 1. There \\(f'(1)=4\\), so take its reciprocal.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.7",
+    "level": 4,
+    "topic": "inverse",
+    "prompt": "An invertible \\(f\\) with differentiable inverse \\(g\\) sends \\(2\\) to \\(4\\). If \\(g'(4)=-1/3\\), what is the derivative of \\(f(x)+x\\) at \\(2\\)?",
+    "answer": "-2",
+    "why": "The reciprocal gives \\(f'(2)=-3\\). The derivative of \\(x\\) adds one.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.8",
+    "level": 4,
+    "topic": "implicit",
+    "prompt": "On \\(x^2+y^2=25\\) at \\((3,4)\\) the tangent slope is \\(-3/4\\). At which input does this tangent cross the horizontal axis?",
+    "answer": "25/3",
+    "why": "Use \\(0=4-(3/4)(x-3)\\).",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 4,
+    "topic": "implicit",
+    "prompt": "On the upper semicircle \\(x^2+y^2=4\\), the slope at \\((0,2)\\) is zero. What is \\(y''\\) there?",
+    "answer": "-1/2",
+    "why": "Differentiate \\(x+yy'=0\\) again. At the top, \\(1+2y''=0\\).",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 4,
+    "topic": "implicit",
+    "prompt": "On \\(x^2-y^2=9\\), the tangent at \\((5,4)\\) has slope \\(5/4\\). What is the vertical intercept of this tangent?",
+    "answer": "-9/4",
+    "why": "Set \\(x=0\\) in \\(y=4+(5/4)(x-5)\\).",
+    "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+    "pdfPage": 49,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "3.8",
+    "level": 4,
+    "topic": "implicit",
+    "prompt": "Along \\(x^2+xy+y^2=3\\) at \\((1,-2)\\) the tangent slope is zero. What is \\(y''\\) at this point?",
+    "answer": "2/3",
+    "why": "When \\(y'=0\\), the twice-differentiated equation reduces to \\(2+(x+2y)y''=0\\). Here \\(x+2y=-3\\).",
+    "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
+    "pdfPage": 50,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 7
+  },
+  {
+    "section": "3.8",
+    "level": 4,
+    "topic": "implicit",
+    "prompt": "On \\(x^2+y^2=25\\) near \\((4,3)\\), find the derivative of \\(y^2\\) with respect to \\(x\\) at \\(x=4\\).",
+    "answer": "-8",
+    "why": "The curve gives \\(y^2=25-x^2\\) directly. Its derivative is \\(-2x\\).",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 4,
+    "topic": "implicit",
+    "prompt": "On \\(x^2-y^2=9\\), at \\((5,-4)\\) what is the slope of \\(y-x\\) as a function of \\(x\\)?",
+    "answer": "-9/4",
+    "why": "The slope \\(y'=x/y\\) is \\(-5/4\\). Subtract the unit slope of \\(x\\).",
+    "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+    "pdfPage": 49,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "3.8",
+    "level": 4,
+    "topic": "implicit",
+    "prompt": "On \\(x^2+xy+y^2=13\\), what is the derivative of \\(x+y\\) with respect to \\(x\\) at \\((1,3)\\)?",
+    "answer": "2/7",
+    "why": "Implicit differentiation gives \\(y'=-(2x+y)/(x+2y)=-5/7\\). Add one.",
+    "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+    "pdfPage": 49,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "3.9",
+    "level": 4,
+    "topic": "exp",
+    "prompt": "Let \\(f(x)=e^{2x}/(1+x)\\). What is \\(f'(0)/f(0)\\)?",
+    "answer": "1",
+    "why": "The logarithmic derivative is \\(2-1/(1+x)\\) near zero. Evaluate at zero.",
+    "source": "../lectures/17-exponential-logarithmic.html#logarithmic-differentiation",
+    "pdfPage": 56,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "3.9",
+    "level": 4,
+    "topic": "exp",
+    "prompt": "On \\(x>0\\), let \\(y=x^{2x}\\). What is its tangent slope at \\(x=1\\)?",
+    "answer": "2",
+    "why": "Taking logs gives \\(\\ln y=2x\\ln x\\). At one, \\(y=1\\) and the derivative of the right side is 2.",
+    "source": "../lectures/17-exponential-logarithmic.html#examples-of-logarithmic-differentiation",
+    "pdfPage": 56,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 7
+  },
+  {
+    "section": "3.9",
+    "level": 4,
+    "topic": "exp",
+    "prompt": "If \\(f(x)=\\ln(1+2x)\\), what is \\(f''(0)\\)?",
+    "answer": "-4",
+    "why": "\\(f'=2/(1+2x)\\). Its slope at zero is \\(-4\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#worked-examples",
+    "pdfPage": 54,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.9",
+    "level": 4,
+    "topic": "exp",
+    "prompt": "Let \\(y=e^{x^2+x}\\). What is \\(y''(0)\\)? You may use \\(y'=(2x+1)y\\).",
+    "answer": "3",
+    "why": "\\(y''=2y+(2x+1)y'\\). At zero both \\(y\\) and \\(y'\\) equal 1.",
+    "source": "../lectures/17-exponential-logarithmic.html#worked-examples",
+    "pdfPage": 54,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.9",
+    "level": 4,
+    "topic": "exp",
+    "prompt": "At \\(x=1\\), a positive function satisfies \\(f(1)=2\\) and \\(f'(1)=3\\). Find the slope of \\(\\ln(f(x)/x^2)\\) there.",
+    "answer": "-1/2",
+    "why": "The logarithm splits into \\(\\ln f-2\\ln x\\). Its slope at one is \\(3/2-2\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#logarithmic-differentiation",
+    "pdfPage": 56,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "3.9",
+    "level": 4,
+    "topic": "exp",
+    "prompt": "For \\(f(x)=x^x\\), the first derivative is \\(f'=f(\\ln x+1)\\). At \\(x=1\\), what is \\(f''(1)-f'(1)\\)?",
+    "answer": "1",
+    "why": "The second derivative at one is \\(1(1)+1(1)=2\\), while the first derivative is 1.",
+    "source": "../lectures/17-exponential-logarithmic.html#logarithmic-differentiation",
+    "pdfPage": 56,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "3.9",
+    "level": 4,
+    "topic": "exp",
+    "prompt": "Let \\(y=(1+x)^{3x}\\) near zero. What is \\(y''(0)\\)? Use \\(\\ln y=3x\\ln(1+x)\\).",
+    "answer": "6",
+    "why": "The first logarithmic derivative vanishes at zero. Differentiating \\(3\\ln(1+x)+3x/(1+x)\\) there gives \\(3+3\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#examples-of-logarithmic-differentiation",
+    "pdfPage": 56,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "handoutPage": 7
+  },
+  {
+    "section": "3.7",
+    "level": 1,
+    "topic": "inverse",
+    "prompt": "The graph of \\(f(x)=x^2\\) is restricted to \\(x\\ge0\\). Which picture shows its inverse?",
+    "choices": [
+      "Curve starts at the origin and rises to the right, bending downward.",
+      "Curve in the upper-left quadrant ends at the origin.",
+      "Curve starts at the origin and falls to the right.",
+      "Smooth U-shaped curve with its lowest point at the origin."
+    ],
+    "why": "Swapping the coordinates of the right half of the parabola gives the nonnegative square root.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "graphChoices": [
+      "root-right",
+      "root-left",
+      "root-low",
+      "bowl"
+    ],
+    "handoutPage": 1
+  },
+  {
+    "section": "3.8",
+    "level": 2,
+    "topic": "implicit",
+    "prompt": "Consider the implicit equation \\(y^2=x\\). Which graph gives its branch with \\(y\\le0\\)?",
+    "choices": [
+      "Curve starts at the origin and falls to the right.",
+      "Curve starts at the origin and rises to the right, bending downward.",
+      "Curve in the upper-left quadrant ends at the origin.",
+      "Smooth U-shaped curve with its lowest point at the origin."
+    ],
+    "why": "Solving for the nonpositive branch gives the negative square root of \\(x\\).",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "graphChoices": [
+      "root-low",
+      "root-right",
+      "root-left",
+      "bowl"
+    ],
+    "handoutPage": 5
+  },
+  {
+    "section": "3.9",
+    "level": 2,
+    "topic": "exp",
+    "prompt": "Which graph gives the derivative of \\(y=-e^{-x}\\)?",
+    "choices": [
+      "A positive decreasing curve passes through (0, 1), close to zero on the right.",
+      "A positive increasing curve passes through (0, 1), close to zero on the left.",
+      "An increasing curve for positive x, crossing (1, 0), dropping without bound near zero.",
+      "A decreasing curve for positive x, crossing (1, 0), rising without bound near zero."
+    ],
+    "why": "The inner derivative cancels the leading minus. The result is a positive decreasing exponential.",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+    "graphChoices": [
+      "exponential-reverse",
+      "exponential",
+      "log",
+      "log-neg"
+    ],
+    "handoutPage": 3
+  },
+  {
+    "section": "3.8",
+    "level": 1,
+    "topic": "implicit",
+    "prompt": "The marked point \\((3,4)\\) lies on the circle. At this point of its upper-right arc, is the tangent rising or falling?",
+    "choices": [
+      "Falling",
+      "Rising",
+      "Horizontal",
+      "Vertical"
+    ],
+    "why": "Moving right along this arc decreases the height.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "graphPrompt": "quarter-circle",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.8",
+    "level": 3,
+    "topic": "implicit",
+    "prompt": "The pictured arc satisfies \\(x^2+y^2=25\\). At the marked point \\((3,4)\\), what is the slope of the normal line, which is perpendicular to the tangent?",
+    "choices": [
+      "\\(4/3\\)",
+      "\\(-4/3\\)",
+      "\\(7/3\\)",
+      "\\(1/3\\)"
+    ],
+    "why": "The normal is the radius through the origin and the marked point. Its rise is 4 and its run is 3.",
+    "source": "../lectures/16-implicit-differentiation.html#title-block-header",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "graphPrompt": "quarter-circle",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.7",
+    "level": 2,
+    "topic": "inverse",
+    "prompt": "The marked line is the graph of an invertible \\(f\\). Since \\(f(1)=3\\), what is the slope of its inverse at 3?",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(-1/2\\)",
+      "\\(3/2\\)",
+      "\\(5/2\\)"
+    ],
+    "why": "The line has slope 2. At coordinates swapped across the diagonal, the inverse slope is its reciprocal.",
+    "source": "../lectures/15-inverse-functions.html#inverse-functions",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "graphPrompt": "line-mapped",
+    "handoutPage": 1
   }
 ]

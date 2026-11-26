@@ -513,5 +513,376 @@
     "capstone": true,
     "pdfPage": 69,
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 68,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "How does the pictured U-shaped parabola bend?",
+    "why": "Its tangent slopes increase from left to right.",
+    "graphPrompt": "bowl",
+    "choices": [
+      "Concave up",
+      "Concave down",
+      "Straight throughout",
+      "Alternating at every point"
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 68,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "How does the pictured downward-opening parabola bend?",
+    "why": "Its tangent slopes decrease from left to right.",
+    "graphPrompt": "negative-bowl",
+    "choices": [
+      "Concave down",
+      "Concave up",
+      "Straight throughout",
+      "Concave up on both ends and straight at zero"
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 67,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "At the top of the pictured arch, is the function at a local maximum or a local minimum?",
+    "why": "The nearby outputs are lower than the peak.",
+    "graphPrompt": "arch",
+    "choices": [
+      "Local maximum",
+      "Local minimum",
+      "Neither",
+      "Both"
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 67,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "At the bottom of the pictured U, how steep is the tangent?",
+    "why": "The tangent to the smooth parabola at its vertex is horizontal.",
+    "graphPrompt": "bowl",
+    "choices": [
+      "It has slope zero.",
+      "It has slope 1.",
+      "It has slope \\(-1\\).",
+      "It is vertical."
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 68,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "If \\(f''\\) is positive throughout an interval, how does the graph bend there?",
+    "why": "Positive second derivative gives increasing tangent slopes.",
+    "choices": [
+      "Concave up",
+      "Concave down",
+      "It is a horizontal line.",
+      "It must cross the horizontal axis."
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 67,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "A function has positive derivative throughout an interval. As \\(x\\) moves right in that interval, what does \\(f\\) do?",
+    "why": "Positive slope means the graph rises from left to right.",
+    "choices": [
+      "It increases.",
+      "It decreases.",
+      "It is constant.",
+      "It changes direction at every point."
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 67,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "If \\(f'(x)<0\\) throughout an interval, which word describes \\(f\\) there?",
+    "why": "Negative derivatives mean the function falls as the input increases.",
+    "choices": [
+      "Decreasing",
+      "Increasing",
+      "Constant",
+      "Periodic with a turn inside the interval"
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 68,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "What changes at an inflection point of a continuous graph?",
+    "why": "An inflection point is where the curve changes how it bends.",
+    "choices": [
+      "Its concavity",
+      "Its domain",
+      "Its units",
+      "Its axis labels"
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#the-second-derivative-test",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 69,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "On the graph of \\(y=x^2\\), the origin is which kind of local extremum?",
+    "why": "Nearby nonzero inputs give positive outputs, above \\(f(0)=0\\).",
+    "choices": [
+      "A local minimum",
+      "A local maximum",
+      "Both a maximum and a minimum",
+      "Neither"
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 67,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "Follow the pictured S-curve from left to right through its flat point. Which way does the graph go immediately afterward?",
+    "why": "The curve passes through the flat point and continues rising.",
+    "graphPrompt": "cubic-raised",
+    "choices": [
+      "Up",
+      "Down",
+      "Horizontally forever",
+      "Straight down vertically"
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 68,
+    "handoutPage": 1,
+    "level": 2,
+    "prompt": "For the pictured \\(g(x)=x^3+1\\), which side of the vertical axis is concave down?",
+    "why": "The slopes decrease as you approach zero from the left, and \\(g''(x)=6x<0\\) there.",
+    "graphPrompt": "cubic-raised",
+    "choices": [
+      "The left side",
+      "The right side",
+      "Both sides",
+      "Neither side"
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#the-second-derivative-test",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 69,
+    "handoutPage": 2,
+    "level": 2,
+    "prompt": "A smooth \\(f\\) has \\(f'(3)=0\\) and \\(f''(3)=5\\). Which direction does \\(f'\\) change sign at 3?",
+    "why": "The positive second derivative gives a strict local minimum and the first derivative increases through zero near 3 when \\(f''\\) is continuous.",
+    "choices": [
+      "Negative to positive",
+      "Positive to negative",
+      "Positive on both sides",
+      "Negative on both sides"
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 67,
+    "handoutPage": 1,
+    "level": 2,
+    "prompt": "The line shown is \\(f'\\), not \\(f\\). What happens to \\(f\\) at \\(x=0\\)?",
+    "why": "The derivative crosses from positive to negative, so the original function rises and then falls.",
+    "graphPrompt": "down-origin",
+    "choices": [
+      "It has a strict local maximum.",
+      "It has a strict local minimum.",
+      "It increases through zero.",
+      "It decreases through zero."
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 67,
+    "handoutPage": 1,
+    "level": 4,
+    "prompt": "A polynomial has derivative \\(f'(x)=(x+2)(x-1)^2(x-3)\\). Add the inputs of all its strict local extrema.",
+    "why": "The odd-powered roots \\(-2\\) and 3 change the sign of the derivative. The double root 1 does not. Their sum is 1.",
+    "answer": "1"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 68,
+    "handoutPage": 1,
+    "level": 4,
+    "prompt": "A polynomial has \\(f''(x)=(x+2)^2(x-1)(x-3)\\). What is the distance between the two inflection inputs?",
+    "why": "Concavity changes at 1 and 3. The repeated root at \\(-2\\) has no sign change.",
+    "answer": "2"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#the-second-derivative-test",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 69,
+    "handoutPage": 2,
+    "level": 4,
+    "prompt": "A smooth \\(f\\) has \\(f'(0)=0\\) and \\(f''(0)=6\\). For \\(g(x)=f(x)+ax^2\\), find \\(a\\) so that \\(g''(0)\\) equals \\(-2\\).",
+    "why": "We need \\(6+2a=-2\\), so \\(a=-4\\). At this value the critical point becomes a strict local maximum.",
+    "answer": "-4"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 67,
+    "handoutPage": 1,
+    "level": 4,
+    "prompt": "The lecture cubic has a strict local maximum at input \\(-1\\) and a strict local minimum at 1. For \\(g(x)=-f(2x+3)\\), at which input is its strict local maximum?",
+    "why": "The negative sign turns the old minimum into a maximum. Set \\(2x+3=1\\) to get \\(x=-1\\).",
+    "answer": "-1"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 68,
+    "handoutPage": 1,
+    "level": 4,
+    "prompt": "A cubic \\(f\\) has its only inflection at \\((0,1)\\), and \\(f'(0)=0\\). The graph of \\(g(x)=2f(x-3)-5\\) changes concavity once. Add the coordinates of that inflection point.",
+    "why": "The transformed point is \\((3,2(1)-5)=(3,-3)\\), whose coordinates sum to zero.",
+    "answer": "0"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 67,
+    "handoutPage": 1,
+    "level": 4,
+    "prompt": "For a smooth curve \\(f'(x)=x(x-2)^2\\), count its strict local extrema on \\([-1,3]\\), including one-sided extrema at endpoints.",
+    "why": "It decreases to zero then increases, flattening at 2. There is one interior minimum and a one-sided maximum at each endpoint.",
+    "answer": "3"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#the-second-derivative-test",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 69,
+    "handoutPage": 2,
+    "level": 4,
+    "prompt": "For \\(h(x)=ax^2-x^4\\), count the integer values of \\(a\\) in \\([-2,2]\\) that make zero a strict local maximum, using the function itself when the second derivative test is inconclusive.",
+    "why": "For \\(a<0\\) the second derivative is negative. For \\(a=0\\) the term \\(-x^4\\) still gives a maximum. The three integers are \\(-2,-1,0\\).",
+    "answer": "3"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 68,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "Which graph is a smooth U-shaped curve, concave up everywhere?",
+    "why": "The upward parabola has increasing tangent slopes throughout.",
+    "choices": [
+      "Smooth U-shaped curve with its lowest point at the origin.",
+      "Downward parabola touching the origin and passing through (1, −3).",
+      "Rising line through the origin and (1, 1).",
+      "Falling line through the origin and (1, −2)."
+    ],
+    "graphChoices": [
+      "bowl",
+      "negative-bowl",
+      "rising-origin",
+      "slope-neg-two"
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 67,
+    "handoutPage": 1,
+    "level": 2,
+    "prompt": "Which graph of \\(f'\\) indicates that \\(f\\) has a strict local minimum at \\(x=0\\)?",
+    "why": "The derivative must change from negative on the left to positive on the right.",
+    "choices": [
+      "Rising line through the origin and (1, 1).",
+      "Falling line through the origin and (1, −2).",
+      "Upward parabola touching the origin and passing through (1, 3).",
+      "Downward parabola touching the origin and passing through (1, −3)."
+    ],
+    "graphChoices": [
+      "rising-origin",
+      "slope-neg-two",
+      "square-derivative",
+      "negative-bowl"
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 68,
+    "handoutPage": 1,
+    "level": 4,
+    "prompt": "The pictured \\(f'\\) is the parabola \\(12x^2-12\\). Its lowest point is \\((0,-12)\\). For \\(g(x)=f(x)+kx\\), find \\(k\\) such that \\(g\\) has a horizontal tangent but never decreases.",
+    "why": "Adding \\(k\\) shifts the derivative vertically. Its minimum must be exactly zero to give a horizontal tangent and rule out negative slopes, so \\(-12+k=0\\).",
+    "graphPrompt": "extrema-slopes",
+    "answer": "12"
   }
 ]

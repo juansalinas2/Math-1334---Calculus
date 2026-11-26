@@ -21,7 +21,23 @@
   let unlocked=board.stored("insane")==="yes", saveTicket=0, firstClockDelay=0;
   const diff=()=>el("difficulty").value, order=()=>el("order").value;
   const scope=()=>course==="lecture" ? el("line").value : course;
-  const settings=()=>({key:scope(),diff:diff(),order:order(),version:6});
+  const routeLength=()=>el("length").value==="endless"?0:Number(el("length").value)||10;
+  const goal=()=>routeLength()||Infinity;
+  const settings=()=>({key:scope(),diff:diff(),order:order(),length:routeLength(),version:7});
+  let character=board.stored("character")||"pip", cycle=0, offset=0, banked=false, settingTarget=false;
+  function selectCharacter(id){
+    character=runner.characters.some(a=>a.id===id)?id:"pip";
+    runner.character(character);
+    for(const select of ["character","lobby-character"])el(select).value=character;
+    el("runner-portrait").innerHTML=runner.portrait(character);
+    board.stored("character",character);
+  }
+  for(const id of ["character","lobby-character"]){
+    const select=el(id);
+    select.replaceChildren(...runner.characters.map(a=>new Option(a.name,a.id)));
+    select.onchange=()=>selectCharacter(select.value);
+  }
+  selectCharacter(character);
   const title=()=>names[course] || el("line").selectedOptions[0]?.textContent || "One lecture";
   const randomSeed=()=>crypto.getRandomValues(new Uint32Array(1))[0];
   const edition=document.body.dataset.edition;
@@ -38,9 +54,9 @@
     el("crown-record").hidden=board.stored("sun-crown")!=="yes";
   }
   window.addEventListener("storage",personalRecord);
-  const currentQuestion=()=>bonusActive ? bonus : route[run.cleared];
+  const currentQuestion=()=>bonusActive ? bonus : route[run.cleared-offset];
   const currentLevel=()=>bonusActive ? rules.nextLevel(diff()) : diff();
-  const jumpIndex=()=>bonusActive ? route.length : run.cleared;
+  const jumpIndex=()=>run.cleared;
   function stopClock() {clearTimeout(timerId);timerId=0;deadline=0;el("clock").hidden=true;}
   function remaining() {return deadline ? Math.max(0,(deadline-Date.now())/1000) : 0;}
   function startClock() {
@@ -112,13 +128,14 @@
     course=next;el("lecture-picker").hidden=next!=="lecture";
     el("course").value=next;
     runner.difficulty(diff());gate();
-    const length=rules.makeRoute(lectures,scope(),0,diff(),order()).length;
+    const length=routeLength(), distance=length?length+" jumps":"Endless";
     const count=rules.poolSize(lectures,scope(),diff());
-    el("rules-hint").textContent=length+" jumps from "+count+" "+difficultyName(diff())+" questions · "+(timed()?rules.seconds[diff()]+" seconds per question":"No time limit")+". "+rules.basePoints[diff()]+" points per landing"+(timed()?" + 2 per second left. ":". ")+hints[diff()];
-    el("run-summary").textContent=length+" jumps · "+(timed()?rules.seconds[diff()]+" s each":"untimed");
+    el("rules-hint").textContent=distance+" · "+count+" "+difficultyName(diff())+" questions · "+(timed()?rules.seconds[diff()]+" seconds per question":"No time limit")+". "+rules.basePoints[diff()]+" points per landing"+(timed()?" + 2 per second left. ":". ")+hints[diff()];
+    if(!length && ["hard","insane"].includes(diff()))el("rules-hint").textContent+=" Bank at least 10 jumps for the "+(diff()==="hard"?"difficulty unlock.":"Sun Crown.");
+    el("run-summary").textContent=distance+" · "+(timed()?rules.seconds[diff()]+" s each":"untimed");
     el("invite").hidden=Boolean(room);
     el("scope").textContent=next==="lecture" ? "Questions follow this lecture PDF." : descriptions[next];
-    el("start").disabled=el("invite").disabled=!length;
+    el("start").disabled=el("invite").disabled=!count;
     refresh();
   }
   el("open-board").onclick=event=>{
@@ -127,7 +144,7 @@
   el("close-board").onclick=()=>el("board").close();
   el("board").addEventListener("close",()=>{el("open-board").focus({preventScroll:true});refresh();});
   function resetLink() {
-    race.leave();pace=null;room=null;el("room-panel").hidden=true;el("pace").hidden=true;el("invite-link").hidden=true;el("racers").replaceChildren();
+    race.leave();pace=null;room=null;settingTarget=false;el("pace-score").hidden=true;el("room-panel").hidden=true;el("pace").hidden=true;el("invite-link").hidden=true;el("racers").replaceChildren();
     if (location.hash) history.replaceState(null,"",location.pathname+location.search);
   }
   function fresh(next) {resetLink();el("invite").hidden=false;el("start").textContent="Start run";changeCourse(next);}
@@ -139,10 +156,10 @@
     catch {const input=el(field);input.hidden=false;input.value=url;input.focus();input.select();el(status).textContent="Copy the link below.";}
   }
   function scoreData() {
-    return {steps:steps.join(""),times:times.map(encodeSeconds).join(""),extra};
+    return {steps:steps.join(""),times:times.map(encodeSeconds).join(""),extra,banked};
   }
   function payload() {
-    return {...settings(),seed,length:route.length,...scoreData(),player:board.player,alias:playerAlias,action:"save",publishName:true};
+    return {...settings(),seed,...scoreData(),player:board.player,alias:playerAlias,action:"save",publishName:true};
   }
   let boardWrite=Promise.resolve();
   function postBoard(snapshot) {
@@ -152,14 +169,14 @@
   function setRoomCourse(r){
     const named=Object.hasOwn(names,r.key);
     if(!named)el("line").value=r.key;
-    el("clock-mode").value="timed";el("difficulty").value=r.diff;el("order").value=r.order;
+    el("length").value=r.length?String(r.length):"endless";el("clock-mode").value="timed";el("difficulty").value=r.diff;el("order").value=r.order;
     changeCourse(named?r.key:"lecture");
   }
-  const race=window.createCriticalRace({el,board,edition,
-    setup:()=>({...settings(),seed:randomSeed(),length:rules.makeRoute(lectures,scope(),0,diff(),order()).length}),
+  const race=window.createCriticalRace({el,board,edition,runner,character:()=>character,
+    setup:()=>({...settings(),seed:randomSeed()}),
     allowed:r=>r.diff!=="insane"||unlocked,
     courseLabel:r=>(names[r.key]||sections[r.key.slice(1)]||"Lecture")+" · "+difficultyName(r.diff),
-    enter:r=>{room=r;pace=null;setRoomCourse(r);screen(null,"waiting");el("round").textContent="Waiting for runners";},
+    enter:r=>{turn++;saveTicket++;stopClock();banked=false;bonusActive=false;el("bonus-offer").hidden=true;el("award").hidden=true;runner.home();room=r;pace=null;run=rules.newRun(r.diff);score();setRoomCourse(r);screen(null,"waiting");el("round").textContent="Waiting for runners";},
     begin:(r,late)=>{room=r;setRoomCourse(r);firstClockDelay=late;start();}, depart:()=>home()
   });
   function solution(q) {
@@ -182,9 +199,18 @@
     return frag;
   }
   function ask() {
+    if(!bonusActive && !routeLength() && run.cleared-offset===route.length){
+      const last=route[route.length-1];
+      offset=run.cleared;
+      route=rules.makeRoute(lectures,scope(),seed,diff(),order(),0,++cycle);
+      if(route.length>1 && route[0]===last)[route[0],route[1]]=[route[1],route[0]];
+    }
     turn++;const q=currentQuestion();assisted=false;answers=rules.options(seed,jumpIndex());
-    runner.stage(jumpIndex(),route.length+(bonusActive?1:0));screen("play","question");score();
-    el("round").textContent=bonusActive?"Extra credit · "+difficultyName(currentLevel()):"Jump "+(run.cleared+1)+" / "+route.length+(run.feather?" · 1 feather":"");
+    runner.stage(jumpIndex(),bonusActive ? run.cleared+1 : goal());screen("play","question");score();
+    el("round").textContent=bonusActive?"Extra credit · "+difficultyName(currentLevel()):(routeLength()?"Jump "+(run.cleared+1)+" / "+routeLength():"Endless · Jump "+(run.cleared+1))+(run.feather?" · 1 feather":"");
+    el("bank-run").hidden=!!routeLength()||bonusActive||!run.cleared;
+    el("pace-score").hidden=!pace;
+    if(pace)el("pace-score").textContent="Target "+pace.points.toLocaleString()+" pts";
     el("prompt").innerHTML=q.prompt;
     el("prompt-graph").replaceChildren();el("prompt-graph").hidden=!q.graphPrompt;
     if(q.graphPrompt)el("prompt-graph").append(window.gameGraph(q.graphPrompt));
@@ -204,19 +230,24 @@
   function start() {
     if(diff()==="insane"&&!unlocked)return;
     seed=room?.seed ?? pace?.seed ?? randomSeed();
-    route=rules.makeRoute(lectures,scope(),seed,diff(),order());if(!route.length)return;
+    cycle=0;offset=0;banked=false;route=rules.makeRoute(lectures,scope(),seed,diff(),order(),routeLength());if(!route.length)return;
     historyItems=[];el("recap").open=false;el("prize-panel").hidden=true;el("insane-start").hidden=true;
     stopClock();run=rules.newRun(diff());steps=[];times=[];extra="";bonusActive=false;
     bonus=rules.bonusQuestion(lectures,scope(),seed,diff());el("bonus-offer").hidden=true;runner.difficulty(diff());
     saveTicket++;
     el("award").hidden=true;el("previous").hidden=true;el("save-score").hidden=true;el("saved").textContent="";el("share-state").textContent="";
-    runner.reset(route.length);if(el("board").open)el("board").close();ask();
+    runner.reset(goal());if(el("board").open)el("board").close();ask();
   }
   function recap() {
     el("recap").hidden=!historyItems.length;
     el("recap-list").replaceChildren(...historyItems.map(({q,caption})=>{
       const li=document.createElement("li"), entry=document.createElement("details"), heading=document.createElement("summary");
-      heading.textContent=caption;entry.append(heading,solution(q));li.append(entry);return li;
+      heading.textContent=caption;entry.append(heading);
+      entry.addEventListener("toggle",function reveal(){
+        if(!entry.open)return;
+        entry.append(solution(q));entry.removeEventListener("toggle",reveal);
+      });
+      li.append(entry);return li;
     }));
   }
   function showPrize(crown) {
@@ -224,7 +255,7 @@
     el("prize-symbol").textContent=crown?"☀":"✦";
     el("prize-name").textContent=crown?"Sun Crown earned":"Insane mode unlocked";
     el("prize-detail").textContent=crown?"You outran the eruption. Your crown is saved on this device.":"You cleared Hard. The volcano course is open. Bring an integer or fraction for every jump.";
-    el("insane-start").hidden=crown;
+    el("insane-start").hidden=crown;el("encore").hidden=!crown;
   }
   async function saveScore() {
     if(!timed()||!board.nicknameOK(playerAlias))return;
@@ -241,13 +272,15 @@
     stopClock();screen("feedback",won?"won":"lost");score();el("round").textContent=won?"Finish line":"Run over";
     let unlockedNow=false;
     if(won && !bonusMessage){
-      runner.celebrate(diff()==="insane");
-      if(diff()==="insane"){board.stored("sun-crown","yes");personalRecord();showPrize(true);}
-      if(diff()==="hard"&&!unlocked){unlocked=true;unlockedNow=true;board.stored("insane","yes");gate();showPrize(false);}
+      if(banked)runner.stage(run.cleared,run.cleared);
+      const qualifies=!banked||run.cleared>=10;
+      runner.celebrate(diff()==="insane"&&qualifies);
+      if(qualifies && diff()==="insane"){board.stored("sun-crown","yes");personalRecord();showPrize(true);}
+      if(qualifies && diff()==="hard"&&!unlocked){unlocked=true;unlockedNow=true;board.stored("insane","yes");gate();showPrize(false);}
     }
-    el("verdict").textContent=bonusMessage || (won ? (diff()==="insane"?"You conquered the volcano!":unlockedNow?"Congratulations! Hard cleared.":"Course cleared!") : "Run over");
+    el("verdict").textContent=bonusMessage || (won ? (banked?"Endless score banked.":diff()==="insane"?"You conquered the volcano!":unlockedNow?"Congratulations! Hard cleared.":"Course cleared!") : "Run over");
     const summary=document.createElement("p");
-    summary.textContent=run.points+" points · "+run.cleared+" / "+route.length+" jumps cleared · Longest streak "+run.best+".";
+    summary.textContent=run.points+" points · "+run.cleared+(routeLength()?" / "+routeLength():"")+" jumps cleared · Longest streak "+run.best+".";
     el("result").replaceChildren(summary);recap();
     if(pace){const p=document.createElement("p");p.textContent=run.points===pace.points?"You tied the target!":run.points>pace.points?"You beat the target!":"Target to beat: "+pace.points+" points.";el("result").append(p);}
     if(won){const d=document.createElement("details"),label=document.createElement("summary");label.textContent=bonusMessage?"Show bonus solution":"Show final solution";d.append(label,solution(q));el("result").append(d);}
@@ -259,8 +292,16 @@
     el("bonus-description").textContent=(diff()==="insane"?"One final numeric challenge": "One "+difficultyName(rules.nextLevel(diff()))+" question")+
       (timed()?" · "+rules.seconds[rules.nextLevel(diff())]+" seconds.":".")+" Your completed run is already banked.";
     if(run.points&&timed()){el("nickname").value=board.stored("nickname")||"";el("name-error").textContent="";el("nickname").removeAttribute("aria-invalid");el("saved").textContent="";}
+    if(settingTarget && run.points && timed())el("share-state").textContent="Your target is ready. Copy the challenge link to send this course to a friend.";
     el("verdict").focus({preventScroll:true});
   }
+  el("bank-run").onclick=()=>{
+    if(state!=="question"||bonusActive||routeLength()||!run.cleared)return;
+    if(deadline && !remaining()){submit(null,true);return;}
+    banked=true;run.ended=true;
+    if(room)race.progress(scoreData());
+    finish(historyItems.findLast(h=>h.hit).q,true);
+  };
   function submit(index,timeout=false) {
     if(state!=="question")return;
     const q=currentQuestion();
@@ -273,10 +314,10 @@
       index=answers.indexOf(rules.equivalent(input,q.answer)?0:1);
     } else if(!el("choices").children[index]||el("choices").children[index].disabled)return;
     const left=timed()&&!timeout?Math.min(rules.seconds[currentLevel()],Math.floor(remaining())):0, hit=answers[index]===0;
-    const landing=bonusActive?{hit}:rules.land(run,seed,route.length,index,assisted,left);
+    const landing=bonusActive?{hit}:rules.land(run,seed,goal(),index,assisted,left);
     if(!landing)return;
     const isBonus=bonusActive, ticket=turn, points=rules.earned(currentLevel(),left);
-    state="moving";stopClock();
+    state="moving";el("bank-run").hidden=true;stopClock();
     for(const b of el("choices").children)b.disabled=true;
     if(q.choices)el("choices").children[index].classList.add("taken");
     el("number-answer").disabled=true;el("signal").hidden=true;
@@ -287,7 +328,7 @@
       steps.push(index+(assisted?4:0));times.push(left);
     }
     if(hit)showAward(points);else el("award").hidden=true;
-    historyItems.push({q,caption:(isBonus?"Bonus":"Jump "+(hit?run.cleared:run.cleared+1))+" · "+(hit?"Correct":timeout?"Time expired":"Missed")});
+    historyItems.push({q,hit,caption:(isBonus?"Bonus":"Jump "+(hit?run.cleared:run.cleared+1))+" · "+(hit?"Correct":timeout?"Time expired":"Missed")});
     score();if(room)race.progress(scoreData());
     if(!hit){
       const scene=el("rails");
@@ -296,7 +337,7 @@
     runner.travel(index,hit,()=>{
       if(ticket!==turn)return;
       if(isBonus){
-        bonusActive=false;if(hit || diff()==="insane")runner.celebrate(diff()==="insane");
+        bonusActive=false;if(hit || diff()==="insane")runner.celebrate(diff()==="insane"&&(!banked||run.cleared>=10));
         finish(q,true,hit?"Bonus cleared! +"+points+" points.":timeout?"Bonus time expired. Route cleared!":"Route cleared! Bonus missed.");return;
       }
       if(landing.retry){
@@ -317,7 +358,7 @@
   el("skip-bonus").onclick=()=>{el("bonus-offer").hidden=true;el("advance").focus();};
   function loadLink() {
     const [kind,encoded]=location.hash.slice(1).split("=");
-    if(!["room","race"].includes(kind)||!encoded||encoded.length>650)return;
+    if(!["room","race"].includes(kind)||!encoded||encoded.length>200000)return;
     const notify=msg=>{el("pace").hidden=false;el("target").textContent=msg;};
     if(kind==="room"){
       if(/^[A-HJ-NP-Z2-9]{6}$/.test(encoded))race.showHub(encoded);
@@ -327,35 +368,38 @@
     try {
       const data=JSON.parse(decodeURIComponent(encoded));if(!Array.isArray(data))return;
       if(data[0]!==edition){notify("This invite used an earlier question bank. Start a fresh run or ask for a new invite.");return;}
-      const [,key,initial,value]=data;
-      const [difficulty,ordering]=data.slice(-2);
-      if(!Number.isInteger(initial)||initial<0||initial>0xffffffff||!levels.includes(difficulty)||!["ordered","shuffled"].includes(ordering)||
-        !(Object.hasOwn(names,key)||typeof key==="string"&&key.startsWith("s")&&Object.hasOwn(sections,key.slice(1))))return;
+      const [,key,initial,length,difficulty,ordering,alias,transcript,clock,bonusCode,didBank,avatar]=data;
+      if(data.length!==12||!Number.isInteger(initial)||initial<0||initial>0xffffffff||
+        ![0,5,10,15].includes(length)||!levels.includes(difficulty)||!["ordered","shuffled"].includes(ordering)||
+        !(Object.hasOwn(names,key)||typeof key==="string"&&key.startsWith("s")&&Object.hasOwn(sections,key.slice(1)))||
+        (alias!==null&&!board.nicknameOK(alias)) || typeof didBank!=="boolean" || (didBank&&length!==0) ||
+        typeof transcript!=="string"||!/^[0-7]+$/.test(transcript)||typeof clock!=="string"||
+        clock.length!==2*transcript.length||!/^[0-9a-z]+$/.test(clock)||typeof bonusCode!=="string"||!/^([0-3][0-9a-z]{2})?$/.test(bonusCode))return;
       if(difficulty==="insane"&&!unlocked){notify("Clear a Hard course, then reopen this challenge.");return;}
-      let target;
-      if(kind==="race"){
-        if(data.length!==9||typeof value!=="string"||!/^[0-7]{1,61}$/.test(value)||(data[4]!==null&&!board.valid(data[4])))return;
-        const length=rules.makeRoute(lectures,key,initial,difficulty,ordering).length,r=rules.newRun(difficulty);
-        const clock=data[5],bonusCode=data[6];
-        if(typeof clock!=="string"||!/^[0-9a-z]+$/.test(clock)||clock.length!==2*value.length||typeof bonusCode!=="string"||!/^([0-3][0-9a-z]{2})?$/.test(bonusCode))return;
-        for(let j=0;j<value.length;j++){
-          const code=Number(value[j]);
-          if(!rules.land(r,initial,length,code%4,code>=4,parseInt(clock.slice(2*j,2*j+2),36)))return;
-        }
-        if(!r.ended||!r.points)return;target=r.points;
-        if(bonusCode){
-          const left=parseInt(bonusCode.slice(1),36);
-          if(r.cleared!==length||left>rules.seconds[rules.nextLevel(difficulty)])return;
-          if(rules.options(initial,length)[Number(bonusCode[0])]===0)target+=rules.earned(rules.nextLevel(difficulty),left);
-        }
+      const replay=rules.newRun(difficulty);
+      for(let i=0;i<transcript.length;i++){
+        const code=Number(transcript[i]),left=parseInt(clock.slice(2*i,2*i+2),36);
+        if(!rules.land(replay,initial,length||Infinity,code%4,code>=4,left))return;
       }
-      el("clock-mode").value="timed";el("difficulty").value=difficulty;el("order").value=ordering;
-      if(!Object.hasOwn(names,key))el("line").value=key;
-      changeCourse(names[key]?key:"lecture");
-      pace={seed:initial,points:target};notify((data[4]===null?"Target score · ":"Challenge from "+board.name(data[4])+" · ")+target+" points on the same questions.");
+      if(!replay.points || (didBank ? replay.ended : !replay.ended))return;
+      let target=replay.points;
+      if(bonusCode){
+        const left=parseInt(bonusCode.slice(1),36);
+        if((!didBank&&replay.cleared!==length)||left>rules.seconds[rules.nextLevel(difficulty)])return;
+        if(rules.options(initial,replay.cleared)[Number(bonusCode[0])]===0)target+=rules.earned(rules.nextLevel(difficulty),left);
+      }
+      setRoomCourse({key,diff:difficulty,order:ordering,length});
+      pace={seed:initial,points:target};
+      const runnerName=runner.characters.find(a=>a.id===avatar)?.name;
+      notify((alias?"Beat "+alias+"’s score":"Score to beat")+" · "+target+" points on the same questions"+(runnerName?" · "+runnerName:"."));
+      
+      el("start").textContent="Play score challenge";
     } catch {notify("This invite is incomplete. You can start a fresh run.");}
   }
-  el("share").onclick=()=>copy(link("race",[edition,scope(),seed,steps.join(""),playerAlias,times.map(encodeSeconds).join(""),extra,diff(),order()]),"race-link","share-state","Challenge link copied.");
+  el("score-challenge").onclick=()=>{
+    el("race-hub").close();resetLink();settingTarget=true;el("clock-mode").value="timed";changeCourse(course);start();
+  };
+  el("share").onclick=()=>copy(link("race",[edition,scope(),seed,routeLength(),diff(),order(),board.alias(),steps.join(""),times.map(encodeSeconds).join(""),extra,banked,character]),"race-link","share-state","Score challenge copied. Your friend will play the same jumps.");
   el("save-score").onsubmit=e=>{
     e.preventDefault();if(!run.ended||!run.points)return;
     const input=el("nickname"), raw=input.value.trim();
@@ -382,7 +426,7 @@
   el("home").onclick=el("change").onclick=home;
   el("insane-start").onclick=()=>{if(!unlocked)return;home();el("difficulty").value="insane";fresh(course);start();};
   el("course").onchange=()=>fresh(el("course").value);
-  el("difficulty").onchange=el("order").onchange=el("clock-mode").onchange=()=>fresh(course);
+  el("difficulty").onchange=el("length").onchange=el("order").onchange=el("clock-mode").onchange=()=>fresh(course);
   el("line").onchange=()=>fresh("lecture");el("dismiss-pace").onclick=()=>fresh(course);el("start").onclick=start;
   const nativeFull=()=>document.fullscreenElement||document.webkitFullscreenElement;
   function syncFull(){
@@ -441,7 +485,7 @@
       const request=new URLSearchParams(location.search).get("lecture");
       const section=sections[request?.slice(1)] ? request : "s"+(lectures.find(l=>!l.review&&l.id===request)?.questions[0]?.section||"");
       const single=Object.hasOwn(sections,section.slice(1));if(single)el("line").value=section;
-      screen("lobby","lobby");changeCourse(single?"lecture":request==="mixed"?"final":"exam3");loadLink();el("load-state").textContent="";
+      screen("lobby","lobby");changeCourse(single?"lecture":request==="exam3"?"exam3":"final");loadLink();el("load-state").textContent="";
     }catch{const retry=document.createElement("button");retry.textContent="Retry";retry.onclick=load;el("load-state").replaceChildren("Questions couldn’t load. ",retry);}
   }
   load();

@@ -608,5 +608,286 @@
     "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
     "pdfPage": 23,
     "pdf": "../downloads/october-2-continuity-class-notes.pdf"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#finding-global-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 65,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "A differentiable function has a local minimum at an interior point \\(c\\). By Fermat’s theorem, what is \\(f'(c)\\)?",
+    "why": "A differentiable graph has a horizontal tangent at an interior local extremum.",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "Always undefined"
+    ],
+    "reference": "Adapted from the Exam 3 oral review"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "To decide if \\(f(c)\\) is a global maximum, how much of the domain matters?",
+    "why": "The word global compares this output with every output in the domain.",
+    "choices": [
+      "The entire domain",
+      "Only a small neighborhood of \\(c\\)",
+      "Only positive inputs",
+      "Only the endpoints"
+    ],
+    "reference": "Adapted from the Exam 3 oral review"
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#primer",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 79,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "An optimization problem asks for the “objective.” What is that?",
+    "why": "The objective is the quantity you want to make largest or smallest.",
+    "choices": [
+      "The quantity to maximize or minimize",
+      "The list of allowed inputs",
+      "Any fixed number in the problem",
+      "The units of measurement"
+    ],
+    "reference": "Adapted from the Exam 3 oral review"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#parabola",
+    "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+    "pdfPage": 58,
+    "handoutPage": 58,
+    "level": 1,
+    "prompt": "In related rates a length changes with time. When you differentiate the equation, should you treat that length as a function of time or as a fixed number?",
+    "why": "The changing length has a time derivative that must appear in the rate equation.",
+    "choices": [
+      "A function of time",
+      "A fixed number",
+      "Always equal to time",
+      "Always equal to its rate"
+    ],
+    "reference": "Adapted from the Exam 3 oral review"
+  },
+  {
+    "section": "4.7",
+    "topic": "lhospital",
+    "source": "../lectures/lhopitals-rule.html#check-the-form",
+    "pdf": "../downloads/lhopitals-rule.pdf",
+    "pdfPage": 85,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "Which pair lists the two quotient forms covered by l’Hospital’s rule, assuming its other hypotheses hold?",
+    "why": "The rule addresses ratios whose parts both vanish or both grow without bound in magnitude.",
+    "choices": [
+      "\\(0/0\\) and \\(\\infty/\\infty\\)",
+      "\\(0/1\\) and \\(1/0\\)",
+      "\\(1/1\\) and \\(0/1\\)",
+      "\\(1/\\infty\\) and \\(0/\\infty\\)"
+    ],
+    "reference": "Adapted from the Exam 3 oral review"
+  },
+  {
+    "topic": "tangent",
+    "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
+    "section": "3.1",
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "pdfPage": 24,
+    "level": 1,
+    "prompt": "The derivative at a point is the slope of which line to the graph there?",
+    "why": "The derivative gives the instantaneous slope of the graph.",
+    "graphPrompt": "rising-origin",
+    "choices": [
+      "Its tangent line",
+      "The vertical axis",
+      "Every secant line through the point",
+      "Every horizontal line"
+    ]
+  },
+  {
+    "topic": "ivt",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "pdfPage": 23,
+    "level": 1,
+    "prompt": "A continuous temperature rises from 2° to 8°. Which theorem guarantees it reached 5° along the way?",
+    "why": "The temperature is continuous and 5 is between the starting and ending values.",
+    "choices": [
+      "Intermediate Value Theorem",
+      "Product rule",
+      "Chain rule",
+      "Second derivative test"
+    ]
+  },
+  {
+    "topic": "continuity",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "section": "2.5",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "pdfPage": 18,
+    "level": 1,
+    "prompt": "At the input \\(x=2\\), the illustrated unbroken line has \\(f(2)=4\\). If \\(f\\) is continuous there, what is its limit there?",
+    "why": "Continuity identifies the limiting value with the actual value.",
+    "graphPrompt": "line-intact",
+    "choices": [
+      "\\(4\\)",
+      "\\(2\\)",
+      "\\(0\\)",
+      "Undefined"
+    ]
+  },
+  {
+    "topic": "derivative",
+    "source": "../lectures/10-derivative-function.html#differentiability-implies-continuity",
+    "section": "3.2",
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "pdfPage": 27,
+    "level": 1,
+    "prompt": "If a function is differentiable at an interior input, what must be true there?",
+    "why": "A derivative at the point guarantees continuity there.",
+    "choices": [
+      "It is continuous.",
+      "It has a maximum.",
+      "Its derivative is zero.",
+      "Its value is positive."
+    ]
+  },
+  {
+    "topic": "squeeze",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "section": "2.4",
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "pdfPage": 16,
+    "level": 1,
+    "prompt": "Near \\(a\\), two functions bound a third from below and above. If both bounds tend to 5, what does the squeeze theorem give for the middle function?",
+    "why": "The two bounding limits agree, forcing the same limit in between.",
+    "choices": [
+      "\\(5\\)",
+      "\\(0\\)",
+      "\\(10\\)",
+      "\\(25\\)"
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 67,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "Which derivative does the first derivative test examine for a sign change?",
+    "why": "The sign of the first derivative indicates whether the original function is rising or falling.",
+    "choices": [
+      "\\(f'\\)",
+      "\\(f\\)",
+      "\\(f''\\)",
+      "\\(f'''\\)"
+    ]
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "pdfPage": 68,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "Which derivative being positive on an interval guarantees concavity up there?",
+    "why": "Positivity of the second derivative means the first derivative increases.",
+    "choices": [
+      "\\(f''\\)",
+      "\\(f\\)",
+      "\\(f'\\)",
+      "\\(1/f\\)"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#global-and-local-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 64,
+    "handoutPage": 1,
+    "level": 4,
+    "prompt": "Assume only that \\(f\\) is continuous on \\([-1,1]\\) and that \\(f(-1)=f(1)=0\\). How many of these statements are guaranteed? (1) A global maximum exists. (2) A global minimum exists. (3) An interior zero exists.",
+    "why": "The first two follow from the Extreme Value Theorem. The function \\(1-x^2\\) shows that the third can fail.",
+    "answer": "2"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#finding-global-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 65,
+    "handoutPage": 2,
+    "level": 4,
+    "prompt": "Count how many of these functions refute “every interior critical number gives a local extremum” at zero: \\(x^3\\), \\(|x|\\), and \\(x^5\\).",
+    "why": "Both odd powers have horizontal tangents and increase through zero. The absolute value instead has a local minimum there.",
+    "answer": "2"
+  },
+  {
+    "topic": "ivt",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "section": "2.6",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "pdfPage": 23,
+    "level": 4,
+    "prompt": "A continuous function on \\([0,3]\\) takes values \\(-1,2,-3,1\\) at \\(x=0,1,2,3\\) in order. What is the smallest possible number of distinct zeros?",
+    "why": "Each of the three disjoint open intervals has opposite endpoint signs. Connecting successive data points by straight segments gives exactly three crossings.",
+    "answer": "3"
+  },
+  {
+    "topic": "continuity",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "section": "2.5",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "pdfPage": 18,
+    "level": 2,
+    "prompt": "Which graph fails to be continuous at \\(x=2\\) even though its function value and its two-sided limit both exist there?",
+    "why": "At \\(x=2\\) the redefined line has limit 4 and actual value 7.",
+    "choices": [
+      "Rising line with an open circle at (2, 4) and a filled point at (2, 7).",
+      "Unbroken rising line through (2, 4).",
+      "Rising line with an open circle at (2, 4).",
+      "Rising line with an open circle at (0, 2)."
+    ],
+    "graphChoices": [
+      "line-redefined",
+      "line-intact",
+      "line-hole",
+      "line-other-hole"
+    ]
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "source": "../lectures/18-maxima-and-minima.html#finding-global-extrema",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "pdfPage": 65,
+    "handoutPage": 2,
+    "level": 3,
+    "prompt": "A student points to the bottom of the pictured \\(y=|x|\\) and claims every interior minimum has a horizontal tangent. Which hypothesis from Fermat’s theorem matters here?",
+    "why": "There is an interior minimum at zero, but the corner has distinct one-sided slopes.",
+    "graphPrompt": "corner",
+    "choices": [
+      "Differentiability at the minimum",
+      "Positivity of the minimum",
+      "An unbounded domain",
+      "A second derivative everywhere"
+    ]
   }
 ]

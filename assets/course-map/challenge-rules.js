@@ -1,5 +1,4 @@
 window.junctionRules = (() => {
-  const sequence = ["limits","continuity","derivative-motion","derivative-rules","chain","inverse-implicit","related-rates","global-extrema","extrema","sketch","optimize","lhospital"];
   function generator(initial) {
     let state = initial >>> 0;
     return () => {
@@ -28,33 +27,40 @@ window.junctionRules = (() => {
   function poolSize(lectures,key,difficulty) {
     return questionPools(lectures,key,difficulty).reduce((count,pool)=>count+pool.questions.length,0);
   }
-  function makeRoute(lectures, key, seed, difficulty, order) {
-    const random=generator(seed), poolsByLecture=questionPools(lectures,key,difficulty);
-    const sources=poolsByLecture.map(pool=>pool.lecture);
-    const ordered=order==="ordered";
-    const pools=poolsByLecture.map(({questions})=>ordered ? [...questions].reverse() : shuffle(questions,random));
-    const exam=key==="final" || key==="exam3";
-    const available=pools.reduce((n,p)=>n+p.length,0);
-    const limit = Math.min(available, {easy:8,medium:10,hard:exam ? 20 : 12,insane:exam ? 15 : (key === "theory" || key === "vocab") ? 12 : 8}[difficulty]);
-    const deck = [];
-    // Rotate among lectures so a ten-question review covers the course.
-    while (deck.length < limit) {
-      const remaining=pools.filter(p=>p.length);
-      for (const pool of ordered ? remaining : shuffle(remaining,random)) {
-        deck.push(pool.pop());
-        if (deck.length === limit) break;
+  function makeRoute(lectures,key,seed,difficulty,order,length=10,cycle=0) {
+    const random=generator(seed ^ Math.imul(cycle,0x9e3779b1));
+    const groups=questionPools(lectures,key,difficulty);
+    const all=groups.flatMap(g=>g.questions);
+    const limit=length===0 || length==="endless" ? all.length : Math.min(Number(length),all.length);
+    const bySection=new Map();
+    for(const q of all){
+      const section=q.section;
+      if(!bySection.has(section))bySection.set(section,[]);
+      bySection.get(section).push(q);
+    }
+    const pools=[...bySection.values()].map(pool=>shuffle(pool,random));
+    const chosen=[];
+    while(chosen.length<limit){
+      for(const pool of shuffle(pools.filter(p=>p.length),random)){
+        chosen.push(pool.pop());
+        if(chosen.length===limit)break;
       }
     }
-    // Include a graph when a mixed review has one at this difficulty.
-    if (exam && !deck.some(q => q.graphChoices || q.graphPrompt)) {
-      const plots = poolsByLecture.flatMap(p=>p.questions.filter(q=>q.graphChoices || q.graphPrompt));
-      if (plots.length) deck[deck.length-1] = plots[ordered?0:Math.floor(random()*plots.length)];
+    // Substitute plots from the same section first, retaining lecture coverage.
+    const visual=q=>q.graphChoices||q.graphPrompt;
+    const selected=new Set(chosen);
+    const plots=shuffle(all.filter(q=>visual(q)&&!selected.has(q)),random);
+    let needed=Math.ceil(limit/4)-chosen.filter(visual).length;
+    for(const q of plots){
+      if(needed<=0)break;
+      let i=chosen.findIndex(p=>!visual(p)&&p.section===q.section);
+      if(i<0)i=chosen.findIndex(p=>!visual(p));
+      if(i<0)break;
+      chosen[i]=q;needed--;
     }
-    if (order === "shuffled") return shuffle(deck, random);
-    const chosen = new Set(deck);
-    const sorted = [...sources].sort((a,b) => sequence.indexOf(a.id)-sequence.indexOf(b.id))
-      .flatMap(l => l.questions.filter(q => chosen.has(q)));
-    return sorted.sort((a,b) => (a.section || "").localeCompare(b.section || "", "en", {numeric:true}));
+    if(order==="shuffled")return shuffle(chosen,random);
+    const positions=new Map(all.map((q,i)=>[q,i]));
+    return chosen.sort((a,b)=>(a.section||"").localeCompare(b.section||"","en",{numeric:true})||positions.get(a)-positions.get(b));
   }
   const levels = ["easy","medium","hard","insane"];
   const seconds = {easy:75,medium:65,hard:55,insane:45};

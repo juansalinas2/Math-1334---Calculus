@@ -241,7 +241,7 @@
   },
   {
     "topic": "rates",
-    "level": 1,
+    "level": 2,
     "prompt": "A point on \\(y=x^2\\) has \\(dx/dt=2\\). Which equation relates its vertical velocity to its horizontal position?",
     "choices": [
       "\\(dy/dt=4x\\)",
@@ -257,7 +257,7 @@
   },
   {
     "topic": "rates",
-    "level": 1,
+    "level": 2,
     "prompt": "A cube has edge length \\(s(t)\\). Which expression gives the time derivative of its volume?",
     "choices": [
       "\\(3s^2\\,ds/dt\\)",
@@ -273,7 +273,7 @@
   },
   {
     "topic": "rates",
-    "level": 1,
+    "level": 2,
     "prompt": "The top radius of an inverted cone is 2 m and its height is 6 m. Which relation holds between water radius \\(r\\) and water depth \\(h\\)?",
     "choices": [
       "\\(r=h/3\\)",
@@ -457,5 +457,482 @@
     ],
     "why": "Insert the signed volume rate and side length: \\(-12=3(2)^2\\,ds/dt=12\\,ds/dt\\).",
     "handoutPage": 1
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#balloon",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 60,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "A spherical balloon’s volume is increasing. What is the sign of \\(dV/dt\\) while air is entering at a positive rate?",
+    "why": "The positive volume change per unit time gives a positive derivative.",
+    "choices": [
+      "Positive",
+      "Negative",
+      "Zero",
+      "Undefined"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#cube",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 60,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "A cube’s side is shrinking at 2 cm/s. What is its signed side-length rate?",
+    "why": "A decreasing length has a negative rate.",
+    "choices": [
+      "\\(-2\\) cm/s",
+      "\\(2\\) cm/s",
+      "\\(0\\) cm/s",
+      "\\(-4\\) cm/s"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#rectangle",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 60,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "A rectangle’s width stays fixed as its length grows. What is the time derivative of its width?",
+    "why": "A constant width has derivative zero.",
+    "choices": [
+      "Zero",
+      "Its length",
+      "Its area",
+      "Its perimeter"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#triangle",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 61,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "A triangle’s area is measured in cm² and time in minutes. Which units belong to its area rate?",
+    "why": "Divide the units of the changing area by the time unit.",
+    "choices": [
+      "cm²/min",
+      "cm/min",
+      "cm³/min",
+      "min/cm²"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#ladder",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 61,
+    "handoutPage": 3,
+    "level": 1,
+    "prompt": "A rigid 10-foot ladder slides down a wall. Which length stays constant?",
+    "why": "The ladder is the fixed hypotenuse.",
+    "choices": [
+      "The ladder",
+      "The height of its top",
+      "The foot’s distance from the wall",
+      "The distance its top has fallen"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#boat",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 62,
+    "handoutPage": 3,
+    "level": 1,
+    "prompt": "A boat is pulled closer to a dock. What is the sign of the rate of its horizontal distance from the dock?",
+    "why": "Closing the gap means its distance is decreasing.",
+    "choices": [
+      "Negative",
+      "Positive",
+      "Zero at every instant",
+      "Positive on the way in and out"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#cone",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 63,
+    "handoutPage": 4,
+    "level": 1,
+    "prompt": "Water enters an upright, tip-down cone. As the water deepens, what happens to its surface radius?",
+    "why": "Higher cross sections of the cone are wider.",
+    "choices": [
+      "It grows",
+      "It shrinks",
+      "It stays fixed",
+      "It immediately becomes the tank’s full radius"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#shadow",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 63,
+    "handoutPage": 4,
+    "level": 1,
+    "prompt": "A person stands still while their shadow’s tip moves 2 m/s farther from them. How fast is the shadow length increasing?",
+    "why": "With the person stationary, the change in shadow length is the tip’s displacement along the shadow.",
+    "choices": [
+      "2 m/s",
+      "0 m/s",
+      "1 m/s",
+      "4 m/s"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#parabola",
+    "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+    "pdfPage": 58,
+    "handoutPage": 58,
+    "level": 1,
+    "prompt": "A point on the right branch of the pictured parabola travels rightward. Is its height increasing or decreasing?",
+    "why": "On the right branch, moving right raises the point.",
+    "graphPrompt": "bowl",
+    "choices": [
+      "Increasing",
+      "Decreasing",
+      "Constant",
+      "Alternately increasing and decreasing"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#circle",
+    "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+    "pdfPage": 59,
+    "handoutPage": 59,
+    "level": 1,
+    "prompt": "A point moves on a circle of fixed radius 5. What is the rate of its distance from the center?",
+    "why": "Its distance from the center is the constant radius.",
+    "choices": [
+      "Zero",
+      "5 each second",
+      "25 each second",
+      "Its angular speed"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#constant-product",
+    "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+    "pdfPage": 59,
+    "handoutPage": 59,
+    "level": 1,
+    "prompt": "A rectangle keeps the same positive area. If its width grows, what must its length do?",
+    "why": "The product of the two sides stays fixed.",
+    "choices": [
+      "Shrink",
+      "Grow",
+      "Stay fixed",
+      "Become zero"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#shadow",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 63,
+    "handoutPage": 4,
+    "level": 1,
+    "prompt": "A shadow has length \\(s(t)\\). Which symbol means its rate of change with time?",
+    "why": "The derivative of length with respect to time is \\(ds/dt\\).",
+    "choices": [
+      "\\(ds/dt\\)",
+      "\\(s^2\\)",
+      "\\(s+t\\)",
+      "\\(st\\)"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#rectangle",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 60,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "The length of a rectangle is increasing at 3 cm/s. If \\(L\\) denotes its length, what is \\(dL/dt\\)?",
+    "why": "Increasing at three centimeters per second means a signed rate of \\(+3\\).",
+    "choices": [
+      "\\(3\\) cm/s",
+      "\\(-3\\) cm/s",
+      "\\(0\\) cm/s",
+      "\\(1/3\\) cm/s"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#balloon",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 60,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "A balloon’s radius grows at 1 cm/s. Its diameter is twice the radius. How quickly does its diameter grow?",
+    "why": "Differentiate \\(D=2r\\) to get \\(D'=2r'\\).",
+    "choices": [
+      "2 cm/s",
+      "1 cm/s",
+      "4 cm/s",
+      "0.5 cm/s"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#triangle",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 61,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "A triangle’s base stays 4 cm long. Its height grows, so its area does what?",
+    "why": "In \\(A=bh/2\\), multiplying the height by a fixed positive factor preserves its increase.",
+    "choices": [
+      "Increases",
+      "Decreases",
+      "Stays fixed",
+      "Becomes its height"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#rectangle",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 60,
+    "handoutPage": 2,
+    "level": 2,
+    "prompt": "A garden is 2 m wide at all times. Its length grows at 3 m/min. How fast does its area grow?",
+    "why": "Here \\(A=2L\\), so \\(dA/dt=2(3)=6\\).",
+    "choices": [
+      "6 m²/min",
+      "3 m²/min",
+      "5 m²/min",
+      "2 m²/min"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#rectangle",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 60,
+    "handoutPage": 2,
+    "level": 2,
+    "prompt": "A square has perimeter \\(P=4s\\). Its perimeter is shrinking at 8 cm/s. What is the signed rate of its side length?",
+    "why": "Differentiate to get \\(-8=4\\,ds/dt\\).",
+    "choices": [
+      "\\(-2\\) cm/s",
+      "\\(2\\) cm/s",
+      "\\(-4\\) cm/s",
+      "\\(-32\\) cm/s"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#shadow",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 63,
+    "handoutPage": 4,
+    "level": 2,
+    "prompt": "A person’s shadow length is half their distance from the lamp. As they walk away at 4 ft/s, how fast does the shadow lengthen?",
+    "why": "With \\(s=x/2\\), the lengthening speed is half the walking speed.",
+    "choices": [
+      "2 ft/s",
+      "4 ft/s",
+      "6 ft/s",
+      "8 ft/s"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#ladder",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 61,
+    "handoutPage": 3,
+    "level": 2,
+    "prompt": "A ladder tip slides down a wall. At that moment its height obeys \\(8\\,dy/dt=-16\\) in feet and seconds. What is its signed vertical velocity?",
+    "why": "Dividing the rate equation by 8 gives \\(dy/dt=-2\\).",
+    "choices": [
+      "\\(-2\\) ft/s",
+      "\\(2\\) ft/s",
+      "\\(-8\\) ft/s",
+      "\\(-1/2\\) ft/s"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#cube",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 60,
+    "handoutPage": 1,
+    "level": 2,
+    "prompt": "A cube’s side changes at 1 cm/s. Its volume satisfies \\(dV/dt=3s^2\\,ds/dt\\). How fast is its volume growing when \\(s=2\\) cm?",
+    "why": "At side 2, the multiplier is \\(3(2^2)=12\\).",
+    "choices": [
+      "12 cm³/s",
+      "6 cm³/s",
+      "8 cm³/s",
+      "3 cm³/s"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#boat",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 62,
+    "handoutPage": 3,
+    "level": 2,
+    "prompt": "A dock rope shortens at 2 m/s. At one instant the rope length \\(L\\) and boat distance \\(x\\) satisfy \\(dx/dt=(3/2)dL/dt\\). What is the boat’s speed toward the dock?",
+    "why": "Its signed velocity is \\((3/2)(-2)=-3\\) m/s, whose magnitude is 3.",
+    "choices": [
+      "3 m/s",
+      "2 m/s",
+      "1 m/s",
+      "4 m/s"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#cone",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 63,
+    "handoutPage": 4,
+    "level": 2,
+    "prompt": "A cone’s water radius is always one third of its depth. If the radius grows at 2 cm/min, how fast does the depth grow?",
+    "why": "The depth is three times the radius, so its rate is three times as large.",
+    "choices": [
+      "6 cm/min",
+      "2 cm/min",
+      "\\(2/3\\) cm/min",
+      "3 cm/min"
+    ]
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#rectangle",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 60,
+    "handoutPage": 2,
+    "level": 4,
+    "prompt": "A rectangle has fixed perimeter 20 m. Its length grows at 2 m/s. When its width is 6 m, how fast does its area grow in m²/s?",
+    "why": "Since \\(L+W=10\\), length is 4 and width shrinks at 2. Thus \\(A'=2(6)+4(-2)=4\\).",
+    "answer": "4"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#cone",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 63,
+    "handoutPage": 4,
+    "level": 4,
+    "prompt": "Water in a tip-down cone satisfies \\(V=kh^3\\) with \\(k>0\\). At one instant its volume is 8 L and rises at 6 L/min. If the depth is 4 cm, what is its depth rate in cm/min?",
+    "why": "Relative rates give \\(V'/V=3h'/h\\). Thus \\(h'=(4/3)(6/8)=1\\).",
+    "answer": "1"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#cube",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 60,
+    "handoutPage": 1,
+    "level": 4,
+    "prompt": "A cube’s edge grows at a constant 1 cm/s. Its volume is \\(s^3\\). At edge length 2 cm, how fast is its volume-growth rate changing, in cm³/s²?",
+    "why": "From \\(V'=3s^2\\) we get \\(V''=6s\\), or 12 at that instant.",
+    "answer": "12"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#triangle",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 61,
+    "handoutPage": 2,
+    "level": 4,
+    "prompt": "A triangle has base \\(b=4+t\\) and height \\(h=6-2t\\) in cm, with time in minutes. What is the signed second derivative of its area in cm²/min²?",
+    "why": "In \\(A=bh/2\\) the quadratic term is \\(-t^2\\), whose second derivative is \\(-2\\).",
+    "answer": "-2"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#balloon",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 60,
+    "handoutPage": 1,
+    "level": 4,
+    "prompt": "A spherical balloon fills at constant volume rate. Its surface-area growth rate is proportional to \\(r\\,dr/dt\\), while \\(r^2\\,dr/dt\\) stays constant. When radius triples, what fraction of its former surface-area growth rate remains?",
+    "why": "The surface-area growth rate is proportional to \\(1/r\\), so tripling the radius multiplies it by \\(1/3\\).",
+    "answer": "1/3"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#parabola",
+    "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+    "pdfPage": 58,
+    "handoutPage": 58,
+    "level": 4,
+    "prompt": "A point on \\(y=x^2\\) moves horizontally at a constant 2 units/s. Its squared distance from the horizontal axis is \\(y^2=x^4\\). At \\(x=1\\), what is the second time derivative of \\(y^2\\)?",
+    "why": "Differentiating in time gives \\(8x^3\\), then \\(24x^2(2)\\). At \\(x=1\\) this is 48.",
+    "answer": "48"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#shadow",
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "pdfPage": 63,
+    "handoutPage": 4,
+    "level": 4,
+    "prompt": "A light 6 m above the ground casts the shadow of a 2-m person. The tip is always \\(3/2\\) times as far from the lamp as the person. If the tip’s speed increases from 3 to 6 m/s over 2 s, what is the person’s average acceleration in m/s², walking straight away?",
+    "why": "The person’s speeds are 2 and 4 m/s. Their change of 2 m/s over 2 s gives 1 m/s².",
+    "answer": "1"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "source": "../lectures/related-rates.html#parabola",
+    "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+    "pdfPage": 58,
+    "handoutPage": 58,
+    "level": 2,
+    "prompt": "The pictured path is \\(y=x^2\\). A particle passes its vertex with horizontal speed 3. What is its vertical velocity at that instant?",
+    "why": "At the vertex the slope \\(dy/dx\\) is zero, so \\((dy/dx)(dx/dt)=0\\).",
+    "graphPrompt": "bowl",
+    "choices": [
+      "\\(0\\)",
+      "\\(3\\)",
+      "\\(6\\)",
+      "\\(9\\)"
+    ]
   }
 ]

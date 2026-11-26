@@ -4,6 +4,12 @@
   "use strict";
   const tau = 2*Math.PI;
   const windows = {
+    pinch: {x:[-2,4], y:[0,10], dx:1, dy:2},
+    local: {x:[-2,4], y:[-3,6], dx:1, dy:1},
+    objective: {x:[-1,7], y:[-2,10], dx:1, dy:2},
+    circle: {x:[-1,6], y:[-1,6], dx:1, dy:1, equalUnits:true},
+    slopeField: {x:[-2,3], y:[-3,6], dx:1, dy:1},
+    triangle: {x:[-2,14], y:[-2,10], dx:2, dy:2},
     square: {x:[-3,3], y:[-3,3], dx:1, dy:1},
     slopes: {x:[-2,4], y:[-4,6], dx:1, dy:2},
     holes: {x:[-2,4], y:[-2,8], dx:1, dy:2},
@@ -96,6 +102,41 @@
   plot("log","square","An increasing curve for positive x, crossing (1, 0), dropping without bound near zero.",Math.log,{breaks:[0]});
   plot("log-neg","square","A decreasing curve for positive x, crossing (1, 0), rising without bound near zero.",x=>-Math.log(x),{breaks:[0]});
 
+  // Comparison lines are dashed; both curves and exact marked points have text alternatives.
+  const between=(x,a,b)=> x>=a && x<=b;
+  plot("step-mark","local","A horizontal branch at height 3 ends with an open circle at (1, 3). The branch at height −1 begins with a filled point at (1, −1).",x=>x<1?3:-1,{breaks:[1],open:[[1,3]],closed:[[1,-1]]});
+  plot("open-peak","local","A tent rises from (−1, 0) toward the open point (1, 4), then falls to (3, 0). Both endpoints are filled. A separate filled dot is at (1, 1).",x=>between(x,-1,3)?4-2*Math.abs(x-1):NaN,{open:[[1,4]],closed:[[-1,0],[3,0],[1,1]]});
+  plot("ivt-path","local","A continuous curve with filled endpoints (0, −2) and (3, 4), rising throughout and crossing the horizontal axis.",x=>between(x,0,3)?(x+x*x)/2-2:NaN,{closed:[[0,-2],[3,4]]});
+  plot("squeeze-five","pinch","The two enclosing parabolas meet at (1, 5). A solid curve lies between the dashed bounds.",x=>5+(x-1)**2*Math.sin(4*x),{overlays:[x=>5-(x-1)**2,x=>5+(x-1)**2],closed:[[1,5]]});
+  plot("squeeze-zero","square","A wavy solid curve stays between dashed curves y = x squared and y = negative x squared. All meet at the origin.",x=>x===0?0:x*x*Math.sin(1/x),{overlays:[x=>x*x,x=>-x*x]});
+  plot("tangent-one","local","An upward parabola through (1, 1). Its dashed tangent at this point also passes through the marked point (2, 3).",x=>x*x,{overlays:[x=>2*x-1],closed:[[1,1]],guidePoints:[[2,3]]});
+  plot("secant01","local","The dashed secant joins two marked points (0, 0) and (2, 4) on an upward parabola.",x=>x*x,{overlays:[x=>2*x],closed:[[0,0],[2,4]]});
+  plot("line-mapped","local","A rising straight line through the marked points (0, 1), (1, 3), and (2, 5).",x=>2*x+1,{closed:[[0,1],[1,3],[2,5]]});
+  plot("line-outer","slopeField","A falling straight line through the marked points (0, 3), (1, 2), and (2, 1).",x=>3-x,{closed:[[0,3],[1,2],[2,1]]});
+  plot("quarter-circle","circle","A quarter-circle of radius 5 in the first quadrant, joining (0, 5) to (5, 0) through the marked point (3, 4).",x=>between(x,0,5)?Math.sqrt(25-x*x):NaN,{closed:[[0,5],[3,4],[5,0]]});
+  plot("objective-arch","objective","On the closed interval from 0 to 6, a downward parabola has endpoints (0, 0) and (6, 0). Its peak is marked at (3, 9).",x=>between(x,0,6)?x*(6-x):NaN,{closed:[[0,0],[3,9],[6,0]]});
+  plot("rectangle-triangle","triangle","A dashed hypotenuse joins (0, 8) and (12, 0). A rectangle rests on the axes with its opposite corner at the marked point (6, 4).",x=>between(x,0,6)?4:NaN,{overlays:[x=>between(x,0,12)?8-2*x/3:NaN],segments:[[0,0,0,4],[0,0,6,0],[6,0,6,4]],closed:[[6,4]]});
+  plot("paired-slopes","square","Two lines pass through the origin. The solid line goes through (1, 2). The dashed line goes through (1, −1).",x=>2*x,{overlays:[x=>-x],closed:[[1,2]],guidePoints:[[1,-1]]});
+  plot("shifted-zero","local","Two straight lines vanish at x = 1. The solid line also passes through (2, 3); the dashed line passes through (2, 2).",x=>3*(x-1),{overlays:[x=>2*(x-1)],closed:[[1,0],[2,3]],guidePoints:[[2,2]]});
+  plot("closed-extrema","local","Connected line segments join filled points (−1, 0), (0, 3), (1, 1), and (3, 5) in that order.",x=>{
+    if (!between(x,-1,3)) return NaN;
+    return x<=0 ? 3*x+3 : x<=1 ? 3-2*x : 2*x-1;
+  },{closed:[[-1,0],[0,3],[1,1],[3,5]]});
+  plot("area-margin","objective","A rising straight derivative line crosses the horizontal axis at 2, changing from negative to positive.",x=>2*x-4);
+  plot("cost-fall","objective","A falling straight derivative line crosses the horizontal axis at 3, changing from positive to negative.",x=>6-2*x);
+  plot("two-motion","motion","The position is a straight line from the marked point (0, 1) through (2, 5) to (4, 9).",x=>1+2*x,{closed:[[0,1],[2,5],[4,9]]});
+
+  // In lecture sign diagrams the columns are intervals and the dots are derivative zeros.
+  const signs = new Map();
+  function signGraph(id,symbol,cuts,signsAcross,description) {
+    signs.set(id,{symbol,cuts,signsAcross,description});
+  }
+  signGraph("first-alternates","f′",[-1,1],["+","−","+"],"Sign chart for f prime. Positive before −1, negative between −1 and 1, and positive after 1. Zeros at −1 and 1.");
+  signGraph("first-touches","f′",[0],["+","+"],"Sign chart for f prime. Positive on both sides of 0 and zero at 0.");
+  signGraph("second-alternates","f″",[-2,1],["−","+","−"],"Sign chart for f double prime. Negative before −2, positive between −2 and 1, and negative after 1. Zeros at −2 and 1.");
+  signGraph("second-touches","f″",[1],["+","+"],"Sign chart for f double prime. Positive on both sides of 1 and zero at 1.");
+  signGraph("velocity-sign","v",[2,4],["−","+","−"],"The velocity is negative before 2, positive from 2 to 4, then negative. It vanishes at 2 and 4.");
+
   const ns = "http://www.w3.org/2000/svg";
   const paper = "var(--plot-paper, #13212c)", grid = "var(--plot-grid, #344854)";
   const ink = "var(--plot-ink, #d4e5ea)", curve = "var(--plot-curve, #77e7cc)", guide = "var(--plot-guide, #f5ba70)";
@@ -111,16 +152,40 @@
   function format(value) {
     return String(Number(value.toFixed(2))).replace("-", "−");
   }
+  function diagramRoot(description,viewBox) {
+    const root=svg("svg",{viewBox,role:"img","aria-label":description,"class":"game-graph",focusable:"false"});
+    root.style.cssText="display:block;width:100%;height:auto;max-width:32rem;margin:.25rem auto;flex:none;";
+    const title=svg("title",{});title.textContent=description;root.append(title);
+    return root;
+  }
+  function signDiagram({symbol,cuts,signsAcross,description}) {
+    const root=diagramRoot(description,"0 0 260 86");
+    root.append(svg("rect",{width:260,height:86,rx:8,fill:paper}));
+    const text=(x,y,value,size,color=ink)=>{
+      const node=svg("text",{x,y,"text-anchor":"middle","font-size":size,"font-family":"system-ui,sans-serif",fill:color});
+      node.textContent=value;root.append(node);
+    };
+    text(16,44,symbol,15);
+    const left=34,right=244;
+    root.append(svg("line",{x1:left,x2:right,y1:46,y2:46,stroke:ink,"stroke-width":1.5}));
+    const width=(right-left)/signsAcross.length;
+    signsAcross.forEach((sign,i)=>text(left+(i+.5)*width,35,sign,24,curve));
+    cuts.forEach((cut,i)=>{
+      const x=left+(i+1)*width;
+      root.append(svg("circle",{cx:x,cy:46,r:3.5,fill:curve}));
+      text(x,68,format(cut),15);
+    });
+    return root;
+  }
   window.gameGraph = function(id) {
+    if (signs.has(id)) return signDiagram(signs.get(id));
     const plot=plots.get(id);
     if (!plot) return null;
     const {x,y,dx,dy,xLabels,horizontal="x"}=plot.view;
-    const w=215,h=118,left=31,top=13;
+    const h=118,w=plot.view.equalUnits?h:215,left=plot.view.equalUnits?66:31,top=13;
     const px = v => w*(v-x[0])/(x[1]-x[0]);
     const py = v => h*(y[1]-v)/(y[1]-y[0]);
-    const root=svg("svg",{viewBox:"0 0 260 154",role:"img","aria-label":plot.description,"class":"game-graph",focusable:"false"});
-    root.style.cssText="display:block;width:100%;height:auto;max-width:32rem;margin:.25rem auto;flex:none;";
-    const title=svg("title",{});title.textContent=plot.description;root.append(title);
+    const root=diagramRoot(plot.description,"0 0 260 154");
     root.append(svg("rect",{x:0,y:0,width:260,height:154,rx:8,fill:paper}));
     const chart=svg("svg",{x:left,y:top,width:w,height:h,viewBox:"0 0 "+w+" "+h,overflow:"hidden"});
     root.append(chart);
@@ -146,23 +211,28 @@
     }
     // Sample each continuous branch separately. Never join opposite sides of an asymptote.
     const edges=[x[0],...(plot.breaks??[]).filter(v=>v>x[0]&&v<x[1]),x[1]];
-    for(let j=1;j<edges.length;j++) {
+    function drawBranch(fn,j,color,width,dash) {
       const lo=edges[j-1],hi=edges[j],n=Math.ceil((px(hi)-px(lo))*1.5);
       const commands=[];
       let drawing=false;
       for(let i=0;i<=n;i++) {
         // Approach an excluded endpoint from the inside even for a finite jump.
         const fraction=i===0&&j>1 ? .001/n : i===n&&j<edges.length-1 ? 1-.001/n : i/n;
-        const u=lo+(hi-lo)*fraction, v=plot.fn(u);
+        const u=lo+(hi-lo)*fraction, v=fn(u);
         if (!Number.isFinite(v)) {drawing=false;continue;}
         const screenY=Math.max(-2*h,Math.min(3*h,py(v)));
         commands.push((drawing?"L":"M")+px(u).toFixed(2)+" "+screenY.toFixed(2));
         drawing=true;
       }
-      chart.append(svg("path",{d:commands.join(" "),fill:"none",stroke:curve,"stroke-width":2.6,"stroke-linejoin":"round","stroke-linecap":"round"}));
+      chart.append(svg("path",{d:commands.join(" "),fill:"none",stroke:color,"stroke-width":width,"stroke-dasharray":dash,"stroke-linejoin":"round","stroke-linecap":"round"}));
     }
-    for(const [points,fill] of [[plot.open??[],paper],[plot.closed??[],curve]]) {
-      for(const [u,v] of points) chart.append(svg("circle",{cx:px(u),cy:py(v),r:4,fill,stroke:curve,"stroke-width":2.2}));
+    for (const fn of plot.overlays??[]) {
+      for(let j=1;j<edges.length;j++) drawBranch(fn,j,guide,2,"5 3");
+    }
+    for(let j=1;j<edges.length;j++) drawBranch(plot.fn,j,curve,2.6,"");
+    for(const [a,b,c,d] of plot.segments??[]) line(px(a),py(b),px(c),py(d),curve,2.6);
+    for(const [points,fill] of [[plot.guidePoints??[],guide],[plot.open??[],paper],[plot.closed??[],curve]]) {
+      for(const [u,v] of points) chart.append(svg("circle",{cx:px(u),cy:py(v),r:4,fill,stroke:fill===guide?guide:curve,"stroke-width":2.2}));
     }
     return root;
   };

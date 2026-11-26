@@ -487,7 +487,8 @@
     "why": "Its domain starts at 0, so nearby inputs in the domain approach from the right.",
     "source": "../lectures/06-continuity.html#one-sided-continuity",
     "section": "2.5",
-    "pdf": "../downloads/october-2-continuity-class-notes.pdf"
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "graphPrompt": "root-right"
   },
   {
     "topic": "continuity",
@@ -540,7 +541,7 @@
   {
     "topic": "ivt",
     "level": 1,
-    "prompt": "A continuous function has \\(f(0)=-2\\) and \\(f(2)=12\\). Which target height must occur between the endpoints?",
+    "prompt": "A function continuous on \\([0,2]\\) has \\(f(0)=-2\\) and \\(f(2)=12\\). Which target height must occur between the endpoints?",
     "choices": [
       "\\(0\\)",
       "\\(13\\)",
@@ -620,7 +621,7 @@
   {
     "topic": "ivt",
     "level": 2,
-    "prompt": "A continuous function takes values \\(5\\) at \\(x=1\\) and \\(2\\) at \\(x=4\\). What does the IVT guarantee about height 3?",
+    "prompt": "A function continuous on \\([1,4]\\) takes values \\(5\\) at \\(x=1\\) and \\(2\\) at \\(x=4\\). What does the IVT guarantee about height 3?",
     "choices": [
       "It occurs at least once in \\((1,4)\\).",
       "It occurs exactly at \\(x=3\\).",
@@ -976,6 +977,944 @@
       "\\(14\\)"
     ],
     "why": "The polynomial is continuous, and \\(-2<5<12\\). The theorem guarantees an interior input with value 5.",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 1,
+    "prompt": "Classify the break at \\(x=2\\) in the graph shown.",
+    "choices": [
+      "Removable",
+      "Jump",
+      "Infinite",
+      "No break"
+    ],
+    "why": "The nearby heights agree, and the point is missing.",
+    "source": "../lectures/06-continuity.html#types-of-discontinuities",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 2,
+    "graphPrompt": "line-hole"
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 1,
+    "prompt": "Classify the break at \\(x=0\\) in the graph shown.",
+    "choices": [
+      "Jump",
+      "Removable",
+      "Infinite",
+      "No break"
+    ],
+    "why": "The horizontal rays approach different finite heights.",
+    "source": "../lectures/06-continuity.html#types-of-discontinuities",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 2,
+    "graphPrompt": "sign"
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 1,
+    "prompt": "Classify the break at \\(x=-1\\) in the graph shown.",
+    "choices": [
+      "Infinite",
+      "Removable",
+      "Jump",
+      "No break"
+    ],
+    "why": "The graph becomes unbounded next to the vertical line.",
+    "source": "../lectures/06-continuity.html#types-of-discontinuities",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 2,
+    "graphPrompt": "inverse"
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 1,
+    "prompt": "The filled dot sits above a hole in this line. What could repair the break at input 2?",
+    "choices": [
+      "Move the filled dot down into the hole.",
+      "Move the filled dot up one unit.",
+      "Delete the filled dot and leave the hole open.",
+      "Change only the line at input 0."
+    ],
+    "why": "Continuity requires the value at 2 to equal the nearby line’s height.",
+    "source": "../lectures/06-continuity.html#types-of-discontinuities",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 2,
+    "graphPrompt": "line-redefined"
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 1,
+    "prompt": "The graph of \\(f(x)=x+2\\) is continuous at \\(1\\). What is \\(\\lim_{x\\to1}f(x)\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "The limiting height equals the filled height \\(f(1)=3\\).",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 1,
+    "graphPrompt": "line-intact"
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 1,
+    "prompt": "The graph of \\(f(x)=x^2\\) is continuous at \\(1\\). What is \\(\\lim_{x\\to1}f(x)\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(0\\)"
+    ],
+    "why": "The limiting height equals the filled height \\(f(1)=1\\).",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 1,
+    "graphPrompt": "bowl"
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 1,
+    "prompt": "The graph of \\(f(x)=|x|\\) is continuous at \\(0\\). What is \\(\\lim_{x\\to0}f(x)\\)?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(1/2\\)"
+    ],
+    "why": "The limiting height equals the filled height \\(f(0)=0\\).",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 1,
+    "graphPrompt": "corner"
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 1,
+    "prompt": "If a two-sided limit equals 3, what function value at that input gives continuity?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "Continuity requires the function value and limit to agree.",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 1,
+    "prompt": "Which graph feature tells you the assigned function value?",
+    "choices": [
+      "A filled point",
+      "An open circle",
+      "A vertical asymptote",
+      "The nearest gridline"
+    ],
+    "why": "A filled point is included in the graph.",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 1,
+    "graphPrompt": "line-redefined"
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 1,
+    "prompt": "Where is \\(f(x)=x^2\\) continuous?",
+    "choices": [
+      "At every real number",
+      "Only at \\(x=0\\)",
+      "Only at positive numbers",
+      "Only at negative numbers"
+    ],
+    "why": "Polynomials are continuous on the real line.",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 2,
+    "prompt": "Let \\(f(x)=x+2\\) away from \\(x=1\\). What value at \\(1\\) completes the graph continuously?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "The nearby line approaches \\(1+2=3\\) at the missing point.",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 2,
+    "prompt": "Let \\(f(x)=x+3\\) away from \\(x=-1\\). What value at \\(-1\\) completes the graph continuously?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "The nearby line approaches \\(-1+3=2\\) at the missing point.",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 2,
+    "prompt": "Let \\(f(x)=x+1\\) away from \\(x=2\\). What value at \\(2\\) completes the graph continuously?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "The nearby line approaches \\(2+1=3\\) at the missing point.",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 2,
+    "prompt": "For \\(x<0\\) let \\(f(x)=x+1\\); for \\(x\\ge0\\) let \\(f(x)=x+k\\). Which \\(k\\) makes the two pieces meet?",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(0\\)"
+    ],
+    "why": "At zero the left-hand limit is \\(1\\) and the value from the right is \\(k\\).",
+    "source": "../lectures/06-continuity.html#problems-choosing-constants-for-continuity",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 2,
+    "prompt": "For \\(x<0\\) let \\(f(x)=x+3\\); for \\(x\\ge0\\) let \\(f(x)=x+k\\). Which \\(k\\) makes the two pieces meet?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "At zero the left-hand limit is \\(3\\) and the value from the right is \\(k\\).",
+    "source": "../lectures/06-continuity.html#problems-choosing-constants-for-continuity",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 2,
+    "prompt": "As \\(x\\to1\\), \\(g(x)\\to-2\\). If \\(F(t)=t^2+1\\), find \\(\\lim_{x\\to1}F(g(x))\\).",
+    "choices": [
+      "\\(5\\)",
+      "\\(-3\\)",
+      "\\(3\\)",
+      "\\(-5\\)"
+    ],
+    "why": "The outer function is continuous. Its value at −2 is 5.",
+    "source": "../lectures/06-continuity.html#continuity-and-composition",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 2,
+    "prompt": "On its real domain, where is \\(1/(x-2)\\) continuous?",
+    "choices": [
+      "At every \\(x\\ne2\\)",
+      "Only at \\(x=2\\)",
+      "Only for \\(x>2\\)",
+      "Only for \\(x<2\\)"
+    ],
+    "why": "The denominator vanishes only at 2. A rational function is continuous everywhere it is defined.",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 2,
+    "prompt": "Given the graph of \\(\\sqrt{x}\\), which statement verifies continuity at its left endpoint?",
+    "choices": [
+      "Its right-hand limit and value at zero both equal 0.",
+      "Its left-hand limit at zero equals 0.",
+      "It has real values on both sides of zero.",
+      "Its right-hand limit at zero equals 1."
+    ],
+    "why": "The domain only approaches zero from the right.",
+    "source": "../lectures/06-continuity.html#one-sided-continuity",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 2,
+    "graphPrompt": "root-right"
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 2,
+    "prompt": "The two finite branch heights at zero are −1 and 1 in the graph. Can a new value for \\(f(0)\\) make it continuous?",
+    "choices": [
+      "No, the one-sided limits differ.",
+      "Yes, set it to 0.",
+      "Yes, set it to 1.",
+      "Yes, set it to −1."
+    ],
+    "why": "Changing the single point does not change either one-sided limit.",
+    "source": "../lectures/06-continuity.html#types-of-discontinuities",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 2,
+    "graphPrompt": "sign"
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 2,
+    "prompt": "What value fills the hole of this graph at \\(x=0\\) continuously?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "The open circle lies at (0, 2), the height approached from both sides.",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 1,
+    "graphPrompt": "line-other-hole"
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "A piecewise graph uses \\(x^2\\) for \\(x\\le0\\) and \\(mx+b\\) for \\(0<x<2\\). At \\(x=2\\) it joins the constant branch \\(y=6\\). Which \\((m,b)\\) makes the entire graph continuous?",
+    "choices": [
+      "\\((3,0)\\)",
+      "\\((0,3)\\)",
+      "\\((6,0)\\)",
+      "\\((3,6)\\)"
+    ],
+    "why": "Continuity at 0 forces \\(b=0\\). The join at 2 then requires \\(2m=6\\).",
+    "source": "../lectures/06-continuity.html#problems-choosing-constants-for-continuity",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "Near zero, \\(f(x)=x/|x|\\) for \\(x\\ne0\\). Which transformation can be filled continuously at zero?",
+    "choices": [
+      "\\(f(x)^2\\)",
+      "\\(2f(x)\\)",
+      "\\(f(x)+1\\)",
+      "\\(f(x)^3\\)"
+    ],
+    "why": "The one-sided values are −1 and 1. Squaring makes both equal 1.",
+    "source": "../lectures/06-continuity.html#types-of-discontinuities",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 2,
+    "graphPrompt": "sign"
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 3,
+    "prompt": "A line bridges two branches continuously. At \\(x=0\\) it joins \\(y=(x+1)^2\\). At \\(x=2\\) it joins \\(y=3-x\\). What must the slope of the bridge be?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)"
+    ],
+    "why": "The two joining heights are both 1, so the bridge is horizontal.",
+    "source": "../lectures/06-continuity.html#problems-choosing-constants-for-continuity",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "A piecewise graph uses \\((x^2-1)/(x-1)\\) to the left of 1, a line \\(mx+b\\) between 1 and 3, and \\(2x\\) to the right of 3. If both joins are continuous, find \\(b\\).",
+    "answer": "0",
+    "why": "Cancel the left fraction to obtain a limiting height of 2. The other join has height 6. The connecting line has slope 2 and intercept 0.",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "Let \\(G(x)=(x^2+kx-6)/(x-2)\\) away from 2. Choose \\(k\\) so that a continuous filling is possible. What must \\(G(2)\\) then be?",
+    "answer": "5",
+    "why": "Vanishing at 2 gives \\(4+2k-6=0\\), so \\(k=1\\). The numerator factors as \\((x-2)(x+3)\\), and the nearby height tends to 5.",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "Let \\(f(x)=x^2-1\\) on the left of 2 and \\(f(x)=k(x-2)+3\\) on the right. Set \\(f(2)=3\\). What \\(k\\) makes the quotient \\([f(x)-3]/(x-2)\\) fillable continuously at 2?",
+    "answer": "4",
+    "why": "The left quotient is \\((x^2-4)/(x-2)=x+2\\) with limit 4. The right quotient is identically \\(k\\).",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "Near \\(x=1\\), two branches of \\(f\\) approach heights \\(-2\\) and \\(4\\). For which \\(k\\) can \\((f(x)-k)^2\\) be filled continuously at 1?",
+    "answer": "1",
+    "why": "Equal squares require equal distances to the two heights. Their midpoint is 1.",
+    "source": "../lectures/06-continuity.html#types-of-discontinuities",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "Two removable holes of a graph lie at \\((0,2)\\) and \\((2,1)\\). A new rule assigns \\(mx+b\\) at each missing input. For continuity at both holes, find \\(m+b\\).",
+    "answer": "3/2",
+    "why": "The intercept must be 2. The required slope is \\((1-2)/2=-1/2\\). Add to get \\(3/2\\).",
+    "source": "../lectures/06-continuity.html#problems-choosing-constants-for-continuity",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "Let \\(f(x)=|x-1|/(x-1)\\) for \\(x\\ne1\\). We form \\(g(x)=f(x)^2+af(x)+2\\). If \\(g\\) can be filled continuously at 1, what height fills the hole?",
+    "answer": "3",
+    "why": "The one-sided values of \\(f\\) are −1 and 1, so the heights of \\(g\\) are \\(3-a\\) and \\(3+a\\). They agree only at 3.",
+    "source": "../lectures/06-continuity.html#types-of-discontinuities",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "The continuous filling of \\(F(x)=(x^2-4)/(x-2)\\) has height 4 at 2. A new function takes values \\([F(x)-4]/(x-2)\\) for \\(x\\ne2\\). What is its continuous filling at 2?",
+    "answer": "1",
+    "why": "For nearby \\(x\\), \\(F(x)=x+2\\). The new quotient is \\((x-2)/(x-2)=1\\).",
+    "source": "../lectures/06-continuity.html#continuity-at-a-point",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 1,
+    "prompt": "The water depth in feet changes continuously from \\(1\\) to \\(5\\). Which reading must occur in between?",
+    "choices": [
+      "\\(3\\)",
+      "\\(6\\)",
+      "\\(0\\)",
+      "\\(7\\)"
+    ],
+    "why": "3 lies strictly between the starting and ending readings.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 1,
+    "prompt": "The altitude in miles changes continuously from \\(4\\) to \\(1\\). Which reading must occur in between?",
+    "choices": [
+      "\\(2\\)",
+      "\\(5\\)",
+      "\\(0\\)",
+      "\\(6\\)"
+    ],
+    "why": "2 lies strictly between the starting and ending readings.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 1,
+    "prompt": "The temperature in degrees changes continuously from \\(-2\\) to \\(2\\). Which reading must occur in between?",
+    "choices": [
+      "\\(0\\)",
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)"
+    ],
+    "why": "0 lies strictly between the starting and ending readings.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 1,
+    "prompt": "The distance from a starting point in meters changes continuously from \\(0\\) to \\(6\\). Which reading must occur in between?",
+    "choices": [
+      "\\(4\\)",
+      "\\(7\\)",
+      "\\(-1\\)",
+      "\\(8\\)"
+    ],
+    "why": "4 lies strictly between the starting and ending readings.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 1,
+    "prompt": "Which pair of endpoint values has opposite signs?",
+    "choices": [
+      "\\(-1,2\\)",
+      "\\(1,2\\)",
+      "\\(-1,-2\\)",
+      "\\(2,3\\)"
+    ],
+    "why": "One value is negative and the other is positive.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 1,
+    "prompt": "When a continuous graph passes from below the horizontal axis to above it, what must it cross?",
+    "choices": [
+      "The horizontal axis",
+      "The vertical line at input 1",
+      "The point (0, 0)",
+      "The line at height 3"
+    ],
+    "why": "Its height passes through zero.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 1,
+    "prompt": "The graph of \\(f(x)=x+2\\) is continuous on \\([0,2]\\). Which of these heights lies strictly between its endpoint heights?",
+    "choices": [
+      "\\(3\\)",
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(5\\)"
+    ],
+    "why": "The endpoint heights are 2 and 4.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6,
+    "graphPrompt": "line-intact"
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 1,
+    "prompt": "The sine wave rises continuously from 0 to 1 on \\([0,\\pi/2]\\). Which height must it hit in the interior?",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(2\\)",
+      "\\(-1\\)",
+      "\\(-2\\)"
+    ],
+    "why": "One-half lies between 0 and 1.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6,
+    "graphPrompt": "sin"
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 1,
+    "prompt": "If \\(f(c)=0\\), what name do we give the input \\(c\\)?",
+    "choices": [
+      "A zero of the function",
+      "A vertical asymptote",
+      "A jump",
+      "An endpoint by definition"
+    ],
+    "why": "A zero is an input where the function value equals zero.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 1,
+    "prompt": "A continuous graph rises from height 1 to height 3. Which output must occur strictly between those endpoints?",
+    "choices": [
+      "\\(2\\)",
+      "\\(0\\)",
+      "\\(4\\)",
+      "\\(-1\\)"
+    ],
+    "why": "An intermediate height between 1 and 3 is 2.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 1,
+    "prompt": "A runner passes continuously from mile marker 1 to mile marker 3. Which mile marker is she guaranteed to pass?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "Every intermediate position occurs.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 1,
+    "prompt": "The IVT gives at least one crossing. Could the continuous graph cross the same height more than once?",
+    "choices": [
+      "Yes",
+      "Only if the function is constant",
+      "Only if a break occurs",
+      "Only if the interval has equal endpoints"
+    ],
+    "why": "A continuous function can revisit an intermediate height.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 2,
+    "prompt": "A continuous function has \\(f(0)=-2\\), \\(f(1)=1\\) and \\(f(2)=3\\). In which adjacent interval(s) do the listed signs guarantee a zero?",
+    "choices": [
+      "Only \\((0,1)\\)",
+      "Only \\((1,2)\\)",
+      "Both intervals",
+      "Neither interval"
+    ],
+    "why": "Check consecutive pairs of values. Opposite signs force an interior zero in that interval.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 2,
+    "prompt": "A continuous function has \\(f(0)=4\\), \\(f(1)=2\\) and \\(f(2)=-1\\). In which adjacent interval(s) do the listed signs guarantee a zero?",
+    "choices": [
+      "Only \\((1,2)\\)",
+      "Only \\((0,1)\\)",
+      "Both intervals",
+      "Neither interval"
+    ],
+    "why": "Check consecutive pairs of values. Opposite signs force an interior zero in that interval.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 2,
+    "prompt": "A continuous function has \\(f(0)=3\\), \\(f(1)=-2\\) and \\(f(2)=1\\). In which adjacent interval(s) do the listed signs guarantee a zero?",
+    "choices": [
+      "Both intervals",
+      "Only \\((0,1)\\)",
+      "Only \\((1,2)\\)",
+      "Neither interval"
+    ],
+    "why": "Check consecutive pairs of values. Opposite signs force an interior zero in that interval.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 2,
+    "prompt": "A continuous function goes from \\(0\\) to \\(8\\). Do these values guarantee an interior point at height \\(3\\)?",
+    "choices": [
+      "Yes, the target is strictly between the endpoint heights.",
+      "No, the target lies outside the endpoint heights.",
+      "Yes, every real target is attained.",
+      "No, endpoint heights can never guarantee an interior point."
+    ],
+    "why": "Compare 3 with the interval of heights from 0 to 8.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 2,
+    "prompt": "A continuous function goes from \\(7\\) to \\(1\\). Do these values guarantee an interior point at height \\(6\\)?",
+    "choices": [
+      "Yes, the target is strictly between the endpoint heights.",
+      "No, the target lies outside the endpoint heights.",
+      "Yes, every real target is attained.",
+      "No, endpoint heights can never guarantee an interior point."
+    ],
+    "why": "Compare 6 with the interval of heights from 1 to 7.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 2,
+    "prompt": "A continuous function goes from \\(1\\) to \\(4\\). Do these values guarantee an interior point at height \\(5\\)?",
+    "choices": [
+      "No, the target lies outside the endpoint heights.",
+      "Yes, every real target is attained.",
+      "Yes, the target is strictly between the endpoint heights.",
+      "No, because the target must equal an endpoint."
+    ],
+    "why": "Compare 5 with the interval of heights from 1 to 4.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 2,
+    "prompt": "A graph jumps from −1 to 1 at zero, as shown. Which IVT hypothesis fails on \\([-1,1]\\)?",
+    "choices": [
+      "Continuity on the whole interval",
+      "Opposite signs at the endpoints",
+      "The target 0 is between the endpoint heights",
+      "The input interval is closed"
+    ],
+    "why": "The graph has a jump at zero.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6,
+    "graphPrompt": "sign"
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 2,
+    "prompt": "A continuous height function \\(h(t)\\) rises from 1 to 5. Which function changes sign and thus certifies a time at height 3?",
+    "choices": [
+      "\\(h(t)-3\\)",
+      "\\(h(t)+3\\)",
+      "\\(h(t)^2\\)",
+      "\\(h(t)-7\\)"
+    ],
+    "why": "Subtract the target height. The endpoint values become −2 and 2.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 2,
+    "prompt": "The graph of \\(f(x)=|x|\\) touches zero. What does it show about a continuous function with positive endpoint values?",
+    "choices": [
+      "It can have a zero between them.",
+      "It must have no zeros.",
+      "It must have two zeros.",
+      "It must be constant."
+    ],
+    "why": "At −1 and 1 the graph has height 1, while the vertex has height 0.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6,
+    "graphPrompt": "corner"
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 2,
+    "prompt": "A continuous function satisfies \\(f(0)=8\\) and \\(f(4)=2\\). Which horizontal line is guaranteed to intersect its graph for \\(0<x<4\\)?",
+    "choices": [
+      "\\(y=3\\)",
+      "\\(y=9\\)",
+      "\\(y=0\\)",
+      "\\(y=-1\\)"
+    ],
+    "why": "Since \\(2<3<8\\), the IVT supplies an interior input.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "For continuous \\(f,g\\) on \\([0,1]\\), the endpoint differences \\(f-g\\) are \\(-2\\) and \\(2\\). How many integer values of \\(k\\) strictly between these differences give a guaranteed interior solution of \\(f=g+k\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "The difference is continuous. Count the integers strictly between its two endpoint values.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "The graph of a continuous function changes sign on each of three disjoint closed intervals. What is the smallest possible number of distinct zeros in their union?",
+    "choices": [
+      "\\(3\\)",
+      "\\(1\\)",
+      "\\(2\\)",
+      "\\(6\\)"
+    ],
+    "why": "Each opposite-sign endpoint pair forces a zero in its own open interval. Three separate crossings attain the bound.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 3,
+    "prompt": "For continuous \\(f,g\\) on \\([0,1]\\), the endpoint differences \\(f-g\\) are \\(4\\) and \\(-1\\). How many integer values of \\(k\\) strictly between these differences give a guaranteed interior solution of \\(f=g+k\\)?",
+    "choices": [
+      "\\(4\\)",
+      "\\(-4\\)",
+      "\\(5\\)",
+      "\\(3\\)"
+    ],
+    "why": "The difference is continuous. Count the integers strictly between its two endpoint values.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "A continuous function takes the nonzero heights \\(-2,1,-1,3\\) in that order at \\(x=0,1,2,3\\). What is the smallest possible number of distinct zeros on \\([0,3]\\)?",
+    "answer": "3",
+    "why": "Each adjacent sign change forces a zero in a different open interval. Joining the listed points with straight segments attains the minimum.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "On \\([0,2]\\), continuous functions \\(f\\) and \\(g\\) have respective values \\((0,3,1)\\) and \\((1,1,2)\\) at \\(x=0,1,2\\). What is the smallest possible number of interior solutions of \\(f=g\\)?",
+    "answer": "2",
+    "why": "The difference has signs negative, positive and negative in that order. Each change forces a different zero, and piecewise-linear interpolation gives exactly two.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "A continuous function takes the nonzero heights \\(2,1,-2,-3\\) in that order at \\(x=0,1,2,3\\). What is the smallest possible number of distinct zeros on \\([0,3]\\)?",
+    "answer": "1",
+    "why": "Each adjacent sign change forces a zero in a different open interval. Joining the listed points with straight segments attains the minimum.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "For continuous \\(f,g\\) on \\([0,1]\\) the endpoint values of \\(f-g\\) are \\(-3\\) and \\(4\\). For how many positive integers \\(k\\) do these data guarantee an interior solution of \\(f-g+1=k\\)?",
+    "answer": "4",
+    "why": "The shifted difference has endpoint heights -2 and 5 in some order. Count the positive integers strictly between them.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "For continuous \\(f,g\\) on \\([0,1]\\) the endpoint values of \\(f-g\\) are \\(-2\\) and \\(5\\). For how many positive integers \\(k\\) do these data guarantee an interior solution of \\(f-g+2=k\\)?",
+    "answer": "6",
+    "why": "The shifted difference has endpoint heights 0 and 7 in some order. Count the positive integers strictly between them.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "For continuous \\(f,g\\) on \\([0,1]\\) the endpoint values of \\(f-g\\) are \\(1\\) and \\(6\\). For how many positive integers \\(k\\) do these data guarantee an interior solution of \\(f-g-2=k\\)?",
+    "answer": "3",
+    "why": "The shifted difference has endpoint heights -1 and 4 in some order. Count the positive integers strictly between them.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "For continuous \\(f,g\\) on \\([0,1]\\) the endpoint values of \\(f-g\\) are \\(3\\) and \\(-4\\). For how many positive integers \\(k\\) do these data guarantee an interior solution of \\(f-g+1=k\\)?",
+    "answer": "3",
+    "why": "The shifted difference has endpoint heights -3 and 4 in some order. Count the positive integers strictly between them.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf",
     "handoutPage": 6
   }
 ]

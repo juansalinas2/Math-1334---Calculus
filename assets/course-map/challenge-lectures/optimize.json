@@ -242,7 +242,7 @@
   },
   {
     "topic": "optimization",
-    "level": 1,
+    "level": 2,
     "prompt": "If \\(x\\) and \\(y\\) are nonnegative and \\(x+y=6\\), which single-variable formula represents their product?",
     "choices": [
       "\\(x(6-x)\\)",
@@ -258,7 +258,7 @@
   },
   {
     "topic": "optimization",
-    "level": 1,
+    "level": 2,
     "prompt": "A cylindrical can must hold \\(54\\pi\\) cm³. Which equation expresses that requirement?",
     "choices": [
       "\\(\\pi r^2h=54\\pi\\)",
@@ -342,37 +342,37 @@
     "topic": "optimization",
     "section": "4.6",
     "level": 2,
-    "prompt": "A flyer has a rectangular printed area of \\(96\\) cm². The printed width is \\(x\\) cm. The left and right margins are each 2 cm, and the top and bottom margins are each 3 cm. Which expression gives the full paper area?",
+    "prompt": "A square of side 12 in becomes a box by cutting a square of side \\(x\\) from each corner. When \\(x=1\\) in, how long is one side of its base?",
     "choices": [
-      "\\((x+4)(96/x+6)\\)",
-      "\\((x+2)(96/x+3)\\)",
-      "\\((x+6)(96/x+4)\\)",
-      "\\(96+4+6\\)"
+      "10 in",
+      "11 in",
+      "9 in",
+      "8 in"
     ],
-    "why": "The printed height is \\(96/x\\). Add both side margins to the width and both vertical margins to the height before multiplying.",
-    "source": "../lectures/optimization.html#primer",
-    "reference": "Exam 3 review worksheet · 7",
-    "pdf": "../downloads/exam-3-review-worksheet.pdf",
-    "handoutPage": 4
+    "why": "Two cuts shorten each 12-inch side, leaving \\(12-2(1)=10\\) inches.",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "reference": "Adapted from Exam 3 review worksheet · 8",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "handoutPage": 2,
+    "pdfPage": 80,
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=4"
   },
   {
     "topic": "optimization",
     "section": "4.6",
     "level": 2,
-    "prompt": "An open box comes from cutting squares of side \\(x\\) from the corners of a 12 cm square. What is the feasible interval for a box with positive volume?",
+    "prompt": "A band charges 10 dollars and sells 120 tickets. Each 1-dollar increase costs it five ticket sales. At a price of 12 dollars, how many tickets does it expect to sell?",
     "choices": [
-      "\\(0<x<6\\)",
-      "\\(0<x<12\\)",
-      "\\(0\\le x\\le6\\)",
-      "\\(0<x<3\\)"
+      "110",
+      "115",
+      "100",
+      "130"
     ],
-    "why": "The height is \\(x\\) and the base side is \\(12-2x\\). Both must be positive for a three-dimensional box.",
-    "source": "../lectures/optimization.html#optimization-problems",
-    "reference": "Exam 3 review worksheet · 8(a)",
-    "pdfPage": 80,
+    "why": "Two increases lose ten sales in total.",
+    "source": "../lectures/optimization.html#harder-problems",
+    "pdfPage": 82,
     "pdf": "../downloads/optimization-worksheet.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf",
-    "handoutPage": 2
+    "handoutPage": 5
   },
   {
     "section": "4.6",
@@ -493,5 +493,435 @@
     "answer": "5/4",
     "why": "The error is \\(4+(m+1)^2+(2m-3)^2=5(m-1)^2+9\\). Moving \\(1/2\\) from its minimizing slope increases the error by \\(5(1/2)^2=5/4\\).",
     "handoutPage": 2
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#primer",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 79,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "You want the largest possible area of a garden. Which quantity are you maximizing?",
+    "why": "The desired quantity is the garden’s area.",
+    "choices": [
+      "Area",
+      "Perimeter",
+      "Width alone",
+      "Fence cost"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#primer",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 79,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "Two nonnegative numbers satisfy \\(x+y=6\\). As \\(x\\) increases, which direction must \\(y\\) move?",
+    "why": "The constraint gives \\(y=6-x\\), a line with negative slope.",
+    "choices": [
+      "It decreases.",
+      "It increases.",
+      "It stays fixed.",
+      "It can move in either direction."
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#primer",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 79,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "A rectangle’s area is fixed at 36 cm². Which equation states this constraint in terms of length \\(L\\) and width \\(W\\)?",
+    "why": "Area is length times width.",
+    "choices": [
+      "\\(LW=36\\)",
+      "\\(L+W=36\\)",
+      "\\(L-W=36\\)",
+      "\\(L/W=36\\)"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 80,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "When you cut a square of side \\(x\\) from each corner and fold up the flaps, what is the height of the box?",
+    "why": "Each folded flap is one cut length high.",
+    "choices": [
+      "\\(x\\)",
+      "\\(2x\\)",
+      "\\(x^2\\)",
+      "\\(4x\\)"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 80,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "A fitted line has a sum of squared errors. Which objective corresponds to the best fit?",
+    "why": "The least-squares fit minimizes that sum.",
+    "choices": [
+      "Make the error sum as small as possible.",
+      "Make the error sum as large as possible.",
+      "Maximize the intercept regardless of data.",
+      "Maximize the slope regardless of data."
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 81,
+    "handoutPage": 3,
+    "level": 1,
+    "prompt": "An open tank must hold as much water as possible using a fixed amount of metal. Which quantity is the objective?",
+    "why": "The tank’s capacity is its volume. The amount of metal is the constraint.",
+    "choices": [
+      "Water volume",
+      "Metal area",
+      "Number of walls",
+      "Number of corners"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 82,
+    "handoutPage": 4,
+    "level": 1,
+    "prompt": "A farmer wants 72 m² of pasture and as little fencing as possible. Which quantity is constrained to a fixed value?",
+    "why": "The fence length is minimized while the area must stay at 72 m².",
+    "choices": [
+      "Pasture area",
+      "Fence length",
+      "Pasture width alone",
+      "Pasture depth alone"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#harder-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 82,
+    "handoutPage": 5,
+    "level": 1,
+    "prompt": "A band is choosing a ticket price to maximize revenue. If it sells 10 tickets at every available price, how does revenue change when the price goes up?",
+    "why": "With sales fixed, revenue is \\(10\\) times the ticket price, an increasing function.",
+    "choices": [
+      "Revenue increases.",
+      "Revenue decreases.",
+      "Revenue stays fixed.",
+      "Revenue first falls and then rises."
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#harder-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 82,
+    "handoutPage": 5,
+    "level": 1,
+    "prompt": "A lifeguard’s total time is 1 minute of running plus a swimming time \\(S\\). How does total time change if \\(S\\) decreases by 1 second and the run stays fixed?",
+    "why": "Total time is a sum. A change in just one summand changes the total by the same amount.",
+    "choices": [
+      "It decreases by 1 second.",
+      "It increases by 1 second.",
+      "It stays fixed.",
+      "It decreases by 1 minute."
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#harder-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 83,
+    "handoutPage": 6,
+    "level": 1,
+    "prompt": "A 24-cm wire is split into two positive lengths. If one piece is \\(x\\) cm, which interval describes its allowed values?",
+    "why": "Both \\(x\\) and \\(24-x\\) must be positive.",
+    "choices": [
+      "\\(0<x<24\\)",
+      "\\(x>24\\)",
+      "\\(x<0\\)",
+      "\\(0<x<1\\) only"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#primer",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 79,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "For the objective “use the least fencing,” which numerical result is best among 18, 20, 22, and 24 meters of fence?",
+    "why": "The smallest feasible amount uses the least fence.",
+    "choices": [
+      "18 m",
+      "20 m",
+      "22 m",
+      "24 m"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 81,
+    "handoutPage": 3,
+    "level": 1,
+    "prompt": "A can must hold exactly 1 liter. Which quantity is fixed?",
+    "why": "Capacity measures volume.",
+    "choices": [
+      "Its volume",
+      "Its radius",
+      "Its height",
+      "Its surface area"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#primer",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 79,
+    "handoutPage": 1,
+    "level": 1,
+    "prompt": "The pictured arch shows an objective on \\([0,3]\\). Where is its maximum?",
+    "why": "The peak has the greatest height on the interval.",
+    "graphPrompt": "arch",
+    "choices": [
+      "At the peak between the ends",
+      "Only at the left endpoint",
+      "Only at the right endpoint",
+      "At both endpoints"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 80,
+    "handoutPage": 2,
+    "level": 1,
+    "prompt": "A model has squared error \\(E(m)=(m-2)^2\\). Which slope makes the error zero?",
+    "why": "A square is zero when the expression being squared is zero.",
+    "choices": [
+      "\\(2\\)",
+      "\\(0\\)",
+      "\\(-2\\)",
+      "\\(4\\)"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 82,
+    "handoutPage": 4,
+    "level": 2,
+    "prompt": "A river replaces one side of a rectangular field. Two 3-m fences run to the river and one 8-m fence runs along the back. What is the total fence length?",
+    "why": "Add the three fenced sides, \\(3+3+8=14\\).",
+    "choices": [
+      "14 m",
+      "22 m",
+      "11 m",
+      "24 m"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#primer",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 79,
+    "handoutPage": 1,
+    "level": 2,
+    "prompt": "Two nonnegative numbers sum to 6. The product is \\(9-(x-3)^2\\). What is its largest possible value?",
+    "why": "The squared term is smallest when it is zero.",
+    "choices": [
+      "\\(9\\)",
+      "\\(6\\)",
+      "\\(3\\)",
+      "\\(12\\)"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 81,
+    "handoutPage": 3,
+    "level": 2,
+    "prompt": "A tank with square base of side 3 m and height 2 m has volume equal to base area times height. What is its volume?",
+    "why": "The base area is 9 m², and \\(9(2)=18\\).",
+    "choices": [
+      "18 m³",
+      "12 m³",
+      "6 m³",
+      "9 m³"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 80,
+    "handoutPage": 2,
+    "level": 2,
+    "prompt": "A box’s volume increases for cut sizes \\(0<x<2\\) and decreases for \\(2<x<6\\). Which cut size gives the maximum if the volume is continuous on \\([0,6]\\)?",
+    "why": "The change from increasing to decreasing occurs at 2.",
+    "choices": [
+      "\\(2\\)",
+      "\\(3\\)",
+      "\\(6\\)",
+      "\\(0\\)"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#harder-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 82,
+    "handoutPage": 5,
+    "level": 2,
+    "prompt": "A 60-m swim at 30 m/min takes how many minutes in the lifeguard’s time objective?",
+    "why": "Time equals distance divided by speed.",
+    "choices": [
+      "\\(2\\)",
+      "\\(1/2\\)",
+      "\\(30\\)",
+      "\\(90\\)"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#harder-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 83,
+    "handoutPage": 6,
+    "level": 2,
+    "prompt": "A 24-cm wire is divided equally between a circle and a square. How long is a side of the square?",
+    "why": "Half the wire is 12 cm. Divide that perimeter among four sides.",
+    "choices": [
+      "3 cm",
+      "6 cm",
+      "12 cm",
+      "4 cm"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 81,
+    "handoutPage": 3,
+    "level": 2,
+    "prompt": "To minimize a closed can’s surface area, use \\(A=2\\pi r^2+2\\pi rh\\). Which part of that expression accounts for both circular ends?",
+    "why": "Two circles of radius \\(r\\) have combined area \\(2\\pi r^2\\).",
+    "choices": [
+      "\\(2\\pi r^2\\)",
+      "\\(2\\pi rh\\)",
+      "\\(\\pi rh\\)",
+      "\\(\\pi r\\)"
+    ]
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 80,
+    "handoutPage": 2,
+    "level": 4,
+    "prompt": "Cutting squares of side \\(x\\) from a square sheet of side \\(s\\) gives volume \\(V=x(s-2x)^2\\). Its derivative is \\((s-2x)(s-6x)\\). For the cut that maximizes positive volume, divide the side length of the box base by its height.",
+    "why": "At the interior root \\(x=s/6\\) the derivative changes from positive to negative. The base side is \\(s-2x=4x\\).",
+    "answer": "4"
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 82,
+    "handoutPage": 4,
+    "level": 4,
+    "prompt": "A rectangular field borders a river. With 24 m of fencing the area is \\(A=x(24-2x)\\), where \\(x\\) is the depth. How many square meters of area are lost if the depth differs from the optimal depth by 1 m?",
+    "why": "Completing the square gives \\(A=72-2(x-6)^2\\). A displacement of 1 costs 2 square meters.",
+    "answer": "2"
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#harder-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 82,
+    "handoutPage": 5,
+    "level": 4,
+    "prompt": "A band’s profit from a whole-dollar ticket increase \\(k\\) is \\(P(k)=C-5(k-8.5)^2\\) for fixed \\(C\\). How many dollars separate the best possible profit from the profit when \\(k=7\\)?",
+    "why": "The nearest integers to 8.5 are 8 and 9. Compared to either, the drop at 7 is \\(5(1.5^2-0.5^2)=10\\).",
+    "answer": "10"
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 81,
+    "handoutPage": 3,
+    "level": 4,
+    "prompt": "An open tank has square base of side \\(x\\) and height \\(h\\). The fixed area satisfies \\(x^2+4xh=B\\). Its maximum-volume design has \\(B=3x^2\\). What fraction of the total metal goes into the walls?",
+    "why": "The base uses \\(x^2=B/3\\), so the four walls use the remaining \\(2B/3\\).",
+    "answer": "2/3"
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#primer",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 79,
+    "handoutPage": 1,
+    "level": 4,
+    "prompt": "A rectangle has fixed area 36 m². Its smallest perimeter is 24 m. If its width is doubled from the optimum while its area stays fixed, how many meters of perimeter are added?",
+    "why": "The optimum is the \\(6\\) by \\(6\\) square. Its new dimensions are 12 and 3, so the perimeter increases from 24 to 30.",
+    "answer": "6"
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "source": "../lectures/optimization.html#harder-problems",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "pdfPage": 83,
+    "handoutPage": 6,
+    "level": 4,
+    "prompt": "A painting’s viewing angle has tangent \\(T(x)=3x/(x^2+4)\\) at distance \\(x>0\\). Two different distances give the same tangent. If one is 8 ft, what is the other distance in feet?",
+    "why": "In \\(3x/(x^2+4)\\), replacing \\(x\\) by \\(4/x\\) leaves the value unchanged. The other solution is \\(4/8=1/2\\).",
+    "answer": "1/2"
   }
 ]

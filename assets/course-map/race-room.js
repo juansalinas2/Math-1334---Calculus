@@ -1,6 +1,6 @@
 // Ready rooms share a server timestamp, course seed and answer order.
 // The public code and numbered seats are separate from each player's private token.
-window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begin,depart,courseLabel}) {
+window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begin,depart,courseLabel,runner,character}) {
   const alphabet="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   let member=board.token(16),resumeCode="";
   try{if(window.performance?.getEntriesByType("navigation")[0]?.type==="reload")resumeCode=sessionStorage.getItem("critical-race-code")||"";}catch{}
@@ -11,18 +11,20 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
     return Array.from(crypto.getRandomValues(new Uint8Array(6)),n=>alphabet[n%alphabet.length]).join("");
   }
   function call(action,fields={},write=true) {
-    return board.request({type:"room6",version:6,...fields,...(write?{action,member}:{})},write);
+    return board.request({type:"room6",version:7,...fields,...(write?{action,member}:{})},write);
   }
   function drawSeats(r){
     const sorted=[...r.racers].sort((a,b)=>Number(a.status==="left")-Number(b.status==="left")||b.points-a.points||b.cleared-a.cleared||a.seat-b.seat);
     el("racers").replaceChildren(...sorted.map(s=>{
       const row=document.createElement("li"),name=document.createElement("b"),status=document.createElement("span"),points=document.createElement("span"),bar=document.createElement("progress");
-      name.className="racer-name";name.textContent="Runner "+s.seat+(s.seat===seat?" (you)":"");
+      name.className="racer-name";const avatar=runner.characters.find(a=>a.id===s.character)||runner.characters[0];
+      name.innerHTML=runner.portrait(avatar.id);
+      name.append(avatar.name+" · P"+s.seat+(s.seat===seat?" (you)":""));
       status.className="racer-status";status.textContent=s.status==="waiting"?(s.ready?"Ready":"Getting ready"):
         ({playing:"On course",finished:"Finished",out:"Run over",left:"Left the room"}[s.status]||"Waiting");
       if(s.seat===r.host)status.textContent+=" · Host";
-      points.className="racer-points";points.textContent=r.startAt?s.points+" pts · "+s.cleared+"/"+r.length:"";
-      bar.value=s.cleared;bar.max=r.length;bar.hidden=!r.startAt;bar.setAttribute("aria-label","Runner "+s.seat+" jumps cleared");
+      points.className="racer-points";points.textContent=r.startAt?s.points+" pts · "+s.cleared+(r.length?"/"+r.length:" jumps"):"";
+      bar.value=s.cleared;bar.max=r.length||Math.max(1,...r.racers.map(s=>s.cleared));bar.hidden=!r.startAt;bar.setAttribute("aria-label","Runner "+s.seat+" jumps cleared");
       row.append(name,status,points,bar);return row;
     }));
   }
@@ -31,7 +33,7 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
     const me=r.racers.find(s=>s.seat===seat), active=r.racers.filter(s=>s.status!=="left");
     const ready=active.filter(s=>s.ready).length,done=Boolean(r.startAt)&&active.every(s=>s.status!=="playing");
     el("room-heading").textContent=r.startAt?(done?"Race results":"Live race"):"Race room";
-    el("room-course").textContent=courseLabel(r)+" · "+r.length+" jumps";
+    el("room-course").textContent=courseLabel(r)+" · "+(r.length?r.length+" jumps":"Endless");
     el("room-name").textContent="You’re Runner "+seat+(r.host===seat?" · Host":"");
     el("room-code").textContent=r.code;
     const toggle=el("room-ready"),launch=el("room-launch");
@@ -54,13 +56,16 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
   }
   function apply(reply,sent){
     if(!current||reply.room.code!==current.code || reply.room.revision<current.revision)return;
+    const newRound=reply.room.round!==current.round;
     current=reply.room;
+    if(newRound){pendingProgress=null;startedRound=0;enter(current);}
+    runner.rivals(current.startAt?current.racers:[],seat);
     // Use the server time at the midpoint of the request, including clients with skewed clocks.
     offset=reply.now-(sent+Date.now())/2;
     draw();tick();
   }
   function schedule(){
-    clearTimeout(poll);if(current)poll=setTimeout(refresh,current.startAt?3500:2000);
+    clearTimeout(poll);if(current)poll=setTimeout(refresh,current.startAt?2200:2000);
   }
   async function refresh(){
     const stamp=generation,sent=Date.now(),r=current;
@@ -96,7 +101,7 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
         if(!allowed(found.room))throw Error("Clear a Hard run to enter this room.");
         roomSettings={};
       }
-      const sent=Date.now(),reply=await call(host?"create":"join",{...roomSettings,code,edition});
+      const sent=Date.now(),reply=await call(host?"create":"join",{...roomSettings,code,edition,character:character()});
       if(stamp!==generation){await call("leave",{code});return;}
       seat=reply.seat;
       try{sessionStorage.setItem("critical-race-code",code);sessionStorage.setItem("critical-race-member",member);}catch{}
@@ -138,7 +143,7 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
   }
   function leave(){
     const r=current;generation++;actionPending=false;pendingProgress=null;current=null;seat=0;startedRound=0;
-    clearTimeout(countdown);clearTimeout(poll);el("room-countdown").hidden=true;el("room-panel").hidden=true;
+    clearTimeout(countdown);clearTimeout(poll);runner.rivals([],0);el("room-countdown").hidden=true;el("room-panel").hidden=true;
     if(r){
       try{sessionStorage.removeItem("critical-race-code");sessionStorage.removeItem("critical-race-member");}catch{}
       call("leave",{code:r.code}).catch(()=>{});

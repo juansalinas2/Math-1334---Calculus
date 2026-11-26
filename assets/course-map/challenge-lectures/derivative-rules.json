@@ -333,7 +333,7 @@
   },
   {
     "topic": "trig",
-    "level": 1,
+    "level": 2,
     "prompt": "For \\(G(x)=3\\sin x-x^2\\), what is \\(G'(0)\\)?",
     "choices": [
       "\\(3\\)",
@@ -575,7 +575,7 @@
   {
     "topic": "trig",
     "section": "3.5",
-    "level": 2,
+    "level": 3,
     "prompt": "To differentiate \\(\\cot x=\\cos x/\\sin x\\), the quotient-rule numerator simplifies to what?",
     "choices": [
       "\\(-\\sin^2x-\\cos^2x=-1\\)",
@@ -828,7 +828,7 @@
     "section": "3.5",
     "topic": "trig",
     "level": 4,
-    "prompt": "For \\(f(x)=x-4\\cos x\\), the two tangents of slope \\(3\\) touch at \\(\\pi/6\\) and \\(5\\pi/6\\). What is the product of the two values of \\(f''\\) there?",
+    "prompt": "For \\(f(x)=x-4\\cos x\\), on \\(0\\le x\\le2\\pi\\) the two tangents of slope \\(3\\) touch at \\(\\pi/6\\) and \\(5\\pi/6\\). What is the product of the two values of \\(f''\\) there?",
     "answer": "-12",
     "why": "Slope \\(3\\) means \\(\\sin x=1/2\\), at \\(\\pi/6\\) and \\(5\\pi/6\\). Since \\(f''=4\\cos x\\), the values are \\(2\\sqrt3\\) and \\(-2\\sqrt3\\), whose product is \\(-12\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes",
@@ -932,5 +932,1042 @@
     "handoutPage": 6,
     "reference": "Exam 2 review worksheet · 9(b)",
     "reviewPdf": "../downloads/exam-2-review-worksheet.pdf#page=6"
+  },
+  {
+    "section": "3.3",
+    "level": 1,
+    "topic": "rules",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(7\\right)\\)?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(7\\)",
+      "\\(x\\)"
+    ],
+    "why": "A constant has zero derivative.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 1,
+    "topic": "rules",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(x\\right)\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(x\\)",
+      "\\(2x\\)"
+    ],
+    "why": "The identity function has slope one.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 1,
+    "topic": "rules",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(x^2\\right)\\)?",
+    "choices": [
+      "\\(2x\\)",
+      "\\(x\\)",
+      "\\(2\\)",
+      "\\(x^3\\)"
+    ],
+    "why": "The power rule lowers the exponent by one.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 1,
+    "topic": "rules",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(x^3\\right)\\)?",
+    "choices": [
+      "\\(3x^2\\)",
+      "\\(3x\\)",
+      "\\(x^2\\)",
+      "\\(3x^3\\)"
+    ],
+    "why": "Multiply by the exponent, then lower it by one.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 1,
+    "topic": "rules",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(5x\\right)\\)?",
+    "choices": [
+      "\\(5\\)",
+      "\\(x\\)",
+      "\\(5x\\)",
+      "\\(1\\)"
+    ],
+    "why": "A line has constant slope.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 1,
+    "topic": "rules",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(-x\\right)\\)?",
+    "choices": [
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(-x\\)",
+      "\\(0\\)"
+    ],
+    "why": "The slope of this line is minus one.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 1,
+    "topic": "rules",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(x+4\\right)\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(4\\)",
+      "\\(5\\)",
+      "\\(x\\)"
+    ],
+    "why": "Adding a constant preserves the slope.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 1,
+    "topic": "rules",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(2x^2\\right)\\)?",
+    "choices": [
+      "\\(4x\\)",
+      "\\(2x\\)",
+      "\\(4x^2\\)",
+      "\\(2\\)"
+    ],
+    "why": "Multiply the derivative of the square by two.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 1,
+    "topic": "rules",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(x^4\\right)\\)?",
+    "choices": [
+      "\\(4x^3\\)",
+      "\\(4x^4\\)",
+      "\\(x^3\\)",
+      "\\(3x^4\\)"
+    ],
+    "why": "The power rule gives four times the cube.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 1,
+    "topic": "rules",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(3-x\\right)\\)?",
+    "choices": [
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(3\\)",
+      "\\(-x\\)"
+    ],
+    "why": "The constant has derivative zero and the coefficient of the linear term is minus one.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 1,
+    "topic": "rules",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(1-x^2\\right)\\)?",
+    "choices": [
+      "\\(-2x\\)",
+      "\\(2x\\)",
+      "\\(1-2x\\)",
+      "\\(-x\\)"
+    ],
+    "why": "The derivative of the constant is zero.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 1,
+    "topic": "rules",
+    "prompt": "The graph is the line \\(y=2x\\). Which number is its derivative everywhere?",
+    "choices": [
+      "\\(2\\)",
+      "\\(0\\)",
+      "\\(-2\\)",
+      "\\(1\\)"
+    ],
+    "why": "Read the slope of the line.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "graphPrompt": "slope-two",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 1,
+    "topic": "rules",
+    "prompt": "If \\(g(x)=4f(x)\\), which factor stays in front when you differentiate?",
+    "choices": [
+      "\\(4\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(2\\)"
+    ],
+    "why": "The constant multiple rule keeps the coefficient.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.5",
+    "level": 1,
+    "topic": "trig",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(\\cos x\\right)\\)?",
+    "choices": [
+      "\\(-\\sin x\\)",
+      "\\(\\sin x\\)",
+      "\\(\\cos x\\)",
+      "\\(-\\cos x\\)"
+    ],
+    "why": "In radians the derivative of cosine is negative sine.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 1,
+    "topic": "trig",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(\\sin x\\right)\\)?",
+    "choices": [
+      "\\(\\cos x\\)",
+      "\\(-\\cos x\\)",
+      "\\(\\sin x\\)",
+      "\\(-\\sin x\\)"
+    ],
+    "why": "In radians the derivative of sine is cosine.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 1,
+    "topic": "trig",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(-\\cos x\\right)\\)?",
+    "choices": [
+      "\\(\\sin x\\)",
+      "\\(-\\sin x\\)",
+      "\\(\\cos x\\)",
+      "\\(-\\cos x\\)"
+    ],
+    "why": "The minus sign cancels the one in the cosine rule.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 1,
+    "topic": "trig",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(-\\sin x\\right)\\)?",
+    "choices": [
+      "\\(-\\cos x\\)",
+      "\\(\\cos x\\)",
+      "\\(-\\sin x\\)",
+      "\\(\\sin x\\)"
+    ],
+    "why": "The constant factor stays in front.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 1,
+    "topic": "trig",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(\\tan x\\right)\\)?",
+    "choices": [
+      "\\(\\sec^2 x\\)",
+      "\\(-\\sec^2 x\\)",
+      "\\(\\tan^2 x\\)",
+      "\\(\\cos x\\)"
+    ],
+    "why": "On its domain, tangent has derivative secant squared.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 1,
+    "topic": "trig",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(2\\cos x\\right)\\)?",
+    "choices": [
+      "\\(-2\\sin x\\)",
+      "\\(2\\sin x\\)",
+      "\\(2\\cos x\\)",
+      "\\(-2\\cos x\\)"
+    ],
+    "why": "Keep the coefficient and differentiate cosine.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 1,
+    "topic": "trig",
+    "prompt": "What is \\(\\dfrac{d}{dx}\\left(1+\\sin x\\right)\\)?",
+    "choices": [
+      "\\(\\cos x\\)",
+      "\\(1+\\cos x\\)",
+      "\\(1-\\cos x\\)",
+      "\\(-\\cos x\\)"
+    ],
+    "why": "The constant disappears and sine differentiates to cosine.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 1,
+    "topic": "trig",
+    "prompt": "When using the usual sine and cosine differentiation rules, how are angles measured?",
+    "choices": [
+      "In radians",
+      "In degrees",
+      "In seconds",
+      "In meters"
+    ],
+    "why": "The standard trig derivative formulas use radians.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 1,
+    "topic": "trig",
+    "prompt": "The graph shows \\(y=\\sin x\\). At its first peak, is the tangent rising, falling, horizontal, or vertical?",
+    "choices": [
+      "Horizontal",
+      "Rising",
+      "Falling",
+      "Vertical"
+    ],
+    "why": "The sine graph is smooth and flat at the peak.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "graphPrompt": "sin",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 1,
+    "topic": "trig",
+    "prompt": "The graph is \\(y=\\cos x\\). Just to the right of zero, is the curve rising or falling?",
+    "choices": [
+      "Falling",
+      "Rising",
+      "Constant on the entire interval",
+      "Vertical on the entire interval"
+    ],
+    "why": "Cosine drops from its starting height of one.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "graphPrompt": "cos",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 1,
+    "topic": "trig",
+    "prompt": "At the origin the sine graph rises. Which sign does its derivative have there?",
+    "choices": [
+      "Positive",
+      "Negative",
+      "Zero",
+      "Undefined"
+    ],
+    "why": "The graph has positive slope as it passes through the origin.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "graphPrompt": "sin",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 1,
+    "topic": "trig",
+    "prompt": "Given \\((\\sin x)'=\\cos x\\) and \\(\\cos 0=1\\), what is the slope of sine at zero?",
+    "choices": [
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-1\\)",
+      "\\(2\\)"
+    ],
+    "why": "Evaluate cosine at zero.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 1,
+    "topic": "trig",
+    "prompt": "Given \\((\\cos x)'=-\\sin x\\) and \\(\\sin 0=0\\), what is the slope of cosine at zero?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)"
+    ],
+    "why": "At the peak the tangent is horizontal.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "graphPrompt": "cos",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.3",
+    "level": 2,
+    "topic": "rules",
+    "prompt": "Let \\(f(x)=x^2+1\\). What is the slope at \\(x=2\\)?",
+    "choices": [
+      "\\(4\\)",
+      "\\(-4\\)",
+      "\\(5\\)",
+      "\\(3\\)"
+    ],
+    "why": "The constant contributes zero, leaving \\(2x\\) for the slope.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 2,
+    "topic": "rules",
+    "prompt": "Let \\(f(x)=x^2+1\\). What is the slope at \\(x=-2\\)?",
+    "choices": [
+      "\\(-4\\)",
+      "\\(4\\)",
+      "\\(-3\\)",
+      "\\(-5\\)"
+    ],
+    "why": "The constant contributes zero, leaving \\(2x\\) for the slope.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 2,
+    "topic": "rules",
+    "prompt": "Let \\(f(x)=x^2+2\\). What is the slope at \\(x=3\\)?",
+    "choices": [
+      "\\(6\\)",
+      "\\(-6\\)",
+      "\\(7\\)",
+      "\\(5\\)"
+    ],
+    "why": "The constant contributes zero, leaving \\(2x\\) for the slope.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 2,
+    "topic": "rules",
+    "prompt": "The product is \\(y=xg(x)\\) with \\(g(0)=3\\) and \\(g'(0)=2\\). What is \\(y'(0)\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "The product rule gives \\(g(x)+xg'(x)\\). At zero only the first term remains.",
+    "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.3",
+    "level": 2,
+    "topic": "rules",
+    "prompt": "The product is \\(y=xg(x)\\) with \\(g(0)=2\\) and \\(g'(0)=3\\). What is \\(y'(0)\\)?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "The product rule gives \\(g(x)+xg'(x)\\). At zero only the first term remains.",
+    "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.3",
+    "level": 2,
+    "topic": "rules",
+    "prompt": "The product is \\(y=xg(x)\\) with \\(g(0)=-1\\) and \\(g'(0)=4\\). What is \\(y'(0)\\)?",
+    "choices": [
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-2\\)"
+    ],
+    "why": "The product rule gives \\(g(x)+xg'(x)\\). At zero only the first term remains.",
+    "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.3",
+    "level": 2,
+    "topic": "rules",
+    "prompt": "If \\(f(x)=2x^2+x\\), what is \\(f'(1)\\)?",
+    "choices": [
+      "\\(5\\)",
+      "\\(-5\\)",
+      "\\(6\\)",
+      "\\(4\\)"
+    ],
+    "why": "The derivative is \\(4x+1\\).",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 2,
+    "topic": "rules",
+    "prompt": "If \\(f(x)=3x^2+x\\), what is \\(f'(2)\\)?",
+    "choices": [
+      "\\(13\\)",
+      "\\(-13\\)",
+      "\\(14\\)",
+      "\\(12\\)"
+    ],
+    "why": "The derivative is \\(6x+1\\).",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.3",
+    "level": 2,
+    "topic": "rules",
+    "prompt": "For \\(x>0\\), what is the slope of \\(y=1/x\\) at \\(x=1\\)?",
+    "choices": [
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-2\\)"
+    ],
+    "why": "The power rule gives \\(-1/x^2\\).",
+    "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
+    "pdfPage": 31,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.3",
+    "level": 2,
+    "topic": "rules",
+    "prompt": "The line is \\(y=-2x\\). What is its second derivative?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)"
+    ],
+    "why": "The first derivative is the constant \\(-2\\), whose derivative is zero.",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "graphPrompt": "slope-neg-two",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.5",
+    "level": 2,
+    "topic": "trig",
+    "prompt": "For \\(f(x)=2\\sin x\\), find \\(f'(0)\\).",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "The slope is \\(2\\cos x\\), and cosine starts at one.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 2,
+    "topic": "trig",
+    "prompt": "For \\(f(x)=3\\sin x\\), find \\(f'(0)\\).",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "The slope is \\(3\\cos x\\), and cosine starts at one.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 2,
+    "topic": "trig",
+    "prompt": "For \\(f(x)=4\\sin x\\), find \\(f'(0)\\).",
+    "choices": [
+      "\\(4\\)",
+      "\\(-4\\)",
+      "\\(5\\)",
+      "\\(3\\)"
+    ],
+    "why": "The slope is \\(4\\cos x\\), and cosine starts at one.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 2,
+    "topic": "trig",
+    "prompt": "Let \\(g(x)=\\cos x+x\\). What is \\(g'(0)\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(0\\)"
+    ],
+    "why": "At zero the cosine contributes zero slope. The linear part supplies the entire slope.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 2,
+    "topic": "trig",
+    "prompt": "Let \\(g(x)=\\cos x+2x\\). What is \\(g'(0)\\)?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "At zero the cosine contributes zero slope. The linear part supplies the entire slope.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 2,
+    "topic": "trig",
+    "prompt": "Let \\(g(x)=\\cos x+3x\\). What is \\(g'(0)\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "At zero the cosine contributes zero slope. The linear part supplies the entire slope.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 2,
+    "topic": "trig",
+    "prompt": "Which formula gives the second derivative of \\(\\sin x\\)?",
+    "choices": [
+      "\\(-\\sin x\\)",
+      "\\(\\sin x\\)",
+      "\\(\\cos x\\)",
+      "\\(-\\cos x\\)"
+    ],
+    "why": "Differentiate sine to cosine and then differentiate cosine to negative sine.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 2,
+    "topic": "trig",
+    "prompt": "The graph shown is \\(y=-\\sin x\\). At \\(x=\\pi\\), its slope has which sign?",
+    "choices": [
+      "Positive",
+      "Negative",
+      "Zero",
+      "Undefined"
+    ],
+    "why": "At the middle zero crossing, the negative sine wave rises.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "graphPrompt": "neg-sin",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.3",
+    "level": 3,
+    "topic": "rules",
+    "prompt": "At \\(x=1\\), \\(f=2\\), \\(g=1\\), \\(f'=3\\) and \\(g'=2\\). What is the slope of \\(f/g\\) there?",
+    "choices": [
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-2\\)"
+    ],
+    "why": "The numerator of the quotient rule is \\(3-4=-1\\), and the denominator is one.",
+    "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
+    "pdfPage": 31,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.3",
+    "level": 3,
+    "topic": "rules",
+    "prompt": "On \\(x\\ne0\\), a function is \\(u=x^2(3/x^2+4/x^3)\\). At \\(x=2\\), what is its slope?",
+    "choices": [
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-2\\)"
+    ],
+    "why": "Simplify first to \\(3+4/x\\), with derivative \\(-4/x^2\\).",
+    "source": "../lectures/11-differentiation-rules.html#combining-rules-and-differentiating-again",
+    "pdfPage": 32,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.5",
+    "level": 3,
+    "topic": "trig",
+    "prompt": "At \\(x=0\\), what is the second derivative of \\(x\\sin x\\)?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "The first derivative is \\(\\sin x+x\\cos x\\). Differentiating again gives \\(2\\cos x-x\\sin x\\).",
+    "source": "../lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 7
+  },
+  {
+    "section": "3.5",
+    "level": 3,
+    "topic": "trig",
+    "prompt": "For \\(y=\\sin x/(2\\cos x-1)\\), what is the first derivative at \\(x=0\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)",
+      "\\(0\\)"
+    ],
+    "why": "At zero the numerator vanishes, its derivative is one, and the denominator is one.",
+    "source": "../lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure",
+    "pdfPage": 37,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.3",
+    "level": 4,
+    "topic": "rules",
+    "prompt": "\\(f(0)=3\\), \\(f'(0)=2\\), and \\(g(x)=(x-1)f(x)\\). What is \\(g'(0)\\)?",
+    "answer": "1",
+    "why": "The product rule gives \\(3-2=1\\).",
+    "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.3",
+    "level": 4,
+    "topic": "rules",
+    "prompt": "Let \\(y=(x-1)g(x)\\), with \\(g'(1)=3\\) and \\(g''(1)=8\\). Find \\(y''(1)\\).",
+    "answer": "6",
+    "why": "Twice differentiating gives \\(2g'(x)+(x-1)g''(x)\\).",
+    "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.3",
+    "level": 4,
+    "topic": "rules",
+    "prompt": "Let \\(h(x)=f(x)/x\\) for \\(x>0\\). If \\(h\\) has a horizontal tangent at \\(x=2\\) and \\(f(2)=6\\), what is \\(f'(2)\\)?",
+    "answer": "3",
+    "why": "The quotient numerator is \\(xf'-f\\). At \\(2\\) it must vanish.",
+    "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
+    "pdfPage": 31,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.3",
+    "level": 4,
+    "topic": "rules",
+    "prompt": "For \\(x\\ne0\\) take \\(f(x)=x^2(3/x^2+4/x^3)\\). What is \\(f''(2)\\)?",
+    "answer": "1",
+    "why": "Simplifying to \\(3+4/x\\) gives \\(f'=-4/x^2\\) and \\(f''=8/x^3\\).",
+    "source": "../lectures/11-differentiation-rules.html#combining-rules-and-differentiating-again",
+    "pdfPage": 32,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 5
+  },
+  {
+    "section": "3.3",
+    "level": 4,
+    "topic": "rules",
+    "prompt": "For \\(f(x)=x^3-3x^2+2\\), two distinct horizontal tangents occur. What is the vertical distance between those tangent lines?",
+    "answer": "4",
+    "why": "The derivative \\(3x(x-2)\\) vanishes at \\(0\\) and \\(2\\). Their heights are 2 and \\(-2\\).",
+    "source": "../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes",
+    "pdfPage": 33,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "3.3",
+    "level": 4,
+    "topic": "rules",
+    "prompt": "The product \\(f(x)g(x)\\) has zero slope at 1. There \\(f=2\\), \\(g=3\\) and \\(f'=4\\). What is \\(g'(1)\\)?",
+    "answer": "-6",
+    "why": "Solve \\(0=4(3)+2g'(1)\\).",
+    "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.3",
+    "level": 4,
+    "topic": "rules",
+    "prompt": "The tangent to \\(f(x)=3/x^2+1\\) at \\(x=1\\) has slope \\(-6\\). What is the horizontal intercept of this tangent?",
+    "answer": "5/3",
+    "why": "The point is \\((1,4)\\). Setting \\(0=4-6(x-1)\\) gives \\(x=5/3\\).",
+    "source": "../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes",
+    "pdfPage": 33,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "3.5",
+    "level": 4,
+    "topic": "trig",
+    "prompt": "For \\(f(x)=x\\sin x\\), what is \\(f''(0)+f(0)\\)?",
+    "answer": "2",
+    "why": "The second derivative is \\(2\\cos x-x\\sin x\\), and \\(f(0)=0\\).",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 4,
+    "topic": "trig",
+    "prompt": "Let \\(f(x)=\\sin x\\cos x\\). Given \\(f'(x)=\\cos^2 x-\\sin^2 x\\), what is \\(f''(\\pi/4)\\)?",
+    "answer": "-2",
+    "why": "The derivative is \\(-4\\sin x\\cos x\\). At \\(\\pi/4\\) the product of sine and cosine is \\(1/2\\).",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 4,
+    "topic": "trig",
+    "prompt": "The curves \\(y=\\sin x\\) and \\(y=ax\\) are tangent at zero. What is the third derivative of \\(\\sin x-ax\\) at zero?",
+    "answer": "-1",
+    "why": "The third derivative of sine is negative cosine, and the linear term contributes zero.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 4,
+    "topic": "trig",
+    "prompt": "At \\(x=\\pi/2\\) the slope of \\(f(x)=x-k\\cos x\\) is 5. What is the second derivative of \\(f\\) at zero?",
+    "answer": "4",
+    "why": "From \\(f'=1+k\\sin x\\) we get \\(k=4\\). Then \\(f''(0)=4\\cos0\\).",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 4,
+    "topic": "trig",
+    "prompt": "A spring has position \\(s(t)=2\\cos t\\) meters. At \\(t=\\pi/3\\), find its acceleration in m/s². Use \\(\\cos(\\pi/3)=1/2\\).",
+    "answer": "-1",
+    "why": "Differentiate twice to get \\(a(t)=-2\\cos t\\). Its value at the given instant is \\(-1\\) m/s².",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 4,
+    "topic": "trig",
+    "prompt": "Let \\(f(x)=\\cos x/(1+\\sin x)\\). What is its tangent slope at zero?",
+    "answer": "-1",
+    "why": "The quotient numerator at zero is \\(0-1\\), and the denominator is one.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.5",
+    "level": 4,
+    "topic": "trig",
+    "prompt": "For \\(f(x)=x\\cos x\\), find \\(f^{(3)}(0)\\). You may use \\(f''(x)=-2\\sin x-x\\cos x\\).",
+    "answer": "-3",
+    "why": "Differentiating once more gives \\(-3\\cos x+x\\sin x\\).",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 4
+  },
+  {
+    "section": "3.3",
+    "level": 2,
+    "topic": "rules",
+    "prompt": "Which graph shows the derivative of \\(x^3\\) over the displayed interval?",
+    "choices": [
+      "Upward parabola touching the origin and passing through (1, 3).",
+      "Downward parabola touching the origin and passing through (1, −3).",
+      "Rising line through the origin and (1, 2).",
+      "Falling line through the origin and (1, −2)."
+    ],
+    "why": "The power rule gives the upward parabola \\(3x^2\\).",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf",
+    "graphChoices": [
+      "square-derivative",
+      "negative-bowl",
+      "slope-two",
+      "slope-neg-two"
+    ],
+    "handoutPage": 2
+  },
+  {
+    "section": "3.5",
+    "level": 1,
+    "topic": "trig",
+    "prompt": "For \\(f(x)=\\sin x\\), which graph shows \\(f'(x)\\) over a full turn?",
+    "choices": [
+      "A wave starts at 1 and reaches −1 at π.",
+      "A wave starts at 0, rises to 1 at π/2, then dips to −1 at 3π/2.",
+      "A wave starts at 0, dips to −1 at π/2, then peaks at 1 at 3π/2.",
+      "A wave starts at −1 and reaches 1 at π."
+    ],
+    "why": "The derivative is cosine. It starts at one at zero and passes through zero a quarter-turn later.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "pdfPage": 36,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "graphChoices": [
+      "cos",
+      "sin",
+      "neg-sin",
+      "neg-cos"
+    ],
+    "handoutPage": 4
   }
 ]

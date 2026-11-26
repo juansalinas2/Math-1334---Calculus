@@ -21,14 +21,14 @@
       },
       {
         "topic": "laws",
-        "prompt": "As \\(x\\to a\\), suppose \\(f(x)\\to 2\\) and \\(g(x)\\to 3\\). What does \\(\\dfrac{\\sqrt{f(x)-1}}{(g(x))^2}\\) approach?",
+        "prompt": "As \\(x\\to a\\), suppose \\(f(x)\\to 2\\) and \\(g(x)\\to 3\\). What is the limit of \\(f(x)/g(x)\\)?",
         "choices": [
-          "\\(1/9\\)",
-          "\\(1/3\\)",
-          "\\(2/9\\)",
-          "\\(1/6\\)"
+          "\\(2/3\\)",
+          "\\(3/2\\)",
+          "\\(5\\)",
+          "\\(6\\)"
         ],
-        "why": "The numerator approaches \\(\\sqrt{2-1}=1\\) and the denominator approaches \\(3^2=9\\). The quotient law applies.",
+        "why": "The denominator approaches a nonzero value, so the quotient law gives \\(2/3\\).",
         "level": 2,
         "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
         "section": "2.3",
@@ -512,7 +512,7 @@
           "\\(12\\)"
         ],
         "why": "Divide the volume rate by \\(16\\pi\\). The radius grows at \\(12\\pi/(16\\pi)=3/4\\) cm/s.",
-        "level": 1,
+        "level": 2,
         "source": "../lectures/related-rates.html#balloon",
         "section": "4.1",
         "pdf": "../downloads/related-rates-examples-practice.pdf"
@@ -527,7 +527,7 @@
           "\\(-6\\)"
         ],
         "why": "Differentiate \\(xy\\) with respect to time. Then \\(0=x(dy/dt)+y(dx/dt)\\), so \\(dy/dt=-6/4\\).",
-        "level": 2,
+        "level": 3,
         "source": "../lectures/related-rates.html#constant-product",
         "section": "4.1",
         "pdf": "../downloads/related-rates-examples-practice.pdf"
@@ -672,7 +672,7 @@
           "\\(12x(12-2x)\\)"
         ],
         "why": "The height is \\(x\\). Each side of the square base loses \\(x\\) at both ends.",
-        "level": 1,
+        "level": 2,
         "source": "../lectures/exam-3-review.html#optimization-folding-a-box",
         "section": "4.6",
         "pdf": "../downloads/optimization-worksheet.pdf",
@@ -762,7 +762,7 @@
           "\\(x=2\\)"
         ],
         "why": "Divide numerator and denominator by \\(x^2\\). Their leading coefficients give the limit \\(4/2=2\\).",
-        "level": 1,
+        "level": 2,
         "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
         "section": "4.4",
         "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
@@ -866,7 +866,7 @@
           "\\(\\displaystyle\\lim_{x\\to2}1\\)"
         ],
         "why": "The derivative of \\(\\ln x-\\ln 2\\) is \\(1/x\\), and the derivative of \\(x-2\\) is 1.",
-        "level": 1,
+        "level": 2,
         "source": "../lectures/exam-3-review.html#choosing-a-limit-method",
         "section": "4.7",
         "pdf": "../downloads/lhopitals-rule.pdf",
@@ -1013,7 +1013,7 @@
           "At least one zero in \\((0,2)\\)",
           "Exactly one zero in \\((0,2)\\)",
           "A zero at \\(x=1\\)",
-          "A critical number at \\(x=0\\)"
+          "The function increases throughout \\((0,2)\\)."
         ],
         "why": "Zero lies between the endpoint values, so \\(f\\) must attain it somewhere between the endpoints.",
         "level": 2,
@@ -1151,16 +1151,16 @@
     "questions": [
       {
         "topic": "rules",
-        "prompt": "To differentiate \\(x^2\\cos x\\) by the product rule, write \\(2x\\cos x+x^2(\\square)\\). What belongs in the blank?",
+        "prompt": "What is the derivative of \\(4x\\) with respect to \\(x\\)?",
         "choices": [
-          "\\(-\\sin x\\)",
-          "\\(\\sin x\\)",
-          "\\(-\\cos x\\)",
-          "\\(\\cos x\\)"
+          "\\(4\\)",
+          "\\(4x\\)",
+          "\\(x\\)",
+          "\\(0\\)"
         ],
-        "why": "The second term uses the derivative of \\(\\cos x\\), which is \\(-\\sin x\\).",
+        "why": "The graph of \\(y=4x\\) is a line of slope \\(4\\).",
         "level": 1,
-        "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
+        "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
         "section": "3.3",
         "pdf": "../downloads/october-14-differentiation-rules.pdf"
       },
@@ -1189,14 +1189,14 @@
           "\\(-\\sec^2 x\\)"
         ],
         "why": "Apply the quotient rule to \\(\\cos x/\\sin x\\). The numerator simplifies to \\(-(\\sin^2x+\\cos^2x)=-1\\).",
-        "level": 1,
+        "level": 2,
         "source": "../lectures/13-trigonometric-derivatives.html#using-quotients-to-explain-the-new-formulas",
         "section": "3.5",
         "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
       },
       {
         "topic": "trig",
-        "prompt": "For \\(f(x)=\\sin x\\), find \\(f'(\\pi/6)\\).",
+        "prompt": "For \\(f(x)=\\sin x\\), find \\(f'(\\pi/6)\\). Use \\(\\cos(\\pi/6)=\\sqrt{3}/2\\) and \\(\\sin(\\pi/6)=1/2\\).",
         "choices": [
           "\\(\\sqrt{3}/2\\)",
           "\\(1/2\\)",

@@ -358,5 +358,536 @@
     "handoutPage": 4,
     "reference": "Exam 2 review worksheet · 4(a)",
     "reviewPdf": "../downloads/exam-2-review-worksheet.pdf#page=3"
+  },
+  {
+    "section": "3.6",
+    "level": 1,
+    "topic": "chain",
+    "prompt": "Which expression is inside the sine in \\(\\sin(2x)\\)?",
+    "choices": [
+      "\\(2x\\)",
+      "\\(x/2\\)",
+      "\\(\\sin x\\)",
+      "\\(2\\)"
+    ],
+    "why": "Sine is applied to the input \\(2x\\).",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 1,
+    "topic": "chain",
+    "prompt": "For \\(y=(x+10)^4\\), what is the inner expression being raised to a power?",
+    "choices": [
+      "\\(x+10\\)",
+      "\\(4\\)",
+      "\\(x^4\\)",
+      "\\(10x\\)"
+    ],
+    "why": "The parentheses group the inner expression.",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 1,
+    "topic": "chain",
+    "prompt": "Which operation happens last in \\(\\sin(2x)\\)?",
+    "choices": [
+      "Taking sine",
+      "Multiplying by two",
+      "Adding two",
+      "Squaring"
+    ],
+    "why": "First double the input, then take sine.",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 1,
+    "topic": "chain",
+    "prompt": "In \\(y=(\\sin x)^2\\), what is the outer operation?",
+    "choices": [
+      "Squaring",
+      "Taking sine",
+      "Doubling",
+      "Taking a square root"
+    ],
+    "why": "The exponent applies to the entire sine value.",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 1,
+    "topic": "chain",
+    "prompt": "For the composite \\(f(g(x))\\), which function receives \\(x\\) first?",
+    "choices": [
+      "\\(g\\)",
+      "\\(f\\)",
+      "Both at once",
+      "Neither"
+    ],
+    "why": "Evaluate the inner function before the outer one.",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 1,
+    "topic": "chain",
+    "prompt": "In \\(\\cos(3x)\\), what is the derivative of the inner function \\(3x\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(3x\\)"
+    ],
+    "why": "The slope of the linear inner function is 3.",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 1,
+    "topic": "chain",
+    "prompt": "Write \\(u=x+10\\). How do you write \\((x+10)^4\\) using \\(u\\)?",
+    "choices": [
+      "\\(u^4\\)",
+      "\\(4u\\)",
+      "\\(u+4\\)",
+      "\\(10u\\)"
+    ],
+    "why": "Replace the whole expression inside the parentheses by \\(u\\).",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 1,
+    "topic": "chain",
+    "prompt": "If \\(u=2x\\), what does \\(\\sin u\\) become in terms of \\(x\\)?",
+    "choices": [
+      "\\(\\sin(2x)\\)",
+      "\\(2\\sin x\\)",
+      "\\(\\sin x+2\\)",
+      "\\(\\sin(x/2)\\)"
+    ],
+    "why": "Insert the expression for \\(u\\) into the sine.",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 1,
+    "topic": "chain",
+    "prompt": "To differentiate \\(f(g(x))\\), multiply the outer derivative at \\(g(x)\\) by what?",
+    "choices": [
+      "\\(g'(x)\\)",
+      "\\(f(x)\\)",
+      "\\(x\\)",
+      "\\(g(x)\\)"
+    ],
+    "why": "The chain rule includes the rate of change of the inner function.",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 1,
+    "topic": "chain",
+    "prompt": "In \\(y=\\sqrt{1+x^2}\\), what entire expression lies under the radical?",
+    "choices": [
+      "\\(1+x^2\\)",
+      "\\(1+x\\)",
+      "\\(x^2-1\\)",
+      "\\(1\\)"
+    ],
+    "why": "The square root encloses the sum.",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 1,
+    "topic": "chain",
+    "prompt": "For \\(F(x)=\\cos(x-1)\\), is adding \\(-1\\) done before or after taking cosine?",
+    "choices": [
+      "Before cosine",
+      "After cosine",
+      "At the same time",
+      "No subtraction appears"
+    ],
+    "why": "First form the argument \\(x-1\\).",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 1,
+    "topic": "chain",
+    "prompt": "In \\((x+10)^4\\), what is the derivative of the inner function \\(x+10\\)?",
+    "choices": [
+      "\\(1\\)",
+      "\\(10\\)",
+      "\\(0\\)",
+      "\\(4\\)"
+    ],
+    "why": "A horizontal shift of the identity has slope one.",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 2,
+    "topic": "chain",
+    "prompt": "For \\(F(x)=\\sin(2x)\\), what is \\(F'(0)\\)?",
+    "choices": [
+      "\\(2\\)",
+      "\\(-2\\)",
+      "\\(3\\)",
+      "\\(1\\)"
+    ],
+    "why": "Differentiate the sine and multiply by the inner slope. At zero cosine is one.",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 2,
+    "topic": "chain",
+    "prompt": "For \\(F(x)=\\sin(3x)\\), what is \\(F'(0)\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(-3\\)",
+      "\\(4\\)",
+      "\\(2\\)"
+    ],
+    "why": "Differentiate the sine and multiply by the inner slope. At zero cosine is one.",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 2,
+    "topic": "chain",
+    "prompt": "For \\(F(x)=\\sin(4x)\\), what is \\(F'(0)\\)?",
+    "choices": [
+      "\\(4\\)",
+      "\\(-4\\)",
+      "\\(5\\)",
+      "\\(3\\)"
+    ],
+    "why": "Differentiate the sine and multiply by the inner slope. At zero cosine is one.",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 2,
+    "topic": "chain",
+    "prompt": "On a composite \\(F=f\\circ g\\), the inner slope at the current input is \\(2\\) and the outer slope at the corresponding output is \\(3\\). What is the composite slope?",
+    "choices": [
+      "\\(6\\)",
+      "\\(-6\\)",
+      "\\(7\\)",
+      "\\(5\\)"
+    ],
+    "why": "The two rates multiply in the chain rule.",
+    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+    "pdfPage": 40,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.6",
+    "level": 2,
+    "topic": "chain",
+    "prompt": "On a composite \\(F=f\\circ g\\), the inner slope at the current input is \\(-1\\) and the outer slope at the corresponding output is \\(4\\). What is the composite slope?",
+    "choices": [
+      "\\(-4\\)",
+      "\\(4\\)",
+      "\\(-3\\)",
+      "\\(-5\\)"
+    ],
+    "why": "The two rates multiply in the chain rule.",
+    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+    "pdfPage": 40,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.6",
+    "level": 2,
+    "topic": "chain",
+    "prompt": "On a composite \\(F=f\\circ g\\), the inner slope at the current input is \\(3\\) and the outer slope at the corresponding output is \\(-1\\). What is the composite slope?",
+    "choices": [
+      "\\(-3\\)",
+      "\\(3\\)",
+      "\\(-2\\)",
+      "\\(-4\\)"
+    ],
+    "why": "The two rates multiply in the chain rule.",
+    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+    "pdfPage": 40,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.6",
+    "level": 2,
+    "topic": "chain",
+    "prompt": "At an input where \\(g(x)=0\\) and \\(g'(x)=2\\), what is the derivative of \\((g(x))^2\\)?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)"
+    ],
+    "why": "The derivative is \\(2g(x)g'(x)\\), so the zero value of \\(g\\) makes the product zero.",
+    "source": "../lectures/14-chain-rule.html#powers-of-functions",
+    "pdfPage": 42,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.6",
+    "level": 2,
+    "topic": "chain",
+    "prompt": "At an input where \\(g(x)=0\\) and \\(g'(x)=3\\), what is the derivative of \\((g(x))^2\\)?",
+    "choices": [
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(-1\\)",
+      "\\(2\\)"
+    ],
+    "why": "The derivative is \\(2g(x)g'(x)\\), so the zero value of \\(g\\) makes the product zero.",
+    "source": "../lectures/14-chain-rule.html#powers-of-functions",
+    "pdfPage": 42,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.6",
+    "level": 4,
+    "topic": "chain",
+    "prompt": "If \\(F(x)=(g(x))^2\\) and \\(g(0)=0\\), \\(g'(0)=-2\\), \\(g''(0)=3\\), what is \\(F''(0)\\)?",
+    "answer": "8",
+    "why": "Twice differentiating gives \\(2(g')^2+2gg''\\). Only the first term survives.",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 4,
+    "topic": "chain",
+    "prompt": "At \\(x=0\\), \\(g(0)=1\\), \\(g'(0)=2\\), \\(g''(0)=-1\\). At input 1, \\(f'(1)=3\\), \\(f''(1)=2\\). What is \\((f\\circ g)''(0)\\)?",
+    "answer": "5",
+    "why": "The outer curvature contributes \\(2(2^2)=8\\). The inner curvature contributes \\(3(-1)=-3\\).",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 4,
+    "topic": "chain",
+    "prompt": "For \\(F(x)=\\sqrt{1+3x^2}\\), the tangent slope at \\(x=1\\) is \\(3/2\\). Where does this tangent cross the horizontal axis?",
+    "answer": "-1/3",
+    "why": "The point is \\((1,2)\\). Set \\(0=2+(3/2)(x-1)\\).",
+    "source": "../lectures/14-chain-rule.html#practice-1",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 6
+  },
+  {
+    "section": "3.6",
+    "level": 4,
+    "topic": "chain",
+    "prompt": "If \\(y=(g(x))^2\\), \\(g(2)=2\\) and \\(y'(2)=-12\\), what is the slope of \\(g(2x)\\) at \\(x=1\\)?",
+    "answer": "-6",
+    "why": "\\(-12=4g'(2)\\) gives \\(g'(2)=-3\\). The new inner slope doubles this.",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 4,
+    "topic": "chain",
+    "prompt": "Let \\(F(x)=\\cos(3x)\\). What is \\(F''(0)/F(0)\\)?",
+    "answer": "-9",
+    "why": "Differentiating twice multiplies cosine by \\(-9\\).",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 4,
+    "topic": "chain",
+    "prompt": "If \\(F(x)=f(g(2x))\\), with \\(g(0)=1\\), \\(g'(0)=-2\\) and \\(f'(1)=3\\), what is \\(F'(0)\\)?",
+    "answer": "-12",
+    "why": "Multiply the three rates \\(3(-2)(2)\\).",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 4,
+    "topic": "chain",
+    "prompt": "Let \\(g(x)=(x+1)^4\\). At \\(x=0\\), what is the second derivative of \\(g(x)-4x\\)?",
+    "answer": "12",
+    "why": "The second derivative of the linear term is zero. The power term contributes \\(12(x+1)^2\\).",
+    "source": "../lectures/14-chain-rule.html#powers-of-functions",
+    "pdfPage": 42,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 3
+  },
+  {
+    "section": "3.6",
+    "level": 2,
+    "topic": "chain",
+    "prompt": "The graph of \\(g\\) is a rising straight line. For \\(F(x)=(g(x))^2\\) with \\(g(x)=x\\), which graph shows \\(F'\\)?",
+    "choices": [
+      "Rising line through the origin and (1, 2).",
+      "Falling line through the origin and (1, −2).",
+      "Smooth U-shaped curve with its lowest point at the origin.",
+      "Two straight rays meet at a V-shaped corner at the origin."
+    ],
+    "why": "The chain rule gives \\(2g(x)g'(x)=2x\\).",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "graphPrompt": "rising-origin",
+    "graphChoices": [
+      "slope-two",
+      "slope-neg-two",
+      "bowl",
+      "corner"
+    ],
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 2,
+    "topic": "chain",
+    "prompt": "For \\(F(x)=\\sin(-x)\\), which wave represents \\(F'(x)\\)?",
+    "choices": [
+      "A wave starts at −1 and reaches 1 at π.",
+      "A wave starts at 1 and reaches −1 at π.",
+      "A wave starts at 0, rises to 1 at π/2, then dips to −1 at 3π/2.",
+      "A wave starts at 0, dips to −1 at π/2, then peaks at 1 at 3π/2."
+    ],
+    "why": "The inner derivative is \\(-1\\). The cosine factor is \\(\\cos(-x)=\\cos x\\).",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "graphChoices": [
+      "neg-cos",
+      "cos",
+      "sin",
+      "neg-sin"
+    ],
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 3,
+    "topic": "chain",
+    "prompt": "The line shown is \\(g(x)=-2x\\). For \\(F(x)=(g(x))^2/4\\), which graph gives \\(F'\\)?",
+    "choices": [
+      "Rising line through the origin and (1, 2).",
+      "Falling line through the origin and (1, −2).",
+      "Smooth U-shaped curve with its lowest point at the origin.",
+      "Two straight rays meet at a V-shaped corner at the origin."
+    ],
+    "why": "Here \\(F(x)=x^2\\), whose slope is \\(2x\\).",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "graphPrompt": "slope-neg-two",
+    "graphChoices": [
+      "slope-two",
+      "slope-neg-two",
+      "bowl",
+      "corner"
+    ],
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 2,
+    "topic": "chain",
+    "prompt": "The graph is the inner function \\(g\\). At \\(x=1\\) the marked height is 3. For \\(F(x)=(g(x))^2\\), the derivative is \\(2g(x)g'(x)\\). What is \\(F'(1)\\)?",
+    "choices": [
+      "\\(12\\)",
+      "\\(-12\\)",
+      "\\(13\\)",
+      "\\(11\\)"
+    ],
+    "why": "The line rises 2 per unit to the right. Multiply \\(2(3)(2)\\).",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "graphPrompt": "line-mapped",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 1,
+    "topic": "chain",
+    "prompt": "The line shown is \\(g\\). For a composite \\(f(g(x))\\), what input does \\(f\\) receive when \\(x=1\\)?",
+    "choices": [
+      "\\(3\\)",
+      "\\(1\\)",
+      "\\(2\\)",
+      "\\(5\\)"
+    ],
+    "why": "Follow the marked point at input 1 to its output 3.",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "graphPrompt": "line-mapped",
+    "handoutPage": 1
   }
 ]
