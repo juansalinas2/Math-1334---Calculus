@@ -97,7 +97,8 @@
   plot("log-neg","square","A decreasing curve for positive x, crossing (1, 0), rising without bound near zero.",x=>-Math.log(x),{breaks:[0]});
 
   const ns = "http://www.w3.org/2000/svg";
-  const paper = "#13212c", grid = "#344854", ink = "#d4e5ea", curve = "#77e7cc", guide = "#f5ba70";
+  const paper = "var(--plot-paper, #13212c)", grid = "var(--plot-grid, #344854)";
+  const ink = "var(--plot-ink, #d4e5ea)", curve = "var(--plot-curve, #77e7cc)", guide = "var(--plot-guide, #f5ba70)";
   function svg(tag,attrs) {
     const node = document.createElementNS(ns,tag);
     for (const [name,value] of Object.entries(attrs)) node.setAttribute(name,value);
@@ -114,7 +115,7 @@
     const plot=plots.get(id);
     if (!plot) return null;
     const {x,y,dx,dy,xLabels,horizontal="x"}=plot.view;
-    const w=220,h=118,left=26,top=13;
+    const w=215,h=118,left=31,top=13;
     const px = v => w*(v-x[0])/(x[1]-x[0]);
     const py = v => h*(y[1]-v)/(y[1]-y[0]);
     const root=svg("svg",{viewBox:"0 0 260 154",role:"img","aria-label":plot.description,"class":"game-graph",focusable:"false"});
@@ -125,7 +126,7 @@
     root.append(chart);
     const line=(x1,y1,x2,y2,color,width=1,dash="")=>chart.append(svg("line",{x1,y1,x2,y2,stroke:color,"stroke-width":width,"stroke-dasharray":dash}));
     function label(x,y,value,anchor) {
-      const node=svg("text",{x,y,fill:ink,"font-family":"system-ui,sans-serif","font-size":11.5,"text-anchor":anchor});
+      const node=svg("text",{x,y,fill:ink,"font-family":"system-ui,sans-serif","font-size":12.5,"text-anchor":anchor});
       node.textContent=value;root.append(node);
     }
     ticks(x,dx).forEach((n,i)=>{

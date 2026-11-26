@@ -2,7 +2,7 @@
   {
     "topic": "global",
     "level": 3,
-    "prompt": "For \\(f(x)=x^3(4-x)\\) on \\([-1,4]\\), which ordered pair gives the global minimum and maximum values?",
+    "prompt": "On \\([-1,4]\\), \\(f(x)=x^3(4-x)\\) has only two interior critical numbers, 0 and 3. Its four candidate heights at \\(-1,0,3,4\\) are \\(-5,0,27,0\\) respectively. Which pair gives the global minimum and maximum values?",
     "choices": [
       "\\((-5,27)\\)",
       "\\((0,27)\\)",
@@ -18,7 +18,7 @@
   {
     "topic": "global",
     "level": 3,
-    "prompt": "The lecture’s \\(f(x)=x^3(4-x)\\) now has domain \\((-1,4)\\). Which endpoint change affects the global extrema?",
+    "prompt": "On \\([-1,4]\\), \\(f(x)=x^3(4-x)\\) attains its minimum \\(-5\\) only at \\(-1\\) and its maximum 27 only at 3. Its graph approaches \\(-5\\) from the right at \\(-1\\). What happens to the global extrema when the domain is changed to \\((-1,4)\\)?",
     "choices": [
       "The minimum is lost; the maximum remains 27.",
       "Both global extrema are lost.",
@@ -34,7 +34,7 @@
   {
     "topic": "global",
     "level": 3,
-    "prompt": "Set \\(f(x)=(x^2-9)/(x-3)\\) for \\(x\\ne3\\) in \\([2,4]\\), and \\(f(3)=2\\). What is the range?",
+    "prompt": "On \\([2,4]\\) the line \\(y=x+3\\) has its point at \\(x=3\\) removed and replaced by \\((3,2)\\). What is the range of the new graph?",
     "choices": [
       "\\(\\{2\\}\\cup[5,6)\\cup(6,7]\\)",
       "\\([2,7]\\)",
@@ -82,7 +82,7 @@
   {
     "topic": "global",
     "level": 3,
-    "prompt": "On \\([-1,2]\\), the lecture function \\(2+|x|\\) has a corner at zero. For \\(F(x)=2+|x|-x/2\\), which inputs give the minimum and maximum, respectively?",
+    "prompt": "On \\([-1,2]\\), \\(F(x)=2+|x|-x/2\\) has slope \\(-3/2\\) left of zero and \\(1/2\\) right of zero. Which inputs give its minimum and maximum, respectively?",
     "choices": [
       "\\(0\\) and \\(-1\\)",
       "\\(0\\) and \\(2\\)",
@@ -114,7 +114,7 @@
   {
     "topic": "global",
     "level": 3,
-    "prompt": "Find the global maximum of \\(g(x)=x^2e^{-x}\\) on \\([-1,3]\\).",
+    "prompt": "For \\(g(x)=x^2e^{-x}\\) on \\([-1,3]\\), the only candidates for global extrema have heights \\(e,0,4/e^2,9/e^3\\) at \\(-1,0,2,3\\), respectively. Knowing \\(e>5/2\\), where is the global maximum?",
     "choices": [
       "\\(e\\) at \\(x=-1\\)",
       "\\(4/e^2\\) at \\(x=2\\)",
@@ -130,7 +130,7 @@
   {
     "topic": "global",
     "level": 3,
-    "prompt": "Restrict \\(g(x)=x^2e^{-x}\\) to \\((0,3]\\). Which extrema does it attain?",
+    "prompt": "On \\((0,3]\\), \\(g(x)=x^2e^{-x}\\) increases to \\(g(2)=4/e^2\\) and then decreases. It is positive on the whole interval and tends to zero as \\(x\\to0^+\\). Which global extrema does it attain?",
     "choices": [
       "A global maximum \\(4/e^2\\) and no global minimum.",
       "A global maximum \\(9/e^3\\) and a global minimum 0.",
@@ -162,7 +162,7 @@
   {
     "topic": "global",
     "level": 3,
-    "prompt": "For \\(g(x)=x^2e^{-x}\\) restricted to \\([1,3]\\), which pair gives the minimizing and maximizing inputs?",
+    "prompt": "On \\([1,3]\\), \\(g(x)=x^2e^{-x}\\) increases to \\(x=2\\) and decreases thereafter. The endpoints have heights \\(1/e\\) and \\(9/e^3\\). Use \\(e^2<9\\). Which pair gives the minimizing and maximizing inputs, in that order?",
     "choices": [
       "\\(1\\) and \\(2\\)",
       "\\(3\\) and \\(2\\)",
@@ -178,7 +178,7 @@
   {
     "topic": "global",
     "level": 3,
-    "prompt": "For \\(f(x)=x^3(4-x)\\) on \\([0,4]\\), how many solutions does \\(f(x)=1\\) have, and why?",
+    "prompt": "On \\([0,4]\\), \\(f(x)=x^3(4-x)\\) increases from 0 to 27 on \\([0,3]\\) and decreases from 27 to 0 on \\([3,4]\\). How many solutions of \\(f(x)=1\\) does this give, and why?",
     "choices": [
       "Two, one on each side of \\(x=3\\).",
       "One, since 1 lies between the endpoint values.",
@@ -210,7 +210,7 @@
   {
     "topic": "global",
     "level": 3,
-    "prompt": "On \\([-\\pi/2,\\pi]\\), consider \\(F(x)=\\sin x-x/2\\). At which input is its global minimum attained?",
+    "prompt": "For \\(F(x)=\\sin x-x/2\\) on \\([-\\pi/2,\\pi]\\), the only interior extrema occur at \\(-\\pi/3\\) (a minimum) and \\(\\pi/3\\) (a maximum). The interior minimum is above \\(-1\\); the right endpoint has height \\(-\\pi/2\\), and the left endpoint is above \\(-1\\). At which input is the global minimum?",
     "choices": [
       "\\(\\pi\\)",
       "\\(-\\pi/3\\)",
@@ -226,7 +226,7 @@
   {
     "topic": "global",
     "level": 3,
-    "prompt": "Reflect the review function across the vertical axis to get \\(h(x)=x^2e^x\\) on \\([-3,1]\\). Which value is a local maximum at an interior point, and which is the global maximum?",
+    "prompt": "For \\(h(x)=x^2e^x\\) on \\([-3,1]\\), the graph rises to \\(h(-2)=4/e^2\\), falls to \\(h(0)=0\\), then rises to \\(h(1)=e\\). Given \\(e>2\\), what are its interior local maximum value and global maximum value?",
     "choices": [
       "Interior local maximum \\(4/e^2\\); global maximum \\(e\\).",
       "Interior local maximum \\(4/e^2\\); global maximum \\(9/e^3\\).",
@@ -288,12 +288,12 @@
   {
     "topic": "global",
     "level": 2,
-    "prompt": "Find the global minimum value of \\(1-x^2\\) on \\([-1,3]\\).",
+    "prompt": "On \\([-1,3]\\), at which endpoint does \\(1-x^2\\) attain its global minimum value, and what is that value?",
     "choices": [
-      "\\(-8\\)",
-      "\\(0\\)",
-      "\\(1\\)",
-      "\\(-3\\)"
+      "At \\(x=3\\), value \\(-8\\).",
+      "At \\(x=-1\\), value 0.",
+      "At \\(x=3\\), value 8.",
+      "At \\(x=-1\\), value \\(-8\\)."
     ],
     "why": "The candidates are \\(x=-1,0,3\\) with values \\(0,1,-8\\). The smallest is \\(-8\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
@@ -355,7 +355,7 @@
     "section": "4.2",
     "topic": "global",
     "level": 4,
-    "prompt": "On \\([-1,4]\\), let \\(f(x)=x^3(4-x)\\). What is the difference between its greatest and least attained values?",
+    "prompt": "For \\(f(x)=x^3(4-x)\\) on \\([-1,4]\\), the endpoint heights are \\(-5,0\\) and its two interior critical heights are 0 and 27. How wide is its range, measured as maximum minus minimum?",
     "answer": "32",
     "why": "\\(f^{\\prime}=4x^2(3-x)\\) gives candidates \\(-1,0,3,4\\). Their values are \\(-5,0,27,0\\), giving \\(27-(-5)=32\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
@@ -366,7 +366,7 @@
     "section": "4.2",
     "topic": "global",
     "level": 4,
-    "prompt": "On \\([2,4]\\) take \\(f(x)=(x^2-9)/(x-3)\\) except that \\(f(3)=k\\). At 3 it is strictly lower than at every other input. The global maximum exceeds the global minimum by 8. Find \\(k\\).",
+    "prompt": "On \\([2,4]\\), \\(f(x)=x+3\\) except that \\(f(3)=k\\) is below every other height. The global maximum exceeds the global minimum by 8. What is \\(k\\)?",
     "answer": "-1",
     "why": "Away from 3 the function is \\(x+3\\), so its largest other output is 7 and its smallest is 5. The hypothesis gives \\(7-k=8\\), hence \\(k=-1\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
@@ -377,7 +377,7 @@
     "section": "4.2",
     "topic": "global",
     "level": 4,
-    "prompt": "For \\(p(x)=2+(x-5)^3\\) on \\([4,7]\\), find the constant \\(c\\) minimizing the largest vertical distance \\(\\lvert p(x)-c\\rvert\\) on the interval.",
+    "prompt": "The increasing function \\(p(x)=2+(x-5)^3\\) has range \\([1,10]\\) on \\([4,7]\\). Choose one constant \\(c\\) to minimize the largest distance \\(|p(x)-c|\\). What is \\(c\\)?",
     "answer": "11/2",
     "why": "The stationary input 5 does not reverse the increasing cubic. Its smallest and largest outputs are 1 and 10. Centering the horizontal line between those heights gives \\(c=(1+10)/2\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
@@ -388,9 +388,9 @@
     "section": "4.2",
     "topic": "global",
     "level": 4,
-    "prompt": "Take the lecture’s cusp \\(2+\\lvert x\\rvert\\) and subtract \\(x^2\\). What is the global maximum of \\(2+\\lvert x\\rvert-x^2\\) on \\([-1,2]\\)?",
-    "answer": "9/4",
-    "why": "The smooth branches have critical inputs \\(-1/2,1/2\\), each giving \\(9/4\\). The cusp gives 2 and the endpoints give 2 and 0, so neither exceeds \\(9/4\\).",
+    "prompt": "For \\(F(x)=2+|x|-x^2\\) on \\([-1,2]\\), set \\(t=|x|\\). Then \\(F(x)=9/4-(t-1/2)^2\\). At how many distinct inputs does \\(F\\) attain its global maximum?",
+    "answer": "2",
+    "why": "The square vanishes precisely when \\(|x|=1/2\\). Both \\(-1/2\\) and \\(1/2\\) lie in the interval, giving 2 inputs.",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
     "pdfPage": 66,
     "pdf": "../downloads/november-4-maxima-and-minima.pdf"
@@ -399,7 +399,7 @@
     "section": "4.2",
     "topic": "global",
     "level": 4,
-    "prompt": "On the lecture’s interval \\([-\\pi/2,\\pi]\\), find the largest value of \\(\\sin x+\\cos^2 x\\).",
+    "prompt": "On \\([-\\pi/2,\\pi]\\), \\(s=\\sin x\\) takes all values from \\(-1\\) to 1. Write \\(\\sin x+\\cos^2x=1+s-s^2\\). This parabola has its vertex at \\(s=1/2\\). What is the largest value of the original expression?",
     "answer": "5/4",
     "why": "With \\(u=\\sin x\\), every \\(u\\in[-1,1]\\) occurs. The objective is \\(1+u-u^2\\), maximized at \\(u=1/2\\) with value \\(5/4\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
@@ -410,9 +410,9 @@
     "section": "4.2",
     "topic": "global",
     "level": 4,
-    "prompt": "Set \\(f(x)=x^3(4-x)\\) on \\([-1,4]\\). What is the global minimum of \\((f(x)-6)(f(x)-13)\\)?",
-    "answer": "-49/4",
-    "why": "The quartic is continuous, and \\(f(0)=0\\), \\(f(3)=27\\), so it attains \\(19/2\\). Completing the square gives \\((f-19/2)^2-49/4\\), whose lower bound is attained there.",
+    "prompt": "On \\([-1,4]\\), the continuous function \\(f(x)=x^3(4-x)\\) has range \\([-5,27]\\). What is the global minimum of \\((f(x)-6)(f(x)-10)\\)? The quadratic in \\(f(x)\\) has its vertex halfway between 6 and 10.",
+    "answer": "-4",
+    "why": "The vertex is at \\(f(x)=8\\), which is attained. There the product is \\((8-6)(8-10)=-4\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
     "pdfPage": 66,
     "pdf": "../downloads/november-4-maxima-and-minima.pdf"
@@ -421,7 +421,7 @@
     "section": "4.2",
     "topic": "global",
     "level": 4,
-    "prompt": "On \\([-1,3]\\) let \\(p(x)=1-x^2\\). Find the maximum of \\(p(x)(p(x)+6)\\).",
+    "prompt": "For \\(p(x)=1-x^2\\) on \\([-1,3]\\), the range is \\([-8,1]\\). Write \\(p(x)(p(x)+6)=(p(x)+3)^2-9\\). What is its greatest value?",
     "answer": "16",
     "why": "\\(p\\) ranges from \\(-8\\) to 1, with maximum at zero. The function \\(u(u+6)\\) is convex, so its maximum on \\([-8,1]\\) is at an endpoint. Their outputs are 16 and 7.",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
@@ -432,7 +432,7 @@
     "section": "4.2",
     "topic": "global",
     "level": 4,
-    "prompt": "A sensor reports \\(g(x)=2+\\lvert x\\rvert\\) on \\([-1,2]\\) but records the squared discrepancy from \\(13/4\\). What is the largest recorded discrepancy?",
+    "prompt": "A sensor reports \\(g(x)=2+|x|\\) on \\([-1,2]\\), so its range is \\([2,4]\\). It records the squared distance from \\(13/4\\). What is the largest recorded value?",
     "answer": "25/16",
     "why": "The minimum and maximum readings of \\(g\\) are 2 and 4. Their distances from \\(13/4\\) are \\(5/4\\) and \\(3/4\\). The larger squared distance equals \\(25/16\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
@@ -443,9 +443,9 @@
     "section": "4.2",
     "topic": "global",
     "level": 4,
-    "prompt": "Scale the lecture quartic \\(f(x)=x^3(4-x)\\) on \\([-1,4]\\) by \\(H(x)=af(x)+b\\) with \\(a>0\\). If \\(H\\) has global minimum \\(-1\\) and global maximum 1, what is \\(b\\)?",
+    "prompt": "The range of \\(f(x)=x^3(4-x)\\) on \\([-1,4]\\) is \\([-5,27]\\). To rescale this to \\([-1,1]\\) using \\(H(x)=f(x)/16+b\\), what shift \\(b\\) makes both endpoints match?",
     "answer": "-11/16",
-    "why": "Compare the quartic at its endpoints and critical inputs \\(0,3\\) to get range \\([-5,27]\\). Solve \\(-5a+b=-1\\) and \\(27a+b=1\\). The scale is \\(1/16\\) and the offset is \\(-11/16\\).",
+    "why": "The midpoint of \\([-5,27]\\) is 11. After dividing by 16 the midpoint is \\(11/16\\). The shift must move it to 0, giving \\(b=-11/16\\).",
     "source": "../lectures/18-maxima-and-minima.html#closed-interval-method",
     "capstone": true,
     "pdfPage": 66,

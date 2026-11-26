@@ -2,7 +2,7 @@
   {
     "topic": "rules",
     "level": 3,
-    "prompt": "For \\(y=2x(5x^3+7/(x+2))\\), which simplified formula gives the tangent slope for \\(x\\ne-2\\)?",
+    "prompt": "For \\(x\\ne-2\\), \\(f(x)=2x(5x^3+7/(x+2))\\) can be written as \\(10x^4+14-28/(x+2)\\). Which expression gives its tangent slope?",
     "choices": [
       "\\(40x^3+28/(x+2)^2\\)",
       "\\(40x^3-14/(x+2)^2\\)",
@@ -32,7 +32,7 @@
   {
     "topic": "derivatives",
     "level": 3,
-    "prompt": "Let \\(f(x)=(3x^3-x+2)/x^2\\). Which is \\(f''(x)\\) on the domain of \\(f\\)?",
+    "prompt": "For \\(x\\ne0\\), write \\(f(x)=(3x^3-x+2)/x^2\\) as \\(3x-x^{-1}+2x^{-2}\\). Which formula gives its second derivative?",
     "choices": [
       "\\((12-2x)/x^4\\)",
       "\\((2x-12)/x^4\\)",
@@ -47,14 +47,14 @@
   {
     "topic": "tangent",
     "level": 3,
-    "prompt": "Which lines are tangent to \\(f(x)=x^3-3x^2+2\\) with slope \\(9\\)?",
+    "prompt": "The graph of \\(f(x)=x^3-3x^2+2\\) has slope \\(9\\) at \\(x=-1\\) and \\(x=3\\). The point at \\(x=-1\\) is \\((-1,-2)\\). Which equation is its tangent there?",
     "choices": [
-      "\\(y=9x+7\\) and \\(y=9x-25\\)",
-      "\\(y=9x-7\\) and \\(y=9x+25\\)",
-      "\\(y=9x-2\\) and \\(y=9x+2\\)",
-      "\\(y=9x+7\\) only"
+      "\\(y+2=9(x+1)\\)",
+      "\\(y-2=9(x+1)\\)",
+      "\\(y+2=9(x-1)\\)",
+      "\\(y+2=(x+1)/9\\)"
     ],
-    "why": "Solving \\(3x^2-6x=9\\) gives \\(x=-1,3\\). The points are \\((-1,-2)\\) and \\((3,2)\\); subtract \\(9x\\) from each height to get the intercept.",
+    "why": "The slope is \\(9\\) and the line passes through \\((-1,-2)\\). Substitution in point-slope form gives \\(y+2=9(x+1)\\).",
     "source": "../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes",
     "section": "3.3",
     "pdf": "../downloads/october-14-differentiation-rules.pdf"
@@ -62,7 +62,7 @@
   {
     "topic": "rules",
     "level": 3,
-    "prompt": "For \\(f(x)=(x^2+9)/(x^2-1)\\), which statement gives all its horizontal tangents?",
+    "prompt": "For \\(f(x)=(x^2+9)/(x^2-1)\\), the derivative is \\(-20x/(x^2-1)^2\\) on its domain. Which statement gives all its horizontal tangents?",
     "choices": [
       "Only \\(y=-9\\), at \\(x=0\\).",
       "\\(y=-9\\) at \\(x=0\\) and \\(y=1\\) at \\(x=1\\).",
@@ -77,7 +77,7 @@
   {
     "topic": "trig",
     "level": 3,
-    "prompt": "If \\(y=\\tan x/(2-\\sec x)\\), which expression gives \\(y'\\) wherever the original quotient is defined?",
+    "prompt": "For \\(y=\\tan x/(2-\\sec x)\\), the quotient rule gives numerator \\(2\\sec^2x-\\sec^3x+\\sec x\\tan^2x\\). Use \\(\\tan^2x=\\sec^2x-1\\). What is \\(y'\\) on the original domain?",
     "choices": [
       "\\((2\\sec^2x-\\sec x)/(2-\\sec x)^2\\)",
       "\\((2\\sec^2x+\\sec x)/(2-\\sec x)^2\\)",
@@ -167,7 +167,7 @@
   {
     "topic": "exp",
     "level": 3,
-    "prompt": "For \\(y=\\log_2(6x^4+5)\\), find the slope of the tangent at \\(x=1\\).",
+    "prompt": "At \\(x=1\\), the function \\(u(x)=6x^4+5\\) has value \\(11\\) and derivative \\(24\\). What is the tangent slope of \\(y=\\log_2(u(x))\\) there?",
     "choices": [
       "\\(24/(11\\ln2)\\)",
       "\\(24\\ln2/11\\)",
@@ -182,7 +182,7 @@
   {
     "topic": "rules",
     "level": 3,
-    "prompt": "Which two tangents of slope \\(10\\) belong to the lecture polynomial \\(p(x)=4x^3-2x+7\\)?",
+    "prompt": "For \\(p(x)=4x^3-2x+7\\), the tangents at \\((1,9)\\) and \\((-1,5)\\) both have slope \\(10\\). Which two lines are they?",
     "choices": [
       "\\(y=10x-1\\) and \\(y=10x+15\\)",
       "\\(y=10x+1\\) and \\(y=10x-15\\)",
@@ -212,14 +212,14 @@
   {
     "topic": "trig",
     "level": 3,
-    "prompt": "For \\(z=\\sin x\\tan x\\), what is \\(z'(\\pi/3)\\)?",
+    "prompt": "Let \\(z(x)=\\sin x\\tan x\\). At \\(x=0\\), both factors vanish. What is \\(z'(0)\\)?",
     "choices": [
-      "\\(5\\sqrt3/2\\)",
-      "\\(2\\sqrt3\\)",
-      "\\(3\\sqrt3/2\\)",
-      "\\(\\sqrt3/2\\)"
+      "\\(0\\)",
+      "\\(1\\)",
+      "\\(2\\)",
+      "The derivative is undefined."
     ],
-    "why": "The two product-rule terms are \\(\\cos x\\tan x\\) and \\(\\sin x\\sec^2x\\). At \\(\\pi/3\\) these equal \\(\\sqrt3/2\\) and \\(2\\sqrt3\\).",
+    "why": "The product rule gives \\(\\cos x\\tan x+\\sin x\\sec^2x\\). In each term an undifferentiated factor vanishes at zero.",
     "source": "../lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure",
     "section": "3.5",
     "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
@@ -257,14 +257,14 @@
   {
     "topic": "rules",
     "level": 2,
-    "prompt": "For \\(p(x)=4x^3-2x+7\\), which term comes from differentiating \\(4x^3\\)?",
+    "prompt": "If \\(p(x)=4x^3-2x+7\\), what is the slope at \\(x=1\\)?",
     "choices": [
-      "\\(12x^2\\)",
-      "\\(4x^2\\)",
-      "\\(12x^3\\)",
-      "\\(4x^4\\)"
+      "\\(10\\)",
+      "\\(12\\)",
+      "\\(2\\)",
+      "\\(9\\)"
     ],
-    "why": "The power rule brings down the exponent 3 and reduces the exponent to 2.",
+    "why": "The derivative is \\(12x^2-2\\). At \\(x=1\\), subtract \\(2\\) from \\(12\\).",
     "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
     "section": "3.3",
     "pdfPage": 30,
@@ -394,7 +394,7 @@
   {
     "topic": "trig",
     "level": 2,
-    "prompt": "In the lecture’s \\(z=2\\csc x+3/x\\), which term comes from differentiating \\(2\\csc x\\)?",
+    "prompt": "For \\(z=2\\csc x+3/x\\), which term in \\(z'\\) comes from \\(2\\csc x\\)?",
     "choices": [
       "\\(-2\\csc x\\cot x\\)",
       "\\(2\\csc x\\cot x\\)",
@@ -410,14 +410,14 @@
   {
     "topic": "rules",
     "level": 3,
-    "prompt": "For \\(f(x)=(x^2+9)/(x^2-1)\\), find the tangent at \\(x=2\\).",
+    "prompt": "For \\(f(x)=(x^2+9)/(x^2-1)\\), the tangent at \\(x=2\\) has slope \\(-40/9\\) and passes through \\((2,13/3)\\). Which equation represents it?",
     "choices": [
       "\\(y-13/3=-(40/9)(x-2)\\)",
-      "\\(y-13/3=(40/9)(x-2)\\)",
-      "\\(y-13/3=-(20/3)(x-2)\\)",
-      "\\(y-13/5=-(40/9)(x-2)\\)"
+      "\\(y+13/3=-(40/9)(x-2)\\)",
+      "\\(y-13/3=(9/40)(x-2)\\)",
+      "\\(y-2=-(40/9)(x-13/3)\\)"
     ],
-    "why": "The quotient rule gives \\(f'=-20x/(x^2-1)^2\\). At \\(2\\), \\(f=13/3\\) and \\(f'=-40/9\\).",
+    "why": "Use \\(y-f(2)=f'(2)(x-2)\\) with the given height and slope.",
     "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
     "section": "3.3",
     "pdf": "../downloads/october-14-differentiation-rules.pdf"
@@ -425,14 +425,14 @@
   {
     "topic": "rules",
     "level": 3,
-    "prompt": "For \\(f(x)=x^4+3/x\\), which input has a horizontal tangent?",
+    "prompt": "For \\(x\\ne0\\), a horizontal tangent to \\(f(x)=x^4+3/x\\) requires \\(4x^3-3/x^2=0\\). How many negative inputs satisfy this condition?",
     "choices": [
-      "\\((3/4)^{1/5}\\)",
-      "\\((4/3)^{1/5}\\)",
-      "\\(-(3/4)^{1/5}\\)",
-      "\\(0\\)"
+      "None",
+      "One",
+      "Two",
+      "Every negative input"
     ],
-    "why": "Multiply \\(f'=4x^3-3/x^2=0\\) by \\(x^2\\), valid on the domain. Then \\(4x^5=3\\) has a unique real solution.",
+    "why": "At any negative input \\(4x^3\\) is negative and \\(3/x^2\\) is positive, so their difference cannot vanish.",
     "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
     "section": "3.3",
     "pdf": "../downloads/october-14-differentiation-rules.pdf"
@@ -485,7 +485,7 @@
   {
     "topic": "rules",
     "level": 3,
-    "prompt": "At \\(x=0\\), what is the second derivative of \\(y=2x(5x^3+7/(x+2))\\)?",
+    "prompt": "For \\(y=2x(5x^3+7/(x+2))\\), the first derivative is \\(40x^3+28/(x+2)^2\\). What is the second derivative at zero?",
     "choices": [
       "\\(-7\\)",
       "\\(7\\)",
@@ -545,14 +545,14 @@
   {
     "topic": "trig",
     "level": 3,
-    "prompt": "For \\(z=\\sin x\\tan x\\), simplify \\(z'\\) entirely in terms of \\(\\sin x\\) and \\(\\cos x\\), on \\(\\cos x\\ne0\\).",
+    "prompt": "Let \\(z=\\sin x\\tan x\\). The product rule gives \\(z'=\\cos x\\tan x+\\sin x\\sec^2x\\). Factoring out \\(\\sin x\\), which expression remains on the domain?",
     "choices": [
-      "\\(\\sin x(1+\\cos^2x)/\\cos^2x\\)",
-      "\\(\\sin x(1-\\cos^2x)/\\cos^2x\\)",
-      "\\(\\sin x/\\cos^2x\\)",
-      "\\(\\sin x(1+\\cos x)/\\cos x\\)"
+      "\\(1+\\sec^2x\\)",
+      "\\(1+\\tan x\\)",
+      "\\(\\cos x+\\sec^2x\\)",
+      "\\(\\tan x+\\sec^2x\\)"
     ],
-    "why": "The product rule gives \\(\\cos x\\tan x+\\sin x\\sec^2x=\\sin x+\\sin x/\\cos^2x\\). Bring the terms over a common denominator.",
+    "why": "Use \\(\\cos x\\tan x=\\sin x\\). Then \\(z'=\\sin x(1+\\sec^2x)\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure",
     "section": "3.5",
     "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
@@ -685,9 +685,9 @@
     "section": "3.3",
     "topic": "rules",
     "level": 4,
-    "prompt": "The graph of \\(f'\\), for \\(f(x)=(3x^3-x+2)/x^2\\), has a horizontal tangent. Find its height.",
-    "answer": "325/108",
-    "why": "Rewrite \\(f=3x-x^{-1}+2x^{-2}\\). Then \\(f'=3+x^{-2}-4x^{-3}\\) and \\(f''=(12-2x)/x^4\\). The only zero of \\(f''\\) is \\(6\\). Substitution gives \\(3+1/36-4/216=325/108\\).",
+    "prompt": "For \\(f(x)=(3x^3-x+2)/x^2\\), \\(f''(x)=(12-2x)/x^4\\) for \\(x\\ne0\\). At which input does the graph of \\(f'\\) change from increasing to decreasing?",
+    "answer": "6",
+    "why": "The denominator is positive. As \\(x\\) passes through \\(6\\), the numerator changes from positive to negative, so \\(f'\\) has a local maximum there.",
     "source": "../lectures/11-differentiation-rules.html#combining-rules-and-differentiating-again",
     "pdfPage": 32,
     "pdf": "../downloads/october-14-differentiation-rules.pdf"
@@ -696,9 +696,9 @@
     "section": "3.3",
     "topic": "rules",
     "level": 4,
-    "prompt": "For \\(f(x)=(3x^3-x+2)/x^2\\), a tangent parallel to its slant asymptote touches at a finite input. Find its vertical intercept.",
-    "answer": "-1/8",
-    "why": "Division gives asymptote \\(y=3x\\). The slope condition is \\(3+1/x^2-4/x^3=3\\), so \\(x=4\\). At this input \\(f(x)-3x=-1/4+2/16=-1/8\\).",
+    "prompt": "For \\(x\\ne0\\), \\(f(x)=3x-1/x+2/x^2\\) has slant asymptote \\(y=3x\\). Its derivative is \\(3+(x-4)/x^3\\). At which input is its tangent parallel to that asymptote?",
+    "answer": "4",
+    "why": "Parallel slopes are equal. The extra term \\((x-4)/x^3\\) vanishes only at \\(x=4\\).",
     "source": "../lectures/11-differentiation-rules.html#combining-rules-and-differentiating-again",
     "pdfPage": 32,
     "pdf": "../downloads/october-14-differentiation-rules.pdf"
@@ -707,9 +707,9 @@
     "section": "3.3",
     "topic": "rules",
     "level": 4,
-    "prompt": "Let \\(F(x)=2x(5x^3+7/(x+2))\\). Find the slope at \\(x=0\\) of the tangent line to the graph of \\(F''\\).",
-    "answer": "21/2",
-    "why": "Write \\(F=10x^4+14-28/(x+2)\\). Three derivatives give \\(F'''=240x+168/(x+2)^4\\). The slope at \\(0\\) is \\(168/16=21/2\\).",
+    "prompt": "Let \\(F(x)=2x(5x^3+7/(x+2))\\). At zero the second derivative is \\(-7\\). For \\(G(x)=F(x)+3x^2\\), what is the slope of the graph of \\(G'\\) at zero?",
+    "answer": "-1",
+    "why": "The slope of \\(G'\\) is \\(G''\\). The added quadratic contributes \\(6\\) to the second derivative, giving \\(-7+6=-1\\).",
     "source": "../lectures/11-differentiation-rules.html#combining-rules-and-differentiating-again",
     "pdfPage": 32,
     "pdf": "../downloads/october-14-differentiation-rules.pdf"
@@ -718,7 +718,7 @@
     "section": "3.3",
     "topic": "tangent",
     "level": 4,
-    "prompt": "A tangent to \\(f(x)=x^3-3x^2+2\\) also meets the cubic at the distinct input \\(4\\). Find the input at which it is tangent.",
+    "prompt": "The tangent line \\(L\\) to \\(f(x)=x^3-3x^2+2\\) at \\(x=a\\) also meets the graph at \\(x=4\\). Thus \\(f(x)-L(x)=(x-a)^2(x-4)\\). The coefficient of \\(x^2\\) is \\(-3\\). Find \\(a\\).",
     "answer": "-1/2",
     "why": "Subtract the tangent line from \\(f\\). The resulting monic cubic has a double root \\(a\\) at contact and another root \\(4\\). Its quadratic coefficient is \\(-3\\), so \\(2a+4=3\\).",
     "source": "../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes",
@@ -740,9 +740,9 @@
     "section": "3.3",
     "topic": "rules",
     "level": 4,
-    "prompt": "For \\(f(x)=(x-1)(3x^2+2)\\), find the vertical intercept of the tangent whose slope is smallest.",
-    "answer": "-17/9",
-    "why": "The derivative is \\(9x^2-6x+2=(3x-1)^2+1\\), so its minimum slope is \\(1\\) at \\(x=1/3\\). There \\(f=-14/9\\), and the intercept is \\(-14/9-1/3=-17/9\\).",
+    "prompt": "For \\(f(x)=(x-1)(3x^2+2)\\), the derivative can be written \\((3x-1)^2+1\\). What is the slope of the line perpendicular to the least-steep tangent?",
+    "answer": "-1",
+    "why": "All tangent slopes are positive. The smallest is \\(1\\), attained at \\(x=1/3\\); its perpendicular has slope \\(-1\\).",
     "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
     "pdfPage": 31,
     "pdf": "../downloads/october-14-differentiation-rules.pdf"
@@ -751,9 +751,9 @@
     "section": "3.3",
     "topic": "rules",
     "level": 4,
-    "prompt": "For \\(f(x)=(x^2+9)/(x^2-1)\\), the tangent at \\(x=2\\) crosses the horizontal axis at which input?",
-    "answer": "119/40",
-    "why": "At \\(2\\) the height is \\(13/3\\) and the slope is \\(-20(2)/(2^2-1)^2=-40/9\\). Solve \\(0=13/3-(40/9)(x-2)\\) to get \\(x=2+39/40=119/40\\).",
+    "prompt": "For \\(f(x)=(x^2+9)/(x^2-1)\\), \\(f(2)=13/3\\) and \\(f'(2)=-40/9\\). By how much does the tangent line predict \\(y\\) will change if \\(x\\) increases from \\(2\\) to \\(2+9/40\\)?",
+    "answer": "-1",
+    "why": "On the tangent line, the change is slope times horizontal change: \\((-40/9)(9/40)=-1\\).",
     "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
     "pdfPage": 31,
     "pdf": "../downloads/october-14-differentiation-rules.pdf"
@@ -762,7 +762,7 @@
     "section": "3.3",
     "topic": "rules",
     "level": 4,
-    "prompt": "For \\(p(x)=4x^3-2x+7\\), the two lines tangent to the graph with slope \\(10\\) meet the \\(y\\)-axis at distinct heights. What is the difference between the larger height and the smaller?",
+    "prompt": "For \\(p(x)=4x^3-2x+7\\), the tangents of slope \\(10\\) touch at \\((1,9)\\) and \\((-1,5)\\). Find the larger vertical intercept minus the smaller.",
     "answer": "16",
     "why": "The condition \\(12x^2-2=10\\) gives \\(x=\\pm1\\). At \\(x=1\\) the intercept is \\(9-10=-1\\). At \\(x=-1\\) it is \\(5+10=15\\). The difference is \\(16\\).",
     "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
@@ -773,7 +773,7 @@
     "section": "3.5",
     "topic": "trig",
     "level": 4,
-    "prompt": "Fill the hole in \\(f(x)=\\tan x/(2-\\sec x)\\) at \\(x=\\pi/2\\) to make \\(f\\) continuous there. What is the slope of the filled graph at that input?",
+    "prompt": "For \\(\\cos x\\ne0\\), \\(f(x)=\\tan x/(2-\\sec x)\\) equals \\(\\sin x/(2\\cos x-1)\\) wherever both are defined. Use the latter to fill the hole at \\(x=\\pi/2\\). Find the slope there.",
     "answer": "2",
     "why": "Near the point, \\(f=\\sin x/(2\\cos x-1)\\), whose denominator remains nonzero at \\(\\pi/2\\). Differentiating yields \\((2-\\cos x)/(2\\cos x-1)^2\\), which gives \\(2\\) there.",
     "source": "../lectures/13-trigonometric-derivatives.html#using-quotients-to-explain-the-new-formulas",
@@ -795,7 +795,7 @@
     "section": "3.5",
     "topic": "trig",
     "level": 4,
-    "prompt": "For \\(y=\\sin x/(1+\\cos x)\\), find \\(y'''(0)\\).",
+    "prompt": "For \\(y=\\sin x/(1+\\cos x)\\), the second derivative is \\(y''=\\sin x/(1+\\cos x)^2\\) near zero. What is \\(y'''(0)\\)?",
     "answer": "1/4",
     "why": "The first derivative simplifies to \\(1/(1+\\cos x)\\). Then \\(y''=\\sin x/(1+\\cos x)^2\\). In differentiating once more at zero the term proportional to \\(\\sin x\\) vanishes, leaving \\(\\cos0/(1+\\cos0)^2=1/4\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#practice",
@@ -806,7 +806,7 @@
     "section": "3.5",
     "topic": "trig",
     "level": 4,
-    "prompt": "For \\(y=x\\sin x\\), find its fourth derivative at zero.",
+    "prompt": "For \\(y=x\\sin x\\), the third derivative is \\(-3\\sin x-x\\cos x\\). Find the fourth derivative at zero.",
     "answer": "-4",
     "why": "Differentiate twice to get \\(y''=2\\cos x-x\\sin x\\). The next derivatives are \\(-3\\sin x-x\\cos x\\) and \\(-4\\cos x+x\\sin x\\). Evaluating at zero gives \\(-4\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#practice",
@@ -817,7 +817,7 @@
     "section": "3.5",
     "topic": "trig",
     "level": 4,
-    "prompt": "Let \\(y=2\\sin x\\cos x\\). At \\(x=\\pi/4\\), what is its sixth derivative?",
+    "prompt": "Let \\(y=2\\sin x\\cos x=\\sin(2x)\\). Each pair of derivatives multiplies \\(y\\) by \\(-4\\). What is \\(y\\)’s sixth derivative at \\(x=\\pi/4\\)?",
     "answer": "-64",
     "why": "The function equals \\(\\sin(2x)\\), so two differentiations multiply it by \\(-4\\). After six differentiations the factor is \\((-4)^3=-64\\). Its original height at \\(\\pi/4\\) is \\(1\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes",
@@ -828,7 +828,7 @@
     "section": "3.5",
     "topic": "trig",
     "level": 4,
-    "prompt": "For \\(f(x)=x-4\\cos x\\), the two tangents of slope \\(3\\) on \\(0<x<2\\pi\\) have second derivatives of opposite sign at their contact points. Find the product of those second derivatives.",
+    "prompt": "For \\(f(x)=x-4\\cos x\\), the two tangents of slope \\(3\\) touch at \\(\\pi/6\\) and \\(5\\pi/6\\). What is the product of the two values of \\(f''\\) there?",
     "answer": "-12",
     "why": "Slope \\(3\\) means \\(\\sin x=1/2\\), at \\(\\pi/6\\) and \\(5\\pi/6\\). Since \\(f''=4\\cos x\\), the values are \\(2\\sqrt3\\) and \\(-2\\sqrt3\\), whose product is \\(-12\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes",
@@ -850,7 +850,7 @@
     "section": "3.5",
     "topic": "trig",
     "level": 4,
-    "prompt": "For \\(y=x^3\\cot x\\) on \\(x\\ne0\\) near zero, find \\(\\lim_{x\\to0}y'(x)/x\\).",
+    "prompt": "For \\(y=x^3\\cot x\\) near \\(x=0\\) with \\(x\\ne0\\), differentiation gives \\(y'/x=3(x/\\sin x)\\cos x-(x/\\sin x)^2\\). Find its limit as \\(x\\to0\\).",
     "answer": "2",
     "why": "Differentiation gives \\(y'/x=3x\\cot x-x^2\\csc^2x\\). Since \\(x/\\sin x\\to1\\) and \\(\\cos x\\to1\\), the two terms approach \\(3\\) and \\(1\\), respectively. Their difference tends to \\(2\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure",
@@ -861,9 +861,9 @@
     "section": "3.3",
     "topic": "tangent",
     "level": 4,
-    "prompt": "On \\(y=x^3-3x^2+2\\), the tangent at \\(x=1/2\\) meets the curve again at \\(P\\). The tangent at \\(P\\) meets it again at \\(Q\\). Find the vertical intercept of the tangent at \\(Q\\).",
-    "answer": "7",
-    "why": "Subtracting the tangent at \\(a\\) from the cubic leaves a monic cubic with double root \\(a\\). Its quadratic coefficient stays \\(-3\\), so the remaining root is \\(3-2a\\). Starting at \\(1/2\\) gives the successive contact inputs \\(2,-1\\). At \\(-1\\) the height is \\(-2\\) and the slope is \\(9\\), so the tangent has intercept \\(-2-9(-1)=7\\).",
+    "prompt": "For \\(f(x)=x^3-3x^2+2\\), the tangent at input \\(a\\) meets the cubic again at input \\(3-2a\\). Start at \\(a=1/2\\), move to the second intersection, then repeat once. What is the slope of the tangent at the final input?",
+    "answer": "9",
+    "why": "The successive inputs are \\(2\\) and \\(-1\\). Since \\(f'(x)=3x^2-6x\\), its value at \\(-1\\) is \\(9\\).",
     "source": "../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes",
     "capstone": true,
     "pdfPage": 33,
@@ -873,9 +873,9 @@
     "section": "3.5",
     "topic": "trig",
     "level": 4,
-    "prompt": "Fill the hole at \\(x=\\pi/2\\) in \\(f(x)=\\tan x/(2-\\sec x)\\) so that the result is continuous there. Compute the third derivative of the filled function at \\(\\pi/2\\).",
-    "answer": "40",
-    "why": "Cancel to get \\((2\\cos x-1)f(x)=\\sin x\\) near the hole. At \\(a=\\pi/2\\), the factor \\(D=2\\cos x-1\\) has \\(D=-1\\), \\(D'=-2\\), \\(D''=0\\), \\(D'''=2\\). The equation and its first two derivatives give \\(f=-1\\), \\(f'=2\\), \\(f''=-7\\). Differentiating a third time at \\(a\\) gives \\(2(-1)+3(-2)(-7)-f'''=0\\), hence \\(f'''=40\\).",
+    "prompt": "At \\(a=\\pi/2\\), a smooth function satisfies \\((2\\cos x-1)f(x)=\\sin x\\), with \\(f(a)=-1\\) and \\(f'(a)=2\\). At \\(a\\) the factor \\(D=2\\cos x-1\\) has \\(D=-1\\), \\(D'=-2\\), \\(D''=0\\). Find \\(f''(a)\\).",
+    "answer": "-7",
+    "why": "The second derivative of \\(Df\\) is \\(D'' f+2D' f'+Df''\\). At \\(a\\) it equals \\(-\\sin a=-1\\), so \\(-8-f''(a)=-1\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#using-quotients-to-explain-the-new-formulas",
     "capstone": true,
     "pdfPage": 38,
@@ -921,7 +921,7 @@
     "source": "../lectures/17-exponential-logarithmic.html#the-general-calculation",
     "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
     "level": 3,
-    "prompt": "Let \\(y=x^{\\sqrt{x}}\\) for \\(x>0\\). At \\(x=4\\), which expression gives the tangent slope?",
+    "prompt": "Let \\(y=x^{\\sqrt x}\\) for \\(x>0\\). At \\(x=4\\), \\(y=16\\) and \\(y'/y=1/2+(\\ln 4)/4\\). Which expression is the tangent slope there?",
     "choices": [
       "\\(8+4\\ln 4\\)",
       "\\(8+\\ln 4\\)",

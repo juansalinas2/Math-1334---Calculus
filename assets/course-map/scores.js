@@ -13,7 +13,6 @@ window.junctionScores = (() => {
   const legacy = id => Number.isInteger(id) && id>=0 && id<adjectives.length*nouns.length;
   const valid = id => legacy(id) || nicknameOK(id);
   const name = id => legacy(id) ? adjectives[Math.floor(id/nouns.length)]+" "+nouns[id%nouns.length] : nicknameOK(id) ? id : "Guest";
-  const guestNames = ["FERN","QUILL","AERO","MINT","KITE","EMBER","ORBIT","NOVA","LUNA","PANDA","WREN","RAVEN","PIP","COMET","LYNX","SPARK"];
   const token = bytes => Array.from(crypto.getRandomValues(new Uint8Array(bytes)),n => n.toString(16).padStart(2,"0")).join("");
   const memory = new Map();
   function stored(key,value) {
@@ -28,7 +27,7 @@ window.junctionScores = (() => {
   function alias() {
     const saved=stored("nickname");
     if(nicknameOK(saved))return saved;
-    return guestNames[parseInt(player.slice(0,2),16)%guestNames.length];
+    return null;
   }
   async function request(params,write=false) {
     // This course's exam-practice lecture uses its own board under the original limits key.
@@ -39,7 +38,8 @@ window.junctionScores = (() => {
       headers:{"Content-Type":"text/plain;charset=UTF-8"},body:JSON.stringify(data)} : {credentials:"omit",cache:"no-store"});
     if (!response.ok) throw Error("The scoreboard is unavailable.");
     const result = await response.json();
-    if (!result.ok) throw Error("The scoreboard could not accept this run.");
+    if (!result.ok) throw Error(result.error || "The service couldn’t accept that update. Please try again.");
+    if(result.room?.key==="limits")result.room.key="s2.7";
     return result;
   }
   return {valid,name,nicknameOK,token,stored,player,alias,request};

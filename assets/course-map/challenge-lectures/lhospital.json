@@ -2,7 +2,7 @@
   {
     "topic": "lhospital",
     "level": 3,
-    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to0}(\\tan x-x)/x^3\\).",
+    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to0}(\\tan x-x)/x^3\\). You may use \\(\\sec^2 x-1=\\tan^2 x\\) and \\(\\tan x/x\\to1\\).",
     "choices": [
       "\\(1/3\\)",
       "\\(0\\)",
@@ -17,7 +17,7 @@
   {
     "topic": "lhospital",
     "level": 3,
-    "prompt": "For \\(x\\to\\infty\\), both \\(2x+\\sin x\\) and \\(x\\) tend to infinity. What is the limit of their quotient, and what happens to the quotient of their derivatives?",
+    "prompt": "Let \\(f(x)=(2x+\\sin x)/x\\). As \\(x\\to\\infty\\), both numerator and denominator tend to infinity. What happens to \\(f(x)\\) and to the quotient of the derivatives of its numerator and denominator?",
     "choices": [
       "The original tends to 2. The derivative quotient oscillates.",
       "Both tend to 2.",
@@ -33,7 +33,7 @@
   {
     "topic": "forms",
     "level": 3,
-    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to-\\infty}(\\sqrt{x^2+4x}+x)\\).",
+    "prompt": "For \\(x< -4\\), rationalizing \\(\\sqrt{x^2+4x}+x\\) gives \\(4x/(\\sqrt{x^2+4x}-x)\\). Which is the limit as \\(x\\to-\\infty\\)?",
     "choices": [
       "\\(-2\\)",
       "\\(2\\)",
@@ -80,7 +80,7 @@
   {
     "topic": "forms",
     "level": 3,
-    "prompt": "Find \\(\\displaystyle\\lim_{x\\to0^+}\\sqrt{x}\\ln x\\) and decide whether the product is positive or negative for small positive \\(x\\).",
+    "prompt": "For \\(0<x<1\\), consider \\(\\sqrt{x}\\ln x\\). Rewrite it as \\((\\ln x)/(1/\\sqrt{x})\\). What is its limit as \\(x\\to0^+\\), and from which side does it approach?",
     "choices": [
       "It approaches 0 through negative values.",
       "It approaches 0 through positive values.",
@@ -126,7 +126,7 @@
   {
     "topic": "lhospital",
     "level": 3,
-    "prompt": "As \\(x\\to\\infty\\), evaluate \\(\\displaystyle\\frac{(\\ln x)^2}{\\sqrt{x}}\\).",
+    "prompt": "As \\(x\\to\\infty\\), one application of l’Hospital’s rule to \\((\\ln x)^2/\\sqrt{x}\\) gives \\(4\\ln x/\\sqrt{x}\\). What is the limit of the original expression?",
     "choices": [
       "\\(0\\)",
       "\\(4\\)",
@@ -141,7 +141,7 @@
   {
     "topic": "lhospital",
     "level": 3,
-    "prompt": "For a fixed real number \\(k\\ne0\\), evaluate \\(\\displaystyle\\lim_{x\\to0}\\frac{\\tan(kx)-kx}{x^3}\\).",
+    "prompt": "For fixed \\(k\\ne0\\), use \\(\\lim_{u\\to0}(\\tan u-u)/u^3=1/3\\). What is \\(\\lim_{x\\to0}(\\tan(kx)-kx)/x^3\\)?",
     "choices": [
       "\\(k^3/3\\)",
       "\\(k/3\\)",
@@ -156,14 +156,14 @@
   {
     "topic": "lhospital",
     "level": 3,
-    "prompt": "Suppose \\(f\\) is twice differentiable near zero, \\(f(0)=f^{\\prime}(0)=0\\), and \\(f^{\\prime'}\\) is continuous at zero with value 6. What is \\(\\displaystyle\\lim_{x\\to0}f(x)/(1-\\cos x)\\)?",
+    "prompt": "Suppose \\(f\\) is twice differentiable near zero, \\(f(0)=f^{\\prime}(0)=0\\), and \\(f^{\\prime\\prime}\\) is continuous there with \\(f^{\\prime\\prime}(0)=6\\). What is \\(\\lim_{x\\to0} f(x)/(1-\\cos x)\\)?",
     "choices": [
       "\\(6\\)",
       "\\(3\\)",
       "\\(12\\)",
       "\\(0\\)"
     ],
-    "why": "The original quotient has form \\(0/0\\), as does \\(f^{\\prime}(x)/\\sin x\\) after one differentiation. Apply the rule again to obtain \\(f^{\\prime'}(x)/\\cos x\\to6\\).",
+    "why": "The original quotient has form \\(0/0\\), as does \\(f^{\\prime}(x)/\\sin x\\) after one differentiation. Apply the rule again to obtain \\(f^{\\prime\\prime}(x)/\\cos x\\to6\\).",
     "source": "../lectures/lhopitals-rule.html#lhospitals-theorem",
     "section": "4.7",
     "pdf": "../downloads/lhopitals-rule.pdf"
@@ -171,7 +171,7 @@
   {
     "topic": "lhospital",
     "level": 3,
-    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to0}\\frac{1-\\cos(3x)}{1-\\cos(2x)}\\).",
+    "prompt": "Using \\(1-\\cos u=2\\sin^2(u/2)\\) and \\(\\sin u/u\\to1\\), find \\(\\lim_{x\\to0}(1-\\cos(3x))/(1-\\cos(2x))\\).",
     "choices": [
       "\\(9/4\\)",
       "\\(3/2\\)",
@@ -186,7 +186,7 @@
   {
     "topic": "lhospital",
     "level": 3,
-    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to\\pi^-}\\frac{\\sin x}{(\\pi-x)(1-\\cos x)}\\).",
+    "prompt": "Let \\(u=\\pi-x\\), so \\(\\sin x=\\sin u\\). As \\(x\\to\\pi^-\\), what is the limit of \\(\\sin x/[(\\pi-x)(1-\\cos x)]\\)?",
     "choices": [
       "\\(1/2\\)",
       "\\(-1/2\\)",
@@ -201,7 +201,7 @@
   {
     "topic": "forms",
     "level": 3,
-    "prompt": "For positive \\(x\\) approaching zero, evaluate \\(\\displaystyle\\lim_{x\\to0^+}\\frac{x^x-1}{x\\ln x}\\).",
+    "prompt": "As \\(x\\to0^+\\), let \\(u=x\\ln x\\to0\\). Since \\(x^x=e^u\\), what is \\(\\lim_{x\\to0^+}(x^x-1)/(x\\ln x)\\)?",
     "choices": [
       "\\(1\\)",
       "\\(0\\)",
@@ -216,7 +216,7 @@
   {
     "topic": "lhospital",
     "level": 3,
-    "prompt": "Evaluate \\(\\displaystyle\\lim_{x\\to0}\\frac{\\ln(1+x)-x+x^2/2}{x^3}\\).",
+    "prompt": "For \\(\\lim_{x\\to0}[\\ln(1+x)-x+x^2/2]/x^3\\), both numerator and denominator tend to zero. The derivative of the numerator simplifies to \\(x^2/(1+x)\\). What is the limit?",
     "choices": [
       "\\(1/3\\)",
       "\\(1/6\\)",
@@ -341,14 +341,14 @@
     "topic": "forms",
     "section": "4.7",
     "level": 3,
-    "prompt": "As \\(x\\to-\\infty\\), what does \\(\\sqrt{x^2+4x}+x\\) approach?",
+    "prompt": "You are evaluating \\(\\sqrt{x^2+4x}+x\\) as \\(x\\to-\\infty\\). Which denominator, divided by \\(-x\\), tends to 2 when you rationalize?",
     "choices": [
-      "\\(-2\\)",
-      "\\(2\\)",
-      "\\(0\\)",
-      "\\(+\\infty\\)"
+      "\\(\\sqrt{x^2+4x}-x\\)",
+      "\\(\\sqrt{x^2+4x}+x\\)",
+      "\\(x^2+4x-x^2\\)",
+      "\\(\\sqrt{x^2+4x}\\)"
     ],
-    "why": "Conjugation gives \\(4x/(\\sqrt{x^2+4x}-x)\\). Because \\(x<0\\), the square root is \\(-x\\sqrt{1+4/x}\\). The quotient becomes \\(-4/(\\sqrt{1+4/x}+1)\\).",
+    "why": "Use the conjugate \\(\\sqrt{x^2+4x}-x\\). For negative \\(x\\), division by \\(-x\\) gives \\(\\sqrt{1+4/x}+1\\to2\\).",
     "source": "../lectures/lhopitals-rule.html#differences",
     "reference": "Exam 3 review worksheet · 11(g)",
     "pdfPage": 86,
@@ -359,7 +359,7 @@
     "topic": "forms",
     "section": "4.7",
     "level": 3,
-    "prompt": "For \\(y=(\\cos x)^{1/x^2}\\) near 0, what familiar limit finishes the calculation of \\(\\lim\\ln y\\) after one use of l’Hospital’s rule?",
+    "prompt": "Let \\(y=(\\cos x)^{1/x^2}\\) near zero. Taking logs gives \\(\\ln y=\\ln(\\cos x)/x^2\\). Which familiar limit finishes the calculation of \\(\\lim_{x\\to0}\\ln y\\) after one use of l’Hospital’s rule?",
     "choices": [
       "\\(\\tan x/x\\to1\\), giving \\(\\ln y\\to-1/2\\).",
       "\\(\\tan x/x\\to0\\), giving \\(\\ln y\\to0\\).",
@@ -377,7 +377,7 @@
     "section": "4.7",
     "topic": "lhospital",
     "level": 4,
-    "prompt": "Evaluate \\(\\lim_{x\\to0}(\\tan(3x)-3x)/x^3\\).",
+    "prompt": "You know \\(\\lim_{u\\to0}(\\tan u-u)/u^3=1/3\\). Let \\(u=3x\\). What is \\(\\lim_{x\\to0}(\\tan(3x)-3x)/x^3\\)?",
     "answer": "9",
     "why": "One l’Hospital step gives \\(3(\\sec^2(3x)-1)/(3x^2)=\\tan^2(3x)/x^2\\). Since \\(\\tan(3x)/x\\to3\\), the limit is 9.",
     "source": "../lectures/lhopitals-rule.html#zero-over-zero",
@@ -388,7 +388,7 @@
     "section": "4.7",
     "topic": "lhospital",
     "level": 4,
-    "prompt": "Compute \\(\\lim_{x\\to0}(e^{2x}-1-2x-2x^2)/x^3\\).",
+    "prompt": "Let \\(F(x)=e^{2x}-1-2x-2x^2\\). At 0 the function and its first two derivatives vanish. Its third derivative is \\(8e^{2x}\\). Find \\(\\lim_{x\\to0}F(x)/x^3\\).",
     "answer": "4/3",
     "why": "The numerator and denominator and their first two derivatives vanish at zero. Applying l’Hospital’s rule three times yields \\(8e^{2x}/6\\to4/3\\).",
     "source": "../lectures/lhopitals-rule.html#differences",
@@ -399,9 +399,9 @@
     "section": "4.7",
     "topic": "lhospital",
     "level": 4,
-    "prompt": "Find \\(\\lim_{x\\to0^+}(x^x-1-x\\ln x)/(x\\ln x)^2\\).",
+    "prompt": "For \\(u=x\\ln x\\) as \\(x\\to0^+\\), we have \\(u\\to0\\) and \\(x^x=e^u\\). Use \\(\\lim_{u\\to0}(e^u-1)/u=1\\). What is \\(\\lim_{x\\to0^+}(x^x-1-x\\ln x)/(x\\ln x)^2\\)?",
     "answer": "1/2",
-    "why": "Set \\(u=x\\ln x\\). Then \\(u\\to0\\) and \\(x^x=e^u\\). Two applications of l’Hospital’s rule to \\((e^u-1-u)/u^2\\) give \\(e^u/2\\to1/2\\).",
+    "why": "The expression becomes \\((e^u-1-u)/u^2\\). Differentiate numerator and denominator once to get \\((e^u-1)/(2u)\\to1/2\\).",
     "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
     "pdfPage": 87,
     "pdf": "../downloads/lhopitals-rule.pdf"
@@ -410,7 +410,7 @@
     "section": "4.7",
     "topic": "lhospital",
     "level": 4,
-    "prompt": "For \\(L=\\lim_{x\\to0}(\\cos(2x))^{3/x^2}\\), determine \\(\\ln L\\).",
+    "prompt": "For \\(L=\\lim_{x\\to0}(\\cos(2x))^{3/x^2}\\), taking logarithms gives \\(\\ln L=\\lim_{x\\to0}3\\ln(\\cos(2x))/x^2\\). Using \\(\\tan u/u\\to1\\), find \\(\\ln L\\).",
     "answer": "-6",
     "why": "The logarithm of the positive power is \\(3\\ln(\\cos(2x))/x^2\\). Its derivative quotient is \\(-3\\tan(2x)/x\\to-6\\). Continuity of the exponential gives \\(L=e^{-6}\\).",
     "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
@@ -421,9 +421,9 @@
     "section": "4.7",
     "topic": "lhospital",
     "level": 4,
-    "prompt": "The right-hand limit of \\((1+2x)^{1/x}\\) is \\(e^2\\). Find \\(\\lim_{x\\to0^+}((1+2x)^{1/x}/e^2-1)/x\\).",
-    "answer": "-2",
-    "why": "Set \\(u=\\ln(1+2x)/x-2\\). Because \\((e^u-1)/u\\to1\\), the answer is \\(\\lim u/x\\). Apply l’Hospital to \\((\\ln(1+2x)-2x)/x^2\\) to get \\(-2/(1+2x)\\to-2\\).",
+    "prompt": "For \\(x>0\\), let \\(y=(1+2x)^{1/x}\\). Its logarithm is \\(\\ln(1+2x)/x\\). If the exponent changes from \\(1/x\\) to \\(3/x\\), what is the limit of the new logarithm as \\(x\\to0^+\\)?",
+    "answer": "6",
+    "why": "The new log is \\(3\\ln(1+2x)/x\\). By l’Hospital the limit is \\(\\lim_{x\\to0^+}6/(1+2x)=6\\).",
     "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
     "pdfPage": 87,
     "pdf": "../downloads/lhopitals-rule.pdf"
@@ -432,9 +432,9 @@
     "section": "4.7",
     "topic": "lhospital",
     "level": 4,
-    "prompt": "The lecture radical \\(\\sqrt{x^2+4x}-x\\) approaches 2 at the positive end. Find \\(\\lim_{x\\to\\infty}x^2(\\sqrt{x^2+4x}-x-2+2/x)\\).",
-    "answer": "4",
-    "why": "Write \\(D=\\sqrt{x^2+4x}-x-2=-4/(\\sqrt{x^2+4x}+x+2)\\). Then \\(x^2D+2x=2x(\\sqrt{x^2+4x}-x+2)/(\\sqrt{x^2+4x}+x+2)\\). The numerator in parentheses tends to 4 and the denominator divided by \\(x\\) tends to 2.",
+    "prompt": "For \\(x>0\\), the difference \\(D=\\sqrt{x^2+4x}-x-2\\) satisfies \\(D(\\sqrt{x^2+4x}+x+2)=-4\\). What is \\(\\lim_{x\\to\\infty}xD\\)?",
+    "answer": "-2",
+    "why": "Divide the conjugate by \\(x\\). It tends to \\(1+1+0=2\\). Hence \\(xD\\to -4/2=-2\\).",
     "source": "../lectures/lhopitals-rule.html#differences",
     "pdfPage": 86,
     "pdf": "../downloads/lhopitals-rule.pdf"
@@ -443,9 +443,9 @@
     "section": "4.7",
     "topic": "lhospital",
     "level": 4,
-    "prompt": "Find \\(\\lim_{x\\to\\infty}e^{2x}(\\ln(1+e^{-x})-e^{-x})\\).",
+    "prompt": "As \\(x\\to\\infty\\), put \\(u=e^{-x}\\to0\\). Then \\(e^{2x}(\\ln(1+e^{-x})-e^{-x})=(\\ln(1+u)-u)/u^2\\). Find its limit.",
     "answer": "-1/2",
-    "why": "Set \\(u=e^{-x}\\to0^+\\). The expression is \\((\\ln(1+u)-u)/u^2\\). One l’Hospital step gives \\(-1/(2(1+u))\\), whose limit is \\(-1/2\\).",
+    "why": "The derivative quotient is \\([1/(1+u)-1]/(2u)=-1/[2(1+u)]\\). It approaches \\(-1/2\\).",
     "source": "../lectures/lhopitals-rule.html#infinity-over-infinity",
     "pdfPage": 85,
     "pdf": "../downloads/lhopitals-rule.pdf"
@@ -454,7 +454,7 @@
     "section": "4.7",
     "topic": "lhospital",
     "level": 4,
-    "prompt": "At the positive end \\(y=x^{1/x}\\) tends to 1. Evaluate \\(\\lim_{x\\to\\infty}(x^{3/x}-x^{1/x})/(x^{2/x}-1)\\).",
+    "prompt": "For \\(x>1\\), put \\(y=x^{1/x}\\). You know \\(y\\to1\\) as \\(x\\to\\infty\\). Find \\(\\lim_{x\\to\\infty}(x^{3/x}-x^{1/x})/(x^{2/x}-1)\\).",
     "answer": "1",
     "why": "In terms of \\(y>1\\) for \\(x>1\\), the quotient equals \\((y^3-y)/(y^2-1)=y\\). Taking logarithms gives \\(\\ln y=(\\ln x)/x\\to0\\), so \\(y\\to1\\).",
     "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
@@ -465,7 +465,7 @@
     "section": "4.7",
     "topic": "lhospital",
     "level": 4,
-    "prompt": "After removing the cubic contribution in the lecture tangent limit, compute \\(\\lim_{x\\to0}(\\tan x-x-x^3/3)/x^5\\).",
+    "prompt": "You know \\((\\tan x-x)/x^3\\to1/3\\) and \\(\\tan x/x\\to1\\) as \\(x\\to0\\). A l’Hospital step reduces \\((\\tan x-x-x^3/3)/x^5\\) to \\([(\\tan x-x)/x^3][(\\tan x+x)/x]/5\\). Find the limit.",
     "answer": "2/15",
     "why": "One l’Hospital step gives \\((\\tan^2x-x^2)/(5x^4)\\). Factor this as \\([(\\tan x-x)/x^3][(\\tan x+x)/x]/5\\). The first bracket tends to \\(1/3\\) by the lecture example and the second to 2.",
     "source": "../lectures/lhopitals-rule.html#zero-over-zero",
@@ -477,7 +477,7 @@
     "section": "4.7",
     "topic": "lhospital",
     "level": 4,
-    "prompt": "The log of the lecture’s power \\((\\cos x)^{1/x^2}\\) tends to \\(-1/2\\). Evaluate \\(\\lim_{x\\to0}(\\ln(\\cos x)+x^2/2)/x^4\\).",
+    "prompt": "Use \\(\\lim_{x\\to0}(\\tan x-x)/x^3=1/3\\). What is \\(\\lim_{x\\to0}[\\ln(\\cos x)+x^2/2]/x^4\\)?",
     "answer": "-1/12",
     "why": "Both numerator and denominator vanish. One l’Hospital step gives \\(-(\\tan x-x)/(4x^3)\\). The lecture cubic limit is \\(1/3\\), so the correction is \\(-1/12\\).",
     "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
@@ -507,7 +507,7 @@
     "source": "../lectures/lhopitals-rule.html#infinity-over-infinity",
     "pdf": "../downloads/lhopitals-rule.pdf",
     "level": 2,
-    "prompt": "For \\(\\ln x/\\sqrt{x}\\) as \\(x\\to\\infty\\), the lecture obtains \\(2/\\sqrt{x}\\) after one application of l’Hospital’s rule. What is the original limit?",
+    "prompt": "As \\(x\\to\\infty\\), l’Hospital’s rule changes the quotient \\(\\ln x/\\sqrt{x}\\) to \\(2/\\sqrt{x}\\). What is the limit of the original quotient?",
     "choices": [
       "\\(0\\)",
       "\\(2\\)",

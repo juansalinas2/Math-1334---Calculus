@@ -127,7 +127,12 @@
           <path d="m-1-32-11-7-5-9m18 16 12-5 8-12" class="runner-appendage"/>
           <path d="m-17-48-1-4m1 4-4-2m42 1 1-4m-1 4 4-2" stroke="var(--r-ink)" stroke-width="1.8"/>
         </g>
-        <path id="run-scarf" d="m2-36-8 2-11-3-6 3 6-7 9 1z" fill="var(--r-scarf)" stroke="var(--r-ink)" stroke-width="1.3"/>
+        <path id="run-scarf" d="m2-36-8 2-11-3-6 3 6-7 9 1z" fill="#ef2186" stroke="#742044" stroke-width="1.3"/>
+        <g id="run-bow" transform="translate(0 -35) rotate(-9)" stroke="#752044" stroke-width="1.15">
+          <path d="M-1 0C-4-2-8-6-9-4c-2 3-1 7 0 8 2 1 6-1 8-3zm2 0c3-2 7-5 9-4 2 2 2 6 1 8-2 1-7-1-10-3z" fill="#ff278e"/>
+          <path d="m-7-2 4 2m7 0 3-2" fill="none" stroke="#ffb8da"/>
+          <rect x="-2" y="-2" width="4" height="5" rx="1.4" fill="#ff65b1"/>
+        </g>
         <g id="run-head">
           <path d="M-7-43q-3-11 7-14 10-2 15 7 3 9-7 13-9 3-15-6z" fill="#fff1cd" stroke="var(--r-ink)" stroke-width="2.8"/>
           <path d="m-1-57-3-5 6 3 3-3 2 4" fill="none" stroke="var(--r-ink)" stroke-width="1.9"/>

@@ -55,7 +55,7 @@ map_html = map_html.replace('<!-- practice data -->', '<script type="application
 arcade = map_output / 'challenge.html'
 edition = hashlib.sha256(deck).hexdigest()[:12]
 arcade_html = arcade.read_text().replace('./challenge-bank.json', bank_url).replace('DECK_VERSION', edition)
-for name in ('math.css', 'challenge.css', 'runner.css', 'scores.js', 'game-graphs.js', 'runner.js', 'challenge-rules.js', 'challenge.js', 'bonk.svg'):
+for name in ('math.css', 'challenge.css', 'runner.css', 'scores.js', 'theme.js', 'theme.css', 'race-room.js', 'game-graphs.js', 'runner.js', 'challenge-rules.js', 'challenge.js', 'bonk.svg'):
     version = hashlib.sha256((map_output / name).read_bytes()).hexdigest()[:12]
     arcade_html = arcade_html.replace('./' + name + '"', './' + name + '?v=' + version + '"')
 arcade.write_text(arcade_html)

@@ -1,13 +1,27 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101b22">
+<meta name="theme-color" content="#faf9f3">
+<script src="./theme.js"></script>
 <title>Critical Point · MATH 1334</title>
-<link href="./math.css" rel="stylesheet"><link href="./challenge.css" rel="stylesheet"><link href="./runner.css" rel="stylesheet">
-<script defer src="./scores.js"></script><script defer src="./runner.js"></script><script defer src="./game-graphs.js"></script><script defer src="./challenge-rules.js"></script><script defer src="./challenge.js"></script>
+<link href="./math.css" rel="stylesheet"><link href="./theme.css" rel="stylesheet"><link href="./challenge.css" rel="stylesheet"><link href="./runner.css" rel="stylesheet">
+<script defer src="./scores.js"></script><script defer src="./runner.js"></script><script defer src="./game-graphs.js"></script><script defer src="./challenge-rules.js"></script><script defer src="./race-room.js"></script><script defer src="./challenge.js"></script>
 </head><body data-bank="./challenge-bank.json" data-edition="DECK_VERSION">
 <div class="cabinet">
-<header><a class="back" href="./">‹ Concept map</a><nav aria-label="Game controls"><button class="quiet" id="home" hidden>Start page</button><button class="quiet" id="enlarge" aria-pressed="false">Enlarge</button><button class="quiet" id="fullscreen" aria-pressed="false">Full screen</button></nav></header><p id="screen-status" role="status" hidden></p>
+<header>
+  <a class="back" href="./" aria-label="Concept map"><span aria-hidden="true">‹ </span><span class="back-long">Concept map</span><span class="back-short">Map</span></a>
+  <nav aria-label="Game controls">
+    <button class="quiet" id="home" hidden>Start page</button>
+    <button class="quiet" id="enlarge" aria-pressed="false">Enlarge</button>
+    <button class="quiet" id="fullscreen" aria-pressed="false">Full screen</button>
+    <label class="appearance"><span>Appearance</span>
+      <select id="map-theme" aria-label="Appearance">
+        <option value="system">System</option><option value="light">Light</option>
+        <option value="paper">Paper</option><option value="dark">Dark</option><option value="darker">Darker</option>
+      </select>
+    </label>
+  </nav>
+</header><p id="screen-status" role="status" hidden></p>
 <main>
 <div class="mast"><h1>Critical <em>Point</em></h1><div class="record"><span>Personal best streak</span><b id="personal-best" title="Longest streak on this device">0</b><a href="#board" id="open-board" aria-haspopup="dialog">Class best streak</a><span id="crown-record" hidden>☀ Sun Crown</span></div></div>
 <div class="console">
@@ -16,19 +30,26 @@
   <svg id="rails" viewBox="0 0 680 200" role="img" aria-label="A stick figure on a graph-paper obstacle course"></svg>
 </div>
 <div id="panel">
-  <section id="lobby"><div class="setup-grid"><div class="course-settings"><h2>Choose a course</h2>
-    <div class="modes" role="group" aria-label="Review mode"><button type="button" data-mode="exam3" aria-pressed="true">Exam 3</button><button type="button" data-mode="final" aria-pressed="false">Final review</button><button type="button" data-mode="lecture" aria-pressed="false">One lecture</button><button type="button" data-mode="theory" aria-pressed="false">Theory</button><button type="button" data-mode="vocab" aria-pressed="false">Vocabulary</button></div>
-    <div id="lecture-picker" hidden><label for="line">Section in the lecture PDF</label><select id="line"></select></div>
-    <p id="scope"></p>
+  <section id="lobby" aria-label="Set up a run">
     <div id="pace" hidden><span id="target"></span> <button type="button" id="dismiss-pace" class="quiet">Fresh course</button></div>
-    </div><div class="play-settings"><h2>Run settings</h2><div class="run-settings">
-      <label>Difficulty<select id="difficulty"><option value="easy">Easy</option><option value="medium" selected>Normal</option><option value="hard">Hard</option></select></label>
-      <label>Question order<select id="order"><option value="shuffled">Shuffled</option><option value="ordered">In order</option></select></label>
-      <label>Pace<select id="clock-mode"><option value="timed">Timed run</option><option value="practice">Untimed practice</option></select></label>
+    <div class="launch-row">
+      <label for="course">Course
+        <select id="course"><option value="exam3">Exam 3</option><option value="final">Final review</option><option value="lecture">One lecture</option><option value="theory">Theory</option><option value="vocab">Vocabulary</option></select>
+      </label>
+      <label for="difficulty">Difficulty
+        <select id="difficulty"><option value="easy">Easy</option><option value="medium" selected>Normal</option><option value="hard">Hard</option></select>
+      </label>
+      <div id="lecture-picker" hidden><label for="line">Section in the lecture PDF<select id="line"></select></label></div>
+      <div class="launch-actions"><button type="button" class="primary" id="start" disabled>Start run</button><button type="button" class="quiet" id="invite" disabled>Race friends</button></div>
     </div>
-    <p id="rules-hint"></p>
-    <button type="button" class="primary" id="start" disabled>Start run</button> <button type="button" class="quiet" id="invite" disabled>Race friends</button></div></div>
-    <details class="howto"><summary>How to play</summary><p>Choose a landing with A–D or tap an answer. Each landing earns the base points shown for your difficulty. Timed runs also earn 2 points per full second left. Untimed practice has no time limit. Clear the route to try an optional bonus question. Your streak counts consecutive correct answers and resets on a miss. Open Class best streak to see the shared record and the ten highest timed scores. In a friend race, everyone gets the same questions and answer positions.</p></details>
+    <details id="run-options"><summary>Run options &amp; rules <span id="run-summary"></span></summary>
+      <div class="option-fields">
+        <label for="order">Question order<select id="order"><option value="shuffled">Shuffled</option><option value="ordered">In order</option></select></label>
+        <label for="clock-mode">Pace<select id="clock-mode"><option value="timed">Timed run</option><option value="practice">Untimed practice</option></select></label>
+      </div>
+      <p id="scope"></p><p id="rules-hint"></p>
+      <p>Tap an answer or press A–D. A cleared course earns an optional bonus jump.</p>
+    </details>
     <p id="load-state" role="status">Loading questions…</p>
   </section>
   <section id="play" hidden><div id="clock" role="timer" aria-label="Time remaining" hidden><div class="clock-head"><span class="clock-label">Time remaining</span><span class="clock-digit"><b id="seconds">65</b> sec</span></div><div class="clock-track"><div id="clock-fill"></div></div></div><h2 id="prompt" tabindex="-1"></h2><div id="prompt-graph" hidden></div><div class="choices" id="choices"></div>
@@ -37,9 +58,28 @@
     <details id="previous" hidden><summary>Previous jump · Show solution</summary><div id="previous-content"></div></details>
   </section>
   <section id="feedback" hidden><h2 id="verdict" tabindex="-1"></h2><div id="prize-panel" hidden><span id="prize-symbol" aria-hidden="true"></span><div><strong id="prize-name"></strong><p id="prize-detail"></p><button id="insane-start" class="quiet" hidden>Play Insane</button></div></div><div id="result"></div><details id="recap" hidden><summary>Review this run’s solutions</summary><ol id="recap-list"></ol></details><div id="bonus-offer" hidden><h3>Extra credit</h3><p id="bonus-description"></p><button class="primary" id="take-bonus">Try bonus jump</button> <button class="quiet" id="skip-bonus">Skip bonus</button></div>
-    <form id="save-score" hidden novalidate><label for="nickname">Scoreboard nickname</label><div class="alias-field"><input id="nickname" type="text" maxlength="5" minlength="1" pattern="[A-Za-z]{1,5}" autocapitalize="characters" autocomplete="off" spellcheck="false" aria-describedby="name-hint name-error" placeholder="ABCDE"><button type="submit" class="quiet">Save nickname</button></div><span id="name-hint">1–5 letters</span><p id="name-error" role="status"></p></form><p id="saved" role="status"></p><div class="actions"><button class="primary" id="advance">Run again</button><button class="quiet" id="share" hidden>Copy a challenge link</button><button class="quiet" id="change" hidden>Change course</button><a id="review" target="_blank" rel="noopener">Review concept (new tab)</a></div><p id="share-state" role="status"></p><input id="race-link" aria-label="Challenge link" readonly hidden></section>
+    <form id="save-score" hidden novalidate><label for="nickname">Nickname</label><div class="alias-field"><input id="nickname" type="text" maxlength="5" minlength="1" pattern="[A-Za-z]{1,5}" autocapitalize="characters" autocomplete="off" spellcheck="false" aria-describedby="name-hint name-error" placeholder="ABCDE"><button type="submit" class="quiet">Post to class leaderboard</button></div><span id="name-hint">1–5 letters</span><p id="name-error" role="status"></p></form><p id="saved" role="status"></p><div class="actions"><button class="primary" id="advance">Run again</button><button class="quiet" id="share" hidden>Copy a challenge link</button><button class="quiet" id="change" hidden>Change course</button><a id="review" target="_blank" rel="noopener">Review concept (new tab)</a></div><p id="share-state" role="status"></p><input id="race-link" aria-label="Challenge link" readonly hidden></section>
   <noscript>This game needs JavaScript. <a href="./">Return to the concept map</a>.</noscript>
-</div></div>
-<section id="room-panel" hidden><h2>Friend race</h2><p id="room-name"></p><button id="room-copy" class="quiet">Copy invite</button> <button id="leave-room" class="quiet">Leave race</button><p id="room-status" role="status"></p><input id="invite-link" aria-label="Friend race invitation" readonly hidden><ol id="racers"></ol></section>
+</div>
+<section id="room-panel" aria-labelledby="room-heading" hidden>
+  <div class="room-top"><div><h2 id="room-heading">Race room</h2><p id="room-course"></p></div>
+    <div class="room-ticket"><span>Room code</span><strong id="room-code"></strong></div>
+  </div>
+  <p id="room-name"></p>
+  <div class="race-controls"><button type="button" class="primary" id="room-ready">Ready</button>
+    <button type="button" class="primary" id="room-launch" hidden>Start race</button>
+    <button type="button" class="quiet" id="room-copy">Copy invite</button>
+    <button type="button" class="quiet" id="leave-room">Leave race</button></div>
+  <p id="room-status" role="status"></p><p id="room-countdown" role="status" hidden></p>
+  <input id="invite-link" aria-label="Friend race invitation" readonly hidden><ol id="racers" aria-label="Racers"></ol>
+</section>
+</div>
+<dialog id="race-hub" aria-labelledby="hub-title">
+  <div class="board-head"><h2 id="hub-title">Race friends</h2><button type="button" id="hub-close" class="quiet">Close</button></div>
+  <p>Race on the same questions with a shared start.</p>
+  <button id="host-room" class="primary" type="button">Create room</button>
+  <form id="join-form"><label for="join-code">Join with a room code</label><div class="code-entry"><input id="join-code" type="text" maxlength="6" pattern="[A-Za-z0-9]{6}" required autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="6 characters"><button type="submit" class="quiet">Join room</button></div></form>
+  <p id="hub-status" role="status"></p>
+</dialog>
 <dialog id="board" aria-labelledby="board-title"><div class="board-head"><h2 id="board-title">Class leaderboard</h2><button class="quiet" type="button" id="close-board">Close</button></div><div class="class-record">Class best streak <strong id="record">…</strong></div><h3>Top 10 scores</h3><p id="board-caption" role="status">Loading class scores…</p><ol id="leaders"></ol><p id="board-empty" hidden>The first timed score takes the lead.</p></dialog>
 </main></div></body></html>

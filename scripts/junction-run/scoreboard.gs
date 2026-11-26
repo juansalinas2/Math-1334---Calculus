@@ -144,21 +144,9 @@ function doPost(e) {
       db.setProperty('class-named-scores',JSON.stringify(record));
       return json({ok:true});
     }
-    if (v.action!=='progress' && Number(v.version)>=4) {
-      const record=classRecord(db);
-      record.best=Math.max(record.best,row.best);
-      if(row.points>0)rankScore(record,row);
-      db.setProperty('class-top-scores',JSON.stringify(record));
-    }
-    if (v.action!=='progress' && Number(v.version)!==5) {
-      const rows=list(db,key), old=rows.find(r=>r.id===row.id);
-      if(!old||row.best>old.best||(row.best===old.best&&(row.cleared>old.cleared||(row.cleared===old.cleared&&(row.points||0)>=(old.points||0))))){
-        const next=rows.filter(r=>r.id!==row.id).concat(row).sort((a,b)=>b.best-a.best||b.cleared-a.cleared||(b.points||0)-(a.points||0));
-        db.setProperty(key,JSON.stringify(next.slice(0,10)));
-      } else if (v.action==='save' && row.alias!==old.alias) {
-        old.alias=row.alias;db.setProperty(key,JSON.stringify(rows));
-      }
-    }
+    // Older clients posted both streaks and final scores without an opt-in.
+    // Preserve their archived results and let existing friend races finish.
+    if(v.action!=='progress')return json({ok:false,error:'Reload Critical Point to post a named class score.'});
     if(room) {
       const racers=list(cache,room), old=racers.find(r=>r.id===row.id);
       if ((!old && racers.length<24) || (old && old.status!=="left" && v.steps.startsWith(old.steps) && (row.points||0)>=(old.points||0))) {

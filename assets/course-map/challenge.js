@@ -18,10 +18,10 @@
   const letters = "ABCD";
   let lectures=[], sections={}, course="exam3", state="loading", route=[], run=rules.newRun("medium");
   let seed=0, steps=[], answers=[], assisted=false, pace=null, room=null, latestRead=0, poll, playerAlias=board.alias();
-  let unlocked=board.stored("insane")==="yes", racePlayer="", saveTicket=0;
+  let unlocked=board.stored("insane")==="yes", saveTicket=0, firstClockDelay=0;
   const diff=()=>el("difficulty").value, order=()=>el("order").value;
   const scope=()=>course==="lecture" ? el("line").value : course;
-  const settings=()=>({key:scope(),diff:diff(),order:order(),version:5});
+  const settings=()=>({key:scope(),diff:diff(),order:order(),version:6});
   const title=()=>names[course] || el("line").selectedOptions[0]?.textContent || "One lecture";
   const randomSeed=()=>crypto.getRandomValues(new Uint32Array(1))[0];
   const edition=document.body.dataset.edition;
@@ -46,12 +46,16 @@
   function startClock() {
     stopClock();
     if (!timed()) return;
-    deadline=Date.now()+1000*rules.seconds[currentLevel()];
+    deadline=Date.now()+1000*rules.seconds[currentLevel()]-firstClockDelay;firstClockDelay=0;
     el("clock").hidden=false;
     function update() {
       if (state!=="question" || !deadline) return;
-      const left=Math.ceil(remaining());
-      el("seconds").textContent=left;el("clock").dataset.urgent=String(left<=10);el("clock").style.setProperty("--clock-fill",String(left/rules.seconds[currentLevel()]));
+      const seconds=remaining(), left=Math.ceil(seconds),duration=rules.seconds[currentLevel()],clock=el("clock");
+      const percent=value=>Math.max(0,Math.min(100,100*value))+"%";
+      el("seconds").textContent=left;clock.dataset.urgent=String(seconds<=10);
+      clock.style.setProperty("--clock-fill",String(seconds/duration));
+      clock.style.setProperty("--clock-warm",percent((duration-seconds)/(duration-30)));
+      clock.style.setProperty("--clock-hot",percent((30-seconds)/20));
       if (!left) submit(null,true);
       else timerId=setTimeout(update,Math.max(30,Math.min(200,deadline-Date.now())));
     }
@@ -90,37 +94,29 @@
   }
   async function refresh() {
     clearTimeout(poll);const ticket=++latestRead;
-    if (document.hidden || !lectures.length || (!el("board").open && !room)) return;
+    if (document.hidden || !lectures.length || !el("board").open) return;
     try {
-      const data=await board.request({...settings(),...(room ? {room:room.id,seed:room.seed} : {})});
+      const data=await board.request(settings());
       if (ticket!==latestRead) return;
       if(el("board").open)renderBoard(data);
-      if (room) {
-        const sorted=data.racers.sort((a,b)=>b.cleared-a.cleared||b.points-a.points||b.best-a.best);
-        el("racers").replaceChildren(...sorted.map(row=>{
-          const li=document.createElement("li");
-          const status={finished:"finished",out:"run over",playing:"on course",left:"left race"}[row.status];
-          li.textContent=board.name(row.alias)+" · "+row.cleared+" cleared · "+(row.points||0)+" pts · "+status;return li;
-        }));
-        el("room-status").textContent=sorted.length ? "Live race standings" : "The race is open. Start when you’re ready.";
-      }
     } catch {
       if (ticket!==latestRead) return;
       el("board-caption").textContent="Class standings are temporarily offline. Reconnecting…";
       el("board-empty").hidden=true;
-      if (room) el("room-status").textContent="Reconnecting to the race…";
+
     } finally {
       if (ticket===latestRead) poll=setTimeout(refresh,6000);
     }
   }
   function changeCourse(next) {
     course=next;el("lecture-picker").hidden=next!=="lecture";
-    document.querySelectorAll("[data-mode]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===next)));
+    el("course").value=next;
     runner.difficulty(diff());gate();
     const length=rules.makeRoute(lectures,scope(),0,diff(),order()).length;
     const count=rules.poolSize(lectures,scope(),diff());
     el("rules-hint").textContent=length+" jumps from "+count+" "+difficultyName(diff())+" questions · "+(timed()?rules.seconds[diff()]+" seconds per question":"No time limit")+". "+rules.basePoints[diff()]+" points per landing"+(timed()?" + 2 per second left. ":". ")+hints[diff()];
-    el("invite").hidden=!timed()||Boolean(room);
+    el("run-summary").textContent=length+" jumps · "+(timed()?rules.seconds[diff()]+" s each":"untimed");
+    el("invite").hidden=Boolean(room);
     el("scope").textContent=next==="lecture" ? "Questions follow this lecture PDF." : descriptions[next];
     el("start").disabled=el("invite").disabled=!length;
     refresh();
@@ -131,10 +127,10 @@
   el("close-board").onclick=()=>el("board").close();
   el("board").addEventListener("close",()=>{el("open-board").focus({preventScroll:true});refresh();});
   function resetLink() {
-    pace=null;room=null;el("room-panel").hidden=true;el("pace").hidden=true;el("invite-link").hidden=true;el("racers").replaceChildren();
+    race.leave();pace=null;room=null;el("room-panel").hidden=true;el("pace").hidden=true;el("invite-link").hidden=true;el("racers").replaceChildren();
     if (location.hash) history.replaceState(null,"",location.pathname+location.search);
   }
-  function fresh(next) {resetLink();el("invite").hidden=!timed();el("start").textContent="Start run";changeCourse(next);}
+  function fresh(next) {resetLink();el("invite").hidden=false;el("start").textContent="Start run";changeCourse(next);}
   function link(kind,data) {
     const url=new URL(location.href);url.search="";url.hash=kind+"="+encodeURIComponent(JSON.stringify(data));return url.href;
   }
@@ -142,58 +138,30 @@
     try {await navigator.clipboard.writeText(url);el(status).textContent=message;}
     catch {const input=el(field);input.hidden=false;input.value=url;input.focus();input.select();el(status).textContent="Copy the link below.";}
   }
-  function openRoom(id,initial) {
-    room={id,seed:initial};pace=null;racePlayer="";
-    el("room-name").textContent="Everyone plays the same course. You’re "+board.name(playerAlias)+".";
-    el("room-panel").hidden=false;el("room-status").textContent="Opening the race…";
-    el("start").textContent="Start race";el("invite").hidden=true;
-    el("pace").hidden=true;
-    refresh();
+  function scoreData() {
+    return {steps:steps.join(""),times:times.map(encodeSeconds).join(""),extra};
   }
-  function roomURL(){return link("room",[edition,scope(),room.seed,room.id,diff(),order()]);}
-  function createRoom() {
-    openRoom(board.token(12),randomSeed());history.replaceState(null,"",roomURL());
-    copy(roomURL(),"invite-link","room-status","Friend invite copied.");
-  }
-  function leaveRoom() {
-    if(room && racePlayer && !run.ended)progress(true);
-    racePlayer="";resetLink();el("invite").hidden=!timed();el("start").textContent="Start run";refresh();
-  }
-  function payload(action) {
-    return {...settings(),seed,length:route.length,steps:steps.join(""),times:times.map(encodeSeconds).join(""),extra,player:board.player,alias:playerAlias,action};
-  }
-  // Send only the most recent snapshot after an in-flight update. Changes of course or
-  // racer cannot overwrite another participant's progress.
-  let pendingProgress=null, writingProgress=false;
-  async function progress(retired=false) {
-    if (!room || !racePlayer) return;
-    pendingProgress={...payload("progress"),room:room.id,player:racePlayer,retired};
-    if (writingProgress) return;
-    writingProgress=true;
-    while (pendingProgress) {
-      const snapshot=pendingProgress;pendingProgress=null;
-      try {await board.request(snapshot,true);}
-      catch {if (room?.id===snapshot.room) el("room-status").textContent="Race update delayed.";}
-    }
-    writingProgress=false;refresh();
+  function payload() {
+    return {...settings(),seed,length:route.length,...scoreData(),player:board.player,alias:playerAlias,action:"save",publishName:true};
   }
   let boardWrite=Promise.resolve();
   function postBoard(snapshot) {
     const task=boardWrite.then(()=>board.request(snapshot,true));
     boardWrite=task.catch(()=>{});return task;
   }
-  let pendingStreak=null, writingStreak=false;
-  async function publishStreak() {
-    if (!timed() || !run.best) return;
-    pendingStreak=payload("streak");
-    if (writingStreak) return;
-    writingStreak=true;
-    while (pendingStreak) {
-      const snapshot=pendingStreak;pendingStreak=null;
-      try {await postBoard(snapshot);} catch { /* A later landing or the finish retries. */ }
-    }
-    writingStreak=false;refresh();
+  function setRoomCourse(r){
+    const named=Object.hasOwn(names,r.key);
+    if(!named)el("line").value=r.key;
+    el("clock-mode").value="timed";el("difficulty").value=r.diff;el("order").value=r.order;
+    changeCourse(named?r.key:"lecture");
   }
+  const race=window.createCriticalRace({el,board,edition,
+    setup:()=>({...settings(),seed:randomSeed(),length:rules.makeRoute(lectures,scope(),0,diff(),order()).length}),
+    allowed:r=>r.diff!=="insane"||unlocked,
+    courseLabel:r=>(names[r.key]||sections[r.key.slice(1)]||"Lecture")+" · "+difficultyName(r.diff),
+    enter:r=>{room=r;pace=null;setRoomCourse(r);screen(null,"waiting");el("round").textContent="Waiting for runners";},
+    begin:(r,late)=>{room=r;setRoomCourse(r);firstClockDelay=late;start();}, depart:()=>home()
+  });
   function solution(q) {
     const frag=document.createDocumentFragment();
     const prompt=document.createElement("p"), correct=document.createElement("p"), reason=document.createElement("p"), source=document.createElement("a");
@@ -235,15 +203,14 @@
   }
   function start() {
     if(diff()==="insane"&&!unlocked)return;
-    if(room && run.ended && racePlayer){openRoom(board.token(12),randomSeed());history.replaceState(null,"",roomURL());}
     seed=room?.seed ?? pace?.seed ?? randomSeed();
     route=rules.makeRoute(lectures,scope(),seed,diff(),order());if(!route.length)return;
     historyItems=[];el("recap").open=false;el("prize-panel").hidden=true;el("insane-start").hidden=true;
     stopClock();run=rules.newRun(diff());steps=[];times=[];extra="";bonusActive=false;
     bonus=rules.bonusQuestion(lectures,scope(),seed,diff());el("bonus-offer").hidden=true;runner.difficulty(diff());
-    saveTicket++;racePlayer=room ? board.token(16) : "";
+    saveTicket++;
     el("award").hidden=true;el("previous").hidden=true;el("save-score").hidden=true;el("saved").textContent="";el("share-state").textContent="";
-    runner.reset(route.length);if(el("board").open)el("board").close();ask();progress();
+    runner.reset(route.length);if(el("board").open)el("board").close();ask();
   }
   function recap() {
     el("recap").hidden=!historyItems.length;
@@ -259,16 +226,16 @@
     el("prize-detail").textContent=crown?"You outran the eruption. Your crown is saved on this device.":"You cleared Hard. The volcano course is open. Bring an integer or fraction for every jump.";
     el("insane-start").hidden=crown;
   }
-  async function saveScore(explicit=false) {
-    if(!timed())return;
+  async function saveScore() {
+    if(!timed()||!board.nicknameOK(playerAlias))return;
     const ticket=++saveTicket;
     try {
-      await postBoard(payload("save"));
+      await postBoard(payload());
       if(ticket!==saveTicket)return;
       el("saved").textContent="Class score saved for "+board.name(playerAlias)+".";
-      if(explicit)el("save-score").hidden=true;
+      el("save-score").hidden=true;
       refresh();
-    } catch {if(ticket===saveTicket)el("saved").textContent="Score couldn’t sync. Use Save nickname to retry.";}
+    } catch {if(ticket===saveTicket)el("saved").textContent="Score couldn’t sync. Use Post to class leaderboard to retry.";}
   }
   function finish(q,won,bonusMessage="") {
     stopClock();screen("feedback",won?"won":"lost");score();el("round").textContent=won?"Finish line":"Run over";
@@ -286,12 +253,12 @@
     if(won){const d=document.createElement("details"),label=document.createElement("summary");label.textContent=bonusMessage?"Show bonus solution":"Show final solution";d.append(label,solution(q));el("result").append(d);}
     else el("result").append(solution(q));
     el("review").hidden=true;el("change").hidden=false;el("change").textContent="Start page";
-    el("advance").textContent=room?"New race":"Run again";
+    el("advance").textContent=room?"View race room":"Run again";
     el("race-link").hidden=true;el("share").hidden=!run.points||!timed();el("save-score").hidden=!run.points||!timed();
     el("bonus-offer").hidden=!won||!bonus||Boolean(bonusMessage);
     el("bonus-description").textContent=(diff()==="insane"?"One final numeric challenge": "One "+difficultyName(rules.nextLevel(diff()))+" question")+
       (timed()?" · "+rules.seconds[rules.nextLevel(diff())]+" seconds.":".")+" Your completed run is already banked.";
-    if(run.points&&timed()){el("nickname").value=board.stored("nickname")||"";el("name-error").textContent="";el("nickname").removeAttribute("aria-invalid");saveScore();}
+    if(run.points&&timed()){el("nickname").value=board.stored("nickname")||"";el("name-error").textContent="";el("nickname").removeAttribute("aria-invalid");el("saved").textContent="";}
     el("verdict").focus({preventScroll:true});
   }
   function submit(index,timeout=false) {
@@ -305,7 +272,7 @@
       if(!rules.rational(input)){el("number-hint").textContent="Enter an integer, a fraction such as 3/4, or a finite decimal.";return;}
       index=answers.indexOf(rules.equivalent(input,q.answer)?0:1);
     } else if(!el("choices").children[index]||el("choices").children[index].disabled)return;
-    const left=timed()&&!timeout?Math.floor(remaining()):0, hit=answers[index]===0;
+    const left=timed()&&!timeout?Math.min(rules.seconds[currentLevel()],Math.floor(remaining())):0, hit=answers[index]===0;
     const landing=bonusActive?{hit}:rules.land(run,seed,route.length,index,assisted,left);
     if(!landing)return;
     const isBonus=bonusActive, ticket=turn, points=rules.earned(currentLevel(),left);
@@ -321,7 +288,7 @@
     }
     if(hit)showAward(points);else el("award").hidden=true;
     historyItems.push({q,caption:(isBonus?"Bonus":"Jump "+(hit?run.cleared:run.cleared+1))+" · "+(hit?"Correct":timeout?"Time expired":"Missed")});
-    score();progress();if(hit&&!run.ended)publishStreak();
+    score();if(room)race.progress(scoreData());
     if(!hit){
       const scene=el("rails");
       if(scene.getBoundingClientRect && scene.getBoundingClientRect().bottom<64)scene.scrollIntoView({block:"start"});
@@ -352,6 +319,11 @@
     const [kind,encoded]=location.hash.slice(1).split("=");
     if(!["room","race"].includes(kind)||!encoded||encoded.length>650)return;
     const notify=msg=>{el("pace").hidden=false;el("target").textContent=msg;};
+    if(kind==="room"){
+      if(/^[A-HJ-NP-Z2-9]{6}$/.test(encoded))race.showHub(encoded);
+      else notify("This invite is from an earlier race. Ask the host for a new room code.");
+      return;
+    }
     try {
       const data=JSON.parse(decodeURIComponent(encoded));if(!Array.isArray(data))return;
       if(data[0]!==edition){notify("This invite used an earlier question bank. Start a fresh run or ask for a new invite.");return;}
@@ -360,10 +332,9 @@
       if(!Number.isInteger(initial)||initial<0||initial>0xffffffff||!levels.includes(difficulty)||!["ordered","shuffled"].includes(ordering)||
         !(Object.hasOwn(names,key)||typeof key==="string"&&key.startsWith("s")&&Object.hasOwn(sections,key.slice(1))))return;
       if(difficulty==="insane"&&!unlocked){notify("Clear a Hard course, then reopen this challenge.");return;}
-      if(kind==="room" && (!/^[0-9a-f]{24}$/.test(value)||data.length!==6))return;
       let target;
       if(kind==="race"){
-        if(data.length!==9||typeof value!=="string"||!/^[0-7]{1,61}$/.test(value)||!board.valid(data[4]))return;
+        if(data.length!==9||typeof value!=="string"||!/^[0-7]{1,61}$/.test(value)||(data[4]!==null&&!board.valid(data[4])))return;
         const length=rules.makeRoute(lectures,key,initial,difficulty,ordering).length,r=rules.newRun(difficulty);
         const clock=data[5],bonusCode=data[6];
         if(typeof clock!=="string"||!/^[0-9a-z]+$/.test(clock)||clock.length!==2*value.length||typeof bonusCode!=="string"||!/^([0-3][0-9a-z]{2})?$/.test(bonusCode))return;
@@ -381,12 +352,9 @@
       el("clock-mode").value="timed";el("difficulty").value=difficulty;el("order").value=ordering;
       if(!Object.hasOwn(names,key))el("line").value=key;
       changeCourse(names[key]?key:"lecture");
-      if(kind==="room")openRoom(value,initial);
-      else{pace={seed:initial,points:target};notify("Beat "+board.name(data[4])+"’s "+target+" on the same questions.");}
+      pace={seed:initial,points:target};notify((data[4]===null?"Target score · ":"Challenge from "+board.name(data[4])+" · ")+target+" points on the same questions.");
     } catch {notify("This invite is incomplete. You can start a fresh run.");}
   }
-  el("invite").onclick=createRoom;el("room-copy").onclick=()=>copy(roomURL(),"invite-link","room-status","Friend invite copied.");
-  el("leave-room").onclick=leaveRoom;
   el("share").onclick=()=>copy(link("race",[edition,scope(),seed,steps.join(""),playerAlias,times.map(encodeSeconds).join(""),extra,diff(),order()]),"race-link","share-state","Challenge link copied.");
   el("save-score").onsubmit=e=>{
     e.preventDefault();if(!run.ended||!run.points)return;
@@ -397,8 +365,7 @@
       input.setAttribute("aria-invalid","true");input.focus();return;
     }
     input.value=alias;input.removeAttribute("aria-invalid");el("name-error").textContent="";
-    playerAlias=alias;board.stored("nickname",alias);saveScore(true);progress();
-    if(room)el("room-name").textContent="You’re "+alias+".";
+    playerAlias=alias;board.stored("nickname",alias);saveScore();
   };
   el("signal").onclick=()=>{
     if(state!=="question"||bonusActive||!run.eraser||assisted)return;assisted=true;
@@ -406,18 +373,17 @@
     for(const i of disabled){const b=el("choices").children[i];b.disabled=true;b.classList.add("closed");}
     runner.close(disabled);el("signal").hidden=true;el("choices").querySelector("button:enabled").focus({preventScroll:true});
   };
-  el("advance").onclick=()=>state==="retry"?ask():start();
+  el("advance").onclick=()=>state==="retry"?ask():room?race.focus():start();
   function home() {
-    if(room && !run.ended && racePlayer)progress(true);
-    turn++;saveTicket++;stopClock();el("award").hidden=true;bonusActive=false;racePlayer="";el("bonus-offer").hidden=true;
+    turn++;saveTicket++;stopClock();el("award").hidden=true;bonusActive=false;firstClockDelay=0;el("bonus-offer").hidden=true;
     resetLink();run=rules.newRun(diff());score();screen("lobby","lobby");runner.home();
     el("round").textContent="At the starting line";el("start").textContent="Start run";changeCourse(course);el("start").focus();
   }
   el("home").onclick=el("change").onclick=home;
   el("insane-start").onclick=()=>{if(!unlocked)return;home();el("difficulty").value="insane";fresh(course);start();};
-  document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>fresh(b.dataset.mode));
+  el("course").onchange=()=>fresh(el("course").value);
   el("difficulty").onchange=el("order").onchange=el("clock-mode").onchange=()=>fresh(course);
-  el("line").onchange=()=>fresh("lecture");el("dismiss-pace").onclick=()=>{leaveRoom();};el("start").onclick=start;
+  el("line").onchange=()=>fresh("lecture");el("dismiss-pace").onclick=()=>fresh(course);el("start").onclick=start;
   const nativeFull=()=>document.fullscreenElement||document.webkitFullscreenElement;
   function syncFull(){
     const full=Boolean(nativeFull()||document.body.classList.contains("full-window"));

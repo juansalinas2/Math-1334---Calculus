@@ -2,7 +2,7 @@
   {
     "topic": "critical",
     "level": 3,
-    "prompt": "For \\(f(x)=2+(x-5)^3\\), choose the correct use of “critical number,” “critical value,” and “extremum” at the horizontal tangent.",
+    "prompt": "The graph of \\(f(x)=2+(x-5)^3\\) has a horizontal tangent at \\((5,2)\\) and is increasing on both sides. Which statement correctly identifies the critical number, critical value, and behavior there?",
     "choices": [
       "Critical number 5, critical value 2, neither a local maximum nor a local minimum.",
       "Critical number 2, critical value 5, neither a local maximum nor a local minimum.",
@@ -33,14 +33,14 @@
   {
     "topic": "motion",
     "level": 3,
-    "prompt": "In the lecture, \\(v(t)=3(t-1)(t-3)\\) and \\(a(t)=6(t-2)\\). Which phrase describes \\(t=2\\)?",
+    "prompt": "A cart’s velocity is negative near \\(t=2\\). Its acceleration \\(a(t)=6(t-2)\\) changes from negative to positive there. Which description of the cart at \\(t=2\\) is correct?",
     "choices": [
       "A local maximum of speed while moving in the negative direction.",
       "A direction reversal at rest.",
       "A local maximum of velocity while moving in the positive direction.",
       "An instant of zero speed and nonzero acceleration."
     ],
-    "why": "Velocity is negative on \\((1,3)\\). Its magnitude increases up to 2 and then decreases; velocity itself has a local minimum.",
+    "why": "Before 2 the negative velocity becomes more negative, increasing speed. After 2 the velocity becomes less negative, decreasing speed. The speed has a local maximum.",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "section": "3.4",
     "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
@@ -48,7 +48,7 @@
   {
     "topic": "motion",
     "level": 3,
-    "prompt": "A car has \\(s(t)=t^2-2t-3\\) feet for \\(t\\ge0\\). What does “instantaneous velocity at position 5 feet” denote?",
+    "prompt": "A car’s position is \\(s(t)=t^2-2t-3\\) feet for \\(t\\ge0\\). It reaches the 5-foot mark at \\(t=4\\) seconds. What does “instantaneous velocity at the 5-foot mark” denote?",
     "choices": [
       "\\(s'(4)\\), because \\(s(4)=5\\).",
       "\\(s'(5)\\), since the given number is 5.",
@@ -79,7 +79,7 @@
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "In the shadow problem \\(x\\) is the person’s distance from the pole and \\(s\\) is shadow length. If \\(ds/dt=1\\) and \\(dx/dt=2\\) in m/s, which phrase names the 3 m/s rate?",
+    "prompt": "A streetlight casts a person’s shadow directly away from the pole. The person’s distance \\(x\\) from the pole grows by 2 m/s, and the shadow length \\(s\\) grows by 1 m/s. Which speed is 3 m/s?",
     "choices": [
       "Speed of the tip relative to the pole.",
       "Speed of the tip relative to the person.",
@@ -109,14 +109,14 @@
   {
     "topic": "optimization",
     "level": 3,
-    "prompt": "For the fixed-intercept fit with \\(E(m)=5(m-1)^2+9\\), which pair correctly identifies the minimizer and the minimum of the objective?",
+    "prompt": "A model’s squared error as a function of its slope \\(m\\) is \\(E(m)=5(m-1)^2+9\\). Which pair correctly identifies the minimizer and the minimum error?",
     "choices": [
       "Minimizer \\(m=1\\); minimum squared error \\(9\\).",
       "Minimizer \\(m=9\\); minimum squared error \\(1\\).",
       "Minimizer \\(m=2\\); minimum squared error \\(9\\).",
       "Minimizer \\(m=1\\); minimum squared error \\(0\\)."
     ],
-    "why": "The minimizer is an input. The minimum is the output attained there. The fixed intercept \\(2\\) is neither quantity.",
+    "why": "The square is smallest when \\(m=1\\). That input is the minimizer, and its output \\(E(1)=9\\) is the minimum.",
     "source": "../lectures/optimization.html#optimization-problems",
     "section": "4.6",
     "pdf": "../downloads/optimization-worksheet.pdf"
@@ -124,7 +124,7 @@
   {
     "topic": "exp",
     "level": 3,
-    "prompt": "Suppose an amount \\(P\\) is 200 grams and \\(P'/P=0.03\\) per hour at noon. Which statement translates the relative growth rate at that instant?",
+    "prompt": "At noon a sample has mass \\(P=200\\) grams and instantaneous relative growth rate \\(P'/P=0.03\\) per hour. Which statement describes the mass at that instant?",
     "choices": [
       "Its instantaneous increase is 6 grams per hour.",
       "Its instantaneous increase is 0.03 grams per hour.",
@@ -155,7 +155,7 @@
   {
     "topic": "concavity",
     "level": 3,
-    "prompt": "On an interval, all tangent slopes of a smooth curve are negative but grow from \\(-5\\) toward \\(-1\\). Which two descriptions can hold throughout?",
+    "prompt": "Over an interval, the tangent slope of a smooth curve increases from \\(-5\\) to \\(-1\\) and stays negative. Which two descriptions of the curve hold throughout the interval?",
     "choices": [
       "Decreasing and concave up.",
       "Increasing and concave down.",
@@ -186,7 +186,7 @@
     "topic": "derivative2",
     "section": "3.2",
     "level": 1,
-    "prompt": "Which symbol denotes the function that assigns a tangent slope to each input where that slope exists?",
+    "prompt": "For a differentiable function \\(f\\), which symbol names the whole function that gives its tangent slope at each input?",
     "choices": [
       "\\(f'\\)",
       "\\(f'(3)\\)",
@@ -237,7 +237,7 @@
     "topic": "concavity",
     "section": "4.3",
     "level": 2,
-    "prompt": "Attention is \\(A(t)\\) percent. If \\(A'<0\\) and \\(A''>0\\) throughout an interval, what would you say aloud?",
+    "prompt": "Let \\(A(t)\\) be the percentage of students paying attention \\(t\\) minutes after class begins. If \\(A'<0\\) and \\(A''>0\\) throughout an interval, which description matches?",
     "choices": [
       "Attention is falling, but the loss per minute is shrinking.",
       "Attention is falling faster and faster.",
@@ -441,7 +441,7 @@
     "topic": "forms",
     "section": "4.7",
     "level": 2,
-    "prompt": "For a positive variable power \\(y\\), your calculation gives \\(\\ln y\\to-2\\). What number answers the original limit?",
+    "prompt": "Let \\(y(x)>0\\) near \\(x=a\\). If \\(\\lim_{x\\to a}\\ln y(x)=-2\\), what is \\(\\lim_{x\\to a}y(x)\\)?",
     "choices": [
       "\\(e^{-2}\\)",
       "\\(-2\\)",
@@ -458,9 +458,9 @@
     "section": "4.2",
     "topic": "critical",
     "level": 4,
-    "prompt": "For \\(f(x)=x^3(4-x)\\) on \\([-1,4]\\), find the critical value belonging to the nonzero interior critical number.",
+    "prompt": "The function \\(f(x)=x^3(4-x)\\) on \\([-1,4]\\) has interior critical numbers 0 and 3. What is the critical value belonging to the nonzero critical number?",
     "answer": "27",
-    "why": "A critical number is an input. Factoring \\(f'=4x^2(3-x)\\) yields interior inputs 0 and 3. The requested critical value is the output \\(f(3)=27\\).",
+    "why": "A critical value is an output. At input 3 the height is \\(3^3(4-3)=27\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
     "pdfPage": 65,
     "pdf": "../downloads/november-4-maxima-and-minima.pdf"
@@ -469,7 +469,7 @@
     "section": "4.3",
     "topic": "inflect",
     "level": 4,
-    "prompt": "The lecture's \\(g(x)=x^3+1\\) has a stationary inflection point. For \\(h(x)=2g(x-3)-5\\), what is the vertical coordinate of its stationary inflection point?",
+    "prompt": "The graph of \\(g(x)=x^3+1\\) has its stationary inflection point at \\((0,1)\\). Set \\(h(x)=2g(x-3)-5\\). What is the vertical coordinate of the corresponding stationary inflection point of \\(h\\)?",
     "answer": "-3",
     "why": "The original point \\((0,1)\\) moves to \\((3,2\\cdot1-5)\\). The derivative remains zero and the concavity still changes there.",
     "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
@@ -480,9 +480,9 @@
     "section": "3.8",
     "topic": "tangent",
     "level": 4,
-    "prompt": "On the lecture curve \\(x^2-xy+y^2=12\\), find the horizontal coordinate of the vertical-tangent point above the horizontal axis.",
+    "prompt": "On the curve \\(x^2-xy+y^2=12\\), both \\((2,4)\\) and \\((4,2)\\) lie in the first quadrant. At which of these is the tangent vertical, given \\(dy/dx=(y-2x)/(2y-x)\\)? Enter its \\(x\\)-coordinate.",
     "answer": "4",
-    "why": "A vertical tangent requires \\(dx/dy=(x-2y)/(2x-y)=0\\), so \\(x=2y\\). The curve then gives \\(3y^2=12\\). The positive solution is \\(y=2\\) and \\(x=4\\), with nonzero denominator.",
+    "why": "At \\((4,2)\\) the denominator vanishes and the numerator is \\(-6\\). The other point makes the numerator zero, giving a horizontal tangent. The requested coordinate is 4.",
     "source": "../lectures/16-implicit-differentiation.html#practice-the-curve-x2-xyy212",
     "pdfPage": 50,
     "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
@@ -491,9 +491,9 @@
     "section": "3.8",
     "topic": "tangent",
     "level": 4,
-    "prompt": "On \\(x^2+xy+y^2=3\\), what is the vertical coordinate of the horizontal-tangent point to the right of the vertical axis?",
+    "prompt": "On \\(x^2+xy+y^2=3\\), both \\((1,-2)\\) and \\((2,-1)\\) lie to the right of the vertical axis. The slope is \\(-(2x+y)/(x+2y)\\). What is the \\(y\\)-coordinate of the one with a horizontal tangent?",
     "answer": "-2",
-    "why": "Horizontal tangency requires \\(2x+y=0\\), the numerator of the slope. Putting \\(y=-2x\\) into the curve gives \\(3x^2=3\\). The right-hand point has \\(x=1\\) and \\(y=-2\\), with nonzero slope denominator.",
+    "why": "At \\((1,-2)\\) the numerator vanishes while the denominator is \\(-3\\), so the slope is zero. Its vertical coordinate is \\(-2\\).",
     "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
     "pdfPage": 49,
     "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
@@ -502,7 +502,7 @@
     "section": "3.6",
     "topic": "chain",
     "level": 4,
-    "prompt": "The lecture table gives \\(g(2)=3\\), \\(g'(2)=4\\), and \\(f'(3)=-2\\). Find the ratio \\((f\\circ g)'(2)/(f'\\circ g)(2)\\).",
+    "prompt": "Given \\(g(2)=3\\), \\(g'(2)=4\\), and \\(f'(3)=-2\\), find the ratio \\((f\\circ g)^{\\prime}(2)/(f'\\circ g)(2)\\).",
     "answer": "4",
     "why": "The numerator is the derivative of a composition, \\(f'(3)g'(2)=-8\\). The denominator is a composition with a derivative, \\(f'(3)=-2\\). Their ratio is 4.",
     "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
@@ -513,9 +513,9 @@
     "section": "3.7",
     "topic": "inverse",
     "level": 4,
-    "prompt": "For \\(f(x)=x^2\\) on \\(x>0\\), what is the ratio of the slope of its inverse at input 4 to the slope of its reciprocal function \\(1/f\\) at input 2?",
+    "prompt": "For \\(f(x)=x^2\\) on \\(x>0\\), compare its inverse \\(g\\) with its reciprocal \\(r(x)=1/f(x)\\). Given \\(f(2)=4\\), \\(f'(2)=4\\), and \\(r'(2)=-1/4\\), what is \\(g'(4)/r'(2)\\)?",
     "answer": "-1",
-    "why": "The inverse function is \\(\\sqrt{x}\\), whose slope at 4 is \\(1/4\\). The reciprocal function is \\(x^{-2}\\), whose slope at 2 is \\(-1/4\\). Dividing yields \\(-1\\).",
+    "why": "Inverse slopes are reciprocals at corresponding inputs, so \\(g'(4)=1/4\\). Dividing by the reciprocal function’s slope \\(-1/4\\) gives \\(-1\\).",
     "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
     "pdfPage": 45,
     "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
@@ -524,9 +524,9 @@
     "section": "4.4",
     "topic": "endbehavior",
     "level": 4,
-    "prompt": "A graph has formula \\(x^2/(x-1)\\). What is the vertical distance from the point on the graph at \\(x=-3\\) to its slant asymptote, measured at the same input?",
+    "prompt": "A curve is given by \\(f(x)=x+1+1/(x-1)\\). What is the vertical distance from the curve to its slant asymptote at \\(x=-3\\)?",
     "answer": "1/4",
-    "why": "Division gives \\(x^2/(x-1)=x+1+1/(x-1)\\). The slant asymptote is \\(y=x+1\\). At \\(-3\\) the absolute difference is \\(|-1/4|\\).",
+    "why": "The slant asymptote is \\(y=x+1\\). The signed difference at \\(-3\\) is \\(1/(-4)\\), so the distance is \\(1/4\\).",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
     "pdfPage": 72,
     "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
@@ -535,9 +535,9 @@
     "section": "2.5",
     "topic": "breaks",
     "level": 4,
-    "prompt": "For \\((x^2-1)(x-2)^2/[(x^2-4)(x-1)^2]\\), what is the sum of the inputs where the formula has a removable discontinuity?",
+    "prompt": "A rational formula simplifies to \\((x+1)(x-2)/[(x+2)(x-1)]\\), but its original domain excludes \\(-2,1,2\\). At which of those inputs is its discontinuity removable?",
     "answer": "2",
-    "why": "Off the excluded inputs the expression equals \\((x+1)(x-2)/[(x+2)(x-1)]\\). Only the missing input 2 has a finite limit. The missing inputs \\(-2\\) and 1 have infinite one-sided limits.",
+    "why": "The simplified denominator is nonzero at 2, so the missing height can be filled in. The other two inputs have nonzero numerators and zero denominators.",
     "source": "../lectures/06-continuity.html#types-of-discontinuities",
     "pdfPage": 19,
     "pdf": "../downloads/october-2-continuity-class-notes.pdf"
@@ -546,9 +546,9 @@
     "section": "4.3",
     "topic": "local",
     "level": 4,
-    "prompt": "The lecture cubic is \\(f(x)=4x^3-12x+12\\). On \\([-2,3]\\), what is the difference between its absolute maximum value and its interior local maximum value?",
+    "prompt": "On \\([-2,3]\\), a continuous cubic has an interior local maximum of 20 and a local minimum of 4. Its endpoint values are 4 and 84. By how much does the global maximum exceed the interior local maximum?",
     "answer": "64",
-    "why": "The interior local maximum is \\(f(-1)=20\\) and the interior local minimum is \\(f(1)=4\\). Comparing the endpoints \\(f(-2)=4\\) and \\(f(3)=84\\) gives global maximum 84, hence the difference is 64.",
+    "why": "The largest candidate height is 84, attained at an endpoint. The difference from the local maximum is \\(84-20=64\\).",
     "source": "../lectures/section-4-3.html#the-first-derivative-test",
     "pdfPage": 67,
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
@@ -557,9 +557,9 @@
     "section": "3.1",
     "topic": "tangent",
     "level": 4,
-    "prompt": "For the lecture graph \\(y=\\sqrt{x+5}\\), find the vertical intercept of the tangent line at the input 4.",
+    "prompt": "The curve \\(y=\\sqrt{x+5}\\) has tangent slope \\(1/6\\) at \\((4,3)\\). What is the vertical intercept of this tangent line?",
     "answer": "7/3",
-    "why": "The point of tangency is \\((4,3)\\). Rationalizing its difference quotient gives tangent slope \\(1/(2\\cdot3)=1/6\\). The tangent intercept is \\(3-4/6=7/3\\).",
+    "why": "Moving four units left along the tangent changes its height by \\(-4/6\\). At \\(x=0\\) its height is \\(3-4/6=7/3\\).",
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "pdfPage": 25,
     "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
@@ -568,7 +568,7 @@
     "section": "4.2",
     "topic": "global",
     "level": 4,
-    "prompt": "On \\([2,4]\\), set \\(F(x)=(x^2-9)/(x-3)\\) for \\(x\\ne3\\) and \\(F(3)=2\\). Find the distance between the input attaining the absolute minimum and the input attaining the absolute maximum.",
+    "prompt": "On \\([2,4]\\), a graph follows the line \\(y=x+3\\), except that the point at \\(x=3\\) is replaced by \\((3,2)\\). How far apart are the inputs where the graph attains its global minimum and global maximum?",
     "answer": "1",
     "why": "The nearby line \\(y=x+3\\) rises from 5 to 7, with its value at 3 replaced by 2. The minimizing input is 3, the maximizing input is 4, and their distance is 1.",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
@@ -579,9 +579,9 @@
     "section": "4.3",
     "topic": "tests",
     "level": 4,
-    "prompt": "For \\(f(x)=4x^3-12x+12\\), what is the value of the second derivative at the critical number classified as an interior local maximum?",
+    "prompt": "A cubic has derivatives \\(f'(x)=12(x-1)(x+1)\\) and \\(f''(x)=24x\\). What is the second derivative at the critical number where the cubic has a local maximum?",
     "answer": "-24",
-    "why": "The critical numbers are \\(-1\\) and 1. The second derivative is \\(24x\\). At \\(-1\\) it is negative, identifying the local maximum and giving \\(-24\\).",
+    "why": "At \\(-1\\) the first derivative changes from positive to negative, so the local maximum occurs there. The second derivative has value \\(24(-1)=-24\\).",
     "source": "../lectures/section-4-3.html#the-second-derivative-test",
     "pdfPage": 68,
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
@@ -591,9 +591,9 @@
     "topic": "tangent",
     "level": 4,
     "capstone": true,
-    "prompt": "On \\(x^2-xy+y^2=12\\), let \\(H\\) be the point in the first quadrant with a horizontal tangent and \\(V\\) the point there with a vertical tangent. Find the squared distance \\(|H-V|^2\\).",
-    "answer": "8",
-    "why": "The implicit slope has numerator \\(-2x+y\\) and denominator \\(-x+2y\\). Horizontal tangency gives \\(y=2x\\), hence \\(H=(2,4)\\). Vertical tangency gives \\(x=2y\\), hence \\(V=(4,2)\\). The squared distance is \\(2^2+(-2)^2\\).",
+    "prompt": "A smooth curve has a horizontal tangent at \\((2,4)\\) and a vertical tangent at \\((4,2)\\). Its inverse relation reflects these points across \\(y=x\\). What is the \\(x\\)-coordinate of the reflected point whose tangent is horizontal?",
+    "answer": "2",
+    "why": "Reflection interchanges horizontal and vertical tangents and swaps coordinates. The vertical tangent at \\((4,2)\\) becomes horizontal at \\((2,4)\\).",
     "source": "../lectures/16-implicit-differentiation.html#practice-the-curve-x2-xyy212",
     "pdfPage": 50,
     "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
@@ -603,9 +603,9 @@
     "topic": "inflect",
     "level": 4,
     "capstone": true,
-    "prompt": "For the lecture polynomial \\(f(x)=x^3(4-x)\\), one inflection point has a horizontal tangent and the other does not. Find the squared distance between the two inflection points.",
-    "answer": "260",
-    "why": "Since \\(f''=12x(2-x)\\), concavity changes at 0 and 2. The points are \\((0,0)\\) and \\((2,16)\\). The first derivative \\(4x^2(3-x)\\) vanishes at 0 only among these inputs. The squared distance is \\(2^2+16^2\\).",
+    "prompt": "A polynomial has \\(f''(x)=12x(2-x)\\) and \\(f'(x)=4x^2(3-x)\\). Its concavity changes at 0 and 2. What is the \\(x\\)-coordinate of its inflection point with a nonhorizontal tangent?",
+    "answer": "2",
+    "why": "At 0 the first derivative is zero. At 2 all the factors of the first derivative are nonzero, so the tangent there has nonzero slope.",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
     "pdfPage": 65,
     "pdf": "../downloads/november-4-maxima-and-minima.pdf"
@@ -615,9 +615,9 @@
     "topic": "endbehavior",
     "level": 4,
     "capstone": true,
-    "prompt": "The graph of \\(R(x)=x^2(x-3)/[(x-1)(x-3)]\\) has a removable discontinuity. Extend it continuously there and draw the tangent line through the formerly missing point. At what horizontal coordinate does this tangent meet the slant asymptote?",
-    "answer": "5",
-    "why": "The extension is \\(x^2/(x-1)=x+1+1/(x-1)\\), with slant asymptote \\(y=x+1\\). At 3 the height is \\(9/2\\) and the slope is \\(1-1/(3-1)^2=3/4\\). Equating \\(9/2+(3/4)(x-3)\\) to \\(x+1\\) gives \\(x=5\\).",
+    "prompt": "A graph has a hole at \\(x=3\\). Filling it gives \\(f(x)=x+1+1/(x-1)\\). At \\((3,9/2)\\) its tangent slope is \\(3/4\\). The slant asymptote has slope 1. Starting at \\(x=3\\), how many units to the right do the tangent and asymptote meet?",
+    "answer": "2",
+    "why": "At \\(x=3\\) the tangent is at \\(9/2\\) and the asymptote is at 4, a gap of \\(1/2\\). The asymptote gains \\(1-3/4=1/4\\) per unit, closing the gap in 2 units.",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
     "pdfPage": 72,
     "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"

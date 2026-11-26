@@ -2,7 +2,7 @@
   {
     "topic": "tests",
     "level": 3,
-    "prompt": "For \\(f(x)=4x^3-12x+12\\), how far does the graph drop from its interior local maximum to the next local minimum?",
+    "prompt": "For \\(f(x)=4x^3-12x+12\\), \\(f'\\) is positive left of \\(-1\\), negative on \\((-1,1)\\) and positive right of 1. The graph passes through \\((-1,20)\\) and \\((1,4)\\). How far does it drop from the local maximum to the next local minimum?",
     "choices": [
       "16",
       "2",
@@ -18,7 +18,7 @@
   {
     "topic": "concavity",
     "level": 3,
-    "prompt": "On \\((-2,3)\\), where is \\(f(x)=4x^3-12x+12\\) both decreasing and concave up?",
+    "prompt": "For \\(f(x)=4x^3-12x+12\\) on \\((-2,3)\\), the derivatives are \\(12(x-1)(x+1)\\) and \\(24x\\). Where is \\(f\\) both decreasing and concave up?",
     "choices": [
       "\\((0,1)\\)",
       "\\((-1,0)\\)",
@@ -50,7 +50,7 @@
   {
     "topic": "inflect",
     "level": 3,
-    "prompt": "Suppose \\(f'(x)=(x+2)(x-1)^2\\). Which inputs are inflection inputs of \\(f\\)?",
+    "prompt": "For a differentiable function \\(f\\), \\(f'(x)=(x+2)(x-1)^2\\) and \\(f''(x)=3(x-1)(x+1)\\). At which inputs does \\(f\\) change concavity?",
     "choices": [
       "\\(-1\\) and \\(1\\)",
       "\\(-2\\) and \\(1\\)",
@@ -66,7 +66,7 @@
   {
     "topic": "tests",
     "level": 3,
-    "prompt": "For \\(g(x)=x^2e^{-x}\\), which pair gives \\(g''(0)\\) and \\(g''(2)\\), respectively?",
+    "prompt": "For \\(g(x)=x^2e^{-x}\\), \\(g''(x)=e^{-x}(x^2-4x+2)\\). What are \\(g''(0)\\) and \\(g''(2)\\), respectively?",
     "choices": [
       "\\(2\\) and \\(-2e^{-2}\\)",
       "\\(0\\) and \\(0\\)",
@@ -82,7 +82,7 @@
   {
     "topic": "inflect",
     "level": 3,
-    "prompt": "On \\((-1,3)\\), how many inflection points does \\(g(x)=x^2e^{-x}\\) have, and at which input or inputs?",
+    "prompt": "For \\(g(x)=x^2e^{-x}\\), \\(g''\\) changes sign at \\(2-\\sqrt2\\) and \\(2+\\sqrt2\\) and nowhere else. On the restricted domain \\((-1,3)\\), which inputs give inflection points?",
     "choices": [
       "One, at \\(2-\\sqrt2\\).",
       "Two, at \\(2-\\sqrt2\\) and \\(2+\\sqrt2\\).",
@@ -98,7 +98,7 @@
   {
     "topic": "concavity",
     "level": 3,
-    "prompt": "For \\(f(x)=x\\tan x\\), which formula for \\(f''(x)\\) correctly accounts for both terms in the product rule?",
+    "prompt": "For \\(f(x)=x\\tan x\\), the first derivative is \\(\\tan x+x\\sec^2x\\). Using \\((\\sec^2x)'=2\\sec^2x\\tan x\\), which formula is \\(f''(x)\\)?",
     "choices": [
       "\\(2\\sec^2 x(1+x\\tan x)\\)",
       "\\(\\sec^2 x(1+2x\\tan x)\\)",
@@ -114,7 +114,7 @@
   {
     "topic": "tests",
     "level": 3,
-    "prompt": "For \\(h(x)=x^2\\tan x\\) on \\((-\\pi/2,\\pi/2)\\), which statement about its derivative is correct?",
+    "prompt": "For \\(h(x)=x^2\\tan x\\) on \\((-\\pi/2,\\pi/2)\\), \\(h'(x)=2x\\tan x+x^2\\sec^2x\\). Which statement correctly describes its sign near zero?",
     "choices": [
       "\\(h'\\) is positive on both sides of zero and equals zero at zero.",
       "\\(h'\\) is negative to the left of zero and positive to the right.",
@@ -162,7 +162,7 @@
   {
     "topic": "local",
     "level": 3,
-    "prompt": "Let \\(f(x)=4x^3-12x+12\\) on \\([-2,3]\\). Using the lecture definition that allows one-sided comparison at endpoints, list every input where \\(f\\) has a local maximum.",
+    "prompt": "On \\([-2,3]\\), \\(f(x)=4x^3-12x+12\\) increases to \\(x=-1\\), decreases to \\(x=1\\), then increases. Counting one-sided local extrema at endpoints, which inputs are local maxima?",
     "choices": [
       "\\(-1\\) and \\(3\\)",
       "\\(-1\\) only",
@@ -178,7 +178,7 @@
   {
     "topic": "monotonic",
     "level": 3,
-    "prompt": "For \\(g(x)=x^2e^{-x}\\) on \\((0,3)\\), which interval has both \\(g'>0\\) and \\(g''<0\\) throughout and is maximal with that property?",
+    "prompt": "On \\((0,3)\\), \\(g(x)=x^2e^{-x}\\) has positive first derivative for \\(x<2\\) and negative first derivative for \\(x>2\\). Its second derivative is negative exactly when \\(x>2-\\sqrt2\\) on this domain. Where are both \\(g'>0\\) and \\(g''<0\\)?",
     "choices": [
       "\\((2-\\sqrt2,2)\\)",
       "\\((0,2-\\sqrt2)\\)",
@@ -194,7 +194,7 @@
   {
     "topic": "concavity",
     "level": 3,
-    "prompt": "For \\(f'(x)=(x+2)(x-1)^2\\), find all open intervals where both the function and its tangent slope are strictly increasing with \\(f'>0\\) and \\(f''>0\\).",
+    "prompt": "For \\(f'(x)=(x+2)(x-1)^2\\) and \\(f''(x)=3(x-1)(x+1)\\), which open intervals have both \\(f'>0\\) and \\(f''>0\\)?",
     "choices": [
       "\\((-2,-1)\\cup(1,\\infty)\\)",
       "\\((-\\infty,-1)\\cup(1,\\infty)\\)",
@@ -210,7 +210,7 @@
   {
     "topic": "tests",
     "level": 3,
-    "prompt": "Starting with the review example \\(-x^4\\), add \\(4x^2\\) to obtain \\(w(x)=-x^4+4x^2\\). Which set lists every local maximum point?",
+    "prompt": "Write \\(w(x)=-x^4+4x^2\\) as \\(4-(x^2-2)^2\\). Which set gives every local maximum point of \\(w\\)?",
     "choices": [
       "\\((-\\sqrt2,4)\\) and \\((\\sqrt2,4)\\)",
       "\\((-2,0)\\) and \\((2,0)\\)",
@@ -226,7 +226,7 @@
   {
     "topic": "tests",
     "level": 3,
-    "prompt": "The function \\(f(x)=x\\tan x\\) is modified to \\(v(x)=x\\tan x-a x^2\\). For which \\(a\\) does the second derivative test itself prove that zero is a strict local maximum?",
+    "prompt": "At zero, \\(f(x)=x\\tan x\\) has \\(f'(0)=0\\) and \\(f''(0)=2\\). For \\(v(x)=f(x)-ax^2\\), which \\(a\\) let the second derivative test prove a strict local maximum at zero?",
     "choices": [
       "\\(a>1\\)",
       "\\(a\\ge1\\)",
@@ -272,7 +272,7 @@
   {
     "topic": "tests",
     "level": 1,
-    "prompt": "A smooth function satisfies \\(f^{\\prime}(2)=0\\) and \\(f^{\\prime\\prime}(2)=-3\\). How does the second derivative test classify \\(x=2\\)?",
+    "prompt": "A smooth function satisfies \\(f^{\\prime}(2)=0\\) and \\(f^{\\prime'}(2)=-3\\). How does the second derivative test classify \\(x=2\\)?",
     "choices": [
       "A strict local maximum",
       "A strict local minimum",
@@ -303,7 +303,7 @@
   {
     "topic": "tests",
     "level": 2,
-    "prompt": "For \\(f(x)=4x^3-12x+12\\) the critical inputs are \\(-1\\) and \\(1\\), and \\(f^{\\prime\\prime}=24x\\). Which critical input is a local maximum?",
+    "prompt": "For \\(f(x)=4x^3-12x+12\\) the critical inputs are \\(-1\\) and \\(1\\), and \\(f^{\\prime'}=24x\\). Which critical input is a local maximum?",
     "choices": [
       "\\(-1\\)",
       "\\(1\\)",
@@ -354,7 +354,7 @@
     "topic": "critical",
     "section": "4.2",
     "level": 2,
-    "prompt": "The worksheet gives only \\(f'(x)=(x+2)(x-1)^2\\). Why can you locate the local minimum but not report its height?",
+    "prompt": "You are given \\(f'(x)=(x+2)(x-1)^2\\) for every real \\(x\\). Which fact explains why this determines the location of the local minimum but leaves its height unknown?",
     "choices": [
       "Adding a constant to \\(f\\) preserves the derivative and shifts every height.",
       "A local minimum has no function value.",
@@ -372,7 +372,7 @@
     "section": "4.3",
     "level": 2,
     "topic": "concavity",
-    "prompt": "The shown cubic flattens at \\((0,1)\\). Which graph is its first derivative?",
+    "prompt": "The curve shown is \\(g(x)=x^3+1\\). It flattens at \\((0,1)\\). Which graph is \\(g'\\)?",
     "choices": [
       "Upward parabola touching the origin and passing through (1, 3).",
       "Downward parabola touching the origin and passing through (1, −3).",
@@ -395,7 +395,7 @@
     "section": "4.3",
     "level": 3,
     "topic": "local",
-    "prompt": "The shown cubic has a local maximum at \\(x=-1\\) and a local minimum at \\(x=1\\). Which graph shows its derivative?",
+    "prompt": "The curve shown is \\(f(x)=4x^3-12x+12\\). It turns at \\(x=-1\\) and \\(x=1\\). Which graph is its derivative?",
     "choices": [
       "Upward parabola crossing at −1 and 1 with a minimum at (0, −12).",
       "Downward parabola crossing at −1 and 1 with a maximum at (0, 12).",
@@ -418,9 +418,9 @@
     "section": "4.3",
     "topic": "tests",
     "level": 4,
-    "prompt": "A line is tangent to \\(f(x)=4x^3-12x+12\\) at its inflection point. At the local maximum of \\(f\\), find the signed height of the graph minus the height of that line.",
+    "prompt": "For \\(f(x)=4x^3-12x+12\\), the tangent at its inflection point is \\(L(x)=12-12x\\). Its local maximum is at \\((-1,20)\\). What is the signed difference \\(f(-1)-L(-1)\\)?",
     "answer": "-4",
-    "why": "\\(f^{\\prime\\prime}=24x\\) changes sign at zero, giving tangent \\(y=12-12x\\). The local maximum occurs at \\(x=-1\\), where the graph has height 20 while the tangent has height 24.",
+    "why": "\\(f^{\\prime'}=24x\\) changes sign at zero, giving tangent \\(y=12-12x\\). The local maximum occurs at \\(x=-1\\), where the graph has height 20 while the tangent has height 24.",
     "source": "../lectures/section-4-3.html#the-first-derivative-test",
     "pdfPage": 67,
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
@@ -429,9 +429,9 @@
     "section": "4.3",
     "topic": "tests",
     "level": 4,
-    "prompt": "Let \\(g(x)=4x^3-12x+12-kx\\). The local minimum occurs at \\(x=2\\). How much higher is the local maximum than the local minimum?",
-    "answer": "128",
-    "why": "\\(g^{\\prime}(2)=0\\) forces \\(k=36\\). The derivative then factors as \\(12(x-2)(x+2)\\). The maximum is \\(g(-2)=76\\) and the minimum is \\(g(2)=-52\\).",
+    "prompt": "Let \\(g(x)=4x^3-12x+12-kx\\), with \\(g'(x)=12x^2-12-k\\). If the graph has a local minimum at \\(x=2\\), what is the slope of its tangent at \\(x=0\\)?",
+    "answer": "-48",
+    "why": "Since \\(g'(2)=0\\), \\(48-12-k=0\\), so \\(k=36\\). Thus \\(g'(0)=-12-36=-48\\).",
     "source": "../lectures/section-4-3.html#the-first-derivative-test",
     "pdfPage": 67,
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
@@ -440,9 +440,9 @@
     "section": "4.3",
     "topic": "tests",
     "level": 4,
-    "prompt": "Tilt the lecture cubic \\(g(x)=x^3+1\\) to \\(h(x)=x^3-12x+1\\). Construct tangents at its two local extrema. What is the distance between these horizontal lines?",
+    "prompt": "For \\(h(x)=x^3-12x+1\\), the two interior extrema have heights 17 and \\(-15\\). How far apart are the tangent lines at those points?",
     "answer": "32",
-    "why": "\\(h^{\\prime}=3(x^2-4)\\) changes sign at \\(-2\\) and 2. Their heights are \\(17\\) and \\(-15\\), so the tangent lines are 32 units apart.",
+    "why": "The tangents at differentiable interior extrema are horizontal. The separation is \\(17-(-15)=32\\).",
     "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
     "pdfPage": 68,
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
@@ -451,9 +451,9 @@
     "section": "4.3",
     "topic": "tests",
     "level": 4,
-    "prompt": "For the flat critical point of \\(h(x)=x^2\\tan x\\) at zero, both the first and second derivatives vanish. Compute \\(h^{\\prime\\prime\\prime}(0)\\).",
-    "answer": "6",
-    "why": "The third product derivative at zero has just one surviving term, \\(3(x^2)^{\\prime\\prime}(\\tan x)^{\\prime}=3(2)(1)\\). Every other term carries a factor \\(x\\) or a third derivative of \\(x^2\\).",
+    "prompt": "For \\(h(x)=x^2\\tan x\\), \\(h'(0)=h''(0)=0\\), and \\(h'(x)>0\\) on both sides of zero near zero. How many of these two statements are true? (1) The second derivative test is inconclusive. (2) The origin is a local extremum.",
+    "answer": "1",
+    "why": "The second derivative is zero, so (1) is true. The derivative stays positive on both sides, so there is no local extremum and (2) is false.",
     "source": "../lectures/section-4-3.html#the-second-derivative-test",
     "pdfPage": 69,
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
@@ -462,9 +462,9 @@
     "section": "4.3",
     "topic": "tests",
     "level": 4,
-    "prompt": "Set \\(p(x)=x\\tan x-x^2\\), which cancels the quadratic term of the lecture example. What is \\(p^{(4)}(0)\\)?",
-    "answer": "8",
-    "why": "From \\(u=\\tan x\\) and \\(u^{\\prime}=1+u^2\\), obtain \\(u^{\\prime\\prime\\prime}(0)=2\\). The fourth derivative of \\(xu\\) at zero is \\(4u^{\\prime\\prime\\prime}(0)=8\\), while \\(x^2\\) contributes zero.",
+    "prompt": "Let \\(f(x)=x\\tan x\\), with \\(f'(0)=0\\) and \\(f''(0)=2\\). For \\(p(x)=f(x)-ax^2\\), which number \\(a\\) makes the second derivative test inconclusive at zero?",
+    "answer": "1",
+    "why": "We have \\(p'(0)=0\\) and \\(p''(0)=2-2a\\). The test is inconclusive exactly when \\(a=1\\).",
     "source": "../lectures/section-4-3.html#the-second-derivative-test",
     "pdfPage": 69,
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
@@ -473,9 +473,9 @@
     "section": "4.3",
     "topic": "tests",
     "level": 4,
-    "prompt": "Starting with \\(g(x)=x^3+1\\), form \\(H(x)=(g(x)-1)^2-3(g(x)-1)\\). The critical input zero fails to be an extremum. Find the local minimum value at the other critical input.",
+    "prompt": "Let \\(g(x)=x^3+1\\), and set \\(t=g(x)-1=x^3\\). Then \\(H(x)=t^2-3t\\), with \\(t\\) taking every real value. What is the global minimum value of \\(H\\)?",
     "answer": "-9/4",
-    "why": "\\(H=x^6-3x^3\\) has derivative \\(3x^2(2x^3-3)\\). At \\(x^3=3/2\\) it changes from negative to positive, and the height is \\((3/2)^2-3(3/2)=-9/4\\).",
+    "why": "The parabola has its minimum at \\(t=3/2\\), a value attained by \\(x^3\\). Substitution gives \\(9/4-9/2=-9/4\\).",
     "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
     "pdfPage": 68,
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
@@ -484,9 +484,9 @@
     "section": "4.3",
     "topic": "tests",
     "level": 4,
-    "prompt": "For \\(g(x)=\\cos x+a\\cos^2x\\), choose \\(a\\) so the stationary point at zero has \\(g^{\\prime\\prime}(0)=0\\). With this choice, what is \\(g^{(4)}(0)\\)?",
-    "answer": "-3",
-    "why": "Write \\(\\cos^2x=(1+\\cos(2x))/2\\). Then \\(g^{\\prime\\prime}(0)=-1-2a\\) forces \\(a=-1/2\\), and \\(g^{(4)}(0)=1+8a=-3\\).",
+    "prompt": "The cosine curve has a local maximum at zero. For \\(g(x)=\\cos x+a\\cos^2x\\), the first derivative vanishes at zero and \\(g''(0)=-1-2a\\). At which \\(a\\) does the second derivative test stop deciding the classification?",
+    "answer": "-1/2",
+    "why": "The test stops deciding when \\(-1-2a=0\\), or \\(a=-1/2\\).",
     "source": "../lectures/section-4-3.html#the-first-derivative-test",
     "pdfPage": 67,
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
@@ -495,9 +495,9 @@
     "section": "4.3",
     "topic": "tests",
     "level": 4,
-    "prompt": "Add \\(2x^2\\) to the lecture comparison function \\(-x^4\\). At a local maximum of the resulting curve, what is the second derivative minus its value at the local minimum?",
+    "prompt": "For \\(f(x)=-x^4+2x^2\\), \\(f'=-4x(x-1)(x+1)\\) and \\(f''=4-12x^2\\). At a local maximum, what is the second derivative minus its value at the local minimum?",
     "answer": "-12",
-    "why": "For \\(f=-x^4+2x^2\\), the maxima occur at \\(\\pm1\\) and the minimum at 0. Since \\(f^{\\prime\\prime}=4-12x^2\\), the requested difference is \\(-8-4=-12\\).",
+    "why": "For \\(f=-x^4+2x^2\\), the maxima occur at \\(\\pm1\\) and the minimum at 0. Since \\(f^{\\prime'}=4-12x^2\\), the requested difference is \\(-8-4=-12\\).",
     "source": "../lectures/section-4-3.html#the-second-derivative-test",
     "pdfPage": 69,
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
@@ -506,9 +506,9 @@
     "section": "4.3",
     "topic": "tests",
     "level": 4,
-    "prompt": "Choose \\(A,B\\) so that \\(p(x)=x\\tan x+Ax^2+Bx^4\\) has both \\(p^{\\prime\\prime}(0)=0\\) and \\(p^{(4)}(0)=0\\). Find \\(B\\).",
-    "answer": "-1/3",
-    "why": "The quadratic derivative gives \\(2+2A=0\\). Writing \\(u=\\tan x\\) gives \\(u^{\\prime\\prime\\prime}(0)=2\\) from \\(u^{\\prime}=1+u^2\\), so \\((xu)^{(4)}(0)=8\\). Now \\(8+24B=0\\).",
+    "prompt": "For \\(p(x)=x\\tan x+Ax^2\\), \\(p'(0)=0\\) and \\(p''(0)=2+2A\\). Among the integers \\(-3,-2,-1,0,1,2,3\\), how many choices of \\(A\\) let the second derivative test prove a strict local maximum at zero?",
+    "answer": "2",
+    "why": "We need \\(2+2A<0\\), or \\(A<-1\\). Only \\(-3\\) and \\(-2\\) qualify, giving 2 choices.",
     "source": "../lectures/section-4-3.html#the-second-derivative-test",
     "capstone": true,
     "pdfPage": 69,

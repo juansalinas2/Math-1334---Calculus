@@ -5,14 +5,14 @@
     "questions": [
       {
         "topic": "laws",
-        "prompt": "Find \\(\\lim_{x\\to 2}(3x^2-2x+1)\\).",
+        "prompt": "As \\(x\\) approaches 2, what does the polynomial \\(3x+1\\) approach?",
         "choices": [
-          "\\(9\\)",
+          "\\(7\\)",
+          "\\(6\\)",
           "\\(5\\)",
-          "\\(11\\)",
-          "\\(13\\)"
+          "\\(9\\)"
         ],
-        "why": "A polynomial is continuous at every real number. Substitute to get \\(3(2)^2-2(2)+1=9\\).",
+        "why": "A polynomial is continuous. Its value at 2 is \\(3(2)+1=7\\).",
         "level": 1,
         "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
         "section": "2.3",
@@ -37,7 +37,7 @@
       },
       {
         "topic": "limitmethods",
-        "prompt": "Find \\(\\displaystyle\\lim_{x\\to2}\\frac{x^2-x-2}{x^2-4}\\).",
+        "prompt": "For \\(x\\ne2\\), write \\(f(x)=\\dfrac{(x-2)(x+1)}{(x-2)(x+2)}\\). Although \\(f(2)\\) is undefined, what is \\(\\lim_{x\\to2}f(x)\\)?",
         "choices": [
           "\\(3/4\\)",
           "\\(0\\)",
@@ -53,7 +53,7 @@
       },
       {
         "topic": "sides",
-        "prompt": "Find \\(\\displaystyle\\lim_{x\\to2^-}\\frac{x^2-4}{|x-2|}\\).",
+        "prompt": "For \\(x<2\\), what value does \\(\\dfrac{(x-2)(x+2)}{|x-2|}\\) approach as \\(x\\to2^-\\)?",
         "choices": [
           "\\(-4\\)",
           "\\(4\\)",
@@ -84,7 +84,7 @@
       },
       {
         "topic": "limitmethods",
-        "prompt": "Find \\(\\displaystyle\\lim_{h\\to0}\\frac{(2+h)^2-4}{h}\\).",
+        "prompt": "For \\(h\\ne0\\), the difference quotient for \\(x^2\\) at 2 is \\(\\dfrac{4h+h^2}{h}\\). What is its limit as \\(h\\to0\\)?",
         "choices": [
           "\\(4\\)",
           "\\(0\\)",
@@ -204,7 +204,7 @@
       },
       {
         "topic": "chain",
-        "prompt": "Differentiate \\(y=\\cos^4 x\\).",
+        "prompt": "Write \\(y=(\\cos x)^4\\). Which expression is \\(dy/dx\\)?",
         "choices": [
           "\\(-4\\cos^3 x\\sin x\\)",
           "\\(4\\cos^3 x\\)",
@@ -279,7 +279,7 @@
       },
       {
         "topic": "tangent",
-        "prompt": "What is the slope of the tangent to \\(f(x)=\\sqrt{1+3x^2}\\) at \\(x=1\\)?",
+        "prompt": "Let \\(f(x)=\\sqrt{1+3x^2}\\). At \\(x=1\\), the inside expression has value \\(4\\) and slope \\(6\\). What is the slope of \\(f\\) there?",
         "choices": [
           "\\(3/2\\)",
           "\\(2\\)",
@@ -318,7 +318,7 @@
       },
       {
         "topic": "local",
-        "prompt": "For \\(f(x)=4x^3-12x+12\\), the derivative is \\(12(x-1)(x+1)\\). Which point is a local minimum?",
+        "prompt": "For \\(f(x)=4x^3-12x+12\\), the critical points are \\((-1,20)\\) and \\((1,4)\\). Given \\(f'(x)=12(x-1)(x+1)\\), which point is a local minimum?",
         "choices": [
           "\\((1,4)\\)",
           "\\((-1,20)\\)",
@@ -349,7 +349,7 @@
       },
       {
         "topic": "inflect",
-        "prompt": "Where is the inflection point of \\(g(x)=x^3+1\\)?",
+        "prompt": "The graph \\(y=x^3+1\\) changes from concave down to concave up at \\(x=0\\). What are the coordinates of its inflection point?",
         "choices": [
           "\\((0,1)\\)",
           "\\((0,0)\\)",
@@ -458,7 +458,7 @@
     "questions": [
       {
         "topic": "rates",
-        "prompt": "A \\(10\\) ft ladder slides down a wall. Its foot is \\(6\\) ft from the wall and moves outward at \\(2\\) ft/s. What is the rate of change of the top’s height?",
+        "prompt": "A 10 ft ladder leans against a vertical wall. Its foot is 6 ft from the wall and its top is 8 ft high. The foot moves outward at 2 ft/s. What is the signed rate of change of the top’s height?",
         "choices": [
           "\\(-3/2\\) ft/s",
           "\\(3/2\\) ft/s",
@@ -473,7 +473,7 @@
       },
       {
         "topic": "rates",
-        "prompt": "A \\(2\\) m tall person stands \\(x\\) meters from a \\(6\\) m streetlight. If the shadow has length \\(s\\), what relation follows from similar triangles?",
+        "prompt": "A 6 m streetlight casts the shadow of a 2 m person on level ground. The person is \\(x\\) meters from the pole and the shadow extends \\(s\\) meters farther away. Which equation relates the two similar triangles?",
         "choices": [
           "\\(6/(x+s)=2/s\\)",
           "\\(6/x=2/s\\)",
@@ -488,7 +488,7 @@
       },
       {
         "topic": "rates",
-        "prompt": "A person walks away from a streetlight at \\(3/2\\) m/s, and the shadow grows at \\(3/4\\) m/s. How fast does the shadow tip move away from the pole?",
+        "prompt": "A person walks away from a streetlight at \\(3/2\\) m/s. Their shadow extends straight ahead and grows at \\(3/4\\) m/s. How fast is its tip moving away from the pole?",
         "choices": [
           "\\(9/4\\) m/s",
           "\\(3/4\\) m/s",
@@ -504,14 +504,14 @@
       },
       {
         "topic": "rates",
-        "prompt": "The radius of a spherical balloon increases at \\(2\\) cm/s. How fast is its volume increasing when \\(r=3\\) cm?",
+        "prompt": "Air enters a spherical balloon at \\(12\\pi\\) cm³/s. When its radius is 2 cm, the rates satisfy \\(dV/dt=16\\pi\\,dr/dt\\). How many centimeters per second is the radius growing?",
         "choices": [
-          "\\(72\\pi\\) cm³/s",
-          "\\(36\\pi\\) cm³/s",
-          "\\(24\\pi\\) cm³/s",
-          "\\(18\\pi\\) cm³/s"
+          "\\(3/4\\)",
+          "\\(4/3\\)",
+          "\\(3\\)",
+          "\\(12\\)"
         ],
-        "why": "Differentiate \\(V=4\\pi r^3/3\\) before substituting: \\(dV/dt=4\\pi r^2(dr/dt)=4\\pi(3)^2(2)\\).",
+        "why": "Divide the volume rate by \\(16\\pi\\). The radius grows at \\(12\\pi/(16\\pi)=3/4\\) cm/s.",
         "level": 1,
         "source": "../lectures/related-rates.html#balloon",
         "section": "4.1",
@@ -519,7 +519,7 @@
       },
       {
         "topic": "rates",
-        "prompt": "A rectangle with sides \\(x\\) and \\(y\\) has constant area. At one instant \\(x=4\\), \\(y=3\\), and \\(dx/dt=2\\). Find \\(dy/dt\\).",
+        "prompt": "A rectangle’s changing side lengths \\(x\\) and \\(y\\) keep its area \\(xy\\) constant. At one instant \\(x=4\\) m, \\(y=3\\) m, and \\(dx/dt=2\\) m/s. Find \\(dy/dt\\) in m/s.",
         "choices": [
           "\\(-3/2\\)",
           "\\(3/2\\)",
@@ -534,14 +534,14 @@
       },
       {
         "topic": "rates",
-        "prompt": "A conical tank is \\(8\\) m tall with top radius \\(4\\) m. The water depth is \\(h\\) and its surface has radius \\(r\\). Which formula gives the water volume in terms of \\(h\\)?",
+        "prompt": "An inverted cone stands tip down. Its full height is 6 m and its top radius is 2 m. Water of depth \\(h\\) has surface radius \\(r\\) and volume \\(V=\\pi r^2h/3\\). Which expression gives \\(V\\) in terms of \\(h\\) alone?",
         "choices": [
-          "\\(V=\\pi h^3/12\\)",
-          "\\(V=\\pi h^3/6\\)",
+          "\\(V=\\pi h^3/27\\)",
+          "\\(V=\\pi h^3/9\\)",
           "\\(V=\\pi h^3/3\\)",
-          "\\(V=4\\pi h^3/3\\)"
+          "\\(V=3\\pi h^3\\)"
         ],
-        "why": "Similar triangles give \\(r/h=4/8\\). Substitute \\(r=h/2\\) into \\(V=\\pi r^2h/3\\).",
+        "why": "Similar triangles give \\(r/h=2/6=1/3\\). Substituting \\(r=h/3\\) in the cone formula gives \\(V=\\pi h^3/27\\).",
         "level": 3,
         "source": "../lectures/related-rates.html#cone",
         "section": "4.1",
@@ -680,7 +680,7 @@
       },
       {
         "topic": "optimization",
-        "prompt": "For a box folded from a \\(12\\) cm square, \\(V(x)=x(12-2x)^2\\). Which cut sizes produce boxes of positive volume with positive base lengths?",
+        "prompt": "Cut squares of side \\(x\\) cm from the corners of a 12 cm square and fold up the sides. The box has height \\(x\\) and base side \\(12-2x\\). Which interval gives all cut sizes that make a box with positive dimensions?",
         "choices": [
           "\\(0<x<6\\)",
           "\\(0<x<12\\)",
@@ -696,7 +696,7 @@
       },
       {
         "topic": "optimization",
-        "prompt": "A folded box has \\(V(x)=x(12-2x)^2\\) for \\(0<x<6\\). The derivative is \\((12-2x)(12-6x)\\). Which cut maximizes volume?",
+        "prompt": "Cut squares of side \\(x\\) cm from a 12 cm square to fold a box. Its volume has derivative \\(V'(x)=(12-2x)(12-6x)\\) on \\(0<x<6\\). Which cut size maximizes the volume?",
         "choices": [
           "\\(2\\) cm",
           "\\(3\\) cm",
@@ -712,7 +712,7 @@
       },
       {
         "topic": "optimization",
-        "prompt": "A flyer has \\(96\\) cm² of printed text of width \\(x\\). Side margins are \\(2\\) cm each and top and bottom margins are \\(3\\) cm each. What is the total paper area?",
+        "prompt": "The printed rectangle on a flyer is \\(x\\) cm wide and has area 96 cm². There are 2 cm margins on both sides and 3 cm margins above and below. Which expression gives the area of the whole sheet in cm²?",
         "choices": [
           "\\((x+4)(96/x+6)\\)",
           "\\((x+2)(96/x+3)\\)",
@@ -728,7 +728,7 @@
       },
       {
         "topic": "optimization",
-        "prompt": "A flyer’s total area is \\(A(x)=120+6x+384/x\\) for \\(x>0\\). Which printed width minimizes area?",
+        "prompt": "A flyer with printed width \\(x>0\\) has paper area \\(A(x)=120+6x+384/x\\). Its derivative is \\(6(1-64/x^2)\\). Which width minimizes the area?",
         "choices": [
           "\\(8\\) cm",
           "\\(4\\) cm",
@@ -858,14 +858,14 @@
     "questions": [
       {
         "topic": "lhospital",
-        "prompt": "Find \\(\\displaystyle\\lim_{x\\to2}(\\ln x-\\ln 2)/(x-2)\\).",
+        "prompt": "As \\(x\\to2\\), the numerator and denominator of \\(\\dfrac{\\ln x-\\ln 2}{x-2}\\) both tend to zero. Which limit equals it by l’Hospital’s rule?",
         "choices": [
-          "\\(1/2\\)",
-          "\\(0\\)",
-          "\\(2\\)",
-          "\\(\\ln 2\\)"
+          "\\(\\displaystyle\\lim_{x\\to2}1/x\\)",
+          "\\(\\displaystyle\\lim_{x\\to2}x\\)",
+          "\\(\\displaystyle\\lim_{x\\to2}\\ln x\\)",
+          "\\(\\displaystyle\\lim_{x\\to2}1\\)"
         ],
-        "why": "The form is \\(0/0\\). The ratio of the derivatives is \\(1/x\\), which tends to \\(1/2\\).",
+        "why": "The derivative of \\(\\ln x-\\ln 2\\) is \\(1/x\\), and the derivative of \\(x-2\\) is 1.",
         "level": 1,
         "source": "../lectures/exam-3-review.html#choosing-a-limit-method",
         "section": "4.7",
@@ -874,7 +874,7 @@
       },
       {
         "topic": "lhospital",
-        "prompt": "Find \\(\\displaystyle\\lim_{x\\to0}(1-\\cos(2x))/x^2\\).",
+        "prompt": "One application of l’Hospital’s rule rewrites \\(\\lim_{x\\to0}(1-\\cos(2x))/x^2\\) as \\(\\lim_{x\\to0}\\sin(2x)/x\\). What is the limit?",
         "choices": [
           "\\(2\\)",
           "\\(1\\)",
@@ -1008,7 +1008,7 @@
       },
       {
         "topic": "ivt",
-        "prompt": "A continuous function satisfies \\(f(0)=-2\\) and \\(f(2)=12\\). What does the Intermediate Value Theorem guarantee?",
+        "prompt": "A function \\(f\\) is continuous on the entire interval \\([0,2]\\), with \\(f(0)=-2\\) and \\(f(2)=12\\). What does the Intermediate Value Theorem guarantee?",
         "choices": [
           "At least one zero in \\((0,2)\\)",
           "Exactly one zero in \\((0,2)\\)",
@@ -1049,7 +1049,7 @@
     "questions": [
       {
         "topic": "derivative",
-        "prompt": "For which function does \\(\\displaystyle\\lim_{h\\to0}((2+h)^3-8)/h\\) give its derivative at \\(2\\)?",
+        "prompt": "Which choice makes \\(f(2+h)-f(2)\\) exactly \\((2+h)^3-8\\) for every \\(h\\), as it appears in a difference quotient?",
         "choices": [
           "\\(f(x)=x^3\\)",
           "\\(f(x)=x^2\\)",
@@ -1111,7 +1111,7 @@
       },
       {
         "topic": "motion",
-        "prompt": "A cart travels along a line with position \\(s(t)=t^2+2t\\) meters. What is its average velocity from \\(t=1\\) to \\(t=3\\) seconds?",
+        "prompt": "At 1 second a cart is at 3 meters; at 3 seconds it is at 15 meters along the same line. What is its average velocity over those two seconds?",
         "choices": [
           "\\(6\\) m/s",
           "\\(4\\) m/s",
@@ -1126,7 +1126,7 @@
       },
       {
         "topic": "derivatives",
-        "prompt": "If position is \\(s(t)=t^3-9t^2+24t\\), what is acceleration at \\(t=2\\)?",
+        "prompt": "A cart has position \\(s(t)=t^3-9t^2+24t\\) and velocity \\(v(t)=3t^2-18t+24\\). What is its signed acceleration at \\(t=2\\)?",
         "choices": [
           "\\(-6\\)",
           "\\(0\\)",
@@ -1151,14 +1151,14 @@
     "questions": [
       {
         "topic": "rules",
-        "prompt": "What is the derivative of \\(x^2\\cos x\\)?",
+        "prompt": "To differentiate \\(x^2\\cos x\\) by the product rule, write \\(2x\\cos x+x^2(\\square)\\). What belongs in the blank?",
         "choices": [
-          "\\(2x\\cos x-x^2\\sin x\\)",
-          "\\(-2x\\sin x\\)",
-          "\\(2x\\cos x+x^2\\sin x\\)",
-          "\\(2x\\cos x-x\\sin x\\)"
+          "\\(-\\sin x\\)",
+          "\\(\\sin x\\)",
+          "\\(-\\cos x\\)",
+          "\\(\\cos x\\)"
         ],
-        "why": "Differentiate each factor in turn. The derivative of cosine is negative sine.",
+        "why": "The second term uses the derivative of \\(\\cos x\\), which is \\(-\\sin x\\).",
         "level": 1,
         "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
         "section": "3.3",
@@ -1166,14 +1166,14 @@
       },
       {
         "topic": "rules",
-        "prompt": "For \\(f(x)=x/(1+x^2)\\), what is \\(f'(0)\\)?",
+        "prompt": "For \\(f(x)=x/(1+x^2)\\), \\(f(0)=0\\). Its difference quotient at zero simplifies to \\(1/(1+h^2)\\) for \\(h\\ne0\\). What is \\(f'(0)\\)?",
         "choices": [
           "\\(1\\)",
           "\\(0\\)",
           "\\(-1\\)",
           "The derivative does not exist."
         ],
-        "why": "The quotient rule gives \\(f'(x)=(1-x^2)/(1+x^2)^2\\). Substitute \\(x=0\\).",
+        "why": "The derivative is the limit of this quotient. As \\(h\\to0\\), its denominator approaches 1.",
         "level": 2,
         "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
         "section": "3.3",
@@ -1267,7 +1267,7 @@
       },
       {
         "topic": "invtrig",
-        "prompt": "What is the derivative of \\(\\arctan(2x)\\)?",
+        "prompt": "The derivative of \\(\\arctan u\\) with respect to \\(u\\) is \\(1/(1+u^2)\\). What is the derivative of \\(\\arctan(2x)\\) with respect to \\(x\\)?",
         "choices": [
           "\\(2/(1+4x^2)\\)",
           "\\(1/(1+4x^2)\\)",
@@ -1282,7 +1282,7 @@
       },
       {
         "topic": "implicit",
-        "prompt": "On the circle \\(x^2+y^2=25\\), what is the tangent slope at \\((3,4)\\)?",
+        "prompt": "On the circle \\(x^2+y^2=25\\), the tangent slope satisfies \\(x+y(dy/dx)=0\\). What is the slope at \\((3,4)\\)?",
         "choices": [
           "\\(-3/4\\)",
           "\\(3/4\\)",
@@ -1313,7 +1313,7 @@
       },
       {
         "topic": "logdiff",
-        "prompt": "For \\(x>0\\), let \\(y=x^x\\). What is \\(dy/dx\\)?",
+        "prompt": "For \\(x>0\\), let \\(y=x^x\\), so \\(\\ln y=x\\ln x\\). Which expression gives \\(dy/dx\\)?",
         "choices": [
           "\\(x^x(1+\\ln x)\\)",
           "\\(x^x\\)",
@@ -1432,7 +1432,7 @@
       {
         "topic": "critical",
         "level": 2,
-        "prompt": "Fermat’s theorem applies at an interior local maximum \\(c\\). Which additional hypothesis gives \\(f'(c)=0\\)?",
+        "prompt": "A function \\(f\\) has a local maximum at an interior point \\(c\\). Which additional hypothesis lets Fermat’s theorem conclude \\(f'(c)=0\\)?",
         "choices": [
           "\\(f\\) is differentiable at \\(c\\).",
           "\\(f\\) is continuous at \\(c\\).",

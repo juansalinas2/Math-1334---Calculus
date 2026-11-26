@@ -2,7 +2,7 @@
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "A 10-ft ladder touches a wall and the floor. Its top slides down at 3 ft/s when its foot is 6 ft from the wall. How fast is the foot moving away?",
+    "prompt": "A 10-ft ladder rests against a vertical wall. Its foot is 6 ft out and its top is 8 ft up. When the top slides down at 3 ft/s, how fast does the foot move away?",
     "choices": [
       "\\(4\\) ft/s",
       "\\(9/4\\) ft/s",
@@ -12,12 +12,13 @@
     "why": "The height is 8 ft. Differentiating \\(x^2+y^2=100\\) gives \\(x\\,dx/dt=-y\\,dy/dt\\), so \\(dx/dt=-8(-3)/6=4\\).",
     "source": "../lectures/related-rates.html#ladder",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "A rope leads from a boat to a pulley 3 m above its bow. It is drawn in at 1 m/s. When the boat is 4 m horizontally from the pulley, what is its approach speed?",
+    "prompt": "A taut 5-m rope joins a boat’s bow to a dock pulley 3 m above the bow and 4 m away horizontally. The bow stays at the same height. The rope is pulled in at 1 m/s. How fast does the boat approach the dock?",
     "choices": [
       "\\(5/4\\) m/s",
       "\\(4/5\\) m/s",
@@ -27,12 +28,13 @@
     "why": "Write \\(L^2=x^2+9\\). With \\(L=5\\), \\(x=4\\), and \\(dL/dt=-1\\), the horizontal rate is \\(dx/dt=(L/x)dL/dt=-5/4\\). The speed is its magnitude.",
     "source": "../lectures/related-rates.html#boat",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "Water drains at \\(\\pi\\) m³/min from an inverted cone 6 m tall with top radius 2 m. What are the signed rates of water depth and surface radius when the depth is 3 m, in that order?",
+    "prompt": "Water drains from an inverted cone at \\(\\pi\\) m³/min. Its depth \\(h\\) and surface radius \\(r\\) satisfy \\(r=h/3\\), and \\(V=\\pi h^3/27\\). At depth 3 m, what are the signed rates of depth and radius, respectively?",
     "choices": [
       "\\(-1,-1/3\\) m/min",
       "\\(-1/3,-1\\) m/min",
@@ -42,12 +44,13 @@
     "why": "Similarity gives \\(r=h/3\\) and \\(V=\\pi h^3/27\\). At \\(h=3\\), \\(dV/dt=\\pi\\,dh/dt\\). Hence \\(dh/dt=-1\\) and \\(dr/dt=-1/3\\).",
     "source": "../lectures/related-rates.html#cone",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 4
   },
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "A 2-m person walks away from a 6-m streetlight at 2 m/s. Measured from the ground, how fast does the tip move? How fast does the shadow itself lengthen?",
+    "prompt": "A 2-m person walks away from a 6-m lamp at 2 m/s on level ground. Similar triangles give a shadow length half the lamp-to-person distance. How fast does the tip move along the ground, and how fast does the shadow lengthen?",
     "choices": [
       "Tip 3 m/s, length 1 m/s",
       "Tip 2 m/s, length 1 m/s",
@@ -57,12 +60,13 @@
     "why": "With \\(x\\) the person’s distance and \\(s\\) the shadow length, \\(6s=2(x+s)\\) gives \\(s=x/2\\). Thus \\(ds/dt=1\\) while \\(d(x+s)/dt=2+1=3\\).",
     "source": "../lectures/related-rates.html#shadow",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 4
   },
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "Air enters a spherical balloon at \\(12\\pi\\) cm³/s. When its radius is 2 cm, how fast is the balloon’s surface area changing?",
+    "prompt": "A balloon has volume \\(4\\pi r^3/3\\) and area \\(4\\pi r^2\\). At radius 2 cm, air enters at \\(12\\pi\\) cm³/s. How fast is its surface area increasing?",
     "choices": [
       "\\(12\\pi\\) cm²/s",
       "\\(3\\pi\\) cm²/s",
@@ -72,12 +76,13 @@
     "why": "From \\(dV/dt=4\\pi r^2\\,dr/dt\\), get \\(dr/dt=3/4\\). Then \\(A=4\\pi r^2\\) gives \\(dA/dt=8\\pi(2)(3/4)=12\\pi\\).",
     "source": "../lectures/related-rates.html#balloon",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "A cube loses volume at 12 m³/s. When its edge is 2 m, find the signed rate of its total surface area.",
+    "prompt": "A cube of side \\(s\\) has volume \\(s^3\\) and total surface area \\(6s^2\\). Its volume shrinks at 12 m³/s. At side length 2 m, what is the signed rate of change of its area?",
     "choices": [
       "\\(-24\\) m²/s",
       "\\(-12\\) m²/s",
@@ -87,27 +92,29 @@
     "why": "\\(V=s^3\\) gives \\(ds/dt=-12/(3s^2)=-1\\). Differentiate \\(S=6s^2\\) to get \\(dS/dt=12s\\,ds/dt=-24\\).",
     "source": "../lectures/related-rates.html#cube",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "A rectangle is 8 cm by 5 cm. Its length grows at 3 cm/s while its width shrinks at 1 cm/s. What is the signed rate of change of its diagonal?",
+    "prompt": "A rectangle has length \\(L=8\\) cm and width \\(W=5\\) cm. Its length grows at 3 cm/s while its width shrinks at 1 cm/s. For diagonal \\(D\\), we have \\(D^2=L^2+W^2\\). What is the signed rate of change of \\(D^2\\)?",
     "choices": [
-      "\\(19/\\sqrt{89}\\) cm/s",
-      "\\(29/\\sqrt{89}\\) cm/s",
-      "\\(2\\) cm/s",
-      "\\(7/\\sqrt{89}\\) cm/s"
+      "38 cm²/s",
+      "58 cm²/s",
+      "19 cm²/s",
+      "14 cm²/s"
     ],
-    "why": "If \\(d^2=L^2+W^2\\), then \\(d\\,dd/dt=L\\,dL/dt+W\\,dW/dt=24-5=19\\), and \\(d=\\sqrt{89}\\).",
+    "why": "Differentiate the squares. The two contributions are \\(2(8)(3)=48\\) and \\(2(5)(-1)=-10\\), so \\(d(D^2)/dt=38\\) cm²/s.",
     "source": "../lectures/related-rates.html#rectangle",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "A triangle initially has base 8 cm and height 6 cm. The base decreases at 2 cm/min and the height increases at 3 cm/min, both at constant rates. When does its area first stop increasing?",
+    "prompt": "After \\(t\\) minutes, a triangle’s base is \\(8-2t\\) cm and its height is \\(6+3t\\) cm. Its area is \\(A(t)=(8-2t)(6+3t)/2\\). When does its area first stop increasing?",
     "choices": [
       "After 1 min",
       "After 2 min",
@@ -117,12 +124,13 @@
     "why": "\\(A(t)=(8-2t)(6+3t)/2=24+6t-3t^2\\) for \\(0\\le t<4\\). Thus \\(dA/dt=6-6t\\), changing from positive to negative at \\(t=1\\).",
     "source": "../lectures/related-rates.html#triangle",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "A point on \\(xy=12\\) passes through \\((3,4)\\) with \\(dy/dt=-2\\). How fast is its distance from the origin changing?",
+    "prompt": "A point on \\(xy=12\\) is at \\((3,4)\\) with velocities \\(dx/dt=3/2\\) and \\(dy/dt=-2\\). Its distance from the origin is \\(D=5\\). Use \\(D\\,dD/dt=x\\,dx/dt+y\\,dy/dt\\). What is its signed distance rate?",
     "choices": [
       "\\(-7/10\\) units per unit time",
       "\\(7/10\\) units per unit time",
@@ -132,12 +140,13 @@
     "why": "The product rule gives \\(dx/dt=3/2\\). For distance \\(D=\\sqrt{x^2+y^2}=5\\), \\(dD/dt=(3(3/2)+4(-2))/5=-7/10\\).",
     "source": "../lectures/related-rates.html#constant-product",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+    "handoutPage": 59
   },
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "A point travels on \\(x^2+y^2=25\\). At \\((3,4)\\) its horizontal velocity is 2 units/s. Find its speed along the circle.",
+    "prompt": "A point moves along \\(x^2+y^2=25\\). At \\((3,4)\\) its velocity components are \\(dx/dt=2\\) and \\(dy/dt=-3/2\\) units/s. What is the point’s speed?",
     "choices": [
       "\\(5/2\\) units/s",
       "\\(1/2\\) unit/s",
@@ -147,12 +156,13 @@
     "why": "\\(x\\,dx/dt+y\\,dy/dt=0\\) gives \\(dy/dt=-3/2\\). The speed is \\(\\sqrt{(dx/dt)^2+(dy/dt)^2}=5/2\\).",
     "source": "../lectures/related-rates.html#circle",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+    "handoutPage": 59
   },
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "The foot of a 10-ft ladder moves away from the wall at 2 ft/s. At a horizontal distance of 6 ft, how fast is the area of the triangle enclosed by the ladder, floor, and wall changing?",
+    "prompt": "A 10-ft ladder forms a right triangle with a wall and floor. Its base is 6 ft out, moving outward at 2 ft/s. Its top is 8 ft up, sliding down at \\(3/2\\) ft/s. How fast is the triangle’s area changing?",
     "choices": [
       "\\(7/2\\) ft²/s",
       "\\(7\\) ft²/s",
@@ -162,12 +172,13 @@
     "why": "The height is 8 ft and \\(dy/dt=-(6/8)(2)=-3/2\\). Then \\(d(xy/2)/dt=(8(2)+6(-3/2))/2=7/2\\).",
     "source": "../lectures/related-rates.html#ladder",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "In a 6-m inverted cone of top radius 2 m, water flows in at \\(\\pi\\) m³/min. At what water depth is the level rising at exactly \\(1/4\\) m/min?",
+    "prompt": "Water enters an inverted cone at \\(\\pi\\) m³/min. The cone is 6 m tall, with top radius 2 m. Its water volume at depth \\(h\\) is \\(V=\\pi h^3/27\\). At which depth is the level rising at \\(1/4\\) m/min?",
     "choices": [
       "\\(6\\) m",
       "\\(3/2\\) m",
@@ -177,27 +188,29 @@
     "why": "Similarity gives \\(dV/dt=(\\pi h^2/9)\\,dh/dt\\). Thus \\(dh/dt=9/h^2\\), which equals \\(1/4\\) as the filling water reaches depth 6 m.",
     "source": "../lectures/related-rates.html#cone",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 4
   },
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "A point follows \\(y=x^2\\) with \\(dx/dt=2\\). At \\((3,9)\\), how fast is its distance from the origin increasing?",
+    "prompt": "A point moves to the right along \\(y=x^2\\) at \\(dx/dt=2\\). At \\((3,9)\\), is its squared distance \\(D^2=x^2+y^2\\) from the origin increasing or decreasing, and which coordinate contributes more to its change?",
     "choices": [
-      "\\(38/\\sqrt{10}\\) units per unit time",
-      "\\(2\\sqrt{37}\\) units per unit time",
-      "\\(19/\\sqrt{10}\\) units per unit time",
-      "\\(12\\) units per unit time"
+      "Increasing; the vertical coordinate contributes more.",
+      "Increasing; the horizontal coordinate contributes more.",
+      "Decreasing; the vertical coordinate contributes more.",
+      "Unchanged; the two contributions cancel."
     ],
-    "why": "\\(dy/dt=2x\\,dx/dt=12\\). Differentiate \\(D^2=x^2+y^2\\) at \\(D=3\\sqrt{10}\\) to obtain \\(D\\,dD/dt=3(2)+9(12)=114\\).",
+    "why": "Here \\(dy/dt=2x\\,dx/dt=12\\). Both contributions are positive, and \\(2(9)(12)>2(3)(2)\\).",
     "source": "../lectures/related-rates.html#parabola",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+    "handoutPage": 58
   },
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "At \\((3,4)\\) on \\(x^2+y^2=25\\), a point moves right at 2 units/s. Let \\(\\theta\\) be the counterclockwise angle from the positive horizontal axis to its radius. Find \\(d\\theta/dt\\).",
+    "prompt": "A point moves on a circle of radius 5 with horizontal coordinate \\(x=5\\cos\\theta\\). At \\((3,4)\\), it moves right at 2 units/s and \\(\\sin\\theta=4/5\\). What is its signed angular velocity \\(d\\theta/dt\\)?",
     "choices": [
       "\\(-1/2\\) rad/s",
       "\\(1/2\\) rad/s",
@@ -207,12 +220,13 @@
     "why": "\\(x=5\\cos\\theta\\) and \\(5\\sin\\theta=y=4\\). Differentiating gives \\(2=-4\\,d\\theta/dt\\). Moving right in the first quadrant decreases the angle.",
     "source": "../lectures/related-rates.html#circle",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+    "handoutPage": 59
   },
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "The length and width of a rectangle are 8 cm and 5 cm. The length grows at 3 cm/s while the width shrinks at 1 cm/s. How fast does its aspect ratio (length divided by width) change?",
+    "prompt": "A rectangle is 8 cm long and 5 cm wide. Length grows at 3 cm/s and width shrinks at 1 cm/s. If \\(R=L/W\\), then \\(W R=L\\). What is the signed rate \\(dR/dt\\)?",
     "choices": [
       "\\(23/25\\) per second",
       "\\(7/25\\) per second",
@@ -222,7 +236,8 @@
     "why": "For \\(R=L/W\\), \\(dR/dt=(W\\,dL/dt-L\\,dW/dt)/W^2\\). Its numerator is \\(5(3)-8(-1)=23\\) and its denominator is 25.",
     "source": "../lectures/related-rates.html#rectangle",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "rates",
@@ -237,7 +252,8 @@
     "why": "The chain rule gives \\(dy/dt=2x\\,dx/dt=4x\\).",
     "source": "../lectures/related-rates.html#parabola",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+    "handoutPage": 58
   },
   {
     "topic": "rates",
@@ -252,7 +268,8 @@
     "why": "The volume is \\(s^3\\), so the chain rule supplies the factor \\(ds/dt\\).",
     "source": "../lectures/related-rates.html#cube",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "rates",
@@ -267,7 +284,8 @@
     "why": "Similar triangles give \\(r/h=2/6\\).",
     "source": "../lectures/related-rates.html#similar-triangles",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 4
   },
   {
     "topic": "rates",
@@ -282,12 +300,13 @@
     "why": "From \\(dy/dt=2x\\,dx/dt\\), substitute \\(x=3\\) and \\(dx/dt=2\\).",
     "source": "../lectures/related-rates.html#parabola",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+    "handoutPage": 58
   },
   {
     "topic": "rates",
     "level": 3,
-    "prompt": "A triangle has base 8 cm and height 6 cm. If the base shrinks at 2 cm/min and the height grows at 3 cm/min, how fast is its area changing at this instant?",
+    "prompt": "At one instant a triangle’s base is 8 cm and its height is 6 cm. Its base shrinks at 2 cm/min and its height grows at 3 cm/min. Using \\(A=bh/2\\), how fast does its area change?",
     "choices": [
       "\\(6\\) cm²/min",
       "\\(12\\) cm²/min",
@@ -297,7 +316,8 @@
     "why": "For \\(A=bh/2\\), the rate is \\((h\\,db/dt+b\\,dh/dt)/2=(6(-2)+8(3))/2=6\\).",
     "source": "../lectures/related-rates.html#triangle",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "rates",
@@ -312,107 +332,115 @@
     "why": "The derivative equation \\(x\\,dx/dt+y\\,dy/dt=0\\) gives \\(dy/dt=-3(2)/4\\).",
     "source": "../lectures/related-rates.html#circle",
     "section": "4.1",
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+    "handoutPage": 59
   },
   {
     "section": "4.1",
     "topic": "rates",
     "level": 4,
-    "prompt": "The foot of a 10-ft ladder moves away from the wall at a constant 2 ft/s. Let \\(\\theta\\) be the angle between ladder and floor. When the foot is 6 ft from the wall, find \\(\\theta^{\\prime'}\\) in rad/s².",
+    "prompt": "A 10-ft ladder makes angle \\(\\theta\\) with the floor. Its foot moves outward at a constant 2 ft/s. Its top is 8 ft up and slides down at \\(3/2\\) ft/s. At all times the height \\(y\\) satisfies \\(y\\,d\\theta/dt=-2\\). What is the signed angular acceleration in rad/s²?",
     "answer": "-3/64",
-    "why": "From \\(x=10\\cos\\theta\\) and height \\(y=8\\), \\(x^{\\prime}=-y\\theta^{\\prime}\\) gives \\(\\theta^{\\prime}=-1/4\\). Differentiate again to get \\(0=-x(\\theta^{\\prime})^2-y\\theta^{\\prime'}\\).",
+    "why": "Differentiate the constant product. Here \\(d\\theta/dt=-1/4\\). Thus \\(8\\,d^2\\theta/dt^2=-(-3/2)(-1/4)=-3/8\\).",
     "source": "../lectures/related-rates.html#ladder",
     "pdfPage": 61,
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 3
   },
   {
     "section": "4.1",
     "topic": "rates",
     "level": 4,
-    "prompt": "A pulley is 3 m above a boat’s bow. The boat approaches horizontally at a constant 1 m/s. When the horizontal distance is 4 m, find the second time derivative of the length of taut rope in m/s².",
-    "answer": "9/125",
-    "why": "From \\(L^2=x^2+9\\), \\(L=5\\) and \\(L^{\\prime}=-4/5\\). A second differentiation gives \\(5L^{\\prime'}=1-(4/5)^2=9/25\\).",
+    "prompt": "A boat approaches a dock at constant horizontal speed. Its bow is 3 m below the pulley and the taut rope length obeys \\(L^2=x^2+9\\). At gaps \\(x=4\\) and \\(x=9/4\\) the rope lengths are 5 and \\(15/4\\) m. Divide the second shortening speed by the first.",
+    "answer": "3/4",
+    "why": "Implicit differentiation gives \\(|L\\,dL/dt|=|x\\,dx/dt|\\). The common boat speed cancels, leaving \\((3/5)/(4/5)=3/4\\).",
     "source": "../lectures/related-rates.html#boat",
     "pdfPage": 62,
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 3
   },
   {
     "section": "4.1",
     "topic": "rates",
     "level": 4,
-    "prompt": "The 6-m cone with top radius 2 m fills at a constant \\(\\pi\\) m³/min. At water depth 3 m, compute \\(A^{\\prime'}/\\pi\\) for the circular water-surface area \\(A\\). Use meters and minutes.",
-    "answer": "-2/9",
-    "why": "\\(V=\\pi h^3/27\\) gives \\(h^{\\prime}=9/h^2\\) and then \\(h^{\\prime'}=-18h^{\\prime}/h^3=-2/3\\) at depth 3. Since \\(A=\\pi h^2/9\\), \\(A^{\\prime'}/\\pi=2(1+3(-2/3))/9\\).",
+    "prompt": "Water enters an inverted cone at a constant rate. Its depth \\(h\\) satisfies \\(h^2\\,dh/dt=9\\) in meters and minutes. At \\(h=3\\), \\(dh/dt=1\\). What is the signed acceleration \\(d^2h/dt^2\\) in m/min²?",
+    "answer": "-2/3",
+    "why": "Differentiate the constant product: \\(2h(dh/dt)^2+h^2\\,d^2h/dt^2=0\\). At this instant \\(6+9\\,d^2h/dt^2=0\\).",
     "source": "../lectures/related-rates.html#cone",
     "pdfPage": 63,
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 4
   },
   {
     "section": "4.1",
     "topic": "rates",
     "level": 4,
-    "prompt": "A 6-m lamp lights a person whose horizontal distance is 8 m and increasing at \\(3/2\\) m/s. Their effective height is 2 m and is increasing at \\(1/4\\) m/s as they straighten up. Find the ground speed of the shadow tip in m/s.",
-    "answer": "3",
-    "why": "Similar triangles give tip distance \\(D=6x/(6-h)\\). Thus \\(D^{\\prime}=6x^{\\prime}/(6-h)+6xh^{\\prime}/(6-h)^2=9/4+3/4\\).",
+    "prompt": "A 2-m person walks away from a 6-m lamp on level ground. Similar triangles give shadow length \\(s=x/2\\), where \\(x\\) is the distance walked from the lamp. The shadow tip moves at 3 m/s. How fast is the person walking in m/s?",
+    "answer": "2",
+    "why": "The tip is \\(x+s=3x/2\\) from the lamp. Its speed is \\(3/2\\) times the person’s speed, so the person walks at 2 m/s.",
     "source": "../lectures/related-rates.html#shadow",
     "pdfPage": 63,
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 4
   },
   {
     "section": "4.1",
     "topic": "rates",
     "level": 4,
-    "prompt": "Air enters a spherical balloon at a constant \\(12\\pi\\) cm³/s. Find the signed radial acceleration in cm/s² at radius 2 cm.",
-    "answer": "-9/16",
-    "why": "The volume rate gives \\(r^2r^{\\prime}=3\\), hence \\(r^{\\prime}=3/4\\). Differentiating again gives \\(r^{\\prime'}=-2(r^{\\prime})^2/r=-9/16\\).",
+    "prompt": "Air enters a spherical balloon at a constant rate. Then \\(r^2\\,dr/dt\\) is constant. When \\(r=2\\) cm its radius grows at \\(3/4\\) cm/s. If the radius doubles, by what factor must \\(dr/dt\\) be multiplied?",
+    "answer": "1/4",
+    "why": "The factor \\(r^2\\) quadruples, so the rate must be multiplied by \\(1/4\\) to keep the product fixed.",
     "source": "../lectures/related-rates.html#balloon",
     "pdfPage": 60,
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 1
   },
   {
     "section": "4.1",
     "topic": "rates",
     "level": 4,
-    "prompt": "A point on \\(xy=12\\) passes through \\((3,4)\\). At that instant \\(y^{\\prime}=-2\\), and its horizontal velocity is constant. Find \\(y^{\\prime'}\\).",
+    "prompt": "A point moves along \\(xy=12\\) with constant horizontal velocity. At \\((3,4)\\) its horizontal velocity is \\(3/2\\) and its vertical velocity is \\(-2\\). Differentiating twice gives \\(x y^{\\prime\\prime}+2x^{\\prime}y^{\\prime}=0\\). Find the vertical acceleration.",
     "answer": "2",
-    "why": "\\(xy^{\\prime}+yx^{\\prime}=0\\) gives \\(x^{\\prime}=3/2\\). Another derivative gives \\(xy^{\\prime'}+2x^{\\prime}y^{\\prime}+yx^{\\prime'}=0\\). With \\(x^{\\prime'}=0\\), solve for \\(y^{\\prime'}\\).",
+    "why": "Insert the coordinates and velocities: \\(3y^{\\prime\\prime}+2(3/2)(-2)=0\\), so \\(y^{\\prime\\prime}=2\\).",
     "source": "../lectures/related-rates.html#constant-product",
-    "pdfPage": 59,
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+    "handoutPage": 59
   },
   {
     "section": "4.1",
     "topic": "rates",
     "level": 4,
-    "prompt": "A rectangle’s length increases at 3 cm/s and its width decreases at 1 cm/s, both constantly. At length 8 and width 5, what is the second time derivative of the aspect ratio \\(L/W\\) in s⁻²?",
-    "answer": "46/125",
-    "why": "\\(R^{\\prime}=(3W+L)/W^2\\). Its numerator is constant in time because \\(3W^{\\prime}+L^{\\prime}=0\\). Thus \\(R^{\\prime'}=2(3W+L)/W^3=46/125\\).",
+    "prompt": "A rectangle’s length grows at 3 cm/s while its width shrinks at 1 cm/s. Its area is \\(A=LW\\). Both side velocities are constant. What is the signed rate of change of \\(dA/dt\\), in cm²/s²?",
+    "answer": "-6",
+    "why": "First \\(A^{\\prime}=3W-L\\). Differentiating again gives \\(3(-1)-3=-6\\).",
     "source": "../lectures/related-rates.html#rectangle",
     "pdfPage": 60,
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 2
   },
   {
     "section": "4.1",
     "topic": "rates",
     "level": 4,
-    "prompt": "A point on \\(x^2+y^2=25\\) moves through \\((3,4)\\) with horizontal velocity 2 and horizontal acceleration 1. Find its signed vertical acceleration.",
-    "answer": "-37/16",
-    "why": "The first derivative gives \\(y^{\\prime}=-3/2\\). The second gives \\(4y^{\\prime'}=-((x^{\\prime})^2+(y^{\\prime})^2+xx^{\\prime'})=-(4+9/4+3)\\).",
+    "prompt": "A point moves near the top of \\(x^2+y^2=25\\). At \\((0,5)\\), it moves right at 5 units/s with zero vertical velocity. After two derivatives, \\((x^{\\prime})^2+xx^{\\prime\\prime}+(y^{\\prime})^2+yy^{\\prime\\prime}=0\\). What is its vertical acceleration?",
+    "answer": "-5",
+    "why": "At the top, the terms with \\(x\\) and \\(y^{\\prime}\\) vanish. The remaining equation \\(25+5y^{\\prime\\prime}=0\\) gives \\(-5\\).",
     "source": "../lectures/related-rates.html#circle",
-    "pdfPage": 59,
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+    "handoutPage": 59
   },
   {
     "section": "4.1",
     "topic": "rates",
     "level": 4,
-    "prompt": "The base of a 10-ft ladder moves away from a wall at a constant 2 ft/s. When its base is 6 ft out, what is the third time derivative of the top’s height in ft/s³?",
-    "answer": "-225/512",
-    "why": "Write \\(v=x^{\\prime}=2\\) and \\(y=8\\). Differentiating \\(x^2+y^2=100\\) gives \\(y^{\\prime}=-xv/y\\), then \\(y^{\\prime'}=-100v^2/y^3\\). Differentiate again to obtain \\(y^{\\prime'\\prime}=-300xv^3/y^5\\).",
+    "prompt": "A 10-ft ladder’s base moves outward at constant speed. Write \\(x\\) for the base distance and \\(y\\) for the top’s height. Since \\(x^2+y^2=100\\), the downward speed is \\((x/y)\\,dx/dt\\). What is the ratio of the downward speed at \\((8,6)\\) to that at \\((6,8)\\)?",
+    "answer": "16/9",
+    "why": "The common base speed cancels. The ratio is \\((8/6)/(6/8)=(4/3)^2=16/9\\).",
     "source": "../lectures/related-rates.html#ladder",
     "capstone": true,
     "pdfPage": 61,
-    "pdf": "../downloads/related-rates-examples-practice.pdf"
+    "pdf": "../downloads/related-rates-examples-practice.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "rates",
@@ -420,7 +448,7 @@
     "source": "../lectures/related-rates.html#cube",
     "pdf": "../downloads/related-rates-examples-practice.pdf",
     "level": 2,
-    "prompt": "For the draining cube, \\(dV/dt=3s^2\\,ds/dt\\). Its side is 2 m and its volume is decreasing at 12 m³/s. What is its signed side-length rate?",
+    "prompt": "A cube has side length \\(s\\) and volume \\(V=s^3\\). At \\(s=2\\) m the volume is decreasing at 12 m³/s. Using \\(dV/dt=3s^2\\,ds/dt\\), find the signed side-length rate.",
     "choices": [
       "\\(-1\\) m/s",
       "\\(1\\) m/s",
