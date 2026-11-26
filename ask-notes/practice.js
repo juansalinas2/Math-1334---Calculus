@@ -218,7 +218,7 @@
     }
     if (!topics.has("the-three-steps")) return;
 
-    const trigger = element("button", "Ask for help");
+    const trigger = element("button", "Ask");
     trigger.type = "button";
     trigger.id = "ask-for-help";
     trigger.className = "rr-help-trigger";
@@ -230,18 +230,23 @@
     popup.className = "rr-help-popup";
     popup.setAttribute("aria-labelledby", "rr-answer-title");
     const bar = element("header");
-    const title = element("h2", "Ask for help");
+    const title = element("h2", "Ask");
     title.id = "rr-answer-title";
     title.tabIndex = -1;
-    const move = element("button", "Move");
+    const readingLabel = element("span");
+    readingLabel.className = "rr-reading";
+    const move = element("button");
     move.type = "button";
     move.className = "rr-move";
     move.title = "Drag to move. Click to switch sides, or use the arrow keys.";
-    move.setAttribute("aria-label", move.title);
-    const hide = element("button", "Hide");
+    move.setAttribute("aria-label", "Move panel");
+    const hide = element("button");
+    hide.className = "rr-minimize";
+    hide.title = "Minimize";
+    hide.setAttribute("aria-label", "Minimize");
     hide.type = "button";
     hide.addEventListener("click", hidePanel);
-    bar.append(title, move, hide);
+    bar.append(title, readingLabel, move, hide);
     movablePanel(popup, bar, move);
     const asked = element("p");
     asked.className = "rr-asked";
@@ -269,23 +274,37 @@
       if (history.length > 3) history.shift();
     }
 
+    function replyText(text) {
+      const body = element("div");
+      body.className = "rr-generated-answer";
+      for (const paragraph of text.split(/\n\s*\n/)) {
+        const line = element("p");
+        for (const part of paragraph.split(/(\*\*[^*\n]+\*\*)/)) {
+          if (part.startsWith("**") && part.endsWith("**")) line.append(element("strong", part.slice(2, -2)));
+          else line.append(document.createTextNode(part));
+        }
+        body.append(line);
+      }
+      return body;
+    }
+
+    function typesetReply(body, text) {
+      const macros = text.match(/\\[a-zA-Z]+/g) || [];
+      const safe = /^\\(?:frac|dfrac|tfrac|sqrt|left|right|bigl|bigr|mathrm|text|cdot|times|pi|theta|sin|cos|tan|infty|approx|leq?|geq?|neq|pm|quad|qquad|boxed|begin|end|aligned|displaystyle|partial)$/;
+      if (macros.every(m => safe.test(m))) window.MathJax?.typesetPromise?.([body]).catch(() => {});
+    }
+
     async function askTutor(question, section) {
       if (pending) return;
       pending = true;
       composer.setBusy(true);
       asked.textContent = question;
-      answer.replaceChildren(element("p", "Reading the example and your question…"));
+      answer.replaceChildren(element("p", "Reading your question…"));
       present();
       try {
         const data = await chat.ask(question, section, history, classCode);
         answer.replaceChildren();
-        const body = element("p");
-        // Format model emphasis as text nodes. No generated content enters innerHTML.
-        for (const part of data.answer.split(/(\*\*[^*\n]+\*\*)/)) {
-          if (part.startsWith("**") && part.endsWith("**")) body.append(element("strong", part.slice(2,-2)));
-          else body.append(document.createTextNode(part));
-        }
-        body.className = "rr-generated-answer";
+        const body = replyText(data.answer);
         if (data.reviewed) answer.append(element("small", "From the worked notes"));
         answer.append(body);
         activeTopic = topics.has(data.section) ? data.section : section;
@@ -297,19 +316,24 @@
         const prior = history.filter(turn => turn.section === activeTopic);
         if (prior.length) {
           const earlier = element("details");
-          earlier.append(element("summary", "Earlier in this example"));
-          for (const turn of prior) earlier.append(element("strong", turn.question), element("p", turn.answer));
+          earlier.className = "rr-history";
+          earlier.append(element("summary", "Earlier replies"));
+          const replies = prior.map(turn => {
+            const reply = replyText(turn.answer);
+            earlier.append(element("strong", turn.question), reply);
+            return reply;
+          });
+          earlier.addEventListener("toggle", () => {
+            if (earlier.open) replies.forEach((reply, i) => typesetReply(reply, prior[i].answer));
+          }, {once:true});
           answer.append(earlier);
         }
         if (data.sources?.length) remember(question, data.answer, activeTopic);
-        action("Open worked hints", () => show("First step", activeTopic));
         chat.offerFeedback(answer, data, classCode);
-        const macros = data.answer.match(/\\[a-zA-Z]+/g) || [];
-        const safe = /^\\(?:frac|dfrac|tfrac|sqrt|left|right|bigl|bigr|mathrm|text|cdot|times|pi|theta|sin|cos|tan|infty|approx|leq?|geq?|neq|pm|quad|qquad|boxed|begin|end|aligned|displaystyle|partial)$/;
-        if (macros.every(m => safe.test(m))) await window.MathJax?.typesetPromise?.([body]);
+        typesetReply(body, data.answer);
       } catch (error) {
         activeTopic = section;
-        answer.replaceChildren(element("p", error.status ? error.message : "The AI tutor could not finish this reply. Try again or use the worked hints."));
+        answer.replaceChildren(element("p", error.status ? error.message : "Couldn’t get a reply. Try again or choose Worked hint."));
         if (error.status === 403) {
           classCode = "";
           composer.requestCode(question, section);
@@ -334,15 +358,17 @@
       form.className = "rr-question-form";
       const label = element("label");
       const caption = element("span", "Your question");
+      caption.className = "rr-visually-hidden";
       const field = element("input");
       field.type = "text";
       field.required = true;
       field.maxLength = 450;
       field.autocomplete = "off";
-      field.placeholder = "Ask about this reading…";
+      field.placeholder = "Ask a question…";
       label.append(caption, field);
-      const send = element("button", chat ? "Ask AI" : "Ask");
+      const send = element("button", "Ask");
       send.type = "submit";
+      send.className = "rr-submit";
       const row = element("div");
       row.className = "rr-suggestion";
       const fill = element("button");
@@ -350,31 +376,43 @@
       const sample = element("span");
       const keycap = element("kbd", "Tab");
       fill.append(sample, keycap);
-      const other = element("button", "↻");
-      other.type = "button";
-      other.setAttribute("aria-label", "Show another suggested question");
-      other.title = "Show another suggested question";
-      row.append(fill, other);
+      row.append(fill);
       const instructions = element("span", "Tab fills the suggested question. Enter asks your question. Escape dismisses the suggestion.");
       instructions.className = "rr-visually-hidden";
       instructions.id = "rr-question-keys";
       field.setAttribute("aria-describedby", instructions.id);
       sample.id = instructions.id + "-sample";
       form.append(label, send, row, instructions);
-      const hint = element("button", "Use worked hints");
+      const tools = element("div");
+      tools.className = "rr-tools";
+      const hint = element("button", "Worked hint");
       hint.type = "button";
       hint.className = "rr-free-hint";
       const edit = element("button", "Edit question");
       edit.type = "button";
       edit.hidden = true;
       edit.className = "rr-edit-question";
-      const notice = element("small", "Ask AI sends your question and recent turns to AWS. Check its math against the worked notes. Sharing with Juan is optional.");
-      notice.className = "rr-ai-notice";
+      const about = element("button", "About Ask");
+      about.type = "button";
+      about.setAttribute("aria-expanded", "false");
+      about.setAttribute("aria-controls", "rr-about");
+      const notice = element("p", "Replies are generated from the course notes. Asking sends your question and up to three recent exchanges to AWS. You choose which replies to share with Juan. Worked hints stay in your browser.");
+      notice.id = "rr-about";
+      notice.hidden = true;
+      const savedQuestion = element("p");
+      savedQuestion.className = "rr-pending-question";
+      savedQuestion.hidden = true;
       if (chat) {
-        form.append(hint, edit, notice);
+        tools.append(hint, edit, about);
+        form.prepend(savedQuestion);
+        form.append(tools, notice);
+        about.addEventListener("click", () => {
+          notice.hidden = !notice.hidden;
+          about.setAttribute("aria-expanded", String(!notice.hidden));
+        });
         hint.addEventListener("click", () => {
           const question = queued?.question || field.value.trim() || "First step";
-          show(question, queued?.section || filledReading || getReading());
+          show(question, queued?.section || filledReading || getReading(), true);
         });
         edit.addEventListener("click", () => {
           const draft = queued;
@@ -386,15 +424,16 @@
         });
       }
 
-      let options = [], index = 0, reading = "", dismissed = false, filledReading = "";
+      let suggestion = "", reading = "", dismissed = false, filledReading = "";
       function requestCode(question, section) {
         queued = {question, section};
         field.value = "";
         field.type = "password";
         field.maxLength = 120;
         field.placeholder = "Enter your class code";
-        caption.textContent = "Class code for AI";
-        send.textContent = "Send question";
+        caption.textContent = "Class code";
+        savedQuestion.textContent = question;
+        savedQuestion.hidden = asked.textContent === question && !thread.hidden;
         edit.hidden = false;
         row.hidden = true;
         field.removeAttribute("aria-describedby");
@@ -405,20 +444,23 @@
         field.value = "";
         field.type = "text";
         field.maxLength = 450;
-        field.placeholder = "Ask about this reading…";
-        send.textContent = chat ? "Ask AI" : "Ask";
+        field.placeholder = "Ask a question…";
+        savedQuestion.hidden = true;
         edit.hidden = true;
-        dismissed = false; filledReading = ""; index = 0;
+        dismissed = false; filledReading = "";
         update();
       }
       function update() {
         if (queued) return;
         caption.textContent = asked.textContent ? "Ask a follow-up" : "Your question";
+        field.placeholder = asked.textContent ? "Ask a follow-up…" : "Ask a question…";
         const raw = normalized(field.value);
         const ref = numbered(raw);
         reading = ref?.candidates.length === 1 ? ref.candidates[0] : getReading();
         const term = ref ? raw.replace(ref.match[0], "").trim() : raw;
-        options = prompts(checks[reading]).map(a => a.question).filter(q => {
+        const topic = topics.get(reading);
+        readingLabel.textContent = topic.numbered?.[0] || topic.title;
+        suggestion = prompts(checks[reading]).map(a => a.question).find(q => {
           if (ref && ref.candidates.length !== 1) return false;
           if (normalized(asked.textContent) === normalized(q)) return false;
           const text = normalized(q);
@@ -427,23 +469,19 @@
           if (text.startsWith(term)) return true;
           return /^[a-z]{3,}$/.test(term) && text.split(/[^a-z]+/).some(word => word.startsWith(term));
         });
-        if (index >= options.length) index = 0;
-        row.hidden = dismissed || !options.length;
-        if (!row.hidden) {
-          sample.textContent = options[index];
-          other.hidden = options.length < 2;
-        }
+        row.hidden = pending || dismissed || !suggestion || (!!asked.textContent && !raw);
+        if (!row.hidden) sample.textContent = suggestion;
         field.setAttribute("aria-describedby", row.hidden ? instructions.id : instructions.id + " " + sample.id);
       }
       function accept() {
-        field.value = options[index];
+        field.value = suggestion;
         filledReading = reading;
         dismissed = true;
         update();
         field.focus({preventScroll:true});
       }
       field.addEventListener("input", () => {
-        dismissed = false; filledReading = ""; index = 0; update();
+        dismissed = false; filledReading = ""; update();
       });
       field.addEventListener("focus", update);
       field.addEventListener("keydown", e => {
@@ -455,9 +493,6 @@
         }
       });
       fill.addEventListener("click", accept);
-      other.addEventListener("click", () => {
-        index = (index + 1) % options.length; update(); field.focus({preventScroll:true});
-      });
       form.addEventListener("submit", event => {
         event.preventDefault();
         if (pending) return;
@@ -566,7 +601,7 @@
       answer.append(p);
     }
 
-    function show(question, context) {
+    function show(question, context, requestHint = false) {
       const q = normalized(question);
       const ref = numbered(q);
       const lastReply = pendingReply;
@@ -579,7 +614,7 @@
           "That numbered problem isn’t in §4.1. Use an Example or Practice heading from this page."));
         for (const k of choices) {
           const name = topics.get(k).title;
-          action(name, () => show(q.replace(ref.match[0], name.split(".")[0] + (ref.part || "")), k));
+          action(name, () => show(q.replace(ref.match[0], name.split(".")[0] + (ref.part || "")), k, requestHint));
         }
         activeTopic = "";
         activeStep = 0; activePart = ""; hintLevel = 0;
@@ -614,7 +649,7 @@
         q.split(/\s+/).length <= 9 && !/^(?:what|why|how|where|which|when)\b/.test(q) &&
         new RegExp(lastReply.rule.match, "i").test(q);
       const detail = /\b(?:why|what (?:is|does)|how fast|how much|units?|differentiat\w*|equation)\b/.test(q);
-      const starter = /\bhint\b/.test(q) || (!exact && !next && !definition && wantsWalkthrough(remainder, key, ref)) ||
+      const starter = requestHint || /\bhint\b/.test(q) || (!exact && !next && !definition && wantsWalkthrough(remainder, key, ref)) ||
         (startPattern.test(q) && !detail && authoredIndex < 0 && !exact);
       if (part && !hints[part]) {
         supported = false;
@@ -733,7 +768,6 @@
       if (composer.field.type === "password") composer.field.value = "";
       trigger.hidden = false;
       trigger.setAttribute("aria-expanded", "false");
-      trigger.textContent = asked.textContent ? "Resume help" : "Ask for help";
       trigger.focus({preventScroll:true});
     }
     popup.addEventListener("keydown", e => {

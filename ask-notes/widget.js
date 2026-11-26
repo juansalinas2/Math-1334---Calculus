@@ -9,7 +9,13 @@
     });
     const data = await response.json();
     if (!response.ok) {
-      const error = new Error(data.error || "The AI tutor is temporarily unavailable.");
+      let message = data.error || "Couldn’t get a reply. Try again or choose Worked hint.";
+      if (response.status === 429) {
+        message = /allowance/i.test(message)
+          ? "The class has used this month’s question allowance. Worked hints are still available."
+          : "Several questions arrived at once. Try again in a moment.";
+      }
+      const error = new Error(message);
       error.status = response.status;
       throw error;
     }
@@ -20,7 +26,7 @@
       const box = document.createElement("details");
       box.className = "ask-feedback";
       box.innerHTML = `
-        <summary>Share a response with Juan (optional)</summary>
+        <summary>Share with Juan</summary>
         <form><label>After reading this answer
           <select required><option value="">Choose one</option><option value="helped">I can continue</option>
           <option value="stuck">I’m still stuck</option><option value="check">Please check the explanation</option></select></label>

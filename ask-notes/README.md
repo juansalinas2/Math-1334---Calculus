@@ -1,6 +1,6 @@
 # Ask the Notes · MATH 1334
 
-In §4.1, open **Ask for help**. The same panel holds the question, reply, and follow-ups. On the first **Ask AI**, the question field briefly asks for the class code. **Send question** submits the saved question. Later replies use the selected example and up to three recent exchanges in that reading. **Use worked hints** and **Next step** work locally without a code. Tab fills a suggested question. The header can be dragged and Hide preserves the current reply.
+In §4.1, open **Ask**, type a question or use Tab to fill the suggestion, then press Enter. On first use, enter the class code in the same field. The answer links back to the worked example. **Worked hint** runs locally without a code. Drag the header or use the Move panel control. Minimizing keeps the conversation. **About Ask** explains what goes to AWS and what students can share with Juan.
 
 ## Build
 

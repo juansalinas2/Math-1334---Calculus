@@ -20,7 +20,7 @@
 \newcommand{\stage}[1]{\fbox{\strut\hspace{4pt}#1\hspace{4pt}}}
 \begin{document}
 \pagehead{Ask the Notes}{1. What a student sees}
-On the \href{https://juansalinas2.github.io/Math-1334---Calculus/lectures/related-rates.html\#ladder}{related-rates lecture}, open \textbf{Ask for help} in the lower-right corner. Press \textbf{Tab} or tap a suggested question to fill the box. Choose \textbf{Ask AI}. On first use, enter the class code in the same field and choose \textbf{Send question}. Read the reply and ask follow-ups in this panel. \textbf{Use worked hints} opens the instructor’s written steps without a code. The answer panel stays open as you scroll or follow a source. Drag its title bar, or use the arrow keys on \textbf{Move}. \textbf{Hide} and \textbf{Resume help} preserve your answer.
+On the \href{https://juansalinas2.github.io/Math-1334---Calculus/lectures/related-rates.html\#ladder}{related-rates lecture}, open \textbf{Ask} in the lower-right corner. Type a question or press \textbf{Tab} to fill the suggestion. Press Enter. On first use, enter the class code in the same field. The answer and its source appear above the field. \textbf{Worked hint} gives a written step without a code. Drag the header or use the arrow keys on the grip to move the panel. The minus button minimizes it and keeps your place.
 \subhead{A student checks Example 6}
 \emph{I wrote $r/h=6/2$. Is my proportion right?} A student can test the equation against the full tank, whose radius is 2 m and whose height is 6 m:
 \[
@@ -34,12 +34,12 @@ The written hint asks what radius the repaired ratio predicts at a depth of 3 m.
 \begin{tabular}{c@{\hspace{.42in}}c}
 \multicolumn{2}{c}{\stage{Question and open example}}\\
 $\swarrow$&$\searrow$\\
-Ask AI with class code&Use worked hints\\
+Ask with class code&Worked hint\\
 $\searrow$&$\swarrow$\\
 \multicolumn{2}{c}{\stage{Explanation in the lecture popup}}\\
 \end{tabular}
 \end{center}
-Try \emph{I added the length and width rates. What does my 2 mean?} in Example 4. Then ask \emph{Why multiply by 5?} The AI receives up to three recent exchanges about that reading. The written hints and their Next step button run in the browser.
+Try \emph{I added the length and width rates. What does my 2 mean?} in Example 4. Then ask \emph{Why multiply by 5?} The tutor receives up to three recent exchanges about that reading. The written hints and their Next step button run in the browser.
 \newpage
 \pagehead{Build and repair}{2. From the lecture to the popup}
 \textbf{1. Edit the content.} In the course checkout, open \code{ask-notes/checks.json}. Find the reading's identifier, such as \code{ladder}. Its \code{help} entry and each \code{answers} entry with a \code{question} provide suggestions. Each pairs a prompt with an explanation, a wording pattern, and a source step. An optional \code{reply} handles a short response to the preceding teaching question. Step 0 links to the whole reading.
@@ -60,7 +60,7 @@ The render turns authored LaTeX into MathML. The build attaches the help box to 
  
 \textbf{The box is missing.} Check the latest Pages build. The file \code{site_assets.py} adds the script to the rendered lecture. A cache refresh should load its new version after publication.
 \subhead{Who sees student responses?}
-The class code stays in the tab. Ask AI sends the current question and recent turns to AWS. Sharing a specific exchange with Juan requires a separate click. The feedback table keeps a shared exchange for 90 days. An unshared receipt contains a digest and expires after two hours.
+The class code stays in the tab. Ask sends the current question and recent turns to AWS. Sharing a specific exchange with Juan requires a separate click. The feedback table keeps a shared exchange for 90 days. An unshared receipt contains a digest and expires after two hours.
 
 \newpage
 \pagehead{The conversational tutor}{3. Operations and interview notes}
