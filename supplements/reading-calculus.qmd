@@ -1,0 +1,118 @@
+---
+title: "# Reading calculus {.unnumbered}"
+description: "Practice reading calculus notation aloud, interpreting it, and writing a statement in symbols."
+css: ../assets/reading-calculus.css
+---
+
+Read each statement aloud before opening its model reading. Then try going the other way, from a sentence to symbols. Write on paper or type in the space provided. Ordinary keyboard notation is fine.
+
+## A one-sided limit
+
+In the limits lecture, $h(x)=\dfrac{x^2-4}{|x-2|}$. Read this line aloud.
+
+$$\lim_{x\to 2^-} h(x)=-4.$$
+
+<details class="language-model"><summary>Read it aloud</summary>
+
+“The limit of $h$ of $x$, as $x$ approaches two from the left, is negative four.” In ordinary words, inputs just below $2$ give outputs near $-4$, and the outputs get arbitrarily close to $-4$ as the inputs approach $2$ from that side.
+
+</details>
+
+<fieldset class="reading-check">
+<legend>What does the small minus sign on the 2 tell you?</legend>
+<label><input type="radio" name="side" data-feedback="The input 1.99 is positive and is on the indicated side of 2. Compare the input with 2."> The inputs are negative.</label>
+<label><input type="radio" name="side" data-feedback="Yes. Inputs such as 1.9, 1.99, and 1.999 approach 2 from below."> The inputs approach 2 through values smaller than 2.</label>
+<label><input type="radio" name="side" data-feedback="The minus sign attached to 2 describes the inputs. The value on the other side of the equals sign gives the limiting output."> The outputs approach −4 from below.</label>
+<p class="reading-feedback" role="status"></p>
+</fieldset>
+
+**Write it in symbols.** As $x$ approaches $2$ from the right, the values of $h$ approach $4$.
+
+<textarea class="notation-draft" rows="2" aria-label="Your notation for the right-hand limit" spellcheck="false"></textarea>
+
+<details class="language-model"><summary>Compare your notation</summary>
+
+$$\lim_{x\to 2^+}h(x)=4.$$
+
+The $+$ on $2$ tells the reader which inputs to use. The $4$ gives the limiting output.
+
+</details>
+
+[One-sided limits, Example 3](../lectures/02-limits.qmd#one-sided-limits)
+
+## A derivative in context
+
+A particle's position is $s(t)=3t-t^2$, measured in meters, with $t$ in seconds. Read this statement about the particle.
+
+$$s'(2)=-1.$$
+
+<details class="language-model"><summary>Read it aloud</summary>
+
+“Ess prime of two equals negative one.” At two seconds the particle is moving in the negative direction at one meter per second. The prime changes the quantity from position to instantaneous velocity.
+
+</details>
+
+<fieldset class="reading-check">
+<legend>Which observation does this statement describe?</legend>
+<label><input type="radio" name="velocity" data-feedback="That would describe the position s(2), which is measured in meters. Look at the prime."> At two seconds the particle is one meter behind the origin.</label>
+<label><input type="radio" name="velocity" data-feedback="That describes a change in position over a whole interval. The argument 2 picks out one instant."> Over the first two seconds the particle moves back one meter in total.</label>
+<label><input type="radio" name="velocity" data-feedback="Yes. The prime identifies velocity, the 2 identifies the instant, and the negative sign gives the direction."> At two seconds its velocity is −1 meter per second.</label>
+<p class="reading-feedback" role="status"></p>
+</fieldset>
+
+**Write it in symbols.** At one second, the same particle has instantaneous velocity $1$ meter per second. Use $s$.
+
+<textarea class="notation-draft" rows="2" aria-label="Your notation for the instantaneous velocity" spellcheck="false"></textarea>
+
+<details class="language-model"><summary>Compare your notation</summary>
+
+$$s'(1)=1.$$
+
+The first $1$ specifies the time in seconds. The second $1$ gives the velocity in meters per second.
+
+</details>
+
+[From derivatives to motion](../lectures/12-rates-of-change.qmd#from-derivatives-to-motion)
+
+## The conclusion of a theorem
+
+In the Intermediate Value Theorem lecture, $f(x)=4x^3-6x^2+3x-2$ is continuous on $[0,2]$ and $f(0)<0<f(2)$. Here is the conclusion in symbols. Read $\exists$ as “there exists” and $\in$ as “belongs to.”
+
+$$\exists\, c\in(0,2)\text{ such that }f(c)=0.$$
+
+<details class="language-model"><summary>Read it aloud</summary>
+
+“There exists a number $c$ strictly between zero and two such that $f$ of $c$ equals zero.” In ordinary words, the graph meets the $x$-axis somewhere between those inputs.
+
+</details>
+
+<fieldset class="reading-check">
+<legend>Would two different inputs with output zero in this interval satisfy the displayed statement?</legend>
+<label><input type="radio" name="exists" data-feedback="Yes. Either input supplies a value of c. A claim of uniqueness would need the words “exactly one.”"> Yes. At least one such input is enough.</label>
+<label><input type="radio" name="exists" data-feedback="The letter c names one input that works. Another input could work as well. Try reading the sentence with “at least one.”"> No. Using a single letter means only one input can work.</label>
+<p class="reading-feedback" role="status"></p>
+</fieldset>
+
+**Write it in symbols.** At some input strictly between $a$ and $b$, the function $f$ takes the value $N$.
+
+<textarea class="notation-draft" rows="2" aria-label="Your notation for the existence statement" spellcheck="false"></textarea>
+
+<details class="language-model"><summary>Compare your notation</summary>
+
+$$\exists\, c\in(a,b)\text{ such that }f(c)=N.$$
+
+You can use $x$ or another letter in place of $c$. Use the same letter for the input in both places.
+
+</details>
+
+[Intermediate Value Theorem, Example 5](../lectures/07-intermediate-value.qmd#the-intermediate-value-theorem)
+
+<script>
+document.querySelectorAll('.reading-check').forEach(field => {
+  field.addEventListener('change', event => {
+    if (event.target.matches('input[type="radio"]')) {
+      field.querySelector('.reading-feedback').textContent = event.target.dataset.feedback;
+    }
+  });
+});
+</script>

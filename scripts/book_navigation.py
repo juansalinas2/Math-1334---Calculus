@@ -13,7 +13,7 @@ SECTIONS = [
     '08-exam-practice.html',
 ]
 SUPPLEMENTS = ['limits-map.html', 'worksheets.html', 'self-checks.html', 'explore.html']
-REFERENCE = ['definitions.html', 'theorems.html']
+REFERENCE = ['definitions.html', 'reading-calculus.html', 'theorems.html']
 DERIVATIVE_SECTIONS = ['09-derivative-at-a-point.html', '10-derivative-function.html', '11-differentiation-rules.html', '12-rates-of-change.html', '13-trigonometric-derivatives.html', '14-chain-rule.html', '15-inverse-functions.html', '16-implicit-differentiation.html', '17-exponential-logarithmic.html', 'exam-2-review.html']
 
 APPLICATION_SECTIONS = ['related-rates.html', '18-maxima-and-minima.html', 'section-4-3.html', '19-end-behaviour-and-curve-sketching.html', 'curve-sketching.html', 'optimization.html', 'lhopitals-rule.html', 'exam-3-review.html']

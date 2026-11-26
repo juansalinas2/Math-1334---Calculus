@@ -75,10 +75,18 @@
           Drag to move · Pinch to zoom
         </div>
         <div class="controls" aria-label="Map controls">
-          <button id="out" aria-label="Zoom out" title="Zoom out">
+          <button id="out" disabled aria-label="Zoom out" title="Zoom out">
             −
-          </button><output id="zoom-level" aria-label="Zoom level"
-          >100%</output><button id="in" aria-label="Zoom in" title="Zoom in">
+          </button><output
+            id="zoom-level"
+            aria-label="Zoom level"
+            aria-live="off"
+          >…</output><button
+            id="in"
+            disabled
+            aria-label="Zoom in"
+            title="Zoom in"
+          >
             +
           </button>
           <button id="fit" title="Fit whole map" aria-label="Fit whole map">

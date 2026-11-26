@@ -7,9 +7,20 @@ const byTopic = new Map(stations.map((station) => [station.id, station]));
 const detail = byId("detail");
 const lookup = byId("lookup");
 const results = byId("results");
+const zoomIn = byId("in");
+const zoomOut = byId("out");
+const zoomLevel = byId("zoom-level");
+const minZoom = .16;
+const maxZoom = 3.6;
 let selected = null;
 let family = "all";
 let cameraMode = "overview";
+let cameraWidth = 0;
+let cameraHeight = 0;
+let renderedScale = 0;
+let drawFrame = null;
+let gesturing = false;
+let hovered = null;
 const bounds = {
   left: -15 * horizontalSpacing,
   top: 10,
@@ -28,7 +39,9 @@ function trackPath(edge) {
 const tracks = d3.select("#rails").selectAll("path").data(connections).join(
   "path",
 )
-  .attr("class", "track").attr("d", trackPath);
+  .attr("class", "track").attr("d", trackPath)
+  .attr("stroke", (edge) => families[byTopic.get(edge.target).family].color)
+  .attr("stroke-dasharray", (edge) => edge.onSelection ? "6 5" : null);
 const stops = d3.select("#stops").selectAll("g").data(stations).join("g")
   .attr("class", (d) => "station" + (d.symbol ? " hub" : ""))
   .attr("role", "button").attr("tabindex", 0).attr("aria-label", (d) => d.title)
@@ -60,33 +73,60 @@ stops.append("text").attr("class", "label").attr("text-anchor", "middle").attr(
   (d) => d.symbol ? 49 : 31,
 ).text((d) => d.label);
 
-const zoom = d3.zoom().scaleExtent([.16, 3.6]).clickDistance(5).on(
-  "zoom",
-  (event) => {
-    world.attr("transform", event.transform);
-    // Keep labels readable when the entire desktop map fits on screen.
-    const labelScale = Math.max(.55, event.transform.k);
+function drawCamera() {
+  drawFrame = null;
+  const view = d3.zoomTransform(viewport);
+  world.attr("transform", view);
+  if (view.k === renderedScale) return;
+  // Only the overview uses larger labels. Panning needs no text layout.
+  const labelScale = Math.max(.55, view.k);
+  if (view.k < .8 || renderedScale < .8) {
     world.style("--label-size", Math.max(17, 13 / labelScale) + "px")
       .style("--hub-size", Math.max(24, 18 / labelScale) + "px");
-    byId("zoom-level").textContent = Math.round(100 * event.transform.k) + "%";
-    if (event.sourceEvent) cameraMode = "manual";
-  },
-);
+  }
+  const percent = Math.round(100 * view.k) + "%";
+  if (zoomLevel.textContent !== percent) zoomLevel.textContent = percent;
+  zoomIn.disabled = view.k >= maxZoom;
+  zoomOut.disabled = view.k <= minZoom;
+  zoomIn.title = zoomIn.disabled ? "Maximum zoom" : "Zoom in (+)";
+  zoomOut.title = zoomOut.disabled ? "Minimum zoom" : "Zoom out (−)";
+  renderedScale = view.k;
+}
+const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
+  .duration(0)
+  .on("start", (event) => {
+    if (!event.sourceEvent) return;
+    gesturing = true;
+    if (hovered !== null) {
+      hovered = null;
+      paint();
+    }
+  })
+  .on("zoom", (event) => {
+    if (event.sourceEvent) {
+      cameraMode = "manual";
+      if (drawFrame === null) drawFrame = requestAnimationFrame(drawCamera);
+    } else {
+      // A button, key, or concept selection takes effect in this event.
+      if (drawFrame !== null) cancelAnimationFrame(drawFrame);
+      drawCamera();
+    }
+  })
+  .on("end", () => {
+    gesturing = false;
+  });
 svg.call(zoom);
 
-function move(x, y, scale, animated = true) {
+function move(x, y, scale) {
+  cameraWidth = viewport.clientWidth;
+  cameraHeight = viewport.clientHeight;
   const view = d3.zoomIdentity.translate(
-    viewport.clientWidth / 2,
-    viewport.clientHeight / 2,
+    cameraWidth / 2,
+    cameraHeight / 2,
   ).scale(scale).translate(-x, -y);
-  svg.interrupt();
-  const target =
-    animated && !matchMedia("(prefers-reduced-motion: reduce)").matches
-      ? svg.transition().duration(260)
-      : svg;
-  target.call(zoom.transform, view);
+  svg.call(zoom.transform, view);
 }
-function frame(animate = true) {
+function frame() {
   const items = stations.filter((s) => family === "all" || s.family === family);
   const left = family === "all"
     ? bounds.left
@@ -101,14 +141,14 @@ function frame(animate = true) {
     ? bounds.bottom
     : Math.max(...items.map((d) => d.y)) + 62;
   const scale = Math.max(
-    .16,
+    minZoom,
     Math.min(
       2,
       (viewport.clientWidth - 24) / (right - left),
       (viewport.clientHeight - 75) / (bottom - top),
     ),
   );
-  move((left + right) / 2, (top + bottom) / 2 + 15 / scale, scale, animate);
+  move((left + right) / 2, (top + bottom) / 2 + 15 / scale, scale);
 }
 function nearby(id) {
   return connections.filter((e) => e.source === id || e.target === id);
@@ -124,12 +164,8 @@ function paint(preview = selected) {
     const sameFamily = family === "all" ||
       [e.source, e.target].some((id) => byTopic.get(id).family === family);
     d3.select(this).attr("display", e.onSelection && !active ? "none" : null)
-      .attr("stroke", families[byTopic.get(e.target).family].color)
       .attr("opacity", active ? 1 : preview || !sameFamily ? .13 : .55)
-      .attr("stroke-width", active ? 4.5 : 3.4).attr(
-        "stroke-dasharray",
-        e.onSelection ? "6 5" : null,
-      );
+      .attr("stroke-width", active ? 4.5 : 3.4);
   });
   stops.classed("active", (d) => d.id === selected).attr(
     "aria-pressed",
@@ -152,10 +188,11 @@ function el(tag, text, className) {
   if (className) element.className = className;
   return element;
 }
-function showTopic(id, animate = true) {
+function showTopic(id) {
   const topic = byTopic.get(id);
   if (!topic) return;
   selected = id;
+  hovered = null;
   cameraMode = "selected";
   family = "all";
   detail.hidden = false;
@@ -193,12 +230,12 @@ function showTopic(id, animate = true) {
       d3.zoomTransform(viewport).k,
       Math.min(1.35, viewport.clientWidth / 550),
     ),
-    animate,
   );
   heading.focus({ preventScroll: true });
 }
 function overview(which = "all") {
   selected = null;
+  hovered = null;
   family = which;
   cameraMode = "overview";
   detail.hidden = true;
@@ -210,12 +247,18 @@ stops.on("click", (event, d) => {
   if (!event.defaultPrevented) showTopic(d.id);
 })
   .on("pointerenter", (event, d) => {
-    if (!selected && event.pointerType === "mouse" && !event.buttons) {
+    if (
+      !selected && !gesturing && event.pointerType === "mouse" && !event.buttons
+    ) {
+      hovered = d.id;
       paint(d.id);
     }
   })
   .on("pointerleave", () => {
-    if (!selected) paint();
+    if (hovered !== null) {
+      hovered = null;
+      paint();
+    }
   })
   .on("keydown", (event, d) => {
     if (["Enter", " "].includes(event.key)) {
@@ -230,7 +273,7 @@ stops.on("click", (event, d) => {
       point[0] < 70 || point[0] > viewport.clientWidth - 70 || point[1] < 35 ||
       point[1] > viewport.clientHeight - 55
     ) {
-      move(d.x, d.y, d3.zoomTransform(viewport).k, false);
+      move(d.x, d.y, d3.zoomTransform(viewport).k);
     }
   });
 for (const [id, group] of Object.entries(families)) {
@@ -246,10 +289,10 @@ document.querySelectorAll("[data-family]").forEach((btn) =>
 );
 function scaleBy(factor) {
   cameraMode = "manual";
-  svg.interrupt().call(zoom.scaleBy, factor);
+  svg.call(zoom.scaleBy, factor);
 }
-byId("in").onclick = () => scaleBy(1.35);
-byId("out").onclick = () => scaleBy(1 / 1.35);
+zoomIn.onclick = () => scaleBy(1.35);
+zoomOut.onclick = () => scaleBy(1 / 1.35);
 byId("fit").onclick = () => overview();
 byId("close").onclick = () => {
   const last = selected;
@@ -267,10 +310,7 @@ viewport.addEventListener("keydown", (event) => {
   if (directions[event.key]) {
     event.preventDefault();
     cameraMode = "manual";
-    svg.interrupt().call(zoom.translateBy, ...directions[event.key]);
-  } else if (["+", "=", "-"].includes(event.key)) {
-    event.preventDefault();
-    scaleBy(event.key === "-" ? 1 / 1.35 : 1.35);
+    svg.call(zoom.translateBy, ...directions[event.key]);
   } else if (event.key === "Home") {
     event.preventDefault();
     overview();
@@ -327,6 +367,14 @@ document.addEventListener("focusin", (e) => {
   if (!e.target.closest(".searchbox")) results.hidden = true;
 });
 document.addEventListener("keydown", (e) => {
+  if (
+    !e.metaKey && !e.ctrlKey && !e.altKey && !e.isComposing &&
+    !e.target.closest("input, textarea, select, [contenteditable]") &&
+    ["+", "=", "-"].includes(e.key)
+  ) {
+    e.preventDefault();
+    scaleBy(e.key === "-" ? 1 / 1.35 : 1.35);
+  }
   if (e.key === "Escape") {
     if (!results.hidden) {
       lookup.focus();
@@ -337,22 +385,27 @@ document.addEventListener("keydown", (e) => {
 function initialFrame() {
   if (viewport.clientWidth < 620) {
     // Start near the definition of the derivative at a readable phone scale.
-    move(481 * horizontalSpacing, 268, .84, false);
+    move(481 * horizontalSpacing, 268, .84);
   } else {
-    frame(false);
+    frame();
   }
 }
 new ResizeObserver(() => {
-  if (cameraMode === "overview") frame(false);
+  // Opening the panel already measured and used its new viewport.
+  if (
+    viewport.clientWidth === cameraWidth &&
+    viewport.clientHeight === cameraHeight
+  ) return;
+  if (cameraMode === "overview") frame();
   else if (cameraMode === "initial") initialFrame();
   else if (cameraMode === "selected" && selected) {
     const node = byTopic.get(selected);
-    move(node.x, node.y, d3.zoomTransform(viewport).k, false);
+    move(node.x, node.y, d3.zoomTransform(viewport).k);
   }
 }).observe(viewport);
 function openLocation() {
   const id = location.hash.slice(1);
-  if (byTopic.has(id)) showTopic(id, false);
+  if (byTopic.has(id)) showTopic(id);
   else {
     selected = null;
     family = "all";
