@@ -107,6 +107,15 @@ function buildSystem(kind, width, height) {
     button.append(illustration, el("span", node.label, "cluster-label"));
     if (node.count) button.append(el("span", node.count, "cluster-count"));
     button.onclick = e => { if (!e.defaultPrevented) openSystemNode(kind, node.id); };
+    button.onfocus = () => {
+      if (kind !== "family" || !button.matches(":focus-visible")) return;
+      const box = button.getBoundingClientRect(), bounds = viewport.getBoundingClientRect();
+      const dy = Math.min(0, box.top - bounds.top - 6) + Math.max(0, box.bottom - bounds.bottom + 6);
+      if (dy) {
+        cameraMode = "manual";
+        svg.call(zoom.translateBy, 0, -dy / d3.zoomTransform(viewport).k);
+      }
+    };
     systemNodes.append(button);
     node.element = button;
   }
@@ -135,8 +144,12 @@ function buildSystem(kind, width, height) {
 function drawSystem(view) {
   const width = viewport.clientWidth, height = viewport.clientHeight;
   const kind = systemAt(view.k);
-  systemLayer.hidden = !kind;
-  world.attr("display", kind ? "none" : null);
+  if (systemLayer.hidden !== !kind) {
+    systemLayer.hidden = !kind;
+    world.attr("display", kind ? "none" : null).attr("aria-hidden", kind ? "true" : null);
+    byId("drawing").setAttribute("aria-hidden", String(Boolean(kind)));
+    stops.attr("tabindex", kind ? -1 : 0);
+  }
   const tier = kind || (insideId ? "detail" : "topics");
   const label = {course:"Course",groups:"Topic groups",family:"Topics",topics:"Topics",detail:"Subtopics"}[tier];
   if (byId("map-level").textContent !== label) byId("map-level").textContent = label;
@@ -155,14 +168,17 @@ function drawSystem(view) {
   const ref = kind === "course" ? courseScale : kind === "groups" ? groupsScale : topicsScale;
   const ratio = view.k / ref;
   const growth = kind === "course" ? Math.min(1.35,Math.max(.85,Math.pow(ratio,.50))) : Math.min(1.4,Math.max(.88,Math.pow(ratio,.40)));
+  const spread = kind === "groups" ? Math.max(width < 630 ? .96 : .81, Math.min(ratio, 1.14)) : ratio;
   const origin = kind === "course" ? [width / 2, height / 2] : view.apply(courseCenter);
   if (kind === "groups") {
     // All five groups stay recoverable after zooming out from a distant topic.
-    origin[0] = Math.max(width*.32,Math.min(width*.68,origin[0]));
-    origin[1] = Math.max(height*.26,Math.min(height*.74,origin[1]));
+    const dx = Math.max(0, width/2 - Math.max(...systemLayout.map(n => Math.abs(n.x))) * spread - (width < 630 ? 79 : 106) * growth);
+    const dy = Math.max(0, height/2 - Math.max(...systemLayout.map(n => Math.abs(n.y))) * spread - 65 * growth);
+    origin[0] = Math.max(width/2-dx, Math.min(width/2+dx, origin[0]));
+    origin[1] = Math.max(height/2-dy, Math.min(height/2+dy, origin[1]));
   }
-  systemLines.attr("transform","translate("+origin+") scale("+ratio+")");
+  systemLines.attr("transform","translate("+origin+") scale("+spread+")");
   for (const n of systemLayout) {
-    n.element.style.transform = "translate(" + (origin[0]+n.x*ratio) + "px," + (origin[1]+n.y*ratio) + "px) translate(-50%,-50%) scale(" + growth + ")";
+    n.element.style.transform = "translate(" + (origin[0]+n.x*spread) + "px," + (origin[1]+n.y*spread) + "px) translate(-50%,-50%) scale(" + growth + ")";
   }
 }

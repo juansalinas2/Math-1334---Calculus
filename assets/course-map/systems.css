@@ -123,3 +123,10 @@ body[data-view="sky"] .has-interior #stops { opacity:.54; }
   .stage #map-level { display:none; }
   .explore-tools { padding-block:2px; }
 }
+
+[data-level="groups"] .cluster-button[data-system-id="differentiation"] { width:min(224px, 64vw); }
+.cluster-label { overflow-wrap:normal; }
+body[data-view="sky"] :is(.cluster-label,.cluster-count) { background:transparent; text-shadow:0 1px 4px #101b2d, 0 0 8px #101b2d; }
+@media (max-width:760px), (max-width:1000px) and (orientation:portrait) {
+  body:is([data-level="groups"],[data-level="course"]) header nav:not(#trail) { display:none; }
+}

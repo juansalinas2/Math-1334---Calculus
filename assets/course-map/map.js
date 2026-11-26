@@ -200,7 +200,7 @@ const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
       const intent = systemIntent;
       systemIntent = null;
       if ((selected || family !== "all") && event.transform.k < groupsBoundary) overview("all", false, false, event.transform.k);
-      else if (selected && event.transform.k < 1) overview(entryFamily, true);
+      else if (selected && event.transform.k < 1) leaveTopic();
       else if (intent?.kind === "groups" && event.transform.k > intent.k && event.transform.k >= groupsBoundary) overview(intent.id);
       else if (intent?.kind === "family" && event.transform.k > intent.k && event.transform.k >= detailZoom) showTopic(intent.id);
     }
@@ -391,11 +391,18 @@ function scaleBy(factor) {
   cameraMode = "manual";
   svg.call(zoom.scaleBy, factor);
   const k = d3.zoomTransform(viewport).k;
-  if (selected && k < 1) overview(entryFamily, true);
+  if (selected && k < 1) leaveTopic();
   else if (!selected && family !== "all" && k < groupsBoundary) overview("all", false, false, k);
 }
 zoomIn.onclick = () => scaleBy(1.35);
 zoomOut.onclick = () => scaleBy(1 / 1.35);
+function leaveTopic() {
+  const entryRoute = entryFamily === "all" ? (skyView ? "#groups" : "") : "#family/" + entryFamily;
+  const previous = routeViews.get(entryRoute);
+  // A topic can be opened from an already magnified map. Backing away must
+  // leave the orbit even if the old camera would immediately reopen it.
+  overview(entryFamily, Boolean(previous && previous[2] < detailZoom));
+}
 function exitPath() {
   overview();
   viewport.focus({preventScroll:true});
