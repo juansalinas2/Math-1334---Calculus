@@ -383,7 +383,11 @@
         "step": 1
       }
     ],
-    "teaching_note": "The vertical gap is constant throughout. The horizontal motion changes only the rope component parallel to its own length: dL/dt = (x/L) dx/dt. Because 0 < x/L < 1, the horizontal distance changes more than the rope length, also over any finite pull while the rope stays taut and the gap positive. At x=4 and L=5, the signed rates are -1 m/s for rope and -1.25 m/s for the boat. The instantaneous factor 5/4 varies over a finite pull."
+    "teaching_note": "The vertical gap is constant throughout. The horizontal motion changes only the rope component parallel to its own length: dL/dt = (x/L) dx/dt. Because 0 < x/L < 1, the horizontal distance changes more than the rope length, also over any finite pull while the rope stays taut and the gap positive. At x=4 and L=5, the signed rates are -1 m/s for rope and -1.25 m/s for the boat. The instantaneous factor 5/4 varies over a finite pull.",
+    "reviewed_comparison": {
+      "match": "(?:pull|haul|reel|shorten).{0,65}(?:met(?:er|re)|foot|feet|yard).{0,80}(?:boat|horizont|travel|closer|same|exact)|(?:boat|horizontal).{0,55}(?:more|less|same|exactly|faster|slower|farther|further).{0,40}(?:rope|pull|met(?:er|re)|feet|foot)|(?:which|what).{0,35}(?:rate|speed|magnitude).{0,35}(?:larger|bigger|greater|faster|smaller)|(?:rope|boat).{0,35}(?:move|travel).{0,30}(?:one.to.one|same (?:distance|speed))",
+      "answer": "The bow moves horizontally while the rope stays slanted. Only part of the bow’s motion shortens the rope, so the boat travels farther than the amount of rope pulled in. The fixed height gives \\(L^2=x^2+3^2\\), hence \\(dx/dt=(L/x)\\,dL/dt\\). At the instant in the notes, the boat approaches at \\(5/4\\) m/s while the rope shortens at \\(1\\) m/s. That ratio changes as the boat moves."
+    }
   },
   "similar-triangles": {
     "question": "The small triangle has sides a, b, c corresponding to A, B, C. What is the scaling factor from the large triangle to the small one?",

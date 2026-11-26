@@ -282,6 +282,7 @@
           else body.append(document.createTextNode(part));
         }
         body.className = "rr-generated-answer";
+        if (data.reviewed) answer.append(element("small", "From the worked notes"));
         answer.append(body);
         activeTopic = topics.has(data.section) ? data.section : section;
         activeStep = 0; pendingReply = null; hintLevel = 0; activePart = "";

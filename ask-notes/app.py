@@ -209,8 +209,8 @@ def reply(status, data):
 def handler(event, _context):
     route = event.get("routeKey", "POST /ask")
     if route == "GET /pilot":
-        return {"statusCode": 200, "headers": {"content-type": "text/html; charset=utf-8",
-                "cache-control": "no-store"}, "body": Path(__file__).with_name("pilot.html").read_text()}
+        return {"statusCode": 302, "headers": {"location": "https://juansalinas2.github.io/Math-1334---Calculus/" + PAGE,
+                "cache-control": "no-store"}, "body": ""}
     if route not in {"POST /ask", "POST /feedback"}:
         return reply(404, {"error": "Unknown route."})
     headers = {k.lower(): v for k, v in (event.get("headers") or {}).items()}
@@ -228,9 +228,12 @@ def handler(event, _context):
         history = recent_turns(payload)
         section, result = route_question(question, section)
         if payload.get("mode") == "conversation":
-            # Use deterministic disambiguation only. Typed student work goes to the model.
             if result is None or result.get("sources"):
                 result = None
+                check = checks().get(section, {}).get("reviewed_comparison")
+                if check and re.search(check["match"], question, re.I):
+                    result = {"answer": check["answer"], "sources": source_links([section]),
+                              "reviewed": True}
         if result is None:
             section = section or "the-three-steps"
             prior = [turn for turn in history if turn["section"] == section]

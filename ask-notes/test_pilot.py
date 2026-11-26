@@ -40,6 +40,12 @@ class PilotTests(unittest.TestCase):
         self.cloud.retrieve.assert_not_called()
         self.cloud.converse.assert_not_called()
 
+    def test_pilot_opens_the_course_page_without_a_model_call(self):
+        result = app.handler({"routeKey": "GET /pilot"}, None)
+        self.assertEqual(result["statusCode"], 302)
+        self.assertTrue(result["headers"]["location"].endswith("/" + app.PAGE))
+        self.cloud.converse.assert_not_called()
+
     def test_context_and_citation(self):
         self.cloud.retrieve.return_value = {"retrievalResults": [
             {"metadata": {"section": k}} for k in ("the-three-steps", "cone", "shadow", "ladder")]}
@@ -108,6 +114,17 @@ class PilotTests(unittest.TestCase):
                            ("Truncated [1]", "max_tokens"), ("CLARIFY", "end_turn")]:
             self.cloud.converse.return_value = {"output": {"message": {"content": [{"text": text}]}}, "stopReason": stop}
             self.assertEqual(app.generate("question", "", ["ladder"])["sources"], [])
+
+    def test_boat_distance_comparison_is_reviewed_before_inference(self):
+        for question in ("If I reel in a foot of line, does my boat travel a foot?",
+                         "At the instant shown, which speed is bigger?"):
+            event = {"headers": {"x-class-code": "demo"}, "body": json.dumps(
+                {"mode": "conversation", "section": "boat", "question": question})}
+            result = json.loads(app.handler(event, None)["body"])
+            self.assertTrue(result["reviewed"])
+            self.assertIn("travels farther", result["answer"])
+            self.assertTrue(result["sources"][0]["href"].endswith("#boat"))
+        self.cloud.converse.assert_not_called()
 
     def test_server_attaches_the_single_grounding_source(self):
         self.cloud.converse.return_value = {"stopReason": "end_turn", "output": {"message":
