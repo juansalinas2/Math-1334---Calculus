@@ -9,12 +9,12 @@ function box(x,y,width,height) {
   return {left:x-width/2,right:x+width/2,top:y-height/2,bottom:y+height/2};
 }
 const captionMetrics = new Map();
-function captionSize(node,compact) {
-  const key=node.id+(compact?"/small":"/large");
+function captionSize(node,compact,growth) {
+  const key=node.id+(compact?"/small/":"/large/")+growth;
   if (captionMetrics.has(key)) return captionMetrics.get(key);
-  const size=node.symbol?(compact?15:20):(compact?11:13);
+  const size=(node.symbol?(compact?15:20):(compact?11:13))+growth;
   labelMetrics.font=(node.symbol?"bold ":"600 ")+size+"px "+(node.symbol?"Georgia":"system-ui");
-  const limit=compact?94:133, lines=[];
+  const limit=(compact?94:133)+growth*5, lines=[];
   for(const word of node.label.split(/\s+/)) {
     const last=lines.length-1;
     if(last>=0 && labelMetrics.measureText(lines[last]+" "+word).width<=limit) lines[last]+=" "+word;
@@ -34,6 +34,7 @@ function placeLabels(view) {
   if (key===labelLayoutKey) return;
   labelLayoutKey=key;
   const compact=width<600, fit=fullMapScale();
+  const growth=Math.round((compact?5:3)*blend(1.05,2.25,view.k/fit));
   const nearFit=view.k<=fit*1.04 && !selected;
   const parentScale=Math.min(1,1.10/view.k);
   const markScale=parentScale*view.k;
@@ -52,7 +53,7 @@ function placeLabels(view) {
   const bounds=box(width/2,height/2,Math.max(1,width-6),Math.max(1,height-6));
   for(const {node,x,y,radius,element} of nodes) {
     const text=element.querySelector(".label");
-    const {size,lines,w,h,lineHeight}=captionSize(node,compact);
+    const {size,lines,w,h,lineHeight}=captionSize(node,compact,growth);
     const vx=radius+4+w/2, vy=radius+4+h/2;
     const offsets=[[0,vy],[0,-vy],[vx,0],[-vx,0],[vx,-vy*.7],[-vx,-vy*.7],
       [vx,vy*.7],[-vx,vy*.7],[w*.28,vy+8],[-w*.28,vy+8],[w*.28,-vy-8],[-w*.28,-vy-8],

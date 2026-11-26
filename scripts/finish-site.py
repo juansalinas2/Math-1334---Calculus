@@ -21,7 +21,7 @@ shutil.copy2(site / style, site / 'site_libs/bootstrap/reading-theme.css')
 # New HTML must request the matching layout CSS, not an older cached version.
 layout_version = hashlib.sha256(Path('assets/reading-layout.css').read_bytes()).hexdigest()[:12]
 for page in site.rglob('*.html'):
-    if page in (site / 'supplements/glossary.html', site / 'map/index.html'):
+    if page == site / 'supplements/glossary.html' or page.parent == site / 'map':
         continue
     html = page.read_text()
     html = re.sub(r'\s*<script src="https://cdnjs.cloudflare.com/polyfill/[^\"]+"></script>', '', html)
@@ -35,7 +35,7 @@ shutil.copy2('assets/glossary-redirect.html', site / 'supplements/glossary.html'
 # The full-page map has its own layout and is deployed alongside the book.
 map_source = Path('assets/course-map')
 map_output = site / 'map'
-shutil.copytree(map_source, map_output, dirs_exist_ok=True, ignore=shutil.ignore_patterns('notes.json', 'theorems.json'))
+shutil.copytree(map_source, map_output, dirs_exist_ok=True, ignore=shutil.ignore_patterns('notes.json', 'theorems.json', 'challenge-questions.json'))
 node = shutil.which('node')
 runner = [node] if node else ['quarto', 'run']
 # Search results on the map use the lecture typography, including formulas in headings.
@@ -45,6 +45,17 @@ subprocess.run([*runner, 'scripts/render-map-math.js', str(map_output), json.dum
 map_index = map_output / 'index.html'
 marks = Path('scripts/figures/map-node-marks.svg').read_text()
 map_html = map_index.read_text().replace('<!-- node marks -->', marks)
+deck = (map_output / 'challenge-bank.json').read_bytes()
+bank_url = './challenge-bank.json?v=' + hashlib.sha256(deck).hexdigest()[:12]
+practice = {q['topic']: lecture['id'] for lecture in json.loads(deck) for q in lecture['questions']}
+map_html = map_html.replace('<!-- practice data -->', '<script type="application/json" id="practice-data">' +
+                            json.dumps({'bank':bank_url, 'topics':practice}) + '</script>')
+arcade = map_output / 'challenge.html'
+arcade_html = arcade.read_text().replace('./challenge-bank.json', bank_url)
+for name in ('math.css', 'challenge.css', 'challenge.js'):
+    version = hashlib.sha256((map_output / name).read_bytes()).hexdigest()[:12]
+    arcade_html = arcade_html.replace('./' + name + '"', './' + name + '?v=' + version + '"')
+arcade.write_text(arcade_html)
 # Ship the shell and its interdependent scripts together so cached documents
 # keep their matching controls, geometry, and typeset notation.
 def inline_script(name):

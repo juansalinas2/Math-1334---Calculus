@@ -1,4 +1,12 @@
-function detailZoom() { return Math.max(.35, Math.min(1.5, fullMapScale()*2)); }
+function detailZoom() {
+  const touch = matchMedia("(max-width: 760px), (pointer: coarse)").matches;
+  return touch
+    ? Math.min(2.95, Math.max(1.70, fullMapScale() * 4.75))
+    : Math.min(2.75, Math.max(1.55, fullMapScale() * 3.1));
+}
+function topicZoom() {
+  return Math.min(detailZoom() * .72, Math.max(.85, fullMapScale() * 1.85));
+}
 let insideId = null, zoomAnchor = null, orbit = null;
 function partSlug(part) {
   return part.title.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/-$/,"");
@@ -12,7 +20,8 @@ function focusMark(note) {
 function drawInterior(view) {
   const width=viewport.clientWidth, height=viewport.clientHeight;
   let topic=null;
-  if (view.k>=detailZoom()) {
+  // A little slack keeps the orbit steady during a two-finger pinch.
+  if (view.k >= detailZoom() * (insideId ? .93 : 1)) {
     if (selected) topic=byTopic.get(selected);
     else {
       const anchor=zoomAnchor || [width/2,height/2];

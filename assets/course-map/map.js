@@ -273,6 +273,7 @@ function showTopic(id, slug = null, fromLocation = false) {
   link.href = part?.href || topic.href;
   body.append(heading);
   appendMapNote(body, note, "equation", "h3");
+  addLecturePractice(body.querySelector(".note-intro"), id);
   body.append(link, el("h3", "Explore " + topic.label), el("div", "", "part-links"));
   const parts = body.lastElementChild;
   for (const item of topic.parts) {
@@ -296,9 +297,12 @@ function showTopic(id, slug = null, fromLocation = false) {
   syncTopicList();
   const previous = routeViews.get(next);
   if (previous && (fromLocation || (sameTopic && !part))) move(...previous);
-  else if (!sameTopic || d3.zoomTransform(viewport).k < detailZoom()) {
-    move(topic.x, topic.y, Math.max(detailZoom() + .03, d3.zoomTransform(viewport).k));
-  } else drawCamera();
+  else {
+    const scale = d3.zoomTransform(viewport).k;
+    const requested = part ? detailZoom() + .03 : topicZoom();
+    if (!sameTopic || scale < requested) move(topic.x, topic.y, Math.max(requested, scale));
+    else drawCamera();
+  }
   if (document.body.dataset.presentation !== "list" && !matchMedia("(max-width: 760px), (max-width: 1000px) and (orientation: portrait)").matches) heading.focus({preventScroll: true});
 }
 function overview(which = "all", restore = false, fromLocation = false, scale = null) {
@@ -534,7 +538,7 @@ new ResizeObserver(() => {
     refreshLocator();
     if (selected) {
       const node=byTopic.get(selected);
-      move(node.x,node.y,Math.max(detailZoom(),d3.zoomTransform(viewport).k));
+      move(node.x,node.y,Math.max(selectedPart ? detailZoom() : topicZoom(),d3.zoomTransform(viewport).k));
     } else if (route==="#calculus" || route==="#groups") {
       move(...courseCenterFit,route==="#calculus"?courseScale():groupScale());
     } else frame();

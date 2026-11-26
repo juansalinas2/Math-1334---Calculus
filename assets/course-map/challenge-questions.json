@@ -1,0 +1,317 @@
+[
+  {
+    "id": "limits",
+    "title": "Limit laws and strategies",
+    "questions": [
+      {
+        "topic": "laws",
+        "prompt": "Find \\(\\lim_{x\\to 2}(3x^2-2x+1)\\).",
+        "choices": [
+          "\\(9\\)",
+          "\\(5\\)",
+          "\\(11\\)",
+          "\\(13\\)"
+        ],
+        "why": "A polynomial is continuous at every real number. Substitute to get \\(3(2)^2-2(2)+1=9\\)."
+      },
+      {
+        "topic": "laws",
+        "prompt": "As \\(x\\to a\\), suppose \\(f(x)\\to 2\\) and \\(g(x)\\to 3\\). What does \\(\\dfrac{\\sqrt{f(x)-1}}{(g(x))^2}\\) approach?",
+        "choices": [
+          "\\(1/9\\)",
+          "\\(1/3\\)",
+          "\\(2/9\\)",
+          "\\(1/6\\)"
+        ],
+        "why": "The numerator approaches \\(\\sqrt{2-1}=1\\) and the denominator approaches \\(3^2=9\\). The quotient law applies."
+      },
+      {
+        "topic": "limitmethods",
+        "prompt": "Find \\(\\displaystyle\\lim_{x\\to2}\\frac{x^2-x-2}{x^2-4}\\).",
+        "choices": [
+          "\\(3/4\\)",
+          "\\(0\\)",
+          "\\(1\\)",
+          "Does not exist"
+        ],
+        "why": "Factor and cancel \\(x-2\\) for nearby \\(x\\ne2\\). The quotient becomes \\((x+1)/(x+2)\\), which approaches \\(3/4\\)."
+      },
+      {
+        "topic": "sides",
+        "prompt": "Find \\(\\displaystyle\\lim_{x\\to2^-}\\frac{x^2-4}{|x-2|}\\).",
+        "choices": [
+          "\\(-4\\)",
+          "\\(4\\)",
+          "\\(0\\)",
+          "Does not exist"
+        ],
+        "why": "To the left of \\(2\\), \\(|x-2|=-(x-2)\\). The quotient simplifies to \\(-(x+2)\\)."
+      },
+      {
+        "topic": "limitmethods",
+        "prompt": "Find \\(\\displaystyle\\lim_{x\\to5}\\frac{\\sqrt{x+4}-3}{x-5}\\).",
+        "choices": [
+          "\\(1/6\\)",
+          "\\(1/3\\)",
+          "\\(6\\)",
+          "\\(0\\)"
+        ],
+        "why": "Multiply by the conjugate and cancel \\(x-5\\). The remaining expression is \\(1/(\\sqrt{x+4}+3)\\)."
+      },
+      {
+        "topic": "limitmethods",
+        "prompt": "Find \\(\\displaystyle\\lim_{h\\to0}\\frac{(2+h)^2-4}{h}\\).",
+        "choices": [
+          "\\(4\\)",
+          "\\(0\\)",
+          "\\(2\\)",
+          "\\(8\\)"
+        ],
+        "why": "The numerator expands to \\(4h+h^2\\). For \\(h\\ne0\\), dividing by \\(h\\) leaves \\(4+h\\)."
+      },
+      {
+        "topic": "squeeze",
+        "prompt": "Which pair of bounds lets you squeeze \\(x^2\\sin(1/x)\\) to its limit as \\(x\\to0\\)?",
+        "choices": [
+          "\\(-x^2,\\ x^2\\)",
+          "\\(-1,\\ 1\\)",
+          "\\(0,\\ x^2\\)",
+          "\\(-x^2,\\ 0\\)"
+        ],
+        "why": "Multiply \\(-1\\le\\sin(1/x)\\le 1\\) by \\(x^2\\ge0\\). Both resulting bounds approach \\(0\\)."
+      },
+      {
+        "topic": "squeeze",
+        "prompt": "In radians, what is \\(\\displaystyle\\lim_{x\\to0}\\frac{\\sin(5x)}{2x}\\)?",
+        "choices": [
+          "\\(5/2\\)",
+          "\\(2/5\\)",
+          "\\(1\\)",
+          "\\(0\\)"
+        ],
+        "why": "Write the quotient as \\(\\frac52\\,\\frac{\\sin(5x)}{5x}\\). The second factor approaches \\(1\\)."
+      },
+      {
+        "topic": "limitmethods",
+        "prompt": "As \\(x\\to-1^+\\), what happens to \\(\\dfrac{(x-1)^2}{(x-1)(x+1)}\\)?",
+        "choices": [
+          "It tends to \\(-\\infty\\).",
+          "It tends to \\(+\\infty\\).",
+          "It tends to \\(0\\).",
+          "It tends to \\(-2\\)."
+        ],
+        "why": "Cancel \\(x-1\\). The numerator \\(x-1\\) tends to \\(-2\\), and the denominator \\(x+1\\) approaches zero through positive values."
+      }
+    ]
+  },
+  {
+    "id": "chain",
+    "title": "The chain rule",
+    "questions": [
+      {
+        "topic": "chain",
+        "prompt": "Write \\(\\cos^4 x\\) as \\(f(g(x))\\) with \\(g(x)=\\cos x\\). What is \\(f(u)\\)?",
+        "choices": [
+          "\\(u^4\\)",
+          "\\(\\cos u\\)",
+          "\\(4u\\)",
+          "\\(\\cos(4u)\\)"
+        ],
+        "why": "The notation \\(\\cos^4 x\\) means \\((\\cos x)^4\\). The outer function raises its input to the fourth power."
+      },
+      {
+        "topic": "chain",
+        "prompt": "Suppose \\(g(0)=1\\), \\(g'(0)=-2\\), and \\(f'(1)=5\\). Find \\((f\\circ g)'(0)\\).",
+        "choices": [
+          "\\(-10\\)",
+          "\\(3\\)",
+          "\\(5\\)",
+          "\\(10\\)"
+        ],
+        "why": "Evaluate the outer derivative at the inner output. Then multiply to get \\(f'(1)g'(0)=5(-2)=-10\\)."
+      },
+      {
+        "topic": "chain",
+        "prompt": "Suppose \\(f(0)=2\\), \\(f'(0)=3\\), and \\(g'(2)=4\\). Find \\((g\\circ f)'(0)\\).",
+        "choices": [
+          "\\(12\\)",
+          "\\(8\\)",
+          "\\(7\\)",
+          "\\(6\\)"
+        ],
+        "why": "Here \\(f\\) is the inner function. Multiply \\(g'(f(0))\\) by \\(f'(0)\\) to get \\(4\\cdot3=12\\)."
+      },
+      {
+        "topic": "chain",
+        "prompt": "Differentiate \\(y=\\cos^4 x\\).",
+        "choices": [
+          "\\(-4\\cos^3 x\\sin x\\)",
+          "\\(4\\cos^3 x\\)",
+          "\\(4\\cos^3 x\\sin x\\)",
+          "\\(-4\\sin^3 x\\cos x\\)"
+        ],
+        "why": "The fourth power gives \\(4\\cos^3 x\\). The inner derivative contributes \\(-\\sin x\\)."
+      },
+      {
+        "topic": "chain",
+        "prompt": "Differentiate \\(y=\\sqrt{1+x^2}\\).",
+        "choices": [
+          "\\(x/\\sqrt{1+x^2}\\)",
+          "\\(1/(2\\sqrt{1+x^2})\\)",
+          "\\(2x/\\sqrt{1+x^2}\\)",
+          "\\(x\\sqrt{1+x^2}\\)"
+        ],
+        "why": "The square root contributes \\(1/(2\\sqrt{1+x^2})\\). Multiply by the inner derivative \\(2x\\)."
+      },
+      {
+        "topic": "chain",
+        "prompt": "Let \\(y=(g(x))^2\\). If \\(g'(2)=3\\) and \\(y'(2)=24\\), what is \\(g(2)\\)?",
+        "choices": [
+          "\\(4\\)",
+          "\\(8\\)",
+          "\\(6\\)",
+          "\\(12\\)"
+        ],
+        "why": "Since \\(y'=2g(x)g'(x)\\), the given values give \\(24=2g(2)\\cdot3\\). Divide by six."
+      },
+      {
+        "topic": "rules",
+        "prompt": "In the expression \\(x^3\\cos^2 x\\), which rule splits the derivative into two terms when you keep the two displayed factors?",
+        "choices": [
+          "Product rule",
+          "Chain rule",
+          "Power rule",
+          "Quotient rule"
+        ],
+        "why": "The factors are \\(x^3\\) and \\(\\cos^2 x\\). Differentiate the product, then use the chain rule on \\(\\cos^2 x\\)."
+      },
+      {
+        "topic": "chain",
+        "prompt": "When differentiating \\(\\sin(\\cos(\\tan x))\\), which factor comes from the innermost function?",
+        "choices": [
+          "\\(\\sec^2 x\\)",
+          "\\(-\\sin(\\tan x)\\)",
+          "\\(\\cos(\\cos(\\tan x))\\)",
+          "\\(\\sec x\\tan x\\)"
+        ],
+        "why": "Work inward through sine, cosine, then tangent. The innermost derivative is \\(\\frac{d}{dx}\\tan x=\\sec^2 x\\)."
+      },
+      {
+        "topic": "tangent",
+        "prompt": "What is the slope of the tangent to \\(f(x)=\\sqrt{1+3x^2}\\) at \\(x=1\\)?",
+        "choices": [
+          "\\(3/2\\)",
+          "\\(2\\)",
+          "\\(1/4\\)",
+          "\\(3\\)"
+        ],
+        "why": "The chain rule gives \\(f'(x)=3x/\\sqrt{1+3x^2}\\). At \\(x=1\\), the numerator is \\(3\\) and the denominator is \\(2\\)."
+      }
+    ]
+  },
+  {
+    "id": "extrema",
+    "title": "Finding local extrema",
+    "questions": [
+      {
+        "topic": "tests",
+        "prompt": "A differentiable function has \\(f'>0\\) just left of \\(c\\) and \\(f'<0\\) just right of \\(c\\). What occurs at \\(c\\)?",
+        "choices": [
+          "A strict local maximum",
+          "A strict local minimum",
+          "Neither a local maximum nor a local minimum",
+          "A vertical asymptote"
+        ],
+        "why": "Read the signs from left to right. The function increases up to \\(c\\) and decreases after it."
+      },
+      {
+        "topic": "local",
+        "prompt": "For \\(f(x)=4x^3-12x+12\\), the derivative is \\(12(x-1)(x+1)\\). Which point is a local minimum?",
+        "choices": [
+          "\\((1,4)\\)",
+          "\\((-1,20)\\)",
+          "\\((0,12)\\)",
+          "\\((1,0)\\)"
+        ],
+        "why": "At \\(1\\), the sign of \\(f'\\) changes from negative to positive. The point on the graph is \\((1,f(1))=(1,4)\\)."
+      },
+      {
+        "topic": "concavity",
+        "prompt": "On an interval, \\(f'\\) is negative and increasing. How does the graph of \\(f\\) behave there?",
+        "choices": [
+          "Decreasing and concave up",
+          "Decreasing and concave down",
+          "Increasing and concave up",
+          "Increasing and concave down"
+        ],
+        "why": "Negative slopes make \\(f\\) decrease. Increasing slopes make the graph concave up."
+      },
+      {
+        "topic": "inflect",
+        "prompt": "Where is the inflection point of \\(g(x)=x^3+1\\)?",
+        "choices": [
+          "\\((0,1)\\)",
+          "\\((0,0)\\)",
+          "\\((-1,0)\\)",
+          "There is no inflection point."
+        ],
+        "why": "The second derivative \\(g''(x)=6x\\) changes sign at zero. The height of the graph there is \\(g(0)=1\\)."
+      },
+      {
+        "topic": "tests",
+        "prompt": "For \\(f(x)=x\\tan x\\), we have \\(f'(0)=0\\) and \\(f''(0)=2\\). How does the second derivative test classify \\(x=0\\)?",
+        "choices": [
+          "Strict local minimum",
+          "Strict local maximum",
+          "Neither a local minimum nor a local maximum",
+          "The test is inconclusive."
+        ],
+        "why": "At the horizontal tangent, the second derivative is positive. The graph is concave up nearby and has a strict local minimum at \\((0,0)\\)."
+      },
+      {
+        "topic": "tests",
+        "prompt": "Suppose \\(f'(0)=f''(0)=0\\). What does the second derivative test tell you?",
+        "choices": [
+          "The test is inconclusive.",
+          "There is a strict local minimum.",
+          "There is a strict local maximum.",
+          "There is no local extremum."
+        ],
+        "why": "Both \\(x^4\\) and \\(-x^4\\) have these derivative values at zero. One has a minimum there and the other has a maximum."
+      },
+      {
+        "topic": "local",
+        "prompt": "Near zero, \\(h(x)=x^2\\tan x\\) is negative to the left and positive to the right. How do you classify \\(h(0)=0\\)?",
+        "choices": [
+          "Neither a local maximum nor a local minimum",
+          "A strict local minimum",
+          "A strict local maximum",
+          "Both a local maximum and a local minimum"
+        ],
+        "why": "Every small interval around zero contains values below \\(h(0)\\) and values above it."
+      },
+      {
+        "topic": "inflect",
+        "prompt": "For \\(f(x)=x^4\\), we have \\(f''(x)=12x^2\\). What happens to concavity at zero?",
+        "choices": [
+          "The graph stays concave up on both sides.",
+          "It changes from concave up to concave down.",
+          "It changes from concave down to concave up.",
+          "The graph stays concave down on both sides."
+        ],
+        "why": "For every nearby \\(x\\ne0\\), \\(12x^2>0\\). Concavity stays the same, so the origin is not an inflection point."
+      },
+      {
+        "topic": "monotonic",
+        "prompt": "Given \\(f'(x)=12(x-1)(x+1)\\), on which interval is \\(f\\) decreasing throughout?",
+        "choices": [
+          "\\((-1,1)\\)",
+          "\\((-2,-1)\\)",
+          "\\((1,3)\\)",
+          "\\((-2,3)\\)"
+        ],
+        "why": "Between the two zeros of \\(f'\\), the factor \\(x-1\\) is negative and \\(x+1\\) is positive. Their product is negative."
+      }
+    ]
+  }
+]

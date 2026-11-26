@@ -1,4 +1,12 @@
 /* A separate toolbar row leaves the complete graph available to the pointer. */
+.game-entry {display:inline-flex; align-items:center; min-height:44px; color:var(--link); font:600 .9rem var(--ui); text-underline-offset:3px;}
+.explore-tools .gesture-hint {margin-left:auto;}
+#topic-list .game-entry {float:right;}
+.lecture-practice {margin:1em 0; font:normal 1rem/1.5 var(--ui);}
+.lecture-practice button {min-height:44px; padding:.4em .8em; border:1px solid var(--strong-line); border-radius:6px; background:var(--surface-muted); color:var(--link); font:600 .95rem var(--ui); cursor:pointer;}
+.lecture-practice p {font:normal 1.06rem/1.55 Lecture,Georgia,serif;}
+.lecture-practice details {margin:.6em 0;}
+.lecture-practice summary {min-height:40px; align-content:center; color:var(--link); cursor:pointer;}
 .stage, .topic-open .stage { grid-template-rows: auto minmax(0,1fr) auto; }
 .stage #canvas, .topic-open #canvas { grid-row: 2; grid-column: 1; }
 .stage .explore-tools { grid-row: 3; grid-column: 1; }
