@@ -22,6 +22,7 @@ let cameraHeight = 0;
 let renderedScale = 0;
 let drawFrame = null;
 let gesturing = false;
+let rebasingPinch = false;
 let hovered = null;
 
 function trackPath(edge) {
@@ -75,7 +76,7 @@ function drawCamera() {
   world.attr("transform", view);
   drawInterior(view);
   if (view.k === renderedScale) return;
-  world.style("--parent-scale", Math.min(1, 1.20 / view.k));
+  world.style("--parent-scale", Math.min(1, 1.20 * detailScale(view.k) / view.k));
   world.style("--disk-scale", Math.min(2, Math.max(1, .68 / view.k)));
   // Only the overview uses larger labels. Panning needs no text layout.
   const labelScale = Math.max(.55, view.k);
@@ -102,7 +103,19 @@ const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
     }
   })
   .on("zoom", (event) => {
+    if (rebasingPinch) return;
     if (event.sourceEvent) {
+      // Reset the pinch origin at a bound so reversing the fingers immediately
+      // moves the map, even after they have continued spreading at maximum zoom.
+      if (event.sourceEvent.type === "touchmove" && event.sourceEvent.touches.length === 2 &&
+          (event.transform.k === maxZoom || event.transform.k === minZoom)) {
+        rebasingPinch = true;
+        try {
+          svg.call(zoom.transform, event.transform);
+        } finally {
+          rebasingPinch = false;
+        }
+      }
       zoomAnchor = event.sourceEvent.type === "wheel"
         ? d3.pointer(event.sourceEvent, viewport)
         : null;
@@ -117,7 +130,11 @@ const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
   .on("end", () => {
     gesturing = false;
   });
-svg.call(zoom);
+svg.call(zoom).on("wheel.mapBoundary", event => {
+  // D3 leaves a wheel event unhandled when it starts at a scale limit.
+  // Keep it on the map so a trackpad pinch cannot start zooming the page.
+  event.preventDefault();
+}, { passive: false });
 
 function move(x, y, scale) {
   cameraWidth = viewport.clientWidth;

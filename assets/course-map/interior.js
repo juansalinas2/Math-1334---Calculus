@@ -1,6 +1,11 @@
 // One local cluster is mounted at a time; the parent keeps its map coordinates.
 const detailZoom = 1.5;
 const formulaZoom = 2.1;
+
+// Increase the detail size gradually to keep labels readable during a zoom.
+function detailScale(zoomLevel) {
+  return Math.sqrt(Math.max(1, zoomLevel / detailZoom));
+}
 const interior = d3.select("#inside-topic");
 const guides = d3.select("#orbit-guides");
 let insideId = null;
@@ -80,7 +85,7 @@ function drawInterior(view) {
       interiorPage === pages.length - 1;
   }
   const transform = "translate(" + [topic.x, topic.y] + ") scale(" +
-    1 / view.k + ")";
+    detailScale(view.k) / view.k + ")";
   interior.attr("transform", transform);
   guides.attr("transform", transform);
   const deep = view.k >= formulaZoom;
@@ -90,8 +95,10 @@ function drawInterior(view) {
   layoutKey = key;
   const narrow = width < 560;
   const count = visible.length;
-  const rx = Math.min(narrow ? width * .24 : width * .25, deep ? 180 : 138);
-  const ry = Math.min(height * .23, deep ? 114 : 86);
+  // Leave room for each label even at the highest magnification.
+  const availableWidth = width / detailScale(maxZoom);
+  const rx = Math.min(availableWidth * .25, 150);
+  const ry = Math.min(height * .23, 94);
   const positions = count === 1
     ? [[0, -ry]]
     : count === 2
@@ -99,7 +106,7 @@ function drawInterior(view) {
     : [[-rx, -ry * .72], [rx, -ry * .72], [0, ry]];
   const box = Math.max(
     100,
-    Math.min(204, narrow && count === 3 ? width * .46 : width * .8),
+    Math.min(204, availableWidth * (narrow && count === 3 ? .48 : .8)),
   );
   guides.select("ellipse").attr(
     "rx",
