@@ -1,13 +1,13 @@
 function detailZoom() {
   const touch = matchMedia("(max-width: 760px), (pointer: coarse)").matches;
   return touch
-    ? Math.min(2.95, Math.max(1.70, fullMapScale() * 4.75))
+    ? Math.min(2.95, Math.max(1.70/(portrait ? portraitSpacing.y : 1), fullMapScale() * 4.75))
     : Math.min(2.75, Math.max(1.55, fullMapScale() * 3.1));
 }
 function topicZoom() {
   return Math.min(detailZoom() * .72, Math.max(.85, fullMapScale() * 1.85));
 }
-let insideId = null, zoomAnchor = null, orbit = null;
+let insideId = null, zoomAnchor = null, zoomStation = null, orbit = null;
 function partSlug(part) {
   return part.title.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/-$/,"");
 }
@@ -17,22 +17,24 @@ function focusMark(note) {
   drawMark(svg.datum(note),25);
   return svg.node();
 }
+function detailTopicAt(view, anchor) {
+  const width=viewport.clientWidth, height=viewport.clientHeight;
+  let closest=null, best=Infinity;
+  for (const node of stations) {
+    const [x,y]=view.apply([node.x,node.y]);
+    if (x<0 || x>width || y<0 || y>height) continue;
+    if (node.id===zoomStation || (cameraMode==="selected" && node.id===selected)) return node;
+    // Favor the current orbit in a close call while dragging between notes.
+    const distance=Math.hypot(x-anchor[0],y-anchor[1])-(node.id===insideId?24:0);
+    if (distance<best) { best=distance; closest=node; }
+  }
+  return closest;
+}
 function drawInterior(view) {
   const width=viewport.clientWidth, height=viewport.clientHeight;
-  let topic=null;
   // A little slack keeps the orbit steady during a two-finger pinch.
-  if (view.k >= detailZoom() * (insideId ? .93 : 1)) {
-    if (selected) topic=byTopic.get(selected);
-    else {
-      const anchor=zoomAnchor || [width/2,height/2];
-      let nearest=78;
-      for (const node of stations) {
-        const [x,y]=view.apply([node.x,node.y]);
-        const distance=Math.hypot(x-anchor[0],y-anchor[1]);
-        if(distance<nearest) { nearest=distance; topic=node; }
-      }
-    }
-  }
+  const topic = view.k >= detailZoom() * (insideId ? .93 : 1)
+    ? detailTopicAt(view, zoomAnchor || [width/2,height/2]) : null;
   const id=topic?.id || null;
   if(id!==insideId) {
     insideId=id;
@@ -41,10 +43,10 @@ function drawInterior(view) {
     else {layer.selectAll("*").remove();orbit=null;}
   }
   if (!orbit) return;
-  const rx=Math.min(145,Math.max(80,(width-118)/2)), ry=Math.min(112,Math.max(63,(height-110)/2));
+  const {rx,ry}=orbitRadii(width,height,topic);
   orbit.layer.attr("transform","translate("+topic.x+","+topic.y+") scale("+1/view.k+")");
   orbit.layer.select("ellipse").attr("rx",rx).attr("ry",ry);
-  const angleKey=[width,height].join("/");
+  const angleKey=[width,height,mapSizes.subtopic].join("/");
   if (orbit.angleKey!==angleKey) {
     const neighborPoints=stations.filter(n=>n!==topic).map(n=>[(n.x-topic.x)*view.k,(n.y-topic.y)*view.k])
       .filter(([x,y])=>Math.abs(x)<rx+145 && Math.abs(y)<ry+85);
@@ -69,8 +71,7 @@ function drawInterior(view) {
   orbit.obstacles=[];
   orbit.moons.attr("transform",(d,i)=>{
     const a=orbit.angles[i]+orbit.rotation,x=rx*Math.cos(a),y=ry*Math.sin(a);
-    const lines=labelLines(d.title,18),w=Math.max(...lines.map(s=>s.length))*6.4+4;
-    orbit.obstacles.push(box(cx+x,cy+y,34,34),box(cx+x,cy+y+24+6*lines.length,w,14*lines.length+3));
+    orbit.obstacles.push(...orbitObstacles(d,cx,cy,x,y));
     return "translate("+x+","+y+")";
   }).attr("aria-pressed",d=>String(selected===id && selectedPart===partSlug(d)));
 }

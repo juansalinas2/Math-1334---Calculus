@@ -29,3 +29,16 @@
 .locator-focus { fill:none; stroke:var(--ink); vector-effect:non-scaling-stroke; stroke-width:1.6; }
 
 .station .label { stroke-width:3.5px; }
+.station .station-disc { transform:scale(var(--disk-scale,1)) scale(var(--topic-size,1)); }
+.station .label { pointer-events:all; }
+.moon-face { transform:scale(var(--subtopic-size,1)); }
+.moon-leader { stroke:var(--muted); stroke-opacity:.6; stroke-width:1; vector-effect:non-scaling-stroke; pointer-events:none; }
+.cluster-symbol { width:calc(var(--art-size) * var(--topic-size,1)); height:calc(var(--art-size) * var(--topic-size,1)); }
+.cluster-label { font-size:calc(var(--cluster-caption,22px) * var(--topic-size,1)); }
+[data-system-id="calculus"] .cluster-label { font-size:calc(34px * var(--topic-size,1)); }
+@media(max-width:760px), (max-width:1000px) and (orientation:portrait) {
+  .cluster-label { --cluster-caption:19px; }
+}
+@media(max-width:640px) {
+  .cluster-label { --cluster-caption:clamp(15px,4.3vw,18px); }
+}

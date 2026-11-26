@@ -288,5 +288,15 @@
     "title": "Slant asymptote by division",
     "statement": "For polynomials $P,Q$ with $Q\\ne0$ and $\\deg P=\\deg Q+1$, the quotient in polynomial division is linear. Its graph is a slant asymptote of $\\frac{P}{Q}$ at both infinite ends.",
     "href": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-by-division"
+  },
+  "right-triangle": {
+    "title": "Pythagorean theorem",
+    "statement": "For a right triangle with legs $a,b$ and hypotenuse $c$, $a^2+b^2=c^2$.",
+    "href": "../lectures/related-rates.html#ladder"
+  },
+  "trig-identities": {
+    "title": "Unit-circle and angle-addition identities",
+    "statement": "For any angle $h$, $\\sin^2 h+\\cos^2 h=1$. The sine addition formula is $\\sin(a+h)=\\sin a\\cos h+\\cos a\\sin h$.",
+    "href": "../lectures/06-continuity.html#continuity-of-the-trigonometric-functions"
   }
 }

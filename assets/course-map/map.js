@@ -23,6 +23,8 @@ let renderedScale = 0;
 let drawFrame = null;
 let gesturing = false;
 let rebasingPinch = false;
+let cameraAdjusted = false;
+let unfoldingFamily = null;
 let hovered = null;
 const routeViews = new Map();
 let route = "";
@@ -144,10 +146,63 @@ function drawCamera() {
     .style("--hub-size", Math.max(20, 16/Math.max(.34,view.k)) + "px");
   renderedScale = view.k;
 }
-const zoom = d3.zoom().scaleExtent([courseScale(), maxZoom]).clickDistance(5)
+function clamp(value, low, high) { return Math.max(low, Math.min(high, value)); }
+
+function keepTopicVisible(view, width, height) {
+  const insetX=Math.min(90,width*.22), insetY=Math.min(80,height*.22);
+  let best=Infinity, dx=0, dy=0;
+  for (const topic of stations) {
+    const [x,y]=view.apply([topic.x,topic.y]);
+    const offsetX=clamp(x,insetX,width-insetX)-x;
+    const offsetY=clamp(y,insetY,height-insetY)-y;
+    const distance=offsetX*offsetX+offsetY*offsetY;
+    if (!distance) return view;
+    if (distance<best) { best=distance; dx=offsetX; dy=offsetY; }
+  }
+  return view.translate(dx/view.k,dy/view.k);
+}
+
+function constrainCamera(proposed, extent) {
+  const width=extent[1][0]-extent[0][0], height=extent[1][1]-extent[0][1];
+  if (!width || !height) return proposed;
+  const old=d3.zoomTransform(viewport), fit=fullMapScale(), level=proposed.k/fit;
+  const [cx,cy]=proposed.invert([width/2,height/2]);
+  let x=cx, y=cy;
+  if (level<=courseEdge || (old.k>=fit && proposed.k<fit)) unfoldingFamily=null;
+  if (level<=1 || old.k<fit) {
+    // Groups have screen positions of their own. A point behind one can be
+    // thousands of map units away when the map is folded. Re-enter using
+    // the course center, or the real center of the group under the pointer.
+    const target=familiesOnMap.get(unfoldingFamily)?.center || courseCenterFit;
+    const weight=blend(groupEdge,1,level);
+    x=courseCenterFit[0]+(target[0]-courseCenterFit[0])*weight;
+    y=courseCenterFit[1]+(target[1]-courseCenterFit[1])*weight;
+  } else {
+    x=clamp(x,mapBounds.left,mapBounds.left+mapBounds.width);
+    y=clamp(y,mapBounds.top,mapBounds.top+mapBounds.height);
+  }
+  let view=proposed.translate(cx-x,cy-y);
+  if (view.k>old.k && level>1) view=keepTopicVisible(view,width,height);
+  cameraAdjusted=Math.abs(view.x-proposed.x)>.001 || Math.abs(view.y-proposed.y)>.001;
+  return view;
+}
+
+function gestureTarget(event) {
+  if (event.touches?.length===2) {
+    const [a,b]=event.touches;
+    return document.elementFromPoint((a.clientX+b.clientX)/2,(a.clientY+b.clientY)/2);
+  }
+  return event.target;
+}
+
+const zoom = d3.zoom().scaleExtent([courseScale(), maxZoom]).constrain(constrainCamera).clickDistance(5)
   .filter(event => {
     if (event.target.closest?.("#locator")) return false;
-    return (!event.ctrlKey || event.type === "wheel") && !event.button;
+    if ((event.ctrlKey && event.type !== "wheel") || event.button) return false;
+    const target=gestureTarget(event);
+    const group=target?.closest?.("[data-system-id]")?.dataset.systemId;
+    if (familiesOnMap.has(group)) unfoldingFamily=group;
+    return true;
   })
   .duration(0)
   .on("start", (event) => {
@@ -162,10 +217,11 @@ const zoom = d3.zoom().scaleExtent([courseScale(), maxZoom]).clickDistance(5)
   .on("zoom", (event) => {
     if (rebasingPinch) return;
     if (event.sourceEvent) {
-      // Reset the pinch origin at a bound so reversing the fingers immediately
-      // moves the map, even after they have continued spreading at maximum zoom.
-      if (event.sourceEvent.type === "touchmove" && event.sourceEvent.touches.length === 2 &&
-          (event.transform.k === maxZoom || event.transform.k === courseScale())) {
+      // Rebase D3's gesture anchor when a bound adjusts the camera. Otherwise
+      // the next wheel or pinch frame continues from the old off-map point.
+      if (cameraAdjusted || (event.sourceEvent.type === "touchmove" && event.sourceEvent.touches.length === 2 &&
+          (event.transform.k === maxZoom || event.transform.k === courseScale()))) {
+        cameraAdjusted=false;
         rebasingPinch = true;
         try {
           svg.call(zoom.transform, event.transform);
@@ -174,10 +230,14 @@ const zoom = d3.zoom().scaleExtent([courseScale(), maxZoom]).clickDistance(5)
         }
       }
       const source = event.sourceEvent;
+      const target=gestureTarget(source);
       if (source.touches?.length === 2) {
         const fingers = Array.from(source.touches, touch => d3.pointer(touch, viewport));
         zoomAnchor = [(fingers[0][0] + fingers[1][0]) / 2, (fingers[0][1] + fingers[1][1]) / 2];
       } else zoomAnchor = source.type === "wheel" ? d3.pointer(source, viewport) : null;
+      const station=zoomAnchor && target?.closest?.(".station");
+      zoomStation=station ? d3.select(station).datum().id :
+        (zoomAnchor && target?.closest?.(".map-moon") ? insideId : null);
       cameraMode = "manual";
       if (drawFrame === null) drawFrame = requestAnimationFrame(drawCamera);
     } else {
@@ -204,6 +264,7 @@ function move(x, y, scale) {
     cameraWidth / 2,
     cameraHeight / 2,
   ).scale(scale).translate(-x, -y);
+  cameraAdjusted=false;
   svg.call(zoom.transform, view);
 }
 function frame() {
@@ -252,7 +313,7 @@ function showTopic(id, slug = null, fromLocation = false) {
   selectedPart = part ? partSlug(part) : null;
   const next = "#" + id + (part ? "/" + selectedPart : "");
   setRoute(next, fromLocation);
-  zoomAnchor = null;
+  zoomAnchor = zoomStation = null;
   hovered = null;
   cameraMode = "selected";
   family = topic.family;
@@ -300,7 +361,7 @@ function showTopic(id, slug = null, fromLocation = false) {
   else {
     const scale = d3.zoomTransform(viewport).k;
     const requested = part ? detailZoom() + .03 : topicZoom();
-    if (!sameTopic || scale < requested) move(topic.x, topic.y, Math.max(requested, scale));
+    if (!sameTopic || part || scale < requested) move(topic.x, topic.y, Math.max(requested, scale));
     else drawCamera();
   }
   if (document.body.dataset.presentation !== "list" && !matchMedia("(max-width: 760px), (max-width: 1000px) and (orientation: portrait)").matches) heading.focus({preventScroll: true});
@@ -311,7 +372,7 @@ function overview(which = "all", restore = false, fromLocation = false, scale = 
   setRoute(next, fromLocation);
   selected = null;
   selectedPart = null;
-  zoomAnchor = null;
+  zoomAnchor = zoomStation = unfoldingFamily = null;
   hovered = null;
   family = which;
   cameraMode = "overview";
@@ -383,6 +444,11 @@ function wideRoute(k) {
   return "";
 }
 function settleZoom(k) {
+  if (k >= detailZoom()) {
+    const view=d3.zoomTransform(viewport);
+    const repaired=keepTopicVisible(view,viewport.clientWidth,viewport.clientHeight);
+    if (repaired!==view) svg.call(zoom.transform,repaired);
+  }
   if ((selected || family !== "all") && k < fullMapScale()*.78) {
     overview("all", false, true, k);
   } else if (!selected && family === "all") {
@@ -390,7 +456,7 @@ function settleZoom(k) {
   }
 }
 function scaleBy(factor) {
-  zoomAnchor = null;
+  zoomAnchor = zoomStation = null;
   cameraMode = "manual";
   svg.call(zoom.scaleBy, factor);
   settleZoom(d3.zoomTransform(viewport).k);
@@ -526,13 +592,18 @@ document.addEventListener("keydown", (e) => {
   }
 });
 function initialFrame() {
-  move(...courseCenterFit, fullMapScale());
+  // Phones open on a readable neighborhood; Fit map still frames every topic.
+  if (viewport.clientWidth<=600 || (viewport.clientWidth<=920 && viewport.clientHeight<480)) {
+    const center=byTopic.get("derivative");
+    move(center.x,center.y,Math.min(topicZoom()*.94,fullMapScale()*1.8));
+  } else move(...courseCenterFit, fullMapScale());
 }
 new ResizeObserver(() => {
   const reoriented=orientMap();
   fittedScale=measureMapScale();
   zoom.scaleExtent([courseScale(),maxZoom]);
   if (reoriented) {
+    routeViews.clear();
     stops.attr("transform",d=>"translate("+d.x+","+d.y+")");
     tracks.attr("d",edge=>trackPath(edge));
     refreshLocator();
@@ -541,7 +612,8 @@ new ResizeObserver(() => {
       move(node.x,node.y,Math.max(selectedPart ? detailZoom() : topicZoom(),d3.zoomTransform(viewport).k));
     } else if (route==="#calculus" || route==="#groups") {
       move(...courseCenterFit,route==="#calculus"?courseScale():groupScale());
-    } else frame();
+    } else if (cameraMode==="initial") initialFrame();
+    else frame();
     return;
   }
   // Opening the panel already measured and used its new viewport.

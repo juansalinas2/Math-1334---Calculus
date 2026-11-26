@@ -8,6 +8,16 @@
     "idea": "Trace the graph toward the same input from the left and the right. Even if there is a hole, the two branches can point to the same height. That height is what the limit records.",
     "parts": [
       {
+        "title": "Defined near a point",
+        "kind": "Definition",
+        "href": "../lectures/02-limits.html",
+        "definition": "A function is defined near $a$ if its domain contains every point of some open interval about $a$, except possibly $a$ itself.",
+        "formula": "$(a-\\delta,a)\\cup(a,a+\\delta)\\subseteq\\operatorname{dom}(f)\\quad(\\delta>0)$",
+        "idea": "The expression $(x^2-1)/(x-1)$ has a hole at $1$. You can still approach it through inputs on both sides.",
+        "mark": "L",
+        "aliases": "defined near a point domain open interval"
+      },
+      {
         "title": "Limits and function values",
         "kind": "Example",
         "href": "../lectures/02-limits.html#limits-and-function-values",
@@ -358,8 +368,8 @@
         "title": "One-sided continuity",
         "kind": "Definition",
         "href": "../lectures/06-continuity.html#one-sided-continuity",
-        "definition": "At an included left endpoint, use the limit from the right. At an included right endpoint, use the limit from the left.",
-        "formula": "$\\lim_{x\\to0^+}\\sqrt{x}=0=\\sqrt{0}$",
+        "definition": "A function is right-continuous at $a$ when its right-hand limit equals its value there. Left-continuity uses the left-hand limit.",
+        "formula": "$\\lim_{x\\to a^+}f(x)=f(a)\\quad\\text{(right)}$\n$\\lim_{x\\to a^-}f(x)=f(a)\\quad\\text{(left)}$",
         "idea": "The square-root graph starts at $0$. Only inputs in its domain can approach that endpoint, so trace the branch from the right.",
         "oldSlugs": [
           "one-sided-and-endpoint-continuity"
@@ -369,6 +379,15 @@
         "theorems": [
           "limits-root"
         ]
+      },
+      {
+        "title": "Continuity on an interval",
+        "kind": "Definition",
+        "href": "../lectures/06-continuity.html#one-sided-continuity",
+        "definition": "A function is continuous on an interval if it is continuous at every interior point, right-continuous at an included left endpoint, and left-continuous at an included right endpoint.",
+        "formula": "$a<x<b:\\quad\\lim_{t\\to x} f(t)=f(x)$\n$[a,b]:\\quad\\lim_{t\\to a^+}f(t)=f(a),\\quad\\lim_{t\\to b^-}f(t)=f(b)$",
+        "idea": "For $\\sqrt{x}$ on $[0,\\infty)$, the continuity check at $0$ uses inputs from the right. Every point farther along that interval has inputs on both sides.",
+        "mark": "f(a)"
       },
       {
         "title": "Choosing constants for continuity",
@@ -398,7 +417,8 @@
         "mark": "f\\circ g",
         "theorems": [
           "limits-ops-cont",
-          "limits-comp-cont"
+          "limits-comp-cont",
+          "trig-identities"
         ]
       }
     ],
@@ -527,6 +547,16 @@
     "example": "For $f(x)=\\frac{x^2-1}{x}$, the graph follows $y=x$ because $f(x)-x=-\\frac1x\\to0$ at both ends.",
     "parts": [
       {
+        "title": "Limit at infinity",
+        "kind": "Definition",
+        "href": "../lectures/19-end-behaviour-and-curve-sketching.html#limit-at-infinity",
+        "definition": "We write $\\lim_{x\\to+\\infty}f(x)=L$ when $f(x)$ approaches $L$ as $x$ increases without bound. At $-\\infty$, follow $x$ as it decreases without bound.",
+        "formula": "$\\lim_{x\\to+\\infty} f(x)=L\\qquad\\text{or}\\qquad\\lim_{x\\to-\\infty} f(x)=L$",
+        "idea": "Follow each tail of the graph separately. The right tail and the left tail can approach different heights.",
+        "mark": "\\pm\\infty",
+        "reasoning": "At $+\\infty$, for every $\\varepsilon>0$ there is an $M$ such that $|f(x)-L|<\\varepsilon$ at all domain points $x>M$, with the domain unbounded above. At $-\\infty$, use a domain unbounded below and $x<M$."
+      },
+      {
         "title": "Horizontal asymptote",
         "href": "../lectures/19-end-behaviour-and-curve-sketching.html#horizontal-asymptote",
         "kind": "Definition",
@@ -589,6 +619,15 @@
     "idea": "Both $e^x$ and $x^2$ grow without bound. Their quotient asks which grows faster. Here, differentiating twice leaves an exponential over a constant, so the comparison is visible.",
     "parts": [
       {
+        "title": "Indeterminate form",
+        "kind": "Definition",
+        "href": "../lectures/lhopitals-rule.html#indeterminate-form",
+        "definition": "A quotient has form $0/0$ when its numerator and denominator both tend to zero. It has form $\\infty/\\infty$ when both grow without bound in magnitude.",
+        "formula": "$0/0:\\quad f(x)\\to0,\\quad g(x)\\to0$\n$\\infty/\\infty:\\quad |f(x)|\\to\\infty,\\quad |g(x)|\\to\\infty$",
+        "idea": "As $x\\to0$, the numerators and denominators of $x/x$ and $x^2/x$ all tend to zero. The quotients approach $1$ and $0$, so knowing the form alone leaves the answer open.",
+        "mark": "\\frac00"
+      },
+      {
         "title": "Check the form",
         "kind": "Method",
         "href": "../lectures/lhopitals-rule.html#check-the-form",
@@ -646,7 +685,7 @@
   "derivative": {
     "title": "Derivative at a point",
     "href": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
-    "definition": "The derivative of $f$ at $a$ is the limit of the difference quotient, provided the limit exists as a finite number.",
+    "definition": "The derivative of $f$ at $a$ is the limit of the difference quotient, provided the limit exists as a finite number. We say $f$ is differentiable at $a$ when this derivative exists.",
     "formula": "$f'(a)=\\lim_{x\\to a}\\frac{f(x)-f(a)}{x-a}$\n$=\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}$",
     "idea": "One point gives a position but no slope. Bring a second point toward it to see whether slopes measured over shorter and shorter intervals settle on one value.",
     "example": "For $f(x)=3x-x^2$ at $x=1$, the secant slopes approach $1$.",
@@ -655,7 +694,7 @@
         "title": "Difference quotient",
         "kind": "Definition",
         "href": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
-        "definition": "The secant line passes through $(a,f(a))$ and $(a+h,f(a+h))$, where $h\\ne0$. Its slope is the difference quotient.",
+        "definition": "The secant line passes through $(a,f(a))$ and $(a+h,f(a+h))$, where $h\\ne0$. Its slope is the difference quotient, the average rate of change of $f$ between the two inputs.",
         "formula": "$\\frac{\\Delta y}{\\Delta x}=\\frac{f(a+h)-f(a)}{h}$",
         "idea": "First measure change over a nonzero interval. Setting $h=0$ would make the two points coincide before there is a slope to measure.",
         "oldSlugs": [
@@ -753,8 +792,8 @@
         "title": "Higher-order derivatives",
         "kind": "Definition",
         "href": "../lectures/10-derivative-function.html#higher-order-derivatives",
-        "definition": "The derivative of $f'$ is the second derivative $f''$. Differentiating $f''$ gives the third derivative $f'''$.",
-        "formula": "$f''=(f')',\\qquad f'''=(f'')'$",
+        "definition": "Differentiate $f'$ to get the second derivative $f''$. Repeating this process gives the third derivative and, in general, the $n$th derivative where it exists.",
+        "formula": "$f''=(f')',\\quad f'''=(f'')'$\n$f^{(n)}=(f^{(n-1)})'\\quad(n\\ge2)$",
         "idea": "For the parabola $3x-x^2$, the tangent slope drops by two each time $x$ increases by one. The second derivative records that steady change in slope.",
         "mark": "f'''",
         "reasoning": "$f'(x)=3-2x$, $f''(x)=-2$, and $f'''(x)=0$."
@@ -819,7 +858,7 @@
   "tangent": {
     "title": "Tangent line",
     "href": "../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes",
-    "definition": "At a point of differentiability, the tangent line passes through $(a,f(a))$ and has slope $f'(a)$.",
+    "definition": "At a point of differentiability, the tangent line passes through $(a,f(a))$ and has slope $f'(a)$. This slope is the instantaneous rate of change of $f$ at $a$.",
     "formula": "$y-f(a)=f'(a)(x-a)$",
     "idea": "Close to a point of differentiability, following the tangent line gives a simple estimate of the new height. A small horizontal move $\\Delta x$ produces a vertical move of about $f'(a)\\Delta x$.",
     "example": "For $f(x)=\\frac3{x^2}+1$ at $x=1$, the tangent line is $y-4=-6(x-1)$.",
@@ -1151,6 +1190,16 @@
     "example": "On the unit circle, $y'=-x/y$ when $y\\ne0$.",
     "parts": [
       {
+        "title": "Explicit and implicit equations",
+        "kind": "Definition",
+        "href": "../lectures/16-implicit-differentiation.html",
+        "definition": "An explicit formula gives $y$ as a function of $x$. An implicit equation relates $x$ and $y$ and may describe several branches.",
+        "formula": "$y=f(x)\\qquad F(x,y)=0$",
+        "idea": "At $x=0$ the circle $x^2+y^2=1$ contains both $(0,1)$ and $(0,-1)$. Solving explicitly requires choosing the upper or lower branch.",
+        "mark": "y'",
+        "aliases": "explicit equation implicit equation branch"
+      },
+      {
         "title": "Differentiate both sides",
         "kind": "Method",
         "href": "../lectures/16-implicit-differentiation.html#title-block-header",
@@ -1244,7 +1293,8 @@
         "mark": "x(t)",
         "reasoning": "On $y=x^2$, the given instant has $x=3$ and $\\frac{dx}{dt}=2$. The requested rate is $\\frac{dy}{dt}$.",
         "theorems": [
-          "d-rates"
+          "d-rates",
+          "right-triangle"
         ]
       },
       {
@@ -1384,6 +1434,21 @@
     "example": "At $(0,1)$ on $y=e^x$, the tangent slope is $1$ and the tangent line is $y=1+x$.",
     "parts": [
       {
+        "title": "Exponential and logarithmic functions",
+        "kind": "Definition",
+        "href": "../lectures/17-exponential-logarithmic.html#review",
+        "definition": "For $a>0$ and $a\\ne1$, $x\\mapsto a^x$ takes $\\mathbb R$ onto $(0,\\infty)$. Its inverse, $\\log_a$, takes $(0,\\infty)$ onto $\\mathbb R$. The base $a=1$ gives the constant function $1$.",
+        "formula": "$y=\\log_a x\\quad\\Longleftrightarrow\\quad a^y=x$",
+        "idea": "The logarithm returns the exponent. For example, $2^3=8$ gives $\\log_2 8=3$; the two graphs exchange the coordinates $(3,8)$ and $(8,3)$.",
+        "mark": "a^x",
+        "aliases": "logarithm base exponential domain range",
+        "figure": {
+          "file": "october-23-figure-1.svg",
+          "alt": "An increasing exponential and its logarithmic inverse reflected across the line y=x.",
+          "placement": "question"
+        }
+      },
+      {
         "title": "The number e",
         "kind": "Definition",
         "href": "../lectures/17-exponential-logarithmic.html#what-is-e",
@@ -1400,7 +1465,7 @@
         "title": "The natural exponential and logarithm",
         "kind": "Rule",
         "href": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
-        "definition": "For differentiable $u$, the exponential keeps its value on differentiation and the logarithm contributes its reciprocal input.",
+        "definition": "The natural logarithm $\\ln x=\\log_e x$ is the inverse of $e^x$. Thus $e^{\\ln x}=x$ for $x>0$ and $\\ln(e^x)=x$ for every real $x$.",
         "formula": "$\\frac{d}{dx}e^u=e^u u'$\n$\\frac{d}{dx}\\ln u=\\frac{u'}{u}\\quad(u>0)$",
         "idea": "In $e^{x^2}$ the exponential grows with its input, but that input moves at rate $2x$. At $x=0$ this makes the tangent horizontal even though an ordinary exponential has positive slope everywhere.",
         "oldSlugs": [
@@ -1554,7 +1619,8 @@
         "mark": "\\cos",
         "reasoning": "For $s(t)=\\cos t$, $v(t)=-\\sin t$ and $a(t)=-\\cos t$.",
         "theorems": [
-          "d-trig"
+          "d-trig",
+          "trig-identities"
         ]
       },
       {
@@ -2106,8 +2172,8 @@
         "title": "Symmetry and periodicity",
         "href": "../lectures/curve-sketching.html#curve-sketching-steps",
         "kind": "Method",
-        "definition": "On a domain symmetric about $0$, test for even or odd symmetry. To test a period $T>0$, check that shifting the domain by $T$ leaves it unchanged and the outputs repeat.",
-        "formula": "$f(-x)=f(x)\\quad\\text{or}\\quad f(-x)=-f(x)$\n$f(x+T)=f(x)$",
+        "definition": "On a domain symmetric about $0$, an even function has $y$-axis symmetry and an odd function has origin symmetry. A period $T>0$ shifts the domain onto itself and repeats every output.",
+        "formula": "$\\text{even: }f(-x)=f(x),\\quad\\text{odd: }f(-x)=-f(x)$\n$\\text{period }T:\\quad f(x+T)=f(x)$",
         "idea": "A reflection or a repeated piece can supply the rest of the sketch. Check the domain as well as the formula before copying a branch.",
         "symbol": "$f(-x)=f(x)$",
         "mark": "f(-x)",
@@ -2299,8 +2365,19 @@
         "symbol": "$(\\cos\\theta,\\sin\\theta)$",
         "mark": "\\theta",
         "theorems": [
-          "limits-angle"
+          "limits-angle",
+          "trig-identities"
         ]
+      },
+      {
+        "title": "Tangent, cotangent, secant, and cosecant",
+        "kind": "Definition",
+        "href": "../lectures/13-trigonometric-derivatives.html#trigonometric-notation-we-will-use",
+        "definition": "Tangent and cotangent are ratios of sine and cosine. Secant is the reciprocal of cosine. Cosecant is the reciprocal of sine.",
+        "formula": "$\\tan x=\\frac{\\sin x}{\\cos x},\\quad\\sec x=\\frac{1}{\\cos x}\\quad(\\cos x\\ne0)$\n$\\cot x=\\frac{\\cos x}{\\sin x},\\quad\\csc x=\\frac{1}{\\sin x}\\quad(\\sin x\\ne0)$",
+        "idea": "At the top of the unit circle the horizontal coordinate is zero. Both $\\tan x$ and $\\sec x$ would divide by that coordinate, so neither is defined there.",
+        "mark": "\\sin",
+        "aliases": "trigonometric functions ratios reciprocal"
       },
       {
         "title": "Amplitude and period",
@@ -2577,7 +2654,8 @@
         "mark": "\\sin^{-1}",
         "theorems": [
           "d-invtrig",
-          "d-inverse"
+          "d-inverse",
+          "right-triangle"
         ],
         "figure": {
           "file": "october-21-figure-6.svg",

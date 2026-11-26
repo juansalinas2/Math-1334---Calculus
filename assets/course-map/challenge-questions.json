@@ -102,6 +102,9 @@
         ],
         "why": "Cancel \\(x-1\\). The numerator \\(x-1\\) tends to \\(-2\\), and the denominator \\(x+1\\) approaches zero through positive values."
       }
+    ],
+    "exams": [
+      "final"
     ]
   },
   {
@@ -207,6 +210,9 @@
         ],
         "why": "The chain rule gives \\(f'(x)=3x/\\sqrt{1+3x^2}\\). At \\(x=1\\), the numerator is \\(3\\) and the denominator is \\(2\\)."
       }
+    ],
+    "exams": [
+      "final"
     ]
   },
   {
@@ -311,6 +317,657 @@
           "\\((-2,3)\\)"
         ],
         "why": "Between the two zeros of \\(f'\\), the factor \\(x-1\\) is negative and \\(x+1\\) is positive. Their product is negative."
+      }
+    ],
+    "exams": [
+      "exam3",
+      "final"
+    ]
+  },
+  {
+    "id": "related-rates",
+    "title": "Related rates",
+    "exams": [
+      "exam3",
+      "final"
+    ],
+    "questions": [
+      {
+        "topic": "rates",
+        "prompt": "A \\(10\\) ft ladder slides down a wall. Its foot is \\(6\\) ft from the wall and moves outward at \\(2\\) ft/s. What is the rate of change of the top’s height?",
+        "choices": [
+          "\\(-3/2\\) ft/s",
+          "\\(3/2\\) ft/s",
+          "\\(-8/3\\) ft/s",
+          "\\(-2\\) ft/s"
+        ],
+        "why": "Let \\(x\\) be the horizontal distance and \\(y\\) the height. Here \\(y=8\\). Differentiate \\(x^2+y^2=100\\) to obtain \\(dy/dt=-(x/y)(dx/dt)=-3/2\\)."
+      },
+      {
+        "topic": "rates",
+        "prompt": "A \\(2\\) m tall person stands \\(x\\) meters from a \\(6\\) m streetlight. If the shadow has length \\(s\\), what relation follows from similar triangles?",
+        "choices": [
+          "\\(6/(x+s)=2/s\\)",
+          "\\(6/x=2/s\\)",
+          "\\(6/s=2/(x+s)\\)",
+          "\\(6/(x-s)=2/s\\)"
+        ],
+        "why": "The large triangle has height \\(6\\) and base \\(x+s\\). The small triangle has height \\(2\\) and base \\(s\\). Their height-to-base ratios agree."
+      },
+      {
+        "topic": "rates",
+        "prompt": "A person walks away from a streetlight at \\(3/2\\) m/s, and the shadow grows at \\(3/4\\) m/s. How fast does the shadow tip move away from the pole?",
+        "choices": [
+          "\\(9/4\\) m/s",
+          "\\(3/4\\) m/s",
+          "\\(3/2\\) m/s",
+          "\\(9/8\\) m/s"
+        ],
+        "why": "The tip’s distance from the pole is the person’s distance plus the shadow length. Add the two rates."
+      },
+      {
+        "topic": "rates",
+        "prompt": "The radius of a spherical balloon increases at \\(2\\) cm/s. How fast is its volume increasing when \\(r=3\\) cm?",
+        "choices": [
+          "\\(72\\pi\\) cm³/s",
+          "\\(36\\pi\\) cm³/s",
+          "\\(24\\pi\\) cm³/s",
+          "\\(18\\pi\\) cm³/s"
+        ],
+        "why": "Differentiate \\(V=4\\pi r^3/3\\) before substituting: \\(dV/dt=4\\pi r^2(dr/dt)=4\\pi(3)^2(2)\\)."
+      },
+      {
+        "topic": "rates",
+        "prompt": "A rectangle with sides \\(x\\) and \\(y\\) has constant area. At one instant \\(x=4\\), \\(y=3\\), and \\(dx/dt=2\\). Find \\(dy/dt\\).",
+        "choices": [
+          "\\(-3/2\\)",
+          "\\(3/2\\)",
+          "\\(-8/3\\)",
+          "\\(-6\\)"
+        ],
+        "why": "Differentiate \\(xy\\) with respect to time. Then \\(0=x(dy/dt)+y(dx/dt)\\), so \\(dy/dt=-6/4\\)."
+      },
+      {
+        "topic": "rates",
+        "prompt": "A conical tank is \\(8\\) m tall with top radius \\(4\\) m. The water depth is \\(h\\) and its surface has radius \\(r\\). Which formula gives the water volume in terms of \\(h\\)?",
+        "choices": [
+          "\\(V=\\pi h^3/12\\)",
+          "\\(V=\\pi h^3/6\\)",
+          "\\(V=\\pi h^3/3\\)",
+          "\\(V=4\\pi h^3/3\\)"
+        ],
+        "why": "Similar triangles give \\(r/h=4/8\\). Substitute \\(r=h/2\\) into \\(V=\\pi r^2h/3\\)."
+      }
+    ]
+  },
+  {
+    "id": "global-extrema",
+    "title": "Critical numbers and global extrema",
+    "exams": [
+      "exam3",
+      "final"
+    ],
+    "questions": [
+      {
+        "topic": "critical",
+        "prompt": "Which statement explains why \\(0\\) is a critical number of \\(f(x)=|x|\\)?",
+        "choices": [
+          "\\(f(0)\\) exists and \\(f'(0)\\) does not exist.",
+          "The left and right slopes are both zero.",
+          "The two one-sided limits of \\(f\\) disagree.",
+          "The function has a jump at zero."
+        ],
+        "why": "The one-sided slopes are \\(-1\\) and \\(1\\). A number in the domain with undefined derivative is critical."
+      },
+      {
+        "topic": "global",
+        "prompt": "What is the global maximum value of \\(g(x)=(x-1)^2\\) on \\([0,2]\\)?",
+        "choices": [
+          "\\(1\\), attained at both endpoints",
+          "\\(2\\), attained at the right endpoint",
+          "\\(0\\), attained at the center",
+          "There is no global maximum."
+        ],
+        "why": "The candidates are \\(0\\), \\(1\\), and \\(2\\). Their function values are \\(1\\), \\(0\\), and \\(1\\)."
+      },
+      {
+        "topic": "evt",
+        "prompt": "What global extrema does \\(g(x)=(x-1)^2\\) attain on \\((0,2)\\)?",
+        "choices": [
+          "A global minimum only",
+          "A global maximum only",
+          "Both a global minimum and a global maximum",
+          "Neither a global minimum nor a global maximum"
+        ],
+        "why": "The value \\(0\\) occurs at \\(x=1\\). Values approach \\(1\\) at either end, but the endpoints are excluded."
+      },
+      {
+        "topic": "critical",
+        "prompt": "On its original domain, is \\(2\\) a critical number of \\(H(x)=(x^2-4)/(x-2)\\)?",
+        "choices": [
+          "No. The function is undefined at \\(2\\).",
+          "Yes. Its derivative is undefined there.",
+          "Yes. Its limit exists there.",
+          "No. Its derivative at \\(2\\) is zero."
+        ],
+        "why": "Cancellation gives \\(x+2\\) for \\(x\\ne2\\). The original domain excludes \\(2\\), so it cannot be a critical number."
+      },
+      {
+        "topic": "global",
+        "prompt": "The only critical numbers of a continuous function on \\([-1,3]\\) are \\(0\\) and \\(2\\). Which values must you compare to find its global extrema?",
+        "choices": [
+          "\\(f(-1),f(0),f(2),f(3)\\)",
+          "\\(f(0),f(2)\\) only",
+          "\\(f(-1),f(3)\\) only",
+          "The derivatives at all four numbers"
+        ],
+        "why": "On a closed interval, evaluate the function at the interior critical numbers and both endpoints."
+      },
+      {
+        "topic": "global",
+        "prompt": "Suppose \\(f'(x)=(x+2)(x-1)^2\\) everywhere. Can this formula alone determine the value of \\(f\\) at its local minimum?",
+        "choices": [
+          "No. Adding a constant to \\(f\\) leaves its derivative unchanged.",
+          "Yes. The value must be zero.",
+          "Yes. The value equals the critical number.",
+          "No. The derivative never changes sign."
+        ],
+        "why": "The signs of \\(f'\\) locate a minimum at \\(x=-2\\). To find its height, we need information about \\(f\\) itself."
+      }
+    ]
+  },
+  {
+    "id": "optimize",
+    "title": "Optimization",
+    "exams": [
+      "exam3",
+      "final"
+    ],
+    "questions": [
+      {
+        "topic": "optimization",
+        "prompt": "Cut squares of side \\(x\\) from each corner of a \\(12\\) cm square and fold up the sides. Which function gives the box volume?",
+        "choices": [
+          "\\(x(12-2x)^2\\)",
+          "\\(x(12-x)^2\\)",
+          "\\(x^2(12-2x)\\)",
+          "\\(12x(12-2x)\\)"
+        ],
+        "why": "The height is \\(x\\). Each side of the square base loses \\(x\\) at both ends."
+      },
+      {
+        "topic": "optimization",
+        "prompt": "For a box folded from a \\(12\\) cm square, \\(V(x)=x(12-2x)^2\\). Which cut sizes produce boxes of positive volume with positive base lengths?",
+        "choices": [
+          "\\(0<x<6\\)",
+          "\\(0<x<12\\)",
+          "\\(0<x<3\\)",
+          "\\(6<x<12\\)"
+        ],
+        "why": "Both the height \\(x\\) and the base length \\(12-2x\\) must be positive."
+      },
+      {
+        "topic": "optimization",
+        "prompt": "A folded box has \\(V(x)=x(12-2x)^2\\) for \\(0<x<6\\). The derivative is \\((12-2x)(12-6x)\\). Which cut maximizes volume?",
+        "choices": [
+          "\\(2\\) cm",
+          "\\(3\\) cm",
+          "\\(4\\) cm",
+          "\\(6\\) cm"
+        ],
+        "why": "The derivative changes from positive to negative at \\(x=2\\). Volume increases up to that cut and decreases afterward."
+      },
+      {
+        "topic": "optimization",
+        "prompt": "A flyer has \\(96\\) cm² of printed text of width \\(x\\). Side margins are \\(2\\) cm each and top and bottom margins are \\(3\\) cm each. What is the total paper area?",
+        "choices": [
+          "\\((x+4)(96/x+6)\\)",
+          "\\((x+2)(96/x+3)\\)",
+          "\\((x+6)(96/x+4)\\)",
+          "\\(x(96/x+6)\\)"
+        ],
+        "why": "The text height is \\(96/x\\). Add both side margins to the width and both vertical margins to the height."
+      },
+      {
+        "topic": "optimization",
+        "prompt": "A flyer’s total area is \\(A(x)=120+6x+384/x\\) for \\(x>0\\). Which printed width minimizes area?",
+        "choices": [
+          "\\(8\\) cm",
+          "\\(4\\) cm",
+          "\\(16\\) cm",
+          "\\(64\\) cm"
+        ],
+        "why": "The equation \\(A'(x)=6-384/x^2=0\\) gives \\(x=8\\). The derivative changes from negative to positive there."
+      }
+    ]
+  },
+  {
+    "id": "sketch",
+    "title": "End behavior and curve sketching",
+    "exams": [
+      "exam3",
+      "final"
+    ],
+    "questions": [
+      {
+        "topic": "rationaltails",
+        "prompt": "Find the horizontal asymptote of \\(f(x)=(4x^2-1)/(2x^2+x)\\) as \\(x\\to\\infty\\).",
+        "choices": [
+          "\\(y=2\\)",
+          "\\(y=4\\)",
+          "\\(y=0\\)",
+          "\\(x=2\\)"
+        ],
+        "why": "Divide numerator and denominator by \\(x^2\\). Their leading coefficients give the limit \\(4/2=2\\)."
+      },
+      {
+        "topic": "endbehavior",
+        "prompt": "If \\(f(x)=2x-1+2/(x-1)\\), what is its slant asymptote?",
+        "choices": [
+          "\\(y=2x-1\\)",
+          "\\(y=2x+1\\)",
+          "\\(y=x-1\\)",
+          "\\(x=1\\)"
+        ],
+        "why": "The difference between \\(f(x)\\) and \\(2x-1\\) tends to zero as \\(x\\to\\pm\\infty\\)."
+      },
+      {
+        "topic": "sketch",
+        "prompt": "Can the graph of \\(f(x)=2x-1+2/(x-1)\\) cross its slant asymptote \\(y=2x-1\\)?",
+        "choices": [
+          "No. The difference \\(2/(x-1)\\) is never zero.",
+          "Yes, at \\(x=1\\).",
+          "Yes, at \\(x=0\\).",
+          "Yes, at \\(x=2\\)."
+        ],
+        "why": "A crossing would require \\(f(x)-(2x-1)=0\\). The difference has a nonzero constant numerator."
+      },
+      {
+        "topic": "infinite",
+        "prompt": "For \\(f(x)=2x-1+2/(x-1)\\), what is the limit as \\(x\\to1^-\\)?",
+        "choices": [
+          "\\(-\\infty\\)",
+          "\\(+\\infty\\)",
+          "\\(1\\)",
+          "\\(0\\)"
+        ],
+        "why": "The term \\(2x-1\\) tends to \\(1\\). The denominator of \\(2/(x-1)\\) tends to zero through negative values."
+      },
+      {
+        "topic": "inflect",
+        "prompt": "Suppose \\(f\\) is undefined at \\(1\\) and \\(f''(x)=4/(x-1)^3\\) elsewhere. What happens at \\(x=1\\)?",
+        "choices": [
+          "Concavity changes across the gap, but there is no inflection point.",
+          "There is an inflection point at \\((1,0)\\).",
+          "The graph is concave up on both sides.",
+          "There is a local maximum at \\(x=1\\)."
+        ],
+        "why": "The second derivative changes from negative to positive. There is no point of the graph at \\(x=1\\)."
+      },
+      {
+        "topic": "endbehavior",
+        "prompt": "Find \\(\\displaystyle\\lim_{x\\to-\\infty}x/\\sqrt{x^2+1}\\).",
+        "choices": [
+          "\\(-1\\)",
+          "\\(1\\)",
+          "\\(0\\)",
+          "\\(-\\infty\\)"
+        ],
+        "why": "Write the denominator as \\(|x|\\sqrt{1+1/x^2}\\). For negative \\(x\\), the factor \\(x/|x|\\) equals \\(-1\\)."
+      }
+    ]
+  },
+  {
+    "id": "lhospital",
+    "title": "l’Hospital’s rule and indeterminate forms",
+    "exams": [
+      "exam3",
+      "final"
+    ],
+    "questions": [
+      {
+        "topic": "lhospital",
+        "prompt": "Find \\(\\displaystyle\\lim_{x\\to2}(\\ln x-\\ln 2)/(x-2)\\).",
+        "choices": [
+          "\\(1/2\\)",
+          "\\(0\\)",
+          "\\(2\\)",
+          "\\(\\ln 2\\)"
+        ],
+        "why": "The form is \\(0/0\\). The ratio of the derivatives is \\(1/x\\), which tends to \\(1/2\\)."
+      },
+      {
+        "topic": "lhospital",
+        "prompt": "Find \\(\\displaystyle\\lim_{x\\to0}(1-\\cos(2x))/x^2\\).",
+        "choices": [
+          "\\(2\\)",
+          "\\(1\\)",
+          "\\(4\\)",
+          "\\(0\\)"
+        ],
+        "why": "The form is \\(0/0\\). Applying l’Hospital’s rule gives \\(\\sin(2x)/x\\) and then \\(2\\cos(2x)\\to2\\)."
+      },
+      {
+        "topic": "lhospital",
+        "prompt": "Find \\(\\displaystyle\\lim_{x\\to1^-}(\\ln x+2)/(x-1)\\).",
+        "choices": [
+          "\\(-\\infty\\)",
+          "\\(1\\)",
+          "\\(0\\)",
+          "\\(+\\infty\\)"
+        ],
+        "why": "The numerator approaches \\(2\\) and the denominator approaches zero through negative values. Check the signs directly."
+      },
+      {
+        "topic": "lhospital",
+        "prompt": "Find \\(\\displaystyle\\lim_{x\\to\\infty}(\\ln x)/\\sqrt{x}\\).",
+        "choices": [
+          "\\(0\\)",
+          "\\(1\\)",
+          "\\(2\\)",
+          "\\(+\\infty\\)"
+        ],
+        "why": "This has form \\(\\infty/\\infty\\). The derivative ratio is \\((1/x)/(1/(2\\sqrt{x}))=2/\\sqrt{x}\\to0\\)."
+      },
+      {
+        "topic": "forms",
+        "prompt": "Which rewrite of \\(x\\ln x\\) gives a quotient of form \\(\\infty/\\infty\\) in magnitude as \\(x\\to0^+\\)?",
+        "choices": [
+          "\\(\\ln x/(1/x)\\)",
+          "\\(x/(\\ln x)\\)",
+          "\\(\\ln x/x\\)",
+          "\\(1/(x\\ln x)\\)"
+        ],
+        "why": "Division by \\(1/x\\) is multiplication by \\(x\\). The numerator tends to \\(-\\infty\\) and the denominator to \\(+\\infty\\)."
+      },
+      {
+        "topic": "forms",
+        "prompt": "Let \\(y=x^{1/x}\\) for \\(x>0\\). Which limit determines \\(\\lim_{x\\to\\infty}\\ln y\\)?",
+        "choices": [
+          "\\(\\displaystyle\\lim_{x\\to\\infty}(\\ln x)/x\\)",
+          "\\(\\displaystyle\\lim_{x\\to\\infty}x\\ln x\\)",
+          "\\(\\displaystyle\\lim_{x\\to\\infty}x/(\\ln x)\\)",
+          "\\(\\displaystyle\\lim_{x\\to\\infty}1/(x\\ln x)\\)"
+        ],
+        "why": "Take logarithms first: \\(\\ln y=(1/x)\\ln x\\). This quotient tends to zero, so \\(y\\) tends to \\(1\\)."
+      }
+    ]
+  },
+  {
+    "id": "continuity",
+    "title": "Limits and continuity",
+    "exams": [
+      "final"
+    ],
+    "questions": [
+      {
+        "topic": "limit",
+        "prompt": "Near \\(x=2\\), the graph approaches height \\(5\\) from both sides, but the filled point at \\(x=2\\) has height \\(1\\). What is \\(\\lim_{x\\to2}f(x)\\)?",
+        "choices": [
+          "\\(5\\)",
+          "\\(1\\)",
+          "\\(2\\)",
+          "The limit does not exist."
+        ],
+        "why": "The limit depends on nearby values. Both sides approach \\(5\\)."
+      },
+      {
+        "topic": "sides",
+        "prompt": "If \\(\\lim_{x\\to0^-}f(x)=2\\) and \\(\\lim_{x\\to0^+}f(x)=-2\\), what is \\(\\lim_{x\\to0}f(x)\\)?",
+        "choices": [
+          "The two-sided limit does not exist.",
+          "\\(0\\)",
+          "\\(2\\)",
+          "\\(-2\\)"
+        ],
+        "why": "For a two-sided limit to exist, the one-sided limits must agree."
+      },
+      {
+        "topic": "continuity",
+        "prompt": "For \\(x\\ne1\\) let \\(f(x)=(x^2-1)/(x-1)\\). What value of \\(f(1)\\) makes \\(f\\) continuous at \\(1\\)?",
+        "choices": [
+          "\\(2\\)",
+          "\\(0\\)",
+          "\\(1\\)",
+          "There is no such value."
+        ],
+        "why": "For \\(x\\ne1\\) the formula simplifies to \\(x+1\\). Its limit at \\(1\\) is \\(2\\), so continuity requires \\(f(1)=2\\)."
+      },
+      {
+        "topic": "ivt",
+        "prompt": "A continuous function satisfies \\(f(0)=-2\\) and \\(f(2)=12\\). What does the Intermediate Value Theorem guarantee?",
+        "choices": [
+          "At least one zero in \\((0,2)\\)",
+          "Exactly one zero in \\((0,2)\\)",
+          "A zero at \\(x=1\\)",
+          "A critical number at \\(x=0\\)"
+        ],
+        "why": "Zero lies between the endpoint values, so \\(f\\) must attain it somewhere between the endpoints."
+      },
+      {
+        "topic": "breaks",
+        "prompt": "At \\(x=a\\) both one-sided limits equal \\(3\\), but \\(f(a)=7\\). What kind of discontinuity occurs?",
+        "choices": [
+          "Removable",
+          "Jump",
+          "Infinite",
+          "There is no discontinuity."
+        ],
+        "why": "Assigning \\(f(a)=3\\) would make the function continuous at \\(a\\)."
+      }
+    ]
+  },
+  {
+    "id": "derivative-motion",
+    "title": "Derivatives, tangent lines, and motion",
+    "exams": [
+      "final"
+    ],
+    "questions": [
+      {
+        "topic": "derivative",
+        "prompt": "For which function does \\(\\displaystyle\\lim_{h\\to0}((2+h)^3-8)/h\\) give its derivative at \\(2\\)?",
+        "choices": [
+          "\\(f(x)=x^3\\)",
+          "\\(f(x)=x^2\\)",
+          "\\(f(x)=3x^2\\)",
+          "\\(f(x)=8x\\)"
+        ],
+        "why": "The numerator is \\(f(2+h)-f(2)\\) with \\(f(x)=x^3\\)."
+      },
+      {
+        "topic": "derivative2",
+        "prompt": "A function is differentiable at \\(a\\). Which statement must hold?",
+        "choices": [
+          "\\(f\\) is continuous at \\(a\\).",
+          "\\(f'(a)=0\\).",
+          "\\(f\\) has a local extremum at \\(a\\).",
+          "\\(f'\\) is constant near \\(a\\)."
+        ],
+        "why": "Differentiability at a point implies continuity there."
+      },
+      {
+        "topic": "tangent",
+        "prompt": "A differentiable function satisfies \\(f(1)=3\\) and \\(f'(1)=-2\\). Which equation gives the tangent line at \\(x=1\\)?",
+        "choices": [
+          "\\(y-3=-2(x-1)\\)",
+          "\\(y-1=-2(x-3)\\)",
+          "\\(y-3=2(x-1)\\)",
+          "\\(y+3=-2(x+1)\\)"
+        ],
+        "why": "The line passes through \\((1,3)\\) with slope \\(-2\\). Use point-slope form."
+      },
+      {
+        "topic": "motion",
+        "prompt": "A cart has velocity \\(v=-3\\) m/s and acceleration \\(a=-2\\) m/s² at an instant. What is it doing?",
+        "choices": [
+          "Moving in the negative direction and speeding up",
+          "Moving in the negative direction and slowing down",
+          "Moving in the positive direction and slowing down",
+          "Moving in the positive direction and speeding up"
+        ],
+        "why": "Velocity gives direction. With velocity and acceleration both negative, the magnitude of the velocity is increasing."
+      },
+      {
+        "topic": "motion",
+        "prompt": "A cart travels along a line with position \\(s(t)=t^2+2t\\) meters. What is its average velocity from \\(t=1\\) to \\(t=3\\) seconds?",
+        "choices": [
+          "\\(6\\) m/s",
+          "\\(4\\) m/s",
+          "\\(8\\) m/s",
+          "\\(12\\) m/s"
+        ],
+        "why": "Use displacement over elapsed time: \\((s(3)-s(1))/(3-1)=(15-3)/2\\)."
+      },
+      {
+        "topic": "derivatives",
+        "prompt": "If position is \\(s(t)=t^3-9t^2+24t\\), what is acceleration at \\(t=2\\)?",
+        "choices": [
+          "\\(-6\\)",
+          "\\(0\\)",
+          "\\(6\\)",
+          "\\(12\\)"
+        ],
+        "why": "Acceleration is \\(s''(t)=6t-18\\). Evaluate this at \\(t=2\\)."
+      }
+    ]
+  },
+  {
+    "id": "derivative-rules",
+    "title": "Differentiation rules and trigonometric derivatives",
+    "exams": [
+      "final"
+    ],
+    "questions": [
+      {
+        "topic": "rules",
+        "prompt": "What is the derivative of \\(x^2\\cos x\\)?",
+        "choices": [
+          "\\(2x\\cos x-x^2\\sin x\\)",
+          "\\(-2x\\sin x\\)",
+          "\\(2x\\cos x+x^2\\sin x\\)",
+          "\\(2x\\cos x-x\\sin x\\)"
+        ],
+        "why": "Differentiate each factor in turn. The derivative of cosine is negative sine."
+      },
+      {
+        "topic": "rules",
+        "prompt": "For \\(f(x)=x/(1+x^2)\\), what is \\(f'(0)\\)?",
+        "choices": [
+          "\\(1\\)",
+          "\\(0\\)",
+          "\\(-1\\)",
+          "The derivative does not exist."
+        ],
+        "why": "The quotient rule gives \\(f'(x)=(1-x^2)/(1+x^2)^2\\). Substitute \\(x=0\\)."
+      },
+      {
+        "topic": "trig",
+        "prompt": "What is the derivative of \\(\\cot x\\) wherever it is defined?",
+        "choices": [
+          "\\(-\\csc^2 x\\)",
+          "\\(\\sec^2 x\\)",
+          "\\(\\csc^2 x\\)",
+          "\\(-\\sec^2 x\\)"
+        ],
+        "why": "Apply the quotient rule to \\(\\cos x/\\sin x\\). The numerator simplifies to \\(-(\\sin^2x+\\cos^2x)=-1\\)."
+      },
+      {
+        "topic": "trig",
+        "prompt": "For \\(f(x)=\\sin x\\), find \\(f'(\\pi/6)\\).",
+        "choices": [
+          "\\(\\sqrt{3}/2\\)",
+          "\\(1/2\\)",
+          "\\(-1/2\\)",
+          "\\(-\\sqrt{3}/2\\)"
+        ],
+        "why": "The derivative is \\(\\cos x\\). Its value at \\(\\pi/6\\) is \\(\\sqrt{3}/2\\)."
+      },
+      {
+        "topic": "exp",
+        "prompt": "What is the derivative of \\(e^{2x}\\)?",
+        "choices": [
+          "\\(2e^{2x}\\)",
+          "\\(e^{2x}\\)",
+          "\\(2xe^{2x-1}\\)",
+          "\\(2e^x\\)"
+        ],
+        "why": "The exponential stays the same. Multiply by the derivative of its exponent, which is \\(2\\)."
+      },
+      {
+        "topic": "exp",
+        "prompt": "For \\(x>0\\), what is the derivative of \\((\\ln x)/x\\)?",
+        "choices": [
+          "\\((1-\\ln x)/x^2\\)",
+          "\\((1+\\ln x)/x^2\\)",
+          "\\(1/x^2\\)",
+          "\\((\\ln x-1)/x^2\\)"
+        ],
+        "why": "The quotient rule gives numerator \\(x(1/x)-\\ln x\\) and denominator \\(x^2\\)."
+      }
+    ]
+  },
+  {
+    "id": "inverse-implicit",
+    "title": "Inverse, implicit, and logarithmic differentiation",
+    "exams": [
+      "final"
+    ],
+    "questions": [
+      {
+        "topic": "inverse",
+        "prompt": "Suppose \\(f\\) has a differentiable inverse, \\(f(3)=7\\), and \\(f'(3)=4\\). Find \\((f^{-1})'(7)\\).",
+        "choices": [
+          "\\(1/4\\)",
+          "\\(4\\)",
+          "\\(1/7\\)",
+          "\\(1/3\\)"
+        ],
+        "why": "The inverse takes \\(7\\) back to \\(3\\). Its slope is the reciprocal of the original slope there."
+      },
+      {
+        "topic": "invtrig",
+        "prompt": "What is the derivative of \\(\\arctan(2x)\\)?",
+        "choices": [
+          "\\(2/(1+4x^2)\\)",
+          "\\(1/(1+4x^2)\\)",
+          "\\(2/(1+2x^2)\\)",
+          "\\(2/\\sqrt{1-4x^2}\\)"
+        ],
+        "why": "The derivative of inverse tangent at \\(u\\) is \\(1/(1+u^2)\\). Multiply by the inner derivative \\(2\\)."
+      },
+      {
+        "topic": "implicit",
+        "prompt": "On the circle \\(x^2+y^2=25\\), what is the tangent slope at \\((3,4)\\)?",
+        "choices": [
+          "\\(-3/4\\)",
+          "\\(3/4\\)",
+          "\\(-4/3\\)",
+          "\\(4/3\\)"
+        ],
+        "why": "Differentiate both sides: \\(2x+2y(dy/dx)=0\\). At \\((3,4)\\) this gives \\(dy/dx=-3/4\\)."
+      },
+      {
+        "topic": "implicit",
+        "prompt": "When \\(y\\) depends on \\(x\\), what is the derivative of the term \\(xy\\) with respect to \\(x\\)?",
+        "choices": [
+          "\\(y+x(dy/dx)\\)",
+          "\\(x+y\\)",
+          "\\(x(dy/dx)\\)",
+          "\\(1+dy/dx\\)"
+        ],
+        "why": "Use the product rule, differentiating \\(x\\) first and then \\(y\\)."
+      },
+      {
+        "topic": "logdiff",
+        "prompt": "For \\(x>0\\), let \\(y=x^x\\). What is \\(dy/dx\\)?",
+        "choices": [
+          "\\(x^x(1+\\ln x)\\)",
+          "\\(x^x\\)",
+          "\\(x^x\\ln x\\)",
+          "\\(x^{x-1}\\)"
+        ],
+        "why": "Take logarithms: \\(\\ln y=x\\ln x\\). Then \\(y'/y=1+\\ln x\\). Multiply by \\(y=x^x\\)."
       }
     ]
   }

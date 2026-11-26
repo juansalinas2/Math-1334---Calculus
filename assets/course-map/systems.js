@@ -1,5 +1,7 @@
 // Scale thresholds are relative to fitting the entire graph, on every screen.
 const landscapeBounds = {left:-185, top:-102, width:1840, height:1084};
+// The phone layout gives neighboring notes more room in both directions.
+const portraitSpacing = {x:1.12, y:1.26};
 let mapBounds = landscapeBounds, courseCenterFit = [735,440], portrait = false;
 const sourcePositions = new Map(stations.map(n=>[n.id,[n.x,n.y]]));
 const courseFloor = .085, courseEdge = .105, groupFloor = .17;
@@ -18,11 +20,15 @@ function orientMap() {
   if (tall === portrait) return false;
   portrait = tall;
   const b = landscapeBounds;
-  mapBounds = tall ? {left:b.top,top:b.left,width:b.height,height:b.width} : b;
+  mapBounds = tall ? {
+    left:b.top*portraitSpacing.x, top:b.left*portraitSpacing.y,
+    width:b.height*portraitSpacing.x, height:b.width*portraitSpacing.y,
+  } : b;
   courseCenterFit = [mapBounds.left + mapBounds.width/2,mapBounds.top + mapBounds.height/2];
   for (const n of stations) {
     const [x,y]=sourcePositions.get(n.id);
-    n.x=tall?y:x; n.y=tall?x:y;
+    n.x=tall?y*portraitSpacing.x:x;
+    n.y=tall?x*portraitSpacing.y:y;
   }
   for (const group of familiesOnMap.values()) group.center=[d3.mean(group.topics,n=>n.x),d3.mean(group.topics,n=>n.y)];
   return true;

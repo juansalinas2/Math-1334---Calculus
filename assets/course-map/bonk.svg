@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="158" height="88" viewBox="0 0 158 88" role="img" aria-label="BONK! Two cartoon Shibas and a foam bat">
+<rect x="1" y="1" width="156" height="86" rx="10" fill="#fff0cc" stroke="#c6a269"/>
+<g stroke="#443733" stroke-width="2" stroke-linejoin="round"><path fill="#d89558" d="M8 80q-1-20 10-28l1-26 12 13q10-4 15 0l11-12 1 22q9 9 5 18-4 9-8 13z"/><path fill="#ffe5bd" d="M14 79q5-17 14-20 7-4 13 1l14-7q9 0 7 7-4 12-14 12l3 7"/>
+<path fill="#d89558" d="M93 80q-3-11 4-23l-2-14 12 7q9-3 18 0l9-9 2 17q8 5 7 13l-2 9z"/><path fill="#ffe5bd" d="M95 73q8-9 17-7 6 1 12-2 12-1 16 3 3 10-13 13H98"/>
+<g stroke-linecap="round"><path d="m37 49 3 1m8-2 2 1m58 11 4 2-4 2m19-6-4 3 4 1" fill="none"/><path d="m54 55 6-1-3 4zM115 66h5l-2 3z" fill="#443733"/><path d="m52 67 39-37" stroke-width="8"/><path d="m54 65 37-35" stroke-width="5" stroke="#c28c5c"/><path d="m76 42 19-21q3-3 6 0l4 6q1 3-3 5L81 46Z" fill="#daac71"/><path d="m109 33 4-5m1 10 7-2m-16-4 1-6" fill="none" stroke="#b64836"/></g></g>
+<text x="11" y="23" transform="rotate(-6 11 23)" fill="#933e39" font-family="system-ui,sans-serif" font-weight="900" font-size="22">BONK!</text></svg>

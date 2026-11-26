@@ -1,0 +1,20 @@
+/* A side-scrolling course drawn in ink on a sheet of graph paper. */
+#rails.runner-scene { display:block; width:100%; height:auto; aspect-ratio:600/210; background:#f4edda; overflow:hidden; }
+.runner-scene { --r-paper:#f4edda; --r-wash:#cee4da; --r-hill:#a8c9be; --r-ink:#213c40; --r-platform:#dbe1c3; --r-sun:#f6c36e; --r-scarf:#df624c; }
+.runner-scene[data-chapter="1"] { --r-paper:#f6e8cd; --r-wash:#f1d5a4; --r-hill:#bbcbab; --r-platform:#e7ddaf; --r-sun:#eeac67; }
+.runner-scene[data-chapter="2"] { --r-paper:#f1e4dc; --r-wash:#e8ccca; --r-hill:#b3bcc3; --r-platform:#d6d5c4; --r-sun:#efa47e; }
+.runner-scene :is(path,polyline,line,ellipse,circle) { stroke-linecap:round; stroke-linejoin:round; }
+.runner-scene .runner-grid { stroke:var(--r-ink); opacity:.13; stroke-width:.65; fill:none; }
+.runner-scene .runner-contour { stroke:var(--r-ink); stroke-width:1.1; opacity:.42; fill:none; }
+.runner-scene .runner-ground { fill:var(--r-platform); stroke:var(--r-ink); stroke-width:2.3; }
+.runner-scene .runner-pencil { fill:none; stroke:var(--r-ink); stroke-width:1.7; }
+.runner-scene .runner-pole { fill:none; stroke:var(--r-ink); stroke-width:2.1; }
+.runner-scene .runner-spark { stroke:#865319; stroke-width:1.4; }
+.runner-scene .runner-symbol { fill:var(--r-ink); font:italic bold 14px Georgia,serif; paint-order:stroke; stroke:var(--r-paper); stroke-width:2px; }
+.runner-scene .runner-digit { fill:var(--r-ink); font:700 13px ui-monospace,monospace; text-anchor:middle; }
+.runner-scene .runner-thought { fill:var(--r-paper); stroke:var(--r-ink); stroke-width:1.25; }
+.runner-scene .runner-appendage { fill:none; stroke:var(--r-ink); stroke-width:3.4; }
+.runner-scene .runner-distant-leg { stroke:#596c65; }
+.runner-scene .runner-shoe { stroke:var(--r-ink); stroke-width:4.5; fill:none; }
+.runner-scene [data-runner-hidden] { display:none; }
+@media (forced-colors:active) { #rails.runner-scene { forced-color-adjust:none; } }

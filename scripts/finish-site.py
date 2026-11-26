@@ -51,8 +51,9 @@ practice = {q['topic']: lecture['id'] for lecture in json.loads(deck) for q in l
 map_html = map_html.replace('<!-- practice data -->', '<script type="application/json" id="practice-data">' +
                             json.dumps({'bank':bank_url, 'topics':practice}) + '</script>')
 arcade = map_output / 'challenge.html'
-arcade_html = arcade.read_text().replace('./challenge-bank.json', bank_url)
-for name in ('math.css', 'challenge.css', 'challenge.js'):
+edition = hashlib.sha256((map_source / 'challenge-questions.json').read_bytes()).hexdigest()[:10]
+arcade_html = arcade.read_text().replace('./challenge-bank.json', bank_url).replace('DECK_VERSION', edition)
+for name in ('math.css', 'challenge.css', 'runner.css', 'scores.js', 'runner.js', 'challenge.js', 'bonk.svg'):
     version = hashlib.sha256((map_output / name).read_bytes()).hexdigest()[:12]
     arcade_html = arcade_html.replace('./' + name + '"', './' + name + '?v=' + version + '"')
 arcade.write_text(arcade_html)

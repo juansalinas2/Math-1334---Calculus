@@ -10,11 +10,11 @@ function box(x,y,width,height) {
 }
 const captionMetrics = new Map();
 function captionSize(node,compact,growth) {
-  const key=node.id+(compact?"/small/":"/large/")+growth;
+  const key=[node.id,compact,growth,mapSizes.topic].join("/");
   if (captionMetrics.has(key)) return captionMetrics.get(key);
-  const size=(node.symbol?(compact?15:20):(compact?11:13))+growth;
+  const size=((node.symbol?(compact?15:20):(compact?11:13))+growth)*mapSizes.topic;
   labelMetrics.font=(node.symbol?"bold ":"600 ")+size+"px "+(node.symbol?"Georgia":"system-ui");
-  const limit=(compact?94:133)+growth*5, lines=[];
+  const limit=((compact?94:133)+growth*5)*Math.sqrt(mapSizes.topic), lines=[];
   for(const word of node.label.split(/\s+/)) {
     const last=lines.length-1;
     if(last>=0 && labelMetrics.measureText(lines[last]+" "+word).width<=limit) lines[last]+=" "+word;
@@ -30,7 +30,7 @@ function placeLabels(view) {
   const width=viewport.clientWidth, height=viewport.clientHeight;
   if (view.k/fullMapScale() < unfoldEdge) { labelLayoutKey=""; return; }
   // Anchor placement to map coordinates so captions stay put during a pan.
-  const key=[width,height,view.k.toFixed(3),insideId||"",portrait].join("/");
+  const key=[width,height,view.k.toFixed(3),insideId||"",portrait,mapSizes.topic,mapSizes.subtopic].join("/");
   if (key===labelLayoutKey) return;
   labelLayoutKey=key;
   const compact=width<600, fit=fullMapScale();
@@ -41,7 +41,10 @@ function placeLabels(view) {
   const diskScale=Math.min(2.7,Math.max(1,.54/view.k));
   const nodes=Array.from(document.querySelectorAll("#stops .station"), element=>{
     const node=d3.select(element).datum(), [x,y]=view.apply([node.x,node.y]);
-    const radius=(node.symbol?21:17)*markScale*diskScale;
+    const radius=(node.symbol?21:17)*markScale*diskScale*mapSizes.topic;
+    const hit=Math.max(22,radius+2)/markScale;
+    d3.select(element).select(".station-mark > rect")
+      .attr("x",-hit).attr("y",-hit).attr("width",2*hit).attr("height",2*hit).attr("rx",hit);
     return {node,x,y,radius,element};
   });
   const obstacles=nodes.map(n=>box(n.x,n.y,2*n.radius+4,2*n.radius+4));

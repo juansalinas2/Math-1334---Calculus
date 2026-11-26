@@ -1,6 +1,13 @@
 /* A separate toolbar row leaves the complete graph available to the pointer. */
 .game-entry {display:inline-flex; align-items:center; min-height:44px; color:var(--link); font:600 .9rem var(--ui); text-underline-offset:3px;}
 .explore-tools .gesture-hint {margin-left:auto;}
+#map-sizes > summary { display:flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; padding:0 6px; border-radius:5px; color:var(--link); font:600 13px var(--ui); cursor:pointer; list-style:none; }
+#map-sizes > summary::-webkit-details-marker { display:none; }
+#map-sizes[open] > summary, #map-sizes > summary:hover { background:var(--surface-hover); }
+.controls:has(#map-sizes[open]) { z-index:3; }
+.map-size-menu { position:absolute; top:calc(100% + 5px); left:0; display:grid; grid-template-columns:auto 1fr; align-items:center; gap:.45rem .9rem; width:max-content; max-width:calc(100vw - 16px); background:var(--surface-raised); border:1px solid var(--strong-line); border-radius:8px; padding:.65rem .75rem; box-shadow:0 5px 14px #0002; color:var(--ink); font:600 15px var(--ui); }
+.map-size-menu select { min-height:44px; border:1px solid var(--strong-line); border-radius:4px; padding:0 .3rem; color:var(--ink); background:var(--surface); font:normal 16px var(--ui); }
+@media(max-width:510px) { .stage:has(#exit-path:not([hidden])) #map-level {position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%);} }
 #topic-list .game-entry {float:right;}
 .lecture-practice {margin:1em 0; font:normal 1rem/1.5 var(--ui);}
 .lecture-practice button {min-height:44px; padding:.4em .8em; border:1px solid var(--strong-line); border-radius:6px; background:var(--surface-muted); color:var(--link); font:600 .95rem var(--ui); cursor:pointer;}

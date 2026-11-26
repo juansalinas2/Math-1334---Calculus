@@ -14,6 +14,7 @@
     <script defer src="./vendor/d3.v7.min.js"></script>
     <script defer src="./topics.js"></script>
     <script defer src="./graph.js"></script>
+    <script defer src="./sizes.js"></script>
     <script defer src="./orbit.js"></script>
     <script defer src="./interior.js"></script>
     <script defer src="./systems.js"></script>
@@ -126,6 +127,15 @@
           <button id="fit" title="Fit whole map" aria-label="Fit whole map">
             Fit map
           </button>
+          <details id="map-sizes">
+            <summary aria-label="Node sizes">Sizes</summary>
+            <div class="map-size-menu">
+              <label for="topic-size">Concepts</label>
+              <select id="topic-size"><option value="1">Standard</option><option value="1.25">Large</option><option value="1.5">Extra large</option></select>
+              <label for="subtopic-size">Subtopics</label>
+              <select id="subtopic-size"><option value="1">Standard</option><option value="1.25">Large</option><option value="1.5">Extra large</option></select>
+            </div>
+          </details>
           <button id="exit-path" hidden title="Exit path (Esc)">Exit path</button>
         </div>
         <output id="map-level" aria-live="polite" aria-atomic="true"></output>
