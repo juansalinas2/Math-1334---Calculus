@@ -25,7 +25,7 @@
       <details><summary>Ask the notes <small>· Related rates</small></summary>
         <form><label>Question about §4.1
           <textarea rows="2" minlength="3" maxlength="450" required
-            placeholder="Why do we wait to plug in the numbers?"></textarea></label>
+            placeholder="Ask about a reading or enter the step you tried…"></textarea></label>
           <label class="ask-scope" hidden><select aria-label="Where to look"><option value="section">Use this example</option><option value="all">Search all related-rates notes</option></select></label>
           <label class="ask-code">Class code <input type="password" maxlength="120" autocomplete="off" required></label>
           <button type="submit">Ask</button>

@@ -75,3 +75,13 @@ body:has(.rr-help-popup[open]) .rr-help-box {visibility:hidden;}
  .rr-help-popup header button {min-height:2.2rem;}
 }
 @media (max-height:400px) {.rr-help-popup {max-height:72dvh;}}
+
+.rr-help-box .rr-question-form,.rr-help-popup .rr-question-form {display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.35rem .5rem;}
+.rr-question-form .rr-suggestion {grid-column:1 / -1;display:flex;align-items:center;gap:.3rem;}
+.rr-suggestion[hidden],.rr-suggestion button[hidden] {display:none;}
+.rr-question-form .rr-suggestion button {background:transparent;border:0;color:var(--reading-link,LinkText);font-size:.88em;min-height:1.8rem;}
+.rr-suggestion button:first-child {display:flex;flex:1;align-items:center;justify-content:space-between;gap:.5rem;text-align:left;padding:.2em 0;}
+.rr-suggestion kbd {font:inherit;font-size:.79em;color:var(--reading-text,CanvasText);background:transparent;border:1px solid var(--reading-border,GrayText);border-radius:.25rem;padding:0 .28em;}
+.rr-visually-hidden {position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+@media (pointer:coarse) {.rr-suggestion kbd {display:none;} .rr-question-form .rr-suggestion button {min-height:2.5rem;}}
+@media (max-height:450px) {.rr-help-popup[open] {max-height:85dvh;}}

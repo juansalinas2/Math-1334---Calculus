@@ -74,6 +74,9 @@ def browser_script():
     fields = [(key, field, text) for key, item in items.items()
               for field, text in {"answerHtml": item["help"]["explanation"], "starterHtml": item["starter"],
                                   **item.get("partHints", {}),
+                                  **{"nudge_" + k: v for k, v in item.get("partNudges", {}).items()},
+                                  **{f"reply{i}": entry["reply"]["text"] for i, entry in
+                                     enumerate([item["help"], *item.get("answers", [])]) if "reply" in entry},
                                   **{f"answer{i}": v["text"] for i, v in enumerate(item.get("answers", []))}}.items()]
     paragraphs = "\n\n".join(text for _, _, text in fields)
     result = subprocess.run(["quarto", "pandoc", "-f", "markdown+tex_math_single_backslash-raw_html",

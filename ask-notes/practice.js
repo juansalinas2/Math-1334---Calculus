@@ -246,27 +246,103 @@
     thread.append(asked, answer);
     let activeTopic = "";
     let activeStep = 0;
+    let activePart = "";
+    let pendingReply = null;
+    let hintLevel = 0;
     let minimized = false;
     const attempts = new Map();
 
-    function questionForm(labelText, placeholder, submit) {
+    function prompts(item) {
+      return [item.help, ...(item.answers || []).filter(a => a.question)];
+    }
+
+    function questionForm(labelText, placeholder, getReading, isFollowup = false) {
       const form = element("form");
+      form.className = "rr-question-form";
       const label = element("label", labelText);
       const field = element("input");
       field.type = "text";
       field.required = true;
       field.maxLength = 450;
+      field.autocomplete = "off";
       field.placeholder = placeholder;
       label.append(field);
       const send = element("button", "Ask");
       send.type = "submit";
-      form.append(label, send);
+      const row = element("div");
+      row.className = "rr-suggestion";
+      const fill = element("button");
+      fill.type = "button";
+      const sample = element("span");
+      const keycap = element("kbd", "Tab");
+      fill.append(sample, keycap);
+      const other = element("button", "↻");
+      other.type = "button";
+      other.setAttribute("aria-label", "Show another suggested question");
+      other.title = "Show another suggested question";
+      row.append(fill, other);
+      const instructions = element("span", "Tab fills the suggested question. Enter asks your question. Escape dismisses the suggestion.");
+      instructions.className = "rr-visually-hidden";
+      instructions.id = isFollowup ? "rr-follow-keys" : "rr-question-keys";
+      field.setAttribute("aria-describedby", instructions.id);
+      sample.id = instructions.id + "-sample";
+      form.append(label, send, row, instructions);
+
+      let options = [], index = 0, reading = "", dismissed = false, filledReading = "";
+      function update() {
+        const raw = normalized(field.value);
+        const ref = numbered(raw);
+        reading = ref?.candidates.length === 1 ? ref.candidates[0] : getReading();
+        const term = ref ? raw.replace(ref.match[0], "").trim() : raw;
+        options = prompts(checks[reading]).map(a => a.question).filter(q => {
+          if (ref && ref.candidates.length !== 1) return false;
+          if (isFollowup && normalized(asked.textContent) === normalized(q)) return false;
+          const text = normalized(q);
+          if (!term) return true;
+          if (text === term) return false;
+          if (text.startsWith(term)) return true;
+          return /^[a-z]{3,}$/.test(term) && text.split(/[^a-z]+/).some(word => word.startsWith(term));
+        });
+        if (index >= options.length) index = 0;
+        row.hidden = dismissed || !options.length;
+        if (!row.hidden) {
+          sample.textContent = options[index];
+          other.hidden = options.length < 2;
+        }
+        field.setAttribute("aria-describedby", row.hidden ? instructions.id : instructions.id + " " + sample.id);
+      }
+      function accept() {
+        field.value = options[index];
+        filledReading = reading;
+        dismissed = true;
+        update();
+        field.focus({preventScroll:true});
+      }
+      field.addEventListener("input", () => {
+        dismissed = false; filledReading = ""; index = 0; update();
+      });
+      field.addEventListener("focus", update);
+      field.addEventListener("keydown", e => {
+        if (e.isComposing || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || row.hidden) return;
+        if (e.key === "Escape") {
+          e.preventDefault(); e.stopPropagation(); dismissed = true; update();
+        } else if (e.key === "Tab" && field.selectionStart === field.value.length && field.selectionEnd === field.value.length) {
+          e.preventDefault(); accept();
+        }
+      });
+      fill.addEventListener("click", accept);
+      other.addEventListener("click", () => {
+        index = (index + 1) % options.length; update(); field.focus({preventScroll:true});
+      });
       form.addEventListener("submit", event => {
         event.preventDefault();
-        if (!field.value.trim()) { field.focus(); return; }
-        submit(field.value.trim());
+        const value = field.value.trim();
+        if (value) show(value, filledReading || getReading());
+        else field.focus();
       });
-      return {form, field};
+      return {form, field, update, reset() {
+        field.value = ""; dismissed = false; filledReading = ""; index = 0; update();
+      }};
     }
 
     function currentReading() {
@@ -286,10 +362,11 @@
     function chooseReading(q, context) {
       if (["cone", "shadow"].includes(context) && /triangles?/.test(q) &&
           !/scaling factor|area|base and height|shadow|tank|cone|conical/.test(q)) return context;
+      if (prompts(checks[context]).some(a => normalized(a.question) === q)) return context;
       const named = ["cone", "shadow", "similar-triangles", ...topics.keys()].find(k => names[k]?.test(q));
       if (named) return named;
       if (context !== "the-three-steps") return context;
-      return [...topics.keys()].find(k => normalized(checks[k].help.question) === q) || context;
+      return [...topics.keys()].find(k => prompts(checks[k]).some(a => normalized(a.question) === q)) || context;
     }
 
     function cite(topic, target) {
@@ -351,6 +428,8 @@
     function show(question, context) {
       const q = normalized(question);
       const ref = numbered(q);
+      const lastReply = pendingReply;
+      pendingReply = null;
       asked.textContent = question;
       answer.replaceChildren();
       if (ref && ref.candidates.length !== 1) {
@@ -362,7 +441,7 @@
           action(name, () => show(q.replace(ref.match[0], name.split(".")[0] + (ref.part || "")), k));
         }
         activeTopic = "";
-        activeStep = 0;
+        activeStep = 0; activePart = ""; hintLevel = 0;
         present();
         return;
       }
@@ -373,27 +452,58 @@
       const previous = key === activeTopic ? activeStep : 0;
       const remainder = ref ? q.replace(ref.match[0], "").trim() : q;
       const partMatch = partPattern.exec(remainder);
-      const part = partMatch?.slice(1).find(Boolean) || ref?.part || "";
+      const another = /^(?:(?:can|could) i (?:get|have) |give me )?(?:another|one more|next|second) hint(?: please)?$/.test(q);
+      const part = partMatch?.slice(1).find(Boolean) || ref?.part || (another && key === activeTopic ? activePart : "");
+      const continuingHint = another && key === activeTopic && hintLevel > 0;
+      const lastHintLevel = continuingHint ? hintLevel : 0;
+      activePart = part;
+      hintLevel = 0;
       activeTopic = key;
       activeStep = 0;
       let supported = true;
       let step = 0;
       const next = /^(?:(?:ok(?:ay)?[, ]*|and )?(?:what(?:'s| is)? )?(?:comes? )?next(?: step)?|then what|go on|continue)$/.test(q);
       const hints = item.partHints || {};
-      const authoredIndex = (item.answers || []).findIndex(a => new RegExp(a.match, "i").test(q));
+      const entries = item.answers || [];
+      const exact = prompts(item).find(a => normalized(a.question) === q);
+      const authoredIndex = exact ? entries.indexOf(exact) :
+        entries.findIndex(a => (!part || !a.parts || a.parts.includes(part)) && new RegExp(a.match, "i").test(q));
+      // Short replies answer the last teaching question only within the same reading.
+      const replying = lastReply && lastReply.key === key && !ref && !part && !exact &&
+        q.split(/\s+/).length <= 9 && !/^(?:what|why|how|where|which|when)\b/.test(q) &&
+        new RegExp(lastReply.rule.match, "i").test(q);
       const detail = /\b(?:why|what (?:is|does)|how fast|how much|units?|differentiat\w*|equation)\b/.test(q);
-      const starter = /\bhint\b/.test(q) || (startPattern.test(q) && !detail) ||
+      const starter = /\bhint\b/.test(q) || (startPattern.test(q) && !detail && authoredIndex < 0 && !exact) ||
         (ref && !remainder.replace(/[.,;:!?]/g, "") && !part);
       if (part && !hints[part]) {
         supported = false;
         answer.append(element("p", topic.title + " has no part (" + part + "). " +
           (Object.keys(hints).length ? "Choose " + Object.keys(hints).map(p => "(" + p + ")").join(" or ") + "." : "Ask about its setup or rate equation.")));
       } else if (starter) {
-        authored(part ? item[part] : item.starterHtml);
+        hintLevel = lastHintLevel + 1;
+        if (hintLevel > 2) {
+          answer.append(element("p", "Try the step from the last hint, then enter your equation or open the worked step below."));
+        } else if (continuingHint && part && item["nudge_" + part]) {
+          authored(item["nudge_" + part]);
+        } else if (continuingHint) {
+          answer.append(element("p", item.hint));
+        } else authored(part ? item[part] : item.starterHtml);
         step = topic.steps.length ? 1 : 0;
         if (part) step = topic.parts.get(part)?.step || step;
+        if (continuingHint && !part && topic.steps.length) step = 2;
       } else if (definition) {
         excerpt(topics.get("the-three-steps").node.querySelectorAll(":scope > p")[1]);
+      } else if (replying) {
+        authored(item["reply" + lastReply.index]);
+        step = lastReply.rule.step;
+      } else if (authoredIndex >= 0) {
+        if (entries[authoredIndex].reply) pendingReply = {key, index:authoredIndex + 1, rule:entries[authoredIndex].reply};
+        authored(item["answer" + authoredIndex]);
+        step = entries[authoredIndex].step;
+      } else if (exact === item.help || (!part && new RegExp(item.help.match, "i").test(q))) {
+        if (item.help.reply) pendingReply = {key, index:0, rule:item.help.reply};
+        authored(item.answerHtml);
+        step = item.help.step;
       } else if (part && topic.parts.has(part)) {
         const hit = topic.parts.get(part);
         step = hit.step;
@@ -401,12 +511,6 @@
       } else if (next || /\bstep\s*[123]\b/.test(q)) {
         step = next ? Math.min(previous + 1, 3) : Number(q.match(/\bstep\s*([123])\b/)[1]);
         showStep(topic, step);
-      } else if (authoredIndex >= 0) {
-        authored(item["answer" + authoredIndex]);
-        step = item.answers[authoredIndex].step;
-      } else if (new RegExp(item.help.match, "i").test(q)) {
-        authored(item.answerHtml);
-        step = item.help.step;
       } else {
         const setup = /what (?:is|does).*d[a-z]\s*\/\s*dt|set.?up|givens?|given rate|sketch|draw|label|what.*(?:finding|find|asked)|what.*(?:stand for|represent)|what does.*mean/;
         const relation = /differentiat|chain rule|product rule|equation|relate the rates|relation|formula/;
@@ -418,8 +522,8 @@
           showStep(topic, step);
         } else {
           supported = false;
-          answer.append(element("p", "I couldn’t match that to a worked step. Try naming the example or asking about its equation."));
-          action(item.help.question, () => show(item.help.question, key));
+          answer.append(element("p", "I couldn’t place that step in “" + topic.title + ".” Which of these questions is closer?"));
+          for (const a of prompts(item)) action(a.question, () => show(a.question, key));
         }
       }
       if (supported) {
@@ -457,7 +561,7 @@
     }
 
     function present() {
-      follow.field.value = "";
+      follow.reset();
       if (!popup.open) popup.show();
       thread.scrollTop = 0;
       title.focus({preventScroll:true});
@@ -466,8 +570,14 @@
       }
     }
 
-    const first = questionForm("Your question", "Why can’t I plug in 6 first?", q => show(q, currentReading()));
-    const follow = questionForm("Ask a follow-up", "What is still unclear?", q => show(q, activeTopic || currentReading()));
+    const first = questionForm("Your question", "Ask about this reading…", currentReading);
+    const follow = questionForm("Ask a follow-up", "Enter a question or a line of work…", () => activeTopic || currentReading(), true);
+    let pendingScroll = false;
+    window.addEventListener("scroll", () => {
+      if (pendingScroll || !box.open || popup.open) return;
+      pendingScroll = true;
+      requestAnimationFrame(() => { pendingScroll = false; first.update(); });
+    }, {passive:true});
     box.append(trigger, first.form);
     popup.append(bar, thread, follow.form);
     document.body.append(box, popup);
