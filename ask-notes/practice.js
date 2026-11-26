@@ -15,15 +15,31 @@
     return el;
   }
 
+  function rememberOption() {
+    const label = element("label");
+    label.className = "rr-remember";
+    const input = element("input");
+    input.type = "checkbox";
+    input.checked = true;
+    label.append(input, "Remember on this browser for 90 days");
+    return {label, input};
+  }
+
   function shareForm(panel, section, check, choice) {
     const details = element("details");
     const form = element("form");
     const fields = element("label", "Class code ");
     const code = element("input");
     code.type = "password";
-    code.required = true;
     code.maxLength = 120;
     fields.append(code);
+    const remember = rememberOption();
+    const access = window.courseTutor.access;
+    function refreshCodeFields() {
+      const known = Boolean(access.get());
+      fields.hidden = remember.label.hidden = known;
+      code.required = !known;
+    }
     const comment = element("label", "Your reasoning (optional) ");
     const note = element("textarea");
     note.maxLength = 600;
@@ -36,25 +52,39 @@
     status.setAttribute("role", "status");
     const receipt = crypto.randomUUID();
     details.append(element("summary", "Share this attempt with Juan (optional)"), form);
-    form.append(consent, fields, comment, send, status);
+    form.append(consent, fields, remember.label, comment, send, status);
     panel.append(details);
     details.addEventListener("toggle", () => {
-      if (details.open && !code.value) code.value = "";
+      if (details.open) refreshCodeFields();
+      else code.value = "";
     });
     form.addEventListener("submit", async event => {
       event.preventDefault();
       if (send.disabled) return;
+      const known = access.get();
+      const supplied = known || code.value.trim();
+      if (!supplied) {
+        refreshCodeFields();
+        code.focus();
+        return;
+      }
       send.disabled = true;
       status.textContent = "Sharing…";
       try {
         const response = await fetch(new URL("feedback", new URL(endpoint, location.href)), {
           method: "POST", credentials: "omit", signal: AbortSignal.timeout(12000),
-          headers: {"Content-Type": "application/json", "X-Class-Code": code.value},
+          headers: {"Content-Type": "application/json", "X-Class-Code": supplied},
           body: JSON.stringify({kind: "practice", share: true, section, version: check.version,
             choice, note: note.value, attempt: receipt})
         });
         const result = await response.json();
+        if (response.status === 403) {
+          access.forget(supplied);
+          code.value = "";
+          refreshCodeFields();
+        }
         if (!response.ok || !result.saved) throw new Error(result.error || "Could not share. Try again.");
+        if (!known && form.isConnected) access.accept(supplied, remember.input.checked);
         form.replaceChildren(element("p", "Your first choice was shared with Juan."));
       } catch (error) {
         status.textContent = error.message;
@@ -246,7 +276,12 @@
     hide.setAttribute("aria-label", "Minimize");
     hide.type = "button";
     hide.addEventListener("click", hidePanel);
-    bar.append(title, readingLabel, move, hide);
+    const fresh = element("button", "New question");
+    fresh.type = "button";
+    fresh.className = "rr-new-question";
+    fresh.hidden = true;
+    fresh.addEventListener("click", newQuestion);
+    bar.append(title, readingLabel, fresh, move, hide);
     movablePanel(popup, bar, move);
     const asked = element("p");
     asked.className = "rr-asked";
@@ -265,8 +300,21 @@
 
     const chat = endpoint && window.courseTutor;
     const history = [];
-    let classCode = "";
-    let pending = false;
+    let pending = null;
+
+    function newQuestion() {
+      pending = null;
+      history.length = 0;
+      attempts.clear();
+      activeTopic = ""; activePart = ""; activeStep = 0;
+      pendingReply = null; hintLevel = 0;
+      asked.textContent = "";
+      answer.replaceChildren();
+      thread.hidden = true;
+      composer.setBusy(false);
+      composer.reset();
+      composer.field.focus({preventScroll:true});
+    }
 
     function remember(question, text, section) {
       if (!topics.has(section) || !text) return;
@@ -294,15 +342,18 @@
       if (macros.every(m => safe.test(m))) window.MathJax?.typesetPromise?.([body]).catch(() => {});
     }
 
-    async function askTutor(question, section) {
+    async function askTutor(question, section, code, rememberOnSuccess) {
       if (pending) return;
-      pending = true;
+      const request = {};
+      pending = request;
       composer.setBusy(true);
       asked.textContent = question;
       answer.replaceChildren(element("p", "Reading your question…"));
       present();
       try {
-        const data = await chat.ask(question, section, history, classCode);
+        const data = await chat.ask(question, section, history, code);
+        if (pending !== request) return;
+        if (rememberOnSuccess !== undefined) chat.access.accept(code, rememberOnSuccess);
         answer.replaceChildren();
         const body = replyText(data.answer);
         if (data.reviewed) answer.append(element("small", "From the worked notes"));
@@ -329,21 +380,24 @@
           answer.append(earlier);
         }
         if (data.sources?.length) remember(question, data.answer, activeTopic);
-        chat.offerFeedback(answer, data, classCode);
+        chat.offerFeedback(answer, data);
         typesetReply(body, data.answer);
       } catch (error) {
+        if (pending !== request) return;
         activeTopic = section;
         answer.replaceChildren(element("p", error.status ? error.message : "Couldn’t get a reply. Try again or choose Worked hint."));
         if (error.status === 403) {
-          classCode = "";
+          chat.access.forget(code);
           composer.requestCode(question, section);
         } else {
           composer.field.value = question;
         }
       } finally {
-        pending = false;
-        composer.setBusy(false);
-        composer.update();
+        if (pending === request) {
+          pending = null;
+          composer.setBusy(false);
+          composer.update();
+        }
       }
     }
 
@@ -383,6 +437,8 @@
       field.setAttribute("aria-describedby", instructions.id);
       sample.id = instructions.id + "-sample";
       form.append(label, send, row, instructions);
+      const remember = rememberOption();
+      remember.label.hidden = true;
       const tools = element("div");
       tools.className = "rr-tools";
       const hint = element("button", "Worked hint");
@@ -396,19 +452,29 @@
       about.type = "button";
       about.setAttribute("aria-expanded", "false");
       about.setAttribute("aria-controls", "rr-about");
-      const notice = element("p", "Replies are generated from the course notes. Asking sends your question and up to three recent exchanges to AWS. You choose which replies to share with Juan. Worked hints stay in your browser.");
+      const notice = element("div");
       notice.id = "rr-about";
       notice.hidden = true;
+      const forget = element("button", "Forget class code");
+      forget.type = "button";
+      notice.append(element("p", "Ask sends your question and up to three recent exchanges to AWS. New question clears that conversation. Worked hints stay in your browser. You choose which replies to share with Juan."), forget);
       const savedQuestion = element("p");
       savedQuestion.className = "rr-pending-question";
       savedQuestion.hidden = true;
       if (chat) {
         tools.append(hint, edit, about);
         form.prepend(savedQuestion);
-        form.append(tools, notice);
+        form.append(remember.label, tools, notice);
         about.addEventListener("click", () => {
           notice.hidden = !notice.hidden;
+          forget.hidden = !chat.access.get();
           about.setAttribute("aria-expanded", String(!notice.hidden));
+        });
+        forget.addEventListener("click", () => {
+          chat.access.forget();
+          notice.hidden = true;
+          about.setAttribute("aria-expanded", "false");
+          newQuestion();
         });
         hint.addEventListener("click", () => {
           const question = queued?.question || field.value.trim() || "First step";
@@ -432,6 +498,8 @@
         field.maxLength = 120;
         field.placeholder = "Enter your class code";
         caption.textContent = "Class code";
+        remember.label.hidden = false;
+        fresh.hidden = false;
         savedQuestion.textContent = question;
         savedQuestion.hidden = asked.textContent === question && !thread.hidden;
         edit.hidden = false;
@@ -446,11 +514,15 @@
         field.maxLength = 450;
         field.placeholder = "Ask a question…";
         savedQuestion.hidden = true;
+        savedQuestion.textContent = "";
+        remember.label.hidden = true;
         edit.hidden = true;
         dismissed = false; filledReading = "";
         update();
       }
       function update() {
+        fresh.hidden = !queued && thread.hidden;
+        if (chat && !notice.hidden) forget.hidden = !chat.access.get();
         if (queued) return;
         caption.textContent = asked.textContent ? "Ask a follow-up" : "Your question";
         field.placeholder = asked.textContent ? "Ask a follow-up…" : "Ask a question…";
@@ -500,13 +572,13 @@
         if (!value) { field.focus(); return; }
         if (queued) {
           const {question, section} = queued;
-          classCode = value;
-          askTutor(question, section);
+          askTutor(question, section, value, remember.input.checked);
           return;
         }
         const section = filledReading || getReading();
+        const code = chat?.access?.get();
         if (!chat) show(value, section);
-        else if (classCode) askTutor(value, section);
+        else if (code) askTutor(value, section, code);
         else requestCode(value, section);
       });
       return {form, field, update, reset, requestCode, setBusy(busy) {

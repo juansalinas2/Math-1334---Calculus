@@ -1,6 +1,6 @@
 # Ask the Notes · MATH 1334
 
-In §4.1, open **Ask**, type a question or use Tab to fill the suggestion, then press Enter. On first use, enter the class code in the same field. The answer links back to the worked example. **Worked hint** runs locally without a code. Drag the header or use the Move panel control. Minimizing keeps the conversation. **About Ask** explains what goes to AWS and what students can share with Juan.
+In §4.1, open **Ask**, type a question or use Tab to fill the suggestion, then press Enter. Enter the class code on first use. On a shared computer, uncheck **Remember on this browser for 90 days**. The answer links back to the worked example. Continue in the follow-up field or select **New question** for a fresh conversation about the example on screen. **Worked hint** runs locally without a code. Drag the header to move the panel or minimize it to keep your place.
 
 ## Build
 
@@ -16,7 +16,7 @@ The public API address is in `pilot-endpoint.txt`. The Pages build reads it only
 
 API Gateway accepts the request. Lambda checks the class code, resolves the reading and loads its exported passage and, where available, a short instructor teaching note from checks.json. Common boat-versus-rope and rectangle-width questions use reviewed explanations after live tests caught errors in distance comparisons and units. Other conversational questions use Bedrock. DynamoDB conditionally reserves the maximum estimated inference cost across concurrent calls in the UTC month. The system prices up each input token at $0.40 per million and output at $3.00 per million. For the reservation it allows one input token per UTF-8 byte plus 1,024 framing tokens and a maximum of 350 output tokens. After a completed call it releases unused funds using the returned token counts. Uncertain calls retain their reservations. The $2 model allowance is separate from the $5 AWS Budget and the costs of API Gateway, Lambda, logs and storage. Review the model rates before changing regions or models.
 
-The class code and recent conversation live in tab memory. The backend keeps an opaque feedback receipt for two hours. Clicking **Share with instructor** saves that exchange, its sources and the student's response for 90 days. Run `python3 review.py` privately to read shared responses.
+After a successful request, the browser can keep the shared class code and an expiry timestamp in local storage for 90 days. With remembering off or storage blocked, access lasts for the open page. **About Ask → Forget class code** removes access from this browser. Each request still checks the code on the server. A rejected code prompts for a replacement. This convenience uses no student ID or IP lookup. Questions and replies stay out of local storage. **New question** clears the thread and hint progress while retaining class access. The backend keeps a feedback receipt for two hours. Sharing an exchange with Juan saves it for 90 days. Run `python3 review.py` privately to see shared responses.
 
 ## Test a real discussion
 
