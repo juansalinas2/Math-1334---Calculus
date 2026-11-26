@@ -8,6 +8,8 @@
   const walkVerb = new RegExp(routing.walkVerb, "i");
   const script = document.currentScript;
   const endpoint = script.dataset.endpoint;
+  const page = script.dataset.page || "lectures/related-rates.html";
+  const relatedRates = page === "lectures/related-rates.html";
 
   function element(tag, text) {
     const el = document.createElement(tag);
@@ -225,7 +227,7 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     const topics = new Map();
-    for (const key of Object.keys(checks)) {
+    for (const key of relatedRates ? Object.keys(checks) : []) {
       const node = document.getElementById(key);
       if (!node) continue;
       const heading = node.querySelector("h2, h3");
@@ -246,7 +248,21 @@
       });
       topics.set(key, {node, title, steps, paragraphs, parts, numbered:/^(example|practice)\s+(\d+)/i.exec(title)});
     }
-    if (!topics.has("the-three-steps")) return;
+    const firstTopic = relatedRates ? "the-three-steps" : page;
+    if (!relatedRates) {
+      const main = document.querySelector("main");
+      if (!main) return;
+      for (const node of [main, ...main.querySelectorAll("section[id]")]) {
+        const heading = node === main ? node.querySelector("h1") : node.querySelector(":scope > :is(h2,h3,h4,h5,h6)");
+        if (!heading) continue;
+        const name = heading.cloneNode(true);
+        name.querySelectorAll("a.anchorjs-link, a.anchor-section, .anchorjs-link").forEach(a => a.remove());
+        const title = name.textContent.trim();
+        const key = node === main ? page : page + "#" + node.id;
+        topics.set(key, {node, title, numbered:/^(example|practice|problem)\s+(\d+)/i.exec(title)});
+      }
+    }
+    if (!topics.has(firstTopic)) return;
 
     const trigger = element("button", "Ask");
     trigger.type = "button";
@@ -317,7 +333,8 @@
     }
 
     function remember(question, text, section) {
-      if (!topics.has(section) || !text) return;
+      if (!section || !text) return;
+      if (relatedRates && topics.has(section)) section = page + "#" + section;
       history.push({question:question.slice(0,450), answer:text.slice(0,1600), section});
       if (history.length > 3) history.shift();
     }
@@ -351,20 +368,34 @@
       answer.replaceChildren(element("p", "Reading your question…"));
       present();
       try {
-        const data = await chat.ask(question, section, history, code);
+        const data = await chat.ask(question, section, history, code, page);
         if (pending !== request) return;
         if (rememberOnSuccess !== undefined) chat.access.accept(code, rememberOnSuccess);
         answer.replaceChildren();
         const body = replyText(data.answer);
         if (data.reviewed) answer.append(element("small", "From the worked notes"));
         answer.append(body);
-        activeTopic = topics.has(data.section) ? data.section : section;
+        const sourceKey = relatedRates && data.section?.startsWith(page + "#")
+          ? data.section.slice(page.length + 1) : data.section;
+        activeTopic = topics.has(sourceKey) ? sourceKey : section;
         activeStep = 0; pendingReply = null; hintLevel = 0; activePart = "";
         for (const source of data.sources || []) {
-          const key = source.href.split("#")[1];
-          if (topics.has(key)) cite(topics.get(key), topics.get(key).node);
+          const [path, anchor] = source.href.split("#");
+          const topic = topics.get(relatedRates ? anchor : source.href);
+          if (path === page && topic && topic.node.id) cite(topic, topic.node, source.title);
+          else if (/^(?:(?:lectures|supplements)\/[\w.-]+|index|lecture-pdfs)\.html$/.test(path)) {
+            const link = element("a", source.title);
+            link.className = "rr-source";
+            link.href = new URL(source.href, new URL(script.dataset.root || "../", location.href)).href;
+            if (path !== page) {
+              link.target = "_blank";
+              link.rel = "noopener";
+              link.setAttribute("aria-label", source.title + " (opens in a new tab)");
+            }
+            answer.append(link);
+          }
         }
-        const prior = history.filter(turn => turn.section === activeTopic);
+        const prior = history.slice();
         if (prior.length) {
           const earlier = element("details");
           earlier.className = "rr-history";
@@ -379,13 +410,13 @@
           }, {once:true});
           answer.append(earlier);
         }
-        if (data.sources?.length) remember(question, data.answer, activeTopic);
+        if (data.sources?.length) remember(question, data.answer, data.section);
         chat.offerFeedback(answer, data);
         typesetReply(body, data.answer);
       } catch (error) {
         if (pending !== request) return;
         activeTopic = section;
-        answer.replaceChildren(element("p", error.status ? error.message : "Couldn’t get a reply. Try again or choose Worked hint."));
+        answer.replaceChildren(element("p", error.status ? error.message : "Couldn’t get a reply. Try again or open the notes below."));
         if (error.status === 403) {
           chat.access.forget(code);
           composer.requestCode(question, section);
@@ -441,7 +472,7 @@
       remember.label.hidden = true;
       const tools = element("div");
       tools.className = "rr-tools";
-      const hint = element("button", "Worked hint");
+      const hint = element("button", relatedRates ? "Worked hint" : "Read this passage");
       hint.type = "button";
       hint.className = "rr-free-hint";
       const edit = element("button", "Edit question");
@@ -478,7 +509,9 @@
         });
         hint.addEventListener("click", () => {
           const question = queued?.question || field.value.trim() || "First step";
-          show(question, queued?.section || filledReading || getReading(), true);
+          const section = queued?.section || filledReading || getReading();
+          if (relatedRates) show(question, section, true);
+          else readPassage(section);
         });
         edit.addEventListener("click", () => {
           const draft = queued;
@@ -532,7 +565,12 @@
         const term = ref ? raw.replace(ref.match[0], "").trim() : raw;
         const topic = topics.get(reading);
         readingLabel.textContent = topic.numbered?.[0] || topic.title;
-        suggestion = prompts(checks[reading]).map(a => a.question).find(q => {
+        readingLabel.title = topic.title;
+        const samples = relatedRates ? prompts(checks[reading]).map(a => a.question) :
+          (topic.numbered || /example|practice|problem|sketch/i.test(topic.title)
+            ? ["What is the first step in this problem?", "Which rule applies here, and why?"]
+            : ["Can you explain this idea with an example?", "What assumptions do I need here?"]);
+        suggestion = samples.find(q => {
           if (ref && ref.candidates.length !== 1) return false;
           if (normalized(asked.textContent) === normalized(q)) return false;
           const text = normalized(q);
@@ -577,7 +615,10 @@
         }
         const section = filledReading || getReading();
         const code = chat?.access?.get();
-        if (!chat) show(value, section);
+        if (!chat) {
+          if (relatedRates) show(value, section);
+          else readPassage(section);
+        }
         else if (code) askTutor(value, section, code);
         else requestCode(value, section);
       });
@@ -589,7 +630,7 @@
 
     function currentReading() {
       const line = Math.min(170, innerHeight / 3);
-      let current = "the-three-steps";
+      let current = firstTopic;
       for (const [key, topic] of topics) {
         const r = topic.node.getBoundingClientRect();
         if (r.top <= line && r.bottom >= line) current = key;
@@ -617,8 +658,8 @@
       return [...topics.keys()].find(k => prompts(checks[k]).some(a => normalized(a.question) === q)) || context;
     }
 
-    function cite(topic, target) {
-      const link = element("a", topic.title + (target === topic.node ? "" : " · " + target.textContent.trim()));
+    function cite(topic, target, title) {
+      const link = element("a", title || topic.title + (target === topic.node ? "" : " · " + target.textContent.trim()));
       link.className = "rr-source";
       link.href = "#" + target.id;
       link.addEventListener("click", event => {
@@ -644,6 +685,17 @@
       const copy = node.cloneNode(true);
       for (const el of [copy, ...copy.querySelectorAll("[id]")]) el.removeAttribute("id");
       answer.append(copy);
+    }
+
+    function readPassage(section) {
+      const topic = topics.get(section);
+      activeTopic = section;
+      asked.textContent = topic.title;
+      answer.replaceChildren(element("small", "From the open notes"));
+      const paragraph = [...topic.node.querySelectorAll("p")].find(p => p.textContent.trim().length > 55);
+      if (paragraph) excerpt(paragraph);
+      cite(topic, topic.node);
+      present();
     }
 
     function numbered(q) {

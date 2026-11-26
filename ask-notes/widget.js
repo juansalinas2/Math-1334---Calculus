@@ -32,18 +32,18 @@
       }
     }
   };
-  async function ask(question, section, history, code) {
+  async function ask(question, section, history, code, page) {
     const response = await fetch(endpoint, {
       method: "POST", credentials: "omit", signal: AbortSignal.timeout(29000),
       headers: {"Content-Type": "application/json", "X-Class-Code": code},
-      body: JSON.stringify({mode: "conversation", question, section, history})
+      body: JSON.stringify({mode: "course", question, section, history, page})
     });
     const data = await response.json();
     if (!response.ok) {
       let message = data.error || "Couldn’t get a reply. Try again or choose Worked hint.";
       if (response.status === 429) {
         message = /allowance/i.test(message)
-          ? "The class has used this month’s question allowance. Worked hints are still available."
+          ? "The class has used this month’s question allowance. You can still read the relevant passage below."
           : "Several questions arrived at once. Try again in a moment.";
       }
       const error = new Error(message);

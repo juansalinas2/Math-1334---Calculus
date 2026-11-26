@@ -20,7 +20,7 @@
 \newcommand{\stage}[1]{\fbox{\strut\hspace{4pt}#1\hspace{4pt}}}
 \begin{document}
 \pagehead{Ask the Notes}{1. What a student sees}
-On the \href{https://juansalinas2.github.io/Math-1334---Calculus/lectures/related-rates.html\#ladder}{related-rates lecture}, open \textbf{Ask}. Type a question or press \textbf{Tab} for a suggestion, then press Enter. Enter the class code on first use. On a shared computer, uncheck \emph{Remember on this browser}. Read the answer and follow its source. Type a follow-up to continue, or select \textbf{New question} to start fresh at the example on screen. The minus button keeps your place. \textbf{Worked hint} gives a written step without a code.
+On any \href{https://juansalinas2.github.io/Math-1334---Calculus/}{course notes page}, open \textbf{Ask}. Type a question or press \textbf{Tab} for a suggestion, then press Enter. Enter the class code on first use. On a shared computer, uncheck \emph{Remember on this browser}. Read the answer and follow its source. Type a follow-up to continue, or select \textbf{New question} to start fresh at the example on screen. The minus button keeps your place. Open the linked reading for free. Related rates also offers worked hints.
 \subhead{A student checks Example 6}
 \emph{I wrote $r/h=6/2$. Is my proportion right?} A student can test the equation against the full tank, whose radius is 2 m and whose height is 6 m:
 \[
@@ -34,15 +34,15 @@ The written hint asks what radius the repaired ratio predicts at a depth of 3 m.
 \begin{tabular}{c@{\hspace{.42in}}c}
 \multicolumn{2}{c}{\stage{Question and open example}}\\
 $\swarrow$&$\searrow$\\
-Ask with class code&Worked hint\\
+Ask with class code&Open the reading\\
 $\searrow$&$\swarrow$\\
 \multicolumn{2}{c}{\stage{Explanation in the lecture popup}}\\
 \end{tabular}
 \end{center}
-Try \emph{I added the length and width rates. What does my 2 mean?} in Example 4. Then ask \emph{Why multiply by 5?} The tutor receives up to three recent exchanges about that reading. The written hints and their Next step button run in the browser.
+Try \emph{I added the length and width rates. What does my 2 mean?} in Example 4. Then ask \emph{Why multiply by 5?} The tutor receives up to three recent exchanges about that reading. From the chain-rule lecture, ask when to use the squeeze theorem and follow the link to its statement.
 \newpage
 \pagehead{Build and repair}{2. From the lecture to the popup}
-\textbf{1. Edit the content.} In the course checkout, open \code{ask-notes/checks.json}. Find the reading's identifier, such as \code{ladder}. Its \code{help} entry and each \code{answers} entry with a \code{question} provide suggestions. Each pairs a prompt with an explanation, a wording pattern, and a source step. An optional \code{reply} handles a short response to the preceding teaching question. Step 0 links to the whole reading.
+\textbf{1. Edit the content.} Update the lecture in its Quarto source. Keep heading identifiers stable so saved links still work. To edit a related-rates hint, find the reading in \code{ask-notes/checks.json}. Its \code{help} and \code{answers} entries pair common questions with instructor-written explanations.
  
 \textbf{2. Build.} From the folder containing \code{_quarto.yml}, run the commands below. Use Quarto and Python 3.11 or newer. Install Beautiful Soup 4 to build the offline preview.
 \begin{small}\begin{verbatim}
@@ -50,7 +50,7 @@ quarto render
 python3 -m unittest discover -s ask-notes -p 'test_*.py'
 python3 ask-notes/preview.py
 \end{verbatim}\end{small}
-The render turns authored LaTeX into MathML. The build attaches the help box to the related-rates page. Open \code{ask-notes/build/try-the-pilot.html} to test the lecture locally.
+Rendering builds the online book, its search index and the Ask panel. Publish the book, then rerun the CloudShell deploy command with \code{--published-notes} from the repository checkout to refresh the shared index.
  
 \textbf{3. Verify and publish.} In Example 6, use Tab to fill the suggested question. Press Enter and try \emph{It becomes 9}. Ask for a hint on part (c), then for another hint. Follow the cited step. Test the same exchange at phone width. Publish through the course's existing GitHub Pages workflow.
 \subhead{When something goes wrong}
@@ -64,17 +64,17 @@ The browser can remember the shared code for 90 days. Select \textbf{About Ask} 
 
 \newpage
 \pagehead{The conversational tutor}{3. Operations and interview notes}
-The build packages 13 readings from the public related-rates lecture. Each heading has a stable identifier. A request for Example 6 selects the conical tank even when the student is viewing the ladder. A short reply uses the current reading and the recent conversation.
+One retrieval index covers the public book. Each entry stores lecture text, LaTeX and a heading link. A numbered example resolves in the open lecture. For a topic question, Lambda ranks entries across lectures using word rarity and heading matches, then sends up to two passages and recent turns to Bedrock.
 \begin{center}
 \renewcommand{\arraystretch}{1.15}
 \begin{tabular}{c@{\hspace{.4in}}c}
-\multicolumn{2}{c}{\stage{Class code and example checked}}\\
+\multicolumn{2}{c}{\stage{Class code checked; passages retrieved}}\\
 \multicolumn{2}{c}{$\downarrow$}\\
 \multicolumn{2}{c}{\stage{DynamoDB reserves the call's cost}}\\
 $\swarrow$&$\searrow$\\
 Allowance available&Allowance exhausted\\
 $\downarrow$&$\downarrow$\\
-Bedrock + source link&Free worked hints\\
+Bedrock + source link&Read the open notes\\
 \end{tabular}
 \end{center}
 \textbf{The spending rule.} Lambda reserves a conservative upper estimate before inference, allowing for the entire input, message overhead and at most 350 output tokens. The conditional write serializes competing reservations in each UTC month. After success it releases excess using the model's token counts. An uncertain call retains its reservation.
@@ -85,6 +85,6 @@ In Oregon CloudShell, extract the instructor ZIP. From its top-level folder run
 python3 deploy.py --prepared --metered --verify-feedback \
   --class-code-file ~/.math1334-class-code
 \end{verbatim}\end{small}
-A 403 means the class code failed. A 429 means the allowance or API rate limit was reached. For a 503, check the Lambda log and Bedrock access to the US Nova 2 Lite inference profile. The model receives one passage directly. A repeated boat-distance error has a reviewed explanation labeled \emph{From the worked notes}.
+A 403 means the class code failed. A 429 means the allowance or API rate limit was reached. For a 503, check the Lambda log and Bedrock access to the US Nova 2 Lite inference profile. For a stale citation, refresh the index after publishing the lecture.
 \par\textbf{Interview example.} Describe the rectangle student's $3-1=2$. A useful reply identifies $d(L+W)/dt$ and explains why $dA/dt$ also needs the two side lengths. Test the next turn, its math and its source.
 \end{document}

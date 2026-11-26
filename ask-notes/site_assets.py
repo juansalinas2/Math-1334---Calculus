@@ -16,23 +16,23 @@ def asset(name):
     return (HERE / name).read_text()
 
 
-def add_widget(document, prefix, endpoint, with_practice=False):
+def add_widget(document, prefix, endpoint, with_practice=False, page=None):
     document = re.sub(r'<(?:script|link) data-course-ask [^>]*>(?:</script>)?\n?', '', document)
-    if 'data-course-search' not in document or not with_practice:
+    if 'data-course-search' not in document or not (with_practice or page):
         return document
     if endpoint and (urlsplit(endpoint).scheme != "https" or not urlsplit(endpoint).netloc):
         raise ValueError("COURSE_ASK_ENDPOINT must be the HTTPS /ask endpoint from the deployed stack.")
     files = ["widget.css"]
     if endpoint:
         files.append("widget.js")
-    if with_practice:
-        files.append("practice.js")
+    files.append("practice.js")
     tags = []
     for file in files:
         version = hashlib.sha256(asset(file).encode()).hexdigest()[:12]
         url = prefix + "assets/ask-notes/" + file + "?v=" + version
         if file.endswith(".js"):
             tags.append(f'<script data-course-ask defer src="{url}" data-endpoint="{html.escape(endpoint, quote=True)}" '
+                        f'data-page="{html.escape(page or "lectures/related-rates.html", quote=True)}" data-root="{prefix}" '
                         'data-mode="aws"></script>')
         else:
             tags.append(f'<link data-course-ask rel="stylesheet" href="{url}">')
@@ -54,7 +54,8 @@ def install(site, endpoint):
     for folder in (site, site / "lectures", site / "supplements"):
         for page in folder.glob("*.html"):
             document = page.read_text()
-            updated = add_widget(document, "./" if folder == site else "../", endpoint, page == lecture)
+            updated = add_widget(document, "./" if folder == site else "../", endpoint,
+                                 page == lecture, page.relative_to(site).as_posix())
             if updated != document:
                 page.write_text(updated)
 

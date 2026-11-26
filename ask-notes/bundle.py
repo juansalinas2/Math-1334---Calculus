@@ -1,5 +1,6 @@
 """Package the optional AWS deployment and its illustrated LaTeX guide."""
 from pathlib import Path
+import argparse
 import shutil
 import subprocess
 from zipfile import ZipFile, ZIP_DEFLATED
@@ -19,8 +20,8 @@ def build_guide():
     return pdf
 
 
-def bundle():
-    export(ROOT / "_site")
+def bundle(site=ROOT / "_site"):
+    export(site)
     target = BUILD / "math1334-cloudshell.zip"
     files = [HERE / name for name in ("template.yaml", "deploy.py", "export.py", "review.py",
              "evaluate.py", "responses.py", "README.md", "System-Guide.tex", "preview-search.js",
@@ -36,4 +37,6 @@ def bundle():
 
 
 if __name__ == "__main__":
-    bundle()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--site", type=Path, default=ROOT / "_site")
+    bundle(parser.parse_args().site)

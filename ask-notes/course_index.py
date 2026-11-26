@@ -11,7 +11,7 @@ from practice import REFERENCE, WORDS
 PUBLIC_PAGE = re.compile(r"^(?:(?:lectures|supplements)/[\w.-]+|index|lecture-pdfs)\.html(?:#[^\s]*)?$")
 LABEL = re.compile(r"\b(Example|Practice(?: problem)?|Problem|Exercise)\s+(\d+)[.:](?=\s)")
 STOP = set("a an and are as at be by can could did do does explain for from get give go how i in into is it its me my of on or our should show so that the their these this those through to us use walk we what when where which with would you why".split())
-CONTEXT = re.compile(r"\b(this|that|here|previous|above|next|my answer|the first term|the second term)\b", re.I)
+CONTEXT = re.compile(r"\b(this|that|they|them|those|here|previous|above|next|my answer|the first term|the second term)\b", re.I)
 
 
 def build(rows):
@@ -77,6 +77,14 @@ class Index:
                 return [], f"I couldn’t find section {wanted} in the published notes."
             section = page
         if ref:
+            if not selected:
+                for candidate, row in book.items():
+                    if "#" in candidate or not candidate.startswith("lectures/") or "::" in candidate:
+                        continue
+                    name = re.sub(r"^[\d.]+\s+|^the\s+", "", row["page"].casefold()).removeprefix("the ")
+                    if name and re.search(r"\b(?:from|in|on)\s+(?:the\s+)?" + re.escape(name) + r"\b", question, re.I):
+                        page = candidate
+                        break
             name, number = (ref[1] or "").lower(), ref[2].lower()
             number = str(WORDS.index(number)) if number in WORDS else str(int(number))
             family = "example" if name.startswith("ex") and not name.startswith("exercise") else "practice" if name.startswith(("practice", "exercise")) else ""
