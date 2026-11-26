@@ -24,6 +24,7 @@
     <!-- practice data -->
     <script defer src="./practice.js"></script>
     <script defer src="./note-sheet.js"></script>
+    <script defer src="./definition-view.js"></script>
     <script defer src="./map.js"></script>
   </head>
   <body data-map-layout="focus">
@@ -154,6 +155,15 @@
         </div>
       </aside>
     </main>
+    <dialog id="zoom-definition" aria-labelledby="definition-title">
+      <button type="button" id="definition-back">← Back to map</button>
+      <div class="definition-page">
+        <article>
+          <h2 id="definition-title" tabindex="-1" autofocus></h2>
+          <div id="definition-text"></div>
+        </article>
+      </div>
+    </dialog>
     <noscript><p>
         This map needs JavaScript for zoom and navigation. <a
           href="../supplements/limits-map.html"

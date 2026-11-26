@@ -2302,6 +2302,7 @@
       },
       {
         "title": "Piecewise-defined functions",
+        "illustrativeFormula": true,
         "kind": "Definition",
         "href": "../lectures/00-functions.html#piecewise-defined-functions",
         "definition": "A piecewise-defined function uses different formulas on different parts of its domain.",
@@ -2381,6 +2382,7 @@
       },
       {
         "title": "Amplitude and period",
+        "illustrativeFormula": true,
         "kind": "Definition",
         "href": "../lectures/00-functions.html#sine-graphs-amplitude-and-period",
         "definition": "Amplitude is the distance from the midline to a peak. Period is the length of one complete cycle.",
@@ -2410,6 +2412,7 @@
     "parts": [
       {
         "title": "Vertical asymptote",
+        "illustrativeFormula": true,
         "kind": "Definition",
         "href": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
         "definition": "The line $x=a$ is a vertical asymptote if at least one one-sided limit at $a$ is infinite.",
@@ -2430,6 +2433,7 @@
       },
       {
         "title": "Odd and even powers",
+        "illustrativeFormula": true,
         "kind": "Rule",
         "href": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
         "definition": "In $\\frac{1}{(x-a)^n}$, a positive even power makes the denominator positive on both sides. A positive odd power preserves its sign.",
@@ -2633,6 +2637,7 @@
   },
   "invtrig": {
     "title": "Inverse trigonometric derivatives",
+    "illustrativeFormula": true,
     "href": "../lectures/15-inverse-functions.html#derivatives-of-inverse-trigonometric-functions",
     "definition": "On a chosen one-to-one branch, the derivative of an inverse trigonometric function is the reciprocal of the original slope at the corresponding angle, wherever that slope is nonzero.",
     "formula": "$\\theta=\\sin^{-1}x$\n$\\frac{d\\theta}{dx}=\\frac1{\\cos\\theta}\\quad(-1<x<1)$",

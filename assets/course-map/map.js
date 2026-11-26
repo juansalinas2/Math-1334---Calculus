@@ -12,7 +12,7 @@ const zoomIn = byId("in");
 const zoomOut = byId("out");
 const zoomLevel = byId("zoom-level");
 
-const maxZoom = 3.6;
+const maxZoom = 4.86;
 let selected = null;
 let selectedPart = null;
 let family = "all";
@@ -137,9 +137,9 @@ function drawCamera() {
   const fit = fullMapScale();
   const percent = Math.round(100 * view.k / fit) + "%";
   if (zoomLevel.textContent !== percent) zoomLevel.textContent = percent;
-  zoomIn.disabled = view.k >= maxZoom - .00001;
+  zoomIn.disabled = false;
   zoomOut.disabled = view.k <= courseScale() + .00001;
-  zoomIn.title = zoomIn.disabled ? "Maximum zoom" : "Zoom in (+)";
+  zoomIn.title = view.k * 1.35 >= maxZoom - .00001 ? "Zoom in to the definition (+)" : "Zoom in (+)";
   zoomOut.title = zoomOut.disabled ? "Whole course" : "Zoom out (−)";
   if (view.k === renderedScale) return;
   world.style("--parent-scale", Math.min(1, 1.10 / view.k))
@@ -168,6 +168,13 @@ function constrainCamera(proposed, extent) {
   const width=extent[1][0]-extent[0][0], height=extent[1][1]-extent[0][1];
   if (!width || !height) return proposed;
   const old=d3.zoomTransform(viewport), fit=fullMapScale(), level=proposed.k/fit;
+  const inputView = proposed;
+  if (moonZoomOffset && proposed.k > old.k) {
+    // The orbit has a fixed screen radius. Compensate for that radius so a
+    // wheel or pinch aimed at a subtopic keeps its disc under the pointer.
+    const change = 1 / old.k - 1 / proposed.k;
+    proposed = proposed.translate(moonZoomOffset[0] * change, moonZoomOffset[1] * change);
+  }
   const [cx,cy]=proposed.invert([width/2,height/2]);
   let x=cx, y=cy;
   if (level<=courseEdge || (old.k>=fit && proposed.k<fit)) unfoldingFamily=null;
@@ -185,7 +192,7 @@ function constrainCamera(proposed, extent) {
   }
   let view=proposed.translate(cx-x,cy-y);
   if (view.k>old.k && level>1) view=keepTopicVisible(view,width,height);
-  cameraAdjusted=Math.abs(view.x-proposed.x)>.001 || Math.abs(view.y-proposed.y)>.001;
+  cameraAdjusted=Math.abs(view.x-inputView.x)>.001 || Math.abs(view.y-inputView.y)>.001;
   return view;
 }
 
@@ -208,6 +215,9 @@ const zoom = d3.zoom().scaleExtent([courseScale(), maxZoom]).constrain(constrain
       if (isSidewaysScroll(event)) return false;
     } else if (event.target.closest?.("#locator") || event.ctrlKey || event.button) return false;
     const target=gestureTarget(event);
+    const moon = (event.type === "wheel" || event.touches?.length === 2) && target?.closest?.(".map-moon");
+    const position = moon?.transform?.baseVal.getItem(0).matrix;
+    moonZoomOffset = position ? [position.e, position.f] : null;
     const group=target?.closest?.("[data-system-id]")?.dataset.systemId;
     if (familiesOnMap.has(group)) unfoldingFamily=group;
     return true;
@@ -216,6 +226,7 @@ const zoom = d3.zoom().scaleExtent([courseScale(), maxZoom]).constrain(constrain
   .on("start", (event) => {
     if (!event.sourceEvent) return;
     gesturing = true;
+    resetDefinitionAim(d3.zoomTransform(viewport));
 
     if (hovered !== null) {
       hovered = null;
@@ -243,6 +254,7 @@ const zoom = d3.zoom().scaleExtent([courseScale(), maxZoom]).constrain(constrain
         const fingers = Array.from(source.touches, touch => d3.pointer(touch, viewport));
         zoomAnchor = [(fingers[0][0] + fingers[1][0]) / 2, (fingers[0][1] + fingers[1][1]) / 2];
       } else zoomAnchor = source.type === "wheel" ? d3.pointer(source, viewport) : null;
+      trackDefinitionAim(target, zoomAnchor, event.transform, source);
       const station=zoomAnchor && target?.closest?.(".station");
       zoomStation=station ? d3.select(station).datum().id :
         (zoomAnchor && target?.closest?.(".map-moon") ? insideId : null);
@@ -256,12 +268,22 @@ const zoom = d3.zoom().scaleExtent([courseScale(), maxZoom]).constrain(constrain
   })
   .on("end", event => {
     gesturing = false;
+    moonZoomOffset = null;
     if (event.sourceEvent) settleZoom(event.transform.k);
+    if (event.sourceEvent && event.transform.k >= maxZoom) finishDefinitionZoom();
     rememberView();
   });
 svg.call(zoom).on("wheel.map", event => {
   // D3 handles vertical scrolling. Use horizontal wheel deltas to pan.
   const sideways = isSidewaysScroll(event);
+  if (!sideways && event.deltaY < 0 && d3.zoomTransform(viewport).k >= maxZoom) {
+    const note = definitionAt(event.target);
+    if (note) {
+      event.preventDefault();
+      openZoomDefinition(note, d3.pointer(event, viewport));
+      return;
+    }
+  }
   if (sideways) {
     const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? viewport.clientWidth : 1;
     const dx = event.deltaX * unit / d3.zoomTransform(viewport).k;
@@ -471,6 +493,13 @@ function settleZoom(k) {
   }
 }
 function scaleBy(factor) {
+  if (factor > 1 && d3.zoomTransform(viewport).k * factor >= maxZoom - .00001) {
+    const note = definitionForControls();
+    if (note) {
+      openZoomDefinition(note);
+      return;
+    }
+  }
   zoomAnchor = zoomStation = null;
   cameraMode = "manual";
   svg.call(zoom.scaleBy, factor);
@@ -662,6 +691,7 @@ new ResizeObserver(() => {
   }
 }).observe(viewport);
 function openLocation() {
+  closeZoomDefinition();
   const [id, slug] = location.hash.slice(1).split("/");
   if (byTopic.has(id)) showTopic(id, slug, true);
   else if (id === "family" && Object.hasOwn(families, slug)) overview(slug, true, true);

@@ -42,3 +42,30 @@
 @media(max-width:640px) {
   .cluster-label { --cluster-caption:clamp(15px,4.3vw,18px); }
 }
+
+#zoom-definition {
+  --definition-size: var(--topic-size,1);
+  position:fixed; inset:0; margin:0; box-sizing:border-box;
+  width:100%; height:100%; max-width:none; max-height:none; padding:0; border:0;
+  background:var(--paper); color:var(--ink); overflow:hidden;
+}
+#zoom-definition[data-size="subtopic"] { --definition-size:var(--subtopic-size,1); }
+#zoom-definition[open] { display:flex; flex-direction:column; }
+#definition-back {
+  align-self:flex-start; margin:clamp(.5rem,2vw,1.75rem); padding:.5em .8em;
+  min-height:44px; color:var(--link); background:var(--surface);
+  border:1px solid var(--strong-line); border-radius:.35rem; cursor:pointer;
+  font:600 1rem/1.4 var(--ui);
+}
+.definition-page {
+  display:flex; flex:1; min-height:0; overflow:auto; overscroll-behavior:contain;
+  padding:clamp(1rem,5vw,5rem);
+}
+.definition-page article {
+  box-sizing:border-box; width:100%; max-width:40ch; min-width:0; margin:auto;
+  font:calc(clamp(1.4rem,2.8vw,2.6rem) * var(--definition-size))/1.45 var(--serif);
+  overflow-wrap:anywhere;
+}
+#definition-title { font:700 1.35em/1.12 var(--serif); margin:0 0 .55em; outline:none; }
+#definition-text p { margin:0; overflow-x:auto; }
+#definition-text .equation { font:inherit; border:0; margin:.7em 0 0; padding:.15em 0; }
