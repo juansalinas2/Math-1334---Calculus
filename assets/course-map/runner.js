@@ -28,7 +28,7 @@
   };
   const characters = Object.keys(avatars).map(id=>({id,name:avatars[id].name}));
   const avatarId = id => Object.hasOwn(avatars,id) ? id : "pip";
-  let localCharacter = "pip";
+  let localCharacter = "pip", equippedCrown = false;
   // The original head ribbon meets at (2, -59), just above Pip's hairline.
   const bow = `<g class="head-bow" stroke="#752044" stroke-width="1.1">
     <path d="M2-59Q-1-62-4-62q-1 3 1 6 3 0 5-2 3 2 6 1 1-3-1-6-3 0-5 4Z" fill="#ff278e"/>
@@ -40,12 +40,30 @@
         <path d="M-11-51q-1-15 10-16 13-3 18 11l-4 3q-9-3-16 0l-4 6-3-1z" fill="#fff6d7"/>
         <path d="m13-59 11 4-11 2z" fill="#f5ae42"/><circle cx="10" cy="-61" r="1.35" fill="#332d2c" stroke="none"/>
       </g>`;
-  const headwear = bow+'<use class="chicken-hat" href="#run-chicken"/>';
+  // The eclipse on the band is large enough to read on the running sprite.
+  // Portraits, the boss and the reward panel use the same silhouette.
+  const sunCrown = `<g stroke="#593242" stroke-width="1.55" stroke-linejoin="round" stroke-linecap="round">
+    <path d="m-14-2-6-17 8 5-2-10 10 10 4-16 5 16 10-11-2 12 8-6-6 17z" fill="#ffc85a"/>
+    <path d="m-15-15 4 4-1-7 6 6m6-12 2 8m9-3-4 7" fill="none" stroke="#fff5be" stroke-width="1.4"/>
+    <path d="M-15-6q15-6 30 0l-1 6Q0 4-14 0Z" fill="#cc7541"/>
+    <path d="M-14-5q14-5 28 0M-12-1q12 3 24 0" fill="none" stroke="#ffe292" stroke-width="1.45"/>
+    <circle cx="0" cy="-8" r="7" fill="#ffea91"/>
+    <circle cx="0" cy="-8" r="4.5" fill="#ff9857" stroke="none"/>
+    <path d="M1-12.6q-4 3-.8 6.2 1.8 1.6 4 1.1A4.8 4.8 0 1 1 1-12.6Z" fill="#634064" stroke="none"/>
+    <path d="m-12-5 2-1 2 1-2 2zm20 0 2-1 2 1-2 2z" fill="#a0e9d9" stroke-width=".8"/>
+  </g>`;
+  const crownMount="translate(3 -56) scale(.77)";
+  function crownIcon() {
+    return `<svg class="runner-crown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-26 -34 53 42" width="72" height="57" aria-hidden="true" focusable="false">${sunCrown}</svg>`;
+  }
+  const pieceFor=(level,crowned)=>crowned===true ? "crown" : level==="easy" ? "chicken" : "ribbon";
+  const gearArt = {crown:'<g transform="'+crownMount+'">'+sunCrown+'</g>',chicken,ribbon:bow};
   const relaxedFace = '<g fill="none" stroke="#243740"><path d="m5-50 .3 1.3m6-1.7 .2 1.3" stroke-width="2.2"/><path d="M5-44q3 2 6-.5" stroke-width="1.4"/></g>';
-  function portrait(id,level) {
+  function portrait(id,level,crowned=false) {
     const a=avatars[avatarId(id)];
-    const easy=level==="easy";
-    return '<svg class="runner-portrait" xmlns="http://www.w3.org/2000/svg" viewBox="'+(easy?"-23 -78 50 51":"-23 -72 50 45")+'" width="44" height="40" aria-hidden="true" focusable="false"><g stroke="#243740" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2">'+a.head+relaxedFace+(easy?chicken:bow)+'</g></svg>';
+    const piece=pieceFor(level,crowned);
+    const viewBox=piece==="crown"?"-23 -82 50 55":piece==="chicken"?"-23 -78 50 51":"-23 -72 50 45";
+    return '<svg class="runner-portrait" data-headpiece="'+piece+'" xmlns="http://www.w3.org/2000/svg" viewBox="'+viewBox+'" width="44" height="40" aria-hidden="true" focusable="false"><g stroke="#243740" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2">'+a.head+relaxedFace+gearArt[piece]+'</g></svg>';
   }
   let cleared = 0, total = 0, camera = 0, active = null, frameId = 0;
   let blocked = [], aiming = -1;
@@ -81,17 +99,17 @@
       <g id="run-flame"><path d="M-9 0c-8-12 3-13 0-23 6 4 6 9 6 12 4-5 6-12 4-18 15 13 1 16 10 18 4-2 4-6 4-7 4 9 3 15-3 18z" fill="#f06537"/><path d="M-3 0q-5-7 1-13 0 5 3 6l4-8q4 10 1 15z" fill="#ffce75"/></g>
       <g id="run-feather"><path d="M-9 6q1-14 15-14 1 10-9 14z" fill="#fff4cf" stroke="#8e7454" stroke-width="1.3"/><path d="m-11 9 14-14" fill="none" stroke="#8e7454"/></g>
       <g id="run-chicken">${chicken}</g>
+      <g id="run-ribbon">${bow}</g>
       <g id="run-leaf"><path d="m-8-7 14-2 4 12-13 4z" fill="#fff3d2" stroke="#776d5d" stroke-width="1.2"/><path d="m-4-3 7-1m-6 5 8-1" stroke="#71978b" stroke-width="1.3"/></g>
       <g id="run-plane"><path d="m-13 2 25-9-10 17-2-8-7 4z" fill="#fff0c6" stroke="#8c7861" stroke-width="1.4"/><path d="m0 2 12-9" stroke="#8c7861"/></g>
       <g id="run-meteor"><path d="M-5-2C7-8 12-23 42-34c-9 7-8 13-15 18 13-2 18-8 26-8C37-12 25-2 6 6z" fill="#fc7145"/><path d="M-2-1q11-13 29-22-10 12-13 13 7-1 12-3Q15 0 4 5z" fill="#ffcf6c"/><path d="m-7-5 7-4 7 3 2 7-5 6-8-1-5-5z" fill="#552c3c" stroke="#ffb75b" stroke-width="2"/><path d="m-3-4 3 3 4-1m-4 1-2 5" fill="none" stroke="#d8754c"/></g>
       <g id="run-smoke" fill="#564153" stroke="#322934" stroke-width="1.8"><path d="M-28 1q-6-10 5-14-2-13 12-13 3-9 12-6 11-5 16 7 14 0 12 12 9 8-1 15z"/><path d="M-15-10q2-7 10-6m9-7q8-2 10 7" fill="none" stroke="#9a7776"/></g>
       <g id="run-star-rays" fill="none" stroke-width="2.4"><path d="M9 1l4 1m-9 6 2 4m-12-4-2 4m-3-12-4-1m9-8-2-4m12 4 2-4" stroke="#865319"/><path d="M9-5l4-2m-12 16 1 4m-12-12-4-1m10-10-1-4" stroke="#ffdb7e"/></g>
       <g id="run-sky-trails" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".58"><path d="M-17 0q8-4 18 0t21 0m-29 5h12"/></g>
-      <g id="sun-crown" stroke="#5b3435" stroke-width="1.7">
-        <path d="m-13-3-3-13 10 7 4-14 7 14 10-9-3 15z" fill="#ffd567"/>
-        <path d="m-13-4 26-1-1 5-24 1z" fill="#eaa348"/>
-        <path d="m-3-13 4-5 4 6-4 4z" fill="#8fffe1"/>
-        <path d="m-8-1 3-.3m9-.5 3-.3" fill="none" stroke="#fff2ae" stroke-width="1.3"/>
+      <g id="sun-crown">${sunCrown}</g>
+      <g id="run-crown" transform="${crownMount}"><use href="#sun-crown"/></g>
+      <g id="run-sun-ember" stroke="#5b3435" stroke-width="1.25">
+        <path d="m0-12 3 7 7 3-7 3-3 8-3-8-7-3 7-3z" fill="#ffdd73"/><circle cy="-2" r="2.5" fill="#fff5c8" />
       </g>
       <g id="flick-palm" stroke="#3e3943" stroke-width="2.4">
         <path d="m-15-14 19-4q9-5 24-11 8-3 11 2 2 5-5 9l-13 8 20-5q9-3 11 3 1 5-9 9l-15 7q-13 12-31 6l-12 1z" fill="#fff0cd"/>
@@ -147,7 +165,8 @@
           <path d="M-9 9q9 5 19-1-2 11-9 12-7 0-10-11z" fill="#75433b"/>
           <path d="M-4 16q5-3 10-1-5 5-10 1z" fill="#ffa382"/>
         </g>
-        <use id="run-boss-crown" href="#sun-crown" transform="translate(0 -28) scale(.78)"/>
+        <use id="run-boss-crown" href="#sun-crown" transform="translate(0 -25) scale(.78)"/>
+        <use id="run-boss-ember" href="#run-sun-ember" transform="translate(0 -14) scale(.6)" data-runner-hidden=""/>
       </g>
     </g>
     <g id="run-near"></g>
@@ -190,8 +209,7 @@
           <g id="run-face-shape" stroke="var(--r-ink)" stroke-width="2.6">${avatars.pip.head}</g>
           <path id="run-eyes" d="m5-50 .3 1.3m6-1.7 .2 1.3" fill="none" stroke="var(--r-ink)" stroke-width="2"/>
           <path id="run-mouth" d="M5-44q3 2 6-.5" stroke="var(--r-ink)" stroke-width="1.4" fill="none"/>
-          ${headwear}
-          <use id="run-prize" class="champion-crown" href="#sun-crown" transform="translate(3 -57) scale(.9)" data-runner-hidden=""/>
+          <use id="run-worn" href="#run-ribbon" data-piece="ribbon"/>
           <path class="runner-soot" d="m-5-45 4 2m0 2 2 1m10-3 2-1" fill="none" stroke="#82625e" stroke-width="2.5"/>
         </g>
       </g>
@@ -203,7 +221,15 @@
     </g>
     <g id="run-crown-flight" data-runner-hidden="" pointer-events="none">
       <g fill="none" stroke="#ffeba2" stroke-width="1.5"><path d="M9 1q13 6 21 3m-19 1q10 8 18 9m-11-18h9"/></g>
-      <use href="#sun-crown"/>
+      <use id="run-flying-award" href="#sun-crown"/>
+    </g>
+    <g id="run-coronation" fill="none" stroke-linecap="round" pointer-events="none" data-runner-hidden="">
+      <ellipse cy="-4" rx="14" ry="8" stroke="#fceba2" stroke-width="1.4"/>
+      <path d="m-14-7-4-3m12-6-1-4m13 3 2-4m8 10 5-2" stroke="#fff4c7" stroke-width="2.3"/>
+    </g>
+    <g id="run-landing-wave" fill="none" stroke-linecap="round" pointer-events="none" data-runner-hidden="">
+      <path d="M-9 0q-13 1-26-3m59 4 15-3m-75-4-4-3m75 4 5-3" stroke="#fff0b6" stroke-width="2.1"/>
+      <ellipse rx="25" ry="3.3" stroke="#fbc981" stroke-width="1.1"/>
     </g>
     <g id="run-choice" data-runner-hidden=""><path class="runner-thought" d="M0-8q0-4 4-4h12q5 0 5 5v8q0 4-5 4H7l-5 4 1-5q-3 0-3-4z"/><text class="runner-digit" x="10" y="2"></text></g>
     <g id="run-rival-signs" pointer-events="none"></g>
@@ -212,8 +238,9 @@
   const far = get("far"), near = get("near"), world = get("world"), fx = get("fx");
   const incident = get("incident"), weather = get("weather"), sun = get("sun");
   const festival = get("festival"), flyingCrown = get("crown-flight");
-  const crown = get("prize"), glare = get("sun-glare"), surprise = get("sun-surprise"), afterglow = get("afterglow");
-  const sunSmile=get("sun-smile"), bossCrown=get("boss-crown"), lastMeteor=get("last-meteor"), parry=get("parry"), podium=get("podium"), solarHalo=get("solar-halo");
+  const worn = get("worn"), glare = get("sun-glare"), surprise = get("sun-surprise"), afterglow = get("afterglow");
+  const sunSmile=get("sun-smile"), bossCrown=get("boss-crown"), bossEmber=get("boss-ember"), lastMeteor=get("last-meteor"), parry=get("parry"), podium=get("podium"), solarHalo=get("solar-halo");
+  const flyingAward=get("flying-award"),coronation=get("coronation"),landingWave=get("landing-wave");
   const hero = get("hero"), lean = get("lean"), shadow = get("shadow");
   const legBack = get("leg-back"), legFront = get("leg-front");
   const armBack = get("arm-back"), armFront = get("arm-front");
@@ -229,13 +256,32 @@
   const rivalLayer = get("rivals"), signLayer = get("rival-signs");
   let rivals = [], rivalFrame = 0, rivalSignature = "";
 
+  function costume(node,crowned,level=difficulty) {
+    const piece=pieceFor(level,crowned);
+    set(node,"href","#run-"+piece);
+    set(node,"data-piece",piece);
+  }
+  function showLocalGear() {
+    const epic=celebrating?.epic;
+    const crowned=epic ? celebrating.returning||celebrating.caught : equippedCrown;
+    costume(worn,crowned);
+    if(!epic){
+      hide(worn,false);
+      hide(bossCrown,equippedCrown);hide(bossEmber,!equippedCrown);
+    }
+  }
+  function equipCrown(value) {
+    equippedCrown=value===true;
+    showLocalGear();
+    if(!total) set(scene,"aria-label",avatars[localCharacter].name+(equippedCrown?" wears the Sun Crown at the starting flag.":" waits at the starting flag."));
+  }
   function setCharacter(value) {
     const id=avatarId(value);
     localCharacter=id;
     get("face-shape").innerHTML=avatars[id].head;
     get("outfit").innerHTML=avatars[id].coat;
     set(hero,"data-character",id);
-    if(!total) set(scene,"aria-label",avatars[id].name+" waits at the starting flag.");
+    if(!total) set(scene,"aria-label",avatars[id].name+(equippedCrown?" wears the Sun Crown at the starting flag.":" waits at the starting flag."));
   }
   function ghostSprite(r) {
     const a=avatars[r.character];
@@ -248,7 +294,7 @@
           <path d="m0-17 2-17m-2 3-7 7-5-3m14-4 6 6 5-4"/>
         </g>
         <path d="M-1-33q-10-5-12 1l-1 7 12 3z" fill="#cea15a" stroke-width="1.9"/>
-        ${a.coat}${a.head}${relaxedFace}${headwear}
+        ${a.coat}${a.head}${relaxedFace}<use id="run-rival-worn-${r.seat}" href="#run-${pieceFor(r.difficulty,r.crowned)}"/>
       </g>
       <g id="run-rival-tag-${r.seat}" class="rival-marker">
         <rect width="38" height="15" x="-19" y="-68" rx="7"/><circle cx="-11" cy="-60.5" r="3.2" fill="${a.color}"/>
@@ -292,7 +338,8 @@
       const arc=inFlight ? Math.max(0, Math.sin(Math.PI*clamp((position-Math.floor(position)-.16)/.65))) : 0;
       transform(r.sprite,`translate(${x} ${floor-2})`);
       transform(r.body,`translate(0 ${-41*arc}) rotate(${5*arc}) scale(.76)`);
-      transform(r.tag,`translate(0 ${-37*arc-(group.length>2&&index===2?15:0)})`);
+      const headClearance=r.crowned?12:r.difficulty==="easy"?8:3;
+      transform(r.tag,`translate(0 ${-41*arc-headClearance-(group.length>2&&index===2?15:0)})`);
       const status=r.status==="finished"?"✓":r.status==="out"?"×":"";
       r.tagText.textContent=index===2 && group.length>3 ? "+"+(group.length-2) : "P"+r.seat+status;
     }
@@ -327,7 +374,7 @@
         r.from=progress<r.cleared ? progress : positionAt(r,now);
         r.duration=Math.min(1100,580+110*Math.abs(r.from-progress));r.until=now+r.duration;
       }
-      r.cleared=progress;r.character=character;r.status=s.status;next.push(r);
+      r.cleared=progress;r.character=character;r.status=s.status;r.crowned=s.crowned===true;r.difficulty=s.difficulty||difficulty;next.push(r);
     }
     rivals=next.sort((a,b)=>a.seat-b.seat);
     const signature=rivals.map(r=>r.seat+"/"+r.character).join(",");
@@ -336,12 +383,13 @@
       rivalLayer.innerHTML=rivals.map(ghostSprite).join("");signLayer.innerHTML=rivals.map(edgeSprite).join("");
       for(const r of rivals){
         r.sprite=get("rival-"+r.seat);r.body=get("rival-body-"+r.seat);r.tag=get("rival-tag-"+r.seat);r.tagText=get("rival-tagtext-"+r.seat);
-        r.title=get("rival-title-"+r.seat);r.edge=get("edge-"+r.seat);r.edgeText=get("edge-text-"+r.seat);r.chevron=get("rival-chevron-"+r.seat);
+        r.title=get("rival-title-"+r.seat);r.edge=get("edge-"+r.seat);r.edgeText=get("edge-text-"+r.seat);r.chevron=get("rival-chevron-"+r.seat);r.worn=get("rival-worn-"+r.seat);
       }
     }
     for(const r of rivals){
       set(r.sprite,"data-status",r.status);
-      r.title.textContent=`Player ${r.seat}, ${avatars[r.character].name}, ${r.cleared} cleared. ${r.status==="out"?"Run over.":r.status==="finished"?"Finished.":""}`;
+      costume(r.worn,r.crowned,r.difficulty);
+      r.title.textContent=`Player ${r.seat}, ${avatars[r.character].name}${r.crowned?" with the Sun Crown":""}, ${r.cleared} cleared. ${r.status==="out"?"Run over.":r.status==="finished"?"Finished.":""}`;
     }
     if(rivalFrame) cancelAnimationFrame(rivalFrame);
     tickRivals(now);
@@ -518,16 +566,19 @@
     set(scene,"data-impact","off");
     set(scene,"data-finale","none");
     hide(flyingCrown,true);
-    hide(crown,true); hide(glare,false); hide(surprise,true);hide(sunSmile,true);hide(bossCrown,false);
-    for(const piece of [lastMeteor,parry,podium,solarHalo]) hide(piece,true);
+    showLocalGear();hide(glare,false);hide(surprise,true);hide(sunSmile,true);
+    for(const r of rivals) costume(r.worn,r.crowned,r.difficulty);
+    for(const piece of [lastMeteor,parry,podium,solarHalo,coronation,landingWave]) hide(piece,true);
     set(afterglow,"opacity",0); set(scene,"data-dance","off");
     festival.replaceChildren();
     set(eyes,"d","m5-50 .3 1.3m6-1.7 .2 1.3");
     set(mouth,"fill","none");
     blocked=[]; aim(-1);
     set(scene,"data-chapter",Math.min(2,Math.floor(courseProgress(cleared)*3)));
-    const character = avatars[localCharacter].name+(({easy:" in a chicken hat", hard:" on a volcanic course", insane:" beneath an angry sun and erupting volcanoes"})[difficulty] || " on the course");
-    set(scene,"aria-label",total ? `${character}, ${cleared}${Number.isFinite(total)?" of "+total:""} hurdles cleared.` : avatars[localCharacter].name+" waits at the starting flag.");
+    const outfit=equippedCrown?" wearing the Sun Crown":difficulty==="easy"?" in a chicken hat":"";
+    const character=avatars[localCharacter].name+outfit;
+    const backdropLabel=({hard:" on a volcanic course",insane:" beneath an angry sun and erupting volcanoes"})[difficulty]||" on the course";
+    set(scene,"aria-label",total ? `${character}${backdropLabel}, ${cleared}${Number.isFinite(total)?" of "+total:""} hurdles cleared.` : character+" waits at the starting flag.");
     if(!total) setRivals([],0);
     courseWeather(); setTerrain(); cameraAt(cleared*stride); fx.replaceChildren(); incident.replaceChildren(); pose(startX,floor);
   }
@@ -640,32 +691,41 @@
   }
   function victoryPose(t) {
     const epic = celebrating.epic;
-    // Leave the sky clear over the champion during the last, higher leap.
+    // Parry at the first apex, watch the eclipse break, then leap to meet the
+    // crown. The pause makes each beat legible at phone size.
     const pan = clamp(t/.42), eased = pan*pan*(3-2*pan);
     const shift = epic ? frameLeft+frameWidth*.5-startX : 120;
     const x = startX+shift*eased;
     cameraAt(total*stride-shift*eased);
-    const hops = epic ? 4 : 3;
-    const hop = Math.abs(Math.sin(Math.PI*hops*t));
-    const y = floor-(epic ? 40 : 32)*hop;
-    pose(x, y, {lift:hop, jump:.40*hop, angle:-3*hop, cheer:true});
+    const takeoff=.51, catchAt=.70, landing=.89;
+    const parryJump=Math.sin(Math.PI*clamp(t/.32));
+    const trophyJump=Math.sin(Math.PI*clamp((t-takeoff)/(landing-takeoff)));
+    const hop=epic?Math.max(parryJump,trophyJump):Math.abs(Math.sin(Math.PI*3*t));
+    const y = floor-(epic ? 40*parryJump+31*trophyJump : 32*hop);
+    pose(x, y, {lift:hop, jump:.40*hop, angle:-3*hop, cheer:!epic||t<.27||t>.54});
     set(mouth,"d","M2-45q5 2 11-1-1 7-6 7-4 0-5-6z");
     if (t===1) set(scene,"data-dance","on");
     if (!epic) return;
-    const crowned = t >= .76;
+    const crowned = t >= catchAt;
+    // Clear the ribbon just before contact so it never peeks through the
+    // approaching band. A returning champion keeps the single worn crown.
+    hide(worn,!celebrating.returning && t>=.62 && !crowned);
     set(scene,"data-finale", crowned ? "crowned" : t>=.24 ? "launch" : "eruption");
-    hide(crown,!crowned); hide(glare,t>=.24); hide(surprise,t<.24 || crowned);
-    hide(sunSmile,!crowned);hide(bossCrown,t>=.24);
+    if(celebrating.caught!==crowned){celebrating.caught=crowned;showLocalGear();}
+    hide(glare,t>=.24); hide(surprise,t<.24 || crowned);
+    hide(sunSmile,!crowned);hide(bossCrown,t>=.24 || celebrating.returning);
+    hide(bossEmber,t>=.24 || !celebrating.returning);
     set(afterglow,"opacity",ease(clamp((t-.23)/.47)));
     const zoom = 1+.21*eased;
-    transform(hero,`translate(${x} ${y}) scale(${zoom})`);
-    const u = ease(clamp((t-.24)/.52));
+    const settle=Math.sin(Math.PI*clamp((t-landing)/.09));
+    transform(hero,`translate(${x} ${y}) scale(${zoom*(1+.06*settle)} ${zoom*(1-.09*settle)})`);
+    const u = ease(clamp((t-.24)/(catchAt-.24)));
     const fromX = sunX();
     // The last meteor skims the champion's raised hand. A shower of sparks
     // sends it back toward the eclipse before the crown crosses the sky.
     const contactT=.16, leaveT=.30;
     const punchX=startX+shift*ease(contactT/.42)+22;
-    const punchY=floor-40*Math.abs(Math.sin(Math.PI*hops*contactT))-51;
+    const punchY=floor-40-51;
     const incoming=t<contactT, mt=clamp(incoming?t/contactT:(t-contactT)/(leaveT-contactT));
     const travelX=incoming ? fromX+(punchX-fromX)*mt : punchX+(fromX-punchX)*mt;
     const travelY=incoming ? 64+(punchY-64)*mt-18*Math.sin(Math.PI*mt) : punchY+(52-punchY)*mt-22*Math.sin(Math.PI*mt);
@@ -674,20 +734,29 @@
     const impact=clamp((t-contactT)/.11);
     transform(parry,`translate(${punchX} ${punchY}) scale(${.8+impact*1.8})`);
     set(parry,"opacity",1-impact);
-    const entrance=ease(clamp((t-.64)/.16));
+    const entrance=ease(clamp((t-.54)/.24));
     hide(podium,!entrance);hide(solarHalo,!entrance);
     transform(podium,`translate(${x} ${floor+16*(1-entrance)}) scale(${entrance} 1)`);
     transform(solarHalo,`translate(${x} ${y}) scale(${zoom})`);
     set(solarHalo,"opacity",entrance*.9);
+    const launchY=celebrating.returning?39:28;
     const crownX = fromX + (x+3*zoom-fromX)*u;
-    const crownY = 25+(y-57*zoom-25)*u-27*Math.sin(Math.PI*u);
-    const bloom = clamp(t/.12);
-    transform(flyingCrown,`translate(${crownX} ${crownY}) rotate(${-20*Math.sin(Math.PI*u)}) scale(${(.78+.31*u)*bloom})`);
-    hide(flyingCrown,crowned || t<.24 || !bloom);
+    const crownY = launchY+(floor-31-(celebrating.returning?65:56)*zoom-launchY)*u-10*Math.sin(Math.PI*u);
+    const scale=celebrating.returning ? .60+.35*u : .78+(.77*zoom-.78)*u;
+    transform(flyingCrown,`translate(${crownX} ${crownY}) rotate(${-15*Math.sin(Math.PI*u)}) scale(${scale})`);
+    hide(flyingCrown,crowned || t<.24);
+    const gleam=clamp((t-catchAt)/.11);
+    hide(coronation,!crowned||gleam===1);
+    transform(coronation,`translate(${x+3*zoom} ${y-64*zoom}) scale(${.7+1.4*gleam})`);
+    set(coronation,"opacity",1-gleam);
+    const ripple=clamp((t-landing)/.10);
+    hide(landingWave,t<landing||ripple===1);
+    transform(landingWave,`translate(${x} ${floor+2}) scale(${.65+1.2*ripple} ${.75+.2*ripple})`);
+    set(landingWave,"opacity",1-ripple);
   }
   function celebrate(epic=false) {
     if (active || celebrating || !total || cleared+1 < total) return;
-    const celebration = {epic:epic && difficulty==="insane"};
+    const celebration = {epic:epic && difficulty==="insane",returning:equippedCrown,caught:false};
     celebrating=celebration;
     set(scene,"data-impact","off"); incident.replaceChildren();
     set(scene,"data-phase","victory");
@@ -702,7 +771,10 @@
       const shape=i%4===0 ? "m-3-2q4-2 3 1t3 2" : "m-2-1 4 2";
       return `<g transform="translate(${x} ${y})"><g class="victory-paper" style="--delay:${i%7*45}ms"><path transform="rotate(${i*37%180})" d="${shape}" fill="none" stroke="${colors[i%5]}" stroke-width="${2+i%3}"/></g></g>`;
     }).join("");
-    if (celebration.epic) openFestival();
+    if (celebration.epic) {
+      set(flyingAward,"href",celebration.returning?"#run-sun-ember":"#sun-crown");
+      showLocalGear();openFestival();
+    }
     const start=performance.now();
     function tick(now) {
       if (celebrating!==celebration) return;
@@ -741,7 +813,8 @@
     const {hit,finish,hand}=active;
     active=null; frameId=0;
     set(scene,"data-phase",hit ? "landed" : "missed");
-    set(scene,"aria-label",hit ? `Hurdle cleared. ${cleared+1}${Number.isFinite(total)?" of "+total:""} complete.` : (hand ? "Time expired. A giant hand flicks the runner off the platform. " : "")+misses[difficulty].label);
+    const missLabel=difficulty==="easy" && equippedCrown ? "Feathers scatter as the crowned runner bounces into a haystack." : misses[difficulty].label;
+    set(scene,"aria-label",hit ? `Hurdle cleared. ${cleared+1}${Number.isFinite(total)?" of "+total:""} complete.` : (hand ? "Time expired. A giant hand flicks the runner off the platform. " : "")+missLabel);
     finish();
   }
   function travel(index, hit, finish, timeout=false) {
@@ -756,7 +829,8 @@
       incident.innerHTML=`<g id="run-landing">${miss.landing}</g>`;
       const hand = timeout ? `<g id="run-hand"><path d="M${frameLeft-130} -17 L-20 -14 -18 20 ${frameLeft-130} 27Z" fill="#396669" stroke="#3e3943" stroke-width="2.4"/>
         <use href="#flick-palm"/><use id="run-loaded" href="#flick-loaded"/><use id="run-extended" href="#flick-extended" data-runner-hidden=""/></g><g id="run-contact" opacity="0"><use href="#flick-spark"/></g>` : "";
-      fx.innerHTML=`<g id="run-prop">${miss.prop}</g><g id="run-air">${miss.air}</g>${hand}`;
+      const prop=difficulty==="easy"&&equippedCrown ? '<use href="#run-feather" transform="scale(1.2)"/>' : miss.prop;
+      fx.innerHTML=`<g id="run-prop">${prop}</g><g id="run-air">${miss.air}</g>${hand}`;
       active={hit,finish,landing:get("landing"),prop:get("prop"),air:get("air")};
       if (timeout) Object.assign(active,{hand:get("hand"),loaded:get("loaded"),extended:get("extended"),contact:get("contact")});
     }
@@ -784,7 +858,7 @@
     backdrop();stage(cleared,total);
   }
   window.junctionRunner = {reset:length=>stage(0,length),home:()=>stage(0,0),stage,travel,aim,close,celebrate,difficulty:setDifficulty,
-    characters,portrait,character:setCharacter,rivals:setRivals};
+    characters,portrait,crownIcon,equipCrown,character:setCharacter,rivals:setRivals};
   set(scene,"data-difficulty",difficulty);
   stage(0,0);
   fitScene(scene.clientWidth);

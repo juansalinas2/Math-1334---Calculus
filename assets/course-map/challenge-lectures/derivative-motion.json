@@ -13,7 +13,8 @@
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "section": "3.1",
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "derivative",
@@ -29,12 +30,13 @@
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "section": "3.1",
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "derivative2",
     "level": 3,
-    "prompt": "Set \\(f(x)=(x+1)^2\\) for \\(x\\ne-1\\) but \\(f(-1)=1\\). What are the left and right limits, respectively, of the difference quotient defining \\(f'(-1)\\)?",
+    "prompt": "Set \\(f(x)=(x+1)^2\\) for \\(x\\ne-1\\) and \\(f(-1)=1\\). As \\(h\\) tends to zero from the left and right, respectively, what are the limits of \\([f(-1+h)-f(-1)]/h\\)?",
     "choices": [
       "\\(+\\infty,\\ -\\infty\\)",
       "\\(-\\infty,\\ +\\infty\\)",
@@ -44,22 +46,24 @@
     "why": "For \\(h\\ne0\\) the quotient is \\((h^2-1)/h=h-1/h\\). Its one-sided limits have opposite signs.",
     "source": "../lectures/10-derivative-function.html#practice",
     "section": "3.2",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "topic": "derivative2",
     "level": 3,
-    "prompt": "At \\(x=3\\), \\(f(x)=\\sqrt{x+6}\\) has value \\(3\\) and slope \\(1/6\\). Use the tangent to estimate \\(f(3.12)\\). Which estimate and slope go together?",
+    "prompt": "At \\(x=3\\), \\(f(x)=\\sqrt{x+6}\\) has value \\(3\\) and tangent slope \\(1/6\\). Use this tangent to estimate \\(f(3.12)\\).",
     "choices": [
-      "\\(3.02\\), slope \\(1/6\\)",
-      "\\(3.02\\), slope \\(1/3\\)",
-      "\\(3.12\\), slope \\(1\\)",
-      "\\(3.72\\), slope \\(6\\)"
+      "\\(3.02\\)",
+      "\\(3.72\\)",
+      "\\(3.12\\)",
+      "\\(2.98\\)"
     ],
     "why": "The point is \\((3,3)\\) and the derivative there is \\(1/6\\). The tangent predicts an increase of \\(0.12/6=0.02\\).",
     "source": "../lectures/10-derivative-function.html#practice",
     "section": "3.2",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "topic": "derivative",
@@ -74,7 +78,8 @@
     "why": "Differentiate to get \\(f'(c)=3-2c\\). Equating the two slopes gives \\(2c=2a+h\\).",
     "source": "../lectures/10-derivative-function.html#section-3.2-the-derivative-function",
     "section": "3.2",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "motion",
@@ -89,22 +94,24 @@
     "why": "Velocity is \\(3(t-1)(t-3)\\) and acceleration is \\(6(t-2)\\). Their signs agree precisely on \\((1,2)\\) and \\((3,4)\\).",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "motion",
     "level": 3,
-    "prompt": "A particle has velocity \\(v(t)=3(t-1)(t-3)\\) and acceleration \\(a(t)=6(t-2)\\). What happens to its direction and speed as \\(t\\) passes through \\(2\\)?",
+    "prompt": "A particle has \\(v(t)=3(t-1)(t-3)\\) and \\(a(t)=6(t-2)\\). Just before and just after \\(t=2\\), how do direction and speed change?",
     "choices": [
-      "Motion stays negative while speed changes from increasing to decreasing.",
-      "Motion reverses from negative to positive.",
-      "Motion stays positive while speed reaches a minimum.",
-      "The particle is momentarily at rest with nonzero acceleration."
+      "It keeps moving in the negative direction. Its speed changes from increasing to decreasing.",
+      "It keeps moving in the negative direction. Its speed changes from decreasing to increasing.",
+      "It reverses into the positive direction. Its speed is zero at the turn.",
+      "It keeps moving in the positive direction. Its speed changes from increasing to decreasing."
     ],
     "why": "Velocity is \\(-3\\) at \\(t=2\\) and stays negative nearby. Acceleration changes from negative to positive, so speed has a local maximum.",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "motion",
@@ -119,22 +126,24 @@
     "why": "The height change divided by elapsed time is \\(-96/2=-48\\) ft/s. Substituting \\(t=2\\) in the velocity gives \\(-16-64=-80\\) ft/s.",
     "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "motion",
     "level": 3,
-    "prompt": "A car follows \\(s(t)=t^2-2t-3\\) feet for \\(t\\ge0\\). At which times, and with which velocities, does it pass position \\(-3\\) ft?",
+    "prompt": "A car is at position \\(s(t)=t^2-2t-3\\) feet at time \\(t\\ge0\\) seconds. Which list gives every time when \\(s=-3\\) ft and the signed velocity at each time?",
     "choices": [
-      "\\(t=0,2\\) with velocities \\(-2,2\\) ft/s",
-      "\\(t=0,2\\) with velocities \\(2,2\\) ft/s",
-      "\\(t=1\\) only, with velocity \\(0\\) ft/s",
-      "\\(t=3\\) only, with velocity \\(4\\) ft/s"
+      "\\(0\\) s at \\(-2\\) ft/s and \\(2\\) s at \\(2\\) ft/s",
+      "\\(0\\) s at \\(2\\) ft/s and \\(2\\) s at \\(2\\) ft/s",
+      "\\(1\\) s only, at \\(0\\) ft/s",
+      "\\(3\\) s only, at \\(4\\) ft/s"
     ],
     "why": "Set \\(t^2-2t=0\\) to find both admissible times. Substituting each into \\(2t-2\\) gives opposite velocities.",
     "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "motion",
@@ -149,7 +158,8 @@
     "why": "Moving left and speeding up requires both \\(v=-3(t-2)(t-4)<0\\) and \\(a=-6(t-3)<0\\). Only \\((4,5)\\) satisfies both.",
     "source": "../lectures/12-rates-of-change.html#practice",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "motion",
@@ -164,7 +174,8 @@
     "why": "Velocity is \\(-3(t-2)(t-4)\\) and changes sign at both roots. Acceleration vanishes at \\(3\\), where velocity is positive.",
     "source": "../lectures/12-rates-of-change.html#practice",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "derivative",
@@ -180,7 +191,8 @@
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "section": "3.1",
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "derivative",
@@ -196,7 +208,8 @@
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "section": "3.1",
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "derivative",
@@ -212,22 +225,24 @@
     "source": "../lectures/10-derivative-function.html#differentiability-implies-continuity",
     "section": "3.2",
     "pdfPage": 27,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 5
   },
   {
     "topic": "motion",
     "level": 3,
-    "prompt": "A car moving along a line passes position \\(0\\) ft at \\(t=3\\) s and first reaches position \\(5\\) ft at \\(t=4\\) s. What is its average velocity between those events?",
+    "prompt": "A car has position \\(s(t)=(t-1)^2-4\\) feet at \\(t\\) seconds. Between \\(t=0\\) and \\(t=3\\) it turns once, at \\(t=1\\). What is its average speed on this interval?",
     "choices": [
-      "\\(5\\) ft/s",
-      "\\(4\\) ft/s",
-      "\\(6\\) ft/s",
-      "\\(1\\) ft/s"
+      "\\(5/3\\) ft/s",
+      "\\(1\\) ft/s",
+      "\\(4/3\\) ft/s",
+      "\\(5\\) ft/s"
     ],
-    "why": "The position changes by \\(5\\) feet in \\(4-3=1\\) second. Average velocity is \\(5\\) ft/s.",
+    "why": "The positions at \\(0,1,3\\) seconds are \\(-3,-4,0\\) feet. Divide the total distance \\(1+4=5\\) ft by \\(3\\) s.",
     "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "tangent",
@@ -242,7 +257,8 @@
     "why": "Both points are at height \\(2\\). The change in height divided by the change in input is zero.",
     "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
     "section": "3.1",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "tangent",
@@ -257,7 +273,8 @@
     "why": "Subtract the starting input from the ending input to get \\(1.5-1=0.5\\).",
     "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
     "section": "3.1",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "tangent",
@@ -272,7 +289,8 @@
     "why": "Let \\(h\\) approach zero. The limit of \\(1-h\\) is \\(1\\).",
     "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
     "section": "3.1",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "derivative",
@@ -288,7 +306,8 @@
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "section": "3.1",
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "derivative",
@@ -304,7 +323,8 @@
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "section": "3.1",
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "derivative",
@@ -320,7 +340,8 @@
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "section": "3.1",
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "derivative2",
@@ -335,7 +356,8 @@
     "why": "The constant \\(3\\) differentiates to zero and the derivative of \\(-2x\\) is \\(-2\\).",
     "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
     "section": "3.2",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "topic": "derivative2",
@@ -350,7 +372,8 @@
     "why": "Its second derivative is the constant \\(-2\\). The derivative of a constant is zero.",
     "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
     "section": "3.2",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "topic": "derivative2",
@@ -366,7 +389,8 @@
     "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
     "section": "3.2",
     "pdfPage": 26,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "topic": "derivative2",
@@ -381,22 +405,24 @@
     "why": "The superscripts in the third derivative notation count differentiations with respect to \\(x\\).",
     "source": "../lectures/10-derivative-function.html#notation",
     "section": "3.2",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "topic": "derivative",
     "level": 2,
-    "prompt": "In \\(\\lim_{h\\to0}[(1+h)^2-1]/h\\), if \\(f(x)=x^2\\), which input and derivative value does the quotient describe?",
+    "prompt": "For \\(f(x)=x^2\\), the limit \\(\\lim_{h\\to0}[(1+h)^2-1]/h\\) is \\(f'(a)\\). Which ordered pair gives \\((a,f'(a))\\)?",
     "choices": [
-      "\\(a=1\\) and \\(f'(a)=2\\)",
-      "\\(a=0\\) and \\(f'(a)=1\\)",
-      "\\(a=2\\) and \\(f'(a)=1\\)",
-      "\\(a=1\\) and \\(f'(a)=0\\)"
+      "\\((1,2)\\)",
+      "\\((0,1)\\)",
+      "\\((2,1)\\)",
+      "\\((1,0)\\)"
     ],
     "why": "The numerator is \\(f(1+h)-f(1)\\). Expanding gives \\(2h+h^2\\), so the quotient tends to \\(2\\).",
     "source": "../lectures/10-derivative-function.html#practice",
     "section": "3.2",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "topic": "derivative",
@@ -411,7 +437,8 @@
     "why": "The point is \\((3,3)\\) and rationalizing the difference quotient gives slope \\(1/6\\). Expand \\(y-3=(x-3)/6\\).",
     "source": "../lectures/10-derivative-function.html#practice",
     "section": "3.2",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "topic": "derivative",
@@ -426,7 +453,8 @@
     "why": "Nearby values are \\((x+1)^2\\), which approach \\(0\\). The assigned height at \\(-1\\) is \\(1\\).",
     "source": "../lectures/10-derivative-function.html#practice",
     "section": "3.2",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "topic": "motion",
@@ -441,7 +469,8 @@
     "why": "Differentiate to get \\(v(t)=3-2t\\), and substitute \\(t=1\\).",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "motion",
@@ -456,7 +485,8 @@
     "why": "Speed is the magnitude of velocity, so take the absolute value.",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "motion",
@@ -471,23 +501,25 @@
     "why": "Rest means zero velocity. Solving \\(3-2t=0\\) gives \\(t=3/2\\).",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "motion",
     "level": 2,
-    "prompt": "At one instant, a particle moving along a line has velocity \\(-1\\) m/s and acceleration \\(-2\\) m/s². What happens to its speed?",
+    "prompt": "At one instant a particle has velocity \\(-1\\) m/s and acceleration \\(-2\\) m/s². What is the instantaneous rate of change of its speed?",
     "choices": [
-      "It increases.",
-      "It decreases.",
-      "It is zero.",
-      "It stays constant."
+      "\\(2\\) m/s²",
+      "\\(-2\\) m/s²",
+      "\\(1\\) m/s²",
+      "\\(0\\) m/s²"
     ],
-    "why": "Negative acceleration drives an already negative velocity farther from zero. Its magnitude, the speed, increases.",
+    "why": "While velocity is negative, speed equals \\(-v\\). Its derivative is \\(-a=2\\) m/s².",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "section": "3.4",
     "pdfPage": 34,
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "motion",
@@ -502,52 +534,56 @@
     "why": "Ground contact specifies a height of zero. Time is measured from release, so only nonnegative roots describe this flight.",
     "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "motion",
     "level": 3,
-    "prompt": "A ball’s height above ground is \\(H(t)=16(2-t)(t+3)\\) feet at time \\(t\\) seconds after release. When does it hit the ground?",
+    "prompt": "A ball has height \\(H(t)=16(2-t)(t+3)\\) feet after \\(t\\ge0\\) seconds. Its velocity is \\(-16-32t\\) ft/s. What is its speed just before impact?",
     "choices": [
-      "\\(2\\) s",
-      "\\(3\\) s",
-      "\\(-3\\) s",
-      "\\(6\\) s"
+      "\\(80\\) ft/s",
+      "\\(-80\\) ft/s",
+      "\\(48\\) ft/s",
+      "\\(16\\) ft/s"
     ],
-    "why": "Ground level means \\(H(t)=0\\). Its roots are \\(2\\) and \\(-3\\), and only \\(2\\) seconds is after release.",
+    "why": "The nonnegative zero of \\(H\\) is \\(t=2\\). The velocity is then \\(-80\\) ft/s and the speed is \\(80\\) ft/s.",
     "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "motion",
     "level": 3,
-    "prompt": "A car has position \\(s(t)=t^2-2t-3\\) feet, with time in seconds. It passes position \\(5\\) ft at \\(t=4\\). What is its instantaneous velocity at that event?",
+    "prompt": "A car has position \\(s(t)=t^2-2t-3\\) feet at \\(t\\) seconds. It passes \\(-3\\) ft twice while \\(t\\ge0\\). What is the later velocity minus the earlier velocity?",
     "choices": [
-      "\\(6\\) ft/s",
-      "\\(8\\) ft/s",
       "\\(4\\) ft/s",
-      "\\(5\\) ft/s"
+      "\\(0\\) ft/s",
+      "\\(2\\) ft/s",
+      "\\(-4\\) ft/s"
     ],
-    "why": "Solve \\(t^2-2t-8=(t-4)(t+2)=0\\), giving \\(t=4\\) seconds. Then \\(v(4)=2(4)-2=6\\).",
+    "why": "The times solve \\(t(t-2)=0\\). Velocities are \\(2t-2=-2\\) and \\(2\\) ft/s, so the signed change is \\(4\\) ft/s.",
     "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "motion",
     "level": 3,
-    "prompt": "A particle has velocity \\(v(t)=-3t^2+18t-24\\) m/s at time \\(t\\) seconds. What is its acceleration at \\(t=2\\)?",
+    "prompt": "A particle has velocity \\(v(t)=-3(t-2)(t-4)\\) m/s and acceleration \\(a(t)=18-6t\\) m/s². At which stop does it start moving to the left, and what is its acceleration there?",
     "choices": [
-      "\\(6\\) m/s\\(^2\\)",
-      "\\(0\\) m/s\\(^2\\)",
-      "\\(-6\\) m/s\\(^2\\)",
-      "\\(12\\) m/s\\(^2\\)"
+      "At \\(4\\) s, with \\(-6\\) m/s²",
+      "At \\(2\\) s, with \\(6\\) m/s²",
+      "At \\(4\\) s, with \\(6\\) m/s²",
+      "At \\(2\\) s, with \\(-6\\) m/s²"
     ],
-    "why": "Differentiate twice to get \\(a(t)=-6t+18\\). At \\(t=2\\), this is \\(6\\).",
+    "why": "At \\(4\\) s the velocity changes from positive to negative. Substitution gives \\(18-6(4)=-6\\) m/s².",
     "source": "../lectures/12-rates-of-change.html#practice",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "tangent",
@@ -562,7 +598,8 @@
     "why": "The secant slope from \\(1\\) to \\(b\\) simplifies to \\(2-b\\). Equating it to \\(-2\\) gives \\(b=4\\).",
     "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
     "section": "3.1",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "tangent",
@@ -577,7 +614,8 @@
     "why": "The secant is \\(y=0\\). A parallel tangent has \\(3-2x=0\\), hence height \\(3(3/2)-(3/2)^2=9/4\\).",
     "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
     "section": "3.1",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "derivative",
@@ -592,7 +630,8 @@
     "why": "Factor \\(x^2-9=(x-3)(x+3)\\). The first quotient tends to \\(f'(3)=-2\\), then divide by the limit \\(6\\).",
     "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
     "section": "3.1",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "derivative",
@@ -607,23 +646,25 @@
     "why": "Write it as \\(h\\) times the difference quotient with increment \\(h^2\\). The quotient tends to \\(3\\) and \\(h\\) tends to zero.",
     "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
     "section": "3.1",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "derivative",
     "level": 3,
-    "prompt": "For \\(f(x)=\\sqrt{x+5}\\), compare the secant slopes from \\(4\\) to \\(3\\) and from \\(4\\) to \\(5\\), in that order, with the tangent slope at \\(4\\).",
+    "prompt": "For \\(f(x)=\\sqrt{x+5}\\), compare the slopes of the left secant (\\(x=3\\) to \\(4\\)), the tangent at \\(4\\), and the right secant (\\(x=4\\) to \\(5\\)). Which ordering holds?",
     "choices": [
-      "Left secant \\(>1/6>\\) right secant.",
-      "Left secant \\(<1/6<\\) right secant.",
-      "Both secants have slope \\(1/6\\).",
-      "Both slopes exceed \\(1/6\\)."
+      "Left secant \\(>\\) tangent \\(>\\) right secant",
+      "Right secant \\(>\\) tangent \\(>\\) left secant",
+      "Tangent \\(>\\) both secants",
+      "All three slopes are equal."
     ],
     "why": "Rationalizing gives slopes \\(1/(3+\\sqrt8)\\) and \\(1/(3+\\sqrt{10})\\). Their denominators lie on opposite sides of \\(6\\).",
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "section": "3.1",
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "derivative",
@@ -639,7 +680,8 @@
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "section": "3.1",
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "derivative",
@@ -655,7 +697,8 @@
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "section": "3.1",
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "derivative",
@@ -671,12 +714,13 @@
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "section": "3.1",
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "derivative2",
     "level": 3,
-    "prompt": "Suppose a polynomial \\(g\\) satisfies \\(g''=-2\\) everywhere and \\(g(0)=0\\), as does the lecture parabola \\(3x-x^2\\). What extra datum forces those polynomials to agree?",
+    "prompt": "A polynomial \\(g\\) satisfies \\(g''(x)=-2\\) everywhere and \\(g(0)=0\\). Which additional condition determines that \\(g(x)=3x-x^2\\) for every \\(x\\)?",
     "choices": [
       "\\(g'(0)=3\\)",
       "\\(g'''(0)=0\\)",
@@ -686,7 +730,8 @@
     "why": "A polynomial with second derivative \\(-2\\) and zero constant term has the form \\(-x^2+bx\\). Its first derivative at zero determines \\(b\\).",
     "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
     "section": "3.2",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "topic": "derivative2",
@@ -701,7 +746,8 @@
     "why": "Set \\(3-2x=-2\\) to find \\(x=5/2\\). Both derivative graphs have height \\(-2\\) there.",
     "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
     "section": "3.2",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "topic": "derivative2",
@@ -716,7 +762,8 @@
     "why": "Set \\(3x-x^2=3-2x\\) and collect terms. This gives \\(x^2-5x+3=0\\).",
     "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
     "section": "3.2",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "topic": "derivative",
@@ -732,7 +779,8 @@
     "source": "../lectures/10-derivative-function.html#differentiability-implies-continuity",
     "section": "3.2",
     "pdfPage": 27,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 5
   },
   {
     "topic": "derivative",
@@ -748,7 +796,8 @@
     "source": "../lectures/10-derivative-function.html#differentiability-implies-continuity",
     "section": "3.2",
     "pdfPage": 27,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 5
   },
   {
     "topic": "derivative2",
@@ -763,7 +812,8 @@
     "why": "Away from \\(-1\\) the derivative is \\(2(x+1)\\), which has no zero there. At \\(-1\\) the jump between the assigned height and the limiting height prevents differentiability.",
     "source": "../lectures/10-derivative-function.html#practice",
     "section": "3.2",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "topic": "derivative2",
@@ -778,7 +828,8 @@
     "why": "The desired slope is \\(1/4\\). The derivative \\(1/(2\\sqrt{x+6})\\) equals \\(1/4\\) precisely when \\(x+6=4\\).",
     "source": "../lectures/10-derivative-function.html#practice",
     "section": "3.2",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "topic": "derivative2",
@@ -793,22 +844,24 @@
     "why": "At \\(x=10\\) the tangent estimate is \\(25/6\\) and the exact function value is \\(4\\). Their difference is \\(1/6\\).",
     "source": "../lectures/10-derivative-function.html#practice",
     "section": "3.2",
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "topic": "motion",
     "level": 3,
-    "prompt": "A particle moves from \\(t=0\\) to \\(t=4\\) with \\(v(t)=3(t-2)^2-3\\). Its minimum velocity is \\(-3\\) at \\(t=2\\). At which instants is its speed largest?",
+    "prompt": "On \\(0\\le t\\le4\\), a particle has velocity \\(v(t)=3(t-2)^2-3\\). Which list gives every time its speed reaches its maximum?",
     "choices": [
-      "\\(t=0\\) and \\(t=4\\)",
-      "\\(t=1\\) and \\(t=3\\)",
+      "\\(t=0,4\\)",
+      "\\(t=1,3\\)",
       "\\(t=2\\) only",
-      "\\(t=1,2,3\\)"
+      "\\(t=0,2,4\\)"
     ],
     "why": "Velocity is \\(3(t-2)^2-3\\). Its range on the interval is \\([-3,9]\\), so the largest speed is \\(9\\) at the endpoints.",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "motion",
@@ -823,12 +876,13 @@
     "why": "The two legs each cover \\(9/4\\) meters, giving \\(9/2\\) meters altogether. Initial and final positions coincide, so displacement is zero.",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "motion",
     "level": 3,
-    "prompt": "A car starts at position \\(-3\\) when \\(t=0\\). Its position is \\(s(t)=(t-1)^2-4\\) for \\(t\\ge0\\). Which positions does it pass at two distinct times?",
+    "prompt": "A car has position \\(s(t)=(t-1)^2-4\\) for \\(t\\ge0\\). Which set contains exactly the positions it visits twice?",
     "choices": [
       "\\(-4<s\\le-3\\)",
       "\\(-4\\le s<-3\\)",
@@ -838,55 +892,59 @@
     "why": "Rewrite as \\(s=(t-1)^2-4\\). Distinct times are \\(1\\pm\\sqrt{s+4}\\). Both are nonnegative exactly when \\(0<s+4\\le1\\).",
     "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "motion",
     "level": 3,
-    "prompt": "A ball’s height is \\(36\\) ft at \\(t=1.5\\) s. The ball is descending, and it hits the ground at \\(t=2\\) s. How far does it fall during the last half second?",
+    "prompt": "A ball has height \\(H(t)=96-16t-16t^2\\) feet. It falls from \\(36\\) ft at \\(t=1.5\\) s to ground at \\(t=2\\) s. What is its signed average velocity over this last half second?",
     "choices": [
-      "\\(36\\) ft",
-      "\\(40\\) ft",
-      "\\(32\\) ft",
-      "\\(24\\) ft"
+      "\\(-72\\) ft/s",
+      "\\(72\\) ft/s",
+      "\\(-18\\) ft/s",
+      "\\(-80\\) ft/s"
     ],
-    "why": "In this interval the descending ball goes directly from \\(36\\) feet to ground level. The distance fallen is \\(36-0=36\\) feet.",
+    "why": "Divide the signed displacement by the time: \\((0-36)/(2-1.5)=-72\\) ft/s.",
     "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "motion",
     "level": 3,
-    "prompt": "A particle moving on a line first reverses at position \\(-15\\) m and next reverses at position \\(-11\\) m. What is its displacement between the two reversals?",
+    "prompt": "A particle starts at \\(5\\) m, turns at \\(-15\\) m at \\(t=2\\) s, and next turns at \\(-11\\) m at \\(t=4\\) s. Which pair gives average velocity and average speed over the first four seconds, in m/s?",
     "choices": [
-      "\\(4\\) m",
-      "\\(-4\\) m",
-      "\\(20\\) m",
-      "\\(0\\) m"
+      "\\((-4,6)\\)",
+      "\\((4,6)\\)",
+      "\\((-4,4)\\)",
+      "\\((6,-4)\\)"
     ],
-    "why": "Subtract initial position from final position: \\(-11-(-15)=4\\) meters.",
+    "why": "Displacement is \\(-11-5=-16\\) m. Distance is \\(20+4=24\\) m. Divide each by \\(4\\) s.",
     "source": "../lectures/12-rates-of-change.html#practice",
     "section": "3.4",
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "tangent",
     "section": "3.1",
     "level": 3,
-    "prompt": "The tangent to \\(y=1/x\\) at \\(x=a>0\\) cuts the axes at \\((2a,0)\\) and \\((0,2/a)\\). If \\(a\\) doubles, what happens to the triangle’s area?",
+    "prompt": "The tangent to \\(y=1/x\\) at \\(x=a>0\\) cuts the axes at \\((2a,0)\\) and \\((0,2/a)\\). If \\(a\\) doubles, how does the area enclosed by the tangent and the coordinate axes change?",
     "choices": [
-      "It stays at 2 square units.",
+      "It stays the same.",
       "It doubles.",
       "It halves.",
-      "It increases by 2 square units."
+      "It quadruples."
     ],
     "why": "Its base doubles and its height halves. Their product remains 4, so one half of the product remains 2.",
     "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
     "reference": "Week 4 worksheet · 1(c–d)",
     "pdfPage": 24,
     "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
-    "reviewPdf": "../downloads/week-4-worksheet.pdf"
+    "reviewPdf": "../downloads/week-4-worksheet.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "motion",
@@ -904,7 +962,8 @@
     "reference": "Week 4 worksheet · 2(a)",
     "pdfPage": 33,
     "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
-    "reviewPdf": "../downloads/week-4-worksheet.pdf"
+    "reviewPdf": "../downloads/week-4-worksheet.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "derivative",
@@ -922,7 +981,8 @@
     "reference": "Exam 2 review worksheet · 2(b)",
     "pdfPage": 24,
     "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
-    "reviewPdf": "../downloads/exam-2-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-2-review-worksheet.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "motion",
@@ -940,7 +1000,8 @@
     "reference": "Exam 2 review worksheet · 6(c)",
     "pdfPage": 34,
     "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
-    "reviewPdf": "../downloads/exam-2-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-2-review-worksheet.pdf",
+    "handoutPage": 1
   },
   {
     "section": "3.2",
@@ -963,7 +1024,8 @@
     "source": "../lectures/10-derivative-function.html#section-3.2-the-derivative-function",
     "graphPrompt": "arch",
     "pdfPage": 26,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "section": "3.2",
@@ -986,7 +1048,8 @@
     "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
     "graphPrompt": "down-intercept",
     "pdfPage": 26,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "section": "3.2",
@@ -1009,7 +1072,8 @@
     "source": "../lectures/10-derivative-function.html#the-converse-is-false",
     "graphPrompt": "corner",
     "pdfPage": 28,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 5
   },
   {
     "section": "3.4",
@@ -1032,7 +1096,8 @@
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "graphPrompt": "velocity-fall",
     "pdfPage": 33,
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "section": "3.4",
@@ -1055,7 +1120,8 @@
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "graphPrompt": "cubic-position",
     "pdfPage": 34,
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "section": "3.4",
@@ -1078,7 +1144,8 @@
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "graphPrompt": "velocity-bowl",
     "pdfPage": 34,
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "section": "3.1",
@@ -1089,7 +1156,8 @@
     "why": "As \\(h\\) tends to zero the secant slope tends to \\(1/4\\). Thus \\(g'(-1)=8(1/4)-1=1\\).",
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "section": "3.1",
@@ -1100,7 +1168,8 @@
     "why": "The slope condition gives \\(u=4\\). Since \\(u^2=x+5\\), the input is \\(16-5=11\\).",
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "section": "3.1",
@@ -1111,7 +1180,8 @@
     "why": "The vertical change is \\(5-3=2\\). Since rise divided by run is \\(1/8\\), the horizontal change is \\(16\\).",
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "section": "3.1",
@@ -1122,7 +1192,8 @@
     "why": "The difference quotient at zero is \\((\\lvert h\\rvert/h)[(h-2)^2+k]+3\\). Its right and left limits are \\(3+(4+k)\\) and \\(3-(4+k)\\). Equality requires \\(4+k=0\\).",
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "section": "3.1",
@@ -1133,7 +1204,8 @@
     "why": "The tangent at \\(a\\) is \\(y=(3-2a)x+a^2\\). The two lines are \\(y=5x+1\\) and \\(y=-3x+9\\). They intersect at \\(x=1\\) and hence \\(y=6\\).",
     "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
     "pdfPage": 24,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "section": "3.1",
@@ -1144,7 +1216,8 @@
     "why": "The line tangent at \\(a\\) has equation \\(y=(3-2a)x+a^2\\). Passing through \\((2,3)\\) requires \\(a^2-4a+3=0\\), so \\(a=1,3\\). Their slopes are \\(1,-3\\).",
     "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
     "pdfPage": 24,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "section": "3.1",
@@ -1155,7 +1228,8 @@
     "why": "Insert \\(f(a)\\) between the two terms. The forward change divided by \\(h\\) tends to \\(3f'(a)\\) and the backward change contributes \\(f'(a)\\). Together they give \\(4(-3/2)=-6\\).",
     "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
     "pdfPage": 24,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "section": "3.1",
@@ -1166,7 +1240,8 @@
     "why": "Rationalize the numerator and factor the denominator. The expression becomes the difference quotient \\([f(x)-4]/(x-2)\\) divided by \\((\\sqrt{f(x)}+2)(x+2)\\). The respective limits are \\(3\\) and \\(16\\).",
     "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
     "pdfPage": 24,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "section": "3.2",
@@ -1177,7 +1252,8 @@
     "why": "Applying the chain rule twice gives \\(g''(x)=4f''(2x)=4(-2)=-8\\).",
     "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
     "pdfPage": 26,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "section": "3.2",
@@ -1188,7 +1264,8 @@
     "why": "The linear term contributes zero to the second derivative. Hence \\(q''(x)=6x-2\\), giving \\(10\\) at \\(x=2\\).",
     "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
     "pdfPage": 27,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "section": "3.2",
@@ -1199,18 +1276,20 @@
     "why": "The slope of \\(G\\) is \\(f'-f''=(3-2x)-(-2)=5-2x\\). This vanishes at \\(5/2\\).",
     "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
     "pdfPage": 26,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "section": "3.2",
     "topic": "derivative2",
     "level": 4,
-    "prompt": "Join \\(f(x)=(x+1)^2\\) on the left of \\(-1\\) to \\(A(x+1)^2+B(x+1)\\) on the right. The joined function has two derivatives at \\(-1\\). What is \\(A+B\\)?",
+    "prompt": "Let \\(f(x)=(x+1)^2\\) for \\(x\\le-1\\) and \\(f(x)=A(x+1)^2+B(x+1)\\) for \\(x>-1\\). If \\(f\\) is twice differentiable at \\(-1\\), find \\(A+B\\).",
     "answer": "1",
     "why": "The left slope is zero, so the right slope at the join forces \\(B=0\\). Matching the second derivatives gives \\(2=2A\\), hence \\(A=1\\).",
     "source": "../lectures/10-derivative-function.html#practice",
     "pdfPage": 28,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "section": "3.2",
@@ -1221,7 +1300,8 @@
     "why": "The numerator factors as \\((x+1)^3\\), so nearby values equal \\((x+1)^2\\). Continuity forces the missing value to be zero. The repaired function equals the quadratic everywhere, whose second derivative is \\(2\\).",
     "source": "../lectures/10-derivative-function.html#practice",
     "pdfPage": 28,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "section": "3.2",
@@ -1232,7 +1312,8 @@
     "why": "Combine the fractions and insert \\(2h\\) as the derivative increment. The limit is \\(-2f'(0)/(2f(0))\\). Substitute \\(f'(0)=-3\\) and \\(f(0)=2\\).",
     "source": "../lectures/10-derivative-function.html#differentiability-implies-continuity",
     "pdfPage": 27,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 5
   },
   {
     "section": "3.2",
@@ -1243,7 +1324,8 @@
     "why": "The first factor divided by \\(h\\) tends to \\(2f'(1)=-4\\). The second divided by \\(h\\) tends to \\(-3g'(1)=-9\\). Multiplication gives \\(36\\).",
     "source": "../lectures/10-derivative-function.html#differentiability-implies-continuity",
     "pdfPage": 27,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 5
   },
   {
     "section": "3.2",
@@ -1254,7 +1336,8 @@
     "why": "For positive \\(x\\), \\(F'=2x\\) has slope \\(2\\). For negative \\(x\\), \\(F'=-2x\\) has slope \\(-2\\). The difference is \\(4\\).",
     "source": "../lectures/10-derivative-function.html#the-converse-is-false",
     "pdfPage": 28,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 5
   },
   {
     "section": "3.4",
@@ -1265,7 +1348,8 @@
     "why": "From time \\(1\\) to \\(2\\), the particle covers \\(2\\) meters. From \\(3\\) to \\(4\\), it covers \\(4\\) meters. The two distances sum to \\(6\\).",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "pdfPage": 34,
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "section": "3.4",
@@ -1276,7 +1360,8 @@
     "why": "The speed exceeds \\(2\\) for the first and the last half second. Those periods total \\(1\\) of the \\(3\\) seconds.",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "pdfPage": 33,
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "section": "3.4",
@@ -1287,7 +1372,8 @@
     "why": "Half the impact speed is \\(40\\), so the velocity must be \\(-40\\). Solving \\(-16-32t=-40\\) gives \\(t=24/32=3/4\\).",
     "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
     "pdfPage": 34,
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "section": "3.4",
@@ -1298,7 +1384,8 @@
     "why": "The average velocity is \\(-96/2=-48\\). Solving \\(-16-32t=-48\\) gives \\(t=1\\).",
     "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
     "pdfPage": 34,
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "section": "3.4",
@@ -1309,7 +1396,8 @@
     "why": "It reverses at \\(t=1\\), where \\(s=-4\\), and reaches \\(s=5\\) at \\(t=4\\). The trip starts at \\(s=-3\\), so the two legs have lengths \\(1\\) and \\(9\\).",
     "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
     "pdfPage": 35,
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "section": "3.4",
@@ -1320,7 +1408,8 @@
     "why": "The three legs cover \\(20\\), \\(4\\) and \\(4\\) meters. Divide total distance by elapsed time to get \\(28/5\\) m/s.",
     "source": "../lectures/12-rates-of-change.html#practice",
     "pdfPage": 35,
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "section": "3.4",
@@ -1331,7 +1420,8 @@
     "why": "Velocity is negative before \\(2\\) and after \\(4\\). Acceleration \\(18-6t\\) is negative after \\(3\\). Their negative signs coincide on \\((4,5)\\), during which position drops from \\(-11\\) to \\(-15\\), a distance of \\(4\\).",
     "source": "../lectures/12-rates-of-change.html#practice",
     "pdfPage": 35,
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "section": "3.4",
@@ -1342,7 +1432,8 @@
     "why": "The first reversal is at \\(t=2\\), where \\(s=-15\\). Solving \\(s(t)+15=-(t-2)^2(t-5)=0\\) gives the later time \\(5\\). The velocity \\(-3(t-2)(t-4)\\) is then \\(-9\\).",
     "source": "../lectures/12-rates-of-change.html#practice",
     "pdfPage": 35,
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "section": "3.1",
@@ -1354,7 +1445,8 @@
     "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
     "capstone": true,
     "pdfPage": 25,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "section": "3.2",
@@ -1366,7 +1458,8 @@
     "source": "../lectures/10-derivative-function.html#practice",
     "capstone": true,
     "pdfPage": 28,
-    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "section": "3.4",
@@ -1378,7 +1471,8 @@
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "capstone": true,
     "pdfPage": 34,
-    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "motion",
@@ -1386,12 +1480,12 @@
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
     "level": 3,
-    "prompt": "A cart travels from position \\(0\\) m at \\(t=0\\) s to \\(36\\) m at \\(t=6\\) s. Its velocity is \\(v(t)=3(t-2)(t-4)\\) m/s. What are its average velocity over the trip and its velocity at \\(t=6\\), in that order?",
+    "prompt": "A cart travels from \\(0\\) m at \\(t=0\\) s to \\(36\\) m at \\(t=6\\) s. Its velocity is \\(v(t)=3(t-2)(t-4)\\) m/s. Which pair gives its average velocity on \\([0,6]\\) and its final velocity, in m/s?",
     "choices": [
-      "\\(6\\) and \\(24\\) m/s",
-      "\\(6\\) and \\(6\\) m/s",
-      "\\(36\\) and \\(24\\) m/s",
-      "\\(24\\) and \\(6\\) m/s"
+      "\\((6,24)\\)",
+      "\\((6,6)\\)",
+      "\\((36,24)\\)",
+      "\\((24,6)\\)"
     ],
     "why": "The displacement is \\(s(6)-s(0)=36\\) m, so its average over 6 s is 6 m/s. Substituting 6 into \\(3t^2-18t+24\\) gives 24 m/s.",
     "handoutPage": 1,
@@ -1540,18 +1634,19 @@
     "section": "3.1",
     "level": 1,
     "topic": "derivative",
-    "prompt": "A tangent touches a graph at \\((3,4)\\). Which ordered pair is the stated point of tangency?",
+    "prompt": "The marked point of tangency is \\((1,1)\\). The dashed tangent also passes through \\((2,3)\\). What is its slope?",
     "choices": [
-      "\\((3,4)\\)",
-      "\\((4,3)\\)",
-      "\\((3,0)\\)",
-      "\\((0,4)\\)"
+      "\\(2\\)",
+      "\\(1/2\\)",
+      "\\(3\\)",
+      "\\(-2\\)"
     ],
-    "why": "Both pass through the point of tangency.",
+    "why": "The rise is 2 and the run is 1.",
     "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
     "pdfPage": 24,
     "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
-    "handoutPage": 1
+    "handoutPage": 1,
+    "graphPrompt": "tangent-one"
   },
   {
     "section": "3.1",
@@ -1591,12 +1686,12 @@
     "section": "3.1",
     "level": 1,
     "topic": "derivative",
-    "prompt": "Which line through two distinct points on a curve gives its average rate of change?",
+    "prompt": "What is the name for the straight line determined by two points of a graph at different inputs?",
     "choices": [
-      "The secant line",
-      "A vertical line",
-      "The horizontal axis",
-      "The vertical axis"
+      "Secant line",
+      "Tangent at the left point",
+      "Horizontal asymptote",
+      "Vertical asymptote"
     ],
     "why": "The secant slope compares the two points.",
     "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
@@ -1643,14 +1738,14 @@
     "section": "3.2",
     "level": 1,
     "topic": "derivative2",
-    "prompt": "The graph shows \\(f'\\). Above the horizontal axis, what sign does \\(f'\\) have?",
+    "prompt": "The graph shown is \\(f'\\). What sign does the tangent slope of \\(f\\) have at \\(x=1\\)?",
     "choices": [
       "Positive",
       "Negative",
       "Zero",
       "Undefined"
     ],
-    "why": "A positive height is a positive derivative.",
+    "why": "The derivative graph is above the horizontal axis at that input.",
     "source": "../lectures/10-derivative-function.html#section-3.2-the-derivative-function",
     "pdfPage": 26,
     "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
@@ -1679,7 +1774,7 @@
     "section": "3.2",
     "level": 1,
     "topic": "derivative2",
-    "prompt": "The graph is \\(f'\\). At the origin it crosses the horizontal axis. What is \\(f'(0)\\)?",
+    "prompt": "The graph shown is \\(f'\\). What is the tangent slope of \\(f\\) at \\(x=0\\)?",
     "choices": [
       "\\(0\\)",
       "\\(1\\)",
@@ -1783,7 +1878,7 @@
     "section": "3.2",
     "level": 1,
     "topic": "derivative2",
-    "prompt": "The slope of \\(f\\) at input \\(4\\) is \\(-1\\). Which point lies on the graph of \\(f'\\)?",
+    "prompt": "The slope of \\(f\\) at \\(x=4\\) is \\(-1\\). Which point on the derivative graph records this particular slope?",
     "choices": [
       "\\((4,-1)\\)",
       "\\((-1,4)\\)",
@@ -1834,12 +1929,12 @@
     "section": "3.4",
     "level": 1,
     "topic": "motion",
-    "prompt": "A particle moves with velocity \\(-2\\) m/s. In which direction is it moving?",
+    "prompt": "A particle moves along a number line with velocity \\(-2\\) m/s. While its velocity stays negative, how does its position change?",
     "choices": [
-      "Negative direction",
-      "Positive direction",
-      "It is at rest.",
-      "It has no direction of motion."
+      "Its coordinate decreases.",
+      "Its coordinate increases.",
+      "Its coordinate stays constant.",
+      "It alternates between two coordinates."
     ],
     "why": "A negative velocity indicates motion in the negative direction.",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
@@ -1970,12 +2065,12 @@
     "section": "3.4",
     "level": 1,
     "topic": "motion",
-    "prompt": "The graph shows velocity. At the instant the graph crosses the time axis, how fast is the particle moving?",
+    "prompt": "The graph shows velocity in m/s. What is the speed when the graph crosses the time axis?",
     "choices": [
-      "Zero speed",
-      "Positive speed of 1 m/s",
-      "Positive speed of 2 m/s",
-      "Negative speed"
+      "\\(0\\) m/s",
+      "\\(1.5\\) m/s",
+      "\\(3\\) m/s",
+      "Undefined"
     ],
     "why": "At the crossing, velocity and its absolute value are both zero.",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
@@ -1988,14 +2083,14 @@
     "section": "3.4",
     "level": 1,
     "topic": "motion",
-    "prompt": "The graph shows position. During the uphill part, what sign does velocity have?",
+    "prompt": "The graph shows position. What sign does the velocity have at \\(t=1\\)?",
     "choices": [
       "Positive",
       "Negative",
       "Zero",
       "Undefined at every instant"
     ],
-    "why": "The slope of the position graph is positive there.",
+    "why": "The position graph is rising at this instant.",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "pdfPage": 33,
     "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
@@ -2006,7 +2101,7 @@
     "section": "3.4",
     "level": 1,
     "topic": "motion",
-    "prompt": "This velocity graph begins at height 3. What is the initial velocity in m/s?",
+    "prompt": "The vertical coordinate is velocity in m/s. Read the velocity at \\(t=0\\) from the graph.",
     "choices": [
       "\\(3\\)",
       "\\(-3\\)",
@@ -2041,7 +2136,7 @@
     "section": "3.4",
     "level": 1,
     "topic": "motion",
-    "prompt": "This position graph reaches a smooth peak. At that peak, what is the instantaneous velocity?",
+    "prompt": "The graph shows position in meters against time in seconds. What is the instantaneous velocity at the smooth peak, in m/s?",
     "choices": [
       "\\(0\\)",
       "\\(1\\)",
@@ -2076,18 +2171,19 @@
     "section": "3.1",
     "level": 2,
     "topic": "derivative",
-    "prompt": "The secant slope for \\(f\\) from \\(-1\\) to \\(-1+h\\) simplifies to \\(-2+h\\) when \\(h\\ne0\\). What is \\(f'(-1)\\)?",
+    "prompt": "For \\(f(x)=\\lvert x\\rvert\\), the secant from the origin to a point with \\(x=h<0\\) has what slope?",
     "choices": [
-      "\\(-2\\)",
-      "\\(2\\)",
       "\\(-1\\)",
-      "\\(-3\\)"
+      "\\(1\\)",
+      "\\(0\\)",
+      "Undefined"
     ],
-    "why": "Take the limit of the secant slopes as \\(h\\) approaches zero.",
+    "why": "On the left ray, \\(\\lvert h\\rvert=-h\\), so the slope \\(\\lvert h\\rvert/h\\) equals \\(-1\\).",
     "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
     "pdfPage": 24,
     "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
-    "handoutPage": 1
+    "handoutPage": 1,
+    "graphPrompt": "corner"
   },
   {
     "section": "3.1",
@@ -2144,14 +2240,14 @@
     "section": "3.1",
     "level": 2,
     "topic": "derivative",
-    "prompt": "The tangent passes through \\((0,2)\\) with slope \\(3\\). On this tangent, what is the height one unit to the right?",
+    "prompt": "A tangent has equation \\(y-2=3(x-1)\\). At which input does it reach height \\(5\\)?",
     "choices": [
-      "\\(5\\)",
-      "\\(-5\\)",
-      "\\(6\\)",
-      "\\(4\\)"
+      "\\(2\\)",
+      "\\(1\\)",
+      "\\(3\\)",
+      "\\(5\\)"
     ],
-    "why": "One unit of run changes height by \\(3\\). Start from \\(2\\).",
+    "why": "The line rises by \\(3\\) when the input increases from \\(1\\) to \\(2\\).",
     "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
     "pdfPage": 24,
     "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
@@ -2248,31 +2344,32 @@
     "section": "3.2",
     "level": 2,
     "topic": "derivative2",
-    "prompt": "The second derivative is \\(f''(x)=4x\\). What is its value at \\(x=-1\\)?",
+    "prompt": "The graph shows \\(f'\\). Where is \\(f\\) increasing within the displayed interval?",
     "choices": [
-      "\\(-4\\)",
-      "\\(4\\)",
-      "\\(-3\\)",
-      "\\(-5\\)"
+      "To the right of the origin",
+      "To the left of the origin",
+      "On both sides of the origin",
+      "On neither side of the origin"
     ],
-    "why": "Substitute the requested input in the second derivative.",
+    "why": "The graph of the derivative is positive precisely on the right side.",
     "source": "../lectures/10-derivative-function.html#section-3.2-the-derivative-function",
     "pdfPage": 26,
     "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
-    "handoutPage": 3
+    "handoutPage": 3,
+    "graphPrompt": "slope-two"
   },
   {
     "section": "3.2",
     "level": 2,
     "topic": "derivative2",
-    "prompt": "The second derivative is \\(f''(x)=5x\\). What is its value at \\(x=3\\)?",
+    "prompt": "A graph has \\(f''(x)=5x\\). At which input does the slope of the graph of \\(f'\\) equal \\(-5\\)?",
     "choices": [
-      "\\(15\\)",
-      "\\(-15\\)",
-      "\\(16\\)",
-      "\\(14\\)"
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(-5\\)",
+      "\\(0\\)"
     ],
-    "why": "Substitute the requested input in the second derivative.",
+    "why": "The slope of the derivative graph is \\(f''(x)\\). Solve \\(5x=-5\\).",
     "source": "../lectures/10-derivative-function.html#section-3.2-the-derivative-function",
     "pdfPage": 26,
     "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
@@ -2299,14 +2396,14 @@
     "section": "3.2",
     "level": 2,
     "topic": "derivative2",
-    "prompt": "If \\(f'(x)=x^2+3x\\), what is \\(f''(0)\\)?",
+    "prompt": "For \\(f(x)=3x-x^2\\), \\(f'(x)=3-2x\\). Which equation gives the graph of \\(f''\\)?",
     "choices": [
-      "\\(3\\)",
-      "\\(-3\\)",
-      "\\(4\\)",
-      "\\(2\\)"
+      "\\(y=-2\\)",
+      "\\(y=-2x\\)",
+      "\\(y=3\\)",
+      "\\(y=3-2x\\)"
     ],
-    "why": "Differentiating gives \\(2x+3\\), whose value at zero is \\(3\\).",
+    "why": "The slope of the line \\(3-2x\\) is the same at every input.",
     "source": "../lectures/10-derivative-function.html#section-3.2-the-derivative-function",
     "pdfPage": 26,
     "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
@@ -2316,14 +2413,14 @@
     "section": "3.2",
     "level": 2,
     "topic": "derivative2",
-    "prompt": "If \\(f'(x)=x^2+5x\\), what is \\(f''(0)\\)?",
+    "prompt": "On a whole interval, \\(f'(x)=5\\). What happens to the tangent slopes of \\(f\\) as you move from left to right?",
     "choices": [
-      "\\(5\\)",
-      "\\(-5\\)",
-      "\\(6\\)",
-      "\\(4\\)"
+      "They stay equal to 5.",
+      "They start at 5 and steadily increase.",
+      "They drop to zero.",
+      "They alternate between 5 and zero."
     ],
-    "why": "Differentiating gives \\(2x+5\\), whose value at zero is \\(5\\).",
+    "why": "The constant derivative means that every tangent on the interval has slope 5.",
     "source": "../lectures/10-derivative-function.html#section-3.2-the-derivative-function",
     "pdfPage": 26,
     "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
@@ -2351,14 +2448,14 @@
     "section": "3.2",
     "level": 2,
     "topic": "derivative2",
-    "prompt": "The graph shows \\(f'\\). Just to the right of its zero crossing, is \\(f\\) increasing or decreasing?",
+    "prompt": "The graph shows \\(f'\\). At \\(x=2\\), what is the sign of the tangent slope of \\(f\\)?",
     "choices": [
-      "Decreasing",
-      "Increasing",
-      "Constant throughout",
-      "Discontinuous at every input"
+      "Negative",
+      "Positive",
+      "Zero",
+      "Undefined"
     ],
-    "why": "The derivative graph lies below the horizontal axis there.",
+    "why": "The derivative graph is below the horizontal axis at input 2.",
     "source": "../lectures/10-derivative-function.html#section-3.2-the-derivative-function",
     "pdfPage": 26,
     "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
@@ -2369,7 +2466,7 @@
     "section": "3.4",
     "level": 2,
     "topic": "motion",
-    "prompt": "On a straight track, \\(v(t)=2t-1\\) m/s. What is the speed at \\(t=1\\) seconds in m/s?",
+    "prompt": "On a straight track, \\(v(t)=2t-1\\) m/s. What is the speed at \\(t=1\\) s, in m/s?",
     "choices": [
       "\\(1\\)",
       "\\(-1\\)",
@@ -2437,14 +2534,14 @@
     "section": "3.4",
     "level": 2,
     "topic": "motion",
-    "prompt": "This position graph descends between its peak and the right endpoint. Which sign does the velocity have on that open interval?",
+    "prompt": "The graph shows position against time. Between the smooth peak and the right endpoint, what is the sign of the velocity?",
     "choices": [
-      "Negative",
-      "Positive",
-      "Zero",
-      "Undefined everywhere"
+      "Negative throughout the open interval",
+      "Positive throughout the open interval",
+      "Zero throughout the open interval",
+      "Changes from negative to positive"
     ],
-    "why": "Velocity is the slope of the position graph.",
+    "why": "The position curve has negative slope throughout this interval.",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
     "pdfPage": 33,
     "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
@@ -2712,7 +2809,7 @@
     "section": "3.4",
     "level": 4,
     "topic": "motion",
-    "prompt": "A cart has positive velocity on \\((0,1)\\), negative velocity on \\((1,3)\\), and positions \\(s(0)=0\\), \\(s(1)=4\\), \\(s(3)=1\\) meters. What is its average speed on \\([0,3]\\) in m/s?",
+    "prompt": "A cart on a straight track moves forward on \\(0<t<1\\) and backward on \\(1<t<3\\). At times \\(0,1,3\\) seconds its positions are \\(0,4,1\\) meters. What is the average speed over the full three seconds in m/s?",
     "answer": "7/3",
     "why": "It travels 4 meters forward and 3 back. Divide 7 by the 3-second duration.",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
@@ -2774,7 +2871,7 @@
     "section": "3.4",
     "level": 4,
     "topic": "motion",
-    "prompt": "Until \\(t=2\\) s a cart travels forward, then it travels backward through \\(t=5\\) s. Its positions at times \\(0,2,5\\) are \\(-2,4,1\\) meters. What is average speed minus the magnitude of average velocity in m/s?",
+    "prompt": "A cart moves forward until \\(t=2\\) s, then backward through \\(t=5\\) s. Its positions at \\(0,2,5\\) seconds are \\(-2,4,1\\) meters. Over all five seconds, by how much does average speed exceed the magnitude of average velocity, in m/s?",
     "answer": "6/5",
     "why": "Distance is \\(6+3=9\\) m and displacement is \\(3\\) m. Divide their difference by 5 seconds.",
     "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",

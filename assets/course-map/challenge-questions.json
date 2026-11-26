@@ -37,14 +37,14 @@
       },
       {
         "topic": "limitmethods",
-        "prompt": "For \\(x\\ne2\\), write \\(f(x)=\\dfrac{(x-2)(x+1)}{(x-2)(x+2)}\\). Although \\(f(2)\\) is undefined, what is \\(\\lim_{x\\to2}f(x)\\)?",
+        "prompt": "Both quadratics vanish at 2. What is \\(\\displaystyle\\lim_{x\\to2}\\frac{x^2-x-2}{x^2-4}\\)?",
         "choices": [
           "\\(3/4\\)",
           "\\(0\\)",
           "\\(1\\)",
           "Does not exist"
         ],
-        "why": "Factor and cancel \\(x-2\\) for nearby \\(x\\ne2\\). The quotient becomes \\((x+1)/(x+2)\\), which approaches \\(3/4\\).",
+        "why": "Factor the numerator as \\((x-2)(x+1)\\) and the denominator as \\((x-2)(x+2)\\). Near 2, cancel \\(x-2\\) to get a limit of \\(3/4\\).",
         "level": 3,
         "source": "../lectures/04-limit-laws.html#practice",
         "section": "2.3",
@@ -64,7 +64,8 @@
         "level": 3,
         "source": "../lectures/04-limit-laws.html#recap-limits",
         "section": "2.3",
-        "pdf": "../downloads/september-30-revised-class-notes.pdf"
+        "pdf": "../downloads/september-30-revised-class-notes.pdf",
+        "pdfPage": 11
       },
       {
         "topic": "limitmethods",
@@ -91,7 +92,7 @@
           "\\(2\\)",
           "\\(8\\)"
         ],
-        "why": "The numerator expands to \\(4h+h^2\\). For \\(h\\ne0\\), dividing by \\(h\\) leaves \\(4+h\\).",
+        "why": "For \\(h\\ne0\\), dividing \\(4h+h^2\\) by \\(h\\) gives \\(4+h\\). This approaches 4.",
         "level": 2,
         "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
         "section": "2.3",
@@ -168,7 +169,8 @@
         "level": 1,
         "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
         "section": "3.6",
-        "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+        "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+        "pdfPage": 39
       },
       {
         "topic": "chain",
@@ -215,7 +217,8 @@
         "level": 2,
         "source": "../lectures/14-chain-rule.html#powers-of-functions",
         "section": "3.6",
-        "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+        "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+        "pdfPage": 41
       },
       {
         "topic": "chain",
@@ -230,7 +233,8 @@
         "level": 2,
         "source": "../lectures/14-chain-rule.html#powers-of-functions",
         "section": "3.6",
-        "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+        "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+        "pdfPage": 41
       },
       {
         "topic": "chain",
@@ -241,11 +245,12 @@
           "\\(6\\)",
           "\\(12\\)"
         ],
-        "why": "Since \\(y'=2g(x)g'(x)\\), the given values give \\(24=2g(2)\\cdot3\\). Divide by six.",
+        "why": "The chain rule gives \\(24=2g(2)\\cdot3\\). Dividing by 6 gives \\(g(2)=4\\).",
         "level": 2,
         "source": "../lectures/14-chain-rule.html#powers-of-functions",
         "section": "3.6",
-        "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+        "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+        "pdfPage": 41
       },
       {
         "topic": "rules",
@@ -260,7 +265,8 @@
         "level": 1,
         "source": "../lectures/14-chain-rule.html#combining-differentiation-rules",
         "section": "3.6",
-        "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+        "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+        "pdfPage": 42
       },
       {
         "topic": "chain",
@@ -275,22 +281,24 @@
         "level": 2,
         "source": "../lectures/14-chain-rule.html#three-or-more-layers",
         "section": "3.6",
-        "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+        "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+        "pdfPage": 43
       },
       {
         "topic": "tangent",
-        "prompt": "Let \\(f(x)=\\sqrt{1+3x^2}\\). At \\(x=1\\), the inside expression has value \\(4\\) and slope \\(6\\). What is the slope of \\(f\\) there?",
+        "prompt": "Let \\(f(x)=\\sqrt{1+3x^2}\\). At \\(x=1\\), the inner function has value 4 and slope 6. Where does the tangent line at \\(x=1\\) meet the vertical axis?",
         "choices": [
-          "\\(3/2\\)",
-          "\\(2\\)",
-          "\\(1/4\\)",
-          "\\(3\\)"
+          "\\((0,1/2)\\)",
+          "\\((0,3/2)\\)",
+          "\\((0,2)\\)",
+          "\\((0,7/2)\\)"
         ],
-        "why": "The chain rule gives \\(f'(x)=3x/\\sqrt{1+3x^2}\\). At \\(x=1\\), the numerator is \\(3\\) and the denominator is \\(2\\).",
+        "why": "The point is \\((1,2)\\) and the chain rule gives slope \\(6/(2\\sqrt{4})=3/2\\). Moving left by 1 drops the tangent by \\(3/2\\), to height \\(1/2\\).",
         "level": 3,
         "source": "../lectures/14-chain-rule.html#practice-1",
         "section": "3.6",
-        "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+        "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+        "pdfPage": 44
       }
     ],
     "exams": [
@@ -314,7 +322,8 @@
         "level": 1,
         "source": "../lectures/section-4-3.html#first-derivative-test",
         "section": "4.3",
-        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+        "pdfPage": 67
       },
       {
         "topic": "local",
@@ -323,14 +332,15 @@
           "\\((1,4)\\)",
           "\\((-1,20)\\)",
           "\\((0,12)\\)",
-          "\\((1,0)\\)"
+          "Neither marked turning point is a local minimum."
         ],
         "why": "At \\(1\\), the sign of \\(f'\\) changes from negative to positive. The point on the graph is \\((1,f(1))=(1,4)\\).",
         "level": 2,
         "source": "../lectures/section-4-3.html#the-first-derivative-test",
         "section": "4.3",
         "pdfPage": 67,
-        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+        "graphPrompt": "extrema-cubic"
       },
       {
         "topic": "concavity",
@@ -345,7 +355,8 @@
         "level": 2,
         "source": "../lectures/section-4-3.html#concavity",
         "section": "4.3",
-        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+        "pdfPage": 68
       },
       {
         "topic": "inflect",
@@ -356,12 +367,13 @@
           "\\((-1,0)\\)",
           "There is no inflection point."
         ],
-        "why": "The second derivative \\(g''(x)=6x\\) changes sign at zero. The height of the graph there is \\(g(0)=1\\).",
+        "why": "The change of concavity occurs at \\(x=0\\). Substitution gives the height \\(0^3+1=1\\), so the point is \\((0,1)\\).",
         "level": 1,
         "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
         "section": "4.3",
         "pdfPage": 68,
-        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+        "graphPrompt": "cubic-raised"
       },
       {
         "topic": "tests",
@@ -376,7 +388,7 @@
         "level": 2,
         "source": "../lectures/section-4-3.html#the-second-derivative-test",
         "section": "4.3",
-        "pdfPage": 68,
+        "pdfPage": 69,
         "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
       },
       {
@@ -392,7 +404,8 @@
         "level": 2,
         "source": "../lectures/section-4-3.html#second-derivative-test",
         "section": "4.3",
-        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+        "pdfPage": 68
       },
       {
         "topic": "local",
@@ -407,7 +420,7 @@
         "level": 2,
         "source": "../lectures/section-4-3.html#the-second-derivative-test",
         "section": "4.3",
-        "pdfPage": 68,
+        "pdfPage": 69,
         "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
       },
       {
@@ -469,7 +482,10 @@
         "level": 3,
         "source": "../lectures/related-rates.html#ladder",
         "section": "4.1",
-        "pdf": "../downloads/related-rates-examples-practice.pdf"
+        "pdf": "../downloads/related-rates-examples-practice.pdf",
+        "pdfPage": 61,
+        "graphPrompt": "ladder-at-six",
+        "handoutPage": 3
       },
       {
         "topic": "rates",
@@ -484,11 +500,14 @@
         "level": 2,
         "source": "../lectures/related-rates.html#shadow",
         "section": "4.1",
-        "pdf": "../downloads/related-rates-examples-practice.pdf"
+        "pdf": "../downloads/related-rates-examples-practice.pdf",
+        "pdfPage": 63,
+        "graphPrompt": "lamp-shadow",
+        "handoutPage": 4
       },
       {
         "topic": "rates",
-        "prompt": "A person walks away from a streetlight at \\(3/2\\) m/s. Their shadow extends straight ahead and grows at \\(3/4\\) m/s. How fast is its tip moving away from the pole?",
+        "prompt": "A person walks away from a streetlight at \\(dx/dt=3/2\\) m/s. Their shadow extends straight ahead and grows at \\(ds/dt=3/4\\) m/s. How fast is the tip moving away from the pole?",
         "choices": [
           "\\(9/4\\) m/s",
           "\\(3/4\\) m/s",
@@ -500,7 +519,10 @@
         "source": "../lectures/exam-3-review.html#related-rates-a-moving-shadow",
         "section": "4.1",
         "pdf": "../downloads/related-rates-examples-practice.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=2",
+        "pdfPage": 63,
+        "graphPrompt": "lamp-shadow",
+        "handoutPage": 4
       },
       {
         "topic": "rates",
@@ -515,7 +537,9 @@
         "level": 2,
         "source": "../lectures/related-rates.html#balloon",
         "section": "4.1",
-        "pdf": "../downloads/related-rates-examples-practice.pdf"
+        "pdf": "../downloads/related-rates-examples-practice.pdf",
+        "pdfPage": 60,
+        "handoutPage": 1
       },
       {
         "topic": "rates",
@@ -530,7 +554,8 @@
         "level": 3,
         "source": "../lectures/related-rates.html#constant-product",
         "section": "4.1",
-        "pdf": "../downloads/related-rates-examples-practice.pdf"
+        "pdf": "../downloads/math-1334-calculus-lecture-notes.pdf",
+        "handoutPage": 59
       },
       {
         "topic": "rates",
@@ -545,7 +570,9 @@
         "level": 3,
         "source": "../lectures/related-rates.html#cone",
         "section": "4.1",
-        "pdf": "../downloads/related-rates-examples-practice.pdf"
+        "pdf": "../downloads/related-rates-examples-practice.pdf",
+        "pdfPage": 63,
+        "handoutPage": 4
       }
     ]
   },
@@ -571,23 +598,27 @@
         "source": "../lectures/exam-3-review.html#compare-the-tests",
         "section": "4.2",
         "pdf": "../downloads/november-4-maxima-and-minima.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=1",
+        "pdfPage": 65,
+        "graphPrompt": "corner"
       },
       {
         "topic": "global",
-        "prompt": "What is the global maximum value of \\(g(x)=(x-1)^2\\) on \\([0,2]\\)?",
+        "prompt": "For \\(g(x)=(x-1)^2\\) on \\([0,2]\\), what is the global maximum value?",
         "choices": [
-          "\\(1\\), attained at both endpoints",
-          "\\(2\\), attained at the right endpoint",
-          "\\(0\\), attained at the center",
-          "There is no global maximum."
+          "1",
+          "2",
+          "0",
+          "It has no global maximum."
         ],
         "why": "The candidates are \\(0\\), \\(1\\), and \\(2\\). Their function values are \\(1\\), \\(0\\), and \\(1\\).",
         "level": 2,
         "source": "../lectures/exam-3-review.html#the-domain-matters",
         "section": "4.2",
         "pdf": "../downloads/november-4-maxima-and-minima.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=3",
+        "pdfPage": 65,
+        "graphPrompt": "closed-small-bowl"
       },
       {
         "topic": "evt",
@@ -603,7 +634,9 @@
         "source": "../lectures/exam-3-review.html#the-domain-matters",
         "section": "4.2",
         "pdf": "../downloads/november-4-maxima-and-minima.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=3",
+        "pdfPage": 64,
+        "graphPrompt": "open-small-bowl"
       },
       {
         "topic": "critical",
@@ -619,11 +652,13 @@
         "source": "../lectures/exam-3-review.html#a-missing-point",
         "section": "4.2",
         "pdf": "../downloads/november-4-maxima-and-minima.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=6",
+        "pdfPage": 65,
+        "graphPrompt": "line-hole"
       },
       {
         "topic": "global",
-        "prompt": "The only critical numbers of a continuous function on \\([-1,3]\\) are \\(0\\) and \\(2\\). Which values must you compare to find its global extrema?",
+        "prompt": "A continuous function on \\([-1,3]\\) has exactly two interior critical numbers, 0 and 2. Which function values must you compare to find its global extrema?",
         "choices": [
           "\\(f(-1),f(0),f(2),f(3)\\)",
           "\\(f(0),f(2)\\) only",
@@ -634,23 +669,25 @@
         "level": 2,
         "source": "../lectures/18-maxima-and-minima.html#closed-interval-method",
         "section": "4.2",
-        "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+        "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+        "pdfPage": 65
       },
       {
         "topic": "global",
-        "prompt": "Suppose \\(f'(x)=(x+2)(x-1)^2\\) everywhere. Can this formula alone determine the value of \\(f\\) at its local minimum?",
+        "prompt": "Suppose \\(f^{\\prime}(x)=(x+2)(x-1)^2\\) for every real \\(x\\). Why is the value of \\(f\\) at its local minimum still undetermined?",
         "choices": [
-          "No. Adding a constant to \\(f\\) leaves its derivative unchanged.",
-          "Yes. The value must be zero.",
-          "Yes. The value equals the critical number.",
-          "No. The derivative never changes sign."
+          "Adding a constant to the function leaves its derivative unchanged.",
+          "The derivative has no zeros.",
+          "The derivative is positive on both sides of −2.",
+          "The graph necessarily has two local minima."
         ],
         "why": "The signs of \\(f'\\) locate a minimum at \\(x=-2\\). To find its height, we need information about \\(f\\) itself.",
         "level": 2,
         "source": "../lectures/exam-3-review.html#what-does-the-derivative-tell-us",
         "section": "4.2",
         "pdf": "../downloads/november-4-maxima-and-minima.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=1",
+        "pdfPage": 67
       }
     ]
   },
@@ -676,7 +713,9 @@
         "source": "../lectures/exam-3-review.html#optimization-folding-a-box",
         "section": "4.6",
         "pdf": "../downloads/optimization-worksheet.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=4",
+        "pdfPage": 80,
+        "handoutPage": 2
       },
       {
         "topic": "optimization",
@@ -692,7 +731,9 @@
         "source": "../lectures/exam-3-review.html#optimization-folding-a-box",
         "section": "4.6",
         "pdf": "../downloads/optimization-worksheet.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=4",
+        "pdfPage": 80,
+        "handoutPage": 2
       },
       {
         "topic": "optimization",
@@ -708,7 +749,9 @@
         "source": "../lectures/exam-3-review.html#optimization-folding-a-box",
         "section": "4.6",
         "pdf": "../downloads/optimization-worksheet.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=4",
+        "pdfPage": 80,
+        "handoutPage": 2
       },
       {
         "topic": "optimization",
@@ -724,11 +767,12 @@
         "source": "../lectures/exam-3-review.html#optimization-a-printed-flyer",
         "section": "4.6",
         "pdf": "../downloads/optimization-worksheet.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=4",
+        "pdfPage": 79
       },
       {
         "topic": "optimization",
-        "prompt": "A flyer with printed width \\(x>0\\) has paper area \\(A(x)=120+6x+384/x\\). Its derivative is \\(6(1-64/x^2)\\). Which width minimizes the area?",
+        "prompt": "A flyer with printed width \\(x>0\\) cm has paper area \\(A(x)=120+6x+384/x\\) cm². Its derivative is \\(6(1-64/x^2)\\). Which printed width minimizes the paper area?",
         "choices": [
           "\\(8\\) cm",
           "\\(4\\) cm",
@@ -740,7 +784,8 @@
         "source": "../lectures/exam-3-review.html#optimization-a-printed-flyer",
         "section": "4.6",
         "pdf": "../downloads/optimization-worksheet.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=4",
+        "pdfPage": 79
       }
     ]
   },
@@ -765,7 +810,8 @@
         "level": 2,
         "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
         "section": "4.4",
-        "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+        "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+        "pdfPage": 70
       },
       {
         "topic": "endbehavior",
@@ -781,7 +827,8 @@
         "source": "../lectures/exam-3-review.html#from-a-formula-to-a-graph",
         "section": "4.5",
         "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=5",
+        "pdfPage": 72
       },
       {
         "topic": "sketch",
@@ -797,7 +844,8 @@
         "source": "../lectures/exam-3-review.html#from-a-formula-to-a-graph",
         "section": "4.5",
         "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=6",
+        "pdfPage": 72
       },
       {
         "topic": "infinite",
@@ -813,7 +861,8 @@
         "source": "../lectures/exam-3-review.html#from-a-formula-to-a-graph",
         "section": "4.5",
         "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=5",
+        "pdfPage": 74
       },
       {
         "topic": "inflect",
@@ -829,7 +878,8 @@
         "source": "../lectures/exam-3-review.html#from-a-formula-to-a-graph",
         "section": "4.5",
         "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=5",
+        "pdfPage": 75
       },
       {
         "topic": "endbehavior",
@@ -844,7 +894,8 @@
         "level": 3,
         "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
         "section": "4.4",
-        "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+        "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+        "pdfPage": 71
       }
     ]
   },
@@ -870,7 +921,8 @@
         "source": "../lectures/exam-3-review.html#choosing-a-limit-method",
         "section": "4.7",
         "pdf": "../downloads/lhopitals-rule.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=7",
+        "pdfPage": 85
       },
       {
         "topic": "lhospital",
@@ -886,7 +938,8 @@
         "source": "../lectures/exam-3-review.html#choosing-a-limit-method",
         "section": "4.7",
         "pdf": "../downloads/lhopitals-rule.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=7",
+        "pdfPage": 85
       },
       {
         "topic": "lhospital",
@@ -902,7 +955,8 @@
         "source": "../lectures/exam-3-review.html#choosing-a-limit-method",
         "section": "4.7",
         "pdf": "../downloads/lhopitals-rule.pdf",
-        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=7",
+        "pdfPage": 84
       },
       {
         "topic": "lhospital",
@@ -917,7 +971,8 @@
         "level": 3,
         "source": "../lectures/lhopitals-rule.html#infinity-over-infinity",
         "section": "4.7",
-        "pdf": "../downloads/lhopitals-rule.pdf"
+        "pdf": "../downloads/lhopitals-rule.pdf",
+        "pdfPage": 85
       },
       {
         "topic": "forms",
@@ -932,22 +987,24 @@
         "level": 3,
         "source": "../lectures/lhopitals-rule.html#products",
         "section": "4.7",
-        "pdf": "../downloads/lhopitals-rule.pdf"
+        "pdf": "../downloads/lhopitals-rule.pdf",
+        "pdfPage": 86
       },
       {
         "topic": "forms",
-        "prompt": "Let \\(y=x^{1/x}\\) for \\(x>0\\). Which limit determines \\(\\lim_{x\\to\\infty}\\ln y\\)?",
+        "prompt": "Let \\(y=x^{1/x}\\) for \\(x>0\\). After taking natural logarithms, which expression is exactly \\(\\ln y\\) before taking the limit as \\(x\\to\\infty\\)?",
         "choices": [
-          "\\(\\displaystyle\\lim_{x\\to\\infty}(\\ln x)/x\\)",
-          "\\(\\displaystyle\\lim_{x\\to\\infty}x\\ln x\\)",
-          "\\(\\displaystyle\\lim_{x\\to\\infty}x/(\\ln x)\\)",
-          "\\(\\displaystyle\\lim_{x\\to\\infty}1/(x\\ln x)\\)"
+          "\\((\\ln x)/x\\)",
+          "\\(x\\ln x\\)",
+          "\\(x/(\\ln x)\\)",
+          "\\(1/(x\\ln x)\\)"
         ],
-        "why": "Take logarithms first: \\(\\ln y=(1/x)\\ln x\\). This quotient tends to zero, so \\(y\\) tends to \\(1\\).",
+        "why": "The exponent becomes a factor, so \\(\\ln y=(1/x)\\ln x\\). This quotient tends to zero, giving \\(y\\to1\\).",
         "level": 3,
         "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
         "section": "4.7",
-        "pdf": "../downloads/lhopitals-rule.pdf"
+        "pdf": "../downloads/lhopitals-rule.pdf",
+        "pdfPage": 87
       }
     ]
   },
@@ -1048,20 +1105,21 @@
     ],
     "questions": [
       {
-        "topic": "derivative",
-        "prompt": "Which choice makes \\(f(2+h)-f(2)\\) exactly \\((2+h)^3-8\\) for every \\(h\\), as it appears in a difference quotient?",
+        "topic": "motion",
+        "prompt": "A ball has height \\(H(t)=96-16t-16t^2\\) feet and velocity \\(v(t)=-16-32t\\) ft/s. It hits the ground at 2 seconds. What is its speed just before impact?",
         "choices": [
-          "\\(f(x)=x^3\\)",
-          "\\(f(x)=x^2\\)",
-          "\\(f(x)=3x^2\\)",
-          "\\(f(x)=8x\\)"
+          "80 ft/s",
+          "−80 ft/s",
+          "48 ft/s",
+          "0 ft/s"
         ],
-        "why": "The numerator is \\(f(2+h)-f(2)\\) with \\(f(x)=x^3\\).",
+        "why": "The event occurs at \\(t=2\\), so \\(v(2)=-16-64=-80\\) ft/s. Speed is the magnitude, 80 ft/s.",
         "level": 2,
-        "source": "../lectures/exam-2-review.html#limits",
+        "source": "../lectures/12-rates-of-change.html#read-the-event-before-substituting",
         "section": "3.4",
         "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
-        "reviewPdf": "../downloads/exam-2-review-worksheet.pdf"
+        "pdfPage": 34,
+        "handoutPage": 3
       },
       {
         "topic": "derivative2",
@@ -1092,7 +1150,8 @@
         "level": 2,
         "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
         "section": "3.1",
-        "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+        "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+        "pdfPage": 24
       },
       {
         "topic": "motion",
@@ -1107,7 +1166,8 @@
         "level": 2,
         "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
         "section": "3.4",
-        "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+        "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+        "pdfPage": 34
       },
       {
         "topic": "motion",
@@ -1122,23 +1182,25 @@
         "level": 2,
         "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
         "section": "3.1",
-        "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+        "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+        "pdfPage": 24
       },
       {
-        "topic": "derivatives",
-        "prompt": "A cart has position \\(s(t)=t^3-9t^2+24t\\) and velocity \\(v(t)=3t^2-18t+24\\). What is its signed acceleration at \\(t=2\\)?",
+        "topic": "motion",
+        "prompt": "For \\(0\\le t\\le6\\) seconds, a cart’s velocity is \\(v(t)=3(t-2)(t-4)\\) m/s and its acceleration is \\(a(t)=6t-18\\) m/s². What is its signed acceleration at its first reversal of direction?",
         "choices": [
-          "\\(-6\\)",
-          "\\(0\\)",
-          "\\(6\\)",
-          "\\(12\\)"
+          "−6 m/s²",
+          "0 m/s²",
+          "6 m/s²",
+          "12 m/s²"
         ],
-        "why": "Acceleration is \\(s''(t)=6t-18\\). Evaluate this at \\(t=2\\).",
+        "why": "At \\(t=2\\), velocity changes from positive to negative. The acceleration at this first reversal is \\(6(2)-18=-6\\) m/s².",
         "level": 3,
         "source": "../lectures/exam-2-review.html#motion",
         "section": "3.4",
         "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
-        "reviewPdf": "../downloads/exam-2-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-2-review-worksheet.pdf#page=4",
+        "pdfPage": 35
       }
     ]
   },
@@ -1162,22 +1224,24 @@
         "level": 1,
         "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
         "section": "3.3",
-        "pdf": "../downloads/october-14-differentiation-rules.pdf"
+        "pdf": "../downloads/october-14-differentiation-rules.pdf",
+        "pdfPage": 30
       },
       {
         "topic": "rules",
-        "prompt": "For \\(f(x)=x/(1+x^2)\\), \\(f(0)=0\\). Its difference quotient at zero simplifies to \\(1/(1+h^2)\\) for \\(h\\ne0\\). What is \\(f'(0)\\)?",
+        "prompt": "For \\(f(x)=x/(1+x^2)\\), the quotient rule gives \\(f^{\\prime}(x)=(1-x^2)/(1+x^2)^2\\). What is the tangent slope at 0?",
         "choices": [
           "\\(1\\)",
           "\\(0\\)",
           "\\(-1\\)",
           "The derivative does not exist."
         ],
-        "why": "The derivative is the limit of this quotient. As \\(h\\to0\\), its denominator approaches 1.",
+        "why": "Substituting zero into the derivative gives \\((1-0)/(1+0)^2=1\\).",
         "level": 2,
         "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
         "section": "3.3",
-        "pdf": "../downloads/october-14-differentiation-rules.pdf"
+        "pdf": "../downloads/october-14-differentiation-rules.pdf",
+        "pdfPage": 31
       },
       {
         "topic": "trig",
@@ -1192,7 +1256,8 @@
         "level": 2,
         "source": "../lectures/13-trigonometric-derivatives.html#using-quotients-to-explain-the-new-formulas",
         "section": "3.5",
-        "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+        "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+        "pdfPage": 38
       },
       {
         "topic": "trig",
@@ -1207,7 +1272,8 @@
         "level": 2,
         "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
         "section": "3.5",
-        "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+        "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+        "pdfPage": 36
       },
       {
         "topic": "exp",
@@ -1222,11 +1288,12 @@
         "level": 2,
         "source": "../lectures/17-exponential-logarithmic.html#worked-examples",
         "section": "3.9",
-        "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
+        "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+        "pdfPage": 54
       },
       {
-        "topic": "exp",
-        "prompt": "For \\(x>0\\), what is the derivative of \\((\\ln x)/x\\)?",
+        "topic": "rules",
+        "prompt": "Use the quotient rule on \\(q(x)=(\\ln x)/x\\) for \\(x>0\\). You may use \\(\\frac{d}{dx}\\ln x=1/x\\). Which expression is \\(q^{\\prime}(x)\\)?",
         "choices": [
           "\\((1-\\ln x)/x^2\\)",
           "\\((1+\\ln x)/x^2\\)",
@@ -1238,7 +1305,9 @@
         "source": "../lectures/exam-2-review.html#tangent-lines",
         "section": "3.3",
         "pdf": "../downloads/october-14-differentiation-rules.pdf",
-        "reviewPdf": "../downloads/exam-2-review-worksheet.pdf"
+        "reviewPdf": "../downloads/exam-2-review-worksheet.pdf#page=6",
+        "pdfPage": 31,
+        "handoutPage": 4
       }
     ]
   },
@@ -1274,11 +1343,12 @@
           "\\(2/(1+2x^2)\\)",
           "\\(2/\\sqrt{1-4x^2}\\)"
         ],
-        "why": "The derivative of inverse tangent at \\(u\\) is \\(1/(1+u^2)\\). Multiply by the inner derivative \\(2\\).",
+        "why": "Apply the chain rule to \\(u=2x\\). The factor \\(du/dx=2\\) gives \\(2/(1+(2x)^2)=2/(1+4x^2)\\).",
         "level": 2,
         "source": "../lectures/15-inverse-functions.html#using-inverse-trigonometric-derivatives",
         "section": "3.7",
-        "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+        "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+        "pdfPage": 47
       },
       {
         "topic": "implicit",
@@ -1293,7 +1363,8 @@
         "level": 2,
         "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
         "section": "3.8",
-        "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+        "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+        "pdfPage": 48
       },
       {
         "topic": "implicit",
@@ -1324,7 +1395,8 @@
         "level": 3,
         "source": "../lectures/17-exponential-logarithmic.html#examples-of-logarithmic-differentiation",
         "section": "3.9",
-        "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
+        "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf",
+        "pdfPage": 56
       }
     ]
   },
@@ -1411,7 +1483,8 @@
         "why": "The Extreme Value Theorem applies to a continuous function on a closed, bounded interval.",
         "source": "../lectures/18-maxima-and-minima.html#extreme-value-theorem",
         "section": "4.2",
-        "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+        "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+        "pdfPage": 64
       },
       {
         "topic": "derivative2",
@@ -1442,22 +1515,24 @@
         "why": "At a differentiable interior extremum the slopes from the two sides must agree. A corner can be a maximum without having a derivative.",
         "source": "../lectures/18-maxima-and-minima.html#fermat",
         "section": "4.2",
-        "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+        "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+        "pdfPage": 65
       },
       {
         "topic": "tests",
         "level": 2,
-        "prompt": "For a continuous function, \\(f'\\) changes from negative to positive across an interior critical number. What does the first derivative test give?",
+        "prompt": "Suppose \\(f\\) is continuous at an interior critical number \\(c\\), and \\(f^{\\prime}\\) is negative just to its left and positive just to its right. Which conclusion is guaranteed?",
         "choices": [
-          "A local minimum.",
-          "A local maximum.",
-          "An inflection point.",
-          "A global minimum."
+          "A strict local minimum at the input \\(c\\).",
+          "A strict local maximum at the input \\(c\\).",
+          "A change of concavity at \\(c\\).",
+          "A global minimum at the input \\(c\\)."
         ],
         "why": "The function decreases into the point and increases away from it.",
         "source": "../lectures/section-4-3.html#first-derivative-test",
         "section": "4.3",
-        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+        "pdfPage": 67
       },
       {
         "topic": "tests",
@@ -1472,7 +1547,8 @@
         "why": "At zero, \\(x^4\\), \\(-x^4\\), and \\(x^3\\) satisfy both derivative equations and have different behavior.",
         "source": "../lectures/section-4-3.html#second-derivative-test",
         "section": "4.3",
-        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+        "pdfPage": 68
       },
       {
         "topic": "lhospital",
@@ -1487,7 +1563,8 @@
         "why": "The rule treats indeterminate quotients. One must also check that the denominator derivative is nonzero nearby and that the derivative quotient has a limit (possibly infinite).",
         "source": "../lectures/lhopitals-rule.html#lhospitals-theorem",
         "section": "4.7",
-        "pdf": "../downloads/lhopitals-rule.pdf"
+        "pdf": "../downloads/lhopitals-rule.pdf",
+        "pdfPage": 84
       }
     ]
   },
@@ -1558,22 +1635,24 @@
         "why": "The derivative is the limit of the average rates over shrinking intervals.",
         "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
         "section": "3.1",
-        "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+        "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+        "pdfPage": 24
       },
       {
         "topic": "tangent",
         "level": 2,
-        "prompt": "Which line goes through two distinct points on a graph and measures their average rate of change?",
+        "prompt": "What is the name for the line joining two distinct points with different inputs on a function’s graph?",
         "choices": [
           "Secant line",
           "Tangent line",
           "Horizontal asymptote",
           "Normal line"
         ],
-        "why": "A secant line uses two points. Its slope divides the change in output by the change in input.",
+        "why": "Its name is the secant line. Its slope is the average rate of change between the two inputs.",
         "source": "../lectures/09-derivative-at-a-point.html#instantaneous-velocity-and-tangent-lines",
         "section": "3.1",
-        "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+        "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
+        "pdfPage": 24
       },
       {
         "topic": "motion",
@@ -1588,7 +1667,8 @@
         "why": "Speed is the absolute value of velocity, so it ignores direction.",
         "source": "../lectures/12-rates-of-change.html#from-derivatives-to-motion",
         "section": "3.4",
-        "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+        "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+        "pdfPage": 34
       },
       {
         "topic": "critical",
@@ -1603,37 +1683,40 @@
         "why": "The critical number is the input. Evaluating the function there gives the corresponding output.",
         "source": "../lectures/18-maxima-and-minima.html#critical-number",
         "section": "4.2",
-        "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+        "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+        "pdfPage": 65
       },
       {
         "topic": "local",
         "level": 1,
-        "prompt": "A function value is at least as large as every sufficiently nearby value in the domain. What is it?",
+        "prompt": "Which term means that a function value is at least as large as every sufficiently nearby value in the domain?",
         "choices": [
           "Local maximum value",
-          "Global maximum value by definition",
-          "Local minimum value",
-          "Average value"
+          "Global minimum value",
+          "Critical number",
+          "Average rate of change"
         ],
         "why": "The comparison uses a neighborhood of the input. A larger value may occur elsewhere.",
         "source": "../lectures/18-maxima-and-minima.html#local-extrema",
         "section": "4.2",
-        "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+        "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+        "pdfPage": 64
       },
       {
         "topic": "inflect",
         "level": 2,
-        "prompt": "The graph passes through a point and changes from concave down to concave up there. What is the point called?",
+        "prompt": "A function is continuous at \\(c\\), and its graph changes from concave down to concave up across \\(c\\). What is the point \\((c,f(c))\\) called?",
         "choices": [
           "Inflection point",
-          "Critical number by definition",
-          "Local minimum by definition",
-          "Removable discontinuity"
+          "Local maximum",
+          "Local minimum",
+          "Point of discontinuity"
         ],
-        "why": "An inflection point records a change in concavity at a point of the graph.",
+        "why": "The definition requires continuity at \\(c\\) together with a change of concavity there.",
         "source": "../lectures/section-4-3.html#inflection-point",
         "section": "4.3",
-        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+        "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+        "pdfPage": 68
       },
       {
         "topic": "endbehavior",
@@ -1648,7 +1731,8 @@
         "why": "A nonhorizontal line approached in this sense is a slant asymptote.",
         "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptote",
         "section": "4.4",
-        "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+        "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+        "pdfPage": 72
       },
       {
         "topic": "optimization",
@@ -1663,7 +1747,8 @@
         "why": "The objective is the quantity being optimized. The constraints restrict the allowed choices.",
         "source": "../lectures/optimization.html#title-block-header",
         "section": "4.6",
-        "pdf": "../downloads/optimization-worksheet.pdf"
+        "pdf": "../downloads/optimization-worksheet.pdf",
+        "pdfPage": 79
       },
       {
         "topic": "optimization",
@@ -1678,7 +1763,8 @@
         "why": "The cardboard requirement restricts the dimensions. Volume is the objective.",
         "source": "../lectures/optimization.html#title-block-header",
         "section": "4.6",
-        "pdf": "../downloads/optimization-worksheet.pdf"
+        "pdf": "../downloads/optimization-worksheet.pdf",
+        "pdfPage": 79
       },
       {
         "topic": "forms",
@@ -1693,7 +1779,8 @@
         "why": "As \\(x\\to0\\), both \\(x/x\\) and \\(x^2/x\\) have form \\(0/0\\), but their limits are 1 and 0.",
         "source": "../lectures/lhopitals-rule.html#indeterminate-form",
         "section": "4.7",
-        "pdf": "../downloads/lhopitals-rule.pdf"
+        "pdf": "../downloads/lhopitals-rule.pdf",
+        "pdfPage": 83
       }
     ]
   }

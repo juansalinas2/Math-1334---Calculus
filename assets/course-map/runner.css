@@ -17,9 +17,6 @@
 .runner-scene .runner-fractures { fill:none; stroke:#7c765b; stroke-width:1.7; }
 .runner-scene:is([data-difficulty="hard"],[data-difficulty="insane"]) .runner-fractures { stroke:#852e2f; }
 .runner-scene .runner-distant-leg { stroke:#596c65; }
-.runner-scene .chicken-hat { display:none; }
-.runner-scene[data-difficulty="easy"] .chicken-hat { display:inline; }
-.runner-scene[data-difficulty="easy"] .head-bow { display:none; }
 #rails[data-difficulty="hard"] { --r-wash:#d45b39; --r-platform:#d79978; --r-scarf:#ffe08b; --r-ink:#312631; }
 #rails[data-difficulty="insane"] { --r-wash:#ee663d; --r-platform:#d98366; --r-scarf:#9fe8ce; --r-ink:#322137; }
 #rails:is([data-difficulty="hard"],[data-difficulty="insane"]) #run-hero { filter:drop-shadow(0 0 1.25px #fff1cb); }
@@ -42,10 +39,10 @@
 .runner-scene .rival-marker rect { fill:#24383e; stroke:#fff2d5; stroke-width:1.05; }
 .runner-scene .rival-marker text { fill:#fff8e6; text-anchor:middle; font:700 10px system-ui,sans-serif; font-variant-numeric:tabular-nums; }
 .runner-portrait { display:inline-block; flex:none; max-width:100%; vertical-align:middle; }
-.runner-scene[data-finale="crowned"] .champion-crown { filter:drop-shadow(0 0 2px #ffe5a0); }
+.runner-scene[data-finale="crowned"] #run-worn { filter:drop-shadow(0 0 2px #ffe5a0); }
 .runner-scene[data-finale="launch"] #run-weather, .runner-scene[data-finale="crowned"] #run-weather { visibility:hidden; }
 .runner-scene[data-phase="victory"] .festival-shell { opacity:0; }
-.runner-scene[data-difficulty="easy"][data-impact="on"] #run-head .chicken-hat { display:none; }
+.runner-scene[data-impact="on"] #run-worn[data-piece="chicken"] { visibility:hidden; }
 .runner-scene:is([data-difficulty="hard"],[data-difficulty="insane"])[data-impact="on"] .runner-soot { display:inline; }
 @media (prefers-reduced-motion:no-preference) {
   .runner-scene .lava-jet { animation:runner-eruption var(--crater-time) ease-in-out var(--delay) infinite; }
@@ -59,11 +56,11 @@
   .runner-scene:is([data-finale="launch"],[data-finale="crowned"]) .lava-cinders { animation-duration:1.55s; }
   .runner-scene .festival-sparks { animation:runner-fireworks 2.8s ease-out var(--burst-delay) infinite backwards; }
   .runner-scene .festival-shell { animation:runner-firework-rise 2.8s ease-out var(--burst-delay) infinite backwards; }
-  .runner-scene[data-finale="crowned"] .champion-crown { animation:runner-gold 2.4s ease-in-out infinite alternate; }
+  .runner-scene[data-finale="crowned"] #run-worn { animation:runner-gold 2.4s ease-in-out infinite alternate; }
   .runner-scene[data-finale="crowned"] #run-solar-halo > g { animation:runner-halo 2.4s ease-in-out infinite alternate; transform-origin:0 -32px; }
   .runner-scene[data-finale="crowned"] .lava-jet { opacity:.45; }
   @keyframes runner-halo { from {transform:scale(.94);opacity:.65} to {transform:scale(1.06);opacity:1} }
-  .runner-scene[data-dance="on"] #run-lean { animation:runner-dance 1.4s ease-in-out infinite; }
+  .runner-scene[data-dance="on"][data-finale="none"] #run-lean { animation:runner-dance 1.4s ease-in-out infinite; }
   .runner-scene:is([data-phase="home"],[data-phase="ready"]) #run-lean {
     transform-origin:0 0; animation:runner-breathe var(--idle-pace) ease-in-out infinite alternate;
   }

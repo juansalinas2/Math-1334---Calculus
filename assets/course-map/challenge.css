@@ -213,6 +213,62 @@ html:fullscreen,html:-webkit-full-screen { overflow:auto; background:var(--paper
 .multiplayer-mode {padding:.95rem 0;border-top:1px solid var(--line)}
 .multiplayer-mode p {margin:.3rem 0 .6rem}
 #bank-run {margin:.6rem 0}
-#encore {display:inline-block;margin:.35rem 0;font-weight:650}
+#crown-record { min-height:32px; margin-top:.3rem; padding:.2rem .55rem; border-color:var(--line); }
+#crown-record[aria-pressed="true"],#prize-equip[aria-pressed="true"] { border-color:var(--gold); background:var(--surface-selected); }
+#prize-panel[data-reward="crown"] {
+  background:radial-gradient(ellipse at 0 50%,color-mix(in srgb,var(--gold-fill) 20%,transparent),transparent 68%),var(--surface-muted);
+  border-color:var(--gold);
+}
+#prize-panel[data-reward="crown"] #prize-symbol {
+  width:clamp(3.3rem,9vw,5.7rem);height:auto;aspect-ratio:1;
+  background:radial-gradient(circle,#ffe694 8%,#dc9a32 47%,#754606 50%,#ffdd7c 56%,#935608 63%,transparent 66%);
+}
+#prize-symbol svg { display:block; width:88%;height:88%; }
+.prize-actions { display:flex;align-items:center;flex-wrap:wrap;gap:.45rem; }
+.prize-actions:not(:has(button:not([hidden]))) {display:none;}
+#encore-dialog { width:min(94vw,48rem); }
+#encore-stage { aspect-ratio:16/9; background:#13100e; }
+#encore-player { display:block;width:100%;height:100%;border:0; }
+body[data-difficulty="insane"] .mast h1 em {
+  position:relative;isolation:isolate;display:inline-block;color:#a1280d;
+  text-shadow:0 -.025em .035em #ffcb57,0 -.08em .12em #ee822865;
+}
+:root:is([data-map-theme="dark"],[data-map-theme="darker"]) body[data-difficulty="insane"] .mast h1 em { color:#ffbb59; }
+body[data-difficulty="insane"] .mast h1 em::before,
+body[data-difficulty="insane"] .mast h1 em::after {
+  content:"";position:absolute;pointer-events:none;z-index:-1;transform-origin:bottom;
+}
+body[data-difficulty="insane"] .mast h1 em::before {
+  left:5%;right:0;top:-.24em;height:.82em;
+  background:linear-gradient(to top,#a52a12 0%,#ff9329 48%,#ffe797 91%);
+  clip-path:polygon(0 96%,6% 66%,9% 34%,15% 68%,19% 43%,18% 17%,27% 56%,32% 70%,38% 40%,41% 7%,45% 31%,48% 62%,55% 40%,62% 0,65% 31%,63% 64%,71% 42%,75% 23%,79% 58%,84% 47%,89% 12%,92% 45%,91% 65%,98% 42%,100% 95%);
+  animation:point-flame 1.35s ease-in-out infinite alternate;
+}
+body[data-difficulty="insane"] .mast h1 em::after {
+  width:.045em;height:.055em;left:20%;top:.03em;background:#feac40;border-radius:50%;
+  box-shadow:.62em -.09em #faa03c,1.22em .01em #f47f35;
+  animation:point-embers 1.95s ease-out infinite;
+}
+@keyframes point-flame {
+  0% {transform:scaleY(.76) skewX(-3deg);}
+  52% {transform:scaleY(1) skewX(2deg);}
+  100% {transform:scaleY(.87) skewX(-1deg);}
+}
+@keyframes point-embers {
+  0%,100% {opacity:0;transform:translate(0,0);}
+  22% {opacity:.88;}
+  95% {opacity:0;transform:translate(.1em,-.36em);}
+}
+@media (prefers-reduced-motion:reduce) {
+  body[data-difficulty="insane"] .mast h1 em::before {animation:none;transform:scaleY(.83);}
+  body[data-difficulty="insane"] .mast h1 em::after {display:none;animation:none;}
+}
+@media (forced-colors:active) {
+  body[data-difficulty="insane"] .mast h1 em {color:CanvasText;text-shadow:none;}
+  body[data-difficulty="insane"] .mast h1 em::before,body[data-difficulty="insane"] .mast h1 em::after {display:none;}
+}
 .racer-name {display:flex;align-items:center;gap:.42rem}
 .racer-name svg {flex:none;width:2.15rem;height:2.15rem;color:var(--ink)}
+
+.challenge-portrait { display:inline-flex; vertical-align:middle; margin-right:.4rem; }
+.challenge-portrait svg { width:2.6rem;height:2.6rem; }

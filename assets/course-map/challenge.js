@@ -25,7 +25,31 @@
   const goal=()=>routeLength()||Infinity;
   const settings=()=>({key:scope(),diff:diff(),order:order(),length:routeLength(),version:7});
   let character=board.stored("character")||"pip", cycle=0, offset=0, banked=false, settingTarget=false;
-  const showPortrait=()=>{el("runner-portrait").innerHTML=runner.portrait(character,diff());};
+  let ownsCrown=board.stored("sun-crown")==="yes";
+  let crowned=ownsCrown && board.stored("wear-sun-crown")==="yes";
+  const showPortrait=()=>{el("runner-portrait").innerHTML=runner.portrait(character,diff(),crowned);};
+  function applyLevel(level) {
+    document.body.dataset.difficulty=level;
+    runner.difficulty(level);
+  }
+  function showEquipment() {
+    el("crown-record").hidden=!ownsCrown;
+    for (const id of ["crown-record","prize-equip"]) {
+      const button=el(id);
+      button.setAttribute("aria-pressed",String(crowned));
+      button.textContent=crowned?"Remove Sun Crown":"Equip Sun Crown";
+    }
+    runner.equipCrown(crowned);
+    showPortrait();
+  }
+  function toggleCrown() {
+    if (!ownsCrown) return;
+    crowned=!crowned;
+    board.stored("wear-sun-crown",crowned?"yes":"no");
+    showEquipment();
+    race.appearance();
+  }
+  el("prize-equip").onclick=el("crown-record").onclick=toggleCrown;
   function selectCharacter(id){
     character=runner.characters.some(a=>a.id===id)?id:"pip";
     runner.character(character);
@@ -52,9 +76,15 @@
     personalBest=Math.max(personalBest,Number(board.stored("best-streak"))||0);
     if(run.best>personalBest){personalBest=run.best;board.stored("best-streak",personalBest);}
     el("personal-best").textContent=personalBest;
-    el("crown-record").hidden=board.stored("sun-crown")!=="yes";
+
   }
-  window.addEventListener("storage",personalRecord);
+  window.addEventListener("storage",()=>{
+    personalRecord();
+    const owned=board.stored("sun-crown")==="yes", worn=owned && board.stored("wear-sun-crown")==="yes";
+    if(owned===ownsCrown && worn===crowned)return;
+    ownsCrown=owned;crowned=worn;
+    showEquipment();race.appearance();
+  });
   const currentQuestion=()=>bonusActive ? bonus : route[run.cleared-offset];
   const currentLevel=()=>bonusActive ? rules.nextLevel(diff()) : diff();
   const jumpIndex=()=>run.cleared;
@@ -79,6 +109,7 @@
     update();
   }
   function screen(id,next) {
+    if(id!=="feedback" && el("encore-dialog").open)closeEncore();
     state=next;document.body.dataset.state=next;el("home").hidden=next==="lobby" || next==="loading";
     for (const panel of ["lobby","play","feedback"]) el(panel).hidden=panel!==id;
   }
@@ -128,7 +159,7 @@
   function changeCourse(next) {
     course=next;el("lecture-picker").hidden=next!=="lecture";
     el("course").value=next;
-    runner.difficulty(diff());showPortrait();gate();
+    applyLevel(diff());showPortrait();gate();
     const length=routeLength(), distance=length?length+" jumps":"Endless";
     const count=rules.poolSize(lectures,scope(),diff());
     el("rules-hint").textContent=distance+" · "+count+" "+difficultyName(diff())+" questions · "+(timed()?rules.seconds[diff()]+" seconds per question":"No time limit")+". "+rules.basePoints[diff()]+" points per landing"+(timed()?" + 2 per second left. ":". ")+hints[diff()];
@@ -173,7 +204,7 @@
     el("length").value=r.length?String(r.length):"endless";el("clock-mode").value="timed";el("difficulty").value=r.diff;el("order").value=r.order;
     changeCourse(named?r.key:"lecture");
   }
-  const race=window.createCriticalRace({el,board,edition,runner,character:()=>character,
+  const race=window.createCriticalRace({el,board,edition,runner,character:()=>character,crowned:()=>crowned,
     setup:()=>({...settings(),seed:randomSeed()}),
     allowed:r=>r.diff!=="insane"||unlocked,
     courseLabel:r=>(names[r.key]||sections[r.key.slice(1)]||"Lecture")+" · "+difficultyName(r.diff),
@@ -226,7 +257,10 @@
       b.disabled=!bonusActive && index===run.missed;if(b.disabled)b.classList.add("closed");b.onclick=()=>submit(index);return b;
     }));
     el("signal").hidden=bonusActive || !run.eraser;el("previous").open=false;el("previous").querySelector("summary").textContent=timed()?"Previous solution · clock keeps running":"Previous jump · Show solution";
-    (q.answer?el("number-answer"):el("prompt")).focus({preventScroll:true});startClock();
+    // Refocus the new prompt before returning to the numeric field on consecutive jumps.
+    el("prompt").focus({preventScroll:true});
+    if(q.answer)el("number-answer").focus({preventScroll:true});
+    startClock();
   }
   function start() {
     if(diff()==="insane"&&!unlocked)return;
@@ -234,7 +268,7 @@
     cycle=0;offset=0;banked=false;route=rules.makeRoute(lectures,scope(),seed,diff(),order(),routeLength());if(!route.length)return;
     historyItems=[];el("recap").open=false;el("prize-panel").hidden=true;el("insane-start").hidden=true;
     stopClock();run=rules.newRun(diff());steps=[];times=[];extra="";bonusActive=false;
-    bonus=rules.bonusQuestion(lectures,scope(),seed,diff());el("bonus-offer").hidden=true;runner.difficulty(diff());
+    bonus=rules.bonusQuestion(lectures,scope(),seed,diff());el("bonus-offer").hidden=true;applyLevel(diff());
     saveTicket++;
     el("award").hidden=true;el("previous").hidden=true;el("save-score").hidden=true;el("saved").textContent="";el("share-state").textContent="";
     runner.reset(goal());if(el("board").open)el("board").close();ask();
@@ -251,13 +285,33 @@
       li.append(entry);return li;
     }));
   }
-  function showPrize(crown) {
+  function showPrize(crown,firstClear=false) {
     el("prize-panel").hidden=false;el("prize-panel").dataset.reward=crown?"crown":"unlock";
-    el("prize-symbol").textContent=crown?"☀":"✦";
-    el("prize-name").textContent=crown?"Sun Crown earned":"Insane mode unlocked";
-    el("prize-detail").textContent=crown?"You outran the eruption. Your crown is saved on this device.":"You cleared Hard. The volcano course is open. Bring an integer or fraction for every jump.";
-    el("insane-start").hidden=crown;el("encore").hidden=!crown;
+    if(crown)el("prize-symbol").innerHTML=runner.crownIcon();
+    else el("prize-symbol").textContent="✦";
+    el("prize-name").textContent=crown?(firstClear?"Sun Crown earned":"Sun Crown champion"):"Insane mode unlocked";
+    el("prize-detail").textContent=crown?(firstClear?"You outran the eruption. The Sun Crown is yours to wear on any course.":"You cleared Insane again. Your Sun Crown is ready for the next run."):"You cleared Hard. The volcano course is open. Bring an integer or fraction for every jump.";
+    el("insane-start").hidden=crown;el("encore").hidden=!crown;el("prize-equip").hidden=!crown;
   }
+  function closeEncore() {
+    el("encore-stage").replaceChildren();
+    if(el("encore-dialog").open)el("encore-dialog").close();
+  }
+  el("encore").onclick=()=>{
+    if(state!=="won" || !ownsCrown || el("encore").hidden || el("encore-dialog").open)return;
+    const player=document.createElement("iframe");
+    player.id="encore-player";player.title="Secret encore video player";
+    player.allow="autoplay; fullscreen; picture-in-picture";player.allowFullscreen=true;
+    player.src="https://player.vimeo.com/video/681449396?autoplay=1&playsinline=1&title=0&byline=0&portrait=0&dnt=1";
+    el("encore-dialog").showModal();
+    el("encore-stage").replaceChildren(player);
+    el("close-encore").focus();
+  };
+  el("close-encore").onclick=closeEncore;
+  el("encore-dialog").addEventListener("close",()=>{
+    el("encore-stage").replaceChildren();
+    if(state==="won"&&!el("encore").hidden)el("encore").focus({preventScroll:true});
+  });
   async function saveScore() {
     if(!timed()||!board.nicknameOK(playerAlias))return;
     const ticket=++saveTicket;
@@ -270,13 +324,16 @@
     } catch {if(ticket===saveTicket)el("saved").textContent="Score couldn’t sync. Use Post to class leaderboard to retry.";}
   }
   function finish(q,won,bonusMessage="") {
-    stopClock();screen("feedback",won?"won":"lost");score();el("round").textContent=won?"Finish line":"Run over";
+    document.body.dataset.difficulty=diff();stopClock();screen("feedback",won?"won":"lost");score();el("round").textContent=won?"Finish line":"Run over";
     let unlockedNow=false;
     if(won && !bonusMessage){
       if(banked)runner.stage(run.cleared,run.cleared);
       const qualifies=!banked||run.cleared>=10;
       runner.celebrate(diff()==="insane"&&qualifies);
-      if(qualifies && diff()==="insane"){board.stored("sun-crown","yes");personalRecord();showPrize(true);}
+      if(qualifies && diff()==="insane"){
+        const firstClear=!ownsCrown;
+        ownsCrown=true;board.stored("sun-crown","yes");showEquipment();showPrize(true,firstClear);
+      }
       if(qualifies && diff()==="hard"&&!unlocked){unlocked=true;unlockedNow=true;board.stored("insane","yes");gate();showPrize(false);}
     }
     el("verdict").textContent=bonusMessage || (won ? (banked?"Endless score banked.":diff()==="insane"?"You conquered the volcano!":unlockedNow?"Congratulations! Hard cleared.":"Course cleared!") : "Run over");
@@ -306,7 +363,8 @@
   function submit(index,timeout=false) {
     if(state!=="question")return;
     const q=currentQuestion();
-    if(deadline && !remaining())timeout=true;
+    const secondsLeft=remaining();
+    if(deadline && !secondsLeft)timeout=true;
     if(timeout) {
       index=answers.findIndex((choice,i)=>choice!==0 && (!q.choices || !el("choices").children[i].disabled));
     } else if(q.answer) {
@@ -314,7 +372,7 @@
       if(!rules.rational(input)){el("number-hint").textContent="Enter an integer, a fraction such as 3/4, or a finite decimal.";return;}
       index=answers.indexOf(rules.equivalent(input,q.answer)?0:1);
     } else if(!el("choices").children[index]||el("choices").children[index].disabled)return;
-    const left=timed()&&!timeout?Math.min(rules.seconds[currentLevel()],Math.floor(remaining())):0, hit=answers[index]===0;
+    const left=timed()&&!timeout?Math.min(rules.seconds[currentLevel()],Math.ceil(secondsLeft)):0, hit=answers[index]===0;
     const landing=bonusActive?{hit}:rules.land(run,seed,goal(),index,assisted,left);
     if(!landing)return;
     const isBonus=bonusActive, ticket=turn, points=rules.earned(currentLevel(),left);
@@ -338,7 +396,7 @@
     runner.travel(index,hit,()=>{
       if(ticket!==turn)return;
       if(isBonus){
-        bonusActive=false;if(hit || diff()==="insane")runner.celebrate(diff()==="insane"&&(!banked||run.cleared>=10));
+        bonusActive=false;applyLevel(diff());if(hit || diff()==="insane")runner.celebrate(diff()==="insane"&&(!banked||run.cleared>=10));
         finish(q,true,hit?"Bonus cleared! +"+points+" points.":timeout?"Bonus time expired. Route cleared!":"Route cleared! Bonus missed.");return;
       }
       if(landing.retry){
@@ -355,7 +413,7 @@
   el("numeric").onsubmit=e=>{e.preventDefault();submit(null);};
   el("take-bonus").onclick=()=>{
     if(state!=="won"||!bonus||el("bonus-offer").hidden)return;
-    bonusActive=true;el("bonus-offer").hidden=true;runner.difficulty(rules.nextLevel(diff()));ask();
+    saveTicket++;bonusActive=true;el("bonus-offer").hidden=true;applyLevel(rules.nextLevel(diff()));ask();
   };
   el("skip-bonus").onclick=()=>{el("bonus-offer").hidden=true;el("advance").focus();};
   function loadLink() {
@@ -370,8 +428,8 @@
     try {
       const data=JSON.parse(decodeURIComponent(encoded));if(!Array.isArray(data))return;
       if(data[0]!==edition){notify("This invite used an earlier question bank. Start a fresh run or ask for a new invite.");return;}
-      const [,key,initial,length,difficulty,ordering,alias,transcript,clock,bonusCode,didBank,avatar]=data;
-      if(data.length!==12||!Number.isInteger(initial)||initial<0||initial>0xffffffff||
+      const [,key,initial,length,difficulty,ordering,alias,transcript,clock,bonusCode,didBank,avatar,woreCrown]=data;
+      if(![12,13].includes(data.length)||(data.length===13 && typeof woreCrown!=="boolean")||!Number.isInteger(initial)||initial<0||initial>0xffffffff||
         ![0,5,10,15].includes(length)||!levels.includes(difficulty)||!["ordered","shuffled"].includes(ordering)||
         !(Object.hasOwn(names,key)||typeof key==="string"&&key.startsWith("s")&&Object.hasOwn(sections,key.slice(1)))||
         (alias!==null&&!board.nicknameOK(alias)) || typeof didBank!=="boolean" || (didBank&&length!==0) ||
@@ -393,7 +451,13 @@
       setRoomCourse({key,diff:difficulty,order:ordering,length});
       pace={seed:initial,points:target};
       const runnerName=runner.characters.find(a=>a.id===avatar)?.name;
-      notify((alias?"Beat "+alias+"’s score":"Score to beat")+" · "+target+" points on the same questions"+(runnerName?" · "+runnerName:"."));
+      notify((alias?"Beat "+alias+"’s score":"Score to beat")+" · "+target+" points on the same questions"+(runnerName?" · "+runnerName:"")+(woreCrown?" · Sun Crown":""));
+      if(runnerName && woreCrown){
+        const portrait=document.createElement("span");
+        portrait.className="challenge-portrait";portrait.setAttribute("aria-hidden","true");
+        portrait.innerHTML=runner.portrait(avatar,difficulty,true);
+        el("target").prepend(portrait);
+      }
       
       el("start").textContent="Play score challenge";
     } catch {notify("This invite is incomplete. You can start a fresh run.");}
@@ -401,7 +465,7 @@
   el("score-challenge").onclick=()=>{
     el("race-hub").close();resetLink();settingTarget=true;el("clock-mode").value="timed";changeCourse(course);start();
   };
-  el("share").onclick=()=>copy(link("race",[edition,scope(),seed,routeLength(),diff(),order(),board.alias(),steps.join(""),times.map(encodeSeconds).join(""),extra,banked,character]),"race-link","share-state","Score challenge copied. Your friend will play the same jumps.");
+  el("share").onclick=()=>copy(link("race",[edition,scope(),seed,routeLength(),diff(),order(),board.alias(),steps.join(""),times.map(encodeSeconds).join(""),extra,banked,character,crowned]),"race-link","share-state","Score challenge copied. Your friend will play the same jumps.");
   el("save-score").onsubmit=e=>{
     e.preventDefault();if(!run.ended||!run.points)return;
     const input=el("nickname"), raw=input.value.trim();
@@ -466,12 +530,12 @@
   };
   document.addEventListener("fullscreenchange",syncFull);document.addEventListener("webkitfullscreenchange",syncFull);
   document.addEventListener("keydown",e=>{
-    if(e.key==="Escape"&&!el("board").open){document.body.classList.remove("full-window");syncFull();}
-    if(el("board").open||state!=="question"||currentQuestion()?.answer||e.repeat||e.altKey||e.metaKey||e.ctrlKey||e.isComposing)return;
+    if(e.key==="Escape"&&!el("board").open&&!el("encore-dialog").open){document.body.classList.remove("full-window");syncFull();}
+    if(el("board").open||el("encore-dialog").open||e.target===el("crown-record")||state!=="question"||currentQuestion()?.answer||e.repeat||e.altKey||e.metaKey||e.ctrlKey||e.isComposing)return;
     const i=letters.indexOf(e.key.toUpperCase());if(i>=0&&e.key.length===1){e.preventDefault();submit(i);}
   });
   document.addEventListener("visibilitychange",()=>{if(!document.hidden&&state==="question"&&deadline&&!remaining())submit(null,true);refresh();});
-  personalRecord();gate();
+  personalRecord();showEquipment();gate();
   runner.home();
   async function load(){
     try {

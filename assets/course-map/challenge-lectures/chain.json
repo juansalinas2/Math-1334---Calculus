@@ -13,7 +13,8 @@
     "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
     "section": "3.6",
     "pdfPage": 40,
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "chain",
@@ -29,7 +30,8 @@
     "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
     "section": "3.6",
     "pdfPage": 40,
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "chain",
@@ -44,22 +46,24 @@
     "why": "Apply the outer power rule and then differentiate cosine. The slope is \\(-4(1/2)^3(\\sqrt3/2)=-\\sqrt3/4\\).",
     "source": "../lectures/14-chain-rule.html#powers-of-functions",
     "section": "3.6",
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "chain",
     "level": 3,
-    "prompt": "For \\(y=\\sqrt{1+x^2}\\), the tangent slope is \\(x/\\sqrt{1+x^2}\\). If its square is \\(1/4\\), the candidate inputs are \\(\\pm1/\\sqrt3\\). Which gives slope \\(-1/2\\), and why?",
+    "prompt": "For \\(y=\\sqrt{1+x^2}\\), the tangent slope is \\(x/\\sqrt{1+x^2}\\). Squaring the equation for slope \\(-1/2\\) gives candidates \\(x=\\pm1/\\sqrt3\\). Which candidates satisfy the original slope equation?",
     "choices": [
-      "The negative input, since the denominator is positive.",
-      "The positive input, since the square root is positive.",
-      "Both inputs, since the slope was squared.",
-      "Neither input, since a square root has no negative values."
+      "\\(-1/\\sqrt3\\) only",
+      "\\(1/\\sqrt3\\) only",
+      "Both candidates",
+      "Neither candidate"
     ],
     "why": "The slope has the same sign as \\(x\\). Squaring loses that sign, so only \\(x=-1/\\sqrt3\\) works.",
     "source": "../lectures/14-chain-rule.html#powers-of-functions",
     "section": "3.6",
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "chain",
@@ -74,12 +78,13 @@
     "why": "The outer square gives \\(2(x+1)/(2x-1)\\). The inner quotient has derivative \\([(2x-1)-2(x+1)]/(2x-1)^2=-3/(2x-1)^2\\).",
     "source": "../lectures/14-chain-rule.html#combining-differentiation-rules",
     "section": "3.6",
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "topic": "chain",
     "level": 3,
-    "prompt": "Where does \\(y=((x+1)/(2x-1))^2\\) have a horizontal tangent?",
+    "prompt": "For \\(x\\ne1/2\\), let \\(y=((x+1)/(2x-1))^2\\). Which list gives every point with a horizontal tangent?",
     "choices": [
       "\\((-1,0)\\) only",
       "\\((1/2,0)\\) only",
@@ -89,7 +94,8 @@
     "why": "The derivative is \\(-6(x+1)/(2x-1)^3\\). Its numerator vanishes only at \\(-1\\), and the graph has height zero there. The denominator's zero is outside the domain.",
     "source": "../lectures/14-chain-rule.html#combining-differentiation-rules",
     "section": "3.6",
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "topic": "chain",
@@ -104,7 +110,8 @@
     "why": "The terms are \\(3x^2\\cos^2x\\) and \\(-2x^3\\cos x\\sin x\\). Both contain \\(\\cos x\\), which vanishes at \\(\\pi/2\\).",
     "source": "../lectures/14-chain-rule.html#combining-differentiation-rules",
     "section": "3.6",
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "topic": "chain",
@@ -119,12 +126,13 @@
     "why": "The layers from outside inward are sine, cosine, and tangent. Differentiate each once while preserving its input.",
     "source": "../lectures/14-chain-rule.html#three-or-more-layers",
     "section": "3.6",
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 5
   },
   {
     "topic": "chain",
     "level": 3,
-    "prompt": "Write \\(u=\\cos(2x)\\). Which formula gives the derivative of \\(y=\\sin^3(\\cos(2x))\\)?",
+    "prompt": "Let \\(u=\\cos(2x)\\) so that \\(y=(\\sin u)^3\\). Which expression gives \\(dy/dx\\)?",
     "choices": [
       "\\(-6\\sin^2u\\cos u\\sin(2x)\\)",
       "\\(-3\\sin^2u\\cos u\\sin(2x)\\)",
@@ -134,7 +142,8 @@
     "why": "The four factors are \\(3\\sin^2u\\), \\(\\cos u\\), \\(-\\sin(2x)\\), and \\(2\\). Multiplying gives the stated expression.",
     "source": "../lectures/14-chain-rule.html#three-or-more-layers",
     "section": "3.6",
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 5
   },
   {
     "topic": "chain",
@@ -149,7 +158,8 @@
     "why": "Keep \\(x^2\\) intact. Differentiating the cube gives \\(3\\sin^2(2x)\\), and differentiating the inner sine supplies \\(2\\cos(2x)\\).",
     "source": "../lectures/14-chain-rule.html#practice-1",
     "section": "3.6",
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "topic": "chain",
@@ -164,7 +174,8 @@
     "why": "Where the quotient exists it equals \\(\\cos^2(2x)\\). Differentiate to get \\(-4\\cos(2x)\\sin(2x)=-2\\sin(4x)\\).",
     "source": "../lectures/14-chain-rule.html#practice-1",
     "section": "3.6",
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "topic": "chain",
@@ -179,7 +190,8 @@
     "why": "The point is \\((-1,2)\\) and \\(f'(-1)=3(-1)/2=-3/2\\). Expand \\(y-2=-(3/2)(x+1)\\).",
     "source": "../lectures/14-chain-rule.html#practice-1",
     "section": "3.6",
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "topic": "chain",
@@ -194,7 +206,8 @@
     "why": "The derivative is \\(\\cos(\\sqrt{x})/(2\\sqrt{x})\\). Its first two zeros require \\(\\sqrt{x}=\\pi/2,3\\pi/2\\). Square both values.",
     "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
     "section": "3.6",
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "chain",
@@ -209,22 +222,24 @@
     "why": "The square root acts first. Its output becomes the input to the sine.",
     "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
     "section": "3.6",
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "chain",
     "level": 1,
-    "prompt": "For \\(F(x)=\\sqrt{1+x^2}\\), which function acts last?",
+    "prompt": "To evaluate \\(F(x)=\\sqrt{1+x^2}\\) starting at input \\(x\\), which operation comes last?",
     "choices": [
-      "The square-root function.",
-      "The squaring function.",
-      "Adding one to the original input.",
-      "Multiplying by two."
+      "Take the square root.",
+      "Square the input.",
+      "Add one.",
+      "Double the input."
     ],
     "why": "Square \\(x\\), add one, then take the square root.",
     "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
     "section": "3.6",
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "chain",
@@ -239,7 +254,8 @@
     "why": "The chain rule gives \\(4(x+10)^3\\) since the inner derivative is \\(1\\). At \\(-9\\) the inner function equals \\(1\\).",
     "source": "../lectures/14-chain-rule.html#powers-of-functions",
     "section": "3.6",
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "section": "3.6",
@@ -250,7 +266,8 @@
     "why": "The input passes from \\(0\\) to \\(2\\) to \\(3\\). The required derivative is \\(f'(3)g'(2)f'(0)=(-2)(4)(3)\\).",
     "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
     "pdfPage": 40,
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "section": "3.6",
@@ -261,7 +278,8 @@
     "why": "The outer square contributes \\(2f(1)=4\\). The inner derivative contributes \\(f'(1)g'(0)=3(-2)=-6\\), giving \\(-24\\).",
     "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
     "pdfPage": 40,
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "section": "3.6",
@@ -272,7 +290,8 @@
     "why": "Differentiate \\(y'=2uu'\\) to get \\(2(u')^2+2uu''\\). The second term vanishes, leaving \\(2/9\\).",
     "source": "../lectures/14-chain-rule.html#combining-differentiation-rules",
     "pdfPage": 42,
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "section": "3.6",
@@ -283,7 +302,8 @@
     "why": "Only the product-rule term which differentiates \\(x^3\\) three times survives at zero. Here \\(u(0)=\\cos^2(0)=1\\), giving \\(6\\).",
     "source": "../lectures/14-chain-rule.html#combining-differentiation-rules",
     "pdfPage": 42,
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 4
   },
   {
     "section": "3.6",
@@ -294,7 +314,8 @@
     "why": "At \\(\\pi/4\\), the inner cosine is zero. The chain rule gives \\(u'=\\cos(\\cos(2x))[-2\\sin(2x)]=-2\\) there. Thus \\(6(-2)^3=-48\\).",
     "source": "../lectures/14-chain-rule.html#three-or-more-layers",
     "pdfPage": 43,
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 5
   },
   {
     "section": "3.6",
@@ -305,7 +326,8 @@
     "why": "From \\(y'=2gg'\\) we have \\(g(2)=4\\). The second derivative is \\(2(g')^2+2gg''\\). Substitution gives \\(2=18+8g''(2)\\).",
     "source": "../lectures/14-chain-rule.html#powers-of-functions",
     "pdfPage": 42,
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "section": "3.6",
@@ -316,7 +338,8 @@
     "why": "Differentiate \\(ff'=3x\\) to get \\((f')^2+ff''=3\\). Thus \\(2f''=3-9/4=3/4\\), giving \\(3/8\\).",
     "source": "../lectures/14-chain-rule.html#practice-1",
     "pdfPage": 44,
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "section": "3.6",
@@ -327,7 +350,8 @@
     "why": "On a neighborhood of zero, \\(1+\\tan^2(2x)=\\sec^2(2x)\\), so \\(y=\\cos^2(2x)\\). The first derivative is \\(-2\\sin(4x)\\) and the second is \\(-8\\cos(4x)\\). Evaluate at zero.",
     "source": "../lectures/14-chain-rule.html#practice-1",
     "pdfPage": 44,
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "section": "3.6",
@@ -339,7 +363,8 @@
     "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
     "capstone": true,
     "pdfPage": 40,
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "chain",
@@ -431,14 +456,14 @@
     "section": "3.6",
     "level": 1,
     "topic": "chain",
-    "prompt": "For the composite \\(f(g(x))\\), which function receives \\(x\\) first?",
+    "prompt": "For \\(F(x)=f(g(x))\\), what is the input passed to the outer function \\(f\\)?",
     "choices": [
-      "\\(g\\)",
-      "\\(f\\)",
-      "Both at once",
-      "Neither"
+      "\\(g(x)\\)",
+      "\\(x\\)",
+      "\\(f(x)\\)",
+      "\\(g(f(x))\\)"
     ],
-    "why": "Evaluate the inner function before the outer one.",
+    "why": "The output of the inner function \\(g\\) becomes the input to \\(f\\).",
     "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
     "pdfPage": 39,
     "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
@@ -533,14 +558,14 @@
     "section": "3.6",
     "level": 1,
     "topic": "chain",
-    "prompt": "For \\(F(x)=\\cos(x-1)\\), is adding \\(-1\\) done before or after taking cosine?",
+    "prompt": "What is the inner function in \\(F(x)=\\cos(x-1)\\) when cosine is the outer function?",
     "choices": [
-      "Before cosine",
-      "After cosine",
-      "At the same time",
-      "No subtraction appears"
+      "\\(g(x)=x-1\\)",
+      "\\(g(x)=\\cos x\\)",
+      "\\(g(x)=x\\)",
+      "\\(g(x)=\\cos x-1\\)"
     ],
-    "why": "First form the argument \\(x-1\\).",
+    "why": "Subtract 1 from the input, then take cosine.",
     "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
     "pdfPage": 39,
     "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
@@ -584,14 +609,14 @@
     "section": "3.6",
     "level": 2,
     "topic": "chain",
-    "prompt": "For \\(F(x)=\\sin(3x)\\), what is \\(F'(0)\\)?",
+    "prompt": "For \\(F(x)=\\cos(3x)\\), what is \\(F'(0)\\)?",
     "choices": [
+      "\\(0\\)",
       "\\(3\\)",
       "\\(-3\\)",
-      "\\(4\\)",
-      "\\(2\\)"
+      "\\(1\\)"
     ],
-    "why": "Differentiate the sine and multiply by the inner slope. At zero cosine is one.",
+    "why": "\\(F'(x)=-3\\sin(3x)\\) and \\(\\sin0=0\\).",
     "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
     "pdfPage": 39,
     "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
@@ -601,65 +626,65 @@
     "section": "3.6",
     "level": 2,
     "topic": "chain",
-    "prompt": "For \\(F(x)=\\sin(4x)\\), what is \\(F'(0)\\)?",
+    "prompt": "For \\(F(x)=\\sin(4x)\\), what is the coefficient \\(c\\) in \\(F'(x)=c\\cos(4x)\\)?",
     "choices": [
       "\\(4\\)",
-      "\\(-4\\)",
-      "\\(5\\)",
-      "\\(3\\)"
-    ],
-    "why": "Differentiate the sine and multiply by the inner slope. At zero cosine is one.",
-    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
-    "pdfPage": 39,
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
-    "handoutPage": 1
-  },
-  {
-    "section": "3.6",
-    "level": 2,
-    "topic": "chain",
-    "prompt": "On a composite \\(F=f\\circ g\\), the inner slope at the current input is \\(2\\) and the outer slope at the corresponding output is \\(3\\). What is the composite slope?",
-    "choices": [
-      "\\(6\\)",
-      "\\(-6\\)",
-      "\\(7\\)",
-      "\\(5\\)"
-    ],
-    "why": "The two rates multiply in the chain rule.",
-    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
-    "pdfPage": 40,
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
-    "handoutPage": 2
-  },
-  {
-    "section": "3.6",
-    "level": 2,
-    "topic": "chain",
-    "prompt": "On a composite \\(F=f\\circ g\\), the inner slope at the current input is \\(-1\\) and the outer slope at the corresponding output is \\(4\\). What is the composite slope?",
-    "choices": [
-      "\\(-4\\)",
-      "\\(4\\)",
-      "\\(-3\\)",
-      "\\(-5\\)"
-    ],
-    "why": "The two rates multiply in the chain rule.",
-    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
-    "pdfPage": 40,
-    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
-    "handoutPage": 2
-  },
-  {
-    "section": "3.6",
-    "level": 2,
-    "topic": "chain",
-    "prompt": "On a composite \\(F=f\\circ g\\), the inner slope at the current input is \\(3\\) and the outer slope at the corresponding output is \\(-1\\). What is the composite slope?",
-    "choices": [
-      "\\(-3\\)",
-      "\\(3\\)",
-      "\\(-2\\)",
+      "\\(1\\)",
+      "\\(1/4\\)",
       "\\(-4\\)"
     ],
+    "why": "The coefficient is the derivative of the inner function \\(4x\\).",
+    "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 1
+  },
+  {
+    "section": "3.6",
+    "level": 2,
+    "topic": "chain",
+    "prompt": "Let \\(F=f\\circ g\\). Given \\(g(1)=0\\), \\(g'(1)=2\\), and \\(f'(0)=3\\), what is \\(F'(1)\\)?",
+    "choices": [
+      "\\(6\\)",
+      "\\(5\\)",
+      "\\(3\\)",
+      "\\(2\\)"
+    ],
     "why": "The two rates multiply in the chain rule.",
+    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+    "pdfPage": 40,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.6",
+    "level": 2,
+    "topic": "chain",
+    "prompt": "Let \\(F=f\\circ g\\). At \\(x=1\\), \\(g(1)=4\\) and \\(g'(1)=-1\\). Which single additional value determines \\(F'(1)\\)?",
+    "choices": [
+      "\\(f'(4)\\)",
+      "\\(f(4)\\)",
+      "\\(f'(1)\\)",
+      "\\(g'(4)\\)"
+    ],
+    "why": "The chain rule gives \\(F'(1)=f'(g(1))g'(1)=-f'(4)\\).",
+    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+    "pdfPage": 40,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
+    "handoutPage": 2
+  },
+  {
+    "section": "3.6",
+    "level": 2,
+    "topic": "chain",
+    "prompt": "\\(F(x)=f(g(x))\\) has \\(F'(2)=-3\\). At the same input \\(g'(2)=3\\). What is \\(f'(g(2))\\)?",
+    "choices": [
+      "\\(-1\\)",
+      "\\(1\\)",
+      "\\(-9\\)",
+      "\\(9\\)"
+    ],
+    "why": "Divide the composite slope by the inner slope: \\(-3/3=-1\\).",
     "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
     "pdfPage": 40,
     "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
@@ -686,14 +711,14 @@
     "section": "3.6",
     "level": 2,
     "topic": "chain",
-    "prompt": "At an input where \\(g(x)=0\\) and \\(g'(x)=3\\), what is the derivative of \\((g(x))^2\\)?",
+    "prompt": "At \\(x=0\\), \\(g(0)=2\\) and \\(g'(0)=3\\). What is the tangent slope of \\(y=(g(x))^2\\) there?",
     "choices": [
-      "\\(0\\)",
-      "\\(1\\)",
-      "\\(-1\\)",
-      "\\(2\\)"
+      "\\(12\\)",
+      "\\(6\\)",
+      "\\(4\\)",
+      "\\(9\\)"
     ],
-    "why": "The derivative is \\(2g(x)g'(x)\\), so the zero value of \\(g\\) makes the product zero.",
+    "why": "The derivative is \\(2gg'\\), which gives \\(2(2)(3)=12\\).",
     "source": "../lectures/14-chain-rule.html#powers-of-functions",
     "pdfPage": 42,
     "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
@@ -717,7 +742,7 @@
     "topic": "chain",
     "prompt": "At \\(x=0\\), \\(g(0)=1\\), \\(g'(0)=2\\), \\(g''(0)=-1\\). At input 1, \\(f'(1)=3\\), \\(f''(1)=2\\). What is \\((f\\circ g)''(0)\\)?",
     "answer": "5",
-    "why": "The outer curvature contributes \\(2(2^2)=8\\). The inner curvature contributes \\(3(-1)=-3\\).",
+    "why": "Differentiating twice gives \\(f''(g)(g')^2+f'(g)g''\\). At zero the two terms are \\(8\\) and \\(-3\\).",
     "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
     "pdfPage": 39,
     "pdf": "../downloads/october-19-chain-rule-class-notes.pdf",
@@ -727,7 +752,7 @@
     "section": "3.6",
     "level": 4,
     "topic": "chain",
-    "prompt": "For \\(F(x)=\\sqrt{1+3x^2}\\), the tangent slope at \\(x=1\\) is \\(3/2\\). Where does this tangent cross the horizontal axis?",
+    "prompt": "For \\(F(x)=\\sqrt{1+3x^2}\\), the tangent slope at \\(x=1\\) is \\(3/2\\). Find the \\(x\\)-coordinate where this tangent meets the horizontal axis.",
     "answer": "-1/3",
     "why": "The point is \\((1,2)\\). Set \\(0=2+(3/2)(x-1)\\).",
     "source": "../lectures/14-chain-rule.html#practice-1",
@@ -861,9 +886,9 @@
     "prompt": "The graph is the inner function \\(g\\). At \\(x=1\\) the marked height is 3. For \\(F(x)=(g(x))^2\\), the derivative is \\(2g(x)g'(x)\\). What is \\(F'(1)\\)?",
     "choices": [
       "\\(12\\)",
-      "\\(-12\\)",
-      "\\(13\\)",
-      "\\(11\\)"
+      "\\(6\\)",
+      "\\(9\\)",
+      "\\(18\\)"
     ],
     "why": "The line rises 2 per unit to the right. Multiply \\(2(3)(2)\\).",
     "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",

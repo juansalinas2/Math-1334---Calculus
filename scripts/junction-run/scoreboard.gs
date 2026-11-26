@@ -197,7 +197,7 @@ function raceKey(code) {
 function roomView(r,now) {
   return {code:r.code,edition:r.edition,key:r.key,diff:r.diff,order:r.order,seed:r.seed,length:r.length,version:r.version||6,
     round:r.round,startAt:r.startAt,host:r.host,revision:r.revision,
-    racers:r.seats.map(s=>({seat:s.seat,character:s.character||'pip',ready:s.ready,status:s.status,cleared:s.cleared,points:s.points}))};
+    racers:r.seats.map(s=>({seat:s.seat,character:s.character||'pip',crowned:s.crowned===true,ready:s.ready,status:s.status,cleared:s.cleared,points:s.points}))};
 }
 function roomReply(r,now,seat) {
   return json({ok:true,room:roomView(r,now),now:now,seat:seat||0});
@@ -249,7 +249,12 @@ function roomWrite(v) {
   const active=()=>r.seats.filter(s=>s.status!=='left');
   if(!active().some(s=>s.seat===r.host))r.host=active()[0]?.seat||0;
   switch(v.action){
-    case 'create':case 'join':case 'pulse':break;
+    case 'create':case 'join':case 'pulse':
+      if(v.crowned!==undefined){
+        if(typeof v.crowned!=='boolean')throw Error();
+        self.crowned=v.crowned;
+      }
+      break;
     case 'leave':self.status='left';self.ready=false;break;
     case 'ready':
       if(r.startAt || self.status==='left' || typeof v.ready!=='boolean')throw Error();

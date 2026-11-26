@@ -2,14 +2,14 @@
   {
     "topic": "tests",
     "level": 3,
-    "prompt": "For \\(f(x)=4x^3-12x+12\\), \\(f'\\) is positive left of \\(-1\\), negative on \\((-1,1)\\) and positive right of 1. The graph passes through \\((-1,20)\\) and \\((1,4)\\). How far does it drop from the local maximum to the next local minimum?",
+    "prompt": "The cubic \\(f(x)=4x^3-12x+12\\) has \\(f'(x)=12(x-1)(x+1)\\). On which open interval is \\(f\\) decreasing, and how far does its height fall between the endpoints?",
     "choices": [
-      "16",
-      "2",
-      "12",
-      "24"
+      "\\((-1,1)\\); it falls 16 units.",
+      "\\((-1,1)\\); it falls 8 units.",
+      "\\((1,\\infty)\\); it falls 16 units.",
+      "\\((-\\infty,-1)\\); it falls 8 units."
     ],
-    "why": "Factor \\(f'(x)=12(x-1)(x+1)\\). Its signs are \\(+,-,+\\), so subtract \\(f(1)=4\\) from \\(f(-1)=20\\).",
+    "why": "Only between \\(-1\\) and 1 do the factors in \\(f'\\) have opposite signs. The endpoint heights are \\(f(-1)=20\\) and \\(f(1)=4\\), a fall of 16 units.",
     "source": "../lectures/section-4-3.html#the-first-derivative-test",
     "section": "4.3",
     "pdfPage": 67,
@@ -18,7 +18,7 @@
   {
     "topic": "concavity",
     "level": 3,
-    "prompt": "For \\(f(x)=4x^3-12x+12\\) on \\((-2,3)\\), the derivatives are \\(12(x-1)(x+1)\\) and \\(24x\\). Where is \\(f\\) both decreasing and concave up?",
+    "prompt": "For \\(f(x)=4x^3-12x+12\\) on \\((-2,3)\\), \\(f'(x)=12(x-1)(x+1)\\) and \\(f''(x)=24x\\). Find the open interval where \\(f'<0\\) and \\(f''>0\\).",
     "choices": [
       "\\((0,1)\\)",
       "\\((-1,0)\\)",
@@ -45,7 +45,7 @@
     "source": "../lectures/exam-3-review.html#what-does-the-derivative-tell-us",
     "section": "4.3",
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=1"
   },
   {
     "topic": "inflect",
@@ -61,7 +61,7 @@
     "source": "../lectures/exam-3-review.html#what-does-the-derivative-tell-us",
     "section": "4.3",
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=1"
   },
   {
     "topic": "tests",
@@ -77,7 +77,7 @@
     "source": "../lectures/exam-3-review.html#local-and-global-extrema",
     "section": "4.3",
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=3"
   },
   {
     "topic": "inflect",
@@ -93,7 +93,7 @@
     "source": "../lectures/exam-3-review.html#local-and-global-extrema",
     "section": "4.3",
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=3"
   },
   {
     "topic": "concavity",
@@ -141,7 +141,7 @@
     "source": "../lectures/exam-3-review.html#compare-the-tests",
     "section": "4.3",
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=1"
   },
   {
     "topic": "inflect",
@@ -189,7 +189,7 @@
     "source": "../lectures/exam-3-review.html#local-and-global-extrema",
     "section": "4.3",
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=3"
   },
   {
     "topic": "concavity",
@@ -205,7 +205,7 @@
     "source": "../lectures/exam-3-review.html#what-does-the-derivative-tell-us",
     "section": "4.3",
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=1"
   },
   {
     "topic": "tests",
@@ -221,7 +221,7 @@
     "source": "../lectures/exam-3-review.html#compare-the-tests",
     "section": "4.3",
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=1"
   },
   {
     "topic": "tests",
@@ -272,7 +272,7 @@
   {
     "topic": "tests",
     "level": 1,
-    "prompt": "A smooth function satisfies \\(f^{\\prime}(2)=0\\) and \\(f^{\\prime'}(2)=-3\\). How does the second derivative test classify \\(x=2\\)?",
+    "prompt": "A smooth function satisfies \\(f^{\\prime}(2)=0\\) and \\(f''(2)=-3\\). How does the second derivative test classify \\(x=2\\)?",
     "choices": [
       "A strict local maximum",
       "A strict local minimum",
@@ -303,7 +303,7 @@
   {
     "topic": "tests",
     "level": 2,
-    "prompt": "For \\(f(x)=4x^3-12x+12\\) the critical inputs are \\(-1\\) and \\(1\\), and \\(f^{\\prime'}=24x\\). Which critical input is a local maximum?",
+    "prompt": "The critical inputs of \\(f(x)=4x^3-12x+12\\) are \\(-1\\) and 1. Given \\(f''(x)=24x\\), at which input is the local maximum attained?",
     "choices": [
       "\\(-1\\)",
       "\\(1\\)",
@@ -348,7 +348,7 @@
     "reference": "Exam 3 review worksheet · 1(b)",
     "pdfPage": 67,
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=1"
   },
   {
     "topic": "critical",
@@ -366,7 +366,7 @@
     "reference": "Exam 3 review worksheet · 1(c)",
     "pdfPage": 65,
     "pdf": "../downloads/november-4-maxima-and-minima.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=1"
   },
   {
     "section": "4.3",
@@ -420,7 +420,7 @@
     "level": 4,
     "prompt": "For \\(f(x)=4x^3-12x+12\\), the tangent at its inflection point is \\(L(x)=12-12x\\). Its local maximum is at \\((-1,20)\\). What is the signed difference \\(f(-1)-L(-1)\\)?",
     "answer": "-4",
-    "why": "\\(f^{\\prime'}=24x\\) changes sign at zero, giving tangent \\(y=12-12x\\). The local maximum occurs at \\(x=-1\\), where the graph has height 20 while the tangent has height 24.",
+    "why": "\\(f''=24x\\) changes sign at zero, giving tangent \\(y=12-12x\\). The local maximum occurs at \\(x=-1\\), where the graph has height 20 while the tangent has height 24.",
     "source": "../lectures/section-4-3.html#the-first-derivative-test",
     "pdfPage": 67,
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
@@ -440,7 +440,7 @@
     "section": "4.3",
     "topic": "tests",
     "level": 4,
-    "prompt": "For \\(h(x)=x^3-12x+1\\), the two interior extrema have heights 17 and \\(-15\\). How far apart are the tangent lines at those points?",
+    "prompt": "For \\(h(x)=x^3-12x+1\\) on \\(\\mathbb R\\), the two local extrema have heights 17 and \\(-15\\). What is the vertical distance between their tangent lines?",
     "answer": "32",
     "why": "The tangents at differentiable interior extrema are horizontal. The separation is \\(17-(-15)=32\\).",
     "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
@@ -497,7 +497,7 @@
     "level": 4,
     "prompt": "For \\(f(x)=-x^4+2x^2\\), \\(f'=-4x(x-1)(x+1)\\) and \\(f''=4-12x^2\\). At a local maximum, what is the second derivative minus its value at the local minimum?",
     "answer": "-12",
-    "why": "For \\(f=-x^4+2x^2\\), the maxima occur at \\(\\pm1\\) and the minimum at 0. Since \\(f^{\\prime'}=4-12x^2\\), the requested difference is \\(-8-4=-12\\).",
+    "why": "For \\(f=-x^4+2x^2\\), the maxima occur at \\(\\pm1\\) and the minimum at 0. Since \\(f''=4-12x^2\\), the requested difference is \\(-8-4=-12\\).",
     "source": "../lectures/section-4-3.html#the-second-derivative-test",
     "pdfPage": 69,
     "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
@@ -786,7 +786,7 @@
     "pdfPage": 67,
     "handoutPage": 1,
     "level": 4,
-    "prompt": "The lecture cubic has a strict local maximum at input \\(-1\\) and a strict local minimum at 1. For \\(g(x)=-f(2x+3)\\), at which input is its strict local maximum?",
+    "prompt": "The cubic \\(f(x)=4x^3-12x+12\\) has a local maximum at \\(x=-1\\) and a local minimum at \\(x=1\\). At which input does \\(g(x)=-f(2x+3)\\) attain its local maximum?",
     "why": "The negative sign turns the old minimum into a maximum. Set \\(2x+3=1\\) to get \\(x=-1\\).",
     "answer": "-1"
   },

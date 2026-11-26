@@ -6,13 +6,16 @@
   const windows = {
     pinch: {x:[-2,4], y:[0,10], dx:1, dy:2},
     local: {x:[-2,4], y:[-3,6], dx:1, dy:1},
+    restrictedBowl: {x:[-0.5,2.5], y:[-0.5,1.5], dx:0.5, dy:0.5},
+    objectiveSlope: {x:[-1,7], y:[-7,7], dx:1, dy:2},
+    ladder: {x:[-1,9], y:[-1,9], dx:2, dy:2, equalUnits:true},
     objective: {x:[-1,7], y:[-2,10], dx:1, dy:2},
     circle: {x:[-1,6], y:[-1,6], dx:1, dy:1, equalUnits:true},
     slopeField: {x:[-2,3], y:[-3,6], dx:1, dy:1},
     triangle: {x:[-2,14], y:[-2,10], dx:2, dy:2},
     square: {x:[-3,3], y:[-3,3], dx:1, dy:1},
     slopes: {x:[-2,4], y:[-4,6], dx:1, dy:2},
-    holes: {x:[-2,4], y:[-2,8], dx:1, dy:2},
+    holes: {x:[-2,4], y:[-1,8], dx:1, dy:1},
     poles: {x:[-4,4], y:[-5,5], dx:1, dy:2},
     spring: {x:[0,tau], y:[-1.5,1.5], dx:Math.PI/2, dy:1, xLabels:["0","π/2","π","3π/2","2π"], horizontal:"t"},
     motion: {x:[0,4], y:[-4,10], dx:1, dy:2, horizontal:"t"},
@@ -27,7 +30,7 @@
   }
 
   plot("line-hole","holes","Rising line with an open circle at (2, 4).",x=>x+2,{open:[[2,4]]});
-  plot("line-intact","holes","Unbroken rising line through (2, 4).",x=>x+2);
+  plot("line-intact","holes","Unbroken rising line through (0, 2) and (2, 4).",x=>x+2);
   plot("line-redefined","holes","Rising line with an open circle at (2, 4) and a filled point at (2, 7).",x=>x+2,{open:[[2,4]],closed:[[2,7]]});
   plot("line-other-hole","holes","Rising line with an open circle at (0, 2).",x=>x+2,{open:[[0,2]]});
   plot("root-right","square","Curve starts at the origin and rises to the right, bending downward.",x=>Math.sqrt(x),{closed:[[0,0]]});
@@ -53,7 +56,7 @@
   plot("on-axis","slopes","Horizontal line along the x-axis.",()=>0);
 
   const pole = {breaks:[-1],vertical:[-1]};
-  plot("inverse","poles","At x = −1 the left branch approaches negative infinity and the right branch approaches positive infinity.",x=>1/(x+1),pole);
+  plot("inverse","poles","A dashed vertical guide passes through x = −1. The left branch falls without bound and the right branch rises without bound as they approach the guide.",x=>1/(x+1),pole);
   plot("inverse-neg","poles","Branches approach positive infinity on the left of −1 and negative infinity on its right.",x=>-1/(x+1),pole);
   plot("inverse-square","poles","Both branches rise above the axis toward positive infinity at −1.",x=>1/(x+1)**2,pole);
   plot("inverse-neg-square","poles","Both branches fall below the axis toward negative infinity at −1.",x=>-1/(x+1)**2,pole);
@@ -76,7 +79,7 @@
   plot("velocity-cap","motion","A downward parabola with zeros at 1 and 3 and a high point at (2, 3).",x=>-3*(x-1)*(x-3));
   plot("acceleration-line","motion","A rising line crossing the horizontal axis at 2.",x=>6*x-12);
 
-  plot("extrema-cubic","cubic","Cubic rising to (−1, 20), falling to (1, 4), then rising.",x=>4*x**3-12*x+12);
+  plot("extrema-cubic","cubic","Cubic with marked turning points. It rises to (−1, 20), falls to (1, 4), then rises.",x=>4*x**3-12*x+12,{closed:[[-1,20],[1,4]]});
   plot("extrema-slopes","cubic","Upward parabola crossing at −1 and 1 with a minimum at (0, −12).",x=>12*x*x-12);
   plot("extrema-neg-slopes","cubic","Downward parabola crossing at −1 and 1 with a maximum at (0, 12).",x=>12-12*x*x);
   plot("extrema-tangent","cubic","A rising straight line crossing the origin.",x=>24*x);
@@ -93,8 +96,8 @@
   plot("slant-negative","tails","A decreasing curve through the origin with a flat tangent there and tails approaching y = −x.",x=>-(x**3)/(1+x*x),{oblique:[-1,0]});
 
   const pairs = {breaks:[-1,1],vertical:[-1,1]};
-  plot("even-three","poles","Two outer branches sit above y = 2. Between the poles the middle branch peaks at the origin.",x=>2*x*x/(x*x-1),{...pairs,horizontal:[2]});
-  plot("even-mirror","poles","Two outer branches sit below y = −2. The central branch bottoms at the origin.",x=>-2*x*x/(x*x-1),{...pairs,horizontal:[-2]});
+  plot("even-three","poles","Dashed asymptotes at x = −1, x = 1 and y = 2. The outer branches approach 2 from above. Between the vertical guides, the middle branch peaks at the origin.",x=>2*x*x/(x*x-1),{...pairs,horizontal:[2]});
+  plot("even-mirror","poles","Dashed asymptotes at x = −1, x = 1 and y = −2. The outer branches approach −2 from below. Between the vertical guides, the middle branch bottoms at the origin.",x=>-2*x*x/(x*x-1),{...pairs,horizontal:[-2]});
   plot("even-no-pole","poles","A smooth even valley touches the origin; its two tails approach y = 2 from below.",x=>2*x*x/(x*x+1),{horizontal:[2]});
   plot("even-swap","poles","Outer branches approach y = 2 from below. The central branch has its minimum at (0, 4).",x=>2-2/(x*x-1),{...pairs,horizontal:[2]});
   plot("exponential","square","A positive increasing curve passes through (0, 1), close to zero on the left.",Math.exp);
@@ -104,26 +107,29 @@
 
   // Comparison lines are dashed; both curves and exact marked points have text alternatives.
   const between=(x,a,b)=> x>=a && x<=b;
+  const closeBowl=x=>(x-1)**2;
+  plot("closed-small-bowl","restrictedBowl","The curve descends from a filled endpoint (0, 1) to (1, 0) and rises to another filled endpoint (2, 1).",closeBowl,{domain:[0,2],closed:[[0,1],[2,1]]});
+  plot("open-small-bowl","restrictedBowl","The curve descends from an open endpoint (0, 1) to (1, 0) and rises to another open endpoint (2, 1). The bottom is included.",closeBowl,{domain:[0,2],open:[[0,1],[2,1]]});
+  plot("ladder-at-six","ladder","A ladder joins its top against the wall at (0, 8) to its foot on the ground at (6, 0). An arrow points right from the foot.",x=>8-4*x/3,{domain:[0,6],closed:[[0,8],[6,0]],segments:[[6.3,0,8.1,0],[8.1,0,7.6,0.3],[8.1,0,7.6,-0.3]]});
   plot("step-mark","local","A horizontal branch at height 3 ends with an open circle at (1, 3). The branch at height −1 begins with a filled point at (1, −1).",x=>x<1?3:-1,{breaks:[1],open:[[1,3]],closed:[[1,-1]]});
-  plot("open-peak","local","A tent rises from (−1, 0) toward the open point (1, 4), then falls to (3, 0). Both endpoints are filled. A separate filled dot is at (1, 1).",x=>between(x,-1,3)?4-2*Math.abs(x-1):NaN,{open:[[1,4]],closed:[[-1,0],[3,0],[1,1]]});
-  plot("ivt-path","local","A continuous curve with filled endpoints (0, −2) and (3, 4), rising throughout and crossing the horizontal axis.",x=>between(x,0,3)?(x+x*x)/2-2:NaN,{closed:[[0,-2],[3,4]]});
+  plot("open-peak","local","A tent rises from (−1, 0) toward the open point (1, 4), then falls to (3, 0). Both endpoints are filled. A separate filled dot is at (1, 1).",x=>4-2*Math.abs(x-1),{domain:[-1,3],open:[[1,4]],closed:[[-1,0],[3,0],[1,1]]});
+  plot("ivt-path","local","A continuous curve with filled endpoints (0, −2) and (3, 4), rising throughout and crossing the horizontal axis.",x=>(x+x*x)/2-2,{domain:[0,3],closed:[[0,-2],[3,4]]});
   plot("squeeze-five","pinch","The two enclosing parabolas meet at (1, 5). A solid curve lies between the dashed bounds.",x=>5+(x-1)**2*Math.sin(4*x),{overlays:[x=>5-(x-1)**2,x=>5+(x-1)**2],closed:[[1,5]]});
   plot("squeeze-zero","square","A wavy solid curve stays between dashed curves y = x squared and y = negative x squared. All meet at the origin.",x=>x===0?0:x*x*Math.sin(1/x),{overlays:[x=>x*x,x=>-x*x]});
   plot("tangent-one","local","An upward parabola through (1, 1). Its dashed tangent at this point also passes through the marked point (2, 3).",x=>x*x,{overlays:[x=>2*x-1],closed:[[1,1]],guidePoints:[[2,3]]});
   plot("secant01","local","The dashed secant joins two marked points (0, 0) and (2, 4) on an upward parabola.",x=>x*x,{overlays:[x=>2*x],closed:[[0,0],[2,4]]});
   plot("line-mapped","local","A rising straight line through the marked points (0, 1), (1, 3), and (2, 5).",x=>2*x+1,{closed:[[0,1],[1,3],[2,5]]});
   plot("line-outer","slopeField","A falling straight line through the marked points (0, 3), (1, 2), and (2, 1).",x=>3-x,{closed:[[0,3],[1,2],[2,1]]});
-  plot("quarter-circle","circle","A quarter-circle of radius 5 in the first quadrant, joining (0, 5) to (5, 0) through the marked point (3, 4).",x=>between(x,0,5)?Math.sqrt(25-x*x):NaN,{closed:[[0,5],[3,4],[5,0]]});
-  plot("objective-arch","objective","On the closed interval from 0 to 6, a downward parabola has endpoints (0, 0) and (6, 0). Its peak is marked at (3, 9).",x=>between(x,0,6)?x*(6-x):NaN,{closed:[[0,0],[3,9],[6,0]]});
+  plot("quarter-circle","circle","A quarter-circle of radius 5 in the first quadrant, joining (0, 5) to (5, 0) through the marked point (3, 4).",x=>Math.sqrt(25-x*x),{domain:[0,5],closed:[[0,5],[3,4],[5,0]]});
+  plot("objective-arch","objective","On the closed interval from 0 to 6, a downward parabola has endpoints (0, 0) and (6, 0). Its peak is marked at (3, 9).",x=>x*(6-x),{domain:[0,6],closed:[[0,0],[3,9],[6,0]]});
   plot("rectangle-triangle","triangle","A dashed hypotenuse joins (0, 8) and (12, 0). A rectangle rests on the axes with its opposite corner at the marked point (6, 4).",x=>between(x,0,6)?4:NaN,{overlays:[x=>between(x,0,12)?8-2*x/3:NaN],segments:[[0,0,0,4],[0,0,6,0],[6,0,6,4]],closed:[[6,4]]});
   plot("paired-slopes","square","Two lines pass through the origin. The solid line goes through (1, 2). The dashed line goes through (1, −1).",x=>2*x,{overlays:[x=>-x],closed:[[1,2]],guidePoints:[[1,-1]]});
   plot("shifted-zero","local","Two straight lines vanish at x = 1. The solid line also passes through (2, 3); the dashed line passes through (2, 2).",x=>3*(x-1),{overlays:[x=>2*(x-1)],closed:[[1,0],[2,3]],guidePoints:[[2,2]]});
   plot("closed-extrema","local","Connected line segments join filled points (−1, 0), (0, 3), (1, 1), and (3, 5) in that order.",x=>{
-    if (!between(x,-1,3)) return NaN;
     return x<=0 ? 3*x+3 : x<=1 ? 3-2*x : 2*x-1;
-  },{closed:[[-1,0],[0,3],[1,1],[3,5]]});
-  plot("area-margin","objective","A rising straight derivative line crosses the horizontal axis at 2, changing from negative to positive.",x=>2*x-4);
-  plot("cost-fall","objective","A falling straight derivative line crosses the horizontal axis at 3, changing from positive to negative.",x=>6-2*x);
+  },{domain:[-1,3],closed:[[-1,0],[0,3],[1,1],[3,5]]});
+  plot("area-margin","objectiveSlope","On the interval from 0 to 5, a straight derivative line joins (0, −4) to (5, 6), crossing zero at 2.",x=>2*x-4,{domain:[0,5],closed:[[0,-4],[5,6]]});
+  plot("cost-fall","objectiveSlope","On the interval from 0 to 6, a straight derivative line joins (0, 6) to (6, −6), crossing zero at 3.",x=>6-2*x,{domain:[0,6],closed:[[0,6],[6,-6]]});
   plot("two-motion","motion","The position is a straight line from the marked point (0, 1) through (2, 5) to (4, 9).",x=>1+2*x,{closed:[[0,1],[2,5],[4,9]]});
 
   // In lecture sign diagrams the columns are intervals and the dots are derivative zeros.
@@ -154,7 +160,9 @@
   }
   function diagramRoot(description,viewBox) {
     const root=svg("svg",{viewBox,role:"img","aria-label":description,"class":"game-graph",focusable:"false"});
-    root.style.cssText="display:block;width:100%;height:auto;max-width:32rem;margin:.25rem auto;flex:none;";
+    root.style.cssText="display:block;width:100%;height:auto;max-width:32rem;margin:.25rem auto;flex:none;"
+      +"--plot-paper:var(--surface-raised);--plot-grid:var(--line);--plot-ink:var(--ink);"
+      +"--plot-curve:var(--family-limits);--plot-guide:var(--family-applications);";
     const title=svg("title",{});title.textContent=description;root.append(title);
     return root;
   }
@@ -173,11 +181,33 @@
     cuts.forEach((cut,i)=>{
       const x=left+(i+1)*width;
       root.append(svg("circle",{cx:x,cy:46,r:3.5,fill:curve}));
+      text(x,34,"0",15,ink);
       text(x,68,format(cut),15);
     });
     return root;
   }
+  function shadowDiagram() {
+    const description="A 6 m light and a 2 m person stand on level ground. The distance from the pole to the person is x. The shadow extends s farther to the tip. A ray through both tops ends at the tip.";
+    const root=diagramRoot(description,"0 0 260 146");
+    root.append(svg("rect",{width:260,height:146,rx:8,fill:paper}));
+    const segment=(x1,y1,x2,y2,color,width=1.5,dash="")=>root.append(svg("line",{x1,y1,x2,y2,stroke:color,"stroke-width":width,"stroke-dasharray":dash}));
+    const text=(x,y,value)=>{
+      const node=svg("text",{x,y,"text-anchor":"middle","font-family":"system-ui,sans-serif","font-size":14,fill:ink});
+      node.textContent=value;root.append(node);
+    };
+    segment(19,103,244,103,ink);
+    segment(35,13,35,103,curve,3);segment(149,73,149,103,curve,3);
+    segment(35,13,206,103,guide,2,"5 3");
+    for(const [start,end,name] of [[35,149,"x"],[149,206,"s"]]){
+      segment(start,117,end,117,ink,1);
+      segment(start,113,start,121,ink,1);segment(end,113,end,121,ink,1);
+      text((start+end)/2,137,name);
+    }
+    text(18,61,"6 m");text(128,92,"2 m");text(225,99,"tip");
+    return root;
+  }
   window.gameGraph = function(id) {
+    if (id==="lamp-shadow") return shadowDiagram();
     if (signs.has(id)) return signDiagram(signs.get(id));
     const plot=plots.get(id);
     if (!plot) return null;
@@ -210,7 +240,8 @@
       const [m,b]=plot.oblique;line(0,py(m*x[0]+b),w,py(m*x[1]+b),guide,1.2,"4 4");
     }
     // Sample each continuous branch separately. Never join opposite sides of an asymptote.
-    const edges=[x[0],...(plot.breaks??[]).filter(v=>v>x[0]&&v<x[1]),x[1]];
+    const [start,end]=plot.domain??x;
+    const edges=[start,...(plot.breaks??[]).filter(v=>v>start&&v<end),end];
     function drawBranch(fn,j,color,width,dash) {
       const lo=edges[j-1],hi=edges[j],n=Math.ceil((px(hi)-px(lo))*1.5);
       const commands=[];

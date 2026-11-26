@@ -1,6 +1,6 @@
 // Ready rooms share a server timestamp, course seed and answer order.
 // The public code and numbered seats are separate from each player's private token.
-window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begin,depart,courseLabel,runner,character}) {
+window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begin,depart,courseLabel,runner,character,crowned}) {
   const alphabet="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   let member=board.token(16),resumeCode="";
   try{if(window.performance?.getEntriesByType("navigation")[0]?.type==="reload")resumeCode=sessionStorage.getItem("critical-race-code")||"";}catch{}
@@ -18,7 +18,7 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
     el("racers").replaceChildren(...sorted.map(s=>{
       const row=document.createElement("li"),name=document.createElement("b"),status=document.createElement("span"),points=document.createElement("span"),bar=document.createElement("progress");
       name.className="racer-name";const avatar=runner.characters.find(a=>a.id===s.character)||runner.characters[0];
-      name.innerHTML=runner.portrait(avatar.id,r.diff);
+      name.innerHTML=runner.portrait(avatar.id,r.diff,s.seat===seat?crowned():s.crowned===true);
       name.append(avatar.name+" · P"+s.seat+(s.seat===seat?" (you)":""));
       status.className="racer-status";status.textContent=s.status==="waiting"?(s.ready?"Ready":"Getting ready"):
         ({playing:"On course",finished:"Finished",out:"Run over",left:"Left the room"}[s.status]||"Waiting");
@@ -59,7 +59,7 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
     const newRound=reply.room.round!==current.round;
     current=reply.room;
     if(newRound){pendingProgress=null;startedRound=0;enter(current);}
-    runner.rivals(current.startAt?current.racers:[],seat);
+    runner.rivals(current.startAt?current.racers.map(s=>({...s,difficulty:current.diff})):[],seat);
     // Use the server time at the midpoint of the request, including clients with skewed clocks.
     offset=reply.now-(sent+Date.now())/2;
     draw();tick();
@@ -72,12 +72,25 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
     clearTimeout(poll);if(!r)return;
     const pulse=sent-lastPulse>22000;
     try{
-      const reply=await call(pulse?"pulse":"read",{code:r.code},pulse);
+      const reply=await call(pulse?"pulse":"read",pulse?{code:r.code,crowned:crowned()}:{code:r.code},pulse);
       if(stamp!==generation)return;
       if(pulse)lastPulse=sent;apply(reply,sent);
       if(pendingProgress&&!writing)flushProgress();
     }catch(error){if(stamp===generation)el("room-status").textContent=error.message.includes("expired")?error.message:"Reconnecting to the room…";}
     finally{if(stamp===generation)schedule();}
+  }
+  // Give gear changes their own ordered writes so the last selection reaches the room.
+  let gearWrites=Promise.resolve();
+  function appearance() {
+    if(!current)return;
+    drawSeats(current);
+    const stamp=generation;
+    gearWrites=gearWrites.then(async()=>{
+      if(!current||generation!==stamp)return;
+      const sent=Date.now();
+      const reply=await call("pulse",{code:current.code,crowned:crowned()});
+      if(generation===stamp)apply(reply,sent);
+    }).catch(()=>{if(generation===stamp)lastPulse=0;});
   }
   function showHub(code=""){
     el("join-code").value=code;el("hub-status").textContent="";
@@ -101,7 +114,7 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
         if(!allowed(found.room))throw Error("Clear a Hard run to enter this room.");
         roomSettings={};
       }
-      const sent=Date.now(),reply=await call(host?"create":"join",{...roomSettings,code,edition,character:character()});
+      const sent=Date.now(),reply=await call(host?"create":"join",{...roomSettings,code,edition,character:character(),crowned:crowned()});
       if(stamp!==generation){await call("leave",{code});return;}
       seat=reply.seat;
       try{sessionStorage.setItem("critical-race-code",code);sessionStorage.setItem("critical-race-member",member);}catch{}
@@ -165,5 +178,5 @@ window.createCriticalRace = function ({el,board,edition,setup,allowed,enter,begi
   };
   el("leave-room").onclick=depart;
   document.addEventListener("visibilitychange",()=>{if(!document.hidden&&current){tick();refresh();}});
-  return {leave,progress,showHub,focus:()=>{el("room-panel").scrollIntoView?.({block:"center"});(el("room-ready").hidden?el("room-copy"):el("room-ready")).focus();}};
+  return {leave,progress,appearance,showHub,focus:()=>{el("room-panel").scrollIntoView?.({block:"center"});(el("room-ready").hidden?el("room-copy"):el("room-ready")).focus();}};
 };

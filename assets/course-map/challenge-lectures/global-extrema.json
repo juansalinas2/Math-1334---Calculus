@@ -2,14 +2,14 @@
   {
     "topic": "global",
     "level": 3,
-    "prompt": "On \\([-1,4]\\), \\(f(x)=x^3(4-x)\\) has only two interior critical numbers, 0 and 3. Its four candidate heights at \\(-1,0,3,4\\) are \\(-5,0,27,0\\) respectively. Which pair gives the global minimum and maximum values?",
+    "prompt": "On \\([-1,4]\\), \\(f(x)=x^3(4-x)\\) has \\(f'(x)=4x^2(3-x)\\) and \\(f(-1)=-5\\), \\(f(3)=27\\), \\(f(4)=0\\). If \\(x=3\\) is removed from the domain, which global extrema does \\(f\\) still attain?",
     "choices": [
-      "\\((-5,27)\\)",
-      "\\((0,27)\\)",
-      "\\((-1,3)\\)",
-      "\\((-5,0)\\)"
+      "Only the minimum, \\(-5\\) at \\(x=-1\\)",
+      "Both \\(-5\\) and \\(27\\)",
+      "Only the maximum, \\(0\\) at \\(x=4\\)",
+      "Neither a minimum nor a maximum"
     ],
-    "why": "Since \\(f'=4x^2(3-x)\\), compare \\(f(-1)=-5\\), \\(f(0)=0\\), \\(f(3)=27\\), and \\(f(4)=0\\).",
+    "why": "The function rises to its unique peak at 3 and then falls. On the punctured domain, heights approach 27 without attaining it. The left endpoint still gives the global minimum.",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
     "section": "4.2",
     "pdfPage": 65,
@@ -66,12 +66,12 @@
   {
     "topic": "global",
     "level": 3,
-    "prompt": "Restrict \\(f(x)=\\sin x\\) to \\([-\\pi/2,\\pi]\\setminus\\{\\pi/2\\}\\). Which pair gives its minimum and supremum (least upper bound)?",
+    "prompt": "Let \\(f(x)=\\sin x\\) on \\([-\\pi/2,\\pi]\\) with \\(x=\\pi/2\\) removed. Which description of the global extrema is correct?",
     "choices": [
-      "Minimum \\(-1\\) attained; supremum \\(1\\) unattained.",
-      "Minimum \\(-1\\) attained; maximum \\(0\\) attained.",
-      "Infimum \\(-1\\) unattained; maximum \\(1\\) attained.",
-      "Neither bound is attained."
+      "The minimum is \\(-1\\); the heights approach 1 but there is no maximum.",
+      "Both \\(-1\\) and 1 are attained.",
+      "The minimum is 0; the maximum is 1.",
+      "Neither a minimum nor a maximum is attained."
     ],
     "why": "The only input giving 1 in this interval was removed. Values still approach 1 there, and the included left endpoint still gives \\(-1\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
@@ -114,7 +114,7 @@
   {
     "topic": "global",
     "level": 3,
-    "prompt": "For \\(g(x)=x^2e^{-x}\\) on \\([-1,3]\\), the only candidates for global extrema have heights \\(e,0,4/e^2,9/e^3\\) at \\(-1,0,2,3\\), respectively. Knowing \\(e>5/2\\), where is the global maximum?",
+    "prompt": "For \\(g(x)=x^2e^{-x}\\) on \\([-1,3]\\), the four candidate heights at \\(-1,0,2,3\\) are \\(e,0,4/e^2,9/e^3\\). Use \\(e>5/2\\) to select the global maximum value and its location.",
     "choices": [
       "\\(e\\) at \\(x=-1\\)",
       "\\(4/e^2\\) at \\(x=2\\)",
@@ -125,7 +125,7 @@
     "source": "../lectures/exam-3-review.html#local-and-global-extrema",
     "section": "4.2",
     "pdf": "../downloads/november-4-maxima-and-minima.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=3"
   },
   {
     "topic": "global",
@@ -141,12 +141,12 @@
     "source": "../lectures/exam-3-review.html#local-and-global-extrema",
     "section": "4.2",
     "pdf": "../downloads/november-4-maxima-and-minima.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=3"
   },
   {
     "topic": "global",
     "level": 3,
-    "prompt": "For \\(q(x)=(x-1)^2\\) on \\([0,2]\\setminus\\{1\\}\\), select the full description.",
+    "prompt": "On \\([0,2]\\) with the midpoint 1 removed, which global extrema does \\(q(x)=(x-1)^2\\) attain?",
     "choices": [
       "The maximum is 1 at both endpoints, and there is no minimum.",
       "The maximum is 1 only at 2, and the minimum is 0.",
@@ -157,7 +157,7 @@
     "source": "../lectures/exam-3-review.html#the-domain-matters",
     "section": "4.2",
     "pdf": "../downloads/november-4-maxima-and-minima.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=3"
   },
   {
     "topic": "global",
@@ -173,7 +173,7 @@
     "source": "../lectures/exam-3-review.html#local-and-global-extrema",
     "section": "4.2",
     "pdf": "../downloads/november-4-maxima-and-minima.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=3"
   },
   {
     "topic": "global",
@@ -237,12 +237,12 @@
     "source": "../lectures/exam-3-review.html#local-and-global-extrema",
     "section": "4.2",
     "pdf": "../downloads/november-4-maxima-and-minima.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=3"
   },
   {
     "topic": "global",
     "level": 1,
-    "prompt": "What makes \\(f(c)\\) a global minimum on a domain \\(D\\)?",
+    "prompt": "Let \\(c\\) belong to the domain \\(D\\) of \\(f\\). Which inequality defines \\(f(c)\\) as a global minimum?",
     "choices": [
       "\\(f(c)\\le f(x)\\) for every \\(x\\) in \\(D\\).",
       "\\(f(c)\\le f(x)\\) for just one other input.",
@@ -349,7 +349,7 @@
     "reference": "Exam 3 review worksheet · 6(b)",
     "pdfPage": 65,
     "pdf": "../downloads/november-4-maxima-and-minima.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=3"
   },
   {
     "section": "4.2",
@@ -495,7 +495,7 @@
     "pdfPage": 66,
     "handoutPage": 3,
     "level": 1,
-    "prompt": "The only candidate outputs for a global maximum are \\(-2\\), \\(4\\), and \\(1\\). What is the global maximum value?",
+    "prompt": "A continuous function on a closed interval takes the values \\(-2\\), 4, and 1 at its endpoints and interior critical numbers. These are all its candidate values. What is its global maximum?",
     "why": "The largest candidate output is 4.",
     "choices": [
       "\\(4\\)",
@@ -563,7 +563,7 @@
     "pdfPage": 65,
     "handoutPage": 2,
     "level": 1,
-    "prompt": "Besides interior critical numbers, which points must you check for global extrema on \\([a,b]\\)?",
+    "prompt": "When using the closed-interval method for a continuous function on \\([a,b]\\), which inputs must you compare along with the interior critical numbers?",
     "why": "The closed-interval method compares the endpoints and the interior critical numbers.",
     "choices": [
       "Both endpoints",
@@ -812,7 +812,7 @@
     "pdfPage": 64,
     "handoutPage": 1,
     "level": 4,
-    "prompt": "A continuous function has range \\([-2,3]\\) on a closed interval. For \\(g(x)=(f(x)-1)^2\\), what is the difference between its greatest and least values?",
+    "prompt": "A continuous function \\(f\\) has range \\([-2,3]\\) on a closed interval. On that same interval, how far apart are the greatest and least values of \\(g(x)=(f(x)-1)^2\\)?",
     "why": "The range includes 1, making the minimum zero. The farthest endpoint from 1 is \\(-2\\), giving 9.",
     "answer": "9"
   },
@@ -836,7 +836,7 @@
     "pdfPage": 64,
     "handoutPage": 1,
     "level": 1,
-    "prompt": "On the whole real line, which pictured function has a single lowest point and rises on both sides of it?",
+    "prompt": "Which pictured function has a unique global minimum and increases in height as you move away from that point in either direction?",
     "why": "The upward parabola has its unique minimum at its vertex.",
     "choices": [
       "Smooth U-shaped curve with its lowest point at the origin.",

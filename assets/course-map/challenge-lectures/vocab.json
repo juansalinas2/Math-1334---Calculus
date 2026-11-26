@@ -18,12 +18,12 @@
   {
     "topic": "derivatives",
     "level": 3,
-    "prompt": "For the position \\(s(t)=3t-t^2\\), which quantity is the acceleration at \\(t=1\\)?",
+    "prompt": "A particle has position \\(s(t)=3t-t^2\\) meters, with time \\(t\\) in seconds. Which quantity is its acceleration at \\(t=1\\)?",
     "choices": [
-      "\\(s''(1)=-2\\).",
-      "\\([s'(1)]^2=1\\).",
-      "\\(s'(1)=1\\).",
-      "\\(s(1)=2\\)."
+      "\\(s''(1)=-2\\) m/s²",
+      "\\([s'(1)]^2=1\\) m²/s²",
+      "\\(s'(1)=1\\) m/s",
+      "\\(s(1)=2\\) m"
     ],
     "why": "Acceleration evaluates the second derivative of position. Squaring the first derivative produces squared velocity and has different units.",
     "source": "../lectures/10-derivative-function.html#higher-order-derivatives",
@@ -155,7 +155,7 @@
   {
     "topic": "concavity",
     "level": 3,
-    "prompt": "Over an interval, the tangent slope of a smooth curve increases from \\(-5\\) to \\(-1\\) and stays negative. Which two descriptions of the curve hold throughout the interval?",
+    "prompt": "Throughout an interval, a smooth curve has negative tangent slopes. As \\(x\\) increases, those slopes increase steadily from \\(-5\\) to \\(-1\\). Which two descriptions hold on the interval?",
     "choices": [
       "Decreasing and concave up.",
       "Increasing and concave down.",
@@ -203,14 +203,14 @@
     "topic": "tangent",
     "section": "3.1",
     "level": 1,
-    "prompt": "Which line through \\((a,f(a))\\) also uses a second, distinct point on the graph to define its slope?",
+    "prompt": "What is the name for the line used to compute average rate of change between two distinct inputs \\(a\\) and \\(b\\)?",
     "choices": [
       "A secant line.",
       "A vertical asymptote.",
       "The normal line at \\(a\\).",
       "The horizontal line \\(y=f(a)\\)."
     ],
-    "why": "A secant joins two points of the graph. Moving the second input toward \\(a\\) gives the difference quotients used in the tangent-slope limit.",
+    "why": "The secant passes through \\((a,f(a))\\) and \\((b,f(b))\\). Its slope is \\([f(b)-f(a)]/(b-a)\\).",
     "source": "../lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
     "reference": "Exam 2 oral review · 3.1–3.2 definitions",
     "pdfPage": 24,
@@ -305,7 +305,7 @@
     "topic": "local",
     "section": "4.2",
     "level": 1,
-    "prompt": "A point is higher than all nearby points, but another hill is taller. What does the first hilltop attain?",
+    "prompt": "The top of one hill is higher than every other nearby point on a graph. Elsewhere the graph has a taller hill. How is the height of the first hilltop classified?",
     "choices": [
       "A local maximum only.",
       "A global maximum only.",
@@ -469,7 +469,7 @@
     "section": "4.3",
     "topic": "inflect",
     "level": 4,
-    "prompt": "The graph of \\(g(x)=x^3+1\\) has its stationary inflection point at \\((0,1)\\). Set \\(h(x)=2g(x-3)-5\\). What is the vertical coordinate of the corresponding stationary inflection point of \\(h\\)?",
+    "prompt": "The graph of \\(g(x)=x^3+1\\) changes concavity at \\((0,1)\\), where its tangent is horizontal. Set \\(h(x)=2g(x-3)-5\\). What is the height of the corresponding inflection point of \\(h\\)?",
     "answer": "-3",
     "why": "The original point \\((0,1)\\) moves to \\((3,2\\cdot1-5)\\). The derivative remains zero and the concavity still changes there.",
     "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
@@ -524,7 +524,7 @@
     "section": "4.4",
     "topic": "endbehavior",
     "level": 4,
-    "prompt": "A curve is given by \\(f(x)=x+1+1/(x-1)\\). What is the vertical distance from the curve to its slant asymptote at \\(x=-3\\)?",
+    "prompt": "For \\(f(x)=x+1+1/(x-1)\\), what is the vertical distance between the graph and its slant asymptote at \\(x=-3\\)?",
     "answer": "1/4",
     "why": "The slant asymptote is \\(y=x+1\\). The signed difference at \\(-3\\) is \\(1/(-4)\\), so the distance is \\(1/4\\).",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
@@ -719,10 +719,10 @@
     "prompt": "A continuous function on \\([0,2]\\) has highest point \\((0,5)\\) and \\(f'(x)<0\\) for \\(0<x<2\\). Which terms correctly identify 0 and 5?",
     "why": "The two coordinates are an endpoint input and its output. The derivative sign explains the fall from that endpoint.",
     "choices": [
-      "0 is the maximizing input; 5 is the global maximum value.",
-      "0 is the maximum value; 5 is its input.",
-      "0 is an interior critical number; 5 is its slope.",
-      "0 is an inflection input; 5 is its derivative."
+      "0 is the maximizing input and 5 is the global maximum value.",
+      "0 is the maximum value and 5 is its input.",
+      "0 is an interior critical number and 5 is its slope.",
+      "0 is an inflection input and 5 is its derivative."
     ]
   },
   {
@@ -780,7 +780,7 @@
     "pdfPage": 68,
     "handoutPage": 1,
     "level": 4,
-    "prompt": "For \\(f(x)=x^3-3x\\) the stationary inputs are \\(-1,1\\) and the inflection input is 0. How many of those three inputs are both stationary and inflection inputs?",
+    "prompt": "For \\(f(x)=x^3-3x\\), the tangent is horizontal at \\(x=-1,1\\) and the curve changes concavity at \\(x=0\\) only. At how many inputs does \\(f\\) have a horizontal tangent at an inflection point?",
     "why": "The horizontal tangents occur at \\(-1\\) and 1. At zero the concavity changes but the slope is \\(-3\\).",
     "answer": "0"
   },

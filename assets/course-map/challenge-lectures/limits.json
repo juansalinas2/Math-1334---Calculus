@@ -34,7 +34,7 @@
   {
     "topic": "limit",
     "level": 3,
-    "prompt": "As \\(x\\to0^+\\), which two sequences of positive inputs, with \\(n=1,2,\\ldots\\), give \\(\\sin(1/x)=1\\) on one sequence and \\(-1\\) on the other?",
+    "prompt": "Angles are in radians. For \\(n=1,2,\\ldots\\), which pair \\(x_n,y_n\\to0^+\\) has \\(\\sin(1/x_n)=1\\) and \\(\\sin(1/y_n)=-1\\) for every \\(n\\)?",
     "choices": [
       "\\(x_n=1/(2\\pi n+\\pi/2)\\) and \\(y_n=1/(2\\pi n+3\\pi/2)\\)",
       "\\(x_n=1/(2\\pi n)\\) and \\(y_n=1/(\\pi n)\\)",
@@ -45,7 +45,8 @@
     "source": "../lectures/03-infinite-limits.html#harder-limits",
     "section": "2.2",
     "pdfPage": 9,
-    "pdf": "../downloads/september-28-limits-class-notes.pdf"
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "topic": "limitmethods",
@@ -85,7 +86,7 @@
     "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
     "pdf": "../downloads/september-30-revised-class-notes.pdf",
     "level": 3,
-    "prompt": "Suppose \\(5-(x-1)^2\\le f(x)\\le5+(x-1)^2\\). For \\(x<1\\), what upper bound on \\(|(f(x)-5)/(x-1)|\\) proves a limit of zero?",
+    "prompt": "Near 1, \\(|f(x)-5|\\le (x-1)^2\\). For \\(x<1\\), which bound tending to zero follows for \\(|(f(x)-5)/(x-1)|\\)?",
     "choices": [
       "\\(1-x\\)",
       "\\(x-1\\)",
@@ -194,7 +195,7 @@
   {
     "topic": "limit",
     "level": 3,
-    "prompt": "A line has a hole at \\((2,4)\\) and a filled point at \\((2,7)\\). Off the hole its formula is \\(g(x)=x+2\\). What are \\(\\lim_{h\\to0^-}[g(2+h)-g(2)]/h\\) and the corresponding right-hand limit?",
+    "prompt": "For \\(x\\ne2\\) let \\(g(x)=x+2\\), and set \\(g(2)=7\\). What are the left- and right-hand limits of \\([g(2+h)-g(2)]/h\\) as \\(h\\to0\\), in that order?",
     "choices": [
       "\\(+\\infty,-\\infty\\)",
       "\\(1,1\\)",
@@ -205,12 +206,13 @@
     "source": "../lectures/02-limits.html#limits-and-function-values",
     "section": "2.1",
     "pdfPage": 6,
-    "pdf": "../downloads/september-28-limits-class-notes.pdf"
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "limit",
     "level": 3,
-    "prompt": "For \\(x\\ne2\\), let \\(f(x)=(x^2-4)/(x-2)\\). A point is added at \\((2,b)\\). Which \\(b\\) makes the secant slopes from that point to \\((2+h,f(2+h))\\) approach a finite number, and what number?",
+    "prompt": "For \\(x\\ne2\\), let \\(f(x)=(x^2-4)/(x-2)\\). Add the point \\((2,b)\\). For which \\(b\\) do secant slopes from that point to \\((2+h,f(2+h))\\) have a finite limit as \\(h\\to0\\)? Give \\(b\\) and the limiting slope.",
     "choices": [
       "\\(b=4\\), slope \\(1\\)",
       "\\(b=4\\), slope \\(4\\)",
@@ -221,7 +223,8 @@
     "source": "../lectures/02-limits.html#limits-and-function-values",
     "section": "2.1",
     "pdfPage": 6,
-    "pdf": "../downloads/september-28-limits-class-notes.pdf"
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 2
   },
   {
     "topic": "limit",
@@ -242,7 +245,7 @@
   {
     "topic": "limit",
     "level": 3,
-    "prompt": "Suppose \\(g(x)=x+2\\) except at \\(x=2\\), where \\(g(2)=7\\). For \\(x\\ne2\\), which expression equals \\([g(x)-4]/|x-2|\\), and what follows about its limit?",
+    "prompt": "Suppose \\(g(x)=x+2\\) except at \\(x=2\\), where \\(g(2)=7\\). For \\(x\\ne2\\), which expression equals \\([g(x)-4]/|x-2|\\), and what follows as \\(x\\to2\\)?",
     "choices": [
       "It is \\((x-2)/|x-2|\\), so the limit does not exist.",
       "It is 1, so the limit is 1.",
@@ -370,7 +373,7 @@
   {
     "topic": "infinite",
     "level": 3,
-    "prompt": "Let \\(F(x)=-1/(x+1)^2+3/(x+1)\\). What is its two-sided limit at \\(-1\\)?",
+    "prompt": "What is \\(\\lim_{x\\to-1}[-1/(x+1)^2+3/(x+1)]\\)? You can write the expression over the common denominator \\((x+1)^2\\).",
     "choices": [
       "\\(-\\infty\\)",
       "\\(+\\infty\\)",
@@ -381,7 +384,8 @@
     "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
     "section": "2.2",
     "pdfPage": 9,
-    "pdf": "../downloads/september-28-limits-class-notes.pdf"
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 5
   },
   {
     "topic": "infinite",
@@ -434,7 +438,7 @@
   {
     "topic": "infinite",
     "level": 3,
-    "prompt": "For \\(F(x)=(x-1)/[x^2(x+1)]\\), find the finite limit of \\(x^2F(x)\\) and determine the sign of \\(F(x)\\) near zero.",
+    "prompt": "For \\(F(x)=(x-1)/[x^2(x+1)]\\), find \\(\\lim_{x\\to0}x^2F(x)\\). What sign does \\(F(x)\\) have on each side sufficiently close to zero?",
     "choices": [
       "Limit \\(-1\\) and \\(F(x)<0\\) on both sides.",
       "Limit \\(-1\\) and \\(F(x)\\) changes sign.",
@@ -445,7 +449,8 @@
     "source": "../lectures/03-infinite-limits.html#harder-limits",
     "section": "2.2",
     "pdfPage": 9,
-    "pdf": "../downloads/september-28-limits-class-notes.pdf"
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "topic": "infinite",
@@ -562,18 +567,19 @@
   {
     "topic": "laws",
     "level": 3,
-    "prompt": "As \\(x\\to a\\), \\(f(x)\\to2\\) and \\(g(x)\\to3\\). Near \\(a\\), suppose \\(g(x)-f(x)-1\\ne0\\). After multiplying by the conjugate, what is the limit of \\([\\sqrt{g(x)+1}-\\sqrt{f(x)+2}]/[g(x)-f(x)-1]\\)?",
+    "prompt": "As \\(x\\to a\\), \\(u(x)\\to4\\) and \\(v(x)\\to4\\). Assume \\(u(x)\\ne v(x)\\) for nearby \\(x\\ne a\\). What is \\(\\displaystyle\\lim_{x\\to a}\\frac{\\sqrt{u(x)}-\\sqrt{v(x)}}{u(x)-v(x)}\\)?",
     "choices": [
       "\\(1/4\\)",
       "\\(1/2\\)",
       "\\(0\\)",
       "\\(4\\)"
     ],
-    "why": "Conjugation gives \\((g+1)-(f+2)=g-f-1\\). The quotient becomes \\(1/(\\sqrt{g+1}+\\sqrt{f+2})\\to1/4\\).",
-    "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
+    "why": "Rationalizing cancels \\(u(x)-v(x)\\), leaving \\(1/(\\sqrt{u(x)}+\\sqrt{v(x)})\\). Each square root tends to 2, giving \\(1/4\\).",
+    "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
     "section": "2.3",
     "pdfPage": 12,
-    "pdf": "../downloads/september-30-revised-class-notes.pdf"
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 5
   },
   {
     "topic": "limitmethods",
@@ -594,7 +600,7 @@
   {
     "topic": "limitmethods",
     "level": 3,
-    "prompt": "On its original domain \\(x\\ne\\pm1\\), \\(f(x)=(x-1)/(x+1)\\). What are \\(\\lim_{x\\to-1}(x+1)f(x)\\) and \\(\\lim_{x\\to1}1/f(x)\\)?",
+    "prompt": "For \\(x\\ne-1,1\\), let \\(f(x)=(x-1)/(x+1)\\). What are \\(\\lim_{x\\to-1}(x+1)f(x)\\) and \\(\\lim_{x\\to1}1/f(x)\\), respectively?",
     "choices": [
       "\\(-2\\) and DNE.",
       "\\(2\\) and DNE.",
@@ -605,7 +611,8 @@
     "source": "../lectures/04-limit-laws.html#three-possibilities-when-we-substitute",
     "section": "2.3",
     "pdfPage": 13,
-    "pdf": "../downloads/september-30-revised-class-notes.pdf"
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "limitmethods",
@@ -853,9 +860,9 @@
     "prompt": "Read the graph. As \\(x\\) approaches 2, what height does the line approach?",
     "choices": [
       "\\(4\\)",
+      "\\(2\\)",
       "\\(0\\)",
-      "\\(1\\)",
-      "\\(-1\\)"
+      "Undefined"
     ],
     "why": "Both sides of the line approach the open circle at height 4.",
     "source": "../lectures/02-limits.html#limits-and-function-values",
@@ -870,9 +877,9 @@
     "prompt": "Read the filled point. What is \\(g(2)\\)?",
     "choices": [
       "\\(7\\)",
-      "\\(0\\)",
-      "\\(1\\)",
-      "\\(-1\\)"
+      "\\(4\\)",
+      "\\(2\\)",
+      "Undefined"
     ],
     "why": "At \\(x=2\\), the filled point is at height 7. The open circle is excluded.",
     "source": "../lectures/02-limits.html#limits-and-function-values",
@@ -964,12 +971,12 @@
   {
     "topic": "infinite",
     "level": 1,
-    "prompt": "As \\(x\\) approaches \\(-1\\) from the right, is \\(1/(x+1)\\) large positive, large negative, close to 1, or close to 0?",
+    "prompt": "Follow the right branch of \\(y=1/(x+1)\\) toward \\(x=-1\\). What happens to the output?",
     "choices": [
-      "Large positive.",
-      "Large negative.",
-      "Close to 1.",
-      "Close to 0."
+      "It grows without bound.",
+      "It falls without bound.",
+      "It approaches 1.",
+      "It approaches 0."
     ],
     "why": "On the right, \\(x+1\\) is positive and gets arbitrarily close to zero.",
     "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
@@ -1028,7 +1035,7 @@
   {
     "topic": "infinite",
     "level": 3,
-    "prompt": "Near zero, what sign do the numerator and denominator of \\((x-1)/[x^2(x+1)]\\) have, and what limit follows?",
+    "prompt": "As \\(x\\to0\\) with \\(x\\ne0\\), what signs do the numerator and denominator of \\((x-1)/[x^2(x+1)]\\) have, and what is the limit?",
     "choices": [
       "Negative over positive, giving \\(-\\infty\\).",
       "Negative over negative, giving \\(+\\infty\\).",
@@ -1039,7 +1046,8 @@
     "source": "../lectures/03-infinite-limits.html#harder-limits",
     "section": "2.2",
     "pdfPage": 9,
-    "pdf": "../downloads/september-28-limits-class-notes.pdf"
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "topic": "laws",
@@ -1060,7 +1068,7 @@
   {
     "topic": "laws",
     "level": 1,
-    "prompt": "If \\(f(x)\\to2\\) and \\(g(x)\\to3\\), what is the limit of \\(g(x)-f(x)\\)?",
+    "prompt": "As \\(x\\to a\\), \\(f(x)\\to2\\) and \\(g(x)\\to3\\). What does \\(g(x)-f(x)\\) approach?",
     "choices": [
       "\\(1\\)",
       "\\(-1\\)",
@@ -1071,7 +1079,8 @@
     "source": "../lectures/04-limit-laws.html#using-the-limit-laws",
     "section": "2.3",
     "pdfPage": 12,
-    "pdf": "../downloads/september-30-revised-class-notes.pdf"
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 1
   },
   {
     "topic": "limitmethods",
@@ -1079,7 +1088,7 @@
     "source": "../lectures/04-limit-laws.html#practice",
     "pdf": "../downloads/september-30-revised-class-notes.pdf",
     "level": 2,
-    "prompt": "For \\(r(x)=(x^2-x-2)/(x^2-4)\\), which number does the limit law give at \\(x=1\\)?",
+    "prompt": "Find \\(\\lim_{x\\to1}(x^2-x-2)/(x^2-4)\\) by direct substitution.",
     "choices": [
       "\\(2/3\\)",
       "\\(-2/3\\)",
@@ -1108,18 +1117,19 @@
   {
     "topic": "limitmethods",
     "level": 2,
-    "prompt": "For \\(f(x)=(x-1)^2/[(x-1)(x+1)]\\), what form does substitution at \\(x=-1\\) give?",
+    "prompt": "For \\(f(x)=(x-1)^2/[(x-1)(x+1)]\\), substitute \\(x=-1\\) into the numerator and denominator separately. What pair do you get, numerator first?",
     "choices": [
-      "\\(4/0\\)",
-      "\\(0/0\\)",
-      "\\(0/4\\)",
-      "\\(4/4\\)"
+      "\\((4,0)\\)",
+      "\\((0,0)\\)",
+      "\\((0,4)\\)",
+      "\\((4,4)\\)"
     ],
-    "why": "The numerator is \\((-2)^2=4\\), while the factor \\(x+1\\) in the denominator is zero. Since the numerator is nonzero, one-sided signs determine which infinity is approached.",
+    "why": "The numerator equals \\((-2)^2=4\\). The factor \\(x+1\\) makes the denominator zero.",
     "source": "../lectures/04-limit-laws.html#three-possibilities-when-we-substitute",
     "section": "2.3",
     "pdfPage": 13,
-    "pdf": "../downloads/september-30-revised-class-notes.pdf"
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 3
   },
   {
     "topic": "limitmethods",
@@ -1176,14 +1186,14 @@
     "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
     "pdf": "../downloads/september-30-revised-class-notes.pdf",
     "level": 2,
-    "prompt": "Suppose \\(5-(x-1)^2\\le f(x)\\le5+(x-1)^2\\). When \\(x=1.1\\), how far can \\(f(x)\\) be from 5?",
+    "prompt": "Assume \\(5-(x-1)^2\\le f(x)\\le5+(x-1)^2\\) at \\(x=1.1\\). What is the largest possible value of \\(|f(1.1)-5|\\)?",
     "choices": [
-      "At most \\(0.01\\).",
-      "At most \\(0.001\\).",
-      "Exactly \\(0.01\\).",
-      "Exactly \\(0\\)."
+      "\\(0.01\\)",
+      "\\(0.001\\)",
+      "\\(0.1\\)",
+      "\\(1\\)"
     ],
-    "why": "The bounds give \\(|f(x)-5|\\le(x-1)^2\\). At this input the upper bound on the error is \\(0.1^2=0.01\\).",
+    "why": "The distance from 5 to either bound is \\((1.1-1)^2=0.01\\). Either boundary value attains this distance.",
     "handoutPage": 6
   },
   {
@@ -1223,7 +1233,7 @@
     "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
     "pdf": "../downloads/september-30-revised-class-notes.pdf",
     "level": 2,
-    "prompt": "For \\(t\\) near zero, which identity simplifies \\(\\sin t/\\tan t\\) before you take the limit?",
+    "prompt": "For sufficiently small \\(t\\ne0\\), which expression equals \\(\\sin t/\\tan t\\)?",
     "choices": [
       "It equals \\(\\cos t\\).",
       "It equals \\(1/\\cos t\\).",
@@ -1300,18 +1310,19 @@
   {
     "topic": "squeeze",
     "level": 2,
-    "prompt": "Suppose \\(|q(x)-2|\\le |x|\\) for every nonzero \\(x\\). At \\(x=-0.01\\), how far from 2 can \\(q(x)\\) be?",
+    "prompt": "You know only that \\(|q(x)-2|\\le |x|\\) for every nonzero \\(x\\). What is the largest possible value of \\(|q(-0.01)-2|\\)?",
     "choices": [
-      "At most 0.01.",
-      "Exactly 0.01.",
-      "At least 0.01.",
-      "Exactly zero."
+      "\\(0.01\\)",
+      "\\(0.001\\)",
+      "\\(0.1\\)",
+      "\\(2.01\\)"
     ],
-    "why": "Substitution gives an upper bound of \\(\\lvert-0.01\\rvert=0.01\\). The estimate leaves open the actual distance.",
+    "why": "At this input, the given bound is \\(0.01\\). The function \\(q(x)=2+x\\) attains it.",
     "source": "../lectures/08-exam-practice.html#problem-8",
     "section": "2.7",
     "pdfPage": 16,
-    "pdf": "../downloads/october-5-exam-practice.pdf"
+    "pdf": "../downloads/october-5-exam-practice.pdf",
+    "handoutPage": 4
   },
   {
     "topic": "infinite",
@@ -1333,19 +1344,20 @@
     "topic": "laws",
     "section": "2.3",
     "level": 2,
-    "prompt": "Let \\(H(x)=x^2/(x^2+10^{-2026})\\). Set \\(x=10^{-1013}t\\), so \\(x^2=10^{-2026}t^2\\). Which expression for \\(H\\) results after cancellation?",
+    "prompt": "Let \\(H(x)=x^2/(x^2+c)\\) with \\(c>0\\). If \\(a^2=4c\\), what is \\(\\lim_{x\\to a}H(x)\\)?",
     "choices": [
-      "\\(t^2/(t^2+1)\\)",
-      "\\(t^2/(t^2+10^{-1013})\\)",
-      "\\(1/(t^2+1)\\)",
+      "\\(4/5\\)",
+      "\\(1/5\\)",
+      "\\(4\\)",
       "\\(1\\)"
     ],
-    "why": "Both squared terms contain the same factor \\(10^{-2026}\\). Cancel it to see the dip to zero when \\(t=0\\).",
+    "why": "The denominator at \\(a\\) is \\(5c>0\\), so the quotient law gives \\(H(a)=4c/(4c+c)=4/5\\).",
     "source": "../lectures/04-limit-laws.html#polynomials-and-rational-functions",
     "reference": "Week 2 worksheet · 2(c)",
     "pdfPage": 13,
     "pdf": "../downloads/september-30-revised-class-notes.pdf",
-    "reviewPdf": "../downloads/week-2-worksheet.pdf"
+    "reviewPdf": "../downloads/week-2-worksheet.pdf",
+    "handoutPage": 2
   },
   {
     "section": "2.1",
@@ -1560,12 +1572,13 @@
     "section": "2.2",
     "topic": "infinite",
     "level": 4,
-    "prompt": "As \\(x\\to-1^-\\), let \\(A=1/(x+1)\\), so \\(A\\to-\\infty\\). Rationalizing gives \\(A(\\sqrt{A^2+9}+A)=9A/(\\sqrt{A^2+9}-A)\\). Divide by \\(|A|\\) above and below. What is the limit?",
+    "prompt": "Let \\(A=1/(x+1)\\). As \\(x\\to-1^-\\), \\(A\\to-\\infty\\). Find \\(\\displaystyle\\lim_{x\\to-1^-}\\frac{9A}{\\sqrt{A^2+9}-A}\\). Divide the numerator and denominator by \\(|A|\\).",
     "answer": "-9/2",
     "why": "We have \\(A/|A|=-1\\) on the left. The denominator divided by \\(|A|\\) approaches \\(1-(-1)=2\\), so the limit is \\(-9/2\\).",
     "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
     "pdfPage": 9,
-    "pdf": "../downloads/september-28-limits-class-notes.pdf"
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "handoutPage": 6
   },
   {
     "section": "2.2",
@@ -1615,12 +1628,13 @@
     "section": "2.3",
     "topic": "limitmethods",
     "level": 4,
-    "prompt": "A common denominator gives \\([1/(2+h)-1/2]/h=-1/[2(2+h)]\\) for \\(h\\ne0\\). What is the limit of \\([1/(2+h)-1/2]/(2h)\\) as \\(h\\to0\\)?",
+    "prompt": "For \\(h\\ne0,-2\\), \\([1/(2+h)-1/2]/h=-1/[2(2+h)]\\). What is \\(\\displaystyle\\lim_{h\\to0}\\frac{1/(2+h)-1/2}{2h}\\)?",
     "answer": "-1/8",
     "why": "The new denominator is twice the old one, so the limit is half of \\(-1/4\\), namely \\(-1/8\\).",
     "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
     "pdfPage": 14,
-    "pdf": "../downloads/september-30-revised-class-notes.pdf"
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 5
   },
   {
     "section": "2.3",
@@ -1648,12 +1662,13 @@
     "section": "2.3",
     "topic": "limitmethods",
     "level": 4,
-    "prompt": "At \\(x=1\\), both \\(\\sqrt{x+8}-3\\) and \\(\\sqrt{4x+12}-4\\) vanish. Near 1 their conjugates approach 6 and 8, and their rationalized numerators are \\(x-1\\) and \\(4(x-1)\\). What is the limit of the first difference divided by the second?",
+    "prompt": "Near 1, rationalizing \\((\\sqrt{x+8}-3)/(\\sqrt{4x+12}-4)\\) gives \\(\\frac{x-1}{4(x-1)}\\cdot\\frac{\\sqrt{4x+12}+4}{\\sqrt{x+8}+3}\\) for \\(x\\ne1\\). What is its limit as \\(x\\to1\\)?",
     "answer": "1/3",
     "why": "Rationalizing the numerator and denominator separately gives \\((x-1)/(\\sqrt{x+8}+3)\\) divided by \\(4(x-1)/(\\sqrt{4x+12}+4)\\). Cancellation leaves \\((\\sqrt{4x+12}+4)/(4(\\sqrt{x+8}+3))\\), which tends to \\(8/(4\\cdot6)=1/3\\).",
     "source": "../lectures/04-limit-laws.html#indeterminate-forms-and-simplifying",
     "pdfPage": 14,
-    "pdf": "../downloads/september-30-revised-class-notes.pdf"
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 5
   },
   {
     "section": "2.3",
@@ -1736,12 +1751,13 @@
     "section": "2.4",
     "topic": "limitmethods",
     "level": 4,
-    "prompt": "Near zero, \\(1-\\cos(2x)-4(1-\\cos x)=-2(1-\\cos x)^2\\). In radians \\((1-\\cos x)/x^2\\to1/2\\). Divide the first expression by \\(x^4\\). What is its limit?",
+    "prompt": "Near zero in radians, \\(1-\\cos(2x)-4(1-\\cos x)=-2(1-\\cos x)^2\\) and \\((1-\\cos x)/x^2\\to1/2\\). Find \\(\\displaystyle\\lim_{x\\to0}\\frac{1-\\cos(2x)-4(1-\\cos x)}{x^4}\\).",
     "answer": "-1/2",
     "why": "Write the quotient as \\(-2[(1-\\cos x)/x^2]^2\\) and substitute the given limit.",
     "source": "../lectures/05-squeeze-theorem.html#difficult",
     "pdfPage": 17,
-    "pdf": "../downloads/september-30-revised-class-notes.pdf"
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
   },
   {
     "section": "2.4",
@@ -1802,7 +1818,7 @@
     "section": "2.7",
     "topic": "limitmethods",
     "level": 4,
-    "prompt": "The upper intersection of two circles is \\(Q=(r^2/2,r\\sqrt{1-r^2/4})\\) for \\(0<r<1\\). The line from \\((0,r)\\) to \\(Q\\) has slope \\(m(r)\\). Its horizontal intercept \\(a(r)\\) tends to 4. Find \\(\\lim_{r\\to0^+}m(r)/r\\).",
+    "prompt": "A line passes through \\((0,r)\\) and \\((a(r),0)\\), where \\(a(r)\\to4\\) as \\(r\\to0^+\\). Let \\(m(r)\\) be its slope. Find \\(\\lim_{r\\to0^+}m(r)/r\\).",
     "answer": "-1/4",
     "why": "The line passes through \\((0,r)\\) and \\((a(r),0)\\), so \\(m(r)/r=-1/a(r)\\to-1/4\\).",
     "source": "../lectures/08-exam-practice.html#problem-10-where-does-the-intercept-go",
@@ -1942,12 +1958,13 @@
     "topic": "squeeze",
     "level": 4,
     "capstone": true,
-    "prompt": "For \\(h\\ne0\\) near zero, \\(2-|h|\\le [f(1+h)-5]/h^2\\le2+|h|\\). Set \\(u=3[f(1+h)-5]\\), \\(v=2h^2\\). In radians the limit of \\((1-\\cos u)/(1-\\cos v)\\) equals the limit of \\((u/v)^2\\). What is it?",
+    "prompt": "For \\(h\\ne0\\) close to zero, \\(2-|h|\\le [f(1+h)-5]/h^2\\le2+|h|\\). Let \\(u=3[f(1+h)-5]\\) and \\(v=2h^2\\). Given \\(\\frac{1-\\cos u}{1-\\cos v}/(u/v)^2\\to1\\) in radians, find \\(\\lim_{h\\to0}(1-\\cos u)/(1-\\cos v)\\).",
     "answer": "9",
     "why": "The bounds squeeze \\([f(1+h)-5]/h^2\\) to 2. Therefore \\(u/v\\to3\\) and its square tends to 9.",
     "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
     "pdfPage": 16,
-    "pdf": "../downloads/september-30-revised-class-notes.pdf"
+    "pdf": "../downloads/september-30-revised-class-notes.pdf",
+    "handoutPage": 8
   },
   {
     "section": "2.7",
@@ -2205,7 +2222,7 @@
     "section": "2.1",
     "topic": "limit",
     "level": 1,
-    "prompt": "A graph approaches height 6 from the left and height 6 from the right. What is its limit?",
+    "prompt": "At \\(x=1\\), the left-hand and right-hand limits are both 6. What is the two-sided limit?",
     "choices": [
       "\\(6\\)",
       "\\(-6\\)",
@@ -2238,7 +2255,7 @@
     "section": "2.1",
     "topic": "limit",
     "level": 2,
-    "prompt": "The line follows \\(y=x+2\\) except possibly at \\(2\\). What is \\(\\lim_{x\\to 1} f(x)\\)?",
+    "prompt": "Except at \\(x=2\\), the graph of \\(f\\) follows \\(y=x+2\\). What is \\(\\lim_{x\\to1}f(x)\\)?",
     "choices": [
       "\\(3\\)",
       "\\(-3\\)",
@@ -2255,7 +2272,7 @@
     "section": "2.1",
     "topic": "limit",
     "level": 2,
-    "prompt": "The line follows \\(y=x+2\\) except possibly at \\(0\\). What is \\(\\lim_{x\\to -1} f(x)\\)?",
+    "prompt": "Except at \\(x=0\\), the graph of \\(f\\) follows \\(y=x+2\\). What is \\(\\lim_{x\\to-1}f(x)\\)?",
     "choices": [
       "\\(1\\)",
       "\\(-1\\)",
@@ -2272,7 +2289,7 @@
     "section": "2.1",
     "topic": "limit",
     "level": 2,
-    "prompt": "The line follows \\(y=x+2\\) except possibly at \\(2\\). What is \\(\\lim_{x\\to 3} f(x)\\)?",
+    "prompt": "Except at \\(x=2\\), the graph of \\(f\\) follows \\(y=x+2\\). What is \\(\\lim_{x\\to3}f(x)\\)?",
     "choices": [
       "\\(5\\)",
       "\\(-5\\)",
@@ -2581,12 +2598,12 @@
     "section": "2.2",
     "topic": "infinite",
     "level": 1,
-    "prompt": "Look at both branches beside the dashed vertical line. Which way do they point?",
+    "prompt": "As you move toward the dashed vertical asymptote from either side, what happens to the graph?",
     "choices": [
-      "Both up",
-      "Both down",
-      "Left up and right down",
-      "Left down and right up"
+      "Both branches rise without bound.",
+      "Both branches fall without bound.",
+      "The left rises and the right falls.",
+      "The left falls and the right rises."
     ],
     "why": "Both sides of the vertical asymptote rise without bound.",
     "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
@@ -2717,7 +2734,7 @@
     "level": 2,
     "prompt": "Inspect both branches of \\(y=1/(x+1)\\). What is its two-sided limit at \\(-1\\)?",
     "choices": [
-      "Does not exist",
+      "The two sides have different limits.",
       "\\(+\\infty\\)",
       "\\(-\\infty\\)",
       "\\(0\\)"
@@ -2734,7 +2751,7 @@
     "level": 2,
     "prompt": "Inspect both branches of \\(y=-1/(x+1)\\). What is its two-sided limit at \\(-1\\)?",
     "choices": [
-      "Does not exist",
+      "The two sides have different limits.",
       "\\(+\\infty\\)",
       "\\(-\\infty\\)",
       "\\(0\\)"
@@ -2753,7 +2770,7 @@
     "choices": [
       "\\(+\\infty\\)",
       "\\(-\\infty\\)",
-      "Does not exist",
+      "The two sides have different limits.",
       "\\(0\\)"
     ],
     "why": "Both branches go up without bound.",
@@ -2770,7 +2787,7 @@
     "choices": [
       "\\(-\\infty\\)",
       "\\(+\\infty\\)",
-      "Does not exist",
+      "The two sides have different limits.",
       "\\(0\\)"
     ],
     "why": "Both branches go down without bound.",
@@ -2820,7 +2837,7 @@
       "\\(+\\infty\\)",
       "\\(-\\infty\\)",
       "\\(0\\)",
-      "Does not exist"
+      "The two sides have different limits."
     ],
     "why": "The squared denominator is positive and approaches zero. The numerator is 2.",
     "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
@@ -2836,7 +2853,7 @@
       "\\(-\\infty\\)",
       "\\(+\\infty\\)",
       "\\(0\\)",
-      "Does not exist"
+      "The two sides have different limits."
     ],
     "why": "The squared denominator is positive and approaches zero. The numerator is -3.",
     "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
@@ -2879,12 +2896,12 @@
     "section": "2.2",
     "topic": "infinite",
     "level": 3,
-    "prompt": "In the graph of \\(f(x)=1/(x+1)^2\\), a point on the right branch moves from distance \\(d\\) to distance \\(d/2\\) from the pole. By what factor does its height increase?",
+    "prompt": "On the right branch of \\(f(x)=1/(x+1)^2\\), halve the horizontal distance from \\(x=-1\\). By what factor is \\(f(x)\\) multiplied?",
     "choices": [
       "\\(4\\)",
-      "\\(-4\\)",
-      "\\(5\\)",
-      "\\(3\\)"
+      "\\(2\\)",
+      "\\(1/2\\)",
+      "\\(1/4\\)"
     ],
     "why": "The denominator is a squared distance. Substitute the smaller distance in its place.",
     "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
@@ -2896,7 +2913,7 @@
     "section": "2.2",
     "topic": "infinite",
     "level": 3,
-    "prompt": "A graph has a pole at \\(x=-1\\). For a small \\(h>0\\), its right height at distance \\(h/2\\) is eight times the height at distance \\(h\\). If \\(f(x)=1/(x+1)^n\\), find \\(n\\).",
+    "prompt": "For \\(f(x)=1/(x+1)^n\\) and \\(h>0\\), \\(f(-1+h/2)=8f(-1+h)\\). What is \\(n\\)?",
     "choices": [
       "\\(3\\)",
       "\\(2\\)",
@@ -2945,7 +2962,7 @@
     "section": "2.2",
     "topic": "infinite",
     "level": 4,
-    "prompt": "For \\(x\\ne0\\) near zero, \\(F(x)=(1+3x)/x^2\\). After removing the double-pole term \\(1/x^2\\), what multiple of \\(1/x\\) must also be subtracted to leave a finite limit?",
+    "prompt": "Let \\(F(x)=(1+3x)/x^2\\) for \\(x\\ne0\\). Find the number \\(c\\) for which \\(F(x)-1/x^2-c/x\\) has a finite limit at zero.",
     "answer": "3",
     "why": "The decomposition is \\(F(x)=1/x^2+3/x\\). Removing both terms leaves zero.",
     "source": "../lectures/03-infinite-limits.html#harder-limits",
@@ -2956,9 +2973,9 @@
     "section": "2.2",
     "topic": "infinite",
     "level": 4,
-    "prompt": "For \\(x\\ne0\\) near zero, let \\(F(x)=(1+x)/x^2\\). You subtract \\(1/x^2\\), then add \\(4/x\\). What number is \\(\\lim_{x\\to0}x[F(x)-1/x^2+(4)/x]\\)?",
+    "prompt": "For \\(x\\ne0\\), let \\(F(x)=(1+x)/x^2\\). What is \\(\\lim_{x\\to0}x[F(x)-1/x^2+4/x]\\)?",
     "answer": "5",
-    "why": "The first subtraction leaves \\(1/x\\). Multiplication by \\(x\\) cancels the remaining denominator, giving \\(1+(4)=5\\).",
+    "why": "Subtracting \\(1/x^2\\) leaves \\(1/x\\). The bracket becomes \\(5/x\\), so its product with \\(x\\) is 5.",
     "source": "../lectures/03-infinite-limits.html#harder-limits",
     "pdf": "../downloads/september-28-limits-class-notes.pdf",
     "handoutPage": 6
@@ -2978,9 +2995,9 @@
     "section": "2.2",
     "topic": "infinite",
     "level": 4,
-    "prompt": "For \\(x\\ne0\\) near zero, let \\(F(x)=(2+x)/(x^2(1+x))\\). Choose \\(a\\) to cancel the double pole of \\(F(x)-a/x^2\\). What is \\(\\lim_{x\\to0}x[F(x)-a/x^2]\\)?",
+    "prompt": "Let \\(F(x)=(2+x)/[x^2(1+x)]\\). For which number \\(L\\) can you choose \\(a\\) so that \\(\\lim_{x\\to0}x[F(x)-a/x^2]=L\\) is finite?",
     "answer": "-1",
-    "why": "The leading coefficient is \\(\\lim x^2F(x)=2\\). Subtracting \\(2/x^2\\) leaves \\(-1/[x(1+x)]\\). Multiply by \\(x\\) and take the limit.",
+    "why": "First \\(x^2F(x)=(2+x)/(1+x)\\to2\\), so \\(a=2\\) is necessary. Then \\(x[F(x)-2/x^2]=-1/(1+x)\\to-1\\).",
     "source": "../lectures/03-infinite-limits.html#harder-limits",
     "pdf": "../downloads/september-28-limits-class-notes.pdf",
     "handoutPage": 6
@@ -3133,7 +3150,7 @@
     "section": "2.3",
     "topic": "laws",
     "level": 1,
-    "prompt": "If \\(f(x)\\to9\\) and \\(f(x)>0\\) near the input, what is the limit of \\(\\sqrt{f(x)}\\)?",
+    "prompt": "As \\(x\\to a\\), \\(f(x)\\to9\\). What does \\(\\sqrt{f(x)}\\) approach?",
     "choices": [
       "\\(3\\)",
       "\\(-3\\)",
@@ -3181,7 +3198,7 @@
     "section": "2.3",
     "topic": "laws",
     "level": 2,
-    "prompt": "For \\(x\\ne1\\), factor \\(x^2-1=(x-1)(x+1)\\). What is \\(\\lim_{x\\to1}(x^2-1)/(x-1)\\)?",
+    "prompt": "What is \\(\\lim_{x\\to1}(x^2-1)/(x-1)\\)? Use \\(x^2-1=(x-1)(x+1)\\).",
     "choices": [
       "\\(2\\)",
       "\\(-2\\)",
@@ -3197,7 +3214,7 @@
     "section": "2.3",
     "topic": "laws",
     "level": 2,
-    "prompt": "For \\(x\\ne2\\), factor \\(x^2-4=(x-2)(x+2)\\). What is \\(\\lim_{x\\to2}(x^2-4)/(x-2)\\)?",
+    "prompt": "What is \\(\\lim_{x\\to2}(x^2-4)/(x-2)\\)? Use \\(x^2-4=(x-2)(x+2)\\).",
     "choices": [
       "\\(4\\)",
       "\\(-4\\)",
@@ -3213,7 +3230,7 @@
     "section": "2.3",
     "topic": "laws",
     "level": 2,
-    "prompt": "For \\(x\\ne3\\), factor \\(x^2-9=(x-3)(x+3)\\). What is \\(\\lim_{x\\to3}(x^2-9)/(x-3)\\)?",
+    "prompt": "What is \\(\\lim_{x\\to3}(x^2-9)/(x-3)\\)? Use \\(x^2-9=(x-3)(x+3)\\).",
     "choices": [
       "\\(6\\)",
       "\\(-6\\)",
@@ -3663,12 +3680,12 @@
     "section": "2.4",
     "topic": "squeeze",
     "level": 2,
-    "prompt": "For \\(0<|x|\\le1\\), \\(2-5|x|\\le f(x)\\le 2+5|x|\\). At \\(x=1/2\\), how far from \\(2\\) can \\(f(x)\\) be at most?",
+    "prompt": "For \\(0<|x|\\le1\\), \\(2-5|x|\\le f(x)\\le 2+5|x|\\). What is the largest possible value of \\(|f(1/2)-2|\\)?",
     "choices": [
       "\\(5/2\\)",
-      "\\(-5/2\\)",
-      "\\(7/2\\)",
-      "\\(3/2\\)"
+      "\\(1/5\\)",
+      "\\(5\\)",
+      "\\(1/2\\)"
     ],
     "why": "The distance to either bound is \\(5|x|=5/2\\).",
     "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
@@ -3679,11 +3696,11 @@
     "section": "2.4",
     "topic": "squeeze",
     "level": 2,
-    "prompt": "For \\(0<|x|\\le1\\), \\(4-3|x|\\le f(x)\\le 4+3|x|\\). At \\(x=1/2\\), how far from \\(4\\) can \\(f(x)\\) be at most?",
+    "prompt": "For \\(0<|x|\\le1\\), \\(4-3|x|\\le f(x)\\le 4+3|x|\\). What is the largest possible value of \\(|f(1/2)-4|\\)?",
     "choices": [
       "\\(3/2\\)",
-      "\\(-3/2\\)",
-      "\\(5/2\\)",
+      "\\(1/3\\)",
+      "\\(3\\)",
       "\\(1/2\\)"
     ],
     "why": "The distance to either bound is \\(3|x|=3/2\\).",
@@ -3901,12 +3918,12 @@
     "section": "2.7",
     "topic": "limitmethods",
     "level": 1,
-    "prompt": "The graph bends sharply at a filled point with no break. Which statement about that point is true?",
+    "prompt": "Both sides of this V-shaped graph meet at the filled point (0, 0). Is the function continuous at zero?",
     "choices": [
-      "The graph can be continuous there.",
-      "Every corner is a jump discontinuity.",
-      "Every corner is a hole.",
-      "Every corner is an infinite discontinuity."
+      "Yes, the limit and the value are both 0.",
+      "No, every corner is a jump.",
+      "No, the left-hand limit equals −1.",
+      "No, the point at the origin is missing."
     ],
     "why": "A corner does not keep nearby heights from approaching the point value.",
     "source": "../lectures/08-exam-practice.html#problem-1",
@@ -4160,12 +4177,12 @@
     "section": "2.7",
     "topic": "limitmethods",
     "level": 2,
-    "prompt": "If \\(q(x)=2+x\\sin(1/x)\\) for \\(x\\ne0\\), at \\(x=1/10\\) how far from 2 can \\(q(x)\\) be at most?",
+    "prompt": "For \\(x\\ne0\\) let \\(q(x)=2+x\\sin(1/x)\\). At \\(x=1/10\\), what upper bound on \\(|q(x)-2|\\) follows directly from \\(|\\sin(1/x)|\\le1\\)?",
     "choices": [
       "\\(1/10\\)",
-      "\\(-1/10\\)",
-      "\\(11/10\\)",
-      "\\(-9/10\\)"
+      "\\(1/100\\)",
+      "\\(1/1000\\)",
+      "\\(0\\)"
     ],
     "why": "The sine value is between −1 and 1, so the absolute deviation is at most \\(1/10\\).",
     "source": "../lectures/08-exam-practice.html#problem-8",

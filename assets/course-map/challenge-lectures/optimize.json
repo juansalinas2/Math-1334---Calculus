@@ -115,7 +115,7 @@
   {
     "topic": "optimization",
     "level": 3,
-    "prompt": "A painting’s lower and upper edges are 1 and 4 ft above eye level. At distance \\(x>0\\) from the wall, its viewing angle \\(\\theta\\) has \\(\\tan\\theta=3x/(x^2+4)\\). The sign of its derivative is the sign of \\(4-x^2\\). Find the best distance and the tangent there.",
+    "prompt": "A painting’s lower and upper edges are 1 and 4 ft above eye level. At distance \\(x>0\\) ft, the viewing angle \\(\\theta\\) satisfies \\(\\tan\\theta=3x/(x^2+4)\\). The viewing angle increases for \\(x<2\\) and decreases for \\(x>2\\). Which distance maximizes \\(\\theta\\), and what is \\(\\tan\\theta\\) there?",
     "choices": [
       "\\(2\\) ft and \\(3/4\\)",
       "\\(2\\) ft and \\(4/3\\)",
@@ -131,7 +131,7 @@
   {
     "topic": "optimization",
     "level": 3,
-    "prompt": "A band can raise a $10 ticket price by any nonnegative whole-dollar amount \\(k\\). Ticket sales fall by five per dollar from 120 sales. Revenue peaks at \\(k=7\\). The profit curve opens downward and has its vertex at \\(k=8.5\\). Which prices maximize revenue and profit?",
+    "prompt": "Tickets initially cost 10 dollars, and the band may raise the price by a whole number \\(k\\) of dollars, \\(0\\le k\\le24\\). Revenue peaks at \\(k=7\\). Profit is a downward-opening quadratic with vertex at \\(k=8.5\\). Which ticket prices maximize revenue and profit, respectively?",
     "choices": [
       "Revenue 17 dollars; profit 18 or 19 dollars",
       "Revenue 18 dollars; profit 17 dollars",
@@ -195,7 +195,7 @@
   {
     "topic": "optimization",
     "level": 3,
-    "prompt": "Two nonnegative numbers \\(x,y\\) sum to 6. Their product is \\(xy=9-(x-3)^2\\). To stay within \\(1/4\\) of its greatest value, which values of \\(x\\) are allowed?",
+    "prompt": "Two nonnegative numbers \\(x,y\\) sum to 6, so \\(xy=9-(x-3)^2\\). For which \\(x\\) is their product at most \\(1/4\\) below its greatest possible value?",
     "choices": [
       "\\(5/2\\le x\\le7/2\\)",
       "\\(11/4\\le x\\le13/4\\)",
@@ -259,7 +259,7 @@
   {
     "topic": "optimization",
     "level": 2,
-    "prompt": "A cylindrical can must hold \\(54\\pi\\) cm³. Which equation expresses that requirement?",
+    "prompt": "A cylindrical can of radius \\(r\\) and height \\(h\\), measured in cm, must hold \\(54\\pi\\) cm³. Which equation describes this constraint?",
     "choices": [
       "\\(\\pi r^2h=54\\pi\\)",
       "\\(2\\pi rh=54\\pi\\)",
@@ -361,14 +361,14 @@
     "topic": "optimization",
     "section": "4.6",
     "level": 2,
-    "prompt": "A band charges 10 dollars and sells 120 tickets. Each 1-dollar increase costs it five ticket sales. At a price of 12 dollars, how many tickets does it expect to sell?",
+    "prompt": "A band models demand at price \\(p\\) dollars by \\(N(p)=170-5p\\) tickets. Revenue is \\(R(p)=pN(p)\\). At \\(p=12\\), \\(N=110\\). What is the slope \\(R'(12)\\) of this revenue model?",
     "choices": [
-      "110",
-      "115",
-      "100",
-      "130"
+      "\\(50\\)",
+      "\\(110\\)",
+      "\\(60\\)",
+      "\\(-5\\)"
     ],
-    "why": "Two increases lose ten sales in total.",
+    "why": "The product rule gives \\(R'=N+pN'\\). At 12 dollars this is \\(110-12(5)=50\\).",
     "source": "../lectures/optimization.html#harder-problems",
     "pdfPage": 82,
     "pdf": "../downloads/optimization-worksheet.pdf",
@@ -390,7 +390,7 @@
     "section": "4.6",
     "topic": "optimization",
     "level": 4,
-    "prompt": "A band sells 120 tickets at $10 and loses five sales per $1 increase. Each extra ticket sold costs the band $3. Raising the price from $17 to $18 loses five sales and lowers revenue by $5. By how many dollars does profit change?",
+    "prompt": "A band raises its ticket price from 17 to 18 dollars. It sells five fewer tickets, and its revenue falls by 5 dollars. Each ticket sold costs the band 3 dollars, and the fixed cost is unchanged. What is the signed change in profit, in dollars?",
     "answer": "10",
     "why": "Selling five fewer tickets saves \\(5(3)=15\\) dollars in costs. Revenue falls by 5, so profit rises by \\(15-5=10\\).",
     "source": "../lectures/optimization.html#harder-problems",
@@ -450,7 +450,7 @@
     "section": "4.6",
     "topic": "optimization",
     "level": 4,
-    "prompt": "Fit \\(y=mx+2\\) by least squares to \\((0,0),(1,1),(2,k)\\). The derivative of the squared-error sum is \\(10m+10-4k\\), and it changes from negative to positive at \\(m=3/2\\). Find the missing data value \\(k\\).",
+    "prompt": "Fit \\(y=mx+2\\) by least squares to \\((0,0),(1,1),(2,k)\\). The derivative of the total squared error is \\(10m+10-4k\\). The unique best slope is \\(m=3/2\\). Find the missing vertical coordinate \\(k\\).",
     "answer": "25/4",
     "why": "At the minimum the derivative is zero. Substituting \\(m=3/2\\) gives \\(15+10=4k\\), so \\(k=25/4\\).",
     "source": "../lectures/optimization.html#optimization-problems",
@@ -474,7 +474,7 @@
     "section": "4.6",
     "topic": "optimization",
     "level": 4,
-    "prompt": "A swimmer is 40 m offshore. At the best entry point, the swim has 30 m of horizontal travel over a 50-m diagonal. Running speed is 100 m/min. Moving the entry 1 m farther along the beach adds \\(1/100\\) minute of running and, to first order, removes \\(30/50\\) m of swimming. What is the swimming speed in m/min?",
+    "prompt": "At a lifeguard’s fastest entry point, running and swimming times balance to first order: moving the entry point 1 m farther down the beach adds \\(1/100\\) minute of running and saves about \\(3/5\\) m of swimming. What swimming speed, in m/min, makes these time changes cancel?",
     "answer": "60",
     "why": "At the optimum the small time changes balance. If swimming speed is \\(v\\), then \\(1/100=(30/50)/v\\), so \\(v=60\\).",
     "source": "../lectures/optimization.html#harder-problems",
@@ -638,13 +638,13 @@
     "pdfPage": 82,
     "handoutPage": 5,
     "level": 1,
-    "prompt": "A lifeguard’s total time is 1 minute of running plus a swimming time \\(S\\). How does total time change if \\(S\\) decreases by 1 second and the run stays fixed?",
-    "why": "Total time is a sum. A change in just one summand changes the total by the same amount.",
+    "prompt": "A lifeguard’s total rescue time is \\(T=1+S\\) minutes, where \\(S\\) is the time spent swimming and the running time is fixed. What is \\(dT/dS\\)?",
+    "why": "The fixed running time contributes zero to the derivative, and \\(dS/dS=1\\).",
     "choices": [
-      "It decreases by 1 second.",
-      "It increases by 1 second.",
-      "It stays fixed.",
-      "It decreases by 1 minute."
+      "\\(1\\)",
+      "\\(0\\)",
+      "\\(-1\\)",
+      "\\(2\\)"
     ]
   },
   {
@@ -672,8 +672,8 @@
     "pdfPage": 79,
     "handoutPage": 1,
     "level": 1,
-    "prompt": "For the objective “use the least fencing,” which numerical result is best among 18, 20, 22, and 24 meters of fence?",
-    "why": "The smallest feasible amount uses the least fence.",
+    "prompt": "The feasible fence lengths in a project are 18, 20, 22, and 24 meters. What is the minimum value of the fence-length objective?",
+    "why": "All four listed lengths are feasible, and the smallest is 18 m.",
     "choices": [
       "18 m",
       "20 m",
@@ -741,13 +741,13 @@
     "pdfPage": 82,
     "handoutPage": 4,
     "level": 2,
-    "prompt": "A river replaces one side of a rectangular field. Two 3-m fences run to the river and one 8-m fence runs along the back. What is the total fence length?",
-    "why": "Add the three fenced sides, \\(3+3+8=14\\).",
+    "prompt": "A rectangular field of area 72 m² borders a river. Only three sides need fencing. With depth \\(x>0\\), fence length is \\(F(x)=2x+72/x\\). What is \\(F'(x)\\)?",
+    "why": "The derivative of \\(2x\\) is 2 and the derivative of \\(72x^{-1}\\) is \\(-72x^{-2}\\).",
     "choices": [
-      "14 m",
-      "22 m",
-      "11 m",
-      "24 m"
+      "\\(2-72/x^2\\)",
+      "\\(2+72/x^2\\)",
+      "\\(2-72/x\\)",
+      "\\(2x-72/x^2\\)"
     ]
   },
   {
@@ -775,12 +775,12 @@
     "pdfPage": 81,
     "handoutPage": 3,
     "level": 2,
-    "prompt": "A tank with square base of side 3 m and height 2 m has volume equal to base area times height. What is its volume?",
-    "why": "The base area is 9 m², and \\(9(2)=18\\).",
+    "prompt": "A tank’s square base has fixed side length 3 m. If the height \\(h\\) can vary, its volume is \\(V(h)=9h\\). What is \\(dV/dh\\)?",
+    "why": "Each extra meter of height adds 9 m³, so the derivative is 9 m³ per meter, or 9 m².",
     "choices": [
+      "9 m²",
       "18 m³",
-      "12 m³",
-      "6 m³",
+      "3 m",
       "9 m³"
     ]
   },
@@ -792,7 +792,7 @@
     "pdfPage": 80,
     "handoutPage": 2,
     "level": 2,
-    "prompt": "A box’s volume increases for cut sizes \\(0<x<2\\) and decreases for \\(2<x<6\\). Which cut size gives the maximum if the volume is continuous on \\([0,6]\\)?",
+    "prompt": "The volume of a folded box is continuous for cut sizes \\(0\\le x\\le6\\) cm. It increases on \\((0,2)\\) and decreases on \\((2,6)\\). What cut size in cm gives the global maximum?",
     "why": "The change from increasing to decreasing occurs at 2.",
     "choices": [
       "\\(2\\)",
@@ -809,13 +809,13 @@
     "pdfPage": 82,
     "handoutPage": 5,
     "level": 2,
-    "prompt": "A 60-m swim at 30 m/min takes how many minutes in the lifeguard’s time objective?",
-    "why": "Time equals distance divided by speed.",
+    "prompt": "A lifeguard swims a distance \\(x\\) at a fixed speed of 30 m/min. In the time objective \\(T(x)=x/30\\), what is \\(dT/dx\\), in minutes per meter?",
+    "why": "Time is linear in distance. Every extra meter of swimming adds \\(1/30\\) minute.",
     "choices": [
-      "\\(2\\)",
-      "\\(1/2\\)",
+      "\\(1/30\\)",
       "\\(30\\)",
-      "\\(90\\)"
+      "\\(1/60\\)",
+      "\\(60\\)"
     ]
   },
   {
@@ -884,7 +884,7 @@
     "pdfPage": 82,
     "handoutPage": 5,
     "level": 4,
-    "prompt": "A band’s profit from a whole-dollar ticket increase \\(k\\) is \\(P(k)=C-5(k-8.5)^2\\) for fixed \\(C\\). How many dollars separate the best possible profit from the profit when \\(k=7\\)?",
+    "prompt": "A band can raise its ticket price by \\(k\\) dollars, where \\(k\\) is a nonnegative integer. The profit is \\(P(k)=C-5(k-8.5)^2\\) dollars for a fixed \\(C\\). How many dollars are lost at \\(k=7\\), compared with the best allowed price?",
     "why": "The nearest integers to 8.5 are 8 and 9. Compared to either, the drop at 7 is \\(5(1.5^2-0.5^2)=10\\).",
     "answer": "10"
   },

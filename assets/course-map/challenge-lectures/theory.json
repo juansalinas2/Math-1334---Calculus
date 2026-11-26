@@ -96,14 +96,14 @@
   {
     "topic": "optimization",
     "level": 3,
-    "prompt": "Cut 24 cm of wire into two positive lengths. Bend one piece into a circle and the other into a square. Using almost all the wire for the circle makes their total area approach \\(144/\\pi\\) cm². Why is this upper bound unattained?",
+    "prompt": "Of a 24-cm wire, \\(c\\) cm form a circle and the rest form a square, with \\(0<c<24\\). Their combined area is strictly convex. At \\(c=0\\) its limiting value is 36 cm², and at \\(c=24\\) it is \\(144/\\pi>36\\) cm². Which feasible cut gives the greatest area?",
     "choices": [
-      "The cut producing that limiting area would leave zero wire for the square.",
-      "A continuous area function cannot have a maximum.",
-      "The constraint prevents the area from having a finite limit.",
-      "A positive second derivative guarantees that both boundary values are attained."
+      "None. Taking \\(c\\) closer to 24 approaches an unattained upper bound.",
+      "\\(c=24\\), because the circle uses the full wire.",
+      "\\(c=0\\), because the square uses the full wire.",
+      "The interior critical number, because strict convexity makes it a maximum."
     ],
-    "why": "With circle piece \\(c\\), the feasible interval is \\(0<c<24\\). The circle-only shape occurs at the excluded endpoint \\(c=24\\).",
+    "why": "A strictly convex curve lies below the chord joining the endpoint heights. Every feasible area is below \\(144/\\pi\\), and areas can approach that value as the square piece shrinks.",
     "source": "../lectures/optimization.html#harder-problems",
     "section": "4.6",
     "pdf": "../downloads/optimization-worksheet.pdf"
@@ -126,14 +126,14 @@
   {
     "topic": "squeeze",
     "level": 3,
-    "prompt": "Suppose \\(5-(x-1)^2\\le f(x)\\le5+(x-1)^2\\) for \\(x\\ne1\\) near 1. After setting \\(f(1)=5\\), what stronger conclusion follows from the same bounds?",
+    "prompt": "Near 1, \\(5-(x-1)^2\\le f(x)\\le5+(x-1)^2\\), and \\(f(1)=5\\). Which additional statement is forced by these bounds?",
     "choices": [
       "\\(f'(1)=0\\).",
       "\\(f''(1)=0\\).",
       "\\(f\\) must have a local minimum at 1.",
       "\\(f\\) is constant on a neighborhood of 1."
     ],
-    "why": "The absolute value of the difference quotient at 1 is at most \\(\\lvert x-1\\rvert\\), which tends to zero. The bounds alone fix neither curvature nor an extremum.",
+    "why": "For \\(x\\ne1\\), the absolute difference quotient satisfies \\(|(f(x)-5)/(x-1)|\\le |x-1|\\). Hence \\(f'(1)=0\\).",
     "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
     "section": "2.4",
     "pdfPage": 16,
@@ -207,7 +207,7 @@
     "topic": "rules",
     "section": "3.3",
     "level": 2,
-    "prompt": "Can two factors both fail to be differentiable at 0 while their product is differentiable there?",
+    "prompt": "Which example proves that the product of two functions can be differentiable at 0 even when neither factor is differentiable there?",
     "choices": [
       "Yes. Take both factors equal to \\(\\lvert x\\rvert\\).",
       "No. The product rule works in both directions.",
@@ -292,7 +292,7 @@
     "topic": "tests",
     "section": "4.3",
     "level": 2,
-    "prompt": "At an interior point \\(c\\), \\(f'(c)=0\\) and \\(f''(c)>0\\), with \\(f''\\) continuous nearby. Which conclusion does the second derivative test give?",
+    "prompt": "At an interior point \\(c\\), \\(f'(c)=0\\) and \\(f''(c)>0\\), with \\(f''\\) continuous nearby. Which conclusion must hold by the second derivative test?",
     "choices": [
       "A strict local minimum at \\(c\\).",
       "A strict global minimum at \\(c\\).",
@@ -343,7 +343,7 @@
     "topic": "tests",
     "section": "4.3",
     "level": 3,
-    "prompt": "Which pair shows that \\(f'(0)=f''(0)=0\\) permits both a strict local maximum and a strict local minimum?",
+    "prompt": "Which ordered pair has both first and second derivatives zero at the origin for each function, with a strict local maximum for the first function and a strict local minimum for the second?",
     "choices": [
       "\\(-x^4\\) and \\(x^4\\)",
       "\\(-x^2\\) and \\(x^2\\)",
@@ -489,7 +489,7 @@
     "section": "4.2",
     "topic": "evt",
     "level": 4,
-    "prompt": "On \\([-1,4]\\), a differentiable function has interior critical numbers 0 and 3 only. Its values at the endpoints are \\(-5\\) and 0, and its values at the critical numbers are 0 and 27. How far above its global minimum is its global maximum?",
+    "prompt": "A function is continuous on \\([-1,4]\\) and differentiable on \\((-1,4)\\). Its only interior critical numbers are 0 and 3. Its values at \\(-1,0,3,4\\) are \\(-5,0,27,0\\) in order. What is the global maximum minus the global minimum?",
     "answer": "32",
     "why": "The closed-interval method compares these four candidates. The highest value is 27 and the lowest is \\(-5\\), a difference of 32.",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
@@ -706,14 +706,14 @@
     "pdf": "../downloads/october-12-derivatives-class-notes.pdf",
     "pdfPage": 24,
     "level": 1,
-    "prompt": "The derivative at a point is the slope of which line to the graph there?",
-    "why": "The derivative gives the instantaneous slope of the graph.",
-    "graphPrompt": "rising-origin",
+    "prompt": "The pictured curve is \\(y=x^2\\). At \\(x=1\\), which line has slope equal to the instantaneous rate of change of the curve?",
+    "why": "At \\(x=1\\) the tangent slope is \\(2\\). The line through \\((0,0)\\) and \\((1,1)\\) has secant slope 1.",
+    "graphPrompt": "bowl",
     "choices": [
-      "Its tangent line",
+      "The tangent there",
       "The vertical axis",
-      "Every secant line through the point",
-      "Every horizontal line"
+      "The line joining the origin to \\((1,1)\\)",
+      "The horizontal axis"
     ]
   },
   {

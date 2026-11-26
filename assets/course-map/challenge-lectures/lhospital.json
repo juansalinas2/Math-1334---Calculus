@@ -28,7 +28,7 @@
     "source": "../lectures/exam-3-review.html#choosing-a-limit-method",
     "section": "4.7",
     "pdf": "../downloads/lhopitals-rule.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=7"
   },
   {
     "topic": "forms",
@@ -44,7 +44,7 @@
     "source": "../lectures/exam-3-review.html#choosing-a-limit-method",
     "section": "4.7",
     "pdf": "../downloads/lhopitals-rule.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=7"
   },
   {
     "topic": "forms",
@@ -75,7 +75,7 @@
     "source": "../lectures/exam-3-review.html#products-and-powers",
     "section": "4.7",
     "pdf": "../downloads/lhopitals-rule.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=8"
   },
   {
     "topic": "forms",
@@ -121,7 +121,7 @@
     "source": "../lectures/exam-3-review.html#products-and-powers",
     "section": "4.7",
     "pdf": "../downloads/lhopitals-rule.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=8"
   },
   {
     "topic": "lhospital",
@@ -141,7 +141,7 @@
   {
     "topic": "lhospital",
     "level": 3,
-    "prompt": "For fixed \\(k\\ne0\\), use \\(\\lim_{u\\to0}(\\tan u-u)/u^3=1/3\\). What is \\(\\lim_{x\\to0}(\\tan(kx)-kx)/x^3\\)?",
+    "prompt": "Which formula gives \\(\\lim_{x\\to0}(\\tan(kx)-kx)/x^3\\) for every nonzero real constant \\(k\\)? Use \\(\\lim_{u\\to0}(\\tan u-u)/u^3=1/3\\).",
     "choices": [
       "\\(k^3/3\\)",
       "\\(k/3\\)",
@@ -335,25 +335,25 @@
     "reference": "Exam 3 review worksheet · 11(b)",
     "pdfPage": 85,
     "pdf": "../downloads/lhopitals-rule.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=7"
   },
   {
     "topic": "forms",
     "section": "4.7",
     "level": 3,
-    "prompt": "You are evaluating \\(\\sqrt{x^2+4x}+x\\) as \\(x\\to-\\infty\\). Which denominator, divided by \\(-x\\), tends to 2 when you rationalize?",
+    "prompt": "As \\(x\\to-\\infty\\), you rationalize \\(\\sqrt{x^2+4x}+x\\) by multiplying by its conjugate over itself. Which expression is the denominator of the resulting quotient?",
     "choices": [
       "\\(\\sqrt{x^2+4x}-x\\)",
       "\\(\\sqrt{x^2+4x}+x\\)",
       "\\(x^2+4x-x^2\\)",
       "\\(\\sqrt{x^2+4x}\\)"
     ],
-    "why": "Use the conjugate \\(\\sqrt{x^2+4x}-x\\). For negative \\(x\\), division by \\(-x\\) gives \\(\\sqrt{1+4/x}+1\\to2\\).",
+    "why": "The conjugate is \\(\\sqrt{x^2+4x}-x\\). The product in the numerator is \\(x^2+4x-x^2=4x\\).",
     "source": "../lectures/lhopitals-rule.html#differences",
     "reference": "Exam 3 review worksheet · 11(g)",
     "pdfPage": 86,
     "pdf": "../downloads/lhopitals-rule.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=7"
   },
   {
     "topic": "forms",
@@ -371,7 +371,7 @@
     "reference": "Exam 3 review worksheet · 12(b)",
     "pdfPage": 87,
     "pdf": "../downloads/lhopitals-rule.pdf",
-    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf#page=8"
   },
   {
     "section": "4.7",
@@ -399,7 +399,7 @@
     "section": "4.7",
     "topic": "lhospital",
     "level": 4,
-    "prompt": "For \\(u=x\\ln x\\) as \\(x\\to0^+\\), we have \\(u\\to0\\) and \\(x^x=e^u\\). Use \\(\\lim_{u\\to0}(e^u-1)/u=1\\). What is \\(\\lim_{x\\to0^+}(x^x-1-x\\ln x)/(x\\ln x)^2\\)?",
+    "prompt": "For \\(x\\to0^+\\) put \\(u=x\\ln x\\to0\\), so \\(x^x=e^u\\). After one use of l’Hospital’s rule, \\((e^u-1-u)/u^2\\) has derivative quotient \\((e^u-1)/(2u)\\). Find \\(\\lim_{x\\to0^+}(x^x-1-x\\ln x)/(x\\ln x)^2\\).",
     "answer": "1/2",
     "why": "The expression becomes \\((e^u-1-u)/u^2\\). Differentiate numerator and denominator once to get \\((e^u-1)/(2u)\\to1/2\\).",
     "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
@@ -493,10 +493,10 @@
     "level": 2,
     "prompt": "Find \\(\\lim_{x\\to\\pi^-}\\sin x/(1-\\cos x)\\). Which evaluation settles it immediately?",
     "choices": [
-      "\\(0/2=0\\)",
-      "\\(1/0=+\\infty\\)",
-      "\\(0/0\\), so use l’Hospital’s rule.",
-      "\\(0/(-1)=0\\)"
+      "\\(0/(1-(-1))=0\\)",
+      "\\(1/(1-0)=1\\)",
+      "\\(0/(1-1)\\) gives form \\(0/0\\).",
+      "\\(-1/(1-0)=-1\\)"
     ],
     "why": "At \\(x=\\pi\\) the sine is zero and the cosine is \\(-1\\). The denominator tends to \\(1-(-1)=2\\).",
     "handoutPage": 3
@@ -525,8 +525,8 @@
     "pdfPage": 85,
     "handoutPage": 2,
     "level": 1,
-    "prompt": "Direct substitution in a quotient gives \\(0/2\\). What number is that?",
-    "why": "A zero numerator divided by a nonzero denominator is zero.",
+    "prompt": "What is \\(\\lim_{x\\to0}\\sin(x)/(1+\\cos x)\\) by direct substitution?",
+    "why": "At zero the numerator tends to 0 and the denominator to \\(1+1=2\\). The quotient thus tends to 0.",
     "choices": [
       "\\(0\\)",
       "\\(2\\)",
@@ -542,8 +542,8 @@
     "pdfPage": 85,
     "handoutPage": 2,
     "level": 1,
-    "prompt": "Direct substitution in a quotient gives \\(3/1\\). What is the limit?",
-    "why": "The denominator has a nonzero limit, so ordinary division works.",
+    "prompt": "What is \\(\\lim_{x\\to1}(x+2)/x\\) by direct substitution?",
+    "why": "The denominator tends to 1, so substituting gives \\((1+2)/1=3\\).",
     "choices": [
       "\\(3\\)",
       "\\(1\\)",
@@ -882,9 +882,9 @@
     "pdfPage": 85,
     "handoutPage": 2,
     "level": 4,
-    "prompt": "Choose \\(a\\) so that \\(\\lim_{x\\to0}(e^{2x}-1-ax)/x^2\\) is finite. What is that finite limit?",
-    "why": "After one differentiation the numerator is \\(2e^{2x}-a\\), forcing \\(a=2\\). The second derivative quotient tends to \\(4/2=2\\).",
-    "answer": "2"
+    "prompt": "For exactly one \\(a\\), the limit \\(\\lim_{x\\to0}(e^{3x}-1-ax)/x^2\\) is finite. At that choice of \\(a\\), what is the value of the limit?",
+    "why": "First the linear terms must cancel: \\((e^{3x}-1)/x\\to3\\), so \\(a=3\\). Two applications of l’Hospital’s rule then give \\(9e^{3x}/2\\to9/2\\).",
+    "answer": "9/2"
   },
   {
     "section": "4.7",
@@ -894,7 +894,7 @@
     "pdfPage": 87,
     "handoutPage": 5,
     "level": 4,
-    "prompt": "For positive \\(y=(1+3x)^{2/x}\\) as \\(x\\to0^+\\), find \\(\\lim\\ln y\\).",
+    "prompt": "For \\(x>0\\) set \\(y(x)=(1+3x)^{2/x}\\). Evaluate \\(\\lim_{x\\to0^+}\\ln y(x)\\).",
     "why": "The logarithm equals \\(2\\ln(1+3x)/x\\). The derivative quotient tends to \\(2(3)=6\\).",
     "answer": "6"
   },
