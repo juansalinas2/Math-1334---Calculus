@@ -122,7 +122,7 @@ input:focus-visible,
   box-shadow: 0 6px 20px #1637381a;
   padding: 5px;
 }
-#results button {
+#results button, #results .course-result {
   display: block;
   background: none;
   border: 0;
@@ -131,7 +131,7 @@ input:focus-visible,
   width: 100%;
   border-radius: 4px;
 }
-#results button:hover, #results button:focus-visible {
+#results button:hover, #results button:focus-visible, #results .course-result:is(:hover,:focus-visible) {
   background: #eeefe7;
 }
 #results p {
@@ -677,6 +677,12 @@ summary:focus-visible { outline: 2px solid #257569; outline-offset: 2px; }
 .part-links button:hover, .part-links button[aria-pressed="true"] {
   border-color: var(--accent);
 }
+
+#results .all-notes-search { display: block; padding: 9px; color: var(--ink); border-top: 1px solid var(--line); font: 600 14px var(--ui); }
+
+#results .course-result { color: inherit; font: inherit; text-decoration: none; }
+#results .result-group { margin: 6px 9px 3px; font: 600 12px var(--ui); color: var(--muted); }
+#results { width: min(360px, calc(100vw - 24px)); }
 
 .theorem-source { display: inline-block; margin: 0 0 .45rem; color: var(--accent); font-size: 14px; }
 .lecture-disclosure .note-prose { overflow-x: auto; }

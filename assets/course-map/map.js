@@ -331,68 +331,64 @@ viewport.addEventListener("keydown", (event) => {
     overview();
   }
 });
-// Accept the shorthand students see on the board and type on a keyboard.
-const aliases = {
-  ivt: "IVT",
-  evt: "EVT",
-  derivative: "f' f′ dy/dx difference quotient",
-  derivatives: "f'' f″ d²y/dx²",
-  monotonic: "MVT monotonicity",
-  exp: "ln x e^x",
-  lhospital: "L'Hopital L'Hôpital L'Hospital",
-  limitmethods: "algebraic limits algebraic limit methods limit strategies",
-};
-function normalizeQuery(text) {
-  return text.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "")
-    .replace(/[’′]/g, "'").replace(/″/g, "''").trim();
-}
-const searchEntries = stations.flatMap((topic) =>
-  [topic, ...topic.parts].map((note) => ({
-    topic,
-    note,
-    title: normalizeQuery(note.title),
-    keywords: normalizeQuery(
-      note === topic
-        ? [topic.label, aliases[topic.id] || ""].join(" ")
-        : note.aliases || "",
-    ),
-    definition: normalizeQuery(note.definition),
+const searchEntries = CourseSearch.prepare(stations.flatMap(topic =>
+  [topic, ...topic.parts].map(note => ({
+    title: note.title, kind: note.kind, context: topic.title,
+    aliases: [note.aliases || "", note === topic ? topic.label : ""],
+    text: [note.definition, note.idea, note.formula, note.symbol, note.example].filter(Boolean).join(" "),
+    href: "#" + topic.id + (note === topic ? "" : "/" + partSlug(note)),
+    topic, note,
   }))
-);
+));
+let searchGeneration = 0;
 function search() {
-  const q = normalizeQuery(lookup.value);
+  const request = ++searchGeneration;
+  const query = lookup.value.trim();
   results.replaceChildren();
-  results.hidden = !q;
-  if (!q) return;
-  const rank = (entry) =>
-    entry.title === q
-      ? 4
-      : entry.title.includes(q)
-      ? 3
-      : entry.keywords.includes(q)
-      ? 2
-      : Number(entry.definition.includes(q));
-  const hits = searchEntries.map((entry) => ({ entry, score: rank(entry) }))
-    .filter((hit) => hit.score > 0).sort((a, b) => b.score - a.score);
-  hits.forEach(({ entry: { topic, note } }) => {
+  results.hidden = !query;
+  if (!query) return;
+  const hits = CourseSearch.rank(searchEntries, query, 5);
+  if (hits.length) results.append(el("p", "On the map", "result-group"));
+  for (const {topic, note} of hits) {
     const btn = el("button", note.title);
-    if (note !== topic) btn.append(el("small", topic.title));
-    btn.onclick = () =>
-      showTopic(topic.id, note === topic ? null : partSlug(note));
+    btn.append(el("small", [note.kind, note !== topic && topic.title].filter(Boolean).join(" · ")));
+    btn.onclick = () => showTopic(topic.id, note === topic ? null : partSlug(note));
     results.append(btn);
-  });
-  if (!hits.length) results.append(el("p", "No matching concept."));
+  }
+  if (!hits.length) results.append(el("p", "No matching concept on the map."));
+  const allNotes = el("a", "Search all course notes →", "all-notes-search");
+  allNotes.href = "../index.html?find=" + encodeURIComponent(query);
+  results.append(allNotes);
+  CourseSearch.loadBook().then(records => {
+    if (request !== searchGeneration || results.hidden || lookup.value.trim() !== query) return;
+    const reading = CourseSearch.rank(records, query, 3);
+    if (!reading.length) return;
+    allNotes.before(el("p", "In the notes", "result-group"));
+    for (const item of reading) {
+      const title = item.title.replace(/\\\((.*?)\\\)/g, (_, tex) => "$" + tex + "$");
+      const link = el("a", title, "course-result");
+      link.href = "../" + item.href;
+      link.append(el("small", item.kind + (item.title === item.context ? "" : " · " + item.context)));
+      allNotes.before(link);
+    }
+  }).catch(() => {}); // Local map results and the full-search link remain available.
 }
 lookup.oninput = search;
 lookup.onfocus = search;
-lookup.onkeydown = (event) => {
-  const first = results.querySelector("button");
-  if (first && !results.hidden && ["Enter", "ArrowDown"].includes(event.key)) {
+document.querySelector(".searchbox").addEventListener("keydown", event => {
+  if (results.hidden) return;
+  const choices = [...results.querySelectorAll("button, a")];
+  const index = choices.indexOf(document.activeElement);
+  if (event.target === lookup && event.key === "Enter") {
     event.preventDefault();
-    if (event.key === "Enter") first.click();
-    else first.focus();
+    choices[0]?.click();
+  } else if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+    event.preventDefault();
+    const next = index + (event.key === "ArrowDown" ? 1 : -1);
+    if (next < 0) lookup.focus();
+    else choices[Math.min(next, choices.length - 1)]?.focus();
   }
-};
+});
 document.addEventListener("pointerdown", (e) => {
   if (!e.target.closest(".searchbox")) results.hidden = true;
   if (!e.target.closest(".class-questions")) byId("class-questions").open = false;

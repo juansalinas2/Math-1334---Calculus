@@ -30,6 +30,7 @@ async function renderMap() {
   const theorems = JSON.parse(read("theorems.json"));
   const marks = fs.readFileSync(path.resolve("scripts/figures/map-node-marks.svg"), "utf8");
   const requested = { inline: new Set(), display: new Set() };
+  for (const tex of JSON.parse(process.argv[3] || "[]")) requested.inline.add(tex);
   const collect = (value, mode) => {
     if (typeof value !== "string") return;
     for (const match of value.matchAll(/\$([^$\n]+)\$/g)) requested[mode].add(match[1]);

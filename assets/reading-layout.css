@@ -146,3 +146,24 @@ html.reading-layout[data-homepage="true"] body.docked #quarto-content {grid-temp
 }
 
 @media (prefers-reduced-motion:reduce) {html.reading-layout .reading-controls,html.reading-layout .reading-outline-arrow,html.reading-layout .reading-mobile-outline summary::after {transition:none;}}
+
+.course-search-dialog {
+  box-sizing: border-box; width: min(38rem, calc(100vw - 1.5rem));
+  max-height: min(76dvh, 44rem); margin: clamp(1rem, 10vh, 5rem) auto auto;
+  padding: 1.1rem 1.25rem; color: var(--reading-text); background: var(--reading-bg);
+  border: 1px solid var(--reading-border); border-radius: 8px; overflow-y: auto;
+  font: 1rem/1.4 system-ui, sans-serif;
+}
+.course-search-dialog::backdrop { background: rgb(0 0 0 / .4); }
+.course-search-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .75rem; }
+.course-search-heading label { font-weight: 600; }
+.course-search-dialog button { color: var(--reading-link); background: transparent; border: 1px solid var(--reading-border); border-radius: 5px; padding: .28rem .6rem; font: inherit; }
+.course-search-dialog .course-search-close { border: 0; font-size: .86em; }
+#course-query { box-sizing: border-box; width: 100%; border: 1px solid var(--reading-muted); border-radius: 5px; padding: .6rem .75rem; color: inherit; background: var(--reading-bg); font: inherit; }
+.course-search-status { margin: .9rem 0 .35rem; color: var(--reading-muted); font-size: .82em; }
+.course-search-suggestion { margin: .25rem .35rem .25rem 0; }
+.course-search-hit { display: block; padding: .55rem .35rem; border-bottom: 1px solid var(--reading-border); text-decoration: none; color: inherit; }
+.course-search-hit:hover, .course-search-hit:focus-visible { background: var(--reading-panel); color: var(--reading-text); }
+.course-search-hit > span, .course-search-hit > small { display: block; }
+.course-search-hit small { color: var(--reading-muted); margin-top: .15rem; font-size: .79em; }
+#course-matches > button:last-child:not(.course-search-suggestion) { margin-top: .6rem; }

@@ -3,10 +3,12 @@
 from pathlib import Path
 import os
 import hashlib
+import json
 import re
 import shutil
 import subprocess
 from book_navigation import rebuild_sidebar
+from course_search import write_search_index
 
 site = Path(os.environ.get('QUARTO_PROJECT_OUTPUT_DIR', '_site'))
 # Older cached HTML still points at its original, hashed stylesheet.
@@ -36,7 +38,9 @@ map_output = site / 'map'
 shutil.copytree(map_source, map_output, dirs_exist_ok=True, ignore=shutil.ignore_patterns('notes.json', 'theorems.json'))
 node = shutil.which('node')
 runner = [node] if node else ['quarto', 'run']
-subprocess.run([*runner, 'scripts/render-map-math.js', str(map_output)], check=True)
+# Search results on the map use the lecture typography, including formulas in headings.
+title_math = write_search_index(site)
+subprocess.run([*runner, 'scripts/render-map-math.js', str(map_output), json.dumps(title_math)], check=True)
 # Change asset URLs with their contents so returning students see a coherent release.
 map_index = map_output / 'index.html'
 marks = Path('scripts/figures/map-node-marks.svg').read_text()
@@ -55,3 +59,16 @@ for name in ('topics.js', 'math.css'):
     guide_html = re.sub(r'("\.\./map/' + re.escape(name) + r')(?:\?v=[^"]*)?"',
                         lambda m: m.group(1) + '?v=' + version + '"', guide_html)
 guide.write_text(guide_html)
+
+shutil.copy2('assets/reading-search.js', site / 'assets/reading-search.js')
+search_assets = ('map/search.js', 'assets/reading-search.js')
+versions = {path: hashlib.sha256((site / path).read_bytes()).hexdigest()[:12] for path in search_assets}
+for page in [site / 'index.html', site / 'lecture-pdfs.html', *site.glob('lectures/*.html'), *site.glob('supplements/*.html')]:
+    html = page.read_text()
+    if 'id="quarto-search"' not in html:
+        continue
+    prefix = '../' if page.parent != site else './'
+    scripts = [f'<script defer data-course-search src="{prefix}{path}?v={version}"></script>'
+               for path, version in versions.items()]
+    html = re.sub(r'<script defer data-course-search [^>]+></script>\n?', '', html)
+    page.write_text(html.replace('</head>', '\n'.join(scripts) + '\n</head>', 1))
