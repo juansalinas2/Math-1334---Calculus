@@ -129,6 +129,7 @@ function drawCamera() {
   world.attr("transform", view);
   drawInterior(view);
   drawSystem(view);
+  placeLabels(view);
   const fit = fullMapScale();
   const percent = Math.round(100 * view.k / fit) + "%";
   if (zoomLevel.textContent !== percent) zoomLevel.textContent = percent;
@@ -525,6 +526,7 @@ function initialFrame() {
 }
 new ResizeObserver(() => {
   const reoriented=orientMap();
+  fittedScale=measureMapScale();
   zoom.scaleExtent([courseScale(),maxZoom]);
   if (reoriented) {
     stops.attr("transform",d=>"translate("+d.x+","+d.y+")");

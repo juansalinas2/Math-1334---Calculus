@@ -27,3 +27,5 @@
 .station .station-mark { transform:scale(var(--parent-scale,1)); }
 
 .locator-focus { fill:none; stroke:var(--ink); vector-effect:non-scaling-stroke; stroke-width:1.6; }
+
+.station .label { stroke-width:3.5px; }

@@ -26,5 +26,5 @@ function buildTopicOrbit(topic) {
     const label=d3.select(this).append("text").attr("text-anchor","middle").attr("y",29);
     for(const [i,line] of labelLines(d.title,18).entries()) label.append("tspan").attr("x",0).attr("dy",i?"1.08em":"0").text(line);
   });
-  return {layer,moons,angles};
+  return {layer,moons,angles,obstacles:[],angleKey:"",rotation:0};
 }

@@ -28,7 +28,9 @@ function orientMap() {
   return true;
 }
 orientMap();
-function fullMapScale() {
+let fittedScale = measureMapScale();
+function fullMapScale() { return fittedScale; }
+function measureMapScale() {
   const main = document.querySelector("main");
   return Math.max(.08, Math.min(1.25, (main.clientWidth-18)/mapBounds.width, (main.clientHeight-96)/mapBounds.height));
 }
