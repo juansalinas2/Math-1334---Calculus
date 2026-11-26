@@ -30,3 +30,13 @@
 .rr-self-check form button, .rr-self-check > details button { justify-self: start; }
 .rr-self-check input, .rr-self-check textarea { width: 100%; box-sizing: border-box; font: inherit; color: inherit; background: var(--reading-bg,Canvas); border: 1px solid var(--reading-border); padding: .36em; }
 .rr-self-check [role=status]:empty { display: none; }
+
+.rr-help form { display: flex; flex-wrap: wrap; align-items: end; gap: .45em; margin: .7em 0 .35em; }
+.rr-help label { display: grid; flex: 1 1 16em; gap: .2em; }
+.rr-help input, .rr-help button { min-height: 2.35em; padding: .3em .6em; border: 1px solid var(--reading-border); border-radius: .23em; font: inherit; background: var(--reading-bg,Canvas); color: inherit; }
+.rr-help input { width: 100%; }
+.rr-help .rr-suggest { padding: .1em 0; border: 0; background: transparent; color: var(--reading-link,LinkText); text-align: left; text-decoration: underline; text-underline-offset: .16em; }
+.rr-help .rr-reply:not(:empty) { margin: .7em 0 .25em; padding: .25em 0 .25em .9em; border-left: 2px solid var(--reading-border); }
+.rr-reply p { margin: 0 0 .35em; }
+.rr-reply a { font-size: .9em; }
+.rr-reply math { font-size: 1.04em; }

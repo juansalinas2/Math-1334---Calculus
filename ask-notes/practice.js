@@ -63,47 +63,58 @@
     const box = element("details");
     box.className = "rr-help";
     box.append(element("summary", "Ask about this reading"));
+    const steps = [...target.querySelectorAll(":scope .rr-step-label")];
+    steps.forEach((step, index) => { step.id = section + "-study-step-" + (index + 1); });
     const form = element("form");
     const label = element("label", "Your question");
     const input = element("input");
     input.type = "search";
     input.required = true;
     input.maxLength = 450;
-    input.placeholder = "When do I plug in the numbers?";
+    input.placeholder = check.help.question;
     label.append(input);
-    const send = element("button", "Find the step");
-    const reply = element("p");
+    const send = element("button", "Find an answer");
+    const example = element("button", check.help.question);
+    example.type = "button";
+    example.className = "rr-suggest";
+    const reply = element("div");
+    reply.className = "rr-reply";
     reply.setAttribute("role", "status");
-    form.append(label, send, reply);
-    box.append(form);
-    form.addEventListener("submit", event => {
-      event.preventDefault();
-      const q = input.value.toLowerCase();
-      const steps = [...target.querySelectorAll(".rr-step-label")];
-      let index;
-      if (/plug|substitut|instant|too early|before differentiating/.test(q)) index = 2;
-      else if (/equation|relat|differentiat|product rule|chain rule|ratio|similar/.test(q)) index = 1;
-      else if (/set.?up|given|variable|label|unit|sketch|draw|find|what does/.test(q)) index = 0;
-      const match = steps[index];
+    function show() {
+      const q = input.value.trim().toLowerCase();
       reply.replaceChildren();
-      if (match) {
-        const prefix = index === 2 ? "A value at one instant goes into the rate equation after differentiating. " : "";
-        const link = element("a", match.textContent.trim());
-        const id = section + "-study-step-" + (index + 1);
-        match.id = id;
-        link.href = "#" + id;
-        link.addEventListener("click", () => {
-          for (let parent = match.parentElement; parent && parent !== target; parent = parent.parentElement) {
-            if (parent.tagName === "DETAILS") parent.open = true;
-          }
-          match.tabIndex = -1;
-          match.focus({preventScroll: true});
-        });
-        reply.append(document.createTextNode(prefix + "Read the step in your notes: "), link);
-      } else {
-        reply.textContent = check.hint + " For a different topic, use Search notes.";
+      const matched = new RegExp(check.help.match, "i").test(q);
+      let number;
+      if (matched) {
+        number = check.help.step;
+        const answer = element("p");
+        // answerHtml contains only the published author text rendered by Pandoc.
+        answer.innerHTML = check.answerHtml;
+        reply.append(answer);
+      } else if (/plug|substitut|instant/.test(q)) number = 3;
+      else if (/equation|relate the rates|differentiat|product rule|chain rule/.test(q)) number = 2;
+      else if (/set.?up|givens?|label|sketch|draw/.test(q)) number = 1;
+      const step = number && steps[number - 1];
+      if (!matched && !step) {
+        reply.append(element("p", "I couldn’t match that question to a step in this reading. Try the suggested question or search the course notes."));
+        return;
       }
-    });
+      if (!matched) reply.append(element("p", "This part of the worked example addresses your question."));
+      const link = element("a", step ? step.textContent.trim() : "Read the passage");
+      link.href = "#" + (step ? step.id : section);
+      if (step) link.addEventListener("click", () => {
+        for (let parent = step.parentElement; parent && parent !== target; parent = parent.parentElement) {
+          if (parent.tagName === "DETAILS") parent.open = true;
+        }
+        step.tabIndex = -1;
+        step.focus({preventScroll: true});
+      });
+      reply.append(link);
+    }
+    form.addEventListener("submit", event => { event.preventDefault(); show(); });
+    example.addEventListener("click", () => { input.value = check.help.question; show(); });
+    form.append(label, send);
+    box.append(form, example, reply);
     return box;
   }
 
@@ -171,7 +182,11 @@
       return button;
     });
     panel.append(element("summary", "Check your next step"), group, hint, result);
-    if (target) panel.append(readingHelp(target, section, check));
+    if (target) {
+      const help = readingHelp(target, section, check);
+      help.classList.add("proof");
+      container.append(help);
+    }
     container.append(panel);
   }
 
