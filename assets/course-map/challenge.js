@@ -141,7 +141,8 @@
     copy(roomURL(),"invite-link","room-status","Friend invite copied.");
   }
   function leaveRoom() {
-    resetLink();el("invite").hidden=!timed();el("start").textContent="Start run";refresh();
+    if(room && racePlayer && !run.ended)progress(true);
+    racePlayer="";resetLink();el("invite").hidden=!timed();el("start").textContent="Start run";refresh();
   }
   function payload(action) {
     return {...settings(),seed,length:route.length,steps:steps.join(""),times:times.map(n=>n.toString(36)).join(""),extra,player:board.player,alias:playerAlias,action};
@@ -209,7 +210,7 @@
     el("choices").classList.toggle("graphs",Boolean(q.graphChoices));
     el("choices").replaceChildren(...(q.choices ? answers : []).map((choice,index)=>{
       const b=document.createElement("button"), key=document.createElement("span"), text=document.createElement("span");
-      key.className="choice-key";key.textContent=letters[index];text.innerHTML=q.choices[choice];b.append(key,text);if(q.graphChoices)b.append(window.gameGraph(q.graphChoices[choice]));
+      key.className="choice-key";key.textContent=letters[index];text.innerHTML=q.choices[choice];b.append(key,text);if(q.graphChoices){const plot=window.gameGraph(q.graphChoices[choice]);plot.setAttribute("aria-hidden","true");b.append(plot);}
       b.onfocus=b.onpointerenter=()=>{if(state==="question")runner.aim(index);};
       b.onblur=b.onpointerleave=()=>{if(state==="question")runner.aim(-1);};
       b.disabled=!bonusActive && index===run.missed;if(b.disabled)b.classList.add("closed");b.onclick=()=>submit(index);return b;
@@ -380,6 +381,14 @@
   function syncFull(){
     const full=Boolean(nativeFull()||document.body.classList.contains("full-window"));
     const wide=document.body.classList.contains("wide-game");document.body.classList.toggle("screen-active",full);
+    const fallback=document.body.classList.contains("full-window");
+    const status=el("screen-status");status.hidden=!fallback;
+    if(fallback){
+      const ua=navigator.userAgent || "";
+      const shortcut=/iPhone|iPad|Android/.test(ua) || (/Mac/.test(ua) && navigator.maxTouchPoints>1) ? "" :
+        /Mac/.test(ua) ? " Use Control–Command–F for browser full screen." : " Use F11 for browser full screen.";
+      status.textContent="This browser is using the full window."+shortcut;
+    }
     el("fullscreen").textContent=full?"Exit full screen":"Full screen";el("fullscreen").setAttribute("aria-pressed",String(full));
     el("enlarge").textContent=wide?"Standard size":"Enlarge";el("enlarge").setAttribute("aria-pressed",String(wide));el("enlarge").hidden=full;
   }
@@ -389,7 +398,10 @@
     if(nativeFull())await (document.exitFullscreen||document.webkitExitFullscreen).call(document);
     else if(document.body.classList.contains("full-window"))document.body.classList.remove("full-window");
     else {
-      try {await (root.requestFullscreen||root.webkitRequestFullscreen).call(root);}
+      try {
+        if(root.requestFullscreen)await root.requestFullscreen({navigationUI:"hide"});
+        else (root.webkitRequestFullscreen||root.webkitRequestFullScreen).call(root);
+      }
       catch{document.body.classList.add("full-window");}
     }
     syncFull();
