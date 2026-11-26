@@ -109,21 +109,17 @@
     }
 
     if (onLecture) {
-      for (const heading of document.querySelectorAll("main section[id] > h3")) {
-        if (!/^(Example|Practice)\s+\d/.test(heading.textContent.trim())) continue;
-        const ask = document.createElement("button");
-        ask.type = "button"; ask.className = "ask-example"; ask.textContent = "Ask about this example";
-        ask.addEventListener("click", () => {
-          window.quartoOpenSearch();
-          details.open = true;
-          panel.dataset.selected = heading.parentElement.id;
-          section = panel.dataset.selected;
-          panel.querySelector(".ask-scope").hidden = false;
-          panel.querySelector(".ask-scope select").value = "section";
-          question.focus();
-        });
-        heading.after(ask);
-      }
+      document.addEventListener("course-tutor-question", event => {
+        window.quartoOpenSearch();
+        input.value = "";
+        panel.dataset.selected = event.detail.section;
+        section = event.detail.section;
+        details.open = true;
+        panel.querySelector(".ask-scope").hidden = !section;
+        panel.querySelector(".ask-scope select").value = "section";
+        question.value = event.detail.question;
+        code.focus();
+      });
     }
     form.addEventListener("submit", async event => {
       event.preventDefault();
