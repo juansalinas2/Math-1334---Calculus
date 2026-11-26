@@ -342,8 +342,9 @@
         finish(q,true,hit?"Bonus cleared! +"+points+" points.":timeout?"Bonus time expired. Route cleared!":"Route cleared! Bonus missed.");return;
       }
       if(landing.retry){
-        screen("feedback","retry");el("round").textContent="Feather used";el("verdict").textContent=timeout?"Time’s up! Your feather caught you.":"Your chicken caught you!";
-        el("result").textContent=timeout?"Retry with a fresh clock.":"Try the jump again. Your feather is spent and your streak starts over.";
+        screen("feedback","retry");el("round").textContent="Feather used";
+        el("verdict").textContent=timeout?"Time’s up!":"You missed the jump!";
+        el("result").textContent="Your feather gives you one more try at this question. "+(timeout?"The timer starts fresh.":"Your streak starts over.");
         el("advance").textContent="Retry jump";for(const id of ["review","change","share","race-link","save-score","bonus-offer"])el(id).hidden=true;
         el("verdict").focus({preventScroll:true});return;
       }
