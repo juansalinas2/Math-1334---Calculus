@@ -113,9 +113,10 @@ def main():
                             "version": ladder["version"], "note": note}
         verify_submission(endpoint, code, table, "practice-" + attempt, practice_payload)
         print("Verified voluntary tutor and self-check sharing and instructor read-back. Synthetic records removed.")
-    print("Private pilot:", out["Endpoint"].rsplit("/", 1)[0] + "/pilot")
-    print("Verified ladder citation. To enable the website, set COURSE_ASK_BILLING_MODE=metered")
-    print("and COURSE_ASK_ENDPOINT=" + out["Endpoint"] + " for the Pages build.")
+    print("Pilot:", out["Endpoint"].rsplit("/", 1)[0] + "/pilot")
+    print("Verified the ladder citation. To connect the Pages build, put this public URL in pilot-endpoint.txt:")
+    print(out["Endpoint"])
+
 
 
 if __name__ == "__main__":

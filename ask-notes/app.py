@@ -24,7 +24,7 @@ instructor-verified worked example, the learner's last exchanges and their newes
 Answer the newest question in 2 to 4 sentences, normally under 85 words. Use the given example
 and ordinary algebra, geometry and calculus to explain new reasoning. The student need not
 use the exact wording of the notes. Use the previous exchange to resolve "that", "why" and numerical replies.
-When a learner is mistaken, explain what their calculation measures. For a hint, stop after one
+Honor the teaching note when it applies. Compare a student’s proposed formula and the correct one side by side when asked. Interpret a mistaken calculation in its own units. For a hint, stop after one
 action they can do themselves. For a direct question, give the requested fact. Check signs, units,
 and decimal values before comparing magnitudes. Distinguish speed from signed rate.
 Use plain prose and inline LaTeX inside \( \). The application attaches the course source.
@@ -175,8 +175,9 @@ def generate(question, section, keys, history=()):
                 for i, k in enumerate(keys, start=1)]
     prompt = {"reading": book[section]["title"] if section else None,
               "recent_exchange": list(history), "question": question, "passages": excerpts}
-    if section == "boat":
-        prompt["instructor_check"] = "At x=4 m, the rope shortens at 1 m/s and the horizontal gap closes at 5/4 = 1.25 m/s. The boat has greater speed."
+    teaching_note = checks().get(section, {}).get("teaching_note")
+    if teaching_note:
+        prompt["teaching_note"] = teaching_note
     text = json.dumps(prompt, ensure_ascii=False)
     # One system block and one user block, including history. Allow one token per
     # UTF-8 byte plus ample message framing. Extended thinking stays disabled.

@@ -157,7 +157,8 @@
         "text": "An edge is a length, so \\(ds/dt\\) is measured in \\(\\mathrm{m/s}\\). The factor \\(3s^2\\) has units of square meters. Check that multiplying the two gives the stated volume units per second.",
         "step": 2
       }
-    ]
+    ],
+    "teaching_note": "At s=2 m the divisor 3s² equals 12 square meters. Dividing -12 cubic meters per second by 12 square meters gives -1 meter per second."
   },
   "balloon": {
     "question": "Air enters at 12π cm³/s. What units should the answer for dr/dt have?",
@@ -192,7 +193,8 @@
         "text": "Picture a thin new layer of air covering the whole balloon. Its volume is approximately its surface area times its thickness. In the limit this gives \\(dV/dt=4\\pi r^2\\,dr/dt\\). At a larger radius, the same inflow spreads over more area.",
         "step": 2
       }
-    ]
+    ],
+    "teaching_note": "The volume grows by the same amount each second. The same extra volume spreads across a larger surface, producing a thinner shell. At fixed flow, doubling radius quadruples surface area and quarters radial speed. The volume growth rate stays constant."
   },
   "rectangle": {
     "question": "If the length grows while the width shrinks, which expression decides whether the area increases?",
@@ -252,7 +254,8 @@
         "text": "The growing length adds \\(5(3)=15\\) square centimeters each second. The shrinking width contributes \\(8(-1)=-8\\) in the same units. Add the two signed changes and use the sign to describe the area.",
         "step": 3
       }
-    ]
+    ],
+    "teaching_note": "Length and width rates sum to d(L+W)/dt = 2 cm/s, half the perimeter rate. The perimeter grows at 4 cm/s. The area gains 15 and loses 8 square centimeters per second. Each centimeter of new length adds a strip as wide as the rectangle (5 cm)."
   },
   "triangle": {
     "question": "The base and height of the triangle both change. Why does a factor of one-half remain in the area rate?",
@@ -343,7 +346,8 @@
     "partNudges": {
       "a": "Use \\(x\\,dx/dt+y\\,dy/dt=0\\). Move the horizontal term across the equals sign before dividing by \\(y\\). What sign should the top’s rate have?",
       "b": "The known rate is now \\(dy/dt=-3\\) ft/s. Start from \\(x\\,dx/dt=-y\\,dy/dt\\). Which length will you divide by to get the foot’s rate?"
-    }
+    },
+    "teaching_note": "For a learner asking only to start, invite them to label the two moving legs and the fixed 10-ft hypotenuse and write their relation. Stop there so the student can try before differentiating."
   },
   "boat": {
     "question": "Which rate equals −1 m/s when the rope is pulled in at 1 m/s?",
@@ -378,7 +382,8 @@
         "text": "Imagine marking the taut length at two times one second apart. It is 1 m shorter the second time, so \\(dL/dt=-1\\,\\mathrm{m/s}\\). The horizontal gap also shrinks. Use that observation to check the sign of \\(dx/dt\\).",
         "step": 1
       }
-    ]
+    ],
+    "teaching_note": "The vertical gap is constant throughout. The horizontal motion changes only the rope component parallel to its own length: dL/dt = (x/L) dx/dt. Because 0 < x/L < 1, the horizontal distance changes more than the rope length, also over any finite pull while the rope stays taut and the gap positive. At x=4 and L=5, the signed rates are -1 m/s for rope and -1.25 m/s for the boat. The instantaneous factor 5/4 varies over a finite pull."
   },
   "similar-triangles": {
     "question": "The small triangle has sides a, b, c corresponding to A, B, C. What is the scaling factor from the large triangle to the small one?",
@@ -499,7 +504,8 @@
       "a": "Start with \\(r/h\\) on the water triangle. Write the same two sides, in that order, on the full tank. Once you have \\(r\\) in terms of \\(h\\), which letter can you replace in the volume formula?",
       "b": "From \\(V=\\pi h^3/27\\), differentiate the cube by the chain rule. The factor next to \\(dh/dt\\) should contain \\(h^2\\). Try evaluating just that factor at \\(h=3\\).",
       "c": "Write the rate equation for part (b) again. The depth is still \\(h=3\\), so its coefficient is the same. Look at the sign of the volume rate when water leaves."
-    }
+    },
+    "teaching_note": "Corresponding horizontal and vertical sides give r/h = 2/6. Turning a diagram upside down preserves the ratio. The reciprocal equation is h/r = 6/2. Compare the proposed and actual radius numerically when a learner asks about their own proportion: at h=3, r=3h gives 9 m whereas r=h/3 gives 1 m. The entire tank has radius only 2 m."
   },
   "shadow": {
     "question": "Let x be the distance from light to person and s the shadow length. Which rate measures motion of the shadow tip away from the light?",
@@ -547,6 +553,7 @@
     "partNudges": {
       "a": "Compare height to base in each triangle: \\(6/(x+s)=2/s\\). Cross-multiply and collect the terms in \\(s\\) before differentiating.",
       "b": "Mark the distance \\(x+s\\) from the stationary lamp to the tip. Differentiate that sum and identify the walking rate and the length rate separately."
-    }
+    },
+    "teaching_note": "The shadow length runs from the walker to the tip. Its growth rate is 1 m/s. The distance measured FROM THE LIGHT runs from the lamp to the tip, x+s, and grows at 3 m/s. A measurement of length alone in meters never determines a rate in meters per second."
   }
 }
