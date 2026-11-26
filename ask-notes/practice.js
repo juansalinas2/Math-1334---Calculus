@@ -39,7 +39,7 @@
     form.append(consent, fields, comment, send, status);
     panel.append(details);
     details.addEventListener("toggle", () => {
-      if (details.open && !code.value) code.value = document.querySelector(".ask-code input")?.value || "";
+      if (details.open && !code.value) code.value = "";
     });
     form.addEventListener("submit", async event => {
       event.preventDefault();
@@ -254,6 +254,58 @@
     let minimized = false;
     const attempts = new Map();
 
+    const chat = endpoint && window.courseTutor;
+    const history = [];
+    let classCode = "";
+    let pending = false;
+
+    function remember(question, text, section) {
+      if (!topics.has(section) || !text) return;
+      history.push({question:question.slice(0,450), answer:text.slice(0,1600), section});
+      if (history.length > 3) history.shift();
+    }
+
+    async function askTutor(question, section) {
+      if (pending) return;
+      pending = true;
+      first.send.disabled = follow.send.disabled = true;
+      asked.textContent = question;
+      answer.replaceChildren(element("p", "Reading the example and your question…"));
+      present();
+      try {
+        const data = await chat.ask(question, section, history, classCode);
+        answer.replaceChildren();
+        const body = element("p", data.answer);
+        body.className = "rr-generated-answer";
+        answer.append(body);
+        activeTopic = topics.has(data.section) ? data.section : section;
+        activeStep = 0; pendingReply = null; hintLevel = 0; activePart = "";
+        for (const source of data.sources || []) {
+          const key = source.href.split("#")[1];
+          if (topics.has(key)) cite(topics.get(key), topics.get(key).node);
+        }
+        if (data.sources?.length) remember(question, data.answer, activeTopic);
+        action("Open worked hints", () => show("First step", activeTopic));
+        chat.offerFeedback(answer, data, classCode);
+        const macros = data.answer.match(/\\[a-zA-Z]+/g) || [];
+        const safe = /^\\(?:frac|dfrac|tfrac|sqrt|left|right|bigl|bigr|mathrm|text|cdot|times|pi|theta|sin|cos|tan|infty|approx|leq?|geq?|neq|pm|quad|qquad|boxed|begin|end|aligned|displaystyle|partial)$/;
+        if (macros.every(m => safe.test(m))) await window.MathJax?.typesetPromise?.([body]);
+      } catch (error) {
+        if (error.status === 403) { classCode = ""; first.code.value = follow.code.value = ""; }
+        activeTopic = section;
+        answer.replaceChildren(element("p", error.status ? error.message : "The AI tutor could not finish this reply. Try again or use the worked hints."));
+        action("Use worked hints", () => show(question, section));
+        if (error.status !== 429) {
+          follow.field.value = question;
+          follow.update();
+        }
+      } finally {
+        pending = false;
+        first.send.disabled = follow.send.disabled = false;
+        first.update(); follow.update();
+      }
+    }
+
     function prompts(item) {
       return [item.help, ...(item.answers || []).filter(a => a.question)];
     }
@@ -269,7 +321,7 @@
       field.autocomplete = "off";
       field.placeholder = placeholder;
       label.append(field);
-      const send = element("button", "Ask");
+      const send = element("button", chat ? "Ask AI" : "Ask");
       send.type = "submit";
       const row = element("div");
       row.className = "rr-suggestion";
@@ -289,9 +341,25 @@
       field.setAttribute("aria-describedby", instructions.id);
       sample.id = instructions.id + "-sample";
       form.append(label, send, row, instructions);
+      const codeLabel = element("label", "Class code for AI");
+      const code = element("input");
+      code.type = "password"; code.maxLength = 120; code.autocomplete = "off";
+      codeLabel.className = "rr-class-code";
+      codeLabel.append(code);
+      if (chat) {
+        const hint = element("button", "Use worked hints");
+        hint.type = "button"; hint.className = "rr-free-hint";
+        hint.addEventListener("click", () => {
+          if (!pending) show(field.value.trim() || "First step", filledReading || getReading());
+        });
+        const notice = element("small", "Ask AI sends your question and recent turns to AWS. Share with Juan is optional.");
+        notice.className = "rr-ai-notice";
+        form.append(codeLabel, hint, notice);
+      }
 
       let options = [], index = 0, reading = "", dismissed = false, filledReading = "";
       function update() {
+        codeLabel.hidden = !!classCode;
         const raw = normalized(field.value);
         const ref = numbered(raw);
         reading = ref?.candidates.length === 1 ? ref.candidates[0] : getReading();
@@ -339,10 +407,15 @@
       form.addEventListener("submit", event => {
         event.preventDefault();
         const value = field.value.trim();
-        if (value) show(value, filledReading || getReading());
-        else field.focus();
+        if (!value) { field.focus(); return; }
+        const section = filledReading || getReading();
+        if (!chat) { show(value, section); return; }
+        if (pending) return;
+        classCode = classCode || code.value.trim();
+        if (!classCode) { code.focus(); code.setCustomValidity("Enter the class code or choose worked hints."); code.reportValidity(); code.setCustomValidity(""); return; }
+        askTutor(value, section);
       });
-      return {form, field, update, reset() {
+      return {form, field, send, code, update, reset() {
         field.value = ""; dismissed = false; filledReading = ""; index = 0; update();
       }};
     }
@@ -552,11 +625,11 @@
         if (!attempts.has(key)) attempts.set(key, practicePanel(key));
         answer.append(attempts.get(key));
       }
-      if (endpoint) {
-        action("Ask the course AI", () => {
-          hidePanel();
-          document.dispatchEvent(new CustomEvent("course-tutor-question", {detail: {question, section:key}}));
-        });
+      if (chat && supported) {
+        const copy = answer.cloneNode(true);
+        copy.querySelectorAll("details, button, a").forEach(node => node.remove());
+        copy.querySelectorAll("math").forEach(node => node.replaceWith(node.querySelector("annotation")?.textContent || node.textContent));
+        remember(question, copy.textContent, key);
       }
       present();
     }

@@ -85,3 +85,11 @@ body:has(.rr-help-popup[open]) .rr-help-box {visibility:hidden;}
 .rr-visually-hidden {position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
 @media (pointer:coarse) {.rr-suggestion kbd {display:none;} .rr-question-form .rr-suggestion button {min-height:2.5rem;}}
 @media (max-height:450px) {.rr-help-popup[open] {max-height:85dvh;}}
+
+.rr-question-form .rr-class-code,.rr-question-form .rr-ai-notice,.rr-question-form .rr-free-hint {grid-column:1 / -1;}
+.rr-question-form .rr-class-code[hidden] {display:none;}
+.rr-question-form .rr-free-hint {justify-self:start;font-size:.88em;}
+.rr-question-form .rr-ai-notice {line-height:1.25;font-size:.74em;}
+.rr-generated-answer {white-space:pre-wrap;}
+.rr-help-answer .ask-feedback form {display:grid;gap:.5em;}
+.rr-help-answer .ask-feedback :is(textarea,select) {width:100%;font:inherit;}

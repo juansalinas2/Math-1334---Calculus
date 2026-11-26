@@ -18,7 +18,7 @@ def asset(name):
 
 def add_widget(document, prefix, endpoint, with_practice=False):
     document = re.sub(r'<(?:script|link) data-course-ask [^>]*>(?:</script>)?\n?', '', document)
-    if 'data-course-search' not in document or not (endpoint or with_practice):
+    if 'data-course-search' not in document or not with_practice:
         return document
     if endpoint and (urlsplit(endpoint).scheme != "https" or not urlsplit(endpoint).netloc):
         raise ValueError("COURSE_ASK_ENDPOINT must be the HTTPS /ask endpoint from the deployed stack.")

@@ -1,0 +1,108 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Math 1334 related-rates pilot in us-west-2
+Parameters:
+  ClassCodeHash:
+    Type: String
+    AllowedPattern: '[0-9a-f]{64}'
+  SiteOrigin:
+    Type: String
+    Default: https://juansalinas2.github.io
+
+Resources:
+  MonthlyBudget:
+    Type: AWS::Budgets::Budget
+    Properties:
+      Budget:
+        BudgetName: !Sub '${AWS::StackName}-five-dollars'
+        BudgetType: COST
+        TimeUnit: MONTHLY
+        BudgetLimit: {Amount: 5, Unit: USD}
+        CostTypes: {IncludeCredit: false, IncludeRefund: false}
+  Quota:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - {AttributeName: month, AttributeType: S}
+      KeySchema:
+        - {AttributeName: month, KeyType: HASH}
+
+  Responses:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - {AttributeName: receipt, AttributeType: S}
+      KeySchema:
+        - {AttributeName: receipt, KeyType: HASH}
+      TimeToLiveSpecification:
+        AttributeName: expires_at
+        Enabled: true
+
+  Api:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: '$default'
+      CorsConfiguration:
+        AllowOrigins: [!Ref SiteOrigin]
+        AllowMethods: [POST]
+        AllowHeaders: [Content-Type, X-Class-Code]
+      DefaultRouteSettings:
+        ThrottlingRateLimit: 3
+        ThrottlingBurstLimit: 6
+  Answer:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: build/function/
+      Handler: app.handler
+      Runtime: python3.13
+      MemorySize: 256
+      Timeout: 27
+      Environment:
+        Variables:
+          RESPONSES_TABLE: !Ref Responses
+          CODE_HASH: !Ref ClassCodeHash
+          QUOTA_TABLE: !Ref Quota
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action: dynamodb:UpdateItem
+              Resource: !GetAtt Quota.Arn
+            - Effect: Allow
+              Action: [dynamodb:PutItem, dynamodb:UpdateItem]
+              Resource: !GetAtt Responses.Arn
+            - Effect: Allow
+              Action: bedrock:InvokeModel
+              Resource:
+                - !Sub arn:${AWS::Partition}:bedrock:${AWS::Region}:${AWS::AccountId}:inference-profile/us.amazon.nova-2-lite-v1:0
+                - !Sub arn:${AWS::Partition}:bedrock:us-*::foundation-model/amazon.nova-2-lite-v1:0
+      Events:
+        Ask:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref Api
+            Method: POST
+            Path: /ask
+        Feedback:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref Api
+            Method: POST
+            Path: /feedback
+        Pilot:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref Api
+            Method: GET
+            Path: /pilot
+  AnswerLog:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/${Answer}'
+      RetentionInDays: 7
+Outputs:
+  Endpoint:
+    Value: !Sub 'https://${Api}.execute-api.${AWS::Region}.${AWS::URLSuffix}/ask'
+  ResponseTable:
+    Value: !Ref Responses

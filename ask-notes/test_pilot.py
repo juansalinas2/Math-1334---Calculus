@@ -1,0 +1,307 @@
+"""Offline regressions for paid-call boundaries, course context, and citations."""
+import hashlib
+import json
+import os
+import subprocess
+import sys
+import unittest
+import time
+import responses
+import practice
+from review import report
+from unittest.mock import Mock, patch
+import app
+from export import ROOT, read_passages
+from site_assets import add_widget
+
+
+class PilotTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.book = read_passages(ROOT / "_site")
+
+    def setUp(self):
+        self.enterContext(patch.object(app, "passages", return_value=self.book))
+        self.cloud = self.enterContext(patch.object(app, "client")).return_value
+        self.enterContext(patch.dict(os.environ, CODE_HASH=hashlib.sha256(b"demo").hexdigest(),
+                                     RESPONSES_TABLE="responses", KNOWLEDGE_BASE="kb", QUOTA_TABLE="table", MONTHLY_LIMIT="300"))
+
+    def ask(self, question, code="demo", section=""):
+        return app.handler({"headers": {"X-Class-Code": code}, "body": json.dumps(
+            {"question": question, "section": section})}, None)
+
+    def test_charge_boundary(self):
+        self.assertEqual(self.ask("example", "wrong")["statusCode"], 403)
+        self.assertEqual(self.ask("")["statusCode"], 400)
+        self.cloud.update_item.assert_not_called()
+        self.cloud.exceptions.ConditionalCheckFailedException = type("QuotaFull", (Exception,), {})
+        self.cloud.update_item.side_effect = self.cloud.exceptions.ConditionalCheckFailedException()
+        self.assertEqual(self.ask("question")["statusCode"], 429)
+        self.cloud.retrieve.assert_not_called()
+        self.cloud.converse.assert_not_called()
+
+    def test_context_and_citation(self):
+        self.cloud.retrieve.return_value = {"retrievalResults": [
+            {"metadata": {"section": k}} for k in ("the-three-steps", "cone", "shadow", "ladder")]}
+        self.cloud.converse.return_value = {"stopReason": "end_turn", "output": {"message":
+            {"content": [{"text": "The height is decreasing [1]."}]}}}
+        response = self.ask("How do I rearrange the equation?", section="ladder")
+        self.assertEqual(response["statusCode"], 200)
+        answer = json.loads(response["body"])
+        self.assertEqual([s["href"] for s in answer["sources"]], [app.PAGE + "#ladder"])
+        self.cloud.retrieve.assert_not_called()
+        self.assertIn("A sliding ladder", self.cloud.converse.call_args.kwargs["messages"][0]["content"][0]["text"])
+        self.assertEqual(self.cloud.converse.call_args.kwargs["inferenceConfig"]["maxTokens"], 350)
+
+    def test_numbered_problems_override_scroll_and_starters_are_free(self):
+        cases = [("I'm stuck on example 6", "cone"), ("hint for ex. six", "cone"),
+                 ("practice problem #2", "cube"), ("Example 2", "circle"), ("help on ex6", "cone"), ("hint on the boat", "boat")]
+        for question, expected in cases:
+            with self.subTest(question=question):
+                section, response = app.route_question(question, "ladder")
+                self.assertEqual(section, expected)
+                self.assertIsNotNone(response)
+                self.assertEqual(response["sources"][0]["href"], app.PAGE + "#" + expected)
+        body = json.loads(self.ask("I'm stuck on example 6", section="ladder")["body"])
+        self.assertIn("vertical slice", body["answer"])
+        self.assertNotIn("m/min", body["answer"])
+        self.cloud.retrieve.assert_not_called()
+        self.cloud.converse.assert_not_called()
+        self.cloud.update_item.assert_not_called()
+
+    def test_walkthrough_requests_across_the_lecture(self):
+        import re
+        for key, passage in self.book.items():
+            heading = re.match(r"(example|practice) \d+", passage["title"], re.I)
+            if not heading:
+                continue
+            q = "Lets walk through " + heading[0] + ":"
+            with self.subTest(question=q):
+                body = json.loads(self.ask(q, section="cone")["body"])
+                self.assertIn(practice.checks()[key]["starter"], body["answer"])
+                self.assertEqual(body["sources"][0]["href"], app.PAGE + "#" + key)
+        for q, expected in [("Let's go over ex6b step by step", "inflow"),
+                            ("Walk through example 4: why are there two terms?", "strip"),
+                            ("A=LW", "product rule"), ("I got 7 cm²/s", "area is increasing"),
+                            ("Can we go over #4?", "Which one"), ("Walk through example 84", "couldn’t find")]:
+            with self.subTest(question=q):
+                self.assertIn(expected, json.loads(self.ask(q, section="rectangle")["body"])["answer"])
+        self.cloud.retrieve.assert_not_called()
+        self.cloud.converse.assert_not_called()
+        self.cloud.update_item.assert_not_called()
+
+    def test_numbered_subparts_and_clarification(self):
+        for shorthand in ("ex6b", "ex. 6(b)", "example six part b"):
+            section, response = app.route_question("Give me a hint for " + shorthand, "circle")
+            self.assertEqual(section, "cone")
+            self.assertIn("inflow", response["answer"])
+        for q, expected in [("I'm stuck on #2", "Which one"), ("Example 88", "couldn’t find"),
+                            ("Example 6 part d", "no part (d)")]:
+            self.assertIn(expected, app.route_question(q, "ladder")[1]["answer"])
+        self.assertIn("cubic meters", app.route_question("What is dV/dt in example 6?", "circle")[1]["answer"])
+        self.assertEqual(app.route_question("Can you explain the geometry in example 6?", "ladder"), ("cone", None))
+
+    def test_no_grounding(self):
+        self.assertEqual(app.generate("What is integration?", "", [])["sources"], [])
+        self.cloud.converse.assert_not_called()
+        for text, stop in [("Unsupported [9]", "end_turn"), ("Guess", "end_turn"), ("NO_EVIDENCE", "end_turn"),
+                           ("Truncated [1]", "max_tokens"), ("CLARIFY", "end_turn")]:
+            self.cloud.converse.return_value = {"output": {"message": {"content": [{"text": text}]}}, "stopReason": stop}
+            self.assertEqual(app.generate("question", "", ["ladder"])["sources"], [])
+
+    def test_failure_and_unknown_context(self):
+        self.cloud.converse.side_effect = RuntimeError("offline")
+        self.assertEqual(self.ask("What does this mean?", section="unlisted")["statusCode"], 503)
+        self.cloud.retrieve.assert_not_called()
+
+    def test_real_chat_history_and_budget(self):
+        old = {"question": "What is A?", "answer": "It is the area. [1]", "section": "rectangle"}
+        self.cloud.converse.return_value = {"stopReason":"end_turn", "usage":{"inputTokens":230,"outputTokens":22},
+            "output":{"message":{"content":[{"text":"The width multiplies the length rate. [1]"}]}}}
+        data = {"mode":"conversation", "question":"A=LW", "history":[old], "section":"rectangle"}
+        event = {"headers":{"X-Class-Code":"demo"}, "body":json.dumps(data)}
+        result = json.loads(app.handler(event, None)["body"])
+        self.assertEqual(result["section"], "rectangle")
+        model = self.cloud.converse.call_args.kwargs
+        prompt = json.loads(model["messages"][0]["content"][0]["text"])
+        self.assertEqual(prompt["recent_exchange"], [old])
+        self.assertEqual(model["inferenceConfig"]["maxTokens"], app.MAX_OUTPUT)
+        reserve, settle = [c.kwargs for c in self.cloud.update_item.call_args_list]
+        reserved = int(reserve["ExpressionAttributeValues"][":amount"]["N"])
+        self.assertEqual(int(reserve["ExpressionAttributeValues"][":room"]["N"])+reserved,2_000_000)
+        self.assertEqual(reserved+int(settle["ExpressionAttributeValues"][":refund"]["N"]),app.cost_bound(230,22))
+        self.assertEqual(reserve["Key"],settle["Key"])
+        self.assertLess(app.cost_bound(1,app.MAX_OUTPUT),reserved)
+        self.cloud.reset_mock()
+        bad = {**data, "history":[old]*4}
+        self.assertEqual(app.handler({**event,"body":json.dumps(bad)},None)["statusCode"],400)
+        self.cloud.converse.assert_not_called()
+        self.cloud.update_item.assert_not_called()
+
+    def test_feedback_requires_opt_in_and_auth(self):
+        body = json.dumps({"share": False})
+        event = {"routeKey": "POST /feedback", "headers": {"x-class-code": "demo"}, "body": body}
+        self.assertEqual(app.handler(event, None)["statusCode"], 400)
+        self.assertEqual(app.handler({**event, "headers": {}}, None)["statusCode"], 403)
+        self.cloud.update_item.assert_not_called()
+        self.cloud.converse.assert_not_called()
+
+    def test_feedback_and_private_report(self):
+        content = responses.exchange("Why negative?", "ladder", {"answer": "Height decreases [1].",
+                                     "sources": [{"href": "lectures/related-rates.html#ladder"}]})
+        token = responses.issue(self.cloud, content)
+        ticket = self.cloud.put_item.call_args.kwargs["Item"]
+        self.assertEqual(set(ticket), {"receipt", "digest", "expires_at"})
+        self.assertLess(abs(int(ticket["expires_at"]["N"]) - time.time() - 7200), 3)
+        payload = {"share": True, "receipt": token, "exchange": content, "rating": "stuck", "note": "<script>my work</script>"}
+        self.assertEqual(responses.share(self.cloud, payload)[0], 200)
+        write = self.cloud.update_item.call_args.kwargs
+        values = write["ExpressionAttributeValues"]
+        self.assertEqual(values[":original"], ticket["digest"])
+        self.assertIn("expires_at > :now", write["ConditionExpression"])
+        row = json.loads(values[":data"]["S"])
+        overview = report([(int(time.time()), row)])
+        self.assertIn("I’m still stuck: 1", overview)
+        self.assertIn("Why negative?", overview)
+        self.assertIn("&lt;script&gt;my work", overview)
+        self.assertNotIn("<script>", overview)
+        self.assertEqual(int(values[":expiry"]["N"]) - int(values[":now"]["N"]), 90 * 86400)
+        class AlreadyUsed(Exception):
+            response = {"Item": {"shared_digest": values[":sig"], "expires_at": values[":expiry"]}}
+        self.cloud.exceptions.ConditionalCheckFailedException = AlreadyUsed
+        self.cloud.update_item.side_effect = AlreadyUsed()
+        self.assertEqual(responses.share(self.cloud, payload)[0], 200)
+        self.assertEqual(responses.share(self.cloud, {**payload, "note": "changed"})[0], 409)
+        self.assertEqual(responses.share(self.cloud, {**payload, "exchange": {**content, "question": "swapped"}})[0], 409)
+        self.cloud.retrieve.assert_not_called()
+        self.cloud.converse.assert_not_called()
+
+    def test_book_integration(self):
+        original = (ROOT / "_site" / app.PAGE).read_text()
+        enabled = add_widget(original, "../", "https://example.org/ask", True)
+        self.assertIn('data-course-ask defer src="../assets/ask-notes/widget.js', enabled)
+        self.assertEqual(enabled, add_widget(enabled, "../", "https://example.org/ask", True))
+        self.assertNotIn("data-course-ask", add_widget(enabled, "../", ""))
+        self.assertIn("data-course-search", add_widget(enabled, "../", ""))
+        for k, v in self.book.items():
+            self.assertIn(f'id="{k}"', original)
+            self.assertTrue(v["text"])
+        self.assertIn("fixed hypotenuse", self.book["ladder"]["text"])
+        self.assertIn(r"\frac{dx}{dt}", self.book["ladder"]["text"])
+
+    def test_course_checks_are_free_and_tied_to_the_notes(self):
+        self.assertEqual(set(practice.checks()), set(self.book))
+        original = (ROOT / "_site" / app.PAGE).read_text()
+        free = add_widget(original, "../", "", with_practice=True)
+        self.assertIn("assets/ask-notes/practice.js", free)
+        self.assertNotIn("assets/ask-notes/widget.js", free)
+        self.assertEqual(add_widget(free, "../", "", with_practice=True), free)
+        for check in practice.checks().values():
+            self.assertEqual(len(check["choices"]), 3)
+            self.assertTrue(all(check["feedback"]))
+            self.assertTrue(check["hint"])
+
+    def test_public_suggested_answers_and_sources(self):
+        from html.parser import HTMLParser
+
+        class StepCounter(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.ancestors = []
+                self.counts = {}
+
+            def handle_starttag(self, tag, attrs):
+                attrs = dict(attrs)
+                if tag == "section":
+                    self.ancestors.append(attrs.get("id"))
+                if self.ancestors and "rr-step-label" in attrs.get("class", "").split():
+                    key = self.ancestors[-1]
+                    self.counts[key] = self.counts.get(key, 0) + 1
+
+            def handle_endtag(self, tag):
+                if tag == "section" and self.ancestors:
+                    self.ancestors.pop()
+
+        anchors = StepCounter()
+        anchors.feed((ROOT / "_site" / app.PAGE).read_text())
+        catalog_line = next(line for line in practice.browser_script().splitlines() if "const checks =" in line)
+        catalog = json.loads(catalog_line.split(" = ", 1)[1].removesuffix(";"))
+        for key, item in catalog.items():
+            with self.subTest(section=key):
+                help_item = item["help"]
+                self.assertRegex(help_item["question"].lower(), help_item["match"])
+                self.assertNotRegex("what is the capital of france?", help_item["match"])
+                self.assertIn("<math", item["answerHtml"])
+                self.assertIn("<annotation", item["answerHtml"])
+                self.assertLessEqual(help_item["step"], anchors.counts.get(key, 0))
+
+    def test_every_suggestion_has_its_own_grounded_answer(self):
+        for key, item in practice.checks().items():
+            suggestions = [item["help"], *[a for a in item.get("answers", []) if "question" in a]]
+            self.assertGreaterEqual(len(suggestions), 2)
+            for answer in suggestions:
+                with self.subTest(section=key, question=answer["question"]):
+                    target, result = app.route_question(answer["question"], key)
+                    self.assertEqual(target, key)
+                    self.assertIn(answer.get("text") or answer["explanation"], result["answer"])
+                    self.assertTrue(result["sources"][0]["href"].endswith("#" + key))
+
+    def test_students_can_check_a_line_of_work(self):
+        for section, question, phrase in [
+            ("ladder", "In example 6 I wrote r/h = 6/2. Is my proportion right?", "18-m radius"),
+            ("cone", "So r/h=2/6?", "equivalently"),
+            ("cone", "dh/dt?", "meters per minute"),
+            ("cone", "Is h/r = 6/2 right?", "equivalently"),
+            ("ladder", "For part (a), I got +1.5 ft/s. Is my sign right?", "height falls"),
+            ("rectangle", "Why are there two terms in the area rate?", "strip"),
+            ("shadow", "I got 1 m/s for the shadow. Is that the tip?", "moving person"),
+        ]:
+            with self.subTest(question=question):
+                result = json.loads(self.ask(question, section=section)["body"])
+                self.assertIn(phrase, result["answer"])
+        self.cloud.converse.assert_not_called()
+        self.cloud.update_item.assert_not_called()
+
+    def test_aws_deploy_defaults_to_free(self):
+        cmd = [sys.executable, str(ROOT / "ask-notes/deploy.py"), "--prepared"]
+        free = subprocess.run(cmd, capture_output=True, text=True)
+        self.assertEqual(free.returncode, 0)
+        self.assertIn("No AWS resources created", free.stderr)
+    def test_truncated_clarification(self):
+        self.cloud.converse.return_value = {"stopReason": "max_tokens", "output": {"message":
+            {"content": [{"text": "CLARIFY"}]}}}
+        self.assertEqual(app.generate("Which rate?", "", ["ladder"])["answer"], app.NO_EVIDENCE)
+
+    def test_practice_sharing_and_retry(self):
+        ladder = practice.checks()["ladder"]
+        payload = {"kind": "practice", "share": True, "section": "ladder", "choice": 1,
+                   "version": ladder["version"], "note": "I picked the foot.", "attempt": "10d4e598-4bdf-4554-ae6b-04bdaff938de"}
+        def submit(data, code="demo"):
+            return app.handler({"routeKey": "POST /feedback", "headers": {"X-Class-Code": code},
+                                "body": json.dumps(data)}, None)["statusCode"]
+        self.assertEqual(submit(payload, "bad"), 403)
+        self.assertEqual(submit({**payload, "share": False}), 400)
+        self.assertEqual(submit({**payload, "choice": -1}), 400)
+        self.assertEqual(submit({**payload, "choice": True}), 400)
+        self.assertEqual(submit({**payload, "version": "old"}), 409)
+        self.cloud.put_item.assert_not_called()
+        self.assertEqual(submit({**payload, "correct": True}), 200)
+        item = self.cloud.put_item.call_args.kwargs["Item"]
+        row = json.loads(item["response_json"]["S"])
+        self.assertFalse(row["correct"])
+        self.assertEqual(row["first_choice"], ladder["choices"][1])
+        self.assertEqual(int(item["expires_at"]["N"]) - int(item["shared_at"]["N"]), 90 * 86400)
+        self.assertIn("I picked the foot.", report([(int(time.time()), row)]))
+        class AlreadyShared(Exception):
+            response = {"Item": item}
+        self.cloud.exceptions.ConditionalCheckFailedException = AlreadyShared
+        self.cloud.put_item.side_effect = AlreadyShared()
+        self.assertEqual(submit(payload), 200)
+        self.assertEqual(submit({**payload, "choice": 0}), 409)
+        self.cloud.update_item.assert_not_called()
+        self.cloud.retrieve.assert_not_called()
+        self.cloud.converse.assert_not_called()
+
+
+if __name__ == "__main__":
+    unittest.main()
