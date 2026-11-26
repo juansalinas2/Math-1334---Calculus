@@ -45,6 +45,7 @@ async function renderMap() {
       for (const [field, value] of Object.entries(note)) {
         collect(value, field === "formula" ? "display" : "inline");
       }
+      for (const text of Object.values(note.figure || {})) collect(text, "inline");
       collect(note.symbol || note.formula.split("\n")[0], "inline");
     }
   }

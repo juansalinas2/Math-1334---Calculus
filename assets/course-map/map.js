@@ -24,6 +24,56 @@ let drawFrame = null;
 let gesturing = false;
 let rebasingPinch = false;
 let hovered = null;
+const routeViews = new Map();
+let route = "";
+let ready = false;
+const reader = byId("reader");
+
+function rememberView() {
+  if (!ready || !viewport.clientWidth) return;
+  const view = d3.zoomTransform(viewport);
+  const center = view.invert([viewport.clientWidth / 2, viewport.clientHeight / 2]);
+  routeViews.set(route, [...center, view.k]);
+}
+function setRoute(next, fromLocation) {
+  route = next;
+  const url = location.pathname + location.search + next;
+  if (location.hash === next) return;
+  if (fromLocation) history.replaceState(null, "", url);
+  else history.pushState(null, "", url);
+}
+function breadcrumb(topic, part) {
+  const trail = byId("trail");
+  trail.replaceChildren();
+  trail.hidden = !topic && family === "all";
+  if (trail.hidden) return;
+  function crumb(title, action) {
+    const item = el(action ? "button" : "span", title);
+    if (action) item.onclick = action;
+    else item.setAttribute("aria-current", "page");
+    if (trail.childElementCount) {
+      const divider = el("span", "›", "trail-divider");
+      divider.setAttribute("aria-hidden", "true");
+      trail.append(divider);
+    }
+    trail.append(item);
+  }
+  crumb("Course map", () => overview("all", true));
+  const key = topic?.family || family;
+  crumb(families[key].label, topic ? () => overview(key, true) : null);
+  if (topic) crumb(topic.title, part ? () => showTopic(topic.id) : null);
+  if (part) crumb(part.title);
+}
+function setReading(open, jump = false) {
+  detail.classList.toggle("reading", open);
+  const toggle = byId("sheet-toggle");
+  const example = byId("detail-body").querySelector(".note-example");
+  toggle.setAttribute("aria-expanded", String(open));
+  toggle.textContent = open ? "Back to map" : example ? "Read example" : "Read note";
+  if (open && jump && example) example.scrollIntoView({block: "start"});
+  else { reader.scrollTop = 0; detail.scrollTop = 0; }
+}
+byId("sheet-toggle").onclick = () => setReading(!detail.classList.contains("reading"), true);
 
 function trackPath(edge) {
   const a = byTopic.get(edge.source);
@@ -93,6 +143,13 @@ function drawCamera() {
   renderedScale = view.k;
 }
 const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
+  .filter(event => {
+    const content = event.target.closest?.(".focus-content");
+    const scrollable = content && content.scrollHeight > content.clientHeight + 1;
+    if (scrollable && ((event.type === "wheel" && !event.ctrlKey) ||
+        (event.type === "touchstart" && event.touches.length === 1))) return false;
+    return (!event.ctrlKey || event.type === "wheel") && !event.button;
+  })
   .duration(0)
   .on("start", (event) => {
     if (!event.sourceEvent) return;
@@ -127,12 +184,18 @@ const zoom = d3.zoom().scaleExtent([minZoom, maxZoom]).clickDistance(5)
       drawCamera();
     }
   })
-  .on("end", () => {
+  .on("end", event => {
     gesturing = false;
+    if (event.sourceEvent && selected && event.transform.k < 1) {
+      overview(byTopic.get(selected).family, true);
+    }
+    rememberView();
   });
 svg.call(zoom).on("wheel.mapBoundary", event => {
   // D3 leaves a wheel event unhandled when it starts at a scale limit.
   // Keep it on the map so a trackpad pinch cannot start zooming the page.
+  const content = event.target.closest?.(".focus-content");
+  if (!event.ctrlKey && content && content.scrollHeight > content.clientHeight + 1) return;
   event.preventDefault();
 }, { passive: false });
 
@@ -197,16 +260,19 @@ function showTopic(id, slug = null, fromLocation = false) {
   const topic = byTopic.get(id);
   if (!topic) return;
   const part = topic.parts.find((item) => partSlug(item) === slug || item.oldSlugs?.includes(slug));
+  const sameTopic = selected === id;
+  rememberView();
   selected = id;
   selectedPart = part ? partSlug(part) : null;
-  interiorPage = part
-    ? pagesOf(topic.parts).findIndex((page) => page.includes(part))
-    : 0;
+  const next = "#" + id + (part ? "/" + selectedPart : "");
+  setRoute(next, fromLocation);
   zoomAnchor = null;
   hovered = null;
   cameraMode = "selected";
-  family = "all";
+  family = topic.family;
+  document.body.classList.add("topic-open");
   detail.hidden = false;
+  breadcrumb(topic, part);
   byId("class-questions").open = false;
   byId("explore-tools").hidden = true;
   detail.style.setProperty("--accent", families[topic.family].color);
@@ -216,11 +282,6 @@ function showTopic(id, slug = null, fromLocation = false) {
   heading.tabIndex = -1;
   const context = families[topic.family].label + (note.kind ? " · " + note.kind : "");
   body.replaceChildren(el("p", context, "family-name"));
-  if (part) {
-    const back = el("button", "← " + topic.title, "parent-link");
-    back.onclick = () => showTopic(topic.id);
-    body.append(back);
-  }
   const link = el("a", "Read the lecture notes", "note-link");
   link.href = part?.href || topic.href;
   body.append(heading);
@@ -241,38 +302,39 @@ function showTopic(id, slug = null, fromLocation = false) {
     button.onclick = () => showTopic(other.id);
     body.append(button);
   });
-  detail.scrollTop = 0;
+  setReading(false);
   results.hidden = true;
   lookup.value = "";
-  const hash = "#" + id + (part ? "/" + selectedPart : "");
-  if (location.hash !== hash) {
-    if (fromLocation) history.replaceState(null, "", hash);
-    else history.pushState(null, "", hash);
-  }
   paint();
-  move(
-    topic.x,
-    topic.y,
-    Math.max(
-      d3.zoomTransform(viewport).k,
-      part ? formulaZoom + .18 : detailZoom + .03,
-    ),
-  );
-  heading.focus({ preventScroll: true });
+  const previous = routeViews.get(next);
+  if (previous && (fromLocation || (sameTopic && !part))) move(...previous);
+  else if (!sameTopic || d3.zoomTransform(viewport).k < detailZoom) {
+    move(topic.x, topic.y, Math.max(detailZoom + .03, d3.zoomTransform(viewport).k));
+  } else drawCamera();
+  if (!matchMedia("(max-width: 760px)").matches) heading.focus({preventScroll: true});
 }
-function overview(which = "all") {
+function overview(which = "all", restore = false, fromLocation = false) {
+  rememberView();
+  const next = which === "all" ? "" : "#family/" + which;
+  setRoute(next, fromLocation);
   selected = null;
   selectedPart = null;
   zoomAnchor = null;
   hovered = null;
   family = which;
   cameraMode = "overview";
+  document.body.classList.remove("topic-open");
+  detail.classList.remove("reading");
   detail.hidden = true;
+  breadcrumb();
   byId("explore-tools").hidden = false;
   byId("class-questions").open = false;
-  if (location.hash) history.pushState(null, "", location.pathname + location.search);
   paint();
-  frame();
+  const previous = routeViews.get(next);
+  if (restore && previous) {
+    cameraMode = "manual";
+    move(...previous);
+  } else frame();
 }
 stops.on("click", (event, d) => {
   if (!event.defaultPrevented) showTopic(d.id);
@@ -322,14 +384,19 @@ function scaleBy(factor) {
   zoomAnchor = null;
   cameraMode = "manual";
   svg.call(zoom.scaleBy, factor);
+  if (selected && d3.zoomTransform(viewport).k < 1) overview(byTopic.get(selected).family, true);
 }
 zoomIn.onclick = () => scaleBy(1.35);
 zoomOut.onclick = () => scaleBy(1 / 1.35);
 byId("fit").onclick = () => overview();
 byId("close").onclick = () => {
-  const last = selected;
-  overview();
-  stops.filter((d) => d.id === last).node()?.focus({ preventScroll: true });
+  if (detail.classList.contains("reading")) setReading(false);
+  else if (selectedPart) showTopic(selected);
+  else if (selected) {
+    const previous = byTopic.get(selected);
+    overview(previous.family, true);
+    viewport.focus({preventScroll: true});
+  }
 };
 viewport.addEventListener("keydown", (event) => {
   const step = 60 / d3.zoomTransform(viewport).k;
@@ -348,7 +415,7 @@ viewport.addEventListener("keydown", (event) => {
     overview();
   }
 });
-const searchEntries = CourseSearch.prepare(stations.flatMap(topic =>
+const rawEntries = stations.flatMap(topic =>
   [topic, ...topic.parts].map(note => ({
     title: note.title, kind: note.kind, context: topic.title,
     aliases: [note.aliases || "", note === topic ? topic.label : ""],
@@ -356,7 +423,8 @@ const searchEntries = CourseSearch.prepare(stations.flatMap(topic =>
     href: "#" + topic.id + (note === topic ? "" : "/" + partSlug(note)),
     topic, note,
   }))
-));
+);
+let searchEntries;
 let searchGeneration = 0;
 function search() {
   const request = ++searchGeneration;
@@ -364,7 +432,10 @@ function search() {
   results.replaceChildren();
   results.hidden = !query;
   if (!query) return;
-  const hits = CourseSearch.rank(searchEntries, query, 5);
+  const searchEngine = window.CourseSearch;
+  if (searchEngine && !searchEntries) searchEntries = searchEngine.prepare(rawEntries);
+  const hits = searchEngine ? searchEngine.rank(searchEntries, query, 5) :
+    rawEntries.filter(entry => [entry.title, ...entry.aliases].join(" ").toLowerCase().includes(query.toLowerCase())).slice(0, 5);
   if (hits.length) results.append(el("p", "On the map", "result-group"));
   for (const {topic, note} of hits) {
     const btn = el("button", note.title);
@@ -376,9 +447,10 @@ function search() {
   const allNotes = el("a", "Search all course notes →", "all-notes-search");
   allNotes.href = "../index.html?find=" + encodeURIComponent(query);
   results.append(allNotes);
-  CourseSearch.loadBook().then(records => {
+  if (!searchEngine) return;
+  searchEngine.loadBook().then(records => {
     if (request !== searchGeneration || results.hidden || lookup.value.trim() !== query) return;
-    const reading = CourseSearch.rank(records, query, 3);
+    const reading = searchEngine.rank(records, query, 3);
     if (!reading.length) return;
     allNotes.before(el("p", "In the notes", "result-group"));
     for (const item of reading) {
@@ -456,13 +528,9 @@ new ResizeObserver(() => {
 function openLocation() {
   const [id, slug] = location.hash.slice(1).split("/");
   if (byTopic.has(id)) showTopic(id, slug, true);
+  else if (id === "family" && Object.hasOwn(families, slug)) overview(slug, true, true);
+  else if (ready) overview("all", true, true);
   else {
-    selected = null;
-    selectedPart = null;
-    zoomAnchor = null;
-    family = "all";
-    detail.hidden = true;
-    byId("explore-tools").hidden = false;
     cameraMode = "initial";
     paint();
     initialFrame();
@@ -470,3 +538,4 @@ function openLocation() {
 }
 window.addEventListener("hashchange", openLocation);
 openLocation();
+ready = true;

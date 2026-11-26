@@ -14,7 +14,7 @@
     <script defer src="./search.js"></script>
     <script defer src="./map.js"></script>
   </head>
-  <body>
+  <body data-map-layout="focus">
     <header>
       <div class="mainbar">
         <div class="identity">
@@ -56,23 +56,25 @@
           Whole map
         </button><span id="families"></span>
       </nav>
+      <nav id="trail" hidden aria-label="Map breadcrumb"></nav>
     </header>
     <main>
       <section class="stage" aria-label="Interactive calculus map">
-        <svg
+        <div
           id="canvas"
           tabindex="0"
           role="group"
           aria-label="Course concepts. Drag to pan, or use arrow keys. Use plus and minus to zoom."
         >
+          <svg id="drawing" width="100%" height="100%" aria-label="Concept graph">
           <!-- node marks -->
           <g id="world">
             <g id="rails"></g>
-            <g id="orbit-guides"></g>
             <g id="stops"></g>
-            <g id="inside-topic" role="group" style="display: none"></g>
           </g>
-        </svg>
+          </svg>
+          <section id="inside-topic" class="focus-card" hidden></section>
+        </div>
         <div class="explore-tools" id="explore-tools">
           <details class="class-questions" id="class-questions">
             <summary>Start with a question <span aria-hidden="true">↗</span></summary>
@@ -83,11 +85,6 @@
             </div>
           </details>
           <span class="gesture-hint">Select a concept · Drag to move · Zoom for detail</span>
-        </div>
-        <div id="part-pages" hidden aria-label="Subtopic pages">
-          <button id="previous-parts" aria-label="Previous subtopics">‹</button>
-          <output id="part-page" aria-live="polite"></output>
-          <button id="next-parts" aria-label="Next subtopics">›</button>
         </div>
         <div class="controls" aria-label="Map controls">
           <button id="out" disabled aria-label="Zoom out" title="Zoom out">
@@ -110,8 +107,13 @@
         </div>
       </section>
       <aside id="detail" hidden aria-label="Selected concept">
-        <button id="close" aria-label="Close concept details">×</button>
-        <div id="detail-body"></div>
+        <div id="reader">
+          <div class="reader-tools">
+            <button id="sheet-toggle" aria-expanded="false" aria-controls="detail-body">Read note</button>
+            <button id="close" title="Up one level" aria-label="Up one level">×</button>
+          </div>
+          <div id="detail-body"></div>
+        </div>
       </aside>
     </main>
     <noscript><p>

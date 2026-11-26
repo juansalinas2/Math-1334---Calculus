@@ -1,46 +1,69 @@
-// One local cluster is mounted at a time; the parent keeps its map coordinates.
+// The expanded note shares the map coordinates of its parent station.
 const detailZoom = 1.5;
-const formulaZoom = 2.1;
-
-// Increase the detail size gradually to keep labels readable during a zoom.
-function detailScale(zoomLevel) {
-  return Math.sqrt(Math.max(1, zoomLevel / detailZoom));
-}
-const interior = d3.select("#inside-topic");
-const guides = d3.select("#orbit-guides");
+const detailScale = level => Math.sqrt(Math.max(1, level / detailZoom));
+const focusCard = document.getElementById("inside-topic");
 let insideId = null;
-let interiorPage = 0;
-let mountedPage = -1;
-let layoutKey = "";
 let zoomAnchor = null;
-const pageControls = document.getElementById("part-pages");
-
-// A group of four divides into two pairs, leaving room for the parent in both views.
-function pagesOf(parts) {
-  const pages = [];
-  let start = 0;
-  while (start < parts.length) {
-    const size = parts.length - start === 4 ? 2 : 3;
-    pages.push(parts.slice(start, start + size));
-    start += size;
-  }
-  return pages;
-}
-for (const [id, step] of [["previous-parts", -1], ["next-parts", 1]]) {
-  document.getElementById(id).onclick = () => {
-    interiorPage += step;
-    drawInterior(d3.zoomTransform(viewport));
-  };
-}
 
 function partSlug(part) {
   return part.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-$/, "");
 }
 
+function focusMark(note) {
+  const svg = d3.create("svg:svg").attr("viewBox", "-18 -18 36 36")
+    .attr("class", "focus-mark").attr("aria-hidden", "true");
+  svg.append("circle").attr("r", 16);
+  drawMark(svg.datum(note), 25);
+  return svg.node();
+}
+
+function buildInterior(topic) {
+  const heading = el("button", "", "focus-heading");
+  heading.type = "button";
+  heading.append(focusMark(topic), el("strong", topic.title));
+  heading.onclick = () => showTopic(topic.id);
+  const content = el("div", "", "focus-content");
+  function group(title, parts, numbered = false) {
+    const section = el("section", "", "focus-group");
+    if (title) section.append(el("h3", title));
+    const list = el(numbered ? "ol" : "ul", "", "focus-choices");
+    parts.forEach((part, index) => {
+      const li = el("li", "");
+      const button = el("button", "", "focus-choice");
+      button.dataset.part = partSlug(part);
+      if (numbered) button.append(el("span", String(index + 1), "step-number"));
+      button.append(focusMark(part), el("span", part.title, "choice-title"));
+      button.onclick = e => {
+        if (!e.defaultPrevented) showTopic(topic.id, partSlug(part));
+      };
+      li.append(button);
+      list.append(li);
+    });
+    section.append(list);
+    content.append(section);
+  }
+  const parts = topic.parts;
+  if (topic.id === "limitmethods") {
+    content.classList.add("decision");
+    content.append(el("p", "What does direct substitution give?", "focus-question"));
+    group(parts[0].branch, parts.slice(0, 1));
+    group(parts[1].branch, parts.slice(1, 2));
+    group(parts[2].branch, parts.slice(2, 5));
+    group(parts[5].branch, parts.slice(5));
+  } else if (topic.id === "rates") {
+    group("", parts.slice(0, 3), true);
+    group("Supporting geometry", parts.slice(3));
+  } else {
+    group("", parts, topic.id === "sketch");
+  }
+  focusCard.setAttribute("aria-label", "Inside " + topic.title);
+  focusCard.style.setProperty("--accent", families[topic.family].color);
+  focusCard.replaceChildren(heading, content);
+}
+
 function drawInterior(view) {
-  const width = viewport.clientWidth;
-  const height = viewport.clientHeight;
-  let topic = null;
+  const width = viewport.clientWidth, height = viewport.clientHeight;
+  let topic;
   if (view.k >= detailZoom) {
     if (selected) topic = byTopic.get(selected);
     else {
@@ -49,119 +72,30 @@ function drawInterior(view) {
       for (const node of stations) {
         if (family !== "all" && node.family !== family) continue;
         const delta = (node.x - x) ** 2 + (node.y - y) ** 2;
-        if (delta < distance) {
-          topic = node;
-          distance = delta;
-        }
+        if (delta < distance) { distance = delta; topic = node; }
       }
     }
   }
-  if (insideId !== (topic?.id ?? null)) {
-    insideId = topic?.id ?? null;
-    if (topic && insideId !== selected) interiorPage = 0;
-    mountedPage = -1;
-    layoutKey = "";
-    interior.selectAll("*").remove();
-    guides.selectAll("*").remove();
+  const id = topic?.id || null;
+  if (insideId !== id) {
+    insideId = id;
+    focusCard.hidden = !topic;
     world.classed("has-interior", Boolean(topic));
-    stops.classed("inside-parent", (d) => d.id === insideId);
-    interior.style("display", topic ? null : "none");
-    pageControls.hidden = true;
+    stops.classed("inside-parent", d => d.id === id);
+    if (topic) buildInterior(topic);
   }
   if (!topic) return;
-  const pages = pagesOf(topic.parts);
-  const visible = pages[interiorPage];
-  if (mountedPage !== interiorPage) {
-    mountedPage = interiorPage;
-    layoutKey = "";
-    interior.selectAll("*").remove();
-    guides.selectAll("*").remove();
-    buildInterior(topic, visible);
-    pageControls.hidden = pages.length < 2;
-    document.getElementById("part-page").textContent = (interiorPage + 1) +
-      " / " + pages.length;
-    document.getElementById("previous-parts").disabled = interiorPage === 0;
-    document.getElementById("next-parts").disabled =
-      interiorPage === pages.length - 1;
-  }
-  const transform = "translate(" + [topic.x, topic.y] + ") scale(" +
-    detailScale(view.k) / view.k + ")";
-  interior.attr("transform", transform);
-  guides.attr("transform", transform);
-  const deep = view.k >= formulaZoom;
-  interior.classed("with-formulas", deep);
-  const key = [width, height, deep, selectedPart].join("/");
-  if (key === layoutKey) return;
-  layoutKey = key;
-  const narrow = width < 560;
-  const count = visible.length;
-  // Leave room for each label even at the highest magnification.
-  const availableWidth = width / detailScale(maxZoom);
-  const rx = Math.min(availableWidth * .25, 150);
-  const ry = Math.min(height * .23, 94);
-  const positions = count === 1
-    ? [[0, -ry]]
-    : count === 2
-    ? narrow ? [[0, -ry], [0, ry]] : [[-rx, -ry * .57], [rx, ry * .57]]
-    : [[-rx, -ry * .72], [rx, -ry * .72], [0, ry]];
-  const box = Math.max(
-    100,
-    Math.min(204, availableWidth * (narrow && count === 3 ? .48 : .8)),
-  );
-  guides.select("ellipse").attr(
-    "rx",
-    narrow && count === 2 ? Math.max(48, rx * .68) : rx,
-  )
-    .attr("ry", ry);
-  guides.selectAll("line").attr("x2", (_, i) => positions[i][0]).attr(
-    "y2",
-    (_, i) => positions[i][1],
-  );
-  const group = interior.selectAll("g.part")
-    .attr("transform", (_, i) => "translate(" + positions[i] + ")")
-    .attr("aria-pressed", (d) => String(selectedPart === partSlug(d)));
-  group.select("rect").attr("x", -box / 2).attr("width", box).attr(
-    "height",
-    deep ? 90 : 62,
-  );
-  group.select("foreignObject").attr("x", -box / 2).attr("width", box);
-  // Keep compact notation legible. A full equation is always available in the note.
-  if (deep) {
-    group.selectAll(".part-formula").each(function () {
-      this.hidden = false;
-      this.hidden = this.scrollWidth > box - 4;
-    });
-  }
-}
-
-function buildInterior(topic, visible) {
-  const color = families[topic.family].color;
-  guides.attr("stroke", color).attr("aria-hidden", "true");
-  guides.append("ellipse").attr("class", "orbit");
-  guides.selectAll("line").data(visible).join("line");
-  interior.attr("aria-label", "Inside " + topic.title).style("--accent", color);
-  const buttons = interior.selectAll("g.part").data(visible).join("g")
-    .attr("class", "part").attr("role", "button").attr("tabindex", 0)
-    .attr("aria-label", (p) => topic.title + ", " + p.title)
-    .on("click", (event, p) => {
-      if (!event.defaultPrevented) showTopic(topic.id, partSlug(p));
-    })
-    .on("keydown", (event, p) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        showTopic(topic.id, partSlug(p));
-      }
-    });
-  buttons.append("rect").attr("y", -17).attr("fill", "transparent");
-  buttons.append("circle").attr("r", 16).attr("stroke", color);
-  drawMark(buttons, 24);
-  const labels = buttons.append("foreignObject").attr("y", 18).attr(
-    "height",
-    85,
-  )
-    .append("xhtml:div").attr("class", "part-label");
-  labels.append("xhtml:strong").text((p) => p.title);
-  labels.append("xhtml:span").attr("class", "part-formula").each(function (p) {
-    writeMapText(this, p.symbol || p.formula.split("\n")[0]);
+  const [x, y] = view.apply([topic.x, topic.y]);
+  const scale = detailScale(view.k);
+  const narrow = width < 550;
+  // On a phone the card can scroll vertically while its header stays in view.
+  const allowedWidth = Math.min(620, (width - 24) / (narrow ? scale : 1));
+  focusCard.style.width = Math.max(170, allowedWidth) + "px";
+  focusCard.style.maxHeight = Math.max(100, (height - 20) / scale) + "px";
+  focusCard.classList.toggle("narrow", narrow);
+  focusCard.style.transform = "translate(" + x + "px," + y + "px) scale(" + scale + ") translate(-50%,-50%)";
+  focusCard.querySelectorAll("[data-part]").forEach(button => {
+    const pressed = String(selected === id && selectedPart === button.dataset.part);
+    if (button.getAttribute("aria-pressed") !== pressed) button.setAttribute("aria-pressed", pressed);
   });
 }

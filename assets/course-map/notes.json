@@ -20,7 +20,10 @@
         "symbol": "$g(2)=7$",
         "figure": {
           "file": "limit-value.png",
-          "alt": "A line approaches the open point (2, 4) from both sides, with a separate filled point at (2, 7)."
+          "alt": "A rising line has an open circle at (2, 4) and a separate filled point at (2, 7).",
+          "prompt": "What happens to $\\lim_{x\\to2}g(x)$ if the filled point moves higher? What happens to $g(2)$?",
+          "placement": "question",
+          "reasoning": "The nearby line stays fixed, so the limit remains $4$. The filled point currently gives $g(2)=7$, and moving it changes that value."
         },
         "mark": "g(2)",
         "reasoning": "The nearby graph follows $y=x+2$, so its limit at $2$ is $4$. The filled point gives $g(2)=7$.",
@@ -42,7 +45,14 @@
         "mark": "L",
         "theorems": [
           "limits-two-sided"
-        ]
+        ],
+        "figure": {
+          "file": "exam-practice-function.png",
+          "alt": "At input −1, a descending line has an open circle at height 1 and a filled point above it at height 3.",
+          "prompt": "Use the graph to find $f(-1)$ and the two one-sided limits at $-1$. Is $f$ continuous there?",
+          "placement": "question",
+          "reasoning": "The filled point gives $f(-1)=3$. The two branches both approach $1$, so the limit is $1$ and $f$ is discontinuous at $-1$."
+        }
       },
       {
         "title": "Table method",
@@ -66,14 +76,28 @@
         "idea": "Even very close to zero, the graph keeps reaching a peak and then a trough. Compare those heights before trusting a short table.",
         "symbol": "$\\sin(1/x)$",
         "mark": "\\sin",
-        "reasoning": "Arbitrarily close to $0$, some inputs give $\\sin(1/x)=1$ and others give $\\sin(1/x)=-1$. There is no single limiting height."
+        "reasoning": "Arbitrarily close to $0$, some inputs give $\\sin(1/x)=1$ and others give $\\sin(1/x)=-1$. There is no single limiting height.",
+        "figure": {
+          "file": "oscillating-limit.png",
+          "alt": "The graph of sine of one over x makes increasingly frequent oscillations between −1 and 1 on approach to zero.",
+          "prompt": "Does $\\sin(1/x)$ approach a single value as $x\\to0$? Use what happens near its peaks and troughs.",
+          "placement": "solution",
+          "reasoning": "Arbitrarily close to $0$ there are inputs with output $1$ and others with output $-1$. The finite limit does not exist."
+        }
       }
     ],
     "example": "For $f(x)=\\frac{x^2-4}{x-2}$, the graph follows $y=x+2$ up to the hole at $(2,4)$. Thus $\\lim_{x\\to2}f(x)=4$.",
     "mark": "\\lim",
     "theorems": [
       "limits-two-sided"
-    ]
+    ],
+    "figure": {
+      "file": "limit-hole.png",
+      "alt": "The line through the horizontal axis at −2 has an open circle at (2, 4).",
+      "prompt": "Read the graph. What is $\\lim_{x\\to2}f(x)$? Is $f(2)$ defined?",
+      "placement": "question",
+      "reasoning": "Both sides approach $4$. The open circle leaves $f(2)$ undefined."
+    }
   },
   "sides": {
     "title": "One-sided limits",
@@ -98,7 +122,14 @@
         "mark": "a^\\pm",
         "theorems": [
           "limits-two-sided"
-        ]
+        ],
+        "figure": {
+          "file": "different-sides.png",
+          "alt": "At input zero, a line approaches an open point at height 2 from the left. A curved branch starts at a filled point at height −3 on the right.",
+          "prompt": "Approach $0$ from each side of the graph. Do the two branches lead you to the same height?",
+          "placement": "question",
+          "reasoning": "The left-hand limit is $2$ and the right-hand limit is $-3$. The two-sided limit does not exist."
+        }
       },
       {
         "title": "Two-sided limit criterion",
@@ -111,7 +142,14 @@
         "mark": "L",
         "theorems": [
           "limits-two-sided"
-        ]
+        ],
+        "figure": {
+          "file": "same-sides.png",
+          "alt": "Two branches approach an open circle at the origin. A filled point lies above them at (0, 2).",
+          "prompt": "Does $\\lim_{x\\to0}g(x)$ exist here? How does it compare with $g(0)$?",
+          "placement": "question",
+          "reasoning": "Both branches approach zero, so $\\lim_{x\\to0}g(x)=0$. The separate filled point gives $g(0)=2$."
+        }
       },
       {
         "title": "The case method",
@@ -228,7 +266,10 @@
         "symbol": "$x^2\\sin(1/x)$",
         "figure": {
           "file": "squeeze-oscillation.png",
-          "alt": "The graph of x squared times sine of one over x oscillates between two parabolas that meet at the origin."
+          "alt": "The curve oscillates between the parabolas y = −x squared and y = x squared, which meet at the origin.",
+          "prompt": "Which two functions bound $x^2\\sin(1/x)$? Use them to find its limit as $x\\to0$.",
+          "placement": "solution",
+          "reasoning": "Since $-1\\le\\sin(1/x)\\le1$ and $x^2\\ge0$, the graph stays between $-x^2$ and $x^2$. Both bounds tend to zero."
         },
         "mark": "x^2",
         "reasoning": "For $x\\ne0$, $-x^2\\le x^2\\sin(1/x)\\le x^2$. Both bounds tend to $0$, so the middle function tends to $0$.",
@@ -251,7 +292,14 @@
         "theorems": [
           "limits-squeeze",
           "limits-trig-limit"
-        ]
+        ],
+        "figure": {
+          "file": "unit-circle-squeeze.png",
+          "alt": "A radius at angle θ meets the unit circle at P and the vertical tangent at T. The sector lies between an inscribed triangle and the larger triangle reaching T.",
+          "prompt": "For $0<\\theta<\\pi/2$, compare the areas of the smaller triangle, the unit-circle sector, and the larger triangle. What inequality follows?",
+          "placement": "question",
+          "reasoning": "The areas give $\\frac12\\sin\\theta\\le\\frac12\\theta\\le\\frac12\\tan\\theta$. Rearranging gives $\\cos\\theta\\le\\frac{\\sin\\theta}{\\theta}\\le1$."
+        }
       },
       {
         "title": "Match the argument",
@@ -272,7 +320,14 @@
     "theorems": [
       "limits-squeeze",
       "limits-trig-limit"
-    ]
+    ],
+    "figure": {
+      "file": "squeeze-bounds.png",
+      "alt": "Two dashed parabolas labeled 5 plus or minus the square of x minus 1 meet at (1, 5).",
+      "prompt": "A graph stays between these two parabolas near $x=1$. What limit must it have there?",
+      "placement": "question",
+      "reasoning": "Both bounding functions approach $5$ at $1$. By the squeeze theorem, the middle function also has limit $5$."
+    }
   },
   "continuity": {
     "title": "Continuity",
@@ -402,7 +457,10 @@
     "example": "In class, the polynomial $4x^3-6x^2+3x-2$ changes sign between $0$ and $2$. Its graph must meet the horizontal axis in that interval.",
     "figure": {
       "file": "intermediate-value.png",
-      "alt": "A continuous graph between its endpoint values meets the line at height N."
+      "alt": "A horizontal line at height N lies between the endpoint heights. It intersects the continuous graph above an input marked c.",
+      "prompt": "For a continuous function on $[a,b]$, why must the graph reach a height $N$ between $f(a)$ and $f(b)$?",
+      "placement": "solution",
+      "reasoning": "The Intermediate Value Theorem gives an input $c\\in[a,b]$ with $f(c)=N$. On the diagram, the line at height $N$ meets the curve above $c$."
     },
     "mark": "N",
     "theorems": [
@@ -492,7 +550,14 @@
         "mark": "mx+b",
         "theorems": [
           "slant-by-division"
-        ]
+        ],
+        "figure": {
+          "file": "november-9-vertical-gap.svg",
+          "alt": "A curve and an oblique line with the vertical distance between them marked at one input.",
+          "prompt": "For $f(x)=\\frac{x^2-1}{x}$, what line does the curve approach at each end? Use the vertical difference to justify your answer.",
+          "placement": "question",
+          "reasoning": "Write $f(x)=x-\\frac1x$. The difference from $y=x$ is $-\\frac1x$, which tends to $0$ at both ends."
+        }
       },
       {
         "title": "Two different horizontal asymptotes",
@@ -600,7 +665,10 @@
         "symbol": "$\\frac{\\Delta y}{\\Delta x}$",
         "figure": {
           "file": "derivatives-secant-tangent.png",
-          "alt": "Secant lines through two points of the parabola approach the tangent at (1,2) as the second point moves toward the first."
+          "alt": "A parabola passes through P at (1,2) and a second point Q. A secant joins P to Q, and a tangent passes through P.",
+          "prompt": "On $y=3x-x^2$, keep $P=(1,2)$ fixed and move $Q$ toward it. What slope do the secants approach?",
+          "placement": "question",
+          "reasoning": "For $x\\ne1$, the secant slope is $\\frac{3x-x^2-2}{x-1}=2-x$. As $x\\to1$, it approaches $1$."
         },
         "mark": "\\frac{\\Delta y}{\\Delta x}",
         "theorems": [
@@ -617,25 +685,38 @@
         "example": "The simplified quotient is $\\frac{1}{\\sqrt{x+5}+3}$, so $f'(4)=\\frac16$.",
         "symbol": "$f'(4)=\\frac16$",
         "mark": "f'(4)",
-        "reasoning": "For $f(x)=\\sqrt{x+5}$, the quotient becomes $\\frac{1}{\\sqrt{x+5}+3}$ for $x\\ne4$. Thus $f'(4)=\\frac16$."
+        "reasoning": "For $f(x)=\\sqrt{x+5}$, the quotient becomes $\\frac{1}{\\sqrt{x+5}+3}$ for $x\\ne4$. Thus $f'(4)=\\frac16$.",
+        "figure": {
+          "file": "derivatives-square-root.png",
+          "alt": "A tangent of slope one sixth meets the square-root graph at (4,3).",
+          "prompt": "Use the definition of the derivative to find the tangent slope of $y=\\sqrt{x+5}$ at $x=4$.",
+          "placement": "solution",
+          "reasoning": "Multiplying by the conjugate gives $\\frac{\\sqrt{x+5}-3}{x-4}=\\frac1{\\sqrt{x+5}+3}$ for $x\\ne4$. The limit is $\\frac16$."
+        }
       },
       {
         "title": "When the derivative does not exist",
         "kind": "Example",
         "href": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
-        "definition": "For $f(x)=|x|$ at $0$, compute the difference quotient on each side.",
-        "formula": "$\\lim_{h\\to0^-}\\frac{|h|}{h}=-1$\n$\\lim_{h\\to0^+}\\frac{|h|}{h}=1$",
-        "idea": "Zooming in at the corner of $|x|$ leaves two straight pieces with different slopes. No amount of zooming makes them line up.",
+        "definition": "A derivative at a point exists when the left- and right-hand difference quotients approach the same finite number.",
+        "formula": "$f'(a)=\\lim_{h\\to0}\\frac{f(a+h)-f(a)}{h}$",
+        "idea": "A tangent gives one slope at a point. Approach from each side and check whether both sides give that slope.",
         "oldSlugs": [
           "limiting-slope"
         ],
         "symbol": "$L^-\\ne L^+$",
         "mark": "L^\\pm",
-        "reasoning": "The left-hand difference quotient is $-1$ and the right-hand one is $1$, so $f'(0)$ does not exist.",
         "theorems": [
           "limits-two-sided",
           "d-continuity"
-        ]
+        ],
+        "figure": {
+          "file": "derivatives-absolute-value.png",
+          "alt": "The two straight sides of the V meet at the origin. The left side is labeled slope −1 and the right side slope 1.",
+          "prompt": "Does $f(x)=|x|$ have a tangent slope at $x=0$? Compare the slopes from the two sides.",
+          "placement": "solution",
+          "reasoning": "The difference quotient is $\\frac{|h|}{h}$. It equals $-1$ for $h<0$ and $1$ for $h>0$, so $f'(0)$ does not exist."
+        }
       }
     ],
     "kind": "Definition",
@@ -718,7 +799,14 @@
         "theorems": [
           "increasing-decreasing",
           "concavity-test"
-        ]
+        ],
+        "figure": {
+          "file": "exam-2-derivative-graph.png",
+          "alt": "The graph of f prime passes through (−4,2), (−2,−2), (0,2), (2,−2), and (4,2) with smooth turns. It crosses the horizontal axis at −3, −1, 1, and 3.",
+          "prompt": "The curve shows $y=f'(x)$ on $(-4,4)$. Where is $f$ decreasing? Where does it have horizontal tangents? What happens at $x=2$?",
+          "placement": "question",
+          "reasoning": "The graph lies below the axis on $(-3,-1)$ and $(1,3)$, so $f$ decreases there. The zeros at $-3,-1,1,3$ give horizontal tangents to $f$. At $x=2$, the tangent to $f$ has slope $f'(2)=-2$."
+        }
       }
     ],
     "kind": "Definition",
@@ -782,7 +870,14 @@
         "reasoning": "Zoom in at $(a,f(a))$. The curve looks almost straight, and the slope of that line is the derivative.",
         "theorems": [
           "d-tangent"
-        ]
+        ],
+        "figure": {
+          "file": "derivatives-zoom.png",
+          "alt": "Two views show a smooth curve and its tangent at a marked point. After magnification, the two lines almost coincide near the point.",
+          "prompt": "When you zoom in near $x=a$, how can the tangent slope predict the change in $f$ over a small input change $h$?",
+          "placement": "question",
+          "reasoning": "The tangent changes by $f'(a)h$. Near $a$, the curve follows the tangent closely, so $f(a+h)-f(a)\\approx f'(a)h$."
+        }
       }
     ],
     "kind": "Definition",
@@ -824,7 +919,10 @@
         ],
         "figure": {
           "file": "motion-position-signs.png",
-          "alt": "The position rises until time 3/2 and then falls. Velocity changes from positive to negative there while acceleration remains negative."
+          "alt": "The position curve rises until time 3/2 and then falls. The velocity sign chart changes from positive to negative there, and acceleration stays negative.",
+          "prompt": "For $s(t)=3t-t^2$ on $[0,3]$, when does the particle reverse direction?",
+          "placement": "solution",
+          "reasoning": "Velocity is $v(t)=3-2t$. It is positive before $t=\\frac32$ and negative afterward, so the particle reverses at $t=\\frac32$."
         },
         "mark": "\\lvert v\\rvert",
         "reasoning": "For $s(t)=3t-t^2$ on $[0,3]$, velocity changes from positive to negative at $t=\\frac32$, where the particle turns around.",
@@ -932,10 +1030,17 @@
         "formula": "$(fg)'=f'g+fg'$",
         "idea": "Both factors can contribute to the change in a product. Hold one at its current value while accounting for the change in the other, then switch their roles.",
         "mark": "fg",
-        "reasoning": "For $f(x)=x(3-x)$, the two terms are $3-x$ and $-x$. Thus $f'(x)=3-2x$.",
         "theorems": [
           "d-product"
-        ]
+        ],
+        "figure": {
+          "file": "rules-product-area.png",
+          "alt": "A rectangle of area uv grows along two edges. Two added strips have areas v times the change in u and u times the change in v. The small corner has area equal to the product of the changes.",
+          "prompt": "Divide the change in area by the input change $h$. Which pieces of the rectangle contribute to the product rule as $h$ approaches zero?",
+          "placement": "question",
+          "reasoning": "The strips contribute $vu'$ and $uv'$. The corner contributes $\\Delta u\\cdot\\frac{\\Delta v}{h}$, which tends to zero since $\\Delta u\\to0$ and $\\frac{\\Delta v}{h}\\to v'$."
+        },
+        "example": "For $f(x)=x(3-x)$, the two terms are $3-x$ and $-x$. Thus $f'(x)=3-2x$."
       },
       {
         "title": "Quotient rule",
@@ -1102,7 +1207,10 @@
         "symbol": "$\\frac{dx}{dy}=0$",
         "figure": {
           "file": "october-21-figure-10.svg",
-          "alt": "The ellipse has vertical tangents at (−2,1) and (2,−1) and horizontal tangents at (1,−2) and (−1,2)."
+          "alt": "The tilted ellipse has vertical tangents at (−2,1) and (2,−1) and horizontal tangents at (−1,2) and (1,−2).",
+          "prompt": "Where does the ellipse $x^2+xy+y^2=3$ have vertical tangents?",
+          "placement": "solution",
+          "reasoning": "Set $\\frac{dx}{dy}=-\\frac{x+2y}{2x+y}=0$. Substituting $x=-2y$ into the ellipse gives $3y^2=3$. Both $(-2,1)$ and $(2,-1)$ have $2x+y\\ne0$."
         },
         "mark": "\\frac{dx}{dy}",
         "reasoning": "On $x^2+xy+y^2=3$, set $x=-2y$ in the original equation. The points are $(-2,1)$ and $(2,-1)$, with $2x+y\\ne0$ at both."
@@ -1180,7 +1288,14 @@
         "reasoning": "The tank is 6 m tall with radius 2 m, so $r/h=2/6$ and $r=h/3$.",
         "theorems": [
           "d-similar"
-        ]
+        ],
+        "figure": {
+          "file": "rr-cone.svg",
+          "alt": "An inverted tank has height 6 m and top radius 2 m. Inside it, the shaded water has depth h and surface radius r, measured from the same center line.",
+          "prompt": "Water enters the pictured tank at $\\pi\\,\\mathrm{m^3/min}$. How can you use similar triangles to find how fast the water level rises when it is 3 m deep?",
+          "placement": "question",
+          "reasoning": "The triangles give $\\frac rh=\\frac26$, so $V=\\frac13\\pi r^2h=\\frac{\\pi h^3}{27}$. Hence $\\frac{dV}{dt}=\\frac{\\pi h^2}{9}\\frac{dh}{dt}$. At $h=3$, the water rises at $1\\,\\mathrm{m/min}$."
+        }
       }
     ],
     "kind": "Method",
@@ -1224,7 +1339,10 @@
         ],
         "figure": {
           "file": "october-21-figure-5.svg",
-          "alt": "A graph and its reflection across y = x have tangent lines of reciprocal slope at their corresponding points."
+          "alt": "A curve and its reflection across y = x have tangents at the corresponding points (a,b) and (b,a).",
+          "prompt": "Suppose $f$ satisfies the inverse-function derivative theorem, $f(2)=5$, and $f'(2)=-3$. Where is the corresponding point on the inverse graph, and what is its tangent slope?",
+          "placement": "question",
+          "reasoning": "Exchanging the coordinates gives $(5,2)$. Reflection exchanges rise and run, so $(f^{-1})'(5)=\\frac1{f'(2)}=-\\frac13$."
         },
         "mark": "y=x",
         "theorems": [
@@ -1343,7 +1461,14 @@
       "d-eslope",
       "d-natural",
       "d-base"
-    ]
+    ],
+    "figure": {
+      "file": "october-23-figure-5.svg",
+      "alt": "The exponential graph has a tangent of slope 1 at (0,1) and another with slope equal to its height at (a,e to the a).",
+      "prompt": "What is the equation of the tangent to $y=e^x$ at $x=0$?",
+      "placement": "solution",
+      "reasoning": "At $x=0$, the height and slope both equal $e^0=1$. The tangent through $(0,1)$ is $y=1+x$."
+    }
   },
   "logdiff": {
     "title": "Logarithmic differentiation",
@@ -1504,7 +1629,14 @@
         ],
         "symbol": "$f''=(f')'$",
         "mark": "f''",
-        "reasoning": "For $f(x)=3x-x^2$, $f'(x)=3-2x$. The change in slope over a step $h$ is $-2h$, so $f''(x)=-2$."
+        "reasoning": "For $f(x)=3x-x^2$, $f'(x)=3-2x$. The change in slope over a step $h$ is $-2h$, so $f''(x)=-2$.",
+        "figure": {
+          "file": "derivatives-second.png",
+          "alt": "A horizontal line below the horizontal axis represents the constant second derivative of the parabola.",
+          "prompt": "For $f(x)=3x-x^2$, sketch $f''$. How does the tangent slope change as $x$ increases by one?",
+          "placement": "solution",
+          "reasoning": "Since $f'(x)=3-2x$, the slope falls by $2$ for every unit increase in $x$. Thus $f''(x)=-2$."
+        }
       },
       {
         "title": "At a horizontal tangent",
@@ -1571,7 +1703,14 @@
         "theorems": [
           "increasing-decreasing",
           "first-derivative"
-        ]
+        ],
+        "figure": {
+          "file": "november-6-first-derivative-signs.svg",
+          "alt": "The sign graph for the derivative has signs positive, negative, positive on the three intervals separated by −1 and 1.",
+          "prompt": "On $[-2,3]$, draw the sign graph for $f'(x)=12(x-1)(x+1)$. Where is $f$ increasing and where is it decreasing?",
+          "placement": "solution",
+          "reasoning": "The factors have the same sign on $(-2,-1)$ and $(1,3)$, so $f$ increases on those intervals. They have opposite signs on $(-1,1)$, where $f$ decreases."
+        }
       }
     ],
     "mark": "f'>0",
@@ -1622,7 +1761,10 @@
     ],
     "figure": {
       "file": "november-6-slopes.svg",
-      "alt": "Tangent slopes increase from left to right on a concave-up curve and decrease on a concave-down curve."
+      "alt": "Two curves with three tangent lines each. From left to right, the slopes increase in the first drawing and decrease in the second.",
+      "prompt": "How can the tangent lines tell you which way a curve bends?",
+      "placement": "solution",
+      "reasoning": "Read the tangent slopes from left to right. Increasing slopes give concavity up, and decreasing slopes give concavity down."
     },
     "mark": "f''>0",
     "theorems": [
@@ -1673,7 +1815,10 @@
     ],
     "figure": {
       "file": "november-6-inflection.svg",
-      "alt": "The cubic rises through the inflection point at (0,1), bending down to the left of zero and up to the right."
+      "alt": "The increasing cubic bends down to the left of zero, flattens at (0,1), and bends up to its right.",
+      "prompt": "Where does $g(x)=x^3+1$ change concavity? Does the function change direction at that point?",
+      "placement": "solution",
+      "reasoning": "$g''(x)=6x$ changes sign at $0$, and $g(0)=1$. The inflection point is $(0,1)$. Since $g'(x)=3x^2>0$ on both sides, the curve keeps increasing."
     },
     "mark": "f''",
     "theorems": [
@@ -1701,7 +1846,10 @@
         ],
         "figure": {
           "file": "november-4-stationary-cubic.svg",
-          "alt": "The graph of the cubic passes through the origin with a horizontal tangent and keeps increasing."
+          "alt": "The graph of the cubic passes through the origin with a horizontal tangent and keeps increasing.",
+          "prompt": "For $f(x)=x^3$, is $0$ a critical number? Does $f(0)$ give a local extremum?",
+          "placement": "solution",
+          "reasoning": "$f'(0)=0$, so $0$ is critical. The outputs just left of $0$ are negative and those just right are positive. The origin gives neither a local maximum nor a local minimum."
         },
         "symbol": "$f'(0)=0$",
         "mark": "f'(0)",
@@ -1889,7 +2037,10 @@
         ],
         "figure": {
           "file": "optimization/box.png",
-          "alt": "Four equal squares are cut from the corners of a 12-inch square to make a box with an open top."
+          "alt": "Four corner squares of side x are marked on a 12-inch square of cardboard before it is folded.",
+          "prompt": "Equal squares are cut from a $12$-inch square of cardboard. Which cut produces the box of greatest volume?",
+          "placement": "question",
+          "reasoning": "For $0<x<6$, $V(x)=x(12-2x)^2$. Its derivative changes from positive to negative at $x=2$. Cutting $2$-inch squares gives an $8\\times8\\times2$ box with volume $128$ cubic inches."
         },
         "symbol": "$V=x(12-2x)^2$",
         "mark": "V(x)",
@@ -1911,7 +2062,14 @@
         ],
         "symbol": "$E(m)=5(m-1)^2+9$",
         "mark": "E(m)",
-        "reasoning": "$E(m)=5(m-1)^2+9$ is smallest at $m=1$. The fitted line is $y=x+2$ and the minimum sum of squared errors is $9$."
+        "reasoning": "$E(m)=5(m-1)^2+9$ is smallest at $m=1$. The fitted line is $y=x+2$ and the minimum sum of squared errors is $9$.",
+        "figure": {
+          "file": "optimization/fit.png",
+          "alt": "The three points (0,0), (1,1), and (2,5) on coordinate axes.",
+          "prompt": "Fit $y=mx+2$ to these three points. Which slope minimizes the sum of squared errors?",
+          "placement": "question",
+          "reasoning": "The squared errors sum to $4+(m+1)^2+(2m-3)^2=5(m-1)^2+9$. The minimum is $9$ at $m=1$."
+        }
       }
     ],
     "mark": "\\max",
@@ -2018,7 +2176,10 @@
         ],
         "figure": {
           "file": "november-9-translated-sketch.svg",
-          "alt": "Two increasing branches approach the asymptotes x = −1 and y = 1. The right branch passes through the origin."
+          "alt": "Two increasing branches approach the asymptotes x = −1 and y = 1, with the right branch passing through the origin.",
+          "prompt": "Sketch $f(x)=\\frac{x}{x+1}$. Which branch approaches the horizontal asymptote from above?",
+          "placement": "solution",
+          "reasoning": "Write $f(x)=1-\\frac1{x+1}$. Both branches increase because $f'(x)=\\frac1{(x+1)^2}>0$. The left branch lies above $y=1$. The right branch passes through $(0,0)$ and approaches $y=1$ from below."
         },
         "symbol": "$(0,0)$",
         "mark": "(0,0)",
@@ -2181,7 +2342,14 @@
         "mark": "x=-1",
         "theorems": [
           "limits-reciprocal"
-        ]
+        ],
+        "figure": {
+          "file": "vertical-reciprocal.png",
+          "alt": "The two reciprocal branches approach the dashed line x = −1. One rises and the other falls.",
+          "prompt": "For $A(x)=\\frac1{x+1}$, find the two one-sided limits at $-1$. Is there a vertical asymptote?",
+          "placement": "solution",
+          "reasoning": "On the left $A(x)\\to-\\infty$ and on the right $A(x)\\to+\\infty$. The line $x=-1$ is a vertical asymptote."
+        }
       },
       {
         "title": "Odd and even powers",
@@ -2201,7 +2369,14 @@
     "mark": "\\infty",
     "theorems": [
       "limits-reciprocal"
-    ]
+    ],
+    "figure": {
+      "file": "vertical-negative-square.png",
+      "alt": "Both branches of negative one over the square of x plus one descend beside the vertical line x = −1.",
+      "prompt": "For $B(x)=-\\frac{1}{(x+1)^2}$, where does each branch go as $x$ approaches $-1$?",
+      "placement": "solution",
+      "reasoning": "The squared denominator approaches zero through positive values on both sides. Thus both one-sided limits are $-\\infty$."
+    }
   },
   "limitmethods": {
     "title": "Limit strategies",
@@ -2222,7 +2397,8 @@
         "mark": "f(a)",
         "theorems": [
           "limits-subst"
-        ]
+        ],
+        "branch": "Nonzero denominator"
       },
       {
         "title": "Check signs on each side",
@@ -2239,7 +2415,8 @@
         "theorems": [
           "limits-two-sided",
           "limits-reciprocal"
-        ]
+        ],
+        "branch": "$\\frac{A}{0}$, $A\\ne0$"
       },
       {
         "title": "Factor and cancel",
@@ -2257,7 +2434,8 @@
         "theorems": [
           "limits-exclude",
           "limits-subst"
-        ]
+        ],
+        "branch": "$\\frac{0}{0}$"
       },
       {
         "title": "Multiply by the conjugate",
@@ -2302,7 +2480,8 @@
         "theorems": [
           "limits-squeeze",
           "limits-lhospital"
-        ]
+        ],
+        "branch": "Practice"
       }
     ],
     "example": "The lecture uses $f(x)=\\frac{x^2-2x+1}{x^2-1}$ three times. At $2$ we plug in, at $-1$ we check signs, and at $1$ we factor and cancel.",
@@ -2365,7 +2544,10 @@
     "example": "The lecture graph has a removable discontinuity at $0$, a jump at $2$, and an infinite discontinuity at $4$.",
     "figure": {
       "file": "discontinuities.png",
-      "alt": "A graph with a hole at zero, a jump at two, and a vertical asymptote at four."
+      "alt": "At 0 there is an open circle below a filled point. At 2 the two branches approach different heights. As x approaches 4 from the left, the graph rises indefinitely.",
+      "prompt": "Classify the breaks at $0$, $2$, and $4$. Which one could you repair by moving a single point?",
+      "placement": "question",
+      "reasoning": "The break at $0$ is removable, the break at $2$ is a jump, and the break at $4$ is infinite. Only the hole at $0$ can be repaired by assigning its limiting height."
     },
     "mark": "\\ne",
     "theorems": [
@@ -2396,7 +2578,14 @@
         "theorems": [
           "d-invtrig",
           "d-inverse"
-        ]
+        ],
+        "figure": {
+          "file": "october-21-figure-6.svg",
+          "alt": "A right triangle has angle theta, opposite side x, hypotenuse 1, and adjacent side equal to the square root of one minus x squared.",
+          "prompt": "For $0<x<1$, let $\\theta=\\sin^{-1}x$. How does the triangle turn $\\frac1{\\cos\\theta}$ into a formula in $x$?",
+          "placement": "question",
+          "reasoning": "The adjacent side gives $\\cos\\theta=\\sqrt{1-x^2}$. Thus $\\frac{d}{dx}\\sin^{-1}x=\\frac1{\\sqrt{1-x^2}}$. The positive square root also applies on $-1<x<1$ because $\\cos\\theta>0$ on this branch."
+        }
       },
       {
         "title": "Inverse tangent and inverse cotangent",
@@ -2472,7 +2661,10 @@
         "idea": "Think of the signs as directions of travel as you move to the right. Rising into a point and falling away from it makes that point a peak.",
         "figure": {
           "file": "first-derivative-test-maximum.svg",
-          "alt": "The sign graph for the derivative changes from positive to negative at zero. The parabola rises to a local maximum there, then falls."
+          "alt": "A sign graph for the derivative changes from positive to negative at zero. Next to it, the parabola rises to (0,1) and then falls.",
+          "prompt": "Use the sign of the derivative to classify $x=0$ for $f(x)=1-x^2$.",
+          "placement": "solution",
+          "reasoning": "$f'(x)=-2x$ is positive to the left of $0$ and negative to its right. The point $(0,1)$ is a local maximum."
         },
         "symbol": "$+\\ \\longrightarrow\\ -$",
         "mark": "+\\to-",
@@ -2491,7 +2683,14 @@
         "mark": "f''(c)",
         "theorems": [
           "second-derivative"
-        ]
+        ],
+        "figure": {
+          "file": "november-6-flat-tangents.svg",
+          "alt": "Three graphs near zero. The first passes through the origin, the second has a minimum there, and the third has a maximum.",
+          "prompt": "The first and second derivatives of $x^2\\tan x$, $x^4$, and $-x^4$ all vanish at zero. What happens at the origin for each graph?",
+          "placement": "solution",
+          "reasoning": "The second derivative test is inconclusive for all three. The first function changes sign through zero, the second has a local minimum there, and the third has a local maximum."
+        }
       }
     ],
     "mark": "f'(c)",
@@ -2543,7 +2742,14 @@
         "theorems": [
           "polynomial-division",
           "slant-by-division"
-        ]
+        ],
+        "figure": {
+          "file": "slant-division-1.svg",
+          "alt": "Polynomial long division of x squared by x minus one gives quotient x plus one and remainder one.",
+          "prompt": "Use polynomial division to find the slant asymptote of $g(x)=\\frac{x^2}{x-1}$.",
+          "placement": "solution",
+          "reasoning": "Division gives $g(x)=x+1+\\frac1{x-1}$. The remainder term tends to zero at both ends, so the slant asymptote is $y=x+1$."
+        }
       }
     ],
     "mark": "\\frac pq",

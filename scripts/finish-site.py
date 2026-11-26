@@ -45,13 +45,31 @@ subprocess.run([*runner, 'scripts/render-map-math.js', str(map_output), json.dum
 map_index = map_output / 'index.html'
 marks = Path('scripts/figures/map-node-marks.svg').read_text()
 map_html = map_index.read_text().replace('<!-- node marks -->', marks)
-for asset in map_source.rglob('*'):
-    if asset.suffix in ('.css', '.js'):
-        url = './' + asset.relative_to(map_source).as_posix()
-        published_asset = map_output / asset.relative_to(map_source)
-        version = hashlib.sha256(published_asset.read_bytes()).hexdigest()[:12]
-        map_html = map_html.replace(f'"{url}"', f'"{url}?v={version}"')
+# Ship the shell and its interdependent scripts together so cached documents
+# keep their matching controls, geometry, and typeset notation.
+def inline_script(name):
+    code = (map_output / name).read_text()
+    code = re.sub(r'</script', lambda _: r'<\/script', code, flags=re.I)
+    return '<script>\n' + code + '\n</script>'
+
+script_tag = r'<script defer src="\./([^"]+)"></script>'
+names = re.findall(script_tag, map_html)
+map_html = re.sub(script_tag, '', map_html)
+runtime = '\n'.join(inline_script(name) for name in names if name != 'search.js')
+search_version = hashlib.sha256((map_output / 'search.js').read_bytes()).hexdigest()[:12]
+map_html = map_html.replace('</body>', runtime + f'\n<script async src="./search.js?v={search_version}"></script>\n</body>')
+for name in ('map.css', 'math.css'):
+    css = (map_output / name).read_text()
+    map_html = map_html.replace(f'<link rel="stylesheet" href="./{name}">', '<style>\n' + css + '\n</style>')
 map_index.write_text(map_html)
+# Earlier public shells requested map.js separately. Retain their deep links.
+release = hashlib.sha256(map_html.encode()).hexdigest()[:12]
+(map_output / 'map.js').write_text(
+    "const mapEntry = new URL('index.html', location.href);\n"
+    "mapEntry.search = location.search; mapEntry.hash = location.hash;\n"
+    f"mapEntry.searchParams.set('v', '{release}');\n"
+    "location.replace(mapEntry.href);\n")
+
 guide = site / 'supplements/limits-map.html'
 guide_html = guide.read_text()
 for name in ('topics.js', 'math.css'):

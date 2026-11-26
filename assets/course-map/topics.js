@@ -34,35 +34,47 @@ function mapTextElement(tag, text, className) {
   return element;
 }
 
-// Use the same reading order in the standalone map and the guide inside the book.
+// Both the full-page map and the book guide use this reading order.
 function appendMapNote(parent, note, formulaClass, sectionHeading) {
-  const prose = (text) => mapTextElement("p", text, "note-prose");
-  parent.append(prose(note.definition), mapTextElement("div", note.formula, formulaClass),
-    mapTextElement(sectionHeading, "Idea"), prose(note.idea));
-  function disclosure(title, content) {
-    const details = document.createElement("details");
-    details.className = "lecture-disclosure";
-    details.append(mapTextElement("summary", title), content);
-    parent.append(details);
+  const el = mapTextElement;
+  const prose = text => el("p", text, "note-prose");
+  const intro = el("div", "", "note-intro");
+  intro.append(prose(note.definition), el("div", note.formula, formulaClass),
+    el(sectionHeading, "Idea"), prose(note.idea));
+  parent.append(intro);
+
+  function disclosure(container, label, ...children) {
+    const details = el("details", "", "lecture-disclosure");
+    details.append(el("summary", label), ...children);
+    container.append(details);
     return details;
   }
+  const figure = note.figure;
+  if (figure) {
+    const example = el("section", "", "note-example");
+    example.append(el(sectionHeading, "Class example"));
+    const img = document.createElement("img");
+    img.src = "../lectures/assets/" + figure.file;
+    img.alt = figure.alt;
+    img.loading = "lazy";
+    if (figure.prompt) example.append(prose(figure.prompt));
+    if (figure.placement === "solution") {
+      disclosure(example, "Show reasoning and figure", prose(figure.reasoning), img);
+    } else {
+      example.append(img);
+      if (figure.reasoning) disclosure(example, "Show reasoning", prose(figure.reasoning));
+    }
+    parent.append(example);
+  }
+  if (note.reasoning && !figure?.reasoning) disclosure(parent, "Show the reasoning", prose(note.reasoning));
+  if (note.example && note.example !== figure?.prompt) disclosure(parent, figure ? "Another class example" : "Class example", prose(note.example));
   if (note.theorems?.length) {
-    parent.append(mapTextElement(sectionHeading, "Theorems and rules"));
+    parent.append(el(sectionHeading, "Theorems and rules"));
     for (const id of note.theorems) {
       const theorem = courseTheorems[id];
-      const details = disclosure(theorem.title, prose(theorem.statement));
-      const source = mapTextElement("a", "Read in the lecture", "theorem-source");
+      const source = el("a", "Read in the lecture", "theorem-source");
       source.href = theorem.href;
-      details.append(source);
+      disclosure(parent, theorem.title, prose(theorem.statement), source);
     }
-  }
-  if (note.reasoning) disclosure("Show the reasoning", prose(note.reasoning));
-  if (note.example) disclosure("Class example", prose(note.example));
-  if (note.figure) {
-    const img = document.createElement("img");
-    img.src = "../lectures/assets/" + note.figure.file;
-    img.alt = note.figure.alt;
-    img.loading = "lazy";
-    disclosure("See the lecture figure", img);
   }
 }
