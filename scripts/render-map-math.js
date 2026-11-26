@@ -27,6 +27,8 @@ async function renderMap() {
   const adaptor = mj.startup.adaptor;
   const read = name => fs.readFileSync(path.join(source, name), "utf8");
   const notes = JSON.parse(read("notes.json"));
+  const theorems = JSON.parse(read("theorems.json"));
+  const marks = fs.readFileSync(path.resolve("scripts/figures/map-node-marks.svg"), "utf8");
   const requested = { inline: new Set(), display: new Set() };
   const collect = (value, mode) => {
     if (typeof value !== "string") return;
@@ -34,11 +36,20 @@ async function renderMap() {
   };
   for (const topic of Object.values(notes)) {
     for (const note of [topic, ...topic.parts]) {
+      const markId = "mark-" + Array.from(note.mark, c => c.codePointAt(0).toString(16)).join("-");
+      if (!marks.includes('id="' + markId + '"')) throw new Error("Missing graph symbol: " + note.title);
+      for (const key of note.theorems || []) {
+        if (!theorems[key]) throw new Error("Missing theorem for " + note.title + ": " + key);
+      }
       for (const [field, value] of Object.entries(note)) {
         collect(value, field === "formula" ? "display" : "inline");
       }
       collect(note.symbol || note.formula.split("\n")[0], "inline");
     }
+  }
+  for (const theorem of Object.values(theorems)) {
+    collect(theorem.title, "inline");
+    collect(theorem.statement, "inline");
   }
   // Relation descriptions and hub symbols are plain JS string literals.
   for (const match of read("graph.js").matchAll(/"(?:\\.|[^"\\])*"/g)) {
@@ -61,7 +72,8 @@ async function renderMap() {
     }
     const css = adaptor.textContent(mj.chtmlStylesheet())
       .split(fontPath.split(path.sep).join("/")).join("../assets/mathjax-4.1.3/" + font);
-    const js = "const courseTopics = " + JSON.stringify(notes) + ";\nconst mapEquations = " +
+    const js = "const courseTopics = " + JSON.stringify(notes) + ";\nconst courseTheorems = " +
+      JSON.stringify(theorems) + ";\nconst mapEquations = " +
       JSON.stringify(equations) + ";\n" + read("topics.js");
     fs.writeFileSync(path.join(output, "topics.js"), js);
     fs.writeFileSync(path.join(output, "math.css"), css + "\n" + read("math.css"));

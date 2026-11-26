@@ -24,6 +24,11 @@ description: "See how the main ideas of differential calculus connect."
 .atlas-launch strong { font-size:1.25rem; } .atlas-launch small { color:#ddebe7; }
 .atlas-launch-arrow { font:1.45rem system-ui; }
 
+.idea-detail h4 { font: inherit; font-weight: bold; margin: .65em 0 .15em; }
+.idea-detail .lecture-disclosure { margin: .35em 0; }
+.idea-detail .lecture-disclosure summary { cursor: pointer; color: var(--reading-link); }
+.idea-detail .lecture-disclosure img { display: block; max-width: 100%; height: auto; margin: .5em 0; }
+.idea-detail .lecture-disclosure .note-prose { overflow-x: auto; }
 .map-equation { overflow-x: auto; padding: .3em 0; }
 .idea-map { margin: 1.2rem 0 .7rem; }
 .idea-node { cursor: pointer; }
@@ -522,12 +527,7 @@ Continuity on $[0,2]$ and the endpoint values guarantee a $c\in(0,2)$ with $f(c)
       panel.replaceChildren();
       addText('h3', concept.title);
       if (concept.kind) addText('strong', concept.kind);
-      addText('p', concept.definition);
-      addText('p', concept.formula, 'map-equation');
-      addText('strong', 'Idea');
-      addText('p', concept.idea);
-      addText('strong', 'From class');
-      addText('p', concept.example);
+      appendMapNote(panel, concept, 'map-equation', 'h4');
       const related = [...new Set(edges.filter(edge => edge.dataset.from === id || edge.dataset.to === id).map(edge => edge.dataset.from === id ? edge.dataset.to : edge.dataset.from))];
       if (related.length) {
         addText('p', 'Connected ideas:');

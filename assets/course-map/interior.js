@@ -115,7 +115,7 @@ function drawInterior(view) {
     .attr("aria-pressed", (d) => String(selectedPart === partSlug(d)));
   group.select("rect").attr("x", -box / 2).attr("width", box).attr(
     "height",
-    deep ? 74 : 48,
+    deep ? 90 : 62,
   );
   group.select("foreignObject").attr("x", -box / 2).attr("width", box);
   // Keep compact notation legible. A full equation is always available in the note.
@@ -145,9 +145,10 @@ function buildInterior(topic, visible) {
         showTopic(topic.id, partSlug(p));
       }
     });
-  buttons.append("rect").attr("y", -13).attr("fill", "transparent");
-  buttons.append("circle").attr("r", 6).attr("stroke", color);
-  const labels = buttons.append("foreignObject").attr("y", 10).attr(
+  buttons.append("rect").attr("y", -17).attr("fill", "transparent");
+  buttons.append("circle").attr("r", 16).attr("stroke", color);
+  drawMark(buttons, 24);
+  const labels = buttons.append("foreignObject").attr("y", 18).attr(
     "height",
     85,
   )

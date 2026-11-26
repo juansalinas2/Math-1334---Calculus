@@ -25,3 +25,44 @@ function writeMapText(element, text) {
   element.replaceChildren(fragment);
   return element;
 }
+
+function mapTextElement(tag, text, className) {
+  const element = document.createElement(tag);
+  if (className) element.className = className;
+  if (text.includes("$")) writeMapText(element, text);
+  else element.textContent = text;
+  return element;
+}
+
+// Use the same reading order in the standalone map and the guide inside the book.
+function appendMapNote(parent, note, formulaClass, sectionHeading) {
+  const prose = (text) => mapTextElement("p", text, "note-prose");
+  parent.append(prose(note.definition), mapTextElement("div", note.formula, formulaClass),
+    mapTextElement(sectionHeading, "Idea"), prose(note.idea));
+  function disclosure(title, content) {
+    const details = document.createElement("details");
+    details.className = "lecture-disclosure";
+    details.append(mapTextElement("summary", title), content);
+    parent.append(details);
+    return details;
+  }
+  if (note.theorems?.length) {
+    parent.append(mapTextElement(sectionHeading, "Theorems and rules"));
+    for (const id of note.theorems) {
+      const theorem = courseTheorems[id];
+      const details = disclosure(theorem.title, prose(theorem.statement));
+      const source = mapTextElement("a", "Read in the lecture", "theorem-source");
+      source.href = theorem.href;
+      details.append(source);
+    }
+  }
+  if (note.reasoning) disclosure("Show the reasoning", prose(note.reasoning));
+  if (note.example) disclosure("Class example", prose(note.example));
+  if (note.figure) {
+    const img = document.createElement("img");
+    img.src = "../lectures/assets/" + note.figure.file;
+    img.alt = note.figure.alt;
+    img.loading = "lazy";
+    disclosure("See the lecture figure", img);
+  }
+}

@@ -33,13 +33,14 @@ shutil.copy2('assets/glossary-redirect.html', site / 'supplements/glossary.html'
 # The full-page map has its own layout and is deployed alongside the book.
 map_source = Path('assets/course-map')
 map_output = site / 'map'
-shutil.copytree(map_source, map_output, dirs_exist_ok=True, ignore=shutil.ignore_patterns('notes.json'))
+shutil.copytree(map_source, map_output, dirs_exist_ok=True, ignore=shutil.ignore_patterns('notes.json', 'theorems.json'))
 node = shutil.which('node')
 runner = [node] if node else ['quarto', 'run']
 subprocess.run([*runner, 'scripts/render-map-math.js', str(map_output)], check=True)
 # Change asset URLs with their contents so returning students see a coherent release.
 map_index = map_output / 'index.html'
-map_html = map_index.read_text()
+marks = Path('scripts/figures/map-node-marks.svg').read_text()
+map_html = map_index.read_text().replace('<!-- node marks -->', marks)
 for asset in map_source.rglob('*'):
     if asset.suffix in ('.css', '.js'):
         url = './' + asset.relative_to(map_source).as_posix()

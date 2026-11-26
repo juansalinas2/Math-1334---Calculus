@@ -230,10 +230,11 @@ main {
 .station.hub .label {
   font: bold var(--hub-size, 24px) var(--serif);
 }
-.station .formula {
-  fill: white;
-  font: italic 18px Georgia, serif;
-}
+.station-disc { transform: scale(var(--disk-scale, 1)); color: var(--node-color); }
+.station-disc .disc { fill: #fffef8; stroke: var(--node-color); stroke-width: 2.4px; }
+.hub .station-disc, .station.active .station-disc { color: #fff; }
+.hub .disc, .station.active .disc { fill: var(--node-color); }
+.node-ink { fill: currentColor; pointer-events: none; }
 .station .halo {
   opacity: 0;
 }
@@ -472,19 +473,6 @@ aside {
   }
 }
 
-.hub-symbol {
-  pointer-events: none;
-}
-.hub-symbol div {
-  display: grid;
-  place-items: center;
-  height: 100%;
-  font-size: 15px;
-  color: white;
-}
-.hub-symbol math {
-  color: white;
-}
 .has-interior .station .station-mark {
   transform: scale(var(--parent-scale, 1));
 }
@@ -511,13 +499,15 @@ aside {
   stroke-opacity: 0.55;
 }
 .part {
+  color: var(--accent);
   cursor: pointer;
   outline: none;
 }
 .part circle {
   fill: var(--paper);
-  stroke-width: 3;
+  stroke-width: 2;
 }
+.part:hover, .part:focus-visible, .part[aria-pressed="true"] { color: white; }
 .part:hover circle,
 .part:focus-visible circle,
 .part[aria-pressed="true"] circle {
@@ -571,7 +561,7 @@ aside {
   overflow-x: auto;
 }
 .part-formula { font: 16px/1.25 var(--serif); }
-.hub-symbol mjx-container { color: white; }
+
 .equation { font: 20px/1.4 var(--serif); }
 #detail .note-prose { font: 19px/1.45 var(--serif); }
 .note-link { margin: .45rem 0 .2rem; }
@@ -687,3 +677,6 @@ summary:focus-visible { outline: 2px solid #257569; outline-offset: 2px; }
 .part-links button:hover, .part-links button[aria-pressed="true"] {
   border-color: var(--accent);
 }
+
+.theorem-source { display: inline-block; margin: 0 0 .45rem; color: var(--accent); font-size: 14px; }
+.lecture-disclosure .note-prose { overflow-x: auto; }

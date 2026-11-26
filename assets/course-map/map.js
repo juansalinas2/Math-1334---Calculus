@@ -1,4 +1,5 @@
 "use strict";
+const el = mapTextElement;
 const byId = (id) => document.getElementById(id);
 const svg = d3.select("#canvas");
 const viewport = byId("canvas");
@@ -47,33 +48,25 @@ marks.append("rect").attr("x", -78).attr("y", -25).attr("width", 156).attr(
   "height",
   65,
 ).attr("fill", "transparent");
-marks.append("circle").attr("class", "halo").attr(
-  "r",
-  (d) => d.symbol ? 31 : 21,
-)
-  .attr("fill", (d) => families[d.family].color).attr("fill-opacity", .15);
-marks.append("circle").attr("r", (d) => d.symbol ? 20 : 8).attr(
-  "stroke-width",
-  (d) => d.symbol ? 3 : 4,
-)
-  .attr("fill", (d) => d.symbol ? families[d.family].color : "#fffef8").attr(
-    "stroke",
-    (d) => families[d.family].color,
-  );
-marks.filter((d) => d.symbol).append("foreignObject").attr(
-  "class",
-  "hub-symbol",
-)
-  .attr("x", -21).attr("y", -13).attr("width", 42).attr("height", 26).attr(
-    "aria-hidden",
-    "true",
-  )
-  .append("xhtml:div").each(function (d) {
-    writeMapText(this, d.symbol);
-  });
+// Keep the notation in the SVG with the circles, including while the camera moves.
+function drawMark(selection, size) {
+  selection.append("use").attr("class", "node-ink").attr("aria-hidden", "true")
+    .attr("href", d => "#mark-" + Array.from(d.mark, c => c.codePointAt(0).toString(16)).join("-"))
+    .each(function (d) {
+      const side = typeof size === "function" ? size(d) : size;
+      d3.select(this).attr("x", -side / 2).attr("y", -side / 2)
+        .attr("width", side).attr("height", side);
+    });
+}
+const discs = marks.append("g").attr("class", "station-disc")
+  .style("--node-color", d => families[d.family].color);
+discs.append("circle").attr("class", "halo").attr("r", d => d.symbol ? 30 : 24)
+  .attr("fill", d => families[d.family].color).attr("fill-opacity", .15);
+discs.append("circle").attr("class", "disc").attr("r", d => d.symbol ? 21 : 17);
+drawMark(discs, d => d.symbol ? 31 : 25);
 marks.append("text").attr("class", "label").attr("text-anchor", "middle").attr(
   "y",
-  (d) => d.symbol ? 49 : 31,
+  (d) => d.symbol ? 52 : 46,
 ).text((d) => d.label);
 
 function drawCamera() {
@@ -83,6 +76,7 @@ function drawCamera() {
   drawInterior(view);
   if (view.k === renderedScale) return;
   world.style("--parent-scale", Math.min(1, 1.20 / view.k));
+  world.style("--disk-scale", Math.min(2, Math.max(1, .68 / view.k)));
   // Only the overview uses larger labels. Panning needs no text layout.
   const labelScale = Math.max(.55, view.k);
   if (view.k < .8 || renderedScale < .8) {
@@ -182,13 +176,6 @@ function paint(preview = selected) {
     b.setAttribute("aria-pressed", String(b.dataset.family === family))
   );
 }
-function el(tag, text, className) {
-  const element = document.createElement(tag);
-  if (className) element.className = className;
-  if (text.includes("$")) writeMapText(element, text);
-  else element.textContent = text;
-  return element;
-}
 function showTopic(id, slug = null, fromLocation = false) {
   const topic = byTopic.get(id);
   if (!topic) return;
@@ -219,28 +206,8 @@ function showTopic(id, slug = null, fromLocation = false) {
   }
   const link = el("a", "Read the lecture notes", "note-link");
   link.href = part?.href || topic.href;
-  body.append(heading, el("p", note.definition, "note-prose"), el("div", note.formula, "equation"));
-  if (part && note.kind === "Example") {
-    const reasoning = el("details", "", "lecture-disclosure");
-    reasoning.append(el("summary", "Show the reasoning"), el("p", note.idea, "note-prose"));
-    body.append(reasoning);
-  } else {
-    body.append(el("h3", "Idea"), el("p", note.idea, "note-prose"));
-  }
-  if (note.figure) {
-    const figure = el("details", "", "lecture-disclosure");
-    const img = document.createElement("img");
-    img.src = "../lectures/assets/" + note.figure.file;
-    img.alt = note.figure.alt;
-    img.loading = "lazy";
-    figure.append(el("summary", "See the lecture figure"), img);
-    body.append(figure);
-  }
-  if (note.example) {
-    const example = el("details", "", "lecture-disclosure");
-    example.append(el("summary", "Class example"), el("p", note.example, "note-prose"));
-    body.append(example);
-  }
+  body.append(heading);
+  appendMapNote(body, note, "equation", "h3");
   body.append(link, el("h3", "Explore " + topic.label), el("div", "", "part-links"));
   const parts = body.lastElementChild;
   for (const item of topic.parts) {
