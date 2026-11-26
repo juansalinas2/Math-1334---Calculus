@@ -11,7 +11,9 @@
     ],
     "why": "The height is \\(g(1)=0\\). The slope is \\(g'(1)f'(2)=6(-1)=-6\\).",
     "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
-    "section": "3.6"
+    "section": "3.6",
+    "pdfPage": 40,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "chain",
@@ -25,35 +27,9 @@
     ],
     "why": "The square adds a factor \\(2f(g(2))=4\\) to the derivative \\(f'(3)g'(2)=-8\\).",
     "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
-    "section": "3.6"
-  },
-  {
-    "topic": "chain",
-    "level": 4,
-    "prompt": "Suppose \\(f(0)=2\\), \\(f'(0)=3\\), \\(g(2)=3\\), \\(g'(2)=4\\), and \\(f'(3)=-2\\). What is \\((f\\circ g\\circ f)'(0)\\)?",
-    "choices": [
-      "\\(-24\\)",
-      "\\(24\\)",
-      "\\(-12\\)",
-      "\\(36\\)"
-    ],
-    "why": "The input moves from \\(0\\) to \\(2\\) to \\(3\\). In reverse order the derivative factors are \\(f'(3)\\), \\(g'(2)\\), and \\(f'(0)\\).",
-    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
-    "section": "3.6"
-  },
-  {
-    "topic": "chain",
-    "level": 4,
-    "prompt": "Suppose \\(g(0)=1\\), \\(g'(0)=-2\\), \\(g(1)=0\\), \\(g'(1)=6\\), and \\(f'(0)=3\\). Find \\((f\\circ g\\circ g)'(0)\\).",
-    "choices": [
-      "\\(-36\\)",
-      "\\(36\\)",
-      "\\(-12\\)",
-      "\\(18\\)"
-    ],
-    "why": "Following the two inner maps takes \\(0\\) to \\(1\\) and back to \\(0\\). The product is \\(f'(0)g'(1)g'(0)=3(6)(-2)\\).",
-    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
-    "section": "3.6"
+    "section": "3.6",
+    "pdfPage": 40,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "chain",
@@ -67,7 +43,8 @@
     ],
     "why": "Apply the outer power rule and then differentiate cosine. The slope is \\(-4(1/2)^3(\\sqrt3/2)=-\\sqrt3/4\\).",
     "source": "../lectures/14-chain-rule.html#powers-of-functions",
-    "section": "3.6"
+    "section": "3.6",
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "chain",
@@ -81,7 +58,8 @@
     ],
     "why": "Set \\(x/\\sqrt{1+x^2}=-1/2\\). Squaring gives \\(3x^2=1\\). Only the negative root has the required slope.",
     "source": "../lectures/14-chain-rule.html#powers-of-functions",
-    "section": "3.6"
+    "section": "3.6",
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "chain",
@@ -95,7 +73,8 @@
     ],
     "why": "The outer square gives \\(2(x+1)/(2x-1)\\). The inner quotient has derivative \\([(2x-1)-2(x+1)]/(2x-1)^2=-3/(2x-1)^2\\).",
     "source": "../lectures/14-chain-rule.html#combining-differentiation-rules",
-    "section": "3.6"
+    "section": "3.6",
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "chain",
@@ -109,7 +88,8 @@
     ],
     "why": "The derivative is \\(-6(x+1)/(2x-1)^3\\). Its numerator vanishes only at \\(-1\\), and the graph has height zero there. The denominator's zero is outside the domain.",
     "source": "../lectures/14-chain-rule.html#combining-differentiation-rules",
-    "section": "3.6"
+    "section": "3.6",
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "chain",
@@ -123,21 +103,8 @@
     ],
     "why": "The product rule gives \\(3x^2\\cos^2x-2x^3\\sin x\\cos x\\). At \\(\\pi/4\\) both \\(\\cos^2x\\) and \\(\\sin x\\cos x\\) equal \\(1/2\\).",
     "source": "../lectures/14-chain-rule.html#combining-differentiation-rules",
-    "section": "3.6"
-  },
-  {
-    "topic": "chain",
-    "level": 4,
-    "prompt": "For \\(y=((x+1)/(2x-1))^2\\), what is the second derivative at \\(x=1\\)?",
-    "choices": [
-      "\\(66\\)",
-      "\\(-12\\)",
-      "\\(-78\\)",
-      "\\(30\\)"
-    ],
-    "why": "First obtain \\(y'=-6(x+1)(2x-1)^{-3}\\). The product and chain rules give \\(y''=-6(2x-1)^{-3}+36(x+1)(2x-1)^{-4}\\). Evaluate at \\(1\\).",
-    "source": "../lectures/14-chain-rule.html#combining-differentiation-rules",
-    "section": "3.6"
+    "section": "3.6",
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "chain",
@@ -151,7 +118,8 @@
     ],
     "why": "The layers from outside inward are sine, cosine, and tangent. Differentiate each once while preserving its input.",
     "source": "../lectures/14-chain-rule.html#three-or-more-layers",
-    "section": "3.6"
+    "section": "3.6",
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "chain",
@@ -165,21 +133,8 @@
     ],
     "why": "The four factors are \\(3\\sin^2u\\), \\(\\cos u\\), \\(-\\sin(2x)\\), and \\(2\\). Multiplying gives the stated expression.",
     "source": "../lectures/14-chain-rule.html#three-or-more-layers",
-    "section": "3.6"
-  },
-  {
-    "topic": "chain",
-    "level": 4,
-    "prompt": "Let \\(y=\\sin(\\cos(\\tan x))\\) and \\(a=\\arctan(\\pi/2)\\). What is the tangent slope at \\(a\\)?",
-    "choices": [
-      "\\(-(1+\\pi^2/4)\\)",
-      "\\(1+\\pi^2/4\\)",
-      "\\(-\\pi^2/4\\)",
-      "\\(0\\)"
-    ],
-    "why": "Here \\(\\tan a=\\pi/2\\), so \\(\\cos(\\tan a)=0\\) and \\(\\sin(\\tan a)=1\\). The derivative reduces to \\(-\\sec^2a=-(1+\\tan^2a)\\).",
-    "source": "../lectures/14-chain-rule.html#three-or-more-layers",
-    "section": "3.6"
+    "section": "3.6",
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "chain",
@@ -193,7 +148,8 @@
     ],
     "why": "The product rule gives \\(2x\\sin^3(2x)+6x^2\\sin^2(2x)\\cos(2x)\\). Factor \\(2x\\sin^2(2x)\\).",
     "source": "../lectures/14-chain-rule.html#practice-1",
-    "section": "3.6"
+    "section": "3.6",
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "chain",
@@ -207,7 +163,8 @@
     ],
     "why": "Where the quotient exists it equals \\(\\cos^2(2x)\\). Differentiate to get \\(-4\\cos(2x)\\sin(2x)=-2\\sin(4x)\\).",
     "source": "../lectures/14-chain-rule.html#practice-1",
-    "section": "3.6"
+    "section": "3.6",
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "chain",
@@ -221,63 +178,8 @@
     ],
     "why": "The point is \\((-1,2)\\) and \\(f'(-1)=3(-1)/2=-3/2\\). Expand \\(y-2=-(3/2)(x+1)\\).",
     "source": "../lectures/14-chain-rule.html#practice-1",
-    "section": "3.6"
-  },
-  {
-    "topic": "chain",
-    "level": 4,
-    "prompt": "On \\(0<x<\\pi/2\\), at which inputs does \\(y=1/[1+\\tan^2(2x)]\\) have slope \\(-1\\)?",
-    "choices": [
-      "\\(\\pi/24,\\ 5\\pi/24\\)",
-      "\\(\\pi/12,\\ 5\\pi/12\\)",
-      "\\(\\pi/24,\\ 7\\pi/24\\)",
-      "\\(\\pi/8,\\ 3\\pi/8\\)"
-    ],
-    "why": "On its domain the derivative is \\(-2\\sin(4x)\\). Thus \\(\\sin(4x)=1/2\\) with \\(0<4x<2\\pi\\). Both solutions survive the restriction \\(\\cos(2x)\\ne0\\).",
-    "source": "../lectures/14-chain-rule.html#practice-1",
-    "section": "3.6"
-  },
-  {
-    "topic": "chain",
-    "level": 4,
-    "prompt": "For \\(f(x)=\\sqrt{1+3x^2}\\), find the slope of the tangent to the graph of \\(f'\\) at \\(x=1\\).",
-    "choices": [
-      "\\(3/8\\)",
-      "\\(3/2\\)",
-      "\\(-3/8\\)",
-      "\\(9/4\\)"
-    ],
-    "why": "Differentiate \\(f'=3x(1+3x^2)^{-1/2}\\). A common denominator leaves \\(f''=3/(1+3x^2)^{3/2}\\), giving \\(3/8\\).",
-    "source": "../lectures/14-chain-rule.html#practice-1",
-    "section": "3.6"
-  },
-  {
-    "topic": "chain",
-    "level": 4,
-    "prompt": "Suppose \\(y=[g(x)]^2\\), \\(g'(2)=3\\), \\(y'(2)=24\\), and \\(y''(2)=2\\). What is \\(g''(2)\\)?",
-    "choices": [
-      "\\(-2\\)",
-      "\\(-4\\)",
-      "\\(2\\)",
-      "\\(1/4\\)"
-    ],
-    "why": "From \\(y'=2gg'\\) get \\(g(2)=4\\). Differentiating gives \\(y''=2(g')^2+2gg''\\). Thus \\(2=18+8g''(2)\\).",
-    "source": "../lectures/14-chain-rule.html#powers-of-functions",
-    "section": "3.6"
-  },
-  {
-    "topic": "chain",
-    "level": 4,
-    "prompt": "For \\(y=\\sin^3(\\cos(2x))\\), find the third derivative at \\(a=\\pi/4\\).",
-    "choices": [
-      "\\(-48\\)",
-      "\\(-8\\)",
-      "\\(48\\)",
-      "\\(0\\)"
-    ],
-    "why": "Write \\(u=\\sin(\\cos(2x))\\). At \\(a\\), \\(u=0\\) and \\(u'=-2\\). Differentiating \\(u^3\\) three times leaves \\(6(u')^3+18uu'u''+3u^2u'''\\). Only the first term survives.",
-    "source": "../lectures/14-chain-rule.html#three-or-more-layers",
-    "section": "3.6"
+    "section": "3.6",
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "chain",
@@ -291,21 +193,8 @@
     ],
     "why": "The derivative is \\(\\cos(\\sqrt{x})/(2\\sqrt{x})\\). Its first two zeros require \\(\\sqrt{x}=\\pi/2,3\\pi/2\\). Square both values.",
     "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
-    "section": "3.6"
-  },
-  {
-    "topic": "chain",
-    "level": 4,
-    "prompt": "For \\(y=(x+10)^4\\), find the nonhorizontal tangent that passes through the origin.",
-    "choices": [
-      "\\(y=(256000/27)x\\)",
-      "\\(y=(6400/9)x\\)",
-      "\\(y=(4000/27)x\\)",
-      "\\(y=4000x\\)"
-    ],
-    "why": "At tangency \\(a\\), the intercept vanishes when \\((a+10)^4-4a(a+10)^3=(a+10)^3(10-3a)=0\\). The nonhorizontal case is \\(a=10/3\\). Its slope is \\(4(40/3)^3=256000/27\\).",
-    "source": "../lectures/14-chain-rule.html#powers-of-functions",
-    "section": "3.6"
+    "section": "3.6",
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "chain",
@@ -319,7 +208,8 @@
     ],
     "why": "The square root acts first. Its output becomes the input to the sine.",
     "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
-    "section": "3.6"
+    "section": "3.6",
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "chain",
@@ -333,7 +223,8 @@
     ],
     "why": "Square \\(x\\), add one, then take the square root.",
     "source": "../lectures/14-chain-rule.html#differentiating-composite-functions",
-    "section": "3.6"
+    "section": "3.6",
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "chain",
@@ -347,6 +238,107 @@
     ],
     "why": "The chain rule gives \\(4(x+10)^3\\) since the inner derivative is \\(1\\). At \\(-9\\) the inner function equals \\(1\\).",
     "source": "../lectures/14-chain-rule.html#powers-of-functions",
-    "section": "3.6"
+    "section": "3.6",
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+  },
+  {
+    "section": "3.6",
+    "topic": "chain",
+    "level": 4,
+    "prompt": "Suppose \\(f(0)=2\\), \\(f'(0)=3\\), \\(g(2)=3\\), \\(g'(2)=4\\), and \\(f'(3)=-2\\). Find \\((f\\circ g\\circ f)'(0)\\).",
+    "answer": "-24",
+    "why": "The input passes from \\(0\\) to \\(2\\) to \\(3\\). The required derivative is \\(f'(3)g'(2)f'(0)=(-2)(4)(3)\\).",
+    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+    "pdfPage": 40,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+  },
+  {
+    "section": "3.6",
+    "topic": "chain",
+    "level": 4,
+    "prompt": "Suppose \\(g(0)=1\\), \\(g'(0)=-2\\), \\(g(1)=0\\), \\(g'(1)=6\\), and \\(f(0)=2\\), \\(f'(0)=3\\). For \\(y=[f(g(g(x)))]^2\\), find \\(y'(0)\\).",
+    "answer": "-144",
+    "why": "The inner values are \\(1,0,2\\) in order. Their derivative factors multiply to \\(6(-2)(3)=-36\\). The outer square contributes \\(2f(0)=4\\). Multiply to get \\(-144\\).",
+    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+    "pdfPage": 40,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+  },
+  {
+    "section": "3.6",
+    "topic": "chain",
+    "level": 4,
+    "prompt": "For \\(y=((x+1)/(2x-1))^2\\), what is the slope of the tangent to the derivative graph at \\(x=1\\)?",
+    "answer": "66",
+    "why": "The first derivative is \\(-6(x+1)(2x-1)^{-3}\\). Differentiate again to obtain \\(-6(2x-1)^{-3}+36(x+1)(2x-1)^{-4}\\). At \\(1\\) this is \\(-6+72\\).",
+    "source": "../lectures/14-chain-rule.html#combining-differentiation-rules",
+    "pdfPage": 42,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+  },
+  {
+    "section": "3.6",
+    "topic": "chain",
+    "level": 4,
+    "prompt": "Let \\(y=x^3\\cos^2x\\). Determine \\(y'''(0)\\).",
+    "answer": "6",
+    "why": "Write \\(y=x^3u(x)\\), where \\(u=\\cos^2x\\) is smooth and \\(u(0)=1\\). Three product-rule differentiations give \\(6u+18xu'+9x^2u''+x^3u'''\\). At zero only \\(6u(0)=6\\) remains.",
+    "source": "../lectures/14-chain-rule.html#combining-differentiation-rules",
+    "pdfPage": 42,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+  },
+  {
+    "section": "3.6",
+    "topic": "chain",
+    "level": 4,
+    "prompt": "For \\(y=\\sin^3(\\cos(2x))\\), find the third derivative at \\(x=\\pi/4\\).",
+    "answer": "-48",
+    "why": "Write \\(u=\\sin(\\cos(2x))\\). At \\(\\pi/4\\), \\(u=0\\) and \\(u'=-2\\). The third derivative of \\(u^3\\) is \\(6(u')^3+18uu'u''+3u^2u'''\\). Only \\(6(-2)^3\\) remains.",
+    "source": "../lectures/14-chain-rule.html#three-or-more-layers",
+    "pdfPage": 43,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+  },
+  {
+    "section": "3.6",
+    "topic": "chain",
+    "level": 4,
+    "prompt": "Suppose \\(y=[g(x)]^2\\), \\(g'(2)=3\\), \\(y'(2)=24\\), and \\(y''(2)=2\\). Find \\(g''(2)\\).",
+    "answer": "-2",
+    "why": "From \\(y'=2gg'\\) we have \\(g(2)=4\\). The second derivative is \\(2(g')^2+2gg''\\). Substitution gives \\(2=18+8g''(2)\\).",
+    "source": "../lectures/14-chain-rule.html#powers-of-functions",
+    "pdfPage": 42,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+  },
+  {
+    "section": "3.6",
+    "topic": "chain",
+    "level": 4,
+    "prompt": "For \\(f(x)=\\sqrt{1+3x^2}\\), find the slope of the graph of \\(f'\\) at \\(x=1\\).",
+    "answer": "3/8",
+    "why": "First \\(f'=3x(1+3x^2)^{-1/2}\\). Differentiate the product and combine over a common denominator to get \\(f''=3/(1+3x^2)^{3/2}\\). Its value at \\(1\\) is \\(3/8\\).",
+    "source": "../lectures/14-chain-rule.html#practice-1",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+  },
+  {
+    "section": "3.6",
+    "topic": "chain",
+    "level": 4,
+    "prompt": "For \\(y=1/[1+\\tan^2(2x)]\\), find \\(y''(0)\\).",
+    "answer": "-8",
+    "why": "On a neighborhood of zero, \\(1+\\tan^2(2x)=\\sec^2(2x)\\), so \\(y=\\cos^2(2x)\\). The first derivative is \\(-2\\sin(4x)\\) and the second is \\(-8\\cos(4x)\\). Evaluate at zero.",
+    "source": "../lectures/14-chain-rule.html#practice-1",
+    "pdfPage": 44,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+  },
+  {
+    "section": "3.6",
+    "topic": "chain",
+    "level": 4,
+    "prompt": "Let \\(A(x)=g(f(x))\\) and \\(B(x)=g(2f(x)-1)\\), where \\(f\\) and \\(g\\) are twice differentiable. Suppose \\(f(2)=1\\), \\(f'(2)=-1\\), \\(g'(1)=6\\), \\(A''(2)=7\\), and \\(B''(2)=20\\). Compute \\(f''(2)\\).",
+    "answer": "2/3",
+    "why": "Both outer functions take input \\(1\\) at \\(x=2\\). Write \\(u=g''(1)\\) and \\(v=f''(2)\\). The twice-applied chain rule gives \\(u+6v=7\\) for \\(A\\) and \\(4u+12v=20\\) for \\(B\\). Subtract twice the first equation from the second to obtain \\(u=3\\). Then \\(v=(7-3)/6=2/3\\).",
+    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+    "capstone": true,
+    "pdfPage": 40,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   }
 ]

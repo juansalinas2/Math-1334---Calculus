@@ -30,13 +30,7 @@ async function renderMap() {
   const theorems = JSON.parse(read("theorems.json"));
   const lectures = JSON.parse(read("challenge-questions.json"));
   const sections = JSON.parse(read("challenge-sections.json"));
-  const original = JSON.parse(read("challenge-lectures/original-sources.json"));
-  let originalIndex = 0;
   for (const lecture of lectures) {
-    for (const q of lecture.questions) {
-      Object.assign(q, original[originalIndex++]);
-      q.level = Math.min(2, q.level);
-    }
     lecture.questions.push(...JSON.parse(read("challenge-lectures/" + lecture.id + ".json")));
     for (const q of lecture.questions) {
       if (!lecture.review && !sections[q.section]) throw Error("Missing note section: " + q.prompt);
@@ -44,7 +38,6 @@ async function renderMap() {
     }
     lecture.sections = Object.fromEntries(Object.entries(sections).filter(([id]) => lecture.questions.some(q => q.section === id)));
   }
-  if (originalIndex !== original.length) throw Error("Update the original question source mapping");
   const marks = fs.readFileSync(path.resolve("scripts/figures/map-node-marks.svg"), "utf8");
   const requested = { inline: new Set(), display: new Set() };
   for (const tex of JSON.parse(process.argv[3] || "[]")) requested.inline.add(tex);
@@ -112,13 +105,16 @@ async function renderMap() {
     }
     for (const lecture of lectures) {
       for (const q of lecture.questions) {
-        if (!notes[q.topic] || q.choices.length !== 4 || new Set(q.choices).size !== 4) {
+        const numeric = q.level === 4;
+        const validAnswer = numeric ? /^-?\d+(?:\/[1-9]\d*)?$/.test(q.answer) && !q.choices :
+          Array.isArray(q.choices) && q.choices.length === 4 && new Set(q.choices).size === 4;
+        if (!notes[q.topic] || !validAnswer || !/^\.\.\/downloads\/[a-z0-9-]+\.pdf$/.test(q.pdf) || /Mean Value Theorem|Rolle[’']/i.test(JSON.stringify(q))) {
           throw new Error("Invalid game question: " + q.prompt);
         }
         q.topicTitle = notes[q.topic].title;
         q.prompt = await gameText(q.prompt);
         q.why = await gameText(q.why);
-        for (let i=0; i<q.choices.length; i++) q.choices[i] = await gameText(q.choices[i]);
+        if (q.choices) for (let i=0; i<q.choices.length; i++) q.choices[i] = await gameText(q.choices[i]);
       }
     }
     fs.writeFileSync(path.join(output, "challenge-bank.json"), JSON.stringify(lectures));

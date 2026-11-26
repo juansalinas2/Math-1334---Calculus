@@ -11,7 +11,9 @@
     ],
     "why": "Factor \\(f'(x)=12(x-1)(x+1)\\). Its signs are \\(+,-,+\\), so subtract \\(f(1)=4\\) from \\(f(-1)=20\\).",
     "source": "../lectures/section-4-3.html#the-first-derivative-test",
-    "section": "4.3"
+    "section": "4.3",
+    "pdfPage": 67,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
   },
   {
     "topic": "concavity",
@@ -25,7 +27,9 @@
     ],
     "why": "Decreasing requires \\(12(x-1)(x+1)<0\\), so \\(-1<x<1\\). Concave up requires \\(24x>0\\). The overlap is \\((0,1)\\).",
     "source": "../lectures/section-4-3.html#the-first-derivative-test",
-    "section": "4.3"
+    "section": "4.3",
+    "pdfPage": 67,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
   },
   {
     "topic": "local",
@@ -39,7 +43,9 @@
     ],
     "why": "The squared factor never reverses sign. The derivative switches from negative to positive at \\(-2\\) and stays positive on both sides of 1.",
     "source": "../lectures/exam-3-review.html#what-does-the-derivative-tell-us",
-    "section": "4.3"
+    "section": "4.3",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "inflect",
@@ -53,7 +59,9 @@
     ],
     "why": "Differentiate the factored expression to get \\(f''=(x-1)[(x-1)+2(x+2)]=3(x-1)(x+1)\\). Its sign changes at both simple roots.",
     "source": "../lectures/exam-3-review.html#what-does-the-derivative-tell-us",
-    "section": "4.3"
+    "section": "4.3",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "tests",
@@ -67,7 +75,9 @@
     ],
     "why": "Write \\(g'=e^{-x}(2x-x^2)\\). Differentiating again gives \\(g''=e^{-x}(x^2-4x+2)\\), which is positive at zero and negative at 2.",
     "source": "../lectures/exam-3-review.html#local-and-global-extrema",
-    "section": "4.3"
+    "section": "4.3",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "inflect",
@@ -81,7 +91,9 @@
     ],
     "why": "The roots of \\(g''=e^{-x}(x^2-4x+2)\\) are \\(2\\pm\\sqrt2\\). Both are simple, but \\(2+\\sqrt2\\) is outside the given interval.",
     "source": "../lectures/exam-3-review.html#local-and-global-extrema",
-    "section": "4.3"
+    "section": "4.3",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "concavity",
@@ -95,7 +107,9 @@
     ],
     "why": "First \\(f'=\\tan x+x\\sec^2 x\\). Each summand contributes a \\(\\sec^2 x\\); differentiating \\(\\sec^2 x\\) also contributes \\(2x\\sec^2 x\\tan x\\).",
     "source": "../lectures/section-4-3.html#the-second-derivative-test",
-    "section": "4.3"
+    "section": "4.3",
+    "pdfPage": 68,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
   },
   {
     "topic": "tests",
@@ -109,7 +123,9 @@
     ],
     "why": "For \\(x\\ne0\\), both \\(2x\\tan x\\) and \\(x^2\\sec^2 x\\) are positive. They sum to \\(h'(x)\\) and both vanish at zero.",
     "source": "../lectures/section-4-3.html#the-second-derivative-test",
-    "section": "4.3"
+    "section": "4.3",
+    "pdfPage": 68,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
   },
   {
     "topic": "critical",
@@ -123,7 +139,9 @@
     ],
     "why": "The corner gives \\(u\\) a minimum and \\(w\\) has a maximum. For \\(u\\), the first derivative at zero does not exist; for \\(v\\) and \\(w\\), the second derivative vanishes there.",
     "source": "../lectures/exam-3-review.html#compare-the-tests",
-    "section": "4.3"
+    "section": "4.3",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "inflect",
@@ -137,7 +155,9 @@
     ],
     "why": "Subtracting a linear function changes the first derivative to \\(3x^2-3\\) while leaving \\(p''=6x\\). Concavity still changes at zero.",
     "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
-    "section": "4.3"
+    "section": "4.3",
+    "pdfPage": 68,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
   },
   {
     "topic": "local",
@@ -151,7 +171,9 @@
     ],
     "why": "The derivative signs are \\(+,-,+\\) across \\(-1,1\\). The graph rises into the included right endpoint, so 3 is also a local maximizer in the restricted domain.",
     "source": "../lectures/section-4-3.html#the-first-derivative-test",
-    "section": "4.3"
+    "section": "4.3",
+    "pdfPage": 67,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
   },
   {
     "topic": "monotonic",
@@ -165,91 +187,9 @@
     ],
     "why": "The sign of \\(g'=e^{-x}x(2-x)\\) gives \\(0<x<2\\). The sign of \\(g''=e^{-x}(x^2-4x+2)\\) gives \\(2-\\sqrt2<x<2+\\sqrt2\\). Intersect these intervals.",
     "source": "../lectures/exam-3-review.html#local-and-global-extrema",
-    "section": "4.3"
-  },
-  {
-    "topic": "tests",
-    "level": 4,
-    "prompt": "For integers \\(n\\ge1\\) consider \\(h_n(x)=x^n\\tan x\\) near zero. Which classification works for every \\(n\\)?",
-    "choices": [
-      "Odd \\(n\\) gives a strict local minimum; even \\(n\\) gives neither extremum.",
-      "Even \\(n\\) gives a strict local minimum; odd \\(n\\) gives neither extremum.",
-      "Every \\(n\\) gives a strict local minimum because \\(h_n'(0)=0\\).",
-      "Odd \\(n\\) gives a strict local maximum; even \\(n\\) gives a strict local minimum."
-    ],
-    "why": "Near zero \\(\\tan x\\) has the sign of \\(x\\). Thus \\(h_n(x)\\) has the sign of \\(x^{n+1}\\) away from zero, and \\(h_n(0)=0\\).",
-    "source": "../lectures/section-4-3.html#the-second-derivative-test",
-    "section": "4.3"
-  },
-  {
-    "topic": "tests",
-    "level": 4,
-    "prompt": "Tilt the lecture cubic to \\(F_a(x)=4x^3-12x+ax\\) on the real line. For which \\(a\\) does it have exactly two strict local extrema?",
-    "choices": [
-      "\\(a<12\\)",
-      "\\(a\\le12\\)",
-      "\\(a>12\\)",
-      "\\(a<0\\) only"
-    ],
-    "why": "The derivative is \\(12x^2+a-12\\). It has two sign-changing roots exactly when \\(a<12\\). At equality its only root has even multiplicity.",
-    "source": "../lectures/section-4-3.html#the-first-derivative-test",
-    "section": "4.3"
-  },
-  {
-    "topic": "local",
-    "level": 4,
-    "prompt": "For which real \\(k\\) does the horizontal line \\(y=k\\) intersect \\(y=4x^3-12x+12\\) at exactly two distinct points on the whole real line?",
-    "choices": [
-      "\\(k=4\\) or \\(k=20\\)",
-      "Every \\(4<k<20\\)",
-      "\\(k=12\\) only",
-      "\\(k=0\\) or \\(k=12\\)"
-    ],
-    "why": "The local maximum is 20 at \\(-1\\) and the local minimum is 4 at 1. At either turning height one intersection is tangent and one lies on the opposite outer branch.",
-    "source": "../lectures/section-4-3.html#the-first-derivative-test",
-    "section": "4.3"
-  },
-  {
-    "topic": "tests",
-    "level": 4,
-    "prompt": "For \\(f'(x)=(x+2)(x-1)^2\\), which pair correctly classifies the graph of \\(f\\) at \\(x=-1\\) and \\(x=1\\), respectively?",
-    "choices": [
-      "An inflection with nonzero slope; an inflection with horizontal tangent.",
-      "A local maximum; a local minimum.",
-      "An inflection with horizontal tangent; an inflection with nonzero slope.",
-      "An ordinary point of unchanged concavity; a local maximum."
-    ],
-    "why": "Both are simple roots of \\(f''=3(x-1)(x+1)\\), so both are inflections. But \\(f'(-1)=4\\) whereas \\(f'(1)=0\\), and \\(f'\\) stays positive through 1.",
-    "source": "../lectures/exam-3-review.html#what-does-the-derivative-tell-us",
-    "section": "4.3"
-  },
-  {
-    "topic": "tests",
-    "level": 4,
-    "prompt": "For \\(g(x)=x^2e^{-x}\\) on the real line, at which input does the tangent slope have its positive local maximum?",
-    "choices": [
-      "\\(2-\\sqrt2\\)",
-      "\\(2+\\sqrt2\\)",
-      "\\(0\\)",
-      "\\(2\\)"
-    ],
-    "why": "A maximum of slope is a maximum of \\(g'\\). The sign of \\(g''=e^{-x}[(x-2)^2-2]\\) switches from positive to negative at \\(2-\\sqrt2\\). This input lies in \\((0,2)\\), where \\(g'>0\\).",
-    "source": "../lectures/exam-3-review.html#local-and-global-extrema",
-    "section": "4.3"
-  },
-  {
-    "topic": "concavity",
-    "level": 4,
-    "prompt": "Define \\(p(x)=(x\\tan x)^2\\) on \\((-\\pi/2,\\pi/2)\\). Which statement gives both the conclusion of the second derivative test and the actual classification at zero?",
-    "choices": [
-      "The test is inconclusive; zero is a strict local minimum.",
-      "The test proves a strict local minimum because \\(p''(0)>0\\).",
-      "The test is inconclusive; zero is neither extremum.",
-      "The test proves a strict local maximum because \\(p''(0)<0\\)."
-    ],
-    "why": "Put \\(u=x\\tan x\\). Since \\(u(0)=u'(0)=0\\), both \\(p'(0)=0\\) and \\(p''(0)=2(u'(0))^2+2u(0)u''(0)=0\\). The square is positive at every nearby nonzero input.",
-    "source": "../lectures/section-4-3.html#the-second-derivative-test",
-    "section": "4.3"
+    "section": "4.3",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "concavity",
@@ -263,7 +203,9 @@
     ],
     "why": "Here \\(f'>0\\) for \\(x>-2\\) except at 1. Factor \\(f''=3(x-1)(x+1)\\), which is positive outside \\([-1,1]\\). Intersect the sign intervals.",
     "source": "../lectures/exam-3-review.html#what-does-the-derivative-tell-us",
-    "section": "4.3"
+    "section": "4.3",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "tests",
@@ -277,7 +219,9 @@
     ],
     "why": "The derivative is \\(-4x(x^2-2)\\). The second derivative \\(8-12x^2\\) gives minima or maxima according to its sign: positive at 0 and negative at both \\(\\pm\\sqrt2\\). At either maximum \\(w=4\\).",
     "source": "../lectures/exam-3-review.html#compare-the-tests",
-    "section": "4.3"
+    "section": "4.3",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "tests",
@@ -291,35 +235,9 @@
     ],
     "why": "The lecture calculation gives \\(f'(0)=0\\) and \\(f''(0)=2\\). Thus \\(v'(0)=0\\) and \\(v''(0)=2-2a\\). Strict negativity occurs precisely for \\(a>1\\).",
     "source": "../lectures/section-4-3.html#the-second-derivative-test",
-    "section": "4.3"
-  },
-  {
-    "topic": "tests",
-    "level": 4,
-    "prompt": "Square the lecture cubic: \\(H(x)=(4x^3-12x+12)^2\\) for all real \\(x\\). How many strict local minima and strict local maxima does \\(H\\) have?",
-    "choices": [
-      "Two minima and one maximum.",
-      "One minimum and one maximum.",
-      "Two minima and two maxima.",
-      "One minimum and two maxima."
-    ],
-    "why": "The cubic has turning values 20 and 4, both positive, so its only zero is left of \\(-1\\). Squaring creates a minimum at that zero and preserves the maximum at \\(-1\\) and the minimum at 1. The derivative \\(H'=2ff'\\) gives no further candidates.",
-    "source": "../lectures/section-4-3.html#the-first-derivative-test",
-    "section": "4.3"
-  },
-  {
-    "topic": "tests",
-    "level": 4,
-    "prompt": "Suppose \\(f'(x)=(x+2)(x-1)^2\\) and \\(G(t)=f(1+t)+f(1-t)\\). At \\(t=0\\), which statement is correct?",
-    "choices": [
-      "\\(G\\) has a strict local minimum and \\(G''(0)=0\\).",
-      "\\(G\\) has a strict local maximum and \\(G''(0)=0\\).",
-      "\\(G\\) has a strict local minimum and \\(G''(0)>0\\).",
-      "\\(G\\) has neither extremum and \\(G''(0)=0\\)."
-    ],
-    "why": "The chain rule gives \\(G'(t)=(3+t)t^2-(3-t)t^2=2t^3\\). Its sign switches from negative to positive, while \\(G''(t)=6t^2\\) vanishes at zero.",
-    "source": "../lectures/exam-3-review.html#what-does-the-derivative-tell-us",
-    "section": "4.3"
+    "section": "4.3",
+    "pdfPage": 68,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
   },
   {
     "topic": "tests",
@@ -333,7 +251,8 @@
     ],
     "why": "The function decreases into the point and increases away from it.",
     "source": "../lectures/section-4-3.html#first-derivative-test",
-    "section": "4.3"
+    "section": "4.3",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
   },
   {
     "topic": "concavity",
@@ -347,7 +266,8 @@
     ],
     "why": "Concavity up means the tangent slopes increase as input increases.",
     "source": "../lectures/section-4-3.html#concavity",
-    "section": "4.3"
+    "section": "4.3",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
   },
   {
     "topic": "tests",
@@ -361,7 +281,8 @@
     ],
     "why": "A negative second derivative at this stationary point gives a strict local maximum.",
     "source": "../lectures/section-4-3.html#second-derivative-test",
-    "section": "4.3"
+    "section": "4.3",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
   },
   {
     "topic": "local",
@@ -375,7 +296,9 @@
     ],
     "why": "The sign switches from positive to negative, and \\(p(0)=\\cos 0=1\\).",
     "source": "../lectures/section-4-3.html#the-first-derivative-test",
-    "section": "4.3"
+    "section": "4.3",
+    "pdfPage": 67,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
   },
   {
     "topic": "tests",
@@ -389,20 +312,206 @@
     ],
     "why": "At \\(-1\\), the second derivative is negative, so that critical point is a local maximum. At 1 it is positive.",
     "source": "../lectures/section-4-3.html#the-second-derivative-test",
-    "section": "4.3"
+    "section": "4.3",
+    "pdfPage": 68,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
   },
   {
     "topic": "inflect",
     "level": 2,
-    "prompt": "For \\(g(x)=x^3+1\\), what happens to the direction of motion and the concavity as \\(x\\) passes through zero?",
+    "prompt": "For \\(g(x)=x^3+1\\), \\(g''(x)=6x\\). What change does its graph make at zero?",
     "choices": [
-      "It keeps increasing and changes from concave down to concave up.",
-      "It switches from increasing to decreasing and stays concave up.",
-      "It keeps decreasing and changes from concave up to concave down.",
-      "It keeps increasing and stays concave up."
+      "Concave down to concave up.",
+      "Concave up to concave down.",
+      "Increasing to decreasing.",
+      "Decreasing to increasing."
     ],
-    "why": "\\(g^{\\prime}=3x^2\\) is positive on both sides. Meanwhile \\(g^{\\prime\\prime}=6x\\) changes from negative to positive.",
+    "why": "The second derivative switches from negative on the left to positive on the right, so \\((0,1)\\) is an inflection point.",
     "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
-    "section": "4.3"
+    "section": "4.3",
+    "pdfPage": 68,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "topic": "tests",
+    "section": "4.3",
+    "level": 2,
+    "prompt": "You know \\(f'(x)=(x+2)(x-1)^2\\). What happens to \\(f\\) as \\(x\\) passes through 1?",
+    "choices": [
+      "It increases on both sides of a horizontal tangent.",
+      "It changes from increasing to decreasing.",
+      "It changes from decreasing to increasing.",
+      "It decreases on both sides of a horizontal tangent."
+    ],
+    "why": "The squared factor vanishes at 1 and stays positive off 1. The other factor stays positive near 1, so no sign change occurs.",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "reference": "Exam 3 review worksheet · 1(b)",
+    "pdfPage": 67,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+  },
+  {
+    "topic": "critical",
+    "section": "4.2",
+    "level": 2,
+    "prompt": "The worksheet gives only \\(f'(x)=(x+2)(x-1)^2\\). Why can you locate the local minimum but not report its height?",
+    "choices": [
+      "Adding a constant to \\(f\\) preserves the derivative and shifts every height.",
+      "A local minimum has no function value.",
+      "The derivative fails to exist at the local minimum.",
+      "The function can have no minimum if its formula is unknown."
+    ],
+    "why": "The derivative changes from negative to positive at \\(-2\\). A vertical shift keeps that input fixed while changing the value there.",
+    "source": "../lectures/18-maxima-and-minima.html#finding-global-extrema",
+    "reference": "Exam 3 review worksheet · 1(c)",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+  },
+  {
+    "section": "4.3",
+    "level": 2,
+    "topic": "concavity",
+    "prompt": "The shown cubic flattens at \\((0,1)\\). Which graph is its first derivative?",
+    "choices": [
+      "Upward parabola touching the origin and passing through (1, 3).",
+      "Downward parabola touching the origin and passing through (1, −3).",
+      "Rising line through the origin and (1, 2).",
+      "Falling line through the origin and (1, −2)."
+    ],
+    "graphChoices": [
+      "square-derivative",
+      "negative-bowl",
+      "slope-two",
+      "slope-neg-two"
+    ],
+    "why": "The lecture cubic \\(g(x)=x^3+1\\) increases on either side of zero and has a horizontal tangent there. Its derivative \\(3x^2\\) touches the horizontal axis from above.",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "graphPrompt": "cubic-raised",
+    "pdfPage": 68,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "section": "4.3",
+    "level": 3,
+    "topic": "local",
+    "prompt": "The shown cubic has a local maximum at \\(x=-1\\) and a local minimum at \\(x=1\\). Which graph shows its derivative?",
+    "choices": [
+      "Upward parabola crossing at −1 and 1 with a minimum at (0, −12).",
+      "Downward parabola crossing at −1 and 1 with a maximum at (0, 12).",
+      "Upward parabola with a minimum at (0, 12), above the x-axis.",
+      "A rising straight line crossing the origin."
+    ],
+    "graphChoices": [
+      "extrema-slopes",
+      "extrema-neg-slopes",
+      "extrema-shift",
+      "extrema-tangent"
+    ],
+    "why": "Read the slopes from left to right. They are positive, then negative, then positive. The two turning points are the roots of \\(12(x^2-1)\\).",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "graphPrompt": "extrema-cubic",
+    "pdfPage": 67,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "level": 4,
+    "prompt": "A line is tangent to \\(f(x)=4x^3-12x+12\\) at its inflection point. At the local maximum of \\(f\\), find the signed height of the graph minus the height of that line.",
+    "answer": "-4",
+    "why": "\\(f^{\\prime\\prime}=24x\\) changes sign at zero, giving tangent \\(y=12-12x\\). The local maximum occurs at \\(x=-1\\), where the graph has height 20 while the tangent has height 24.",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "pdfPage": 67,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "level": 4,
+    "prompt": "Let \\(g(x)=4x^3-12x+12-kx\\). The local minimum occurs at \\(x=2\\). How much higher is the local maximum than the local minimum?",
+    "answer": "128",
+    "why": "\\(g^{\\prime}(2)=0\\) forces \\(k=36\\). The derivative then factors as \\(12(x-2)(x+2)\\). The maximum is \\(g(-2)=76\\) and the minimum is \\(g(2)=-52\\).",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "pdfPage": 67,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "level": 4,
+    "prompt": "Tilt the lecture cubic \\(g(x)=x^3+1\\) to \\(h(x)=x^3-12x+1\\). Construct tangents at its two local extrema. What is the distance between these horizontal lines?",
+    "answer": "32",
+    "why": "\\(h^{\\prime}=3(x^2-4)\\) changes sign at \\(-2\\) and 2. Their heights are \\(17\\) and \\(-15\\), so the tangent lines are 32 units apart.",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdfPage": 68,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "level": 4,
+    "prompt": "For the flat critical point of \\(h(x)=x^2\\tan x\\) at zero, both the first and second derivatives vanish. Compute \\(h^{\\prime\\prime\\prime}(0)\\).",
+    "answer": "6",
+    "why": "The third product derivative at zero has just one surviving term, \\(3(x^2)^{\\prime\\prime}(\\tan x)^{\\prime}=3(2)(1)\\). Every other term carries a factor \\(x\\) or a third derivative of \\(x^2\\).",
+    "source": "../lectures/section-4-3.html#the-second-derivative-test",
+    "pdfPage": 69,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "level": 4,
+    "prompt": "Set \\(p(x)=x\\tan x-x^2\\), which cancels the quadratic term of the lecture example. What is \\(p^{(4)}(0)\\)?",
+    "answer": "8",
+    "why": "From \\(u=\\tan x\\) and \\(u^{\\prime}=1+u^2\\), obtain \\(u^{\\prime\\prime\\prime}(0)=2\\). The fourth derivative of \\(xu\\) at zero is \\(4u^{\\prime\\prime\\prime}(0)=8\\), while \\(x^2\\) contributes zero.",
+    "source": "../lectures/section-4-3.html#the-second-derivative-test",
+    "pdfPage": 69,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "level": 4,
+    "prompt": "Starting with \\(g(x)=x^3+1\\), form \\(H(x)=(g(x)-1)^2-3(g(x)-1)\\). The critical input zero fails to be an extremum. Find the local minimum value at the other critical input.",
+    "answer": "-9/4",
+    "why": "\\(H=x^6-3x^3\\) has derivative \\(3x^2(2x^3-3)\\). At \\(x^3=3/2\\) it changes from negative to positive, and the height is \\((3/2)^2-3(3/2)=-9/4\\).",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdfPage": 68,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "level": 4,
+    "prompt": "For \\(g(x)=\\cos x+a\\cos^2x\\), choose \\(a\\) so the stationary point at zero has \\(g^{\\prime\\prime}(0)=0\\). With this choice, what is \\(g^{(4)}(0)\\)?",
+    "answer": "-3",
+    "why": "Write \\(\\cos^2x=(1+\\cos(2x))/2\\). Then \\(g^{\\prime\\prime}(0)=-1-2a\\) forces \\(a=-1/2\\), and \\(g^{(4)}(0)=1+8a=-3\\).",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "pdfPage": 67,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "level": 4,
+    "prompt": "Add \\(2x^2\\) to the lecture comparison function \\(-x^4\\). At a local maximum of the resulting curve, what is the second derivative minus its value at the local minimum?",
+    "answer": "-12",
+    "why": "For \\(f=-x^4+2x^2\\), the maxima occur at \\(\\pm1\\) and the minimum at 0. Since \\(f^{\\prime\\prime}=4-12x^2\\), the requested difference is \\(-8-4=-12\\).",
+    "source": "../lectures/section-4-3.html#the-second-derivative-test",
+    "pdfPage": 69,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "level": 4,
+    "prompt": "Choose \\(A,B\\) so that \\(p(x)=x\\tan x+Ax^2+Bx^4\\) has both \\(p^{\\prime\\prime}(0)=0\\) and \\(p^{(4)}(0)=0\\). Find \\(B\\).",
+    "answer": "-1/3",
+    "why": "The quadratic derivative gives \\(2+2A=0\\). Writing \\(u=\\tan x\\) gives \\(u^{\\prime\\prime\\prime}(0)=2\\) from \\(u^{\\prime}=1+u^2\\), so \\((xu)^{(4)}(0)=8\\). Now \\(8+24B=0\\).",
+    "source": "../lectures/section-4-3.html#the-second-derivative-test",
+    "capstone": true,
+    "pdfPage": 69,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
   }
 ]

@@ -11,7 +11,9 @@
     ],
     "why": "Since \\(f'=4x^2(3-x)\\), compare \\(f(-1)=-5\\), \\(f(0)=0\\), \\(f(3)=27\\), and \\(f(4)=0\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "global",
@@ -25,7 +27,9 @@
     ],
     "why": "The function increases up to \\(x=3\\) except for a horizontal tangent at zero, then decreases. Its values approach \\(-5\\) only at the omitted left endpoint; \\(f(3)=27\\) remains in the domain.",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "global",
@@ -39,7 +43,9 @@
     ],
     "why": "Away from 3, \\(f(x)=x+3\\). That produces the interval \\([5,7]\\) with 6 missing. The separate value at 3 contributes 2.",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "global",
@@ -53,7 +59,9 @@
     ],
     "why": "The graph rises immediately to the right of \\(-1\\) and falls up to 3. Their values are \\(0\\) and \\(-8\\), while the interior maximum is \\(f(0)=1\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "global",
@@ -67,7 +75,9 @@
     ],
     "why": "The only input giving 1 in this interval was removed. Values still approach 1 there, and the included left endpoint still gives \\(-1\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "global",
@@ -81,7 +91,9 @@
     ],
     "why": "The left and right slopes are \\(-3/2\\) and \\(1/2\\). Compare the corner value 2 with \\(F(-1)=7/2\\) and \\(F(2)=3\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "critical",
@@ -95,7 +107,9 @@
     ],
     "why": "The derivative \\(3(x-5)^2\\) vanishes only at 5 and stays positive on both sides. Evaluate the function at 4, 5, and 7 to obtain 1, 2, and 10.",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "global",
@@ -109,7 +123,9 @@
     ],
     "why": "The derivative \\(e^{-x}x(2-x)\\) gives candidates \\(-1,0,2,3\\). Their values are \\(e,0,4/e^2,9/e^3\\); the local peak at 2 lies below the left endpoint.",
     "source": "../lectures/exam-3-review.html#local-and-global-extrema",
-    "section": "4.2"
+    "section": "4.2",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "global",
@@ -123,7 +139,9 @@
     ],
     "why": "It increases to \\(x=2\\) and then decreases. The value at 3 is positive, while positive values as close to zero as desired occur near the excluded input 0.",
     "source": "../lectures/exam-3-review.html#local-and-global-extrema",
-    "section": "4.2"
+    "section": "4.2",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "global",
@@ -137,7 +155,9 @@
     ],
     "why": "Both endpoints attain 1. The interior values approach 0 from above near the deleted point, and none equals 0.",
     "source": "../lectures/exam-3-review.html#the-domain-matters",
-    "section": "4.2"
+    "section": "4.2",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "global",
@@ -151,7 +171,9 @@
     ],
     "why": "The derivative changes from positive to negative at 2. The endpoint values satisfy \\(g(1)=1/e<9/e^3=g(3)\\) because \\(e^2<9\\).",
     "source": "../lectures/exam-3-review.html#local-and-global-extrema",
-    "section": "4.2"
+    "section": "4.2",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "global",
@@ -165,91 +187,9 @@
     ],
     "why": "The function rises from 0 to 27 on \\([0,3]\\) and falls to 0 on \\([3,4]\\). Continuity gives a crossing on each branch and strict monotonicity gives uniqueness there.",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
-  },
-  {
-    "topic": "global",
-    "level": 4,
-    "prompt": "Let \\(f(x)=x^3(4-x)\\) on \\([0,b]\\), with \\(b>0\\). For exactly which \\(b\\) is zero a global minimum value?",
-    "choices": [
-      "\\(0<b\\le4\\)",
-      "\\(0<b\\le3\\)",
-      "\\(b\\ge4\\)",
-      "\\(0<b<4\\) only"
-    ],
-    "why": "Here \\(x^3\\ge0\\), so the sign of \\(f\\) away from zero is the sign of \\(4-x\\). At \\(b=4\\) both endpoints attain zero; for larger \\(b\\) negative outputs occur.",
-    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
-  },
-  {
-    "topic": "global",
-    "level": 4,
-    "prompt": "Take \\(f(x)=x+3\\) for \\(2\\le x\\le4\\) except that \\(f(3)=k\\). For which \\(k\\) is \\(x=3\\) a strict local minimum but neither a global minimizer nor a global maximizer?",
-    "choices": [
-      "\\(5<k<6\\)",
-      "\\(5\\le k<6\\)",
-      "\\(k<5\\)",
-      "\\(6<k<7\\)"
-    ],
-    "why": "The neighboring values approach 6 along the rising line, so strict local minimality requires \\(k<6\\). The left endpoint gives 5, so avoiding a global minimum requires \\(k>5\\).",
-    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
-  },
-  {
-    "topic": "global",
-    "level": 4,
-    "prompt": "For \\(F_a(x)=2+|x|-ax\\) on \\([-1,2]\\), the two endpoints attain the same global maximum. Which pair gives \\(a\\) and that maximum?",
-    "choices": [
-      "\\(a=1/3\\), maximum \\(10/3\\)",
-      "\\(a=1/3\\), maximum \\(8/3\\)",
-      "\\(a=-1/3\\), maximum \\(10/3\\)",
-      "\\(a=1/2\\), maximum \\(7/2\\)"
-    ],
-    "why": "Equating \\(F_a(-1)=3+a\\) and \\(F_a(2)=4-2a\\) gives \\(a=1/3\\). The resulting slopes are \\(-4/3\\) and \\(2/3\\), so these tied endpoint values exceed the corner value 2.",
-    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
-  },
-  {
-    "topic": "global",
-    "level": 4,
-    "prompt": "For \\(G_a(x)=x^2e^{-ax}\\) on \\([0,3]\\) with \\(a>0\\), which condition places the unique global maximum strictly inside the interval, and what is its value?",
-    "choices": [
-      "\\(a>2/3\\); the maximum is \\(4/(a^2e^2)\\).",
-      "\\(a\\ge2/3\\); the maximum is \\(4/(a^2e^2)\\).",
-      "\\(a>2/3\\); the maximum is \\(2/(ae^2)\\).",
-      "\\(0<a<2/3\\); the maximum is \\(4/(a^2e^2)\\)."
-    ],
-    "why": "The derivative is \\(e^{-ax}x(2-ax)\\). Its positive-to-negative transition at \\(2/a\\) is interior exactly when \\(a>2/3\\). Substitution gives \\(4e^{-2}/a^2\\).",
-    "source": "../lectures/exam-3-review.html#local-and-global-extrema",
-    "section": "4.2"
-  },
-  {
-    "topic": "global",
-    "level": 4,
-    "prompt": "For \\(0<a<2\\), restrict \\(q(x)=(x-1)^2\\) to \\([0,a)\\). Which statement gives exactly when each global extremum is attained?",
-    "choices": [
-      "A maximum always exists; a minimum exists exactly when \\(a>1\\).",
-      "Both extrema exist for every \\(a\\).",
-      "A minimum always exists; a maximum exists exactly when \\(a\\ge1\\).",
-      "A maximum always exists; a minimum exists exactly when \\(a\\ge1\\)."
-    ],
-    "why": "The included input 0 attains 1, the largest value. When \\(a\\le1\\) the graph falls toward an excluded right endpoint. When \\(a>1\\) the included vertex gives the minimum 0.",
-    "source": "../lectures/exam-3-review.html#the-domain-matters",
-    "section": "4.2"
-  },
-  {
-    "topic": "global",
-    "level": 4,
-    "prompt": "For \\(f(x)=1-x^2\\) on \\([a,a+2]\\), both endpoints attain the global minimum. What are \\(a\\) and the range of \\(f\\) on that interval?",
-    "choices": [
-      "\\(a=-1\\) and the range is \\([0,1]\\).",
-      "\\(a=-1\\) and the range is \\([-1,1]\\).",
-      "\\(a=0\\) and the range is \\([-3,1]\\).",
-      "\\(a=-2\\) and the range is \\([-3,1]\\)."
-    ],
-    "why": "Equality at the endpoints gives \\(a^2=(a+2)^2\\), hence \\(a=-1\\). On \\([-1,1]\\) the endpoints give zero and the vertex gives 1.",
-    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "global",
@@ -263,7 +203,9 @@
     ],
     "why": "The minimum 0 occurs at \\(x=-1\\) and \\(x=1\\). The inner function ranges from \\(-8\\) to 1, so its largest absolute value is 8 at \\(x=3\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "global",
@@ -277,7 +219,9 @@
     ],
     "why": "The derivative \\(\\cos x-1/2\\) changes from negative to positive at \\(-\\pi/3\\) and back to negative at \\(\\pi/3\\). Compare the local minimum \\(-\\sqrt3/2+\\pi/6\\) with the right endpoint value \\(-\\pi/2\\); the endpoint is smaller.",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "global",
@@ -291,35 +235,9 @@
     ],
     "why": "The derivative \\(e^xx(x+2)\\) changes from positive to negative at \\(-2\\). Compare \\(h(-3)=9/e^3\\), \\(h(-2)=4/e^2\\), \\(h(0)=0\\), and \\(h(1)=e\\).",
     "source": "../lectures/exam-3-review.html#local-and-global-extrema",
-    "section": "4.2"
-  },
-  {
-    "topic": "global",
-    "level": 4,
-    "prompt": "On \\([-1,4]\\), let \\(F(x)=|x^3(4-x)-k|\\). Which choice of \\(k\\) makes the global maximum value of \\(F\\) as small as possible?",
-    "choices": [
-      "\\(k=11\\), giving a maximum of 16.",
-      "\\(k=16\\), giving a maximum of 11.",
-      "\\(k=27/2\\), giving a maximum of \\(27/2\\).",
-      "\\(k=0\\), giving a maximum of 27."
-    ],
-    "why": "The inner quartic ranges from \\(-5\\) to 27: its derivative is \\(4x^2(3-x)\\). The farther endpoint of this range determines the largest distance from \\(k\\). Its smallest possible value is half the range width, attained at the midpoint.",
-    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
-  },
-  {
-    "topic": "global",
-    "level": 4,
-    "prompt": "For real \\(a\\), let \\(F_a(x)=1-x^2+ax\\) on \\([-1,3]\\). Its global maximum must occur strictly inside the interval and its global minimum only at the right endpoint. For exactly which \\(a\\) do both requirements hold?",
-    "choices": [
-      "\\(-2<a<2\\)",
-      "\\(-2<a<6\\)",
-      "\\(2<a<6\\)",
-      "\\(-2\\le a\\le2\\)"
-    ],
-    "why": "The concave parabola peaks at \\(a/2\\), which lies inside exactly for \\(-2<a<6\\). The right endpoint wins the minimum comparison when \\(-8+3a<-a\\), i.e. \\(a<2\\). Intersect the two conditions.",
-    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "global",
@@ -333,7 +251,8 @@
     ],
     "why": "A global minimum is an attained output no larger than any other output on the domain.",
     "source": "../lectures/18-maxima-and-minima.html#global-extrema",
-    "section": "4.2"
+    "section": "4.2",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "global",
@@ -347,7 +266,9 @@
     ],
     "why": "This line is increasing, so its greatest value occurs at the right endpoint.",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "critical",
@@ -361,7 +282,8 @@
     ],
     "why": "An input in the domain at which the derivative fails to exist is a critical number.",
     "source": "../lectures/18-maxima-and-minima.html#critical-number",
-    "section": "4.2"
+    "section": "4.2",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "global",
@@ -375,7 +297,9 @@
     ],
     "why": "The candidates are \\(x=-1,0,3\\) with values \\(0,1,-8\\). The smallest is \\(-8\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "global",
@@ -389,7 +313,9 @@
     ],
     "why": "The only interior candidate is \\(\\pi/2\\), giving value 1. The endpoint values are \\(-1\\) and 0.",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "critical",
@@ -403,6 +329,126 @@
     ],
     "why": "\\(f^{\\prime}=3(x-5)^2\\) vanishes at 5 but is positive on both sides. The cubic increases through that input.",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+  },
+  {
+    "topic": "evt",
+    "section": "4.2",
+    "level": 2,
+    "prompt": "On the open interval \\((0,2)\\), which global extrema does \\(q(x)=(x-1)^2\\) attain?",
+    "choices": [
+      "Minimum 0, no maximum.",
+      "Minimum 0, maximum 1.",
+      "No minimum, maximum 1.",
+      "Neither a minimum nor a maximum."
+    ],
+    "why": "The allowed input 1 gives 0. The values approach 1 near either excluded endpoint and stay strictly below 1 in the interval.",
+    "source": "../lectures/18-maxima-and-minima.html#closed-interval-method",
+    "reference": "Exam 3 review worksheet · 6(b)",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "level": 4,
+    "prompt": "On \\([-1,4]\\), let \\(f(x)=x^3(4-x)\\). What is the difference between its greatest and least attained values?",
+    "answer": "32",
+    "why": "\\(f^{\\prime}=4x^2(3-x)\\) gives candidates \\(-1,0,3,4\\). Their values are \\(-5,0,27,0\\), giving \\(27-(-5)=32\\).",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdfPage": 66,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "level": 4,
+    "prompt": "On \\([2,4]\\) take \\(f(x)=(x^2-9)/(x-3)\\) except that \\(f(3)=k\\). At 3 it is strictly lower than at every other input. The global maximum exceeds the global minimum by 8. Find \\(k\\).",
+    "answer": "-1",
+    "why": "Away from 3 the function is \\(x+3\\), so its largest other output is 7 and its smallest is 5. The hypothesis gives \\(7-k=8\\), hence \\(k=-1\\).",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdfPage": 66,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "level": 4,
+    "prompt": "For \\(p(x)=2+(x-5)^3\\) on \\([4,7]\\), find the constant \\(c\\) minimizing the largest vertical distance \\(\\lvert p(x)-c\\rvert\\) on the interval.",
+    "answer": "11/2",
+    "why": "The stationary input 5 does not reverse the increasing cubic. Its smallest and largest outputs are 1 and 10. Centering the horizontal line between those heights gives \\(c=(1+10)/2\\).",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdfPage": 66,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "level": 4,
+    "prompt": "Take the lecture’s cusp \\(2+\\lvert x\\rvert\\) and subtract \\(x^2\\). What is the global maximum of \\(2+\\lvert x\\rvert-x^2\\) on \\([-1,2]\\)?",
+    "answer": "9/4",
+    "why": "The smooth branches have critical inputs \\(-1/2,1/2\\), each giving \\(9/4\\). The cusp gives 2 and the endpoints give 2 and 0, so neither exceeds \\(9/4\\).",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdfPage": 66,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "level": 4,
+    "prompt": "On the lecture’s interval \\([-\\pi/2,\\pi]\\), find the largest value of \\(\\sin x+\\cos^2 x\\).",
+    "answer": "5/4",
+    "why": "With \\(u=\\sin x\\), every \\(u\\in[-1,1]\\) occurs. The objective is \\(1+u-u^2\\), maximized at \\(u=1/2\\) with value \\(5/4\\).",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdfPage": 66,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "level": 4,
+    "prompt": "Set \\(f(x)=x^3(4-x)\\) on \\([-1,4]\\). What is the global minimum of \\((f(x)-6)(f(x)-13)\\)?",
+    "answer": "-49/4",
+    "why": "The quartic is continuous, and \\(f(0)=0\\), \\(f(3)=27\\), so it attains \\(19/2\\). Completing the square gives \\((f-19/2)^2-49/4\\), whose lower bound is attained there.",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdfPage": 66,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "level": 4,
+    "prompt": "On \\([-1,3]\\) let \\(p(x)=1-x^2\\). Find the maximum of \\(p(x)(p(x)+6)\\).",
+    "answer": "16",
+    "why": "\\(p\\) ranges from \\(-8\\) to 1, with maximum at zero. The function \\(u(u+6)\\) is convex, so its maximum on \\([-8,1]\\) is at an endpoint. Their outputs are 16 and 7.",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdfPage": 66,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "level": 4,
+    "prompt": "A sensor reports \\(g(x)=2+\\lvert x\\rvert\\) on \\([-1,2]\\) but records the squared discrepancy from \\(13/4\\). What is the largest recorded discrepancy?",
+    "answer": "25/16",
+    "why": "The minimum and maximum readings of \\(g\\) are 2 and 4. Their distances from \\(13/4\\) are \\(5/4\\) and \\(3/4\\). The larger squared distance equals \\(25/16\\).",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdfPage": 66,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+  },
+  {
+    "section": "4.2",
+    "topic": "global",
+    "level": 4,
+    "prompt": "Scale the lecture quartic \\(f(x)=x^3(4-x)\\) on \\([-1,4]\\) by \\(H(x)=af(x)+b\\) with \\(a>0\\). If \\(H\\) has global minimum \\(-1\\) and global maximum 1, what is \\(b\\)?",
+    "answer": "-11/16",
+    "why": "Compare the quartic at its endpoints and critical inputs \\(0,3\\) to get range \\([-5,27]\\). Solve \\(-5a+b=-1\\) and \\(27a+b=1\\). The scale is \\(1/16\\) and the offset is \\(-11/16\\).",
+    "source": "../lectures/18-maxima-and-minima.html#closed-interval-method",
+    "capstone": true,
+    "pdfPage": 66,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   }
 ]

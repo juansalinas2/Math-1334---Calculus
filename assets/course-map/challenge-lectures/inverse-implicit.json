@@ -11,21 +11,9 @@
     ],
     "why": "The inverse passes through \\((5,2)\\) with slope \\(-1/3\\). Set \\(0-2=-(x-5)/3\\), which gives \\(x=11\\).",
     "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
-    "section": "3.7"
-  },
-  {
-    "topic": "inverse",
-    "level": 4,
-    "prompt": "Let \\(g\\) be the inverse of \\(f(x)=x^3\\). Without solving for \\(g\\) explicitly, find \\(g''(8)\\).",
-    "choices": [
-      "\\(-1/144\\)",
-      "\\(-1/12\\)",
-      "\\(1/144\\)",
-      "\\(-1/24\\)"
-    ],
-    "why": "Differentiate \\(f(g(x))=x\\) twice. Then \\(g''=-f''(g)(g')^2/f'(g)\\). At \\(8\\), \\(g=2\\), \\(g'=1/12\\), \\(f''(2)=12\\), and \\(f'(2)=12\\).",
-    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
-    "section": "3.7"
+    "section": "3.7",
+    "pdfPage": 45,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "invtrig",
@@ -39,21 +27,8 @@
     ],
     "why": "The principal angle is \\(\\arccos(1/\\sqrt2)=\\pi/4\\). The slope is \\(-1/\\sqrt{2x-4x^2}=-2\\) at \\(x=1/4\\).",
     "source": "../lectures/15-inverse-functions.html#using-inverse-trigonometric-derivatives",
-    "section": "3.7"
-  },
-  {
-    "topic": "invtrig",
-    "level": 4,
-    "prompt": "At which inputs does the lecture curve \\(y=\\arccos(\\sqrt{2x})\\) have slope \\(-4/\\sqrt3\\)?",
-    "choices": [
-      "\\(1/8\\) and \\(3/8\\)",
-      "\\(1/4\\) only",
-      "\\(1/16\\) and \\(3/16\\)",
-      "\\(-1/8\\) and \\(3/8\\)"
-    ],
-    "why": "Set \\(2x-4x^2=3/16\\). The equation factors as \\((8x-1)(8x-3)=0\\). Both solutions lie in \\((0,1/2)\\) and give the required negative slope.",
-    "source": "../lectures/15-inverse-functions.html#using-inverse-trigonometric-derivatives",
-    "section": "3.7"
+    "section": "3.7",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "invtrig",
@@ -67,7 +42,8 @@
     ],
     "why": "Near \\(2\\) the domain requires \\(x\\ge2\\). The derivative for \\(x>2\\) is \\(2/[x\\sqrt{x^2-4}]\\), which grows without bound as \\(x\\) decreases to \\(2\\).",
     "source": "../lectures/15-inverse-functions.html#practice",
-    "section": "3.7"
+    "section": "3.7",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "invtrig",
@@ -81,21 +57,8 @@
     ],
     "why": "The height is \\(\\arctan(1)=\\pi/4\\). The chain rule gives slope \\(1/[2\\sqrt{x}(1+x)]\\), equal to \\(1/4\\) at \\(1\\).",
     "source": "../lectures/15-inverse-functions.html#practice",
-    "section": "3.7"
-  },
-  {
-    "topic": "invtrig",
-    "level": 4,
-    "prompt": "Follow the principal branch \\(y=\\arccos(2/x)\\) of \\(x\\cos y=2\\) onto \\(x<-2\\). What is its slope at \\(x=-4\\)?",
-    "choices": [
-      "\\(1/(4\\sqrt3)\\)",
-      "\\(-1/(4\\sqrt3)\\)",
-      "\\(1/(8\\sqrt3)\\)",
-      "\\(-\\sqrt3/4\\)"
-    ],
-    "why": "The chain rule gives \\(2/[x^2\\sqrt{1-4/x^2}]=2/[\\lvert x\\rvert\\sqrt{x^2-4}]\\). At \\(-4\\) the denominator is \\(8\\sqrt3\\).",
-    "source": "../lectures/15-inverse-functions.html#practice",
-    "section": "3.7"
+    "section": "3.7",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -109,7 +72,8 @@
     ],
     "why": "Differentiating gives \\(y'=x/y\\). Setting this to \\(-5/4\\) gives \\(y=-4x/5\\). The original curve then gives \\(9x^2/25=9\\).",
     "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
-    "section": "3.8"
+    "section": "3.8",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -123,21 +87,9 @@
     ],
     "why": "The derivative is \\(-(2x+y)/(x+2y)\\). Set \\(y=-2x\\). The ellipse then gives \\(3x^2=3\\), and \\(x+2y=-3x\\) is nonzero at both points.",
     "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
-    "section": "3.8"
-  },
-  {
-    "topic": "implicit",
-    "level": 4,
-    "prompt": "On \\(x^2+xy+y^2=3\\), what is \\(d^2y/dx^2\\) at \\((1,1)\\)?",
-    "choices": [
-      "\\(-2/3\\)",
-      "\\(2/3\\)",
-      "\\(-2\\)",
-      "\\(0\\)"
-    ],
-    "why": "Here \\(y'=-1\\). Differentiate \\(2x+y+(x+2y)y'=0\\) to obtain \\(2+2y'+2(y')^2+(x+2y)y''=0\\). Substitution gives \\(2+3y''=0\\).",
-    "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
-    "section": "3.8"
+    "section": "3.8",
+    "pdfPage": 49,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -151,21 +103,9 @@
     ],
     "why": "Vertical tangency requires \\(-x+2y=0\\). Substituting \\(x=2y\\) into the ellipse gives \\(3y^2=12\\). The other derivative coefficient \\(2x-y=3y\\) is nonzero.",
     "source": "../lectures/16-implicit-differentiation.html#practice-the-curve-x2-xyy212",
-    "section": "3.8"
-  },
-  {
-    "topic": "implicit",
-    "level": 4,
-    "prompt": "Find both lines of slope \\(1\\) tangent to \\(x^2-xy+y^2=12\\).",
-    "choices": [
-      "\\(y=x-4\\) and \\(y=x+4\\)",
-      "\\(y=x-2\\) and \\(y=x+2\\)",
-      "\\(y=x-\\sqrt{12}\\) and \\(y=x+\\sqrt{12}\\)",
-      "\\(y=-x-4\\) and \\(y=-x+4\\)"
-    ],
-    "why": "Set \\((-2x+y)/(-x+2y)=1\\) to get \\(y=-x\\). The ellipse then gives \\(3x^2=12\\). Through \\((2,-2)\\) and \\((-2,2)\\) the lines have intercepts \\(-4\\) and \\(4\\).",
-    "source": "../lectures/16-implicit-differentiation.html#practice-the-curve-x2-xyy212",
-    "section": "3.8"
+    "section": "3.8",
+    "pdfPage": 50,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "exp",
@@ -179,7 +119,8 @@
     ],
     "why": "Rewrite in natural logarithms. Differentiating gives \\(24x^3/[(6x^4+5)\\ln2]\\). The numerator at \\(-1\\) is negative.",
     "source": "../lectures/17-exponential-logarithmic.html#other-bases",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "exp",
@@ -193,7 +134,8 @@
     ],
     "why": "Logarithms give \\(\\ln y=\\pi\\ln x+x\\ln\\pi\\). Differentiate to get \\(y'/y=\\pi/x+\\ln\\pi\\), then evaluate at \\(1\\).",
     "source": "../lectures/17-exponential-logarithmic.html#practice-1",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "logdiff",
@@ -207,35 +149,8 @@
     ],
     "why": "Here \\(y=1\\). Differentiate \\(\\ln y=(\\ln x)\\ln(x^2-4)\\). The term \\(\\ln(x^2-4)/x\\) vanishes, leaving \\(2\\sqrt5\\ln(\\sqrt5)=\\sqrt5\\ln5\\).",
     "source": "../lectures/17-exponential-logarithmic.html#examples-of-logarithmic-differentiation",
-    "section": "3.9"
-  },
-  {
-    "topic": "logdiff",
-    "level": 4,
-    "prompt": "On \\(x>0\\), at which point is the tangent to \\(y=x^{x^2}\\) horizontal?",
-    "choices": [
-      "\\((e^{-1/2},e^{-1/(2e)})\\)",
-      "\\((e^{-1},e^{-1/e})\\)",
-      "\\((e^{-1/2},e^{-1/2})\\)",
-      "\\((1,1)\\)"
-    ],
-    "why": "Logarithmic differentiation gives \\(y'/y=x(2\\ln x+1)\\). This vanishes at \\(x=e^{-1/2}\\). Then \\(\\ln y=x^2\\ln x=-1/(2e)\\).",
-    "source": "../lectures/17-exponential-logarithmic.html#examples-of-logarithmic-differentiation",
-    "section": "3.9"
-  },
-  {
-    "topic": "logdiff",
-    "level": 4,
-    "prompt": "For \\(y=x^{-1/2}(x^2+1)^{2/3}(2x-3)^4\\), the expression for \\(y'/y\\) breaks down at \\(x=3/2\\). What is \\(y'(3/2)\\)?",
-    "choices": [
-      "\\(0\\)",
-      "Undefined because \\(\\ln y\\) is undefined there.",
-      "\\(8\\)",
-      "\\(+\\infty\\)"
-    ],
-    "why": "The original function is a differentiable factor times \\((2x-3)^4\\) near \\(3/2\\). The product rule leaves a third or fourth power of \\(2x-3\\) in every term, so both terms vanish.",
-    "source": "../lectures/17-exponential-logarithmic.html#examples-of-logarithmic-differentiation",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "logdiff",
@@ -249,7 +164,8 @@
     ],
     "why": "Differentiating \\(\\ln y=\\sqrt{2x}\\ln x\\) gives \\(y'/y=(\\ln x+2)/\\sqrt{2x}\\). Both \\(y\\) and the denominator are positive, so the derivative is negative exactly when \\(x<e^{-2}\\).",
     "source": "../lectures/17-exponential-logarithmic.html#practice-2",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "logdiff",
@@ -263,21 +179,8 @@
     ],
     "why": "Use \\(\\ln y=\\sqrt x\\ln(x^2-1)\\). At \\(\\sqrt2\\), \\(y=1\\) and the logarithm vanishes. The remaining derivative is \\(\\sqrt x(2x)/(x^2-1)=2\\cdot2^{3/4}\\).",
     "source": "../lectures/17-exponential-logarithmic.html#practice-2",
-    "section": "3.9"
-  },
-  {
-    "topic": "logdiff",
-    "level": 4,
-    "prompt": "For \\(y=5^{\\sin(2x)}\\), what is \\(y''(\\pi/4)\\)?",
-    "choices": [
-      "\\(-20\\ln5\\)",
-      "\\(20\\ln5\\)",
-      "\\(-20(\\ln5)^2\\)",
-      "\\(0\\)"
-    ],
-    "why": "Let \\(A=2\\ln5\\cos(2x)\\) so \\(y'=yA\\) and \\(y''=y(A^2+A')\\). At \\(\\pi/4\\), \\(y=5\\), \\(A=0\\), and \\(A'=-4\\ln5\\).",
-    "source": "../lectures/17-exponential-logarithmic.html#practice-2",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "inverse",
@@ -291,7 +194,8 @@
     ],
     "why": "The inverse exchanges input and output. Applying it to \\(5\\) returns \\(2\\).",
     "source": "../lectures/15-inverse-functions.html#inverse-functions",
-    "section": "3.7"
+    "section": "3.7",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "inverse",
@@ -305,7 +209,8 @@
     ],
     "why": "On the nonnegative branch the only input whose square is \\(4\\) is \\(2\\).",
     "source": "../lectures/15-inverse-functions.html#inverse-functions",
-    "section": "3.7"
+    "section": "3.7",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "inverse",
@@ -319,7 +224,8 @@
     ],
     "why": "The principal branch uses \\([-\\pi/2,\\pi/2]\\). Its angle with sine \\(1/2\\) is \\(\\pi/6\\).",
     "source": "../lectures/15-inverse-functions.html#inverse-functions",
-    "section": "3.7"
+    "section": "3.7",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "inverse",
@@ -333,7 +239,9 @@
     ],
     "why": "Reflection across \\(y=x\\) interchanges rise and run. The new slope is the reciprocal of the original nonzero slope.",
     "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
-    "section": "3.7"
+    "section": "3.7",
+    "pdfPage": 45,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "inverse",
@@ -347,11 +255,13 @@
     ],
     "why": "The derivative of the original is \\(3x^2\\), so its slope at the corresponding input \\(2\\) equals \\(12\\). Take the reciprocal.",
     "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
-    "section": "3.7"
+    "section": "3.7",
+    "pdfPage": 45,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "invtrig",
-    "level": 2,
+    "level": 3,
     "prompt": "What is the slope of \\(y=\\arcsin x\\) at \\(x=1/2\\)?",
     "choices": [
       "\\(2/\\sqrt3\\)",
@@ -361,7 +271,8 @@
     ],
     "why": "Substitute into \\(1/\\sqrt{1-x^2}\\) to obtain \\(1/\\sqrt{3/4}\\).",
     "source": "../lectures/15-inverse-functions.html#derivatives-of-inverse-trigonometric-functions",
-    "section": "3.7"
+    "section": "3.7",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "invtrig",
@@ -375,7 +286,8 @@
     ],
     "why": "Its derivative is \\(-1/(1+x^2)\\). At \\(1\\), the denominator is \\(2\\).",
     "source": "../lectures/15-inverse-functions.html#derivatives-of-inverse-trigonometric-functions",
-    "section": "3.7"
+    "section": "3.7",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "invtrig",
@@ -389,7 +301,8 @@
     ],
     "why": "The chain rule gives \\(-2/[\\lvert2x\\rvert\\sqrt{(2x)^2-1}]\\). At \\(-1\\) the absolute value is \\(2\\), producing a negative slope.",
     "source": "../lectures/15-inverse-functions.html#derivatives-of-inverse-trigonometric-functions",
-    "section": "3.7"
+    "section": "3.7",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -403,7 +316,8 @@
     ],
     "why": "Treat \\(y\\) as a function of \\(x\\) and apply the chain rule.",
     "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
-    "section": "3.8"
+    "section": "3.8",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -417,7 +331,8 @@
     ],
     "why": "The right side is the fixed number \\(13\\), whose derivative is zero.",
     "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
-    "section": "3.8"
+    "section": "3.8",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -431,7 +346,8 @@
     ],
     "why": "Differentiate one factor at a time. Differentiating \\(x\\) gives \\(y\\), and differentiating \\(y\\) gives \\(xy'\\).",
     "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
-    "section": "3.8"
+    "section": "3.8",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -445,25 +361,28 @@
     ],
     "why": "The rise is the slope multiplied by the run, giving \\((5/4)4=5\\).",
     "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
-    "section": "3.8"
+    "section": "3.8",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
     "level": 2,
-    "prompt": "For \\(x^2-y^2=9\\), what is the finite tangent slope at \\((5,-4)\\)?",
+    "prompt": "On the hyperbola \\(x^2-y^2=9\\), implicit differentiation gives \\(dy/dx=x/y\\). What is the slope at \\((5,-4)\\)?",
     "choices": [
       "\\(-5/4\\)",
-      "\\(5/4\\)",
       "\\(-4/5\\)",
-      "\\(0\\)"
+      "\\(5/4\\)",
+      "\\(4/5\\)"
     ],
-    "why": "Differentiate to get \\(2x-2yy'=0\\), or \\(y'=x/y\\). The negative \\(y\\) gives a negative slope.",
+    "why": "Substitute the point into the slope formula: \\(5/(-4)=-5/4\\).",
     "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
-    "section": "3.8"
+    "section": "3.8",
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
-    "level": 2,
+    "level": 3,
     "prompt": "Which equation results from differentiating \\(x^2+xy+y^2=13\\) and collecting the terms containing \\(y'\\)?",
     "choices": [
       "\\((x+2y)y'=-2x-y\\)",
@@ -473,21 +392,8 @@
     ],
     "why": "The differentiated equation is \\(2x+y+xy'+2yy'=0\\). Factor the last two terms.",
     "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
-    "section": "3.8"
-  },
-  {
-    "topic": "implicit",
-    "level": 4,
-    "prompt": "At \\((1,3)\\) on \\(x^2+xy+y^2=13\\), calculate the second derivative of the local graph \\(y(x)\\).",
-    "choices": [
-      "\\(-78/343\\)",
-      "\\(-5/7\\)",
-      "\\(78/343\\)",
-      "\\(-2/7\\)"
-    ],
-    "why": "Here \\(y'=-5/7\\). The twice-differentiated equation gives \\(y''=-2[1+y'+(y')^2]/(x+2y)\\). The bracket is \\(39/49\\) and the denominator is \\(7\\).",
-    "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
-    "section": "3.8"
+    "section": "3.8",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "exp",
@@ -501,7 +407,8 @@
     ],
     "why": "The choice of the base \\(e\\) gives \\((e^x)'=e^x\\).",
     "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "exp",
@@ -515,7 +422,8 @@
     ],
     "why": "The derivative is \\(1/x\\) on positive inputs. Evaluating it at \\(1\\) gives \\(1\\).",
     "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "exp",
@@ -529,7 +437,8 @@
     ],
     "why": "For a positive fixed base \\(a\\), differentiating \\(a^u\\) gives \\(a^u\\ln(a)\\,u'\\).",
     "source": "../lectures/17-exponential-logarithmic.html#other-bases",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "exp",
@@ -543,7 +452,8 @@
     ],
     "why": "Differentiate to get \\(3(\\ln2)2^{3x}\\). At zero the exponential factor is \\(1\\).",
     "source": "../lectures/17-exponential-logarithmic.html#other-bases",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "exp",
@@ -557,21 +467,24 @@
     ],
     "why": "In the composition \\(\\ln(u)\\), the entire expression inside parentheses is \\(u\\).",
     "source": "../lectures/17-exponential-logarithmic.html#worked-examples",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "exp",
     "level": 2,
-    "prompt": "For \\(f(x)=e^{x^2}\\), what is the slope at \\(x=-1\\)?",
+    "prompt": "For \\(f(x)=e^{x^2}\\), the chain rule gives \\(f'(x)=2xe^{x^2}\\). What is the slope at \\(x=-1\\)?",
     "choices": [
       "\\(-2e\\)",
       "\\(2e\\)",
-      "\\(-e\\)",
-      "\\(-2/e\\)"
+      "\\(-2/e\\)",
+      "\\(e\\)"
     ],
-    "why": "The derivative is \\(e^{x^2}\\cdot 2x\\). At \\(-1\\), its factors are \\(e\\) and \\(-2\\).",
+    "why": "The exponential factor becomes \\(e^1=e\\), and the outside factor becomes \\(-2\\).",
     "source": "../lectures/17-exponential-logarithmic.html#worked-examples",
-    "section": "3.9"
+    "section": "3.9",
+    "pdfPage": 54,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "exp",
@@ -585,7 +498,8 @@
     ],
     "why": "As \\(t\\) increases, a negative \\(k\\) makes the exponent smaller and the positive population decreases.",
     "source": "../lectures/17-exponential-logarithmic.html#relative-growth",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "exp",
@@ -599,7 +513,8 @@
     ],
     "why": "The derivative is \\(-0.03P(t)\\). Dividing by the positive population cancels \\(P(t)\\).",
     "source": "../lectures/17-exponential-logarithmic.html#relative-growth",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "exp",
@@ -613,11 +528,12 @@
     ],
     "why": "Divide its growth rate by its value to get \\(k=4/80=1/20\\) per hour. To double over an interval \\(T\\), solve \\(e^{T/20}=2\\).",
     "source": "../lectures/17-exponential-logarithmic.html#relative-growth",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "exp",
-    "level": 2,
+    "level": 3,
     "prompt": "What is the tangent slope of \\(y=\\log_{10}(1+x^2)\\) at \\(x=1\\)?",
     "choices": [
       "\\(1/\\ln10\\)",
@@ -627,21 +543,8 @@
     ],
     "why": "Change base and differentiate to get \\(2x/[(1+x^2)\\ln10]\\). The factor \\(2x/(1+x^2)\\) equals \\(1\\) there.",
     "source": "../lectures/17-exponential-logarithmic.html#practice-1",
-    "section": "3.9"
-  },
-  {
-    "topic": "exp",
-    "level": 4,
-    "prompt": "The graphs \\(y=e^x\\) at \\((0,1)\\) and \\(y=\\ln x\\) at \\((1,0)\\) have parallel tangent lines. What is the perpendicular distance between those lines?",
-    "choices": [
-      "\\(\\sqrt2\\)",
-      "\\(2\\)",
-      "\\(1\\)",
-      "\\(1/\\sqrt2\\)"
-    ],
-    "why": "Both slopes equal \\(1\\). The lines are \\(y=x+1\\) and \\(y=x-1\\). The segment joining \\((0,1)\\) to \\((1,0)\\) has slope \\(-1\\), so it is perpendicular to both, and its length is \\(\\sqrt2\\).",
-    "source": "../lectures/17-exponential-logarithmic.html#geometric-meaning",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "inverse",
@@ -655,7 +558,9 @@
     ],
     "why": "On this branch \\(g(4)=-2\\). The corresponding original slope is \\(2(-2)=-4\\), giving inverse slope \\(-1/4\\).",
     "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
-    "section": "3.7"
+    "section": "3.7",
+    "pdfPage": 45,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "inverse",
@@ -669,7 +574,9 @@
     ],
     "why": "The inner value at \\(2\\) is \\(5\\). Thus \\(H'(2)=2g'(5)=2/f'(2)\\).",
     "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
-    "section": "3.7"
+    "section": "3.7",
+    "pdfPage": 45,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "inverse",
@@ -683,35 +590,9 @@
     ],
     "why": "The corresponding original input is \\(2\\). By the chain rule the forward slope there is \\(g'(5)f'(2)=-12\\). Take the reciprocal.",
     "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
-    "section": "3.7"
-  },
-  {
-    "topic": "inverse",
-    "level": 4,
-    "prompt": "Assume \\(f(2)=5\\), \\(f'(2)=-3\\), \\(f''(2)=6\\), and \\(g=f^{-1}\\) is twice differentiable near \\(5\\). What is \\(g''(5)\\)?",
-    "choices": [
-      "\\(2/9\\)",
-      "\\(-2/9\\)",
-      "\\(-2\\)",
-      "\\(1/6\\)"
-    ],
-    "why": "From \\(f(g(x))=x\\) obtain \\(f''(g)(g')^2+f'(g)g''=0\\). Here \\(g'=-1/3\\), so \\(6/9-3g''=0\\).",
-    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
-    "section": "3.7"
-  },
-  {
-    "topic": "inverse",
-    "level": 4,
-    "prompt": "The tangent to \\(y=x^2\\), \\(x\\ge0\\), at \\((2,4)\\) and the tangent to its inverse at \\((4,2)\\) intersect where?",
-    "choices": [
-      "\\((4/3,4/3)\\)",
-      "\\((3,3)\\)",
-      "\\((5/3,5/3)\\)",
-      "\\((2,2)\\)"
-    ],
-    "why": "The tangents are \\(y=4x-4\\) and \\(y=x/4+1\\). Solving gives \\(15x/4=5\\), hence the common coordinates are \\(4/3\\).",
-    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
-    "section": "3.7"
+    "section": "3.7",
+    "pdfPage": 45,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "invtrig",
@@ -725,7 +606,8 @@
     ],
     "why": "The inverse cosine derivative is the negative of the inverse sine derivative. Subtraction doubles \\(1/\\sqrt{1-x^2}\\), giving \\(4/\\sqrt3\\) at \\(1/2\\).",
     "source": "../lectures/15-inverse-functions.html#derivatives-of-inverse-trigonometric-functions",
-    "section": "3.7"
+    "section": "3.7",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "invtrig",
@@ -739,21 +621,8 @@
     ],
     "why": "The chosen angle solves \\(\\cos y=-1/2\\) in \\([0,\\pi]\\), so it is \\(2\\pi/3\\). The derivative \\(1/(\\lvert x\\rvert\\sqrt{x^2-1})\\) gives the positive slope \\(1/(2\\sqrt3)\\).",
     "source": "../lectures/15-inverse-functions.html#derivatives-of-inverse-trigonometric-functions",
-    "section": "3.7"
-  },
-  {
-    "topic": "invtrig",
-    "level": 4,
-    "prompt": "Let \\(y=\\arcsin(\\sin x)\\) on \\(0\\le x\\le\\pi\\). What happens to the tangent slope as \\(x\\) passes through \\(\\pi/2\\)?",
-    "choices": [
-      "It changes from \\(1\\) to \\(-1\\), giving a corner.",
-      "It remains \\(1\\).",
-      "It passes continuously through \\(0\\).",
-      "It becomes infinite on both sides."
-    ],
-    "why": "On \\([0,\\pi/2]\\) the principal angle is \\(x\\). On \\([\\pi/2,\\pi]\\) the principal angle is \\(\\pi-x\\). The two formulas agree in value at their join and have opposite one-sided slopes.",
-    "source": "../lectures/15-inverse-functions.html#derivatives-of-inverse-trigonometric-functions",
-    "section": "3.7"
+    "section": "3.7",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "invtrig",
@@ -767,21 +636,8 @@
     ],
     "why": "The slope magnitude is \\(1/\\sqrt{2x-4x^2}\\). Its minimum occurs when \\(2x-4x^2=1/4-4(x-1/4)^2\\) is largest, namely at \\(x=1/4\\).",
     "source": "../lectures/15-inverse-functions.html#using-inverse-trigonometric-derivatives",
-    "section": "3.7"
-  },
-  {
-    "topic": "invtrig",
-    "level": 4,
-    "prompt": "For \\(f(x)=\\arccos(\\sqrt{2x})\\), determine \\(f(x)+f(1/2-x)\\) on \\(0<x<1/2\\).",
-    "choices": [
-      "\\(\\pi/2\\)",
-      "\\(\\pi/4\\)",
-      "\\(0\\)",
-      "It varies with \\(x\\)."
-    ],
-    "why": "Since \\(2x-4x^2\\) has the same value at \\(x\\) and \\(1/2-x\\), the two derivatives cancel by the chain rule. Evaluate at \\(x=1/4\\) to find the constant \\(2(\\pi/4)\\).",
-    "source": "../lectures/15-inverse-functions.html#using-inverse-trigonometric-derivatives",
-    "section": "3.7"
+    "section": "3.7",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "invtrig",
@@ -795,21 +651,8 @@
     ],
     "why": "The slope \\(1/[2\\sqrt{x}(1+x)]\\) equals \\(4/5\\) at \\(1/4\\). Subtract \\((4/5)(1/4)=1/5\\) from the tangent point's height.",
     "source": "../lectures/15-inverse-functions.html#practice",
-    "section": "3.7"
-  },
-  {
-    "topic": "invtrig",
-    "level": 4,
-    "prompt": "For the principal branch \\(y=\\arccos(2/x)\\), find the limit of \\((x-2)/(y-0)^2\\) as \\(x\\to2^+\\).",
-    "choices": [
-      "\\(1\\)",
-      "\\(1/2\\)",
-      "\\(2\\)",
-      "\\(0\\)"
-    ],
-    "why": "As \\(y\\to0^+\\), \\(x=2/\\cos y\\). Thus \\((x-2)/y^2=2(1-\\cos y)/(y^2\\cos y)\\). Use \\(1-\\cos y=2\\sin^2(y/2)\\) and \\(\\sin(y/2)/(y/2)\\to1\\).",
-    "source": "../lectures/15-inverse-functions.html#practice",
-    "section": "3.7"
+    "section": "3.7",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -823,7 +666,8 @@
     ],
     "why": "The slope is \\(-5/7\\), so the tangent is \\(y-3=-(5/7)(x-1)\\). Set \\(y=0\\) and solve \\(x=1+21/5\\).",
     "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
-    "section": "3.8"
+    "section": "3.8",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -837,7 +681,8 @@
     ],
     "why": "A finite tangent has slope \\(x/y\\). For this to be \\(\\pm1\\) one needs \\(x^2=y^2\\), which contradicts the curve equation.",
     "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
-    "section": "3.8"
+    "section": "3.8",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -851,7 +696,8 @@
     ],
     "why": "The tangent equation is \\(y-4=(5/4)(x-5)\\). Set \\(y=0\\) to find \\(x=5-16/5=9/5\\).",
     "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
-    "section": "3.8"
+    "section": "3.8",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -865,35 +711,8 @@
     ],
     "why": "The equation is symmetric in \\(x,y\\). Swapping \\((1,3)\\) to \\((3,1)\\) exchanges rise and run, taking the reciprocal of \\(-5/7\\). Substitution in \\(-(2x+y)/(x+2y)\\) confirms it.",
     "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
-    "section": "3.8"
-  },
-  {
-    "topic": "implicit",
-    "level": 4,
-    "prompt": "For \\(x^2-y^2=9\\), what is \\(d^2y/dx^2\\) at \\((5,4)\\)?",
-    "choices": [
-      "\\(-9/64\\)",
-      "\\(9/64\\)",
-      "\\(-9/16\\)",
-      "\\(1/4\\)"
-    ],
-    "why": "Start with \\(y'=x/y\\). The quotient rule gives \\(y''=(y-xy')/y^2=(y^2-x^2)/y^3=-9/y^3\\). At \\(y=4\\), this is \\(-9/64\\).",
-    "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
-    "section": "3.8"
-  },
-  {
-    "topic": "implicit",
-    "level": 4,
-    "prompt": "On \\(x^2-y^2=9\\), consider the right-hand branch as a function \\(x=x(y)\\). At its vertical tangent, what is \\(d^2x/dy^2\\)?",
-    "choices": [
-      "\\(1/3\\)",
-      "\\(0\\)",
-      "\\(3\\)",
-      "\\(-1/3\\)"
-    ],
-    "why": "The right vertex is \\((3,0)\\) and \\(dx/dy=y/x=0\\) there. Differentiating \\(x(dx/dy)=y\\) gives \\((dx/dy)^2+x\\,d^2x/dy^2=1\\), hence \\(1/3\\).",
-    "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
-    "section": "3.8"
+    "section": "3.8",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -907,7 +726,9 @@
     ],
     "why": "Setting \\(-(2x+y)/(x+2y)=-1\\) forces \\(x=y\\). Substitution gives \\(3x^2=3\\), and the derivative denominator is nonzero at both points.",
     "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
-    "section": "3.8"
+    "section": "3.8",
+    "pdfPage": 49,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -921,35 +742,9 @@
     ],
     "why": "The derivative denominator vanishes at \\(x=-2y\\). The ellipse then gives \\(3y^2=3\\), yielding \\(x=\\pm2\\). The numerator is nonzero at both points.",
     "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
-    "section": "3.8"
-  },
-  {
-    "topic": "implicit",
-    "level": 4,
-    "prompt": "At the horizontal tangent \\((1,-2)\\) of \\(x^2+xy+y^2=3\\), which way does the local curve bend, and what is the second derivative there?",
-    "choices": [
-      "Concave up, with \\(y''=2/3\\).",
-      "Concave down, with \\(y''=-2/3\\).",
-      "Concave up, with \\(y''=2\\).",
-      "The second derivative vanishes."
-    ],
-    "why": "Twice differentiating gives \\(2+2y'+2(y')^2+(x+2y)y''=0\\). At this point \\(y'=0\\), \\(x+2y=-3\\), so \\(2-3y''=0\\).",
-    "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
-    "section": "3.8"
-  },
-  {
-    "topic": "implicit",
-    "level": 4,
-    "prompt": "For \\(x^2+xy+y^2=3\\), which two lines of slope \\(1\\) are tangent to the ellipse?",
-    "choices": [
-      "\\(y=x\\pm2\\sqrt3\\)",
-      "\\(y=x\\pm\\sqrt3\\)",
-      "\\(y=x\\pm2\\)",
-      "\\(y=x\\pm1\\)"
-    ],
-    "why": "Set \\(-(2x+y)/(x+2y)=1\\), giving \\(y=-x\\). Substitution yields \\(x^2=3\\), so the tangent intercepts \\(y-x=-2x\\) are \\(\\pm2\\sqrt3\\).",
-    "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
-    "section": "3.8"
+    "section": "3.8",
+    "pdfPage": 49,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -963,7 +758,9 @@
     ],
     "why": "The derivative numerator vanishes when \\(y=2x\\). Substituting gives \\(3x^2=12\\), so \\(x=\\pm2\\) and \\(y=\\pm4\\). The denominator stays nonzero.",
     "source": "../lectures/16-implicit-differentiation.html#practice-the-curve-x2-xyy212",
-    "section": "3.8"
+    "section": "3.8",
+    "pdfPage": 50,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -977,7 +774,9 @@
     ],
     "why": "At \\(x=0\\), the upper point has \\(y=\\sqrt{12}\\). Then \\(y'=(-2x+y)/(-x+2y)=y/(2y)=1/2\\).",
     "source": "../lectures/16-implicit-differentiation.html#practice-the-curve-x2-xyy212",
-    "section": "3.8"
+    "section": "3.8",
+    "pdfPage": 50,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -991,21 +790,9 @@
     ],
     "why": "Implicit differentiation gives vertical tangency because \\(-x+2y=0\\) and \\(-2x+y\\ne0\\). Its perpendicular is the horizontal line through the point.",
     "source": "../lectures/16-implicit-differentiation.html#practice-the-curve-x2-xyy212",
-    "section": "3.8"
-  },
-  {
-    "topic": "implicit",
-    "level": 4,
-    "prompt": "For which intercepts \\(b\\) does \\(y=mx+b\\) meet the ellipse \\(x^2-xy+y^2=12\\) at exactly one point, assuming a fixed finite slope \\(m\\)?",
-    "choices": [
-      "\\(b=\\pm4\\sqrt{m^2-m+1}\\)",
-      "\\(b=\\pm2\\sqrt{m^2-m+1}\\)",
-      "\\(b=\\pm4\\sqrt{m^2+m+1}\\)",
-      "\\(b=\\pm4(m^2-m+1)\\)"
-    ],
-    "why": "Substitution gives \\((m^2-m+1)x^2+(2m-1)bx+b^2-12=0\\). The leading coefficient is positive. Setting its discriminant to zero and simplifying gives \\(3b^2=48(m^2-m+1)\\).",
-    "source": "../lectures/16-implicit-differentiation.html#practice-the-curve-x2-xyy212",
-    "section": "3.8"
+    "section": "3.8",
+    "pdfPage": 50,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "logdiff",
@@ -1019,7 +806,8 @@
     ],
     "why": "Differentiate the logarithm to get \\(-1/(2x)+4x/[3(x^2+1)]+8/(2x-3)\\). At \\(1\\), add \\(-1/2+2/3-8=-47/6\\).",
     "source": "../lectures/17-exponential-logarithmic.html#examples-of-logarithmic-differentiation",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "exp",
@@ -1033,7 +821,8 @@
     ],
     "why": "Take natural logarithms: \\(\\ln f=e\\ln x+x\\). Its derivative is \\(f'/f=e/x+1\\), which equals \\(2\\) at \\(x=e\\).",
     "source": "../lectures/17-exponential-logarithmic.html#other-bases",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "exp",
@@ -1047,7 +836,8 @@
     ],
     "why": "Factor the numerator as \\((a^h-1)(a^h+1)\\). The first factor divided by \\(h\\) tends to \\(L\\), and the second factor tends to \\(2\\).",
     "source": "../lectures/17-exponential-logarithmic.html#what-is-e",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "logdiff",
@@ -1061,21 +851,8 @@
     ],
     "why": "Differentiate \\(\\ln y=x\\ln x\\) to obtain \\(y'=y(\\ln x+1)\\). This vanishes at \\(x=1/e\\), where \\(\\ln y=-1/e\\).",
     "source": "../lectures/17-exponential-logarithmic.html#logarithmic-differentiation",
-    "section": "3.9"
-  },
-  {
-    "topic": "logdiff",
-    "level": 4,
-    "prompt": "For \\(y=x^x\\) with \\(x>0\\), compute the second derivative at the horizontal tangent.",
-    "choices": [
-      "\\(e^{1-1/e}\\)",
-      "\\(e^{-1/e}\\)",
-      "\\(0\\)",
-      "\\(e^{1/e-1}\\)"
-    ],
-    "why": "Starting from \\(y'=y(\\ln x+1)\\) gives \\(y''=y[(\\ln x+1)^2+1/x]\\). At \\(x=1/e\\), \\(y=e^{-1/e}\\) and the squared term vanishes, leaving \\(e\\,e^{-1/e}\\).",
-    "source": "../lectures/17-exponential-logarithmic.html#logarithmic-differentiation",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "implicit",
@@ -1089,20 +866,343 @@
     ],
     "why": "Implicit differentiation gives \\(y'=-x/y=-1\\). The tangent has \\(x+y=2/\\sqrt2=\\sqrt2\\), giving both intercepts.",
     "source": "../lectures/16-implicit-differentiation.html#title-block-header",
-    "section": "3.8"
+    "section": "3.8",
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "topic": "inverse",
+    "section": "3.7",
+    "level": 2,
+    "prompt": "Let \\(f\\) be the inverse of \\(g(u)=u+\\ln u\\). Since \\(g(1)=1\\), which is \\(f'(1)\\)?",
+    "choices": [
+      "\\(1/2\\)",
+      "\\(2\\)",
+      "\\(1\\)",
+      "\\(0\\)"
+    ],
+    "why": "The inverse slope is the reciprocal of the original slope at the corresponding input. Here \\(g'(1)=1+1/1=2\\).",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "reference": "Exam 2 review worksheet · 7(a)",
+    "pdfPage": 45,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "reviewPdf": "../downloads/exam-2-review-worksheet.pdf"
   },
   {
     "topic": "implicit",
-    "level": 4,
-    "prompt": "For the upper branch of the unit circle \\(x^2+y^2=1\\), what is \\(y''\\) at \\((1/\\sqrt2,1/\\sqrt2)\\)?",
+    "section": "3.8",
+    "level": 3,
+    "prompt": "On \\(x^2+xy+y^2=3\\), \\(y'=-(2x+y)/(x+2y)\\). Which two points have tangent slope \\(-1\\)?",
     "choices": [
-      "\\(-2\\sqrt2\\)",
-      "\\(-\\sqrt2\\)",
-      "\\(2\\sqrt2\\)",
-      "\\(-1\\)"
+      "\\((1,1)\\) and \\((-1,-1)\\)",
+      "\\((1,-1)\\) and \\((-1,1)\\)",
+      "\\((0,\\sqrt3)\\) and \\((0,-\\sqrt3)\\)",
+      "\\((\\sqrt3,0)\\) and \\((-\\sqrt3,0)\\)"
     ],
-    "why": "Differentiate \\(x+yy'=0\\) to get \\(1+(y')^2+yy''=0\\). At the point \\(y'=-1\\), so \\(y''=-2/y=-2\\sqrt2\\).",
+    "why": "Setting the slope equal to \\(-1\\) gives \\(2x+y=x+2y\\), hence \\(x=y\\). Substitution gives \\(3x^2=3\\), and the slope denominator is nonzero at both points.",
+    "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
+    "reference": "Exam 2 review worksheet · 8(d)",
+    "pdfPage": 49,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf",
+    "reviewPdf": "../downloads/exam-2-review-worksheet.pdf"
+  },
+  {
+    "section": "3.7",
+    "topic": "inverse",
+    "level": 4,
+    "prompt": "Let \\(g\\) be the inverse of \\(f(x)=x^3\\). Find \\(g''(8)\\).",
+    "answer": "-1/144",
+    "why": "Differentiate \\(f(g(x))=x\\) twice to obtain \\(g''=-f''(g)(g')^2/f'(g)\\). At \\(8\\), \\(g=2\\), \\(f'=12\\), \\(f''=12\\), and \\(g'=1/12\\). The result is \\(-1/144\\).",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "pdfPage": 46,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.7",
+    "topic": "inverse",
+    "level": 4,
+    "prompt": "Suppose \\(f(2)=5\\), \\(f'(2)=-3\\) and \\(f''(2)=6\\), with \\(g=f^{-1}\\) twice differentiable near \\(5\\). Find \\(g''(5)\\).",
+    "answer": "2/9",
+    "why": "Differentiating \\(f(g(x))=x\\) gives \\(g'(5)=-1/3\\), and then \\(f''(g)(g')^2+f'(g)g''=0\\). Substitution leaves \\(6/9-3g''(5)=0\\).",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "pdfPage": 45,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.7",
+    "topic": "inverse",
+    "level": 4,
+    "prompt": "The tangent to \\(y=x^2\\) at \\((2,4)\\) and the reflected tangent to its inverse at \\((4,2)\\) intersect. What is the \\(x\\)-coordinate of their intersection?",
+    "answer": "4/3",
+    "why": "The original tangent is \\(y=4x-4\\). The reflected line is \\(y=x/4+1\\). Solving \\(4x-4=x/4+1\\) gives \\(x=4/3\\).",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "pdfPage": 45,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.7",
+    "topic": "inverse",
+    "level": 4,
+    "prompt": "Suppose \\(f(2)=5\\), \\(f'(2)=-3\\), \\(g(5)=7\\), and \\(g'(5)=4\\), with differentiable local inverses. Find the slope at \\(x=7\\) of the inverse of \\(g\\circ f\\).",
+    "answer": "-1/12",
+    "why": "The composite sends \\(2\\) to \\(7\\). Its slope at \\(2\\) is \\(g'(5)f'(2)=-12\\). The inverse function derivative is the reciprocal.",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "pdfPage": 45,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.7",
+    "topic": "invtrig",
+    "level": 4,
+    "prompt": "For \\(y=\\arccos(\\sqrt{2x})\\), two inputs have tangent slope \\(-4/\\sqrt3\\). Find their product.",
+    "answer": "3/64",
+    "why": "On \\(0<x<1/2\\), \\(y'=-1/\\sqrt{2x-4x^2}\\). Equate \\(2x-4x^2=3/16\\), giving \\((8x-1)(8x-3)=0\\). Both roots lie in the domain, and their product is \\(3/64\\).",
+    "source": "../lectures/15-inverse-functions.html#using-inverse-trigonometric-derivatives",
+    "pdfPage": 47,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.7",
+    "topic": "invtrig",
+    "level": 4,
+    "prompt": "For \\(y=\\arccos(\\sqrt{2x})\\) on \\(0<x<1/2\\), find the largest value of the signed slope.",
+    "answer": "-2",
+    "why": "The derivative is \\(-1/\\sqrt{2x-4x^2}\\). Completing the square gives \\(2x-4x^2=1/4-4(x-1/4)^2\\), whose maximum is \\(1/4\\). The negative reciprocal square root is then largest, at \\(-2\\).",
+    "source": "../lectures/15-inverse-functions.html#using-inverse-trigonometric-derivatives",
+    "pdfPage": 47,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.7",
+    "topic": "invtrig",
+    "level": 4,
+    "prompt": "For the principal branch \\(y=\\arccos(2/x)\\) of \\(x\\cos y=2\\), find \\(\\lim_{x\\to2^+}(x-2)/y^2\\).",
+    "answer": "1",
+    "why": "As \\(y\\to0^+\\), write \\(x=2/\\cos y\\). The quotient becomes \\(2(1-\\cos y)/(y^2\\cos y)\\). Substitute \\(1-\\cos y=2\\sin^2(y/2)\\) and use the basic sine limit to obtain \\(1\\).",
+    "source": "../lectures/15-inverse-functions.html#practice",
+    "pdfPage": 47,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.7",
+    "topic": "invtrig",
+    "level": 4,
+    "prompt": "Let \\(g\\) be the local inverse of \\(f(x)=\\arctan(\\sqrt{x})\\) near \\(x=1\\). Find \\(g''(\\pi/4)\\).",
+    "answer": "16",
+    "why": "Invert to get \\(g(y)=\\tan^2 y\\) near \\(\\pi/4\\). Its second derivative is \\(2\\sec^4 y+4\\tan^2 y\\sec^2 y\\). Here \\(\\tan y=1\\) and \\(\\sec^2y=2\\), giving \\(8+8=16\\).",
+    "source": "../lectures/15-inverse-functions.html#practice",
+    "pdfPage": 47,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.8",
+    "topic": "implicit",
+    "level": 4,
+    "prompt": "For \\(x^2+xy+y^2=13\\), find the second derivative of the local graph \\(y(x)\\) at \\((1,3)\\).",
+    "answer": "-78/343",
+    "why": "The slope is \\(-(2x+y)/(x+2y)=-5/7\\). Another differentiation gives \\(y''=-2[1+y'+(y')^2]/(x+2y)\\). At the given point this is \\(-2(39/49)/7\\).",
+    "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+    "pdfPage": 49,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.8",
+    "topic": "implicit",
+    "level": 4,
+    "prompt": "For \\(x^2-y^2=9\\), find \\(y''\\) on the upper branch at \\((5,4)\\).",
+    "answer": "-9/64",
+    "why": "From implicit differentiation, \\(y'=x/y\\). Then \\(y''=(y^2-x^2)/y^3=-9/y^3\\). Substituting \\(y=4\\) gives \\(-9/64\\).",
+    "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+    "pdfPage": 49,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.8",
+    "topic": "implicit",
+    "level": 4,
+    "prompt": "View the right branch of \\(x^2-y^2=9\\) as \\(x=x(y)\\). At its vertical tangent, what is \\(d^2x/dy^2\\)?",
+    "answer": "1/3",
+    "why": "The right vertex is \\((3,0)\\). From \\(xx'=y\\) we have \\(x'(0)=0\\) and \\((x')^2+xx''=1\\). Thus \\(3x''(0)=1\\).",
+    "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+    "pdfPage": 49,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.8",
+    "topic": "implicit",
+    "level": 4,
+    "prompt": "For \\(x^2+xy+y^2=3\\), find \\(d^2y/dx^2\\) at its lowest point.",
+    "answer": "2/3",
+    "why": "The lower horizontal tangent occurs at \\((1,-2)\\), obtained by putting \\(y=-2x\\) into the ellipse. Differentiating twice gives \\(2+2y'+2(y')^2+(x+2y)y''=0\\). There \\(y'=0\\) and \\(x+2y=-3\\), so \\(y''=2/3\\).",
+    "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
+    "pdfPage": 50,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.8",
+    "topic": "implicit",
+    "level": 4,
+    "prompt": "For \\(x^2+xy+y^2=3\\), find \\(d^2y/dx^2\\) where the tangent has slope \\(-1\\) and \\(x>0\\).",
+    "answer": "-2/3",
+    "why": "The first derivative \\(-(2x+y)/(x+2y)=-1\\) forces \\(x=y\\). The positive point is \\((1,1)\\). Substitution into \\(2+2y'+2(y')^2+(x+2y)y''=0\\) gives \\(2+3y''=0\\).",
+    "source": "../lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
+    "pdfPage": 49,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.8",
+    "topic": "implicit",
+    "level": 4,
+    "prompt": "For \\(x^2-xy+y^2=12\\), find the second derivative of the local graph at \\((2,-2)\\).",
+    "answer": "1/3",
+    "why": "The slope is \\(1\\) there. Differentiating \\(2x-y+(-x+2y)y'=0\\) gives \\(2-2y'+2(y')^2+(-x+2y)y''=0\\). Substitute \\(y'=1\\) and \\(-x+2y=-6\\) to find \\(y''=1/3\\).",
+    "source": "../lectures/16-implicit-differentiation.html#practice-the-curve-x2-xyy212",
+    "pdfPage": 50,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.8",
+    "topic": "implicit",
+    "level": 4,
+    "prompt": "Two lines of slope \\(2\\) are tangent to \\(x^2-xy+y^2=12\\). What is the product of their vertical intercepts?",
+    "answer": "-48",
+    "why": "Substitute \\(y=2x+b\\) to obtain \\(3x^2+3bx+b^2-12=0\\). At tangency the discriminant vanishes, giving \\(9b^2-12(b^2-12)=0\\) and hence \\(b^2=48\\). The two intercepts have opposite signs.",
+    "source": "../lectures/16-implicit-differentiation.html#practice-the-curve-x2-xyy212",
+    "pdfPage": 50,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.8",
+    "topic": "implicit",
+    "level": 4,
+    "prompt": "On the upper unit circle \\(x^2+y^2=1\\), calculate the second derivative at \\((3/5,4/5)\\).",
+    "answer": "-125/64",
+    "why": "Since \\(y'=-x/y\\), differentiating \\(x+yy'=0\\) gives \\(y''=-(1+(y')^2)/y\\). Using \\(x^2+y^2=1\\) simplifies this to \\(-1/y^3\\). With \\(y=4/5\\) the answer is \\(-125/64\\).",
     "source": "../lectures/16-implicit-differentiation.html#title-block-header",
-    "section": "3.8"
+    "pdfPage": 48,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.9",
+    "topic": "logdiff",
+    "level": 4,
+    "prompt": "For \\(y=x^{-1/2}(x^2+1)^{2/3}(2x-3)^4\\), find the relative rate \\(y'/y\\) at \\(x=1\\).",
+    "answer": "-47/6",
+    "why": "Taking logarithms and differentiating gives \\(-1/(2x)+4x/[3(x^2+1)]+8/(2x-3)\\). At \\(1\\), add \\(-1/2+2/3-8=-47/6\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#examples-of-logarithmic-differentiation",
+    "pdfPage": 57,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
+  },
+  {
+    "section": "3.9",
+    "topic": "logdiff",
+    "level": 4,
+    "prompt": "Let \\(y=x^{x^2}\\) on \\(x>0\\). Compute \\(y''(1)\\).",
+    "answer": "4",
+    "why": "Logarithmic differentiation gives \\(A=y'/y=2x\\ln x+x\\) and \\(A'=2\\ln x+3\\). Then \\(y''=y(A^2+A')\\). At \\(1\\), \\(y=1\\), \\(A=1\\), and \\(A'=3\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#examples-of-logarithmic-differentiation",
+    "pdfPage": 56,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
+  },
+  {
+    "section": "3.9",
+    "topic": "logdiff",
+    "level": 4,
+    "prompt": "Apply the lecture's variable-base, variable-exponent method to \\(y=(1+4x+x^2)^{\\ln(1+x)}\\) near zero. Find \\(y''(0)\\).",
+    "answer": "8",
+    "why": "Set \\(B=\\ln y=\\ln(1+x)\\ln(1+4x+x^2)\\). Both factors vanish at zero and their derivatives there are \\(1,4\\). Hence \\(B'(0)=0\\) and the product rule gives \\(B''(0)=2(1)(4)=8\\). Since \\(y=e^B\\), \\(y''(0)=y(0)[B'(0)^2+B''(0)]=8\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#examples-of-logarithmic-differentiation",
+    "pdfPage": 56,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
+  },
+  {
+    "section": "3.9",
+    "topic": "logdiff",
+    "level": 4,
+    "prompt": "For \\(y=x^x\\) on \\(x>0\\), find the slope of the tangent to its derivative graph at \\(x=1\\).",
+    "answer": "2",
+    "why": "Logarithmic differentiation gives \\(y'=y(\\ln x+1)\\). Differentiate once more to obtain \\(y''=y[(\\ln x+1)^2+1/x]\\). At \\(1\\), \\(y=1\\) and \\(\\ln1=0\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#logarithmic-differentiation",
+    "pdfPage": 56,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
+  },
+  {
+    "section": "3.9",
+    "topic": "exp",
+    "level": 4,
+    "prompt": "For \\(f(x)=\\ln(2x^3+7)\\), find \\(f''(1)\\).",
+    "answer": "8/9",
+    "why": "The first derivative is \\(6x^2/(2x^3+7)\\). The quotient rule gives \\(f''=12x(7-x^3)/(2x^3+7)^2\\), which at \\(1\\) equals \\(72/81=8/9\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#worked-examples",
+    "pdfPage": 54,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
+  },
+  {
+    "section": "3.9",
+    "topic": "exp",
+    "level": 4,
+    "prompt": "For \\(y=e^{\\cos x}\\), find \\(y''(\\pi/2)\\).",
+    "answer": "1",
+    "why": "Since \\(y'=-y\\sin x\\), the product rule gives \\(y''=y(\\sin^2x-\\cos x)\\). At \\(\\pi/2\\), the exponential is \\(1\\) and the parenthesis is \\(1\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#worked-examples",
+    "pdfPage": 54,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
+  },
+  {
+    "section": "3.9",
+    "topic": "exp",
+    "level": 4,
+    "prompt": "For \\(f(x)=\\log_{10}(1+x^2)\\), find the ratio \\(f''(2)/f'(2)\\).",
+    "answer": "-3/10",
+    "why": "The first derivative is \\(2x/[(1+x^2)\\ln10]\\). Its derivative is \\(2(1-x^2)/[(1+x^2)^2\\ln10]\\). Dividing cancels \\(\\ln10\\) and leaves \\((1-x^2)/[x(1+x^2)]\\), giving \\(-3/10\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#practice-1",
+    "pdfPage": 55,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
+  },
+  {
+    "section": "3.9",
+    "topic": "logdiff",
+    "level": 4,
+    "prompt": "For \\(y=x^{\\sqrt{2x}}\\), let \\(a>0\\) be the input where \\(y'=0\\). Find \\(\\ln a\\).",
+    "answer": "-2",
+    "why": "From \\(\\ln y=\\sqrt{2x}\\ln x\\), differentiation gives \\(y'/y=(\\ln x+2)/\\sqrt{2x}\\). Since \\(x\\) and \\(y\\) are positive, zero slope requires \\(\\ln a+2=0\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#practice-2",
+    "pdfPage": 57,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
+  },
+  {
+    "section": "3.7",
+    "topic": "inverse",
+    "level": 4,
+    "prompt": "Let \\(f(x)=x^3\\), \\(h(x)=f(x)+f^{-1}(x)\\) near \\(x=1\\), and \\(k=h^{-1}\\) near \\(x=2\\). Find \\(k''(2)\\).",
+    "answer": "-39/250",
+    "why": "Here \\(h(x)=x^3+x^{1/3}\\), so \\(h(1)=2\\), \\(h'(1)=10/3\\), and \\(h''(1)=6-2/9=52/9\\). Differentiating \\(h(k(t))=t\\) twice gives \\(k''(2)=-h''(1)/[h'(1)]^3\\). Thus the answer is \\(-(52/9)(27/1000)=-39/250\\).",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "capstone": true,
+    "pdfPage": 46,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.8",
+    "topic": "implicit",
+    "level": 4,
+    "prompt": "On \\(x^2-xy+y^2=12\\), find \\(d^3y/dx^3\\) at the point with positive \\(x\\) where the tangent slope is \\(1\\).",
+    "answer": "1/6",
+    "why": "Write \\(p=y'\\), \\(q=y''\\), \\(r=y'''\\). The first derivative equation \\(2x-y+(-x+2y)p=0\\) gives \\(y=-x\\) when \\(p=1\\), hence \\((x,y)=(2,-2)\\). Differentiate to get \\(2-2p+2p^2+(-x+2y)q=0\\), so \\(q=1/3\\). One more derivative gives \\((-3+6p)q+(-x+2y)r=0\\). At the contact point this reduces to \\(1-6r=0\\).",
+    "source": "../lectures/16-implicit-differentiation.html#practice-the-curve-x2-xyy212",
+    "capstone": true,
+    "pdfPage": 50,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.9",
+    "topic": "logdiff",
+    "level": 4,
+    "prompt": "Combine the lecture's variable powers into \\(y=(x^{x^2})^{x^x}\\) for \\(x>0\\). Find \\(y'''(1)\\).",
+    "answer": "33",
+    "why": "Set \\(B=\\ln y=u\\ln x\\), where \\(u=x^{x+2}\\). The first two derivatives of \\(\\ln u=(x+2)\\ln x\\) at \\(1\\) are \\(3,-1\\), so \\(u(1)=1\\), \\(u'(1)=3\\), \\(u''(1)=8\\). The product rule gives \\(B'(1)=1\\), \\(B''(1)=2(3)-1=5\\), and \\(B'''(1)=3(8)-3(3)+2=17\\). Since \\(y=e^B\\), at \\(1\\) its third derivative is \\(1^3+3(1)(5)+17=33\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#examples-of-logarithmic-differentiation",
+    "capstone": true,
+    "pdfPage": 56,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   }
 ]

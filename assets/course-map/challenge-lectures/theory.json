@@ -11,7 +11,9 @@
     ],
     "why": "The position difference is continuous. Its values at \\(0\\) and \\(60\\) have opposite signs, so the IVT gives \\(m(c)=e(c)\\) for some interior time.",
     "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
-    "section": "2.6"
+    "section": "2.6",
+    "pdfPage": 23,
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf"
   },
   {
     "topic": "continuity",
@@ -25,7 +27,9 @@
     ],
     "why": "Composition of limits needs the limiting input to \\(F\\). Here it is \\(-1\\), so the result is \\(F(-1)=4\\). The point value \\(g(0)\\) never enters.",
     "source": "../lectures/06-continuity.html#continuity-and-composition",
-    "section": "2.5"
+    "section": "2.5",
+    "pdfPage": 21,
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf"
   },
   {
     "topic": "evt",
@@ -39,7 +43,9 @@
     ],
     "why": "The limit at \\(3\\) is \\(6\\) while \\(f(3)=2\\). By direct comparison the minimum is \\(2\\) and the maximum is \\(7\\).",
     "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "section": "4.2",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "local",
@@ -53,7 +59,8 @@
     ],
     "why": "The numerator \\(f(c+h)-f(c)\\) is nonpositive on both sides. The sign of the denominator changes; the common derivative must satisfy both inequalities.",
     "source": "../lectures/18-maxima-and-minima.html#fermat",
-    "section": "4.2"
+    "section": "4.2",
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
   },
   {
     "topic": "inverse",
@@ -67,21 +74,9 @@
     ],
     "why": "The cube has \\(f'(0)=0\\). For its inverse the difference quotient at zero is \\(h^{-2/3}\\), which tends to positive infinity.",
     "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
-    "section": "3.7"
-  },
-  {
-    "topic": "monotonic",
-    "level": 3,
-    "prompt": "For \\(f(x)=x/(x+1)\\), \\(f'(x)>0\\) wherever defined. Why can the Mean Value Theorem not compare \\(f(-2)\\) and \\(f(0)\\)?",
-    "choices": [
-      "The interval between the inputs contains a point outside the domain.",
-      "The endpoint function values must be equal to apply the theorem.",
-      "The derivative must also be positive at both endpoints.",
-      "Both inputs must belong to the same side of the origin."
-    ],
-    "why": "The interval contains \\(-1\\). In fact \\(f(-2)=2>0=f(0)\\), although each branch is increasing.",
-    "source": "../lectures/curve-sketching.html#example-1",
-    "section": "4.5"
+    "section": "3.7",
+    "pdfPage": 45,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
   },
   {
     "topic": "tests",
@@ -95,7 +90,8 @@
     ],
     "why": "The second derivative test settles \\(f\\). For \\(h\\), the factor \\(x^2\\) is positive off zero, so the sign is the sign of \\(\\tan x\\).",
     "source": "../lectures/section-4-3.html#second-derivative-test",
-    "section": "4.3"
+    "section": "4.3",
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
   },
   {
     "topic": "optimization",
@@ -109,7 +105,8 @@
     ],
     "why": "With circle piece \\(c\\), the feasible interval is \\(0<c<24\\). The circle-only shape occurs at the excluded endpoint \\(c=24\\).",
     "source": "../lectures/optimization.html#harder-problems",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "exp",
@@ -123,7 +120,8 @@
     ],
     "why": "The IVT gives a base with slope 1. Strict increase prevents two different bases from producing that slope.",
     "source": "../lectures/17-exponential-logarithmic.html#what-is-e",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "squeeze",
@@ -137,7 +135,9 @@
     ],
     "why": "The absolute value of the difference quotient at 1 is at most \\(\\lvert x-1\\rvert\\), which tends to zero. The bounds alone fix neither curvature nor an extremum.",
     "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
-    "section": "2.4"
+    "section": "2.4",
+    "pdfPage": 16,
+    "pdf": "../downloads/september-30-revised-class-notes.pdf"
   },
   {
     "topic": "lhospital",
@@ -151,7 +151,8 @@
     ],
     "why": "The original form is \\(1/1\\), so direct substitution applies. The derivative quotient has a limit, but that fact alone does not authorize the replacement.",
     "source": "../lectures/lhopitals-rule.html#check-the-form",
-    "section": "4.7"
+    "section": "4.7",
+    "pdf": "../downloads/lhopitals-rule.pdf"
   },
   {
     "topic": "inflect",
@@ -165,174 +166,447 @@
     ],
     "why": "The denominator vanishes at both inputs. The signs describe concavity on different branches; the definition requires a point on a continuous graph.",
     "source": "../lectures/curve-sketching.html#example-8",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
-    "topic": "ivt",
-    "level": 4,
-    "prompt": "For \\(p(x)=4x^3-6x^2+3x-2\\), the lecture proves that a zero lies in \\((0,2)\\). Which argument also proves uniqueness on \\([0,2]\\)?",
+    "topic": "derivative",
+    "section": "3.2",
+    "level": 2,
+    "prompt": "You know \\(f'(3)=-2\\) and \\(f(3)=7\\). What must \\(\\lim_{x\\to3}f(x)\\) equal?",
     "choices": [
-      "\\(p'(x)=3(2x-1)^2\\) is positive on each side of \\(1/2\\), so \\(p\\) is strictly increasing across the interval.",
-      "The IVT guarantees exactly one crossing whenever endpoints have opposite signs.",
-      "Every zero of \\(p\\) must be a critical number, and \\(p'\\) vanishes once.",
-      "A cubic has exactly one real zero whenever its leading coefficient is positive."
+      "\\(7\\)",
+      "\\(-2\\)",
+      "\\(0\\)",
+      "There is too little information."
     ],
-    "why": "The IVT supplies a zero. The sign of \\(p'\\) gives strict increase on each side of \\(1/2\\); continuity joins the two increasing pieces, so a second zero is impossible.",
-    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
-    "section": "2.6"
+    "why": "A finite derivative guarantees continuity at 3. The function approaches its height there, regardless of the tangent’s slope.",
+    "source": "../lectures/10-derivative-function.html#differentiability-implies-continuity",
+    "reference": "Exam 2 oral review · 3",
+    "pdfPage": 27,
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
   },
   {
-    "topic": "evt",
-    "level": 4,
-    "prompt": "Generalize the lecture’s patched line on \\([2,4]\\) by taking \\(f(x)=x+3\\) off \\(x=3\\) and \\(f(3)=k\\). For which \\(k\\) is 3 a strict local maximum but not a global maximum?",
+    "topic": "tangent",
+    "section": "3.1",
+    "level": 2,
+    "prompt": "Which graph refutes the claim that a tangent line can meet a graph at only one point?",
     "choices": [
-      "\\(6<k<7\\).",
-      "\\(6\\le k<7\\).",
-      "\\(6<k\\le7\\).",
-      "\\(5<k<6\\)."
+      "\\(y=2x+1\\), whose tangent is the entire line.",
+      "\\(y=x^2\\), whose tangent at zero meets it only at zero.",
+      "\\(y=x^2+1\\), whose tangent at zero is horizontal.",
+      "\\(y=e^x\\), whose tangent at zero has slope 1."
     ],
-    "why": "Nearby branch values approach 6 from either side. The patched point strictly dominates its neighbors when \\(k>6\\). The endpoint value \\(f(4)=7\\) must still exceed it.",
-    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
-    "section": "4.2"
+    "why": "A line is its own tangent at each point. Sharing the local slope places no limit on how many points the tangent and graph can share.",
+    "source": "../lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+    "reference": "Exam 2 oral review · 4",
+    "pdfPage": 25,
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
   },
   {
-    "topic": "squeeze",
-    "level": 4,
-    "prompt": "Extend the lecture’s \\(f(x)=x^2\\sin(1/x)\\) by \\(f(0)=0\\). Which assertion about the derivative at zero and its continuity is true?",
+    "topic": "rules",
+    "section": "3.3",
+    "level": 2,
+    "prompt": "Can two factors both fail to be differentiable at 0 while their product is differentiable there?",
     "choices": [
-      "\\(f'(0)=0\\), but \\(f'\\) is discontinuous at zero.",
-      "\\(f'(0)\\) fails to exist because \\(\\sin(1/x)\\) oscillates.",
-      "\\(f'\\) is continuous at zero because \\(f\\) is differentiable there.",
-      "\\(f'(0)=1\\), and \\(f'\\) is discontinuous there."
+      "Yes. Take both factors equal to \\(\\lvert x\\rvert\\).",
+      "No. The product rule works in both directions.",
+      "Yes. Take both factors equal to \\(x\\).",
+      "No. A product always inherits each corner of its factors."
     ],
-    "why": "At zero the difference quotient is \\(x\\sin(1/x)\\to0\\). Off zero, \\(f'(x)=2x\\sin(1/x)-\\cos(1/x)\\), whose oscillating term prevents a limit.",
-    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
-    "section": "2.4"
+    "why": "Each absolute-value factor has a corner. Their product equals \\(x^2\\), whose derivative at 0 exists and equals 0.",
+    "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
+    "reference": "Exam 2 oral review · 12",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
-    "topic": "lhospital",
-    "level": 4,
-    "prompt": "Let \\(f(x)=x+x^2\\sin(1/x)\\) and \\(g(x)=x\\) for \\(x\\ne0\\). Which statement shows why the converse of l’Hospital’s rule fails?",
+    "topic": "rules",
+    "section": "3.3",
+    "level": 2,
+    "prompt": "If \\(p(x)=(x-a)^2q(x)\\) for a polynomial \\(q\\), which statement is forced?",
     "choices": [
-      "\\(f/g\\to1\\), although \\(f'/g'\\) has no limit at zero.",
-      "\\(f/g\\) and \\(f'/g'\\) both tend to 1 because the form is \\(0/0\\).",
-      "\\(f/g\\) has no limit because \\(f'/g'\\) oscillates.",
-      "\\(f'/g'\\to0\\) because \\(g(x)\\to0\\)."
+      "\\(p(a)=p'(a)=0\\).",
+      "\\(p''(a)=0\\).",
+      "\\(p'(a)=q(a)\\).",
+      "\\(q(a)=0\\)."
     ],
-    "why": "The original quotient is \\(1+x\\sin(1/x)\\). The derivative quotient is \\(1+2x\\sin(1/x)-\\cos(1/x)\\) and does not converge.",
-    "source": "../lectures/lhopitals-rule.html#lhospitals-theorem",
-    "section": "4.7"
+    "why": "The product rule gives \\(p'=2(x-a)q+(x-a)^2q'\\). Both terms vanish at \\(a\\). Taking \\(q=1\\) shows the second derivative need not vanish.",
+    "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
+    "reference": "Exam 2 oral review · 13",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
-    "topic": "tests",
-    "level": 4,
-    "prompt": "Suppose \\(f\\) is continuous at an interior point \\(c\\), and \\(f'(x)=0\\) throughout a whole interval about \\(c\\). Using the course’s non-strict definition of a local extremum, what follows?",
+    "topic": "chain",
+    "section": "3.6",
+    "level": 2,
+    "prompt": "Suppose \\(g'(0)=0\\) and \\(f\\) is differentiable at \\(g(0)\\). Which derivative must be zero?",
     "choices": [
-      "\\(f(c)\\) is both a local maximum and a local minimum.",
-      "\\(f(c)\\) is neither because \\(f'\\) does not change sign.",
-      "\\(f(c)\\) must be a strict local maximum.",
-      "The behavior of \\(f\\) near \\(c\\) cannot be inferred from \\(f'\\)."
+      "\\((f\\circ g)'(0)\\)",
+      "\\(f'(g(0))\\)",
+      "\\(f'(0)\\)",
+      "\\(g''(0)\\)"
     ],
-    "why": "The Mean Value Theorem makes \\(f\\) constant on that interval. Both local inequalities hold as equalities. The strict-sign hypotheses of the lecture’s first derivative test are absent.",
-    "source": "../lectures/section-4-3.html#first-derivative-test",
-    "section": "4.3"
+    "why": "The chain rule multiplies \\(f'(g(0))\\) by \\(g'(0)=0\\). No zero slope of the outer function is required.",
+    "source": "../lectures/14-chain-rule.html#the-chain-rule",
+    "reference": "Exam 2 oral review · 18",
+    "pdfPage": 40,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
-    "topic": "implicit",
-    "level": 4,
-    "prompt": "For \\(x^2-y^2=9\\), which argument establishes a vertical tangent at \\((3,0)\\) even though \\(dy/dx=x/y\\) cannot be evaluated there?",
+    "topic": "chain",
+    "section": "3.6",
+    "level": 3,
+    "prompt": "A differentiable function is even. What relation must its derivative satisfy on its symmetric domain?",
     "choices": [
-      "Write the local branch as \\(x=\\sqrt{9+y^2}\\); \\(dx/dy=0\\) at zero, so its tangent is \\(x=3\\).",
-      "Every undefined expression for \\(dy/dx\\) guarantees a vertical tangent.",
-      "Set \\(dy/dx=0\\) and read its horizontal line as vertical.",
-      "Since \\(dx/dy=0\\), the tangent equation is \\(y=0\\)."
+      "\\(f'(-x)=-f'(x)\\)",
+      "\\(f'(-x)=f'(x)\\) for every even \\(f\\).",
+      "\\(f'(-x)=f(x)\\) for every even \\(f\\).",
+      "\\(f'(x)=0\\) for every \\(x\\)."
     ],
-    "why": "The smooth parametrization \\((\\sqrt{9+y^2},y)\\) has tangent direction \\((0,1)\\) there. The numerator and denominator of a slope formula alone need not describe a regular tangent in every example.",
-    "source": "../lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
-    "section": "3.8"
-  },
-  {
-    "topic": "logdiff",
-    "level": 4,
-    "prompt": "For positive differentiable \\(f\\) and differentiable \\(g\\), put \\(y=f^g\\). At a point with \\(f=1\\) and \\(g=0\\), which conclusion is forced, even if both derivatives are nonzero?",
-    "choices": [
-      "\\(y'=0\\).",
-      "\\(y'=f'+g'\\).",
-      "\\(y'=f'g'\\).",
-      "The derivative is undefined because the expression has form \\(1^0\\)."
-    ],
-    "why": "The lecture gives \\(y'/y=g'\\ln f+g f'/f\\). The first term vanishes since \\(\\ln1=0\\), and the second since \\(g=0\\).",
-    "source": "../lectures/17-exponential-logarithmic.html#the-general-calculation",
-    "section": "3.9"
-  },
-  {
-    "topic": "optimization",
-    "level": 4,
-    "prompt": "For the least-squares line \\(y=mx+2\\) fitted to the lecture’s three data points, \\(E(m)=5(m-1)^2+9\\). What proves a unique global minimum on the entire real line?",
-    "choices": [
-      "\\(E(m)\\ge9\\) for all \\(m\\), with equality exactly at \\(m=1\\).",
-      "The Extreme Value Theorem applies because \\(\\mathbb R\\) contains its endpoints.",
-      "The sole equation \\(E'(1)=0\\) guarantees a unique global minimum.",
-      "A positive value of \\(E''(1)\\) for any function always proves its global minimum."
-    ],
-    "why": "The completed square gives a bound on every admissible slope and identifies its unique equality case. A second derivative at one point only tests local behavior in general.",
-    "source": "../lectures/optimization.html#optimization-problems",
-    "section": "4.6"
-  },
-  {
-    "topic": "continuity",
-    "level": 4,
-    "prompt": "Define \\(G(x)=x^2+1\\) for \\(x<1\\), \\(ax+b\\) for \\(1\\le x<3\\), \\(c\\) at \\(3\\), and \\(2x\\) for \\(x>3\\). Choose the constants that make \\(G\\) continuous. At which joining inputs does \\(G''\\) exist?",
-    "choices": [
-      "At \\(3\\) only.",
-      "At \\(1\\) only.",
-      "At both \\(1\\) and \\(3\\).",
-      "At neither \\(1\\) nor \\(3\\)."
-    ],
-    "why": "Continuity gives \\(a+b=2\\) and \\(3a+b=c=6\\), so the middle line is \\(2x\\). All three right-hand pieces then agree with that line. At \\(1\\) the first derivatives match, but the left and right slopes of \\(G'\\) are 2 and 0.",
-    "source": "../lectures/08-exam-practice.html#problem-5",
-    "section": "2.7"
-  },
-  {
-    "topic": "optimization",
-    "level": 4,
-    "prompt": "A band charges \\(10+k\\) dollars for tickets, with integer \\(0\\le k\\le24\\). Profit is \\(P(k)=(7+k)(120-5k)-450\\). What justifies checking only the ticket prices 18 and 19 dollars for the global maximum?",
-    "choices": [
-      "The quadratic increases up to \\(k=8.5\\) and decreases thereafter, so the nearest feasible inputs on the two sides dominate their respective sides.",
-      "The function has zero derivative at both \\(k=8\\) and \\(k=9\\), so these are its only critical numbers.",
-      "The Extreme Value Theorem requires a maximum at the two integers closest to the midpoint of the domain.",
-      "An interior maximum at an integer must satisfy \\(P'(k)=0\\), which singles out both integers."
-    ],
-    "why": "The continuous quadratic has its vertex at \\(8.5\\). Its monotonicity eliminates all lower and higher integers. The two remaining inputs have the same profit, 750 dollars each.",
-    "source": "../lectures/optimization.html#harder-problems",
-    "section": "4.6"
+    "why": "Differentiate \\(f(-x)=f(x)\\). The chain rule supplies a minus sign on the left, giving \\(-f'(-x)=f'(x)\\).",
+    "source": "../lectures/14-chain-rule.html#the-chain-rule",
+    "reference": "Exam 2 oral review · 19",
+    "pdfPage": 40,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
   },
   {
     "topic": "inverse",
-    "level": 4,
-    "prompt": "Let \\(H(x)=\\arcsin(\\sin x)\\). A formal chain-rule expression has the indeterminate form \\(0/0\\) at \\(\\pi/2\\). Which conclusion follows from the principal range of arcsine?",
+    "section": "3.6",
+    "level": 3,
+    "prompt": "A differentiable function satisfies \\(f(f(x))=x\\) and \\(f(0)=0\\). Which slopes can its graph have at zero?",
     "choices": [
-      "\\(H\\) is continuous there with left derivative 1 and right derivative \\(-1\\).",
-      "\\(H\\) is differentiable there with derivative 1 since inverse functions cancel for all real inputs.",
-      "\\(H\\) is differentiable there with derivative 0 since the inside function is stationary.",
-      "\\(H\\) has a vertical tangent there since the derivative of arcsine is unbounded near 1."
+      "Only \\(1\\) or \\(-1\\).",
+      "Only \\(1\\).",
+      "Any nonzero real number.",
+      "Any real number."
     ],
-    "why": "Immediately left of \\(\\pi/2\\), \\(H(x)=x\\). Immediately right, \\(H(x)=\\pi-x\\) so its output stays in \\([-\\pi/2,\\pi/2]\\). The pieces meet, but their slopes differ.",
-    "source": "../lectures/15-inverse-functions.html#derivatives-of-inverse-trigonometric-functions",
-    "section": "3.7"
+    "why": "Differentiation gives \\(f'(f(0))f'(0)=1\\), so \\([f'(0)]^2=1\\). Both \\(f(x)=x\\) and \\(f(x)=-x\\) satisfy the assumptions.",
+    "source": "../lectures/14-chain-rule.html#the-chain-rule",
+    "reference": "Exam 2 oral review · 22",
+    "pdfPage": 40,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+  },
+  {
+    "topic": "tests",
+    "section": "4.3",
+    "level": 2,
+    "prompt": "At an interior point \\(c\\), \\(f'(c)=0\\) and \\(f''(c)>0\\), with \\(f''\\) continuous nearby. Which conclusion does the second derivative test give?",
+    "choices": [
+      "A strict local minimum at \\(c\\).",
+      "A strict global minimum at \\(c\\).",
+      "An inflection point at \\(c\\).",
+      "A strict local maximum at \\(c\\)."
+    ],
+    "why": "The tangent is horizontal and the curve is concave up nearby. The test compares neighboring heights, so larger-scale comparisons require more information.",
+    "source": "../lectures/section-4-3.html#the-second-derivative-test",
+    "reference": "Exam 3 oral review · 5",
+    "pdfPage": 68,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "topic": "global",
+    "section": "4.2",
+    "level": 2,
+    "prompt": "On \\([a,b]\\), a continuous function has just one interior critical number, a strict local maximum. Where must it attain its global minimum?",
+    "choices": [
+      "At \\(a\\) or \\(b\\), possibly both.",
+      "At the unique critical number.",
+      "At the midpoint of the interval.",
+      "Nowhere, since it already has a maximum."
+    ],
+    "why": "The closed-interval method lists the endpoints and every interior critical number. Nearby points are lower than the strict local maximum, leaving only the endpoints as minimum candidates.",
+    "source": "../lectures/18-maxima-and-minima.html#closed-interval-method",
+    "reference": "Exam 3 oral review · 7",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+  },
+  {
+    "topic": "global",
+    "section": "4.2",
+    "level": 2,
+    "prompt": "The global maximum of \\(f(x)=x+2\\) on \\([-1,1]\\) occurs at 1. Why is this compatible with the nonzero slope of the line?",
+    "choices": [
+      "The zero-slope conclusion for a differentiable extremum requires an interior point.",
+      "A global maximum imposes zero slope only for quadratic functions.",
+      "The graph is discontinuous at 1.",
+      "An endpoint can attain a minimum but never a maximum."
+    ],
+    "why": "At the right endpoint, the domain provides comparison points on only one side. The line reaches its largest permitted value there while retaining slope 1.",
+    "source": "../lectures/18-maxima-and-minima.html#closed-interval-method",
+    "reference": "Exam 3 oral review · 8",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+  },
+  {
+    "topic": "tests",
+    "section": "4.3",
+    "level": 3,
+    "prompt": "Which pair shows that \\(f'(0)=f''(0)=0\\) permits both a strict local maximum and a strict local minimum?",
+    "choices": [
+      "\\(-x^4\\) and \\(x^4\\)",
+      "\\(-x^2\\) and \\(x^2\\)",
+      "\\(-x^3\\) and \\(x^3\\)",
+      "\\(-x\\) and \\(x\\)"
+    ],
+    "why": "Both quartics have zero first and second derivatives at 0. The negative quartic is largest at 0, and the positive one is smallest there.",
+    "source": "../lectures/section-4-3.html#the-second-derivative-test",
+    "reference": "Exam 3 oral review · 9",
+    "pdfPage": 69,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "topic": "rates",
+    "section": "4.1",
+    "level": 2,
+    "prompt": "A tank’s current depth is 3 m. Why keep \\(h(t)\\) in the volume equation until after differentiating?",
+    "choices": [
+      "The value 3 holds at one instant, while the rate equation must track the changing depth.",
+      "The chain rule works only when the depth is unknown.",
+      "The depth and its rate always have the same units.",
+      "Substituting later makes \\(dh/dt\\) constant."
+    ],
+    "why": "Replacing the changing depth by 3 throughout would erase its time dependence. Differentiate the geometric identity, then insert the snapshot.",
+    "source": "../lectures/related-rates.html#the-three-steps",
+    "reference": "Exam 3 oral review · 13",
+    "pdfPage": 58,
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
+  },
+  {
+    "topic": "rates",
+    "section": "4.1",
+    "level": 2,
+    "prompt": "An inverted cone fills at constant volume per minute. As the water gets deeper, what happens to the rate at which its level rises?",
+    "choices": [
+      "It decreases as the water surface widens.",
+      "It increases as the water surface widens.",
+      "It stays equal to the volume flow rate.",
+      "It becomes negative before the tank fills."
+    ],
+    "why": "In the lecture cone, \\(dV/dt=(\\pi h^2/9)dh/dt\\). Dividing a fixed positive flow by a growing cross-sectional area gives a smaller positive rise rate.",
+    "source": "../lectures/related-rates.html#cone",
+    "reference": "Exam 3 oral review · 14",
+    "pdfPage": 63,
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "optimization",
-    "level": 4,
-    "prompt": "From \\(x>0\\) feet away, a painting 1 to 4 feet above eye level subtends the acute angle \\(\\theta=\\arctan(4/x)-\\arctan(1/x)\\). Which transformed objective has the same maximizer, and where is it?",
+    "section": "4.6",
+    "level": 2,
+    "prompt": "For a continuous objective, which derivative pattern on its entire feasible interval proves \\(c\\) is the unique global minimum?",
     "choices": [
-      "Maximize \\(\\tan\\theta=3x/(x^2+4)\\) at \\(x=2\\).",
-      "Maximize \\(\\tan\\theta=3/x\\) at \\(x=2\\).",
-      "Maximize \\(\\tan\\theta=3x/(x^2+4)\\) at \\(x=4\\).",
-      "Minimize \\(\\tan\\theta=3x/(x^2+4)\\) at \\(x=2\\)."
+      "Negative everywhere to the left of \\(c\\) and positive everywhere to its right.",
+      "Negative immediately to the left and positive immediately to the right, with no information elsewhere.",
+      "Positive everywhere to the left and negative everywhere to the right.",
+      "Zero at \\(c\\), with no information elsewhere."
     ],
-    "why": "Tangent is strictly increasing on the acute-angle range. The tangent difference identity gives \\(3x/(x^2+4)\\), whose derivative has the sign of \\(4-x^2\\), so 2 is its unique global maximizer.",
-    "source": "../lectures/optimization.html#harder-problems",
-    "section": "4.6"
+    "why": "Decrease all the way to \\(c\\) and increase all the way after it place every other feasible value above the value at \\(c\\).",
+    "source": "../lectures/optimization.html#primer",
+    "reference": "Exam 3 oral review · 18",
+    "pdfPage": 79,
+    "pdf": "../downloads/optimization-worksheet.pdf"
+  },
+  {
+    "topic": "inflect",
+    "section": "4.3",
+    "level": 2,
+    "prompt": "Why does \\(f(x)=x^4\\) rule out “\\(f''(c)=0\\) implies inflection”?",
+    "choices": [
+      "\\(f''(0)=0\\) but \\(f''\\) is positive on both sides.",
+      "The graph changes concavity twice at zero.",
+      "\\(f'(0)\\) is undefined.",
+      "\\(f''\\) is negative immediately left of zero."
+    ],
+    "why": "Here \\(f''(x)=12x^2\\). Concavity stays up through 0, so there is no change of concavity at the zero of \\(f''\\).",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "reference": "Exam 3 oral review · 29",
+    "pdfPage": 68,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "topic": "forms",
+    "section": "4.7",
+    "level": 3,
+    "prompt": "Does a positive base approaching 1 raised to an exponent approaching infinity have to approach 1?",
+    "choices": [
+      "No. \\((1+x)^{1/x}\\to e\\) as \\(x\\to0^+\\).",
+      "Yes, because 1 raised to every finite power is 1.",
+      "No, because every such expression tends to infinity.",
+      "Yes, provided the base stays above 1."
+    ],
+    "why": "The exponent can amplify a small change in the base. In the displayed example the logarithm tends to 1, giving a power limit of \\(e\\).",
+    "source": "../lectures/lhopitals-rule.html#indeterminate-powers",
+    "reference": "Exam 3 oral review · 38",
+    "pdfPage": 86,
+    "pdf": "../downloads/lhopitals-rule.pdf"
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 4,
+    "prompt": "A continuous \\(f\\) takes the successive values \\(-3,4,-1,5\\) at \\(0,1,2,3\\). What is the sharp lower bound on the number of distinct solutions of \\(f(x)^2=4\\) in \\([0,3]\\)?",
+    "answer": "4",
+    "why": "The first interval must hit both \\(-2\\) and 2. The second must hit 2, and the third must hit 2. The hits are interior and distinct. Straight-line interpolation attains four.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdfPage": 23,
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf"
+  },
+  {
+    "section": "2.4",
+    "topic": "squeeze",
+    "level": 4,
+    "prompt": "Near zero \\(|f(x)-3|\\le |x|^5\\). What is the largest nonnegative integer \\(n\\) for which the squeeze theorem forces \\((f(x)^2-9)/|x|^n\\to0\\) for every such \\(f\\)?",
+    "answer": "4",
+    "why": "Factor \\(f^2-9=(f-3)(f+3)\\). The second factor tends to 6, while the first divided by \\(|x|^n\\) tends to zero whenever \\(n<5\\). Choosing \\(f=3+|x|^5\\) rules out \\(n=5\\) and larger.",
+    "source": "../lectures/05-squeeze-theorem.html#the-squeeze-theorem",
+    "pdfPage": 16,
+    "pdf": "../downloads/september-30-revised-class-notes.pdf"
+  },
+  {
+    "section": "3.7",
+    "topic": "inverse",
+    "level": 4,
+    "prompt": "The lecture gives \\(f(2)=5\\) and \\(f'(2)=-3\\), with the inverse-function theorem's hypotheses satisfied. Set \\(H(x)=[f^{-1}(x)]^2\\). Find the slope of \\(H\\) at input 5.",
+    "answer": "-4/3",
+    "why": "The inverse takes input 5 to 2 and has derivative \\(-1/3\\) there. The chain rule gives \\(H'(5)=2(2)(-1/3)\\).",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "pdfPage": 45,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "3.6",
+    "topic": "chain",
+    "level": 4,
+    "prompt": "The lecture table gives \\(g(0)=1\\), \\(g(1)=0\\), \\(g'(0)=-2\\), \\(g'(1)=6\\), and \\(f'(0)=3\\). Apply the chain rule to find \\((f\\circ g\\circ g)'(0)\\).",
+    "answer": "-36",
+    "why": "Track the two inner outputs \\(0\\mapsto1\\mapsto0\\). The derivative factors are \\(f'(0)g'(1)g'(0)=3\\cdot6\\cdot(-2)\\).",
+    "source": "../lectures/14-chain-rule.html#using-the-chain-rule-with-a-table",
+    "pdfPage": 40,
+    "pdf": "../downloads/october-19-chain-rule-class-notes.pdf"
+  },
+  {
+    "section": "4.2",
+    "topic": "evt",
+    "level": 4,
+    "prompt": "The closed-interval method applies to \\(f(x)=x^3(4-x)\\) on \\([-1,4]\\). What is the difference between its global maximum and global minimum values?",
+    "answer": "32",
+    "why": "Compare both endpoints with the interior critical numbers from \\(f'=4x^2(3-x)\\). The four heights are \\(-5,0,27,0\\). Their range is \\(27-(-5)=32\\).",
+    "source": "../lectures/18-maxima-and-minima.html#worked-examples",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+  },
+  {
+    "section": "4.2",
+    "topic": "critical",
+    "level": 4,
+    "prompt": "On the real line \\(F(x)=(x-2)^3(x+1)\\). Its derivative vanishes at two distinct points. At how many of them does \\(F\\) actually have a local extremum?",
+    "answer": "1",
+    "why": "The derivative factors as \\((x-2)^2(4x+1)\\). Its sign changes only at \\(-1/4\\). The stationary point at 2 illustrates why the converse of Fermat's theorem fails.",
+    "source": "../lectures/18-maxima-and-minima.html#finding-global-extrema",
+    "pdfPage": 65,
+    "pdf": "../downloads/november-4-maxima-and-minima.pdf"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "level": 4,
+    "prompt": "Let \\(f'(x)=(x-1)^3(x+2)\\). At how many real critical inputs does the second derivative test give no classification even though the first derivative test detects an extremum there?",
+    "answer": "1",
+    "why": "At 1 the cubic factor reverses the sign of \\(f'\\) but \\(f''(1)=0\\). At \\(-2\\) the simple factor reverses the sign and \\(f''(-2)=(-3)^3\\ne0\\), so the second test works there.",
+    "source": "../lectures/section-4-3.html#the-second-derivative-test",
+    "pdfPage": 68,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "section": "3.2",
+    "topic": "derivative2",
+    "level": 4,
+    "prompt": "Let \\(F(x)=ax+b\\) for \\(x<1\\) and \\(F(x)=x^2+3\\) for \\(x\\ge1\\). If \\(F\\) is differentiable at 1, find the product \\(ab\\).",
+    "answer": "4",
+    "why": "Differentiability requires continuity, giving \\(a+b=4\\). Matching the one-sided slopes gives \\(a=2\\), so \\(b=2\\) as well.",
+    "source": "../lectures/10-derivative-function.html#differentiability-implies-continuity",
+    "pdfPage": 27,
+    "pdf": "../downloads/october-12-derivatives-class-notes.pdf"
+  },
+  {
+    "section": "2.5",
+    "topic": "continuity",
+    "level": 4,
+    "prompt": "Suppose \\(g\\) can approach only the two limiting heights \\(-2\\) and 4 at \\(a\\), and both actually occur along approaching sequences. Set \\(F(t)=t^2+ct\\). What common outer height makes the two approaches indistinguishable for the unique suitable \\(c\\)?",
+    "answer": "8",
+    "why": "Equal limiting outer heights require \\(4-2c=16+4c\\), giving \\(c=-2\\). Substitution then gives 8 at both inner heights.",
+    "source": "../lectures/06-continuity.html#continuity-and-composition",
+    "pdfPage": 21,
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf"
+  },
+  {
+    "section": "4.4",
+    "topic": "rationaltails",
+    "level": 4,
+    "prompt": "A rational function \\((2x^3+ax^2+1)/(x^2-3x+5)\\) has slant asymptote \\(y=2x-4\\). By the division theorem, what must \\(a\\) be?",
+    "answer": "-10",
+    "why": "Subtract \\((2x-4)(x^2-3x+5)\\) from the numerator. The remainder must have degree below 2, so the numerator's quadratic coefficient must equal \\(-6-4=-10\\).",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "pdfPage": 72,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.3",
+    "topic": "concavity",
+    "level": 4,
+    "prompt": "A polynomial satisfies \\(f''(x)=(x+4)^2(x+1)^3(x-2)(x-5)^4\\). How many inflection points does the concavity test establish?",
+    "answer": "2",
+    "why": "The polynomial is continuous everywhere. Only the odd-multiplicity zeros \\(-1\\) and 2 reverse the sign of \\(f''\\), so only they change concavity.",
+    "source": "../lectures/section-4-3.html#concavity-and-inflection-points",
+    "pdfPage": 68,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "section": "2.2",
+    "topic": "infinite",
+    "level": 4,
+    "prompt": "A rational function has numerator \\((x-1)^3(x+1)\\) and denominator \\((x-1)^2(x+1)^4(x-2)^2\\). At how many distinct inputs does at least one one-sided limit become infinite?",
+    "answer": "2",
+    "why": "Cancel common factors on the domain. The reduced expression has poles at \\(-1\\) and 2, with remaining denominator powers 3 and 2. At 1 the original formula has a hole with finite limit.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "pdfPage": 9,
+    "pdf": "../downloads/september-28-limits-class-notes.pdf"
+  },
+  {
+    "section": "3.7",
+    "topic": "inverse",
+    "level": 4,
+    "capstone": true,
+    "prompt": "Let \\(f\\) satisfy the inverse-function theorem near 2, with \\(f(2)=5\\), \\(f'(2)=-3\\), and \\(f''(2)=12\\). Assume \\(f\\) is twice continuously differentiable there. For \\(g=f^{-1}\\), find \\(g''(5)\\).",
+    "answer": "4/9",
+    "why": "Differentiate \\(f(g(y))=y\\) twice to obtain \\(f''(g)(g')^2+f'(g)g''=0\\). At \\(y=5\\), \\(g=2\\) and \\(g'=-1/3\\). Thus \\(12/9-3g''(5)=0\\).",
+    "source": "../lectures/15-inverse-functions.html#the-inverse-function-derivative",
+    "pdfPage": 45,
+    "pdf": "../downloads/october-21-inverse-implicit-class-notes.pdf"
+  },
+  {
+    "section": "4.3",
+    "topic": "tests",
+    "level": 4,
+    "capstone": true,
+    "prompt": "For \\(f_c(x)=4x^3-12x+12+cx\\), the first derivative test identifies a local maximum and a local minimum. If their output values differ by 128, find \\(c\\).",
+    "answer": "-36",
+    "why": "Let the two stationary inputs be \\(\\pm t\\) with \\(t>0\\). Since \\(f'_c(t)=0\\), \\(c=12-12t^2\\). Substituting gives \\(f_c(-t)=12+8t^3\\) and \\(f_c(t)=12-8t^3\\). Their difference gives \\(16t^3=128\\), so \\(t=2\\) and \\(c=-36\\).",
+    "source": "../lectures/section-4-3.html#the-first-derivative-test",
+    "pdfPage": 67,
+    "pdf": "../downloads/november-6-local-extrema-and-concavity.pdf"
+  },
+  {
+    "section": "2.6",
+    "topic": "ivt",
+    "level": 4,
+    "capstone": true,
+    "prompt": "A continuous \\(F\\) has \\(F(-2)=-3\\), \\(F(0)=4\\), and \\(F(2)=-1\\). For how many integers \\(b\\) do the data force \\(F(x)=x/2+b\\) at least once in each open half \\((-2,0)\\) and \\((0,2)\\) for every such \\(F\\)?",
+    "answer": "5",
+    "why": "Subtract \\(x/2\\) from \\(F\\). The new checkpoint heights are \\(-2,4,-2\\). The IVT forces the target \\(b\\) on both open intervals for the five integers strictly between \\(-2\\) and 4. Straight-line interpolation shows that no other \\(b\\) is forced in both interiors.",
+    "source": "../lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "pdfPage": 23,
+    "pdf": "../downloads/october-2-continuity-class-notes.pdf"
   }
 ]

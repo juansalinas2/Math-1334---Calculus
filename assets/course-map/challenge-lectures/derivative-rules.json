@@ -11,7 +11,8 @@
     ],
     "why": "Expand to \\(10x^4+14x/(x+2)\\). The quotient contributes \\([14(x+2)-14x]/(x+2)^2\\).",
     "source": "../lectures/11-differentiation-rules.html#combining-rules-and-differentiating-again",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "rules",
@@ -25,7 +26,8 @@
     ],
     "why": "For \\(x\\ne0\\), simplify to \\(3+4/x\\). Solving \\(-4/x^2=-1\\) gives \\(x=\\pm2\\); use the original height for the coordinates.",
     "source": "../lectures/11-differentiation-rules.html#combining-rules-and-differentiating-again",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "derivatives",
@@ -39,21 +41,8 @@
     ],
     "why": "Divide first: \\(f=3x-x^{-1}+2x^{-2}\\). Differentiate twice to get \\(-2x^{-3}+12x^{-4}\\) for \\(x\\ne0\\).",
     "source": "../lectures/11-differentiation-rules.html#a-second-derivative-is-a-derivative-of-a-derivative",
-    "section": "3.3"
-  },
-  {
-    "topic": "derivatives",
-    "level": 4,
-    "prompt": "For \\(f(x)=(3x^3-x+2)/x^2\\), at which point does the graph of \\(f'\\) have a horizontal tangent?",
-    "choices": [
-      "\\((6,325/108)\\)",
-      "\\((6,0)\\)",
-      "\\((0,3)\\)",
-      "\\((-6,325/108)\\)"
-    ],
-    "why": "Set \\(f''=(12-2x)/x^4=0\\), giving \\(x=6\\). The requested height is \\(f'(6)=3+1/36-4/216=325/108\\).",
-    "source": "../lectures/11-differentiation-rules.html#a-second-derivative-is-a-derivative-of-a-derivative",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "tangent",
@@ -67,21 +56,8 @@
     ],
     "why": "Solving \\(3x^2-6x=9\\) gives \\(x=-1,3\\). The points are \\((-1,-2)\\) and \\((3,2)\\); subtract \\(9x\\) from each height to get the intercept.",
     "source": "../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes",
-    "section": "3.3"
-  },
-  {
-    "topic": "tangent",
-    "level": 4,
-    "prompt": "For \\(f(x)=x^3-3x^2+2\\), one horizontal tangent is \\(y=2\\). At which other input does this same line meet the curve, and what is the slope of the curve there?",
-    "choices": [
-      "\\(x=3\\), slope \\(9\\)",
-      "\\(x=2\\), slope \\(0\\)",
-      "\\(x=-1\\), slope \\(9\\)",
-      "\\(x=3\\), slope \\(0\\)"
-    ],
-    "why": "Solve \\(f(x)=2\\) to get \\(x^2(x-3)=0\\). The point of tangency is at zero; the other intersection is at \\(3\\), where \\(3x^2-6x=9\\).",
-    "source": "../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "rules",
@@ -95,7 +71,8 @@
     ],
     "why": "The derivative is \\(-20x/(x^2-1)^2\\) on \\(x\\ne\\pm1\\). Its sole zero is \\(0\\), and \\(f(0)=-9\\).",
     "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "trig",
@@ -109,21 +86,8 @@
     ],
     "why": "The quotient numerator is \\((2-\\sec x)\\sec^2x+\\sec x\\tan^2x\\). Substitute \\(\\tan^2x=\\sec^2x-1\\) to cancel both cubic terms.",
     "source": "../lectures/13-trigonometric-derivatives.html#using-quotients-to-explain-the-new-formulas",
-    "section": "3.5"
-  },
-  {
-    "topic": "trig",
-    "level": 4,
-    "prompt": "For \\(f(x)=\\tan x/(2-\\sec x)\\) on \\(0<x<2\\pi\\), how many horizontal tangents does the original graph have?",
-    "choices": [
-      "None.",
-      "One.",
-      "Two.",
-      "Four."
-    ],
-    "why": "Since \\(f'=\\sec x(2\\sec x-1)/(2-\\sec x)^2\\), a zero would require \\(\\sec x=0\\) or \\(\\sec x=1/2\\). Neither is possible for a real input.",
-    "source": "../lectures/13-trigonometric-derivatives.html#using-quotients-to-explain-the-new-formulas",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "trig",
@@ -137,7 +101,8 @@
     ],
     "why": "Set \\(1+4\\sin x=3\\). On the stated interval the sine is \\(1/2\\) at \\(\\pi/6\\) and \\(5\\pi/6\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "trig",
@@ -151,21 +116,8 @@
     ],
     "why": "The product rule gives \\(y'=2\\cos^2x-2\\sin^2x\\). Differentiating again gives \\(y''=-8\\sin x\\cos x=-4y\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes",
-    "section": "3.5"
-  },
-  {
-    "topic": "trig",
-    "level": 4,
-    "prompt": "For \\(f(x)=x-4\\cos x\\), find the tangent line with slope \\(3\\) at the larger of the two eligible inputs in \\((0,2\\pi)\\).",
-    "choices": [
-      "\\(y=3x-5\\pi/3+2\\sqrt3\\)",
-      "\\(y=3x-5\\pi/3-2\\sqrt3\\)",
-      "\\(y=3x+5\\pi/3+2\\sqrt3\\)",
-      "\\(y=3x-\\pi/3-2\\sqrt3\\)"
-    ],
-    "why": "The larger solution of \\(\\sin x=1/2\\) is \\(5\\pi/6\\). Its height is \\(5\\pi/6+2\\sqrt3\\); subtract \\(3(5\\pi/6)\\) to get the intercept.",
-    "source": "../lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "trig",
@@ -179,7 +131,8 @@
     ],
     "why": "The slope on the derivative graph is \\(y''=2\\cos x-x\\sin x\\). Evaluation gives \\(-\\pi/2\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#practice",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "trig",
@@ -193,7 +146,8 @@
     ],
     "why": "The quotient numerator is \\(\\cos x+\\cos^2 x+\\sin^2 x=1+\\cos x\\). Cancel one factor wherever the original denominator is nonzero.",
     "source": "../lectures/13-trigonometric-derivatives.html#practice",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "exp",
@@ -207,7 +161,8 @@
     ],
     "why": "The first factor contributes \\(\\pi/x\\) after division by \\(f\\). The exponential factor contributes \\(\\ln\\pi\\).",
     "source": "../lectures/17-exponential-logarithmic.html#practice-1",
-    "section": "3.9"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "exp",
@@ -221,63 +176,8 @@
     ],
     "why": "Change base to \\(\\ln(6x^4+5)/\\ln2\\). The chain rule gives \\(24x^3/[(6x^4+5)\\ln2]\\).",
     "source": "../lectures/17-exponential-logarithmic.html#other-bases",
-    "section": "3.9"
-  },
-  {
-    "topic": "exp",
-    "level": 4,
-    "prompt": "For \\(f(x)=e^{\\cos x}\\), find the slope of the tangent to the graph of \\(f'\\) at \\(x=\\pi/2\\).",
-    "choices": [
-      "\\(1\\)",
-      "\\(-1\\)",
-      "\\(0\\)",
-      "\\(e\\)"
-    ],
-    "why": "Differentiate \\(f'=-e^{\\cos x}\\sin x\\) once more. This gives \\(f''=e^{\\cos x}(\\sin^2x-\\cos x)\\), hence \\(f''(\\pi/2)=1\\).",
-    "source": "../lectures/17-exponential-logarithmic.html#worked-examples",
-    "section": "3.9"
-  },
-  {
-    "topic": "exp",
-    "level": 4,
-    "prompt": "The graph \\(y=\\ln\\sqrt{3x-2}\\) has a tangent of slope \\(1/2\\) at which point?",
-    "choices": [
-      "\\((5/3,\\tfrac12\\ln3)\\)",
-      "\\((5/3,\\ln3)\\)",
-      "\\((4/3,\\tfrac12\\ln2)\\)",
-      "\\((1,0)\\)"
-    ],
-    "why": "On \\(x>2/3\\), \\(y=\\tfrac12\\ln(3x-2)\\) gives \\(y'=3/[2(3x-2)]\\). Setting this to \\(1/2\\) gives \\(3x-2=3\\), so the height is \\(\\frac12\\ln3\\).",
-    "source": "../lectures/17-exponential-logarithmic.html#practice",
-    "section": "3.9"
-  },
-  {
-    "topic": "rules",
-    "level": 4,
-    "prompt": "For the lecture graph \\(f(x)=x^4+3/x\\), at which input does the tangent line pass through the origin?",
-    "choices": [
-      "\\(x=\\sqrt[5]{2}\\)",
-      "\\(x=\\sqrt[5]{3/4}\\)",
-      "\\(x=\\sqrt[5]{6}\\)",
-      "\\(x=-\\sqrt[5]{2}\\)"
-    ],
-    "why": "The tangent intercept is \\(f(x)-xf'(x)\\). Since \\(f'=4x^3-3/x^2\\), its intercept is \\(-3x^4+6/x\\). Set this to zero and use \\(x\\ne0\\) to obtain \\(x^5=2\\).",
-    "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
-    "section": "3.3"
-  },
-  {
-    "topic": "trig",
-    "level": 4,
-    "prompt": "If \\(y=x^3\\cot x\\), what is the slope of the graph of \\(y'\\) at \\(x=\\pi/2\\)?",
-    "choices": [
-      "\\(-3\\pi^2/2\\)",
-      "\\(-3\\pi^2/4\\)",
-      "\\(-\\pi^3/8\\)",
-      "\\(0\\)"
-    ],
-    "why": "First \\(y'=3x^2\\cot x-x^3\\csc^2x\\). Differentiating gives \\(6x\\cot x-6x^2\\csc^2x+2x^3\\csc^2x\\cot x\\). Only the middle term survives.",
-    "source": "../lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure",
-    "section": "3.5"
+    "section": "3.9",
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
   },
   {
     "topic": "rules",
@@ -291,21 +191,8 @@
     ],
     "why": "Solving \\(12x^2-2=10\\) gives \\(x=\\pm1\\). Their heights are \\(p(1)=9\\), \\(p(-1)=5\\). Subtracting \\(10x\\) gives intercepts \\(-1,15\\).",
     "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
-    "section": "3.3"
-  },
-  {
-    "topic": "rules",
-    "level": 4,
-    "prompt": "For \\(f(x)=(x-1)(3x^2+2)\\), which slope is the smallest attained by any of its tangent lines?",
-    "choices": [
-      "\\(1\\)",
-      "\\(0\\)",
-      "\\(2\\)",
-      "\\(-1\\)"
-    ],
-    "why": "The product rule gives \\(f'=3x^2+2+6x(x-1)=9x^2-6x+2\\). Completing the square gives \\((3x-1)^2+1\\), with minimum \\(1\\) at \\(x=1/3\\).",
-    "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "trig",
@@ -319,7 +206,8 @@
     ],
     "why": "The quotient rule yields \\(\\sec x(x\\tan x-1)/x^2\\). At \\(\\pi\\), the secant is \\(-1\\) and the tangent is zero.",
     "source": "../lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "trig",
@@ -333,21 +221,8 @@
     ],
     "why": "The two product-rule terms are \\(\\cos x\\tan x\\) and \\(\\sin x\\sec^2x\\). At \\(\\pi/3\\) these equal \\(\\sqrt3/2\\) and \\(2\\sqrt3\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure",
-    "section": "3.5"
-  },
-  {
-    "topic": "exp",
-    "level": 4,
-    "prompt": "For \\(f(x)=\\ln(2x^3+7)\\), at which point does the graph of \\(f'\\) have a horizontal tangent with positive height?",
-    "choices": [
-      "\\((\\sqrt[3]7,2/\\sqrt[3]7)\\)",
-      "\\((0,0)\\)",
-      "\\((\\sqrt[3]7,0)\\)",
-      "\\((\\sqrt[3]{7/2},1)\\)"
-    ],
-    "why": "Since \\(f'=6x^2/(2x^3+7)\\), differentiation gives \\(f''=12x(7-x^3)/(2x^3+7)^2\\). Of its two zeros, only \\(x=\\sqrt[3]7\\) gives positive \\(f'\\), and its value there is \\(2/\\sqrt[3]7\\).",
-    "source": "../lectures/17-exponential-logarithmic.html#worked-examples",
-    "section": "3.9"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "rules",
@@ -361,7 +236,8 @@
     ],
     "why": "The derivative of a constant is zero. The two variable terms give \\(12x^2\\) and \\(-2\\).",
     "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "rules",
@@ -375,21 +251,24 @@
     ],
     "why": "The power rule multiplies the coefficient by \\(3\\) and reduces the exponent by one.",
     "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "rules",
     "level": 2,
-    "prompt": "For \\(p(x)=4x^3-2x+7\\), find the slope of the tangent at \\(x=-2\\).",
+    "prompt": "For \\(p(x)=4x^3-2x+7\\), which term comes from differentiating \\(4x^3\\)?",
     "choices": [
-      "\\(46\\)",
-      "\\(-50\\)",
-      "\\(14\\)",
-      "\\(50\\)"
+      "\\(12x^2\\)",
+      "\\(4x^2\\)",
+      "\\(12x^3\\)",
+      "\\(4x^4\\)"
     ],
-    "why": "The derivative is \\(12x^2-2\\). At \\(-2\\), the squared term is positive and the slope is \\(48-2\\).",
+    "why": "The power rule brings down the exponent 3 and reduces the exponent to 2.",
     "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
-    "section": "3.3"
+    "section": "3.3",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "rules",
@@ -403,21 +282,24 @@
     ],
     "why": "The constant \\(3\\) has derivative zero, and \\(-x\\) has derivative \\(-1\\).",
     "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "rules",
     "level": 2,
-    "prompt": "Find the tangent slope at \\(x=1\\) for \\(y=(x-1)(3x^2+2)\\).",
+    "prompt": "For \\(y=(x-1)g(x)\\), the product rule gives \\(y'=g(x)+(x-1)g'(x)\\). If \\(g(1)=5\\), what is \\(y'(1)\\)?",
     "choices": [
       "\\(5\\)",
       "\\(0\\)",
-      "\\(6\\)",
-      "\\(11\\)"
+      "\\(1\\)",
+      "\\(10\\)"
     ],
-    "why": "The product rule gives \\((3x^2+2)+(x-1)6x\\). The second term vanishes at \\(x=1\\), leaving \\(5\\).",
+    "why": "At \\(x=1\\) the coefficient \\(x-1\\) is zero. Only \\(g(1)\\) remains.",
     "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
-    "section": "3.3"
+    "section": "3.3",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "rules",
@@ -431,7 +313,8 @@
     ],
     "why": "Rewrite \\(3/x\\) as \\(3x^{-1}\\). Its derivative is \\(-3x^{-2}\\).",
     "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "trig",
@@ -445,7 +328,8 @@
     ],
     "why": "Keep the constant multiple and use the derivative of sine.",
     "source": "../lectures/13-trigonometric-derivatives.html#trigonometric-notation-we-will-use",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "trig",
@@ -459,7 +343,8 @@
     ],
     "why": "Differentiate to get \\(G'=3\\cos x-2x\\), then use \\(\\cos0=1\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#trigonometric-notation-we-will-use",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "trig",
@@ -473,7 +358,8 @@
     ],
     "why": "Since \\(\\sin0=0\\), the graph passes through the origin.",
     "source": "../lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "trig",
@@ -487,7 +373,8 @@
     ],
     "why": "At zero the height is zero and the slope \\(-2\\cos0\\) is \\(-2\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "trig",
@@ -501,21 +388,24 @@
     ],
     "why": "Apply the difference rule. The derivative of secant is \\(\\sec x\\tan x\\) and the subtraction stays in place.",
     "source": "../lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "trig",
     "level": 2,
-    "prompt": "For \\(z=2\\csc x+3/x\\), which formula gives \\(z'\\) on its domain?",
+    "prompt": "In the lecture’s \\(z=2\\csc x+3/x\\), which term comes from differentiating \\(2\\csc x\\)?",
     "choices": [
-      "\\(-2\\csc x\\cot x-3/x^2\\)",
-      "\\(2\\csc x\\cot x-3/x^2\\)",
-      "\\(-2\\csc^2 x+3/x^2\\)",
-      "\\(2\\sec x\\tan x+3/x^2\\)"
+      "\\(-2\\csc x\\cot x\\)",
+      "\\(2\\csc x\\cot x\\)",
+      "\\(-2\\csc^2x\\)",
+      "\\(2\\sec x\\tan x\\)"
     ],
-    "why": "The derivative of cosecant is \\(-\\csc x\\cot x\\). The negative power \\(3x^{-1}\\) contributes \\(-3x^{-2}\\).",
+    "why": "The derivative of cosecant is \\(-\\csc x\\cot x\\). The constant multiple 2 stays in place.",
     "source": "../lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure",
-    "section": "3.5"
+    "section": "3.5",
+    "pdfPage": 37,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "rules",
@@ -529,7 +419,8 @@
     ],
     "why": "The quotient rule gives \\(f'=-20x/(x^2-1)^2\\). At \\(2\\), \\(f=13/3\\) and \\(f'=-40/9\\).",
     "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "rules",
@@ -543,21 +434,8 @@
     ],
     "why": "Multiply \\(f'=4x^3-3/x^2=0\\) by \\(x^2\\), valid on the domain. Then \\(4x^5=3\\) has a unique real solution.",
     "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
-    "section": "3.3"
-  },
-  {
-    "topic": "rules",
-    "level": 4,
-    "prompt": "For \\(f(x)=x^4+3/x\\), find all points at which the graph of \\(f'\\) has a horizontal tangent.",
-    "choices": [
-      "The point with \\(x=-2^{-1/5}\\) only.",
-      "The points with \\(x=\\pm2^{-1/5}\\).",
-      "The point with \\(x=2^{-1/5}\\) only.",
-      "There are no such points."
-    ],
-    "why": "Set \\(f''=12x^2+6/x^3=0\\) for \\(x\\ne0\\). Multiplying by \\(x^3\\) gives \\(12x^5+6=0\\), with one negative real solution.",
-    "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "tangent",
@@ -571,7 +449,8 @@
     ],
     "why": "The point is \\((1,4)\\) and \\(f'(1)=-6\\). The negative reciprocal slope is \\(1/6\\).",
     "source": "../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "tangent",
@@ -585,21 +464,8 @@
     ],
     "why": "Equating \\(-6/x^3\\) to \\(3/4\\) gives \\(x^3=-8\\), hence \\(x=-2\\).",
     "source": "../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes",
-    "section": "3.3"
-  },
-  {
-    "topic": "tangent",
-    "level": 4,
-    "prompt": "For \\(f(x)=x^3-3x^2+2\\), the tangent touches at \\(x=a\\) and meets the graph again at \\(x=4\\). If \\(a\\ne4\\), what is \\(a\\)?",
-    "choices": [
-      "\\(-1/2\\)",
-      "\\(-1\\)",
-      "\\(1/2\\)",
-      "\\(2\\)"
-    ],
-    "why": "Subtract the tangent line from \\(f\\). The resulting monic cubic has roots \\(a,a,4\\) because tangency gives a repeated root. Its quadratic coefficient remains \\(-3\\), so \\(2a+4=3\\).",
-    "source": "../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "rules",
@@ -613,7 +479,8 @@
     ],
     "why": "The original domain has \\(x\\ne0\\). Simplifying to \\(3+4/x\\) gives \\(y'=-4/x^2\\) and \\(y''=8/x^3\\). Thus \\(x^3=-8\\).",
     "source": "../lectures/11-differentiation-rules.html#combining-rules-and-differentiating-again",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "rules",
@@ -627,35 +494,8 @@
     ],
     "why": "Simplify the first derivative to \\(40x^3+28/(x+2)^2\\). Differentiating again gives \\(120x^2-56/(x+2)^3\\). Its value at zero is \\(-7\\).",
     "source": "../lectures/11-differentiation-rules.html#combining-rules-and-differentiating-again",
-    "section": "3.3"
-  },
-  {
-    "topic": "rules",
-    "level": 4,
-    "prompt": "For \\(f(x)=(3x^3-x+2)/x^2\\), what is the nonzero input where the tangent is parallel to the line \\(y=3x\\)? Write the tangent equation there.",
-    "choices": [
-      "\\(x=4,\\ y=3x-1/8\\)",
-      "\\(x=4,\\ y=3x+1/8\\)",
-      "\\(x=2,\\ y=3x\\)",
-      "\\(x=6,\\ y=3x-1/9\\)"
-    ],
-    "why": "From \\(f'=3+1/x^2-4/x^3\\), slope \\(3\\) requires \\(x=4\\). There \\(f(4)-3(4)=-1/4+2/16=-1/8\\).",
-    "source": "../lectures/11-differentiation-rules.html#combining-rules-and-differentiating-again",
-    "section": "3.3"
-  },
-  {
-    "topic": "rules",
-    "level": 4,
-    "prompt": "Let \\(f(1)=0\\), \\(f'(1)=3\\), \\(g(1)=2\\) and \\(g'(1)=-1\\). What is \\(\\lim_{h\\to0} f(1+h)[g(1+h)-2]/h^2\\)?",
-    "choices": [
-      "\\(-3\\)",
-      "\\(6\\)",
-      "\\(0\\)",
-      "\\(-1\\)"
-    ],
-    "why": "Since \\(f(1)=0\\), this is the product of the two difference quotients at \\(1\\). Their limits multiply to \\(3(-1)\\).",
-    "source": "../lectures/11-differentiation-rules.html#why-are-there-two-terms",
-    "section": "3.3"
+    "section": "3.3",
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
   },
   {
     "topic": "trig",
@@ -669,7 +509,8 @@
     ],
     "why": "Rewrite \\(y=\\sin(2x)\\), so \\(y'=2\\cos(2x)\\). Cosine takes the value \\(-1/2\\) at \\(2\\pi/3,4\\pi/3\\) in a full turn. Halve the angles.",
     "source": "../lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "trig",
@@ -683,21 +524,8 @@
     ],
     "why": "The derivative is \\(1+4\\sin x\\). On a full turn, sine takes every value between \\(-1\\) and \\(1\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes",
-    "section": "3.5"
-  },
-  {
-    "topic": "trig",
-    "level": 4,
-    "prompt": "For \\(f(x)=x-4\\cos x\\), two parallel tangent lines touch at \\(x=\\pi/6\\) and \\(x=5\\pi/6\\). What is the positive difference between their vertical intercepts?",
-    "choices": [
-      "\\(4\\sqrt3-4\\pi/3\\)",
-      "\\(4\\sqrt3+4\\pi/3\\)",
-      "\\(2\\sqrt3-2\\pi/3\\)",
-      "\\(4\\pi/3\\)"
-    ],
-    "why": "Both slopes equal \\(3\\). The intercept at \\(a\\) is \\(-2a-4\\cos a\\). At the given inputs these intercepts are \\(-\\pi/3-2\\sqrt3\\) and \\(-5\\pi/3+2\\sqrt3\\). The larger minus the smaller is positive.",
-    "source": "../lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "trig",
@@ -711,7 +539,8 @@
     ],
     "why": "The derivative is \\(\\sec x(x\\tan x-1)/x^2\\). Both the secant and denominator are nonzero on this interval.",
     "source": "../lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "trig",
@@ -725,21 +554,8 @@
     ],
     "why": "The product rule gives \\(\\cos x\\tan x+\\sin x\\sec^2x=\\sin x+\\sin x/\\cos^2x\\). Bring the terms over a common denominator.",
     "source": "../lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure",
-    "section": "3.5"
-  },
-  {
-    "topic": "trig",
-    "level": 4,
-    "prompt": "For \\(y=\\sec x/x\\), what is \\(y''(\\pi)\\)?",
-    "choices": [
-      "\\(-1/\\pi-2/\\pi^3\\)",
-      "\\(1/\\pi-2/\\pi^3\\)",
-      "\\(-2/\\pi^3\\)",
-      "\\(-1/\\pi+2/\\pi^3\\)"
-    ],
-    "why": "For \\(u=\\sec x\\), differentiate \\(u/x\\) twice to get \\(u''/x-2u'/x^2+2u/x^3\\). At \\(\\pi\\), \\(u=-1\\), \\(u'=0\\), and \\(u''=\\sec x\\tan^2x+\\sec^3x=-1\\).",
-    "source": "../lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "trig",
@@ -753,48 +569,316 @@
     ],
     "why": "Differentiate to get \\(G'=3\\cos x-2x\\). At \\(\\pi/3\\), cosine is \\(1/2\\), and \\(2\\pi/3>2>3/2\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#trigonometric-notation-we-will-use",
-    "section": "3.5"
+    "section": "3.5",
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
     "topic": "trig",
-    "level": 4,
-    "prompt": "For \\(f(x)=\\tan x/(2-\\sec x)\\), the original graph has a hole at \\(x=\\pi/2\\). What height and tangent slope would a differentiable filling have there?",
+    "section": "3.5",
+    "level": 2,
+    "prompt": "To differentiate \\(\\cot x=\\cos x/\\sin x\\), the quotient-rule numerator simplifies to what?",
     "choices": [
-      "Height \\(-1\\), slope \\(2\\).",
-      "Height \\(1\\), slope \\(2\\).",
-      "Height \\(-1\\), slope \\(0\\).",
-      "No finite height can fill the hole."
+      "\\(-\\sin^2x-\\cos^2x=-1\\)",
+      "\\(\\cos^2x-\\sin^2x\\)",
+      "\\(\\sin^2x+\\cos^2x=1\\)",
+      "\\(-2\\sin x\\cos x\\)"
     ],
-    "why": "Near \\(\\pi/2\\), multiply top and bottom by \\(\\cos x\\) to get \\(\\sin x/(2\\cos x-1)\\). The denominator there is \\(-1\\). The quotient rule simplifies its derivative to \\((2-\\cos x)/(2\\cos x-1)^2\\), which gives \\(2\\).",
+    "why": "The numerator is bottom times the derivative of the top, minus top times the derivative of the bottom. Dividing \\(-1\\) by \\(\\sin^2x\\) gives \\(-\\csc^2x\\).",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "reference": "Exam 2 review worksheet · 5",
+    "pdfPage": 37,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf",
+    "reviewPdf": "../downloads/exam-2-review-worksheet.pdf"
+  },
+  {
+    "section": "3.5",
+    "level": 2,
+    "topic": "trig",
+    "prompt": "The graph shows the spring position \\(s(t)=\\cos t\\). Which graph gives its velocity over this cycle?",
+    "choices": [
+      "A wave starts at 0, dips to −1 at π/2, then peaks at 1 at 3π/2.",
+      "A wave starts at 0, rises to 1 at π/2, then dips to −1 at 3π/2.",
+      "A wave starts at 1 and reaches −1 at π.",
+      "A wave starts at −1 and reaches 1 at π."
+    ],
+    "graphChoices": [
+      "neg-sin",
+      "sin",
+      "cos",
+      "neg-cos"
+    ],
+    "why": "At first the spring moves downward from its maximum. The velocity \\(-\\sin t\\) starts at zero, is negative through the first half-cycle, and is positive through the second.",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "graphPrompt": "cos",
+    "pdfPage": 35,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+  },
+  {
+    "section": "3.5",
+    "level": 2,
+    "topic": "trig",
+    "prompt": "The graph shows the spring velocity \\(v(t)=-\\sin t\\). Which graph gives its acceleration?",
+    "choices": [
+      "A wave starts at −1 and reaches 1 at π.",
+      "A wave starts at 1 and reaches −1 at π.",
+      "A wave starts at 0, rises to 1 at π/2, then dips to −1 at 3π/2.",
+      "A wave starts at 0, dips to −1 at π/2, then peaks at 1 at 3π/2."
+    ],
+    "graphChoices": [
+      "neg-cos",
+      "cos",
+      "sin",
+      "neg-sin"
+    ],
+    "why": "The slope of the velocity graph starts at \\(-1\\) and becomes zero at \\(\\pi/2\\). In symbols, \\(a(t)=-\\cos t\\).",
+    "source": "../lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+    "graphPrompt": "neg-sin",
+    "pdfPage": 35,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+  },
+  {
+    "section": "3.9",
+    "level": 1,
+    "topic": "exp",
+    "prompt": "Which graph shows the natural exponential \\(f(x)=e^x\\)?",
+    "choices": [
+      "A positive increasing curve passes through (0, 1), close to zero on the left.",
+      "A positive decreasing curve passes through (0, 1), close to zero on the right.",
+      "An increasing curve for positive x, crossing (1, 0), dropping without bound near zero.",
+      "A decreasing curve for positive x, crossing (1, 0), rising without bound near zero."
+    ],
+    "graphChoices": [
+      "exponential",
+      "exponential-reverse",
+      "log",
+      "log-neg"
+    ],
+    "why": "Every value of \\(e^x\\) is positive, \\(e^0=1\\), and the function increases.",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
+  },
+  {
+    "section": "3.9",
+    "level": 2,
+    "topic": "inverse",
+    "prompt": "The curve shown is \\(y=e^x\\). Which graph represents its inverse?",
+    "choices": [
+      "An increasing curve for positive x, crossing (1, 0), dropping without bound near zero.",
+      "A positive increasing curve passes through (0, 1), close to zero on the left.",
+      "A positive decreasing curve passes through (0, 1), close to zero on the right.",
+      "A decreasing curve for positive x, crossing (1, 0), rising without bound near zero."
+    ],
+    "graphChoices": [
+      "log",
+      "exponential",
+      "exponential-reverse",
+      "log-neg"
+    ],
+    "why": "Reflection across \\(y=x\\) sends \\((0,1)\\) to \\((1,0)\\). The inverse \\(y=\\ln x\\) is increasing on \\((0,\\infty)\\).",
+    "source": "../lectures/17-exponential-logarithmic.html#the-natural-exponential-and-logarithm",
+    "graphPrompt": "exponential",
+    "pdfPage": 53,
+    "pdf": "../downloads/october-23-exponential-logarithmic-class-notes.pdf"
+  },
+  {
+    "section": "3.3",
+    "topic": "rules",
+    "level": 4,
+    "prompt": "The graph of \\(f'\\), for \\(f(x)=(3x^3-x+2)/x^2\\), has a horizontal tangent. Find its height.",
+    "answer": "325/108",
+    "why": "Rewrite \\(f=3x-x^{-1}+2x^{-2}\\). Then \\(f'=3+x^{-2}-4x^{-3}\\) and \\(f''=(12-2x)/x^4\\). The only zero of \\(f''\\) is \\(6\\). Substitution gives \\(3+1/36-4/216=325/108\\).",
+    "source": "../lectures/11-differentiation-rules.html#combining-rules-and-differentiating-again",
+    "pdfPage": 32,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
+  },
+  {
+    "section": "3.3",
+    "topic": "rules",
+    "level": 4,
+    "prompt": "For \\(f(x)=(3x^3-x+2)/x^2\\), a tangent parallel to its slant asymptote touches at a finite input. Find its vertical intercept.",
+    "answer": "-1/8",
+    "why": "Division gives asymptote \\(y=3x\\). The slope condition is \\(3+1/x^2-4/x^3=3\\), so \\(x=4\\). At this input \\(f(x)-3x=-1/4+2/16=-1/8\\).",
+    "source": "../lectures/11-differentiation-rules.html#combining-rules-and-differentiating-again",
+    "pdfPage": 32,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
+  },
+  {
+    "section": "3.3",
+    "topic": "rules",
+    "level": 4,
+    "prompt": "Let \\(F(x)=2x(5x^3+7/(x+2))\\). Find the slope at \\(x=0\\) of the tangent line to the graph of \\(F''\\).",
+    "answer": "21/2",
+    "why": "Write \\(F=10x^4+14-28/(x+2)\\). Three derivatives give \\(F'''=240x+168/(x+2)^4\\). The slope at \\(0\\) is \\(168/16=21/2\\).",
+    "source": "../lectures/11-differentiation-rules.html#combining-rules-and-differentiating-again",
+    "pdfPage": 32,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
+  },
+  {
+    "section": "3.3",
+    "topic": "tangent",
+    "level": 4,
+    "prompt": "A tangent to \\(f(x)=x^3-3x^2+2\\) also meets the cubic at the distinct input \\(4\\). Find the input at which it is tangent.",
+    "answer": "-1/2",
+    "why": "Subtract the tangent line from \\(f\\). The resulting monic cubic has a double root \\(a\\) at contact and another root \\(4\\). Its quadratic coefficient is \\(-3\\), so \\(2a+4=3\\).",
+    "source": "../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes",
+    "pdfPage": 33,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
+  },
+  {
+    "section": "3.3",
+    "topic": "tangent",
+    "level": 4,
+    "prompt": "For \\(f(x)=3/x^2+1\\), a normal line at a negative input has slope \\(-4/3\\). Find the height of its point of contact.",
+    "answer": "7/4",
+    "why": "The perpendicular tangent has slope \\(3/4\\). Solve \\(-6/x^3=3/4\\) to obtain \\(x=-2\\). The corresponding height is \\(3/4+1=7/4\\).",
+    "source": "../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes",
+    "pdfPage": 32,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
+  },
+  {
+    "section": "3.3",
+    "topic": "rules",
+    "level": 4,
+    "prompt": "For \\(f(x)=(x-1)(3x^2+2)\\), find the vertical intercept of the tangent whose slope is smallest.",
+    "answer": "-17/9",
+    "why": "The derivative is \\(9x^2-6x+2=(3x-1)^2+1\\), so its minimum slope is \\(1\\) at \\(x=1/3\\). There \\(f=-14/9\\), and the intercept is \\(-14/9-1/3=-17/9\\).",
+    "source": "../lectures/11-differentiation-rules.html#products-one-derivative-at-a-time",
+    "pdfPage": 31,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
+  },
+  {
+    "section": "3.3",
+    "topic": "rules",
+    "level": 4,
+    "prompt": "For \\(f(x)=(x^2+9)/(x^2-1)\\), the tangent at \\(x=2\\) crosses the horizontal axis at which input?",
+    "answer": "119/40",
+    "why": "At \\(2\\) the height is \\(13/3\\) and the slope is \\(-20(2)/(2^2-1)^2=-40/9\\). Solve \\(0=13/3-(40/9)(x-2)\\) to get \\(x=2+39/40=119/40\\).",
+    "source": "../lectures/11-differentiation-rules.html#quotients-and-negative-powers",
+    "pdfPage": 31,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
+  },
+  {
+    "section": "3.3",
+    "topic": "rules",
+    "level": 4,
+    "prompt": "For \\(p(x)=4x^3-2x+7\\), the two lines tangent to the graph with slope \\(10\\) meet the \\(y\\)-axis at distinct heights. What is the difference between the larger height and the smaller?",
+    "answer": "16",
+    "why": "The condition \\(12x^2-2=10\\) gives \\(x=\\pm1\\). At \\(x=1\\) the intercept is \\(9-10=-1\\). At \\(x=-1\\) it is \\(5+10=15\\). The difference is \\(16\\).",
+    "source": "../lectures/11-differentiation-rules.html#sums-constant-multiples-and-powers",
+    "pdfPage": 30,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
+  },
+  {
+    "section": "3.5",
+    "topic": "trig",
+    "level": 4,
+    "prompt": "Fill the hole in \\(f(x)=\\tan x/(2-\\sec x)\\) at \\(x=\\pi/2\\) to make \\(f\\) continuous there. What is the slope of the filled graph at that input?",
+    "answer": "2",
+    "why": "Near the point, \\(f=\\sin x/(2\\cos x-1)\\), whose denominator remains nonzero at \\(\\pi/2\\). Differentiating yields \\((2-\\cos x)/(2\\cos x-1)^2\\), which gives \\(2\\) there.",
     "source": "../lectures/13-trigonometric-derivatives.html#using-quotients-to-explain-the-new-formulas",
-    "section": "3.5"
+    "pdfPage": 38,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
+    "section": "3.5",
     "topic": "trig",
     "level": 4,
-    "prompt": "For \\(y=\\sin x/(1+\\cos x)\\), find all points in \\((-\\pi,\\pi)\\) at which the graph of \\(y'\\) has a horizontal tangent.",
-    "choices": [
-      "\\((0,1/2)\\) only",
-      "\\((0,0)\\) only",
-      "\\((\\pm\\pi/2,1)\\) only",
-      "There are none."
-    ],
-    "why": "The first derivative simplifies to \\(1/(1+\\cos x)\\). The second derivative is \\(\\sin x/(1+\\cos x)^2\\), zero only at \\(0\\) in the interval. The requested height is \\(y'(0)=1/2\\).",
-    "source": "../lectures/13-trigonometric-derivatives.html#practice",
-    "section": "3.5"
+    "prompt": "For \\(f(x)=\\tan x/(2-\\sec x)\\), find the tangent slope at \\(x=\\pi\\).",
+    "answer": "1/3",
+    "why": "Multiply numerator and denominator by \\(\\cos x\\) to get \\(\\sin x/(2\\cos x-1)\\). Its derivative simplifies to \\((2-\\cos x)/(2\\cos x-1)^2\\). With \\(\\cos\\pi=-1\\) the result is \\(3/9\\).",
+    "source": "../lectures/13-trigonometric-derivatives.html#using-quotients-to-explain-the-new-formulas",
+    "pdfPage": 38,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   },
   {
+    "section": "3.5",
     "topic": "trig",
     "level": 4,
-    "prompt": "For \\(y=x\\sin x\\), where do the tangent lines at \\(x=\\pi/2\\) and \\(x=\\pi\\) intersect?",
-    "choices": [
-      "\\((\\pi^2/(\\pi+1),\\pi^2/(\\pi+1))\\)",
-      "\\((\\pi/2,\\pi/2)\\)",
-      "\\((\\pi^2/(\\pi-1),\\pi^2/(\\pi-1))\\)",
-      "\\((\\pi,0)\\)"
-    ],
-    "why": "The derivative is \\(\\sin x+x\\cos x\\). At \\(\\pi/2\\) the slope is \\(1\\) and the height is \\(\\pi/2\\), giving \\(y=x\\). At \\(\\pi\\) the slope is \\(-\\pi\\) and the height is zero. Solve \\(x=-\\pi(x-\\pi)\\).",
+    "prompt": "For \\(y=\\sin x/(1+\\cos x)\\), find \\(y'''(0)\\).",
+    "answer": "1/4",
+    "why": "The first derivative simplifies to \\(1/(1+\\cos x)\\). Then \\(y''=\\sin x/(1+\\cos x)^2\\). In differentiating once more at zero the term proportional to \\(\\sin x\\) vanishes, leaving \\(\\cos0/(1+\\cos0)^2=1/4\\).",
     "source": "../lectures/13-trigonometric-derivatives.html#practice",
-    "section": "3.5"
+    "pdfPage": 39,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+  },
+  {
+    "section": "3.5",
+    "topic": "trig",
+    "level": 4,
+    "prompt": "For \\(y=x\\sin x\\), find its fourth derivative at zero.",
+    "answer": "-4",
+    "why": "Differentiate twice to get \\(y''=2\\cos x-x\\sin x\\). The next derivatives are \\(-3\\sin x-x\\cos x\\) and \\(-4\\cos x+x\\sin x\\). Evaluating at zero gives \\(-4\\).",
+    "source": "../lectures/13-trigonometric-derivatives.html#practice",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+  },
+  {
+    "section": "3.5",
+    "topic": "trig",
+    "level": 4,
+    "prompt": "Let \\(y=2\\sin x\\cos x\\). At \\(x=\\pi/4\\), what is its sixth derivative?",
+    "answer": "-64",
+    "why": "The function equals \\(\\sin(2x)\\), so two differentiations multiply it by \\(-4\\). After six differentiations the factor is \\((-4)^3=-64\\). Its original height at \\(\\pi/4\\) is \\(1\\).",
+    "source": "../lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes",
+    "pdfPage": 38,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+  },
+  {
+    "section": "3.5",
+    "topic": "trig",
+    "level": 4,
+    "prompt": "For \\(f(x)=x-4\\cos x\\), the two tangents of slope \\(3\\) on \\(0<x<2\\pi\\) have second derivatives of opposite sign at their contact points. Find the product of those second derivatives.",
+    "answer": "-12",
+    "why": "Slope \\(3\\) means \\(\\sin x=1/2\\), at \\(\\pi/6\\) and \\(5\\pi/6\\). Since \\(f''=4\\cos x\\), the values are \\(2\\sqrt3\\) and \\(-2\\sqrt3\\), whose product is \\(-12\\).",
+    "source": "../lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes",
+    "pdfPage": 39,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+  },
+  {
+    "section": "3.5",
+    "topic": "trig",
+    "level": 4,
+    "prompt": "Let \\(z(x)=\\sin x\\tan x\\). Find the second derivative at \\(x=0\\).",
+    "answer": "2",
+    "why": "On its domain \\(z=\\sin^2x/\\cos x=\\sec x-\\cos x\\). Thus \\(z''=\\sec x\\tan^2x+\\sec^3x+\\cos x\\). At zero this gives \\(0+1+1\\).",
+    "source": "../lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure",
+    "pdfPage": 37,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+  },
+  {
+    "section": "3.5",
+    "topic": "trig",
+    "level": 4,
+    "prompt": "For \\(y=x^3\\cot x\\) on \\(x\\ne0\\) near zero, find \\(\\lim_{x\\to0}y'(x)/x\\).",
+    "answer": "2",
+    "why": "Differentiation gives \\(y'/x=3x\\cot x-x^2\\csc^2x\\). Since \\(x/\\sin x\\to1\\) and \\(\\cos x\\to1\\), the two terms approach \\(3\\) and \\(1\\), respectively. Their difference tends to \\(2\\).",
+    "source": "../lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure",
+    "pdfPage": 37,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
+  },
+  {
+    "section": "3.3",
+    "topic": "tangent",
+    "level": 4,
+    "prompt": "On \\(y=x^3-3x^2+2\\), the tangent at \\(x=1/2\\) meets the curve again at \\(P\\). The tangent at \\(P\\) meets it again at \\(Q\\). Find the vertical intercept of the tangent at \\(Q\\).",
+    "answer": "7",
+    "why": "Subtracting the tangent at \\(a\\) from the cubic leaves a monic cubic with double root \\(a\\). Its quadratic coefficient stays \\(-3\\), so the remaining root is \\(3-2a\\). Starting at \\(1/2\\) gives the successive contact inputs \\(2,-1\\). At \\(-1\\) the height is \\(-2\\) and the slope is \\(9\\), so the tangent has intercept \\(-2-9(-1)=7\\).",
+    "source": "../lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes",
+    "capstone": true,
+    "pdfPage": 33,
+    "pdf": "../downloads/october-14-differentiation-rules.pdf"
+  },
+  {
+    "section": "3.5",
+    "topic": "trig",
+    "level": 4,
+    "prompt": "Fill the hole at \\(x=\\pi/2\\) in \\(f(x)=\\tan x/(2-\\sec x)\\) so that the result is continuous there. Compute the third derivative of the filled function at \\(\\pi/2\\).",
+    "answer": "40",
+    "why": "Cancel to get \\((2\\cos x-1)f(x)=\\sin x\\) near the hole. At \\(a=\\pi/2\\), the factor \\(D=2\\cos x-1\\) has \\(D=-1\\), \\(D'=-2\\), \\(D''=0\\), \\(D'''=2\\). The equation and its first two derivatives give \\(f=-1\\), \\(f'=2\\), \\(f''=-7\\). Differentiating a third time at \\(a\\) gives \\(2(-1)+3(-2)(-7)-f'''=0\\), hence \\(f'''=40\\).",
+    "source": "../lectures/13-trigonometric-derivatives.html#using-quotients-to-explain-the-new-formulas",
+    "capstone": true,
+    "pdfPage": 38,
+    "pdf": "../downloads/october-16-rates-and-trig-class-notes.pdf"
   }
 ]

@@ -21,12 +21,35 @@
   let unlocked=board.stored("insane")==="yes", racePlayer="", saveTicket=0;
   const diff=()=>el("difficulty").value, order=()=>el("order").value;
   const scope=()=>course==="lecture" ? el("line").value : course;
-  const settings=()=>({key:scope(),diff:diff(),order:order()});
+  const settings=()=>({key:scope(),diff:diff(),order:order(),version:4});
   const title=()=>names[course] || el("line").selectedOptions[0]?.textContent || "One lecture";
   const randomSeed=()=>crypto.getRandomValues(new Uint32Array(1))[0];
   const edition=document.body.dataset.edition;
+  const timed=()=>el("clock-mode").value!=="practice";
+  const difficultyName=id=>({easy:"Easy",medium:"Normal",hard:"Hard",insane:"Insane"})[id];
+  let times=[], bonus=null, extra="", bonusActive=false;
+  let timerId=0, deadline=0, turn=0;
+  const currentQuestion=()=>bonusActive ? bonus : route[run.cleared];
+  const currentLevel=()=>bonusActive ? rules.nextLevel(diff()) : diff();
+  const jumpIndex=()=>bonusActive ? route.length : run.cleared;
+  function stopClock() {clearTimeout(timerId);timerId=0;deadline=0;el("clock").hidden=true;}
+  function remaining() {return deadline ? Math.max(0,(deadline-Date.now())/1000) : 0;}
+  function startClock() {
+    stopClock();
+    if (!timed()) return;
+    deadline=Date.now()+1000*rules.seconds[currentLevel()];
+    el("clock").hidden=false;
+    function update() {
+      if (state!=="question" || !deadline) return;
+      const left=Math.ceil(remaining());
+      el("seconds").textContent=left;el("clock").dataset.urgent=String(left<=5);el("clock").style.setProperty("--clock-fill",String(left/rules.seconds[currentLevel()]));
+      if (!left) submit(null,true);
+      else timerId=setTimeout(update,Math.max(30,Math.min(200,deadline-Date.now())));
+    }
+    update();
+  }
   function screen(id,next) {
-    state=next;document.body.dataset.state=next;
+    state=next;document.body.dataset.state=next;el("home").hidden=next==="lobby" || next==="loading";
     for (const panel of ["lobby","play","feedback"]) el(panel).hidden=panel!==id;
   }
   function gate() {
@@ -37,30 +60,36 @@
     el("score").querySelector("b").textContent=run.points;
     el("streak").textContent="Streak "+run.streak;
   }
+  function showAward(points) {
+    const badge=el("award");
+    badge.textContent="+"+points;badge.hidden=false;
+    if(!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+      badge.animate?.([{opacity:.3,transform:"translateY(4px)"},{opacity:1,transform:"translateY(0)"}],{duration:260});
+    }
+  }
   function renderBoard(rows) {
     el("record").textContent=rows[0]?.best ?? 0;
     el("leaders").replaceChildren(...rows.map((row,i)=>{
       const li=document.createElement("li"), rank=document.createElement("span"), label=document.createElement("b"), streak=document.createElement("span");
-      rank.className="place";rank.textContent=String(i+1);label.textContent=board.name(row.alias);streak.textContent=row.best+" in a row";
+      rank.className="place";rank.textContent=String(i+1);label.textContent=board.name(row.alias);streak.textContent=row.best+" in a row"+(Number.isInteger(row.points) ? " · "+row.points+" pts" : "");
       li.append(rank,label,streak);return li;
     }));
     el("board-caption").textContent="Longest streaks across all players";
     el("board-empty").hidden=rows.length>0;
   }
   async function refresh() {
-    clearTimeout(poll);
-    if (document.hidden || !lectures.length) return;
-    const ticket=++latestRead;
+    clearTimeout(poll);const ticket=++latestRead;
+    if (document.hidden || !lectures.length || !timed()) return;
     try {
       const data=await board.request({...settings(),...(room ? {room:room.id,seed:room.seed} : {})});
       if (ticket!==latestRead) return;
       renderBoard(data.rows);
       if (room) {
-        const sorted=data.racers.sort((a,b)=>b.cleared-a.cleared||b.best-a.best);
+        const sorted=data.racers.sort((a,b)=>b.cleared-a.cleared||b.points-a.points||b.best-a.best);
         el("racers").replaceChildren(...sorted.map(row=>{
           const li=document.createElement("li");
-          const status={finished:"finished",out:"run over",playing:"on course"}[row.status];
-          li.textContent=board.name(row.alias)+" · "+row.cleared+" cleared · "+status;return li;
+          const status={finished:"finished",out:"run over",playing:"on course",left:"left race"}[row.status];
+          li.textContent=board.name(row.alias)+" · "+row.cleared+" cleared · "+(row.points||0)+" pts · "+status;return li;
         }));
         el("room-status").textContent=sorted.length ? "Live race standings" : "The race is open. Start when you’re ready.";
       }
@@ -78,7 +107,8 @@
     document.querySelectorAll("[data-mode]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===next)));
     runner.difficulty(diff());gate();
     const length=rules.makeRoute(lectures,scope(),0,diff(),order()).length;
-    el("rules-hint").textContent=length+" jumps. "+hints[diff()];
+    el("rules-hint").textContent=length+" jumps · "+(timed()?rules.seconds[diff()]+" seconds per question":"No time limit")+". "+hints[diff()];
+    el("board").hidden=!timed();el("record").parentElement.hidden=!timed();el("invite").hidden=!timed()||Boolean(room);
     el("scope").textContent=descriptions[next];
     el("board-mode").textContent=title()+" · "+el("difficulty").selectedOptions[0].textContent+" · "+el("order").selectedOptions[0].textContent;
     el("record").textContent="…";el("leaders").replaceChildren();el("board-empty").hidden=true;el("board-caption").textContent="Loading class standings…";
@@ -89,7 +119,7 @@
     pace=null;room=null;el("room-panel").hidden=true;el("pace").hidden=true;el("invite-link").hidden=true;el("racers").replaceChildren();
     if (location.hash) history.replaceState(null,"",location.pathname+location.search);
   }
-  function fresh(next) {resetLink();el("invite").hidden=false;el("start").textContent="Start run";changeCourse(next);}
+  function fresh(next) {resetLink();el("invite").hidden=!timed();el("start").textContent="Start run";changeCourse(next);}
   function link(kind,data) {
     const url=new URL(location.href);url.search="";url.hash=kind+"="+encodeURIComponent(JSON.stringify(data));return url.href;
   }
@@ -111,17 +141,17 @@
     copy(roomURL(),"invite-link","room-status","Friend invite copied.");
   }
   function leaveRoom() {
-    resetLink();el("invite").hidden=false;el("start").textContent="Start run";refresh();
+    resetLink();el("invite").hidden=!timed();el("start").textContent="Start run";refresh();
   }
   function payload(action) {
-    return {...settings(),seed,length:route.length,steps:steps.join(""),player:board.player,alias:playerAlias,action};
+    return {...settings(),seed,length:route.length,steps:steps.join(""),times:times.map(n=>n.toString(36)).join(""),extra,player:board.player,alias:playerAlias,action};
   }
   // Send only the most recent snapshot after an in-flight update. Changes of course or
   // racer cannot overwrite another participant's progress.
   let pendingProgress=null, writingProgress=false;
-  async function progress() {
+  async function progress(retired=false) {
     if (!room || !racePlayer) return;
-    pendingProgress={...payload("progress"),room:room.id,player:racePlayer};
+    pendingProgress={...payload("progress"),room:room.id,player:racePlayer,retired};
     if (writingProgress) return;
     writingProgress=true;
     while (pendingProgress) {
@@ -138,7 +168,7 @@
   }
   let pendingStreak=null, writingStreak=false;
   async function publishStreak() {
-    if (!run.best) return;
+    if (!timed() || !run.best) return;
     pendingStreak=payload("streak");
     if (writingStreak) return;
     writingStreak=true;
@@ -151,35 +181,56 @@
   function solution(q) {
     const frag=document.createDocumentFragment();
     const prompt=document.createElement("p"), correct=document.createElement("p"), reason=document.createElement("p"), source=document.createElement("a");
-    prompt.innerHTML=q.prompt;correct.innerHTML="<strong>Correct answer</strong> · "+q.choices[0];reason.innerHTML=q.why;
-    source.href=q.source;source.target="_blank";source.rel="noopener";source.textContent=(q.section ? "§"+q.section+" · " : "")+"Read the course notes ↗";
-    frag.append(prompt,correct,reason,source);return frag;
+    prompt.innerHTML=q.prompt;
+    correct.innerHTML="<strong>Correct answer</strong> · "+(q.choices ? q.choices[0] : q.answer);
+    reason.innerHTML=q.why;source.href=q.pdf+(q.handoutPage?"#page="+q.handoutPage:"");source.target="_blank";source.rel="noopener";
+    source.textContent=(q.section && q.section!=="2.7" ? "§"+q.section+" · " : "")+(q.section==="2.7"?"Exam practice PDF":"Lecture PDF");
+    frag.append(prompt);
+    if(q.graphPrompt)frag.append(window.gameGraph(q.graphPrompt));
+    frag.append(correct);
+    if(q.graphChoices)frag.append(window.gameGraph(q.graphChoices[0]));
+    frag.append(reason,source);
+    if(q.pdfPage){const book=document.createElement("a");book.href="../downloads/math-1334-calculus-lecture-notes.pdf#page="+q.pdfPage;
+      book.target="_blank";book.rel="noopener";book.textContent="Collected notes, p. "+(q.pdfPage-2);frag.append(" · ",book);}
+    if(q.reviewPdf){const review=document.createElement("a");review.href=q.reviewPdf;review.target="_blank";review.rel="noopener";
+      review.textContent=q.reference || "Exam review worksheet";frag.append(" · ",review);}
+    else if(q.reference){const credit=document.createElement("p");credit.textContent=q.reference;frag.append(credit);}
+    return frag;
   }
   function ask() {
-    const q=route[run.cleared];assisted=false;answers=rules.options(seed,run.cleared);
-    runner.stage(run.cleared,route.length);screen("play","question");score();
-    el("round").textContent="Jump "+(run.cleared+1)+" / "+route.length+(run.feather?" · 1 feather":"");
+    turn++;const q=currentQuestion();assisted=false;answers=rules.options(seed,jumpIndex());
+    runner.stage(jumpIndex(),route.length+(bonusActive?1:0));screen("play","question");score();
+    el("round").textContent=bonusActive?"Extra credit · "+difficultyName(currentLevel()):"Jump "+(run.cleared+1)+" / "+route.length+(run.feather?" · 1 feather":"");
     el("prompt").innerHTML=q.prompt;
-    el("choices").replaceChildren(...answers.map((choice,index)=>{
+    el("prompt-graph").replaceChildren();el("prompt-graph").hidden=!q.graphPrompt;
+    if(q.graphPrompt)el("prompt-graph").append(window.gameGraph(q.graphPrompt));
+    el("numeric").hidden=!q.answer;el("choices").hidden=Boolean(q.answer);
+    el("number-answer").value="";el("number-answer").disabled=false;el("number-hint").textContent="";
+    el("choices").classList.toggle("graphs",Boolean(q.graphChoices));
+    el("choices").replaceChildren(...(q.choices ? answers : []).map((choice,index)=>{
       const b=document.createElement("button"), key=document.createElement("span"), text=document.createElement("span");
-      key.className="choice-key";key.textContent=letters[index];text.innerHTML=q.choices[choice];b.append(key,text);
+      key.className="choice-key";key.textContent=letters[index];text.innerHTML=q.choices[choice];b.append(key,text);if(q.graphChoices)b.append(window.gameGraph(q.graphChoices[choice]));
       b.onfocus=b.onpointerenter=()=>{if(state==="question")runner.aim(index);};
       b.onblur=b.onpointerleave=()=>{if(state==="question")runner.aim(-1);};
-      b.disabled=index===run.missed;if(b.disabled)b.classList.add("closed");b.onclick=()=>answer(index);return b;
+      b.disabled=!bonusActive && index===run.missed;if(b.disabled)b.classList.add("closed");b.onclick=()=>submit(index);return b;
     }));
-    el("signal").hidden=!run.eraser;el("previous").open=false;el("prompt").focus({preventScroll:true});
+    el("signal").hidden=bonusActive || !run.eraser;el("previous").open=false;el("previous").querySelector("summary").textContent=timed()?"Previous solution · clock keeps running":"Previous jump · Show solution";
+    (q.answer?el("number-answer"):el("prompt")).focus({preventScroll:true});startClock();
   }
   function start() {
     if(diff()==="insane"&&!unlocked)return;
     if(room && run.ended && racePlayer){openRoom(board.token(12),randomSeed());history.replaceState(null,"",roomURL());}
     seed=room?.seed ?? pace?.seed ?? randomSeed();
     route=rules.makeRoute(lectures,scope(),seed,diff(),order());if(!route.length)return;
-    run=rules.newRun(diff());steps=[];saveTicket++;racePlayer=room ? board.token(16) : "";
-    el("previous").hidden=true;el("save-score").hidden=true;el("saved").textContent="";el("share-state").textContent="";
+    stopClock();run=rules.newRun(diff());steps=[];times=[];extra="";bonusActive=false;
+    bonus=rules.bonusQuestion(lectures,scope(),seed,diff());el("bonus-offer").hidden=true;runner.difficulty(diff());
+    saveTicket++;racePlayer=room ? board.token(16) : "";
+    el("award").hidden=true;el("previous").hidden=true;el("save-score").hidden=true;el("saved").textContent="";el("share-state").textContent="";
     runner.reset(route.length);el("board").open=false;ask();progress();
   }
   function pickAlias(id){el("adjective").value=String(Math.floor(id/board.nouns.length));el("noun").value=String(id%board.nouns.length);}
   async function saveScore(explicit=false) {
+    if(!timed())return;
     const ticket=++saveTicket;
     try {
       await postBoard(payload("save"));
@@ -189,40 +240,78 @@
       refresh();
     } catch {if(ticket===saveTicket)el("saved").textContent="Score couldn’t sync. Use Save nickname to retry.";}
   }
-  function finish(q,won) {
-    screen("feedback",won?"won":"lost");score();el("round").textContent=won?"Finish line":"Run over";
+  function finish(q,won,bonusMessage="") {
+    stopClock();screen("feedback",won?"won":"lost");score();el("round").textContent=won?"Finish line":"Run over";
     let unlockedNow=false;
-    if(won){runner.celebrate();if(diff()==="hard"&&!unlocked){unlocked=true;unlockedNow=true;board.stored("insane","yes");gate();}}
-    el("verdict").textContent=won ? (unlockedNow?"Course cleared! Insane unlocked.":"Course cleared!") : "Run over";
+    if(won && !bonusMessage){
+      runner.celebrate();
+      if(diff()==="hard"&&!unlocked){unlocked=true;unlockedNow=true;board.stored("insane","yes");gate();}
+    }
+    el("verdict").textContent=bonusMessage || (won ? (unlockedNow?"Course cleared! Insane unlocked.":"Course cleared!") : "Run over");
     const summary=document.createElement("p");
-    summary.textContent=run.points+" / "+route.length+" jumps cleared · Longest streak "+run.best+".";
+    summary.textContent=run.points+" points · "+run.cleared+" / "+route.length+" jumps cleared · Longest streak "+run.best+".";
     el("result").replaceChildren(summary);
-    if(pace){const p=document.createElement("p");p.textContent=run.points===pace.points?"You tied the target!":run.points>pace.points?"You beat the target!":"Target to beat: "+pace.points+".";el("result").append(p);}
-    if(won){const d=document.createElement("details"),s=document.createElement("summary");s.textContent="Show final solution";d.append(s,solution(q));el("result").append(d);}
+    if(pace){const p=document.createElement("p");p.textContent=run.points===pace.points?"You tied the target!":run.points>pace.points?"You beat the target!":"Target to beat: "+pace.points+" points.";el("result").append(p);}
+    if(won){const d=document.createElement("details"),label=document.createElement("summary");label.textContent=bonusMessage?"Show bonus solution":"Show final solution";d.append(label,solution(q));el("result").append(d);}
     else el("result").append(solution(q));
-    el("review").hidden=true;el("change").hidden=false;el("advance").textContent=room?"New race":"Run again";
-    el("race-link").hidden=true;el("share").hidden=!run.points;el("save-score").hidden=!run.points;
-    if(run.points){pickAlias(playerAlias);saveScore();}
+    el("review").hidden=true;el("change").hidden=false;el("change").textContent="Start page";
+    el("advance").textContent=room?"New race":"Run again";
+    el("race-link").hidden=true;el("share").hidden=!run.points||!timed();el("save-score").hidden=!run.points||!timed();
+    el("bonus-offer").hidden=!won||!bonus||Boolean(bonusMessage);
+    el("bonus-description").textContent=(diff()==="insane"?"One final numeric challenge": "One "+difficultyName(rules.nextLevel(diff()))+" question")+
+      (timed()?" · "+rules.seconds[rules.nextLevel(diff())]+" seconds.":".")+" Your completed run is already banked.";
+    if(run.points&&timed()){pickAlias(playerAlias);saveScore();}
     el("verdict").focus({preventScroll:true});
   }
-  function answer(index) {
-    if(state!=="question" || !el("choices").children[index] || el("choices").children[index].disabled)return;
-    const q=route[run.cleared], hit=answers[index]===0, result=rules.land(run,seed,route.length,index,assisted);
-    if(!result)return;state="moving";
+  function submit(index,timeout=false) {
+    if(state!=="question")return;
+    const q=currentQuestion();
+    if(deadline && !remaining())timeout=true;
+    if(timeout) {
+      index=answers.findIndex((choice,i)=>choice!==0 && (!q.choices || !el("choices").children[i].disabled));
+    } else if(q.answer) {
+      const input=el("number-answer").value;
+      if(!rules.rational(input)){el("number-hint").textContent="Enter an integer, a fraction such as 3/4, or a finite decimal.";return;}
+      index=answers.indexOf(rules.equivalent(input,q.answer)?0:1);
+    } else if(!el("choices").children[index]||el("choices").children[index].disabled)return;
+    const left=timed()&&!timeout?Math.floor(remaining()):0, hit=answers[index]===0;
+    const landing=bonusActive?{hit}:rules.land(run,seed,route.length,index,assisted,left);
+    if(!landing)return;
+    const isBonus=bonusActive, ticket=turn;
+    state="moving";stopClock();
     for(const b of el("choices").children)b.disabled=true;
-    el("choices").children[index].classList.add("taken");el("signal").hidden=true;
-    steps.push(index+(assisted?4:0));score();progress();if(hit&&!run.ended)publishStreak();
+    if(q.choices)el("choices").children[index].classList.add("taken");
+    el("number-answer").disabled=true;el("signal").hidden=true;
+    if(isBonus){
+      extra=String(index)+left.toString(36);
+      if(hit)run.points+=rules.earned(left);
+    } else {
+      steps.push(index+(assisted?4:0));times.push(left);
+    }
+    if(hit)showAward(rules.earned(left));else el("award").hidden=true;
+    score();progress();if(hit&&!run.ended)publishStreak();
     runner.travel(index,hit,()=>{
-      if(result.retry){
-        screen("feedback","retry");el("round").textContent="Feather used";el("verdict").textContent="Your chicken caught you!";
-        el("result").textContent="Try the same jump again. Your feather is spent and your streak starts over.";
-        el("advance").textContent="Retry jump";for(const id of ["review","change","share","race-link","save-score"])el(id).hidden=true;
+      if(ticket!==turn)return;
+      if(isBonus){
+        bonusActive=false;if(hit)runner.celebrate();
+        finish(q,true,hit?"Bonus cleared! +"+rules.earned(left)+" points.":timeout?"Bonus time expired. Route cleared!":"Route cleared! Bonus missed.");return;
+      }
+      if(landing.retry){
+        screen("feedback","retry");el("round").textContent="Feather used";el("verdict").textContent=timeout?"Time’s up! Your feather caught you.":"Your chicken caught you!";
+        el("result").textContent=timeout?"Retry with a fresh clock.":"Try the jump again. Your feather is spent and your streak starts over.";
+        el("advance").textContent="Retry jump";for(const id of ["review","change","share","race-link","save-score","bonus-offer"])el(id).hidden=true;
         el("verdict").focus({preventScroll:true});return;
       }
-      if(run.ended){finish(q,hit);return;}
+      if(run.ended){finish(q,hit);if(timeout)el("verdict").textContent="Time’s up";return;}
       el("previous-content").replaceChildren(solution(q));el("previous").hidden=false;ask();
     });
   }
+  el("numeric").onsubmit=e=>{e.preventDefault();submit(null);};
+  el("take-bonus").onclick=()=>{
+    if(state!=="won"||!bonus||el("bonus-offer").hidden)return;
+    bonusActive=true;el("bonus-offer").hidden=true;runner.difficulty(rules.nextLevel(diff()));ask();
+  };
+  el("skip-bonus").onclick=()=>{el("bonus-offer").hidden=true;el("advance").focus();};
   function loadLink() {
     const [kind,encoded]=location.hash.slice(1).split("=");
     if(!["room","race"].includes(kind)||!encoded||encoded.length>650)return;
@@ -238,12 +327,22 @@
       if(kind==="room" && (!/^[0-9a-f]{24}$/.test(value)||data.length!==6))return;
       let target;
       if(kind==="race"){
-        if(data.length!==7||typeof value!=="string"||!/^[0-7]{1,61}$/.test(value)||!board.valid(data[4]))return;
+        if(data.length!==9||typeof value!=="string"||!/^[0-7]{1,61}$/.test(value)||!board.valid(data[4]))return;
         const length=rules.makeRoute(lectures,key,initial,difficulty,ordering).length,r=rules.newRun(difficulty);
-        for(const digit of value)if(!rules.land(r,initial,length,Number(digit)%4,Number(digit)>=4))return;
+        const clock=data[5],bonusCode=data[6];
+        if(typeof clock!=="string"||!/^[0-9a-u]+$/.test(clock)||clock.length!==value.length||typeof bonusCode!=="string"||!/^([0-3][0-9a-u])?$/.test(bonusCode))return;
+        for(let j=0;j<value.length;j++){
+          const code=Number(value[j]);
+          if(!rules.land(r,initial,length,code%4,code>=4,parseInt(clock[j],36)))return;
+        }
         if(!r.ended||!r.points)return;target=r.points;
+        if(bonusCode){
+          const left=parseInt(bonusCode[1],36);
+          if(r.cleared!==length||left>rules.seconds[rules.nextLevel(difficulty)])return;
+          if(rules.options(initial,length)[Number(bonusCode[0])]===0)target+=rules.earned(left);
+        }
       }
-      el("difficulty").value=difficulty;el("order").value=ordering;
+      el("clock-mode").value="timed";el("difficulty").value=difficulty;el("order").value=ordering;
       if(!Object.hasOwn(names,key))el("line").value=key;
       changeCourse(names[key]?key:"lecture");
       if(kind==="room")openRoom(value,initial);
@@ -252,7 +351,7 @@
   }
   el("invite").onclick=createRoom;el("room-copy").onclick=()=>copy(roomURL(),"invite-link","room-status","Friend invite copied.");
   el("leave-room").onclick=leaveRoom;
-  el("share").onclick=()=>copy(link("race",[edition,scope(),seed,steps.join(""),playerAlias,diff(),order()]),"race-link","share-state","Challenge link copied.");
+  el("share").onclick=()=>copy(link("race",[edition,scope(),seed,steps.join(""),playerAlias,times.map(n=>n.toString(36)).join(""),extra,diff(),order()]),"race-link","share-state","Challenge link copied.");
   el("save-score").onsubmit=e=>{
     e.preventDefault();if(!run.ended||!run.points)return;
     playerAlias=Number(el("adjective").value)*board.nouns.length+Number(el("noun").value);
@@ -261,36 +360,50 @@
   };
   el("roll").onclick=()=>pickAlias(board.randomAlias());
   el("signal").onclick=()=>{
-    if(state!=="question"||!run.eraser||assisted)return;assisted=true;
+    if(state!=="question"||bonusActive||!run.eraser||assisted)return;assisted=true;
     const disabled=rules.erasedChoices(seed,run.cleared,run.erasersUsed);
     for(const i of disabled){const b=el("choices").children[i];b.disabled=true;b.classList.add("closed");}
     runner.close(disabled);el("signal").hidden=true;el("choices").querySelector("button:enabled").focus({preventScroll:true});
   };
   el("advance").onclick=()=>state==="retry"?ask():start();
-  el("change").onclick=()=>{leaveRoom();run=rules.newRun(diff());score();screen("lobby","lobby");runner.reset(10);el("round").textContent="At the starting line";changeCourse(course);el("start").focus();};
-  document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>fresh(b.dataset.mode));
-  el("difficulty").onchange=el("order").onchange=()=>fresh(course);
-  el("line").onchange=()=>fresh("lecture");el("dismiss-pace").onclick=()=>{leaveRoom();};el("start").onclick=start;
-  function syncFull(){
-    const full=Boolean(document.fullscreenElement||document.body.classList.contains("full-window"));
-    el("fullscreen").textContent=full?"Exit full screen":"Full screen";el("fullscreen").setAttribute("aria-pressed",String(full));
+  function home() {
+    if(room && !run.ended && racePlayer)progress(true);
+    turn++;saveTicket++;stopClock();el("award").hidden=true;bonusActive=false;racePlayer="";el("bonus-offer").hidden=true;
+    resetLink();run=rules.newRun(diff());score();screen("lobby","lobby");runner.home();
+    el("round").textContent="At the starting line";el("start").textContent="Start run";changeCourse(course);el("start").focus();
   }
+  el("home").onclick=el("change").onclick=home;
+  document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>fresh(b.dataset.mode));
+  el("difficulty").onchange=el("order").onchange=el("clock-mode").onchange=()=>fresh(course);
+  el("line").onchange=()=>fresh("lecture");el("dismiss-pace").onclick=()=>{leaveRoom();};el("start").onclick=start;
+  const nativeFull=()=>document.fullscreenElement||document.webkitFullscreenElement;
+  function syncFull(){
+    const full=Boolean(nativeFull()||document.body.classList.contains("full-window"));
+    const wide=document.body.classList.contains("wide-game");document.body.classList.toggle("screen-active",full);
+    el("fullscreen").textContent=full?"Exit full screen":"Full screen";el("fullscreen").setAttribute("aria-pressed",String(full));
+    el("enlarge").textContent=wide?"Standard size":"Enlarge";el("enlarge").setAttribute("aria-pressed",String(wide));el("enlarge").hidden=full;
+  }
+  el("enlarge").onclick=()=>{document.body.classList.toggle("wide-game");syncFull();};
   el("fullscreen").onclick=async()=>{
-    if(document.fullscreenElement)await document.exitFullscreen();
+    const root=document.documentElement;
+    if(nativeFull())await (document.exitFullscreen||document.webkitExitFullscreen).call(document);
     else if(document.body.classList.contains("full-window"))document.body.classList.remove("full-window");
-    else {try{await document.documentElement.requestFullscreen();}catch{document.body.classList.add("full-window");}}
+    else {
+      try {await (root.requestFullscreen||root.webkitRequestFullscreen).call(root);}
+      catch{document.body.classList.add("full-window");}
+    }
     syncFull();
   };
-  document.addEventListener("fullscreenchange",syncFull);
+  document.addEventListener("fullscreenchange",syncFull);document.addEventListener("webkitfullscreenchange",syncFull);
   document.addEventListener("keydown",e=>{
     if(e.key==="Escape"){document.body.classList.remove("full-window");syncFull();}
-    if(state!=="question"||e.repeat||e.altKey||e.metaKey||e.ctrlKey||e.isComposing)return;
-    const i=letters.indexOf(e.key.toUpperCase());if(i>=0&&e.key.length===1){e.preventDefault();answer(i);}
+    if(state!=="question"||currentQuestion()?.answer||e.repeat||e.altKey||e.metaKey||e.ctrlKey||e.isComposing)return;
+    const i=letters.indexOf(e.key.toUpperCase());if(i>=0&&e.key.length===1){e.preventDefault();submit(i);}
   });
-  document.addEventListener("visibilitychange",refresh);
+  document.addEventListener("visibilitychange",()=>{if(!document.hidden&&state==="question"&&deadline&&!remaining())submit(null,true);refresh();});
   el("adjective").replaceChildren(...board.adjectives.map((v,i)=>new Option(v,i)));
   el("noun").replaceChildren(...board.nouns.map((v,i)=>new Option(v,i)));
-  runner.reset(10);
+  runner.home();
   async function load(){
     try {
       const bank=document.body.dataset.bank;
@@ -301,7 +414,7 @@
         const res=await fetch(bank);if(!res.ok)throw Error();return res.json();
       }
       lectures=await readBank();sections=Object.assign({},...lectures.map(l=>l.sections));
-      el("line").replaceChildren(...Object.keys(sections).sort((a,b)=>a.localeCompare(b,"en",{numeric:true})).map(n=>new Option("§"+n+" · "+sections[n],"s"+n)));
+      el("line").replaceChildren(...Object.keys(sections).sort((a,b)=>a.localeCompare(b,"en",{numeric:true})).map(n=>new Option(n==="2.7"?"Exam 1 practice · October 5":"§"+n+" · "+sections[n],"s"+n)));
       const request=new URLSearchParams(location.search).get("lecture");
       const section=sections[request?.slice(1)] ? request : "s"+(lectures.find(l=>!l.review&&l.id===request)?.questions[0]?.section||"");
       const single=Object.hasOwn(sections,section.slice(1));if(single)el("line").value=section;

@@ -1,4 +1,4 @@
-// Junction Run's public score endpoint. Script Properties hold the top ten per course.
+// Critical Point's public score endpoint. Script Properties hold the top ten per course.
 // Live room progress expires from Script Cache. All displayed names are word-list indices.
 const COURSES = ['exam3','final','theory','vocab','limits','continuity','derivative-motion','derivative-rules','chain','inverse-implicit','related-rates','global-extrema','extrema','sketch','optimize','lhospital'];
 const LEVELS = ['easy','medium','hard','insane'];
@@ -9,7 +9,7 @@ function json(value) {
 function scopeKey(v) {
   if (!COURSES.includes(v.key) && !/^s(?:2\.[1-6]|3\.[1-9]|4\.[1-7])$/.test(v.key)) throw Error();
   if (!LEVELS.includes(v.diff) || !ORDER.includes(v.order)) throw Error();
-  return ['board3',v.key,v.diff,v.order].join('-');
+  return [Number(v.version)===4?'board4':'board3',v.key,v.diff,v.order].join('-');
 }
 function roomKey(v) {
   if (!v.room) return '';
@@ -18,7 +18,7 @@ function roomKey(v) {
 }
 function list(store,key) { return JSON.parse((store.getProperty ? store.getProperty(key) : store.get(key)) || '[]'); }
 function publicRows(rows) {
-  return rows.map(r => ({alias:r.alias,best:r.best,cleared:r.cleared,status:r.status}));
+  return rows.map(r => ({alias:r.alias,best:r.best,cleared:r.cleared,status:r.status,points:r.points}));
 }
 function doGet(e) {
   try {
@@ -79,7 +79,7 @@ function doPost(e) {
     const v=JSON.parse(e.postData.contents), key=scopeKey(v),room=roomKey(v);
     if (!/^[0-9a-f]{32}$/.test(v.player)||!Number.isInteger(v.alias)||v.alias<0||v.alias>=144||
         !['save','streak','progress'].includes(v.action))throw Error();
-    const score=replay(v);
+    const score=timedScore(v,replay(v),options);
     if(v.action==='save' && (score.status==='playing'||!score.cleared))throw Error();
     if(v.action==='streak'&&!score.best)throw Error();
     if(v.action==='progress'&&!room)throw Error();
@@ -88,8 +88,8 @@ function doPost(e) {
     const db=PropertiesService.getScriptProperties(),cache=CacheService.getScriptCache();
     if (v.action!=='progress') {
       const rows=list(db,key), old=rows.find(r=>r.id===row.id);
-      if(!old||row.best>old.best||(row.best===old.best&&row.cleared>=old.cleared)){
-        const next=rows.filter(r=>r.id!==row.id).concat(row).sort((a,b)=>b.best-a.best||b.cleared-a.cleared);
+      if(!old||row.best>old.best||(row.best===old.best&&(row.cleared>old.cleared||(row.cleared===old.cleared&&(row.points||0)>=(old.points||0))))){
+        const next=rows.filter(r=>r.id!==row.id).concat(row).sort((a,b)=>b.best-a.best||b.cleared-a.cleared||(b.points||0)-(a.points||0));
         db.setProperty(key,JSON.stringify(next.slice(0,10)));
       } else if (v.action==='save' && row.alias!==old.alias) {
         old.alias=row.alias;db.setProperty(key,JSON.stringify(rows));
@@ -97,10 +97,30 @@ function doPost(e) {
     }
     if(room) {
       const racers=list(cache,room), old=racers.find(r=>r.id===row.id);
-      if ((!old && racers.length<24) || (old && v.steps.startsWith(old.steps))) {
+      if ((!old && racers.length<24) || (old && old.status!=="left" && v.steps.startsWith(old.steps) && (row.points||0)>=(old.points||0))) {
         cache.put(room,JSON.stringify(racers.filter(r=>r.id!==row.id).concat({...row,steps:v.steps})),21600);
       }
     }
     return json({ok:true});
   } catch(_){return json({ok:false});} finally{if(lock.hasLock())lock.releaseLock();}
+}
+// Timing is transmitted as one base-36 digit per landing. Existing clients omit version.
+function timedScore(v,score,choicesAt) {
+  if(Number(v.version)!==4)return score;
+  const levels=['easy','medium','hard','insane'], clocks=[30,25,20,15],level=levels.indexOf(v.diff);
+  if(typeof v.times!=='string'||v.times.length!==v.steps.length||!/^[0-9a-u]*$/.test(v.times)||
+     typeof v.extra!=='string'||!/^([0-3][0-9a-u])?$/.test(v.extra))throw Error();
+  let points=0,jump=0;
+  for(let i=0;i<v.steps.length;i++){
+    const left=parseInt(v.times[i],36);
+    if(left>clocks[level])throw Error();
+    if(choicesAt(v.seed,jump)[Number(v.steps[i])%4]===0){points+=1+2*left;jump++;}
+  }
+  if(v.extra){
+    const left=parseInt(v.extra[1],36);
+    if(score.status!=='finished'||left>clocks[Math.min(level+1,3)])throw Error();
+    if(choicesAt(v.seed,jump)[Number(v.extra[0])]===0)points+=1+2*left;
+  }
+  if(v.retired===true && score.status==='playing')score.status='left';
+  return Object.assign(score,{points:points});
 }

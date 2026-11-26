@@ -22,7 +22,7 @@ window.junctionRules = (() => {
     const exam = key === "final" || key === "exam3";
     const section = key.startsWith("s") && /^s[234]\.\d+$/.test(key) ? key.slice(1) : "";
     const sources = lectures.filter(l => section ? !l.review : exam ? l.exams.includes(key) : l.id === key);
-    const eligible = q => (!section || q.section === section) &&
+    const eligible = q => !q.capstone && (!section || q.section === section) &&
       (difficulty === "easy" ? q.level === 1 : difficulty === "hard" ? q.level === 3 : difficulty === "insane" ? q.level === 4 : q.level === 2);
     const pools = sources.map(l => shuffle(l.questions.filter(eligible), random));
     const available = pools.reduce((n,p) => n + p.length, 0);
@@ -35,12 +35,50 @@ window.junctionRules = (() => {
         if (deck.length === limit) break;
       }
     }
+    // Include a graph when a mixed review has one at this difficulty.
+    if (exam && !deck.some(q => q.graphChoices || q.graphPrompt)) {
+      const plots = sources.flatMap(l => l.questions.filter(q => eligible(q) && (q.graphChoices || q.graphPrompt)));
+      if (plots.length) deck[deck.length-1] = plots[Math.floor(random()*plots.length)];
+    }
     if (order === "shuffled") return shuffle(deck, random);
     const chosen = new Set(deck);
     const ordered = [...sources].sort((a,b) => sequence.indexOf(a.id)-sequence.indexOf(b.id))
       .flatMap(l => l.questions.filter(q => chosen.has(q)));
     return ordered.sort((a,b) => (a.section || "").localeCompare(b.section || "", "en", {numeric:true}));
   }
+  const levels = ["easy","medium","hard","insane"];
+  const seconds = {easy:30,medium:25,hard:20,insane:15};
+  const nextLevel = current => levels[Math.min(levels.indexOf(current)+1,3)];
+  function bonusQuestion(lectures,key,seed,current) {
+    const random = generator(seed ^ 0x64d3b00);
+    if (current !== "insane") {
+      const pool = makeRoute(lectures,key,seed ^ 0x64d3b00,nextLevel(current),"shuffled");
+      return pool[Math.floor(random()*pool.length)];
+    }
+    const sectionMode = /^s[234]\.\d$/.test(key);
+    const sources = lectures.filter(l => sectionMode ? !l.review : ["exam3","final"].includes(key) ? l.exams.includes(key) : l.id===key);
+    const all = sources.flatMap(l => l.questions.filter(q => q.capstone));
+    const section = key.startsWith("s") ? key.slice(1) : "";
+    const related = all.filter(q => q.section === section);
+    const pool = related.length ? related : all;
+    return pool[Math.floor(random()*pool.length)];
+  }
+  // Compare rational numbers exactly. Finite decimals and equivalent fractions are accepted.
+  function rational(text) {
+    const s = String(text).trim().replace(/−/g,"-").replace(/\s*\/\s*/g,"/");
+    if (s.length>32 || !/^[+-]?(?:\d+\/[+-]?\d+|\d+(?:\.\d*)?|\.\d+)$/.test(s)) return null;
+    if (s.includes("/")) {
+      const [a,b] = s.split("/").map(BigInt);
+      return b === 0n ? null : [a,b];
+    }
+    const [whole,frac=""] = s.split(".");
+    return [BigInt((whole+frac).replace(/^\+/,"")),10n**BigInt(frac.length)];
+  }
+  function equivalent(input,answer) {
+    const a=rational(input),b=rational(answer);
+    return a && b ? a[0]*b[1]===b[0]*a[1] : false;
+  }
+  const earned = left => 1+2*left;
   const options = (seed, jump) => shuffle([0,1,2,3],generator((seed ^ Math.imul(jump+1,2654435761)) >>> 0));
   function newRun(difficulty) {
     return {difficulty, cleared:0, points:0, streak:0, best:0, feather:difficulty === "easy", eraser:false, erasersUsed:0, missed:-1, ended:false};
@@ -52,8 +90,8 @@ window.junctionRules = (() => {
     return shuffle(wrong, random).slice(0,2);
   }
   // Live play and shared-score replay use the same rules. A rescued jump keeps its options.
-  function land(run, seed, length, index, used) {
-    if (run.ended || !Number.isInteger(index) || index<0 || index>3 || index===run.missed) return null;
+  function land(run, seed, length, index, used, left=0) {
+    if (run.ended || !Number.isInteger(left) || left<0 || left>seconds[run.difficulty] || !Number.isInteger(index) || index<0 || index>3 || index===run.missed) return null;
     if (used && (!run.eraser || erasedChoices(seed,run.cleared,run.erasersUsed).includes(index))) return null;
     if (used) { run.eraser = false; run.erasersUsed++; }
     const hit = options(seed,run.cleared)[index] === 0;
@@ -65,7 +103,7 @@ window.junctionRules = (() => {
     let earned = 0, checkpoint = false;
     if (hit) {
       run.cleared++;
-      earned = 1;
+      earned = 1+2*left;
       run.best = Math.max(run.best, ++run.streak);
       run.points += earned;
       run.missed = -1;
@@ -75,5 +113,5 @@ window.junctionRules = (() => {
     run.ended = !hit || run.cleared === length;
     return {hit, earned, checkpoint};
   }
-  return {makeRoute, options, newRun, land, erasedChoices};
+  return {makeRoute, options, newRun, land, erasedChoices, nextLevel, seconds, bonusQuestion, rational, equivalent, earned};
 })();

@@ -11,7 +11,8 @@
     ],
     "why": "The height is 8 ft. Differentiating \\(x^2+y^2=100\\) gives \\(x\\,dx/dt=-y\\,dy/dt\\), so \\(dx/dt=-8(-3)/6=4\\).",
     "source": "../lectures/related-rates.html#ladder",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -25,7 +26,8 @@
     ],
     "why": "Write \\(L^2=x^2+9\\). With \\(L=5\\), \\(x=4\\), and \\(dL/dt=-1\\), the horizontal rate is \\(dx/dt=(L/x)dL/dt=-5/4\\). The speed is its magnitude.",
     "source": "../lectures/related-rates.html#boat",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -39,7 +41,8 @@
     ],
     "why": "Similarity gives \\(r=h/3\\) and \\(V=\\pi h^3/27\\). At \\(h=3\\), \\(dV/dt=\\pi\\,dh/dt\\). Hence \\(dh/dt=-1\\) and \\(dr/dt=-1/3\\).",
     "source": "../lectures/related-rates.html#cone",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -53,7 +56,8 @@
     ],
     "why": "With \\(x\\) the person’s distance and \\(s\\) the shadow length, \\(6s=2(x+s)\\) gives \\(s=x/2\\). Thus \\(ds/dt=1\\) while \\(d(x+s)/dt=2+1=3\\).",
     "source": "../lectures/related-rates.html#shadow",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -67,7 +71,8 @@
     ],
     "why": "From \\(dV/dt=4\\pi r^2\\,dr/dt\\), get \\(dr/dt=3/4\\). Then \\(A=4\\pi r^2\\) gives \\(dA/dt=8\\pi(2)(3/4)=12\\pi\\).",
     "source": "../lectures/related-rates.html#balloon",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -81,7 +86,8 @@
     ],
     "why": "\\(V=s^3\\) gives \\(ds/dt=-12/(3s^2)=-1\\). Differentiate \\(S=6s^2\\) to get \\(dS/dt=12s\\,ds/dt=-24\\).",
     "source": "../lectures/related-rates.html#cube",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -95,7 +101,8 @@
     ],
     "why": "If \\(d^2=L^2+W^2\\), then \\(d\\,dd/dt=L\\,dL/dt+W\\,dW/dt=24-5=19\\), and \\(d=\\sqrt{89}\\).",
     "source": "../lectures/related-rates.html#rectangle",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -109,7 +116,8 @@
     ],
     "why": "\\(A(t)=(8-2t)(6+3t)/2=24+6t-3t^2\\) for \\(0\\le t<4\\). Thus \\(dA/dt=6-6t\\), changing from positive to negative at \\(t=1\\).",
     "source": "../lectures/related-rates.html#triangle",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -123,7 +131,8 @@
     ],
     "why": "The product rule gives \\(dx/dt=3/2\\). For distance \\(D=\\sqrt{x^2+y^2}=5\\), \\(dD/dt=(3(3/2)+4(-2))/5=-7/10\\).",
     "source": "../lectures/related-rates.html#constant-product",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -137,7 +146,8 @@
     ],
     "why": "\\(x\\,dx/dt+y\\,dy/dt=0\\) gives \\(dy/dt=-3/2\\). The speed is \\(\\sqrt{(dx/dt)^2+(dy/dt)^2}=5/2\\).",
     "source": "../lectures/related-rates.html#circle",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -151,7 +161,8 @@
     ],
     "why": "The height is 8 ft and \\(dy/dt=-(6/8)(2)=-3/2\\). Then \\(d(xy/2)/dt=(8(2)+6(-3/2))/2=7/2\\).",
     "source": "../lectures/related-rates.html#ladder",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -165,105 +176,8 @@
     ],
     "why": "Similarity gives \\(dV/dt=(\\pi h^2/9)\\,dh/dt\\). Thus \\(dh/dt=9/h^2\\), which equals \\(1/4\\) as the filling water reaches depth 6 m.",
     "source": "../lectures/related-rates.html#cone",
-    "section": "4.1"
-  },
-  {
-    "topic": "rates",
-    "level": 4,
-    "prompt": "A boat’s rope is drawn in at a constant 1 m/s through a pulley 3 m above the bow. For horizontal distance \\(x\\) from the dock, what is \\(d^2x/dt^2\\) when \\(x=4\\) m?",
-    "choices": [
-      "\\(-9/64\\) m/s²",
-      "\\(9/64\\) m/s²",
-      "\\(-25/64\\) m/s²",
-      "\\(0\\) m/s²"
-    ],
-    "why": "Differentiate \\(x^2+9=L^2\\) twice: \\((dx/dt)^2+x\\,d^2x/dt^2=(dL/dt)^2\\) since \\(d^2L/dt^2=0\\). With \\(L=5\\) and \\(dx/dt=-5/4\\), get \\((1-25/16)/4=-9/64\\).",
-    "source": "../lectures/related-rates.html#boat",
-    "section": "4.1"
-  },
-  {
-    "topic": "rates",
-    "level": 4,
-    "prompt": "The foot of a 10-ft ladder slides outward at a constant 2 ft/s. Find the vertical acceleration of the top when its foot is 6 ft from the wall. Upward is positive.",
-    "choices": [
-      "\\(-25/32\\) ft/s²",
-      "\\(-3/16\\) ft/s²",
-      "\\(25/32\\) ft/s²",
-      "\\(0\\) ft/s²"
-    ],
-    "why": "Here \\(y=8\\) and \\(dy/dt=-3/2\\). Twice differentiating \\(x^2+y^2=100\\) gives \\(0=2^2+(-3/2)^2+8\\,d^2y/dt^2\\), hence \\(d^2y/dt^2=-25/32\\).",
-    "source": "../lectures/related-rates.html#ladder",
-    "section": "4.1"
-  },
-  {
-    "topic": "rates",
-    "level": 4,
-    "prompt": "A 6-m-tall inverted conical tank of top radius 2 m fills at \\(\\pi\\) m³/min. When its depth is 3 m, what are the rate of change of water-surface area and the vertical acceleration of the surface?",
-    "choices": [
-      "\\(2\\pi/3\\) m²/min and \\(-2/3\\) m/min²",
-      "\\(2\\pi/3\\) m²/min and \\(0\\) m/min²",
-      "\\(2\\pi\\) m²/min and \\(-2/3\\) m/min²",
-      "\\(2\\pi/3\\) m²/min and \\(2/3\\) m/min²"
-    ],
-    "why": "\\(r=h/3\\) gives \\(dh/dt=9/h^2\\) and \\(A=\\pi h^2/9\\). At \\(h=3\\), \\(dh/dt=1\\), so \\(dA/dt=2\\pi/3\\). Differentiating \\(9h^{-2}\\) gives \\(d^2h/dt^2=-18h^{-3}dh/dt=-2/3\\).",
-    "source": "../lectures/related-rates.html#cone",
-    "section": "4.1"
-  },
-  {
-    "topic": "rates",
-    "level": 4,
-    "prompt": "A 2-m person walking away from a 6-m streetlight has a shadow whose tip is 12 m from the pole. If the tip moves away at 3 m/s, how fast is the triangular region between the ground, the pole, and the light ray growing? How fast is the triangular region beyond the person growing?",
-    "choices": [
-      "\\(9\\) m²/s and \\(1\\) m²/s",
-      "\\(9\\) m²/s and \\(3\\) m²/s",
-      "\\(3\\) m²/s and \\(1\\) m²/s",
-      "\\(6\\) m²/s and \\(2\\) m²/s"
-    ],
-    "why": "The small and large triangles have height ratio \\(1/3\\), so their base rates are 1 and 3 m/s. The area rates are \\((6/2)(3)=9\\) and \\((2/2)(1)=1\\).",
-    "source": "../lectures/related-rates.html#shadow",
-    "section": "4.1"
-  },
-  {
-    "topic": "rates",
-    "level": 4,
-    "prompt": "On \\(xy=12\\), a point crosses \\((3,4)\\) while \\(y\\) decreases at a constant 2 units/s. Find its horizontal acceleration at that instant.",
-    "choices": [
-      "\\(3/2\\) units/s²",
-      "\\(-3/2\\) units/s²",
-      "\\(3/4\\) units/s²",
-      "\\(0\\) units/s²"
-    ],
-    "why": "The first derivative gives \\(dx/dt=3/2\\). Differentiate \\(y\\,dx/dt+x\\,dy/dt=0\\) again: \\(4\\,d^2x/dt^2+2(3/2)(-2)+3(0)=0\\).",
-    "source": "../lectures/related-rates.html#constant-product",
-    "section": "4.1"
-  },
-  {
-    "topic": "rates",
-    "level": 4,
-    "prompt": "An inverted cone 6 m tall with top radius 2 m fills at a constant volume rate. The depth rises from 1 m to 2 m in 7 minutes. How many more minutes does it take to reach 3 m, and what is the depth rate there?",
-    "choices": [
-      "\\(19\\) min and \\(1/27\\) m/min",
-      "\\(7\\) min and \\(1/27\\) m/min",
-      "\\(19\\) min and \\(1/9\\) m/min",
-      "\\(26\\) min and \\(1/3\\) m/min"
-    ],
-    "why": "\\(V=\\pi h^3/27\\), so \\(h^3\\) increases at a constant rate. It gains \\(8-1=7\\) in 7 minutes, so \\(d(h^3)/dt=1\\). The next gain is \\(27-8=19\\); at \\(h=3\\), \\(3h^2\\,dh/dt=1\\).",
-    "source": "../lectures/related-rates.html#cone",
-    "section": "4.1"
-  },
-  {
-    "topic": "rates",
-    "level": 4,
-    "prompt": "A boat’s rope passes through a pulley 3 m above the bow. When the horizontal distance to the dock is 4 m, the boat approaches at 2 m/s. How fast is the acute angle between the rope and the horizontal changing?",
-    "choices": [
-      "\\(6/25\\) rad/s",
-      "\\(-6/25\\) rad/s",
-      "\\(3/8\\) rad/s",
-      "\\(8/25\\) rad/s"
-    ],
-    "why": "For \\(\\theta=\\arctan(3/x)\\), \\(d\\theta/dt=-3(dx/dt)/(x^2+9)\\). Substituting \\(dx/dt=-2\\) gives \\(6/25\\).",
-    "source": "../lectures/related-rates.html#boat",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -277,7 +191,8 @@
     ],
     "why": "\\(dy/dt=2x\\,dx/dt=12\\). Differentiate \\(D^2=x^2+y^2\\) at \\(D=3\\sqrt{10}\\) to obtain \\(D\\,dD/dt=3(2)+9(12)=114\\).",
     "source": "../lectures/related-rates.html#parabola",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -291,7 +206,8 @@
     ],
     "why": "\\(x=5\\cos\\theta\\) and \\(5\\sin\\theta=y=4\\). Differentiating gives \\(2=-4\\,d\\theta/dt\\). Moving right in the first quadrant decreases the angle.",
     "source": "../lectures/related-rates.html#circle",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -305,35 +221,8 @@
     ],
     "why": "For \\(R=L/W\\), \\(dR/dt=(W\\,dL/dt-L\\,dW/dt)/W^2\\). Its numerator is \\(5(3)-8(-1)=23\\) and its denominator is 25.",
     "source": "../lectures/related-rates.html#rectangle",
-    "section": "4.1"
-  },
-  {
-    "topic": "rates",
-    "level": 4,
-    "prompt": "A point moves to the right on \\(y=x^2\\) with constant horizontal velocity 2 units/s. At \\(x=3\\), what is the rate of change of its speed along the curve?",
-    "choices": [
-      "\\(48/\\sqrt{37}\\) units/s²",
-      "\\(8\\) units/s²",
-      "\\(24/\\sqrt{37}\\) units/s²",
-      "\\(48/37\\) units/s²"
-    ],
-    "why": "Its vertical velocity is \\(4x\\), so its speed is \\(v=\\sqrt{4+16x^2}=2\\sqrt{1+4x^2}\\). Differentiate in time using \\(dx/dt=2\\) to get \\(dv/dt=16x/\\sqrt{1+4x^2}\\).",
-    "source": "../lectures/related-rates.html#parabola",
-    "section": "4.1"
-  },
-  {
-    "topic": "rates",
-    "level": 4,
-    "prompt": "A point moves at constant speed on \\(x^2+y^2=25\\). At \\((3,4)\\) its horizontal velocity is 2 units/s. What are the horizontal and vertical components of its acceleration, in that order?",
-    "choices": [
-      "\\((-3/4,-1)\\) units/s²",
-      "\\((-1,-3/4)\\) units/s²",
-      "\\((0,-25/16)\\) units/s²",
-      "\\((3/4,1)\\) units/s²"
-    ],
-    "why": "The circle gives \\(v_y=-3/2\\). Constant speed implies \\(2a_x-(3/2)a_y=0\\). Differentiating the circle again gives \\(3a_x+4a_y=-(4+9/4)=-25/4\\). Solving yields the stated components.",
-    "source": "../lectures/related-rates.html#circle",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -347,7 +236,8 @@
     ],
     "why": "The chain rule gives \\(dy/dt=2x\\,dx/dt=4x\\).",
     "source": "../lectures/related-rates.html#parabola",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -361,7 +251,8 @@
     ],
     "why": "The volume is \\(s^3\\), so the chain rule supplies the factor \\(ds/dt\\).",
     "source": "../lectures/related-rates.html#cube",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -375,7 +266,8 @@
     ],
     "why": "Similar triangles give \\(r/h=2/6\\).",
     "source": "../lectures/related-rates.html#similar-triangles",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
@@ -389,11 +281,12 @@
     ],
     "why": "From \\(dy/dt=2x\\,dx/dt\\), substitute \\(x=3\\) and \\(dx/dt=2\\).",
     "source": "../lectures/related-rates.html#parabola",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
-    "level": 2,
+    "level": 3,
     "prompt": "A triangle has base 8 cm and height 6 cm. If the base shrinks at 2 cm/min and the height grows at 3 cm/min, how fast is its area changing at this instant?",
     "choices": [
       "\\(6\\) cm²/min",
@@ -403,11 +296,12 @@
     ],
     "why": "For \\(A=bh/2\\), the rate is \\((h\\,db/dt+b\\,dh/dt)/2=(6(-2)+8(3))/2=6\\).",
     "source": "../lectures/related-rates.html#triangle",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   },
   {
     "topic": "rates",
-    "level": 2,
+    "level": 3,
     "prompt": "A point on \\(x^2+y^2=25\\) moves right at 2 units/s at \\((3,4)\\). What is its signed vertical velocity?",
     "choices": [
       "\\(-3/2\\) units/s",
@@ -417,6 +311,107 @@
     ],
     "why": "The derivative equation \\(x\\,dx/dt+y\\,dy/dt=0\\) gives \\(dy/dt=-3(2)/4\\).",
     "source": "../lectures/related-rates.html#circle",
-    "section": "4.1"
+    "section": "4.1",
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "level": 4,
+    "prompt": "The foot of a 10-ft ladder moves away from the wall at a constant 2 ft/s. Let \\(\\theta\\) be the angle between ladder and floor. When the foot is 6 ft from the wall, find \\(\\theta^{\\prime\\prime}\\) in rad/s².",
+    "answer": "-3/64",
+    "why": "From \\(x=10\\cos\\theta\\) and height \\(y=8\\), \\(x^{\\prime}=-y\\theta^{\\prime}\\) gives \\(\\theta^{\\prime}=-1/4\\). Differentiate again to get \\(0=-x(\\theta^{\\prime})^2-y\\theta^{\\prime\\prime}\\).",
+    "source": "../lectures/related-rates.html#ladder",
+    "pdfPage": 61,
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "level": 4,
+    "prompt": "A pulley is 3 m above a boat’s bow. The boat approaches horizontally at a constant 1 m/s. When the horizontal distance is 4 m, find the second time derivative of the length of taut rope in m/s².",
+    "answer": "9/125",
+    "why": "From \\(L^2=x^2+9\\), \\(L=5\\) and \\(L^{\\prime}=-4/5\\). A second differentiation gives \\(5L^{\\prime\\prime}=1-(4/5)^2=9/25\\).",
+    "source": "../lectures/related-rates.html#boat",
+    "pdfPage": 62,
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "level": 4,
+    "prompt": "The 6-m cone with top radius 2 m fills at a constant \\(\\pi\\) m³/min. At water depth 3 m, compute \\(A^{\\prime\\prime}/\\pi\\) for the circular water-surface area \\(A\\). Use meters and minutes.",
+    "answer": "-2/9",
+    "why": "\\(V=\\pi h^3/27\\) gives \\(h^{\\prime}=9/h^2\\) and then \\(h^{\\prime\\prime}=-18h^{\\prime}/h^3=-2/3\\) at depth 3. Since \\(A=\\pi h^2/9\\), \\(A^{\\prime\\prime}/\\pi=2(1+3(-2/3))/9\\).",
+    "source": "../lectures/related-rates.html#cone",
+    "pdfPage": 63,
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "level": 4,
+    "prompt": "A 6-m lamp lights a person whose horizontal distance is 8 m and increasing at \\(3/2\\) m/s. Their effective height is 2 m and is increasing at \\(1/4\\) m/s as they straighten up. Find the ground speed of the shadow tip in m/s.",
+    "answer": "3",
+    "why": "Similar triangles give tip distance \\(D=6x/(6-h)\\). Thus \\(D^{\\prime}=6x^{\\prime}/(6-h)+6xh^{\\prime}/(6-h)^2=9/4+3/4\\).",
+    "source": "../lectures/related-rates.html#shadow",
+    "pdfPage": 63,
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "level": 4,
+    "prompt": "Air enters a spherical balloon at a constant \\(12\\pi\\) cm³/s. Find the signed radial acceleration in cm/s² at radius 2 cm.",
+    "answer": "-9/16",
+    "why": "The volume rate gives \\(r^2r^{\\prime}=3\\), hence \\(r^{\\prime}=3/4\\). Differentiating again gives \\(r^{\\prime\\prime}=-2(r^{\\prime})^2/r=-9/16\\).",
+    "source": "../lectures/related-rates.html#balloon",
+    "pdfPage": 60,
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "level": 4,
+    "prompt": "A point on \\(xy=12\\) passes through \\((3,4)\\). At that instant \\(y^{\\prime}=-2\\), and its horizontal velocity is constant. Find \\(y^{\\prime\\prime}\\).",
+    "answer": "2",
+    "why": "\\(xy^{\\prime}+yx^{\\prime}=0\\) gives \\(x^{\\prime}=3/2\\). Another derivative gives \\(xy^{\\prime\\prime}+2x^{\\prime}y^{\\prime}+yx^{\\prime\\prime}=0\\). With \\(x^{\\prime\\prime}=0\\), solve for \\(y^{\\prime\\prime}\\).",
+    "source": "../lectures/related-rates.html#constant-product",
+    "pdfPage": 59,
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "level": 4,
+    "prompt": "A rectangle’s length increases at 3 cm/s and its width decreases at 1 cm/s, both constantly. At length 8 and width 5, what is the second time derivative of the aspect ratio \\(L/W\\) in s⁻²?",
+    "answer": "46/125",
+    "why": "\\(R^{\\prime}=(3W+L)/W^2\\). Its numerator is constant in time because \\(3W^{\\prime}+L^{\\prime}=0\\). Thus \\(R^{\\prime\\prime}=2(3W+L)/W^3=46/125\\).",
+    "source": "../lectures/related-rates.html#rectangle",
+    "pdfPage": 60,
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "level": 4,
+    "prompt": "A point on \\(x^2+y^2=25\\) moves through \\((3,4)\\) with horizontal velocity 2 and horizontal acceleration 1. Find its signed vertical acceleration.",
+    "answer": "-37/16",
+    "why": "The first derivative gives \\(y^{\\prime}=-3/2\\). The second gives \\(4y^{\\prime\\prime}=-((x^{\\prime})^2+(y^{\\prime})^2+xx^{\\prime\\prime})=-(4+9/4+3)\\).",
+    "source": "../lectures/related-rates.html#circle",
+    "pdfPage": 59,
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
+  },
+  {
+    "section": "4.1",
+    "topic": "rates",
+    "level": 4,
+    "prompt": "The base of a 10-ft ladder moves away from a wall at a constant 2 ft/s. When its base is 6 ft out, what is the third time derivative of the top’s height in ft/s³?",
+    "answer": "-225/512",
+    "why": "Write \\(v=x^{\\prime}=2\\) and \\(y=8\\). Differentiating \\(x^2+y^2=100\\) gives \\(y^{\\prime}=-xv/y\\), then \\(y^{\\prime\\prime}=-100v^2/y^3\\). Differentiate again to obtain \\(y^{\\prime\\prime\\prime}=-300xv^3/y^5\\).",
+    "source": "../lectures/related-rates.html#ladder",
+    "capstone": true,
+    "pdfPage": 61,
+    "pdf": "../downloads/related-rates-examples-practice.pdf"
   }
 ]

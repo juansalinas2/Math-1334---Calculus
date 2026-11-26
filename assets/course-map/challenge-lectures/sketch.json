@@ -11,7 +11,8 @@
     ],
     "why": "Use \\(f=1-1/(x+1)\\), \\(f'=1/(x+1)^2\\), and \\(f''=-2/(x+1)^3\\). For \\(x<-1\\), all three inequalities \\(f>1\\), \\(f'>0\\), and \\(f''>0\\) hold together.",
     "source": "../lectures/curve-sketching.html#example-1",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
@@ -25,7 +26,8 @@
     ],
     "why": "The numerator tends to 2; in \\((x-1)(x+1)\\) the first factor is negative on both sides, while the second switches from negative to positive.",
     "source": "../lectures/curve-sketching.html#example-8",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "global",
@@ -39,7 +41,8 @@
     ],
     "why": "Write \\(f=2+2/(x^2-1)\\). The middle branch rises from negative infinity to zero and falls again. The outer branches take every value strictly above 2.",
     "source": "../lectures/curve-sketching.html#example-8",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "inflect",
@@ -53,7 +56,8 @@
     ],
     "why": "Here \\(g''=2x(3-x^2)/(x^2+1)^3\\) changes from positive to negative at \\(\\sqrt3\\). The graph height is \\((\\sqrt3)^3/(3+1)=3\\sqrt3/4\\).",
     "source": "../lectures/curve-sketching.html#example-9",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
@@ -67,7 +71,8 @@
     ],
     "why": "The numerator of \\(f'=-8x/(x^2+3)^2\\) is positive for \\(x<0\\). The numerator of \\(f''=24(x^2-1)/(x^2+3)^3\\) is negative for \\(-1<x<1\\).",
     "source": "../lectures/curve-sketching.html#practice",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
@@ -81,7 +86,8 @@
     ],
     "why": "Since \\(g'=x(x-2)/(x-1)^2\\), the sign switches from positive to negative at 0 and from negative to positive at 2. Evaluate the original function at each critical number.",
     "source": "../lectures/curve-sketching.html#practice",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "rationaltails",
@@ -95,7 +101,9 @@
     ],
     "why": "Division gives \\(2x-1+2/(x-1)\\). The remainder term tends to zero at both ends and its sign agrees with \\(x-1\\).",
     "source": "../lectures/exam-3-review.html#from-a-formula-to-a-graph",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "sketch",
@@ -109,7 +117,9 @@
     ],
     "why": "The numerator has discriminant \\(9-24=-15\\), so it has no real zeros. The denominator is nonzero at zero and \\(f(0)=-3\\).",
     "source": "../lectures/exam-3-review.html#from-a-formula-to-a-graph",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "endbehavior",
@@ -123,7 +133,8 @@
     ],
     "why": "The factor \\(|x|/x\\) changes sign between the two ends. The remaining factor \\(\\sqrt{4+1/x^2}\\) is strictly greater than 2 at every finite nonzero input.",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
-    "section": "4.4"
+    "section": "4.4",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "rationaltails",
@@ -137,7 +148,8 @@
     ],
     "why": "The leading coefficients give \\(-1/2\\). The difference \\(f+1/2=(x+1)/(2(2x^3+x-1))\\) is positive at both sufficiently large positive and sufficiently large negative inputs.",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
-    "section": "4.4"
+    "section": "4.4",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
@@ -151,7 +163,9 @@
     ],
     "why": "Division gives \\(f=x-1/x\\) and the difference from \\(x\\) tends to zero. The derivative is \\(1+1/x^2>1\\) throughout the domain.",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
-    "section": "4.4"
+    "section": "4.4",
+    "pdfPage": 72,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "rationaltails",
@@ -165,91 +179,8 @@
     ],
     "why": "Since \\(g(x)-x=-x/(x^2+1)\\), equality occurs only at zero. The derivative \\(x^2(x^2+3)/(x^2+1)^2\\) vanishes at zero.",
     "source": "../lectures/curve-sketching.html#example-9",
-    "section": "4.5"
-  },
-  {
-    "topic": "sketch",
-    "level": 4,
-    "prompt": "For \\(g(x)=x^3/(x^2+1)\\), what is the greatest vertical distance from its graph to its slant asymptote, and where is it attained?",
-    "choices": [
-      "\\(1/2\\), at \\(x=-1\\) and \\(x=1\\)",
-      "\\(1\\), at \\(x=-1\\) and \\(x=1\\)",
-      "\\(3\\sqrt3/4\\), at \\(x=\\pm\\sqrt3\\)",
-      "The distance has no maximum because the domain is unbounded."
-    ],
-    "why": "Division gives distance \\(|x|/(x^2+1)\\). By evenness, maximize \\(x/(x^2+1)\\) for \\(x\\ge0\\); its derivative has the sign of \\(1-x^2\\). Reflect the maximum at \\(x=1\\) across the origin.",
-    "source": "../lectures/curve-sketching.html#example-9",
-    "section": "4.5"
-  },
-  {
-    "topic": "sketch",
-    "level": 4,
-    "prompt": "For which \\(k\\) does the line \\(y=k\\) intersect \\(f(x)=(2x^2-3x+3)/(x-1)\\) at exactly one point?",
-    "choices": [
-      "\\(k=-3\\) or \\(k=5\\)",
-      "Every \\(-3<k<5\\)",
-      "\\(k=-1\\) only",
-      "Every \\(k<-3\\) or \\(k>5\\)"
-    ],
-    "why": "Rearrange as \\(2x^2-(k+3)x+(k+3)=0\\). Its discriminant is \\((k+3)(k-5)\\) and \\(x=1\\) never satisfies the equation. A single intersection occurs at either zero of the discriminant.",
-    "source": "../lectures/exam-3-review.html#from-a-formula-to-a-graph",
-    "section": "4.5"
-  },
-  {
-    "topic": "sketch",
-    "level": 4,
-    "prompt": "The graph of \\(f(x)=4/(x^2+3)\\) has a positive inflection input. Which equation gives the tangent line at that inflection point?",
-    "choices": [
-      "\\(y=-x/2+3/2\\)",
-      "\\(y=-x/2+1\\)",
-      "\\(y=x/2+1/2\\)",
-      "\\(y=-x+2\\)"
-    ],
-    "why": "From \\(f''=24(x^2-1)/(x^2+3)^3\\), concavity changes at \\(x=1\\). There \\(f(1)=1\\) and \\(f'(1)=-8/16=-1/2\\), giving \\(y-1=-(x-1)/2\\).",
-    "source": "../lectures/curve-sketching.html#practice",
-    "section": "4.5"
-  },
-  {
-    "topic": "endbehavior",
-    "level": 4,
-    "prompt": "For the lecture function \\(g(x)=(2x^2+4)/\\sqrt{x^4+1}\\), find \\(\\lim_{x\\to\\infty}x^2(g(x)-2)\\).",
-    "choices": [
-      "\\(4\\)",
-      "\\(0\\)",
-      "\\(2\\)",
-      "\\(+\\infty\\)"
-    ],
-    "why": "Rationalize \\(x^2-\\sqrt{x^4+1}=-1/(x^2+\\sqrt{x^4+1})\\). Then \\(x^2(g-2)\\) is \\(x^2/\\sqrt{x^4+1}\\) times \\(4-2/(x^2+\\sqrt{x^4+1})\\). The factors approach 1 and 4.",
-    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
-    "section": "4.4"
-  },
-  {
-    "topic": "sketch",
-    "level": 4,
-    "prompt": "Generalize \\(x^2/(x-1)\\) to \\(F_a(x)=x^2/(x-a)\\) for \\(a>0\\). Which open interval of heights is missing from its range?",
-    "choices": [
-      "\\((0,4a)\\)",
-      "\\((0,2a)\\)",
-      "\\((a,4a)\\)",
-      "\\((-4a,0)\\)"
-    ],
-    "why": "Solving \\(F_a(x)=y\\) gives \\(x^2-yx+ay=0\\). A real solution exists exactly when \\(y(y-4a)\\ge0\\). The excluded input \\(x=a\\) cannot solve this quadratic since substituting it gives \\(a^2>0\\).",
-    "source": "../lectures/curve-sketching.html#practice",
-    "section": "4.5"
-  },
-  {
-    "topic": "sketch",
-    "level": 4,
-    "prompt": "For \\(F_a(x)=2x^2/(x^2-a^2)\\) with \\(a>0\\), the tangent at \\(x=2a\\) has slope \\(-1\\). Determine \\(a\\) and the tangent-point height.",
-    "choices": [
-      "\\(a=8/9\\), height \\(8/3\\)",
-      "\\(a=8/3\\), height \\(8/9\\)",
-      "\\(a=4/9\\), height \\(4/3\\)",
-      "\\(a=9/8\\), height \\(8/3\\)"
-    ],
-    "why": "The quotient rule gives \\(F_a'=-4a^2x/(x^2-a^2)^2\\). At \\(2a\\) this is \\(-8/(9a)\\), so \\(a=8/9\\). Substitution gives \\(F_a(2a)=8/3\\) for every positive \\(a\\).",
-    "source": "../lectures/curve-sketching.html#example-8",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
@@ -263,7 +194,8 @@
     ],
     "why": "The horizontal asymptote is \\(y=1\\). At \\(x=-2\\) the function value is 2 and \\(f'=1/(x+1)^2=1\\). The tangent is \\(y=x+4\\), which has height 1 at \\(x=-3\\).",
     "source": "../lectures/curve-sketching.html#example-1",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
@@ -277,7 +209,8 @@
     ],
     "why": "The difference from \\(y=x+1\\) is \\(1/(x-1)\\), so being below requires \\(x<1\\). The derivative \\(x(x-2)/(x-1)^2\\) is negative for \\(0<x<2\\) in the domain. Their overlap is \\((0,1)\\).",
     "source": "../lectures/curve-sketching.html#practice",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "endbehavior",
@@ -291,35 +224,8 @@
     ],
     "why": "Set the ratio equal to \\(-1/2\\). Cross-multiplication cancels the cubic terms and leaves \\(2=-x+1\\), so \\(x=-1\\). The original denominator equals \\(-4\\) at that input.",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
-    "section": "4.4"
-  },
-  {
-    "topic": "sketch",
-    "level": 4,
-    "prompt": "For \\(g(x)=x^3/(x^2+1)\\), how many distinct finite tangent lines are parallel to its slant asymptote, and what are they?",
-    "choices": [
-      "Two: \\(y=x-1/2\\) and \\(y=x+1/2\\).",
-      "One: \\(y=x\\).",
-      "Two: \\(y=x-1\\) and \\(y=x+1\\).",
-      "None, since the slope only approaches 1 at infinity."
-    ],
-    "why": "Write \\(g=x-x/(x^2+1)\\). Then \\(g'=1+(x^2-1)/(x^2+1)^2\\), so its slope is 1 at \\(x=\\pm1\\). The corresponding points are \\((1,1/2)\\) and \\((-1,-1/2)\\).",
-    "source": "../lectures/curve-sketching.html#example-9",
-    "section": "4.5"
-  },
-  {
-    "topic": "sketch",
-    "level": 4,
-    "prompt": "For \\(f(x)=4/(x^2+3)\\), take the tangent at the positive inflection point. How many distinct real intersections does this tangent have with the curve?",
-    "choices": [
-      "One: the tangency has multiplicity three.",
-      "Two: the tangency has multiplicity two and there is one further crossing.",
-      "Three: the intersections occur at \\(x=-1,0,1\\).",
-      "One: the tangent line stays on the same side of the graph near the tangency."
-    ],
-    "why": "The inflection point is \\((1,1)\\) and the tangent is \\(y=(3-x)/2\\). Equating this to \\(4/(x^2+3)\\) gives \\((x-1)^3=0\\). The difference changes sign there, and equality occurs nowhere else.",
-    "source": "../lectures/curve-sketching.html#practice",
-    "section": "4.5"
+    "section": "4.4",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "endbehavior",
@@ -333,7 +239,8 @@
     ],
     "why": "Cancel \\(x^{2025}\\) near infinity. Then \\(g=(-x^2+x)/(2026x+1)\\). Adding \\(x/2026\\) gives \\(2027x/(2026(2026x+1))\\).",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
-    "section": "4.4"
+    "section": "4.4",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "endbehavior",
@@ -347,7 +254,8 @@
     ],
     "why": "\\(x^2f(x)-1=(x^2+1)/(x^3-1)\\). Multiplying by \\(x\\) gives a ratio of monic cubics.",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
-    "section": "4.4"
+    "section": "4.4",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "endbehavior",
@@ -361,7 +269,8 @@
     ],
     "why": "At the left end, \\(f=-\\sqrt{4+1/x^2}\\). Rationalizing \\(x^2(2-\\sqrt{4+1/x^2})\\) gives \\(-1/(2+\\sqrt{4+1/x^2})\\).",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
-    "section": "4.4"
+    "section": "4.4",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "endbehavior",
@@ -375,7 +284,9 @@
     ],
     "why": "Division gives \\(f=x+1+1/(x-1)\\). With \\(x>1\\), the gap is less than \\(1/50\\) precisely when \\(x-1>50\\).",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
-    "section": "4.4"
+    "section": "4.4",
+    "pdfPage": 72,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "endbehavior",
@@ -389,7 +300,8 @@
     ],
     "why": "The distance from 3 is at most \\(1/x\\) for \\(x>0\\). At \\(x=\\sqrt{n\\pi}\\) for positive integers \\(n\\), the sine passes through zero and changes sign.",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
-    "section": "4.4"
+    "section": "4.4",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "endbehavior",
@@ -403,7 +315,8 @@
     ],
     "why": "The radicand is \\((2x+2)^2+5\\). The difference between \\(f\\) and \\(|2x+2|\\) is \\(5/(f+|2x+2|)\\), which vanishes at both ends.",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
-    "section": "4.4"
+    "section": "4.4",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "endbehavior",
@@ -417,7 +330,9 @@
     ],
     "why": "Using the remainders from division, \\(f-g=-1/x+x/(x^2+1)=-1/[x(x^2+1)]\\). Multiply by \\(x^3\\) and take the limit.",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
-    "section": "4.4"
+    "section": "4.4",
+    "pdfPage": 72,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "endbehavior",
@@ -431,105 +346,8 @@
     ],
     "why": "Division has quotient \\(x+a\\), so \\(a=2\\). The difference from \\(x+2\\) is \\(((b-1)x-2)/(x^2+1)\\), which vanishes and changes sign at 2 if \\(b=2\\).",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-by-division",
-    "section": "4.4"
-  },
-  {
-    "topic": "endbehavior",
-    "level": 4,
-    "prompt": "For \\(g(x)=(2x^2+4)/\\sqrt{x^4+1}\\), find \\(\\displaystyle\\lim_{x\\to\\infty}x^4(g(x)-2-4/x^2)\\).",
-    "choices": [
-      "\\(-1\\)",
-      "\\(-2\\)",
-      "\\(1\\)",
-      "\\(0\\)"
-    ],
-    "why": "Set \\(u=1/x^2\\). The expression becomes \\((2+4u)(1/\\sqrt{1+u^2}-1)/u^2\\). Rationalization leaves \\(-(2+4u)/(\\sqrt{1+u^2}(1+\\sqrt{1+u^2}))\\to-1\\).",
-    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
-    "section": "4.4"
-  },
-  {
-    "topic": "endbehavior",
-    "level": 4,
-    "prompt": "Let \\(f(x)=(1-x^3)/(2x^3+x-1)\\). After removing its horizontal asymptote and first correction, find \\(\\displaystyle\\lim_{x\\to\\infty}x^3(f(x)+1/2-1/(4x^2))\\).",
-    "choices": [
-      "\\(1/4\\)",
-      "\\(-1/4\\)",
-      "\\(1/2\\)",
-      "\\(0\\)"
-    ],
-    "why": "First \\(f+1/2=(x+1)/(2(2x^3+x-1))\\). Subtract \\(1/(4x^2)\\) and multiply by \\(x^3\\) to get \\(x(2x^2-x+1)/(4(2x^3+x-1))\\). Its leading terms give \\(1/4\\).",
-    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
-    "section": "4.4"
-  },
-  {
-    "topic": "endbehavior",
-    "level": 4,
-    "prompt": "What is the smallest \\(M\\ge0\\) such that for every \\(x>M\\), the vertical distance from \\(g(x)=x^3/(x^2+1)\\) to its slant asymptote is less than \\(1/10\\)?",
-    "choices": [
-      "\\(5+2\\sqrt6\\)",
-      "\\(5-2\\sqrt6\\)",
-      "\\(10\\)",
-      "\\(2\\sqrt6\\)"
-    ],
-    "why": "For \\(x>0\\) the gap is \\(x/(x^2+1)\\). It is less than \\(1/10\\) exactly when \\(x^2-10x+1>0\\). The larger root is the last point at which equality occurs.",
-    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
-    "section": "4.4"
-  },
-  {
-    "topic": "endbehavior",
-    "level": 4,
-    "prompt": "For \\(f(x)=(ax^2+bx+c)/(x^2+x+1)\\), the right-end measurements are \\(f\\to3\\), \\(x(f-3)\\to-2\\), and \\(x^2(f-3+2/x)\\to4\\). Find \\((a,b,c)\\).",
-    "choices": [
-      "\\((3,1,5)\\)",
-      "\\((3,-2,4)\\)",
-      "\\((3,1,4)\\)",
-      "\\((3,5,1)\\)"
-    ],
-    "why": "The leading terms give \\(a=3\\). Then \\(x(f-3)\\to b-3\\), so \\(b=1\\). Adding \\(2/x\\) to \\(f-3\\) leaves \\(((c-1)x+2)/(x(x^2+x+1))\\). Scaling by \\(x^2\\) gives \\(c-1=4\\).",
-    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
-    "section": "4.4"
-  },
-  {
-    "topic": "endbehavior",
-    "level": 4,
-    "prompt": "For \\(f(x)=\\sqrt{4x^2+1}/x\\) and \\(\\varepsilon>0\\), find the sharp positive threshold \\(M\\) beyond which both tails are within \\(\\varepsilon\\) of their respective horizontal asymptotes (that is, whenever \\(|x|>M\\)).",
-    "choices": [
-      "\\(1/\\sqrt{\\varepsilon(4+\\varepsilon)}\\)",
-      "\\(1/(2\\varepsilon)\\)",
-      "\\(1/\\sqrt{\\varepsilon(2+\\varepsilon)}\\)",
-      "\\(1/\\sqrt{4+\\varepsilon^2}\\)"
-    ],
-    "why": "The gap at either end is \\(\\sqrt{4+1/x^2}-2\\). Requiring it to be less than \\(\\varepsilon\\) is equivalent to \\(1/x^2<4\\varepsilon+\\varepsilon^2\\). Equality at \\(|x|=M\\) shows sharpness.",
-    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
-    "section": "4.4"
-  },
-  {
-    "topic": "endbehavior",
-    "level": 4,
-    "prompt": "Let \\(g(x)=x^2/(x-1)\\) and \\(H(x)=g(x)^2-(x+1)^2\\). Find \\(L=\\lim_{x\\to\\infty}H(x)\\) and then \\(\\lim_{x\\to\\infty}x(H(x)-L)\\).",
-    "choices": [
-      "\\(2\\) and \\(4\\)",
-      "\\(0\\) and \\(1\\)",
-      "\\(2\\) and \\(2\\)",
-      "\\(1\\) and \\(4\\)"
-    ],
-    "why": "Write \\(g=x+1+1/(x-1)\\). Expanding the squares gives \\(H=2+4/(x-1)+1/(x-1)^2\\). The constant is 2 and multiplying the remainder by \\(x\\) gives limit 4.",
-    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-by-division",
-    "section": "4.4"
-  },
-  {
-    "topic": "endbehavior",
-    "level": 4,
-    "prompt": "Choose \\(a,b\\) so \\(f(x)=\\sqrt{4x^2+ax+b}\\) has the right-hand slant asymptote \\(y=2x+3\\) and \\(\\lim_{x\\to\\infty}x(f(x)-2x-3)=5\\).",
-    "choices": [
-      "\\(a=12,\\ b=29\\)",
-      "\\(a=6,\\ b=29\\)",
-      "\\(a=12,\\ b=20\\)",
-      "\\(a=12,\\ b=14\\)"
-    ],
-    "why": "Rationalizing gives \\(f-(2x+3)=((a-12)x+b-9)/(f+2x+3)\\). The denominator divided by \\(x\\) tends to 4. Vanishing of the gap forces \\(a=12\\), and its scaled limit is \\((b-9)/4=5\\).",
-    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
-    "section": "4.4"
+    "section": "4.4",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
@@ -543,7 +361,8 @@
     ],
     "why": "Each branch increases. The definition on the whole domain compares every ordered pair of inputs, including pairs on opposite sides of the missing input \\(-1\\).",
     "source": "../lectures/curve-sketching.html#example-1",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
@@ -557,7 +376,8 @@
     ],
     "why": "Solving \\(2x^2=4(x^2-1)\\) gives \\(x=\\pm\\sqrt2\\). Use \\(f^{\\prime}(x)=-4x/(x^2-1)^2\\), whose denominator equals 1 at either point.",
     "source": "../lectures/curve-sketching.html#example-8",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
@@ -571,7 +391,8 @@
     ],
     "why": "\\(g^{\\prime}-1=(x^2-1)/(x^2+1)^2\\) is positive for \\(|x|>1\\). The sign of \\(g^{\\prime\\prime}\\) is the sign of \\(x(3-x^2)\\), negative on \\((-\\sqrt3,0)\\) and \\((\\sqrt3,\\infty)\\). Intersect the two conditions.",
     "source": "../lectures/curve-sketching.html#example-9",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
@@ -585,49 +406,8 @@
     ],
     "why": "\\(g=x+1+1/(x-1)\\) tends to negative infinity from the left of 1 and positive infinity from the right. Its finite endpoint and critical values cannot bound these branches.",
     "source": "../lectures/curve-sketching.html#practice",
-    "section": "4.5"
-  },
-  {
-    "topic": "sketch",
-    "level": 4,
-    "prompt": "For which slopes \\(m\\) does \\(g(x)=x^3/(x^2+1)\\) have four distinct inputs where its tangent has slope \\(m\\)?",
-    "choices": [
-      "\\(1<m<9/8\\)",
-      "\\(0<m<1\\)",
-      "\\(1\\le m\\le9/8\\)",
-      "\\(m>9/8\\)"
-    ],
-    "why": "The even function \\(g^{\\prime}\\) starts at 0 on the right, rises to \\(9/8\\) at \\(\\sqrt3\\), then decreases toward 1 from above. Exactly two positive inputs share each slope strictly between 1 and \\(9/8\\). Reflect them across zero.",
-    "source": "../lectures/curve-sketching.html#example-9",
-    "section": "4.5"
-  },
-  {
-    "topic": "sketch",
-    "level": 4,
-    "prompt": "Two tangents to \\(f(x)=x/(x+1)\\) pass through \\((0,4)\\). What are their slopes?",
-    "choices": [
-      "\\(1\\) and \\(9\\)",
-      "\\(1\\) and \\(4\\)",
-      "\\(4\\) and \\(9\\)",
-      "\\(-1\\) and \\(-9\\)"
-    ],
-    "why": "The tangent at \\(t\\) has vertical intercept \\(f(t)-tf^{\\prime}(t)=t^2/(t+1)^2\\). Equating this to 4 gives \\(t=-2\\) or \\(t=-2/3\\). The slopes \\(1/(t+1)^2\\) are 1 and 9.",
-    "source": "../lectures/curve-sketching.html#example-1",
-    "section": "4.5"
-  },
-  {
-    "topic": "sketch",
-    "level": 4,
-    "prompt": "For \\(m>0\\), when does the line \\(y=mx+2\\) intersect \\(f(x)=2x^2/(x^2-1)\\) at three distinct points?",
-    "choices": [
-      "\\(m>3\\sqrt3\\)",
-      "\\(0<m<3\\sqrt3\\)",
-      "\\(m\\ge3\\sqrt3\\)",
-      "\\(m>2\\sqrt3\\)"
-    ],
-    "why": "Equating the formulas gives \\(x^3-x=2/m\\) with no roots at \\(\\pm1\\). The left side has local maximum \\(2/(3\\sqrt3)\\) and local minimum \\(-2/(3\\sqrt3)\\). A positive height meets it three times precisely below the local maximum.",
-    "source": "../lectures/curve-sketching.html#example-8",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "endbehavior",
@@ -641,7 +421,8 @@
     ],
     "why": "The inputs increase without bound, so we follow the graph to the right.",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
-    "section": "4.4"
+    "section": "4.4",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "endbehavior",
@@ -655,7 +436,8 @@
     ],
     "why": "The denominator has degree 3 and the numerator has degree 1. The quotient tends to zero at both ends.",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
-    "section": "4.4"
+    "section": "4.4",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "endbehavior",
@@ -669,25 +451,28 @@
     ],
     "why": "The difference compares the function and line at the same input. Its limit is zero precisely when their vertical gap closes.",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptote",
-    "section": "4.4"
+    "section": "4.4",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "endbehavior",
     "level": 2,
-    "prompt": "A rational function has leading numerator term \\(-x^{2027}\\) and leading denominator term \\(2026x^{2026}\\). What are its left and right end limits, respectively?",
+    "prompt": "A rational function behaves like \\(-x/2026\\) for very large \\(\\lvert x\\rvert\\). Which way does its left end go?",
     "choices": [
-      "\\(+\\infty,-\\infty\\)",
-      "\\(-\\infty,+\\infty\\)",
-      "\\(0,0\\)",
-      "\\(-1/2026,-1/2026\\)"
+      "Up without bound.",
+      "Down without bound.",
+      "Toward zero.",
+      "Toward 2026."
     ],
-    "why": "The quotient behaves like \\(-x/2026\\). It grows at the left end and falls at the right.",
+    "why": "On the left, \\(x\\) is very negative. Multiplication by the negative constant \\(-1/2026\\) produces increasingly positive values.",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
-    "section": "4.4"
+    "section": "4.4",
+    "pdfPage": 71,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "endbehavior",
-    "level": 2,
+    "level": 3,
     "prompt": "Why does dividing \\(\\sqrt{x^4+1}\\) by \\(x^2\\) give \\(\\sqrt{1+1/x^4}\\) even for negative \\(x\\)?",
     "choices": [
       "\\(\\sqrt{x^4}=x^2\\) because \\(x^2\\ge0\\).",
@@ -697,11 +482,12 @@
     ],
     "why": "The square root of \\((x^2)^2\\) is the absolute value of \\(x^2\\), which is \\(x^2\\) at either end.",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
-    "section": "4.4"
+    "section": "4.4",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "endbehavior",
-    "level": 2,
+    "level": 3,
     "prompt": "After long division of \\(x^3\\) by \\(x^2+1\\), what is the signed vertical difference from the slant asymptote?",
     "choices": [
       "\\(-x/(x^2+1)\\)",
@@ -711,7 +497,8 @@
     ],
     "why": "\\(x(x^2+1)=x^3+x\\) leaves remainder \\(-x\\). Subtracting the slant line \\(y=x\\) leaves the remainder divided by \\(x^2+1\\).",
     "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-by-division",
-    "section": "4.4"
+    "section": "4.4",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
@@ -725,7 +512,8 @@
     ],
     "why": "The denominator is zero at \\(x=-1\\).",
     "source": "../lectures/curve-sketching.html#example-1",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
@@ -739,7 +527,8 @@
     ],
     "why": "The numerator 4 is never zero and the denominator is positive everywhere.",
     "source": "../lectures/curve-sketching.html#practice",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
@@ -753,7 +542,8 @@
     ],
     "why": "Replacing \\(x\\) by \\(-x\\) leaves both the formula and domain unchanged, so the function is even.",
     "source": "../lectures/curve-sketching.html#example-8",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
@@ -767,7 +557,8 @@
     ],
     "why": "An inflection point must be a point on the continuous graph. The input \\(-1\\) is excluded.",
     "source": "../lectures/curve-sketching.html#example-1",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
@@ -781,11 +572,12 @@
     ],
     "why": "The derivative keeps its positive sign across zero. The curve briefly flattens while continuing to increase.",
     "source": "../lectures/curve-sketching.html#example-9",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   },
   {
     "topic": "sketch",
-    "level": 2,
+    "level": 3,
     "prompt": "For \\(f(x)=4/(x^2+3)\\), the sign of \\(f^{\\prime\\prime}\\) is the sign of \\(x^2-1\\). Find both inflection points.",
     "choices": [
       "\\((-1,1)\\) and \\((1,1)\\)",
@@ -795,6 +587,377 @@
     ],
     "why": "The sign changes at \\(x=-1\\) and \\(x=1\\). Substituting either input gives \\(4/(1+3)=1\\).",
     "source": "../lectures/curve-sketching.html#practice",
-    "section": "4.5"
+    "section": "4.5",
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "topic": "rationaltails",
+    "section": "4.4",
+    "level": 2,
+    "prompt": "Division rewrites the worksheet curve as \\(f(x)=2x-1+2/(x-1)\\). Does its graph ever cross its slant asymptote?",
+    "choices": [
+      "No. The remainder term never equals zero.",
+      "Yes, at \\(x=1\\).",
+      "Yes, at \\(x=0\\).",
+      "Yes, wherever \\(f'(x)=2\\)."
+    ],
+    "why": "The line is \\(y=2x-1\\), and the exact vertical difference is \\(2/(x-1)\\). That fraction approaches zero at both ends without ever equaling zero.",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "reference": "Exam 3 review worksheet · 9(b,f)",
+    "pdfPage": 72,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+  },
+  {
+    "topic": "breaks",
+    "section": "2.2",
+    "level": 2,
+    "prompt": "The expression \\(H(x)=(x^2-4)/(x-2)\\) is undefined at 2. What does its graph have there?",
+    "choices": [
+      "A hole at \\((2,4)\\).",
+      "A vertical asymptote at \\(x=2\\).",
+      "A filled point at \\((2,4)\\).",
+      "A jump between heights \\(-2\\) and 2."
+    ],
+    "why": "For \\(x\\ne2\\), the expression is \\(x+2\\). Its two-sided limit is 4, but the original domain excludes the corresponding graph point.",
+    "source": "../lectures/03-infinite-limits.html#infinite-limits-and-vertical-asymptotes",
+    "reference": "Exam 3 review worksheet · 10",
+    "pdfPage": 9,
+    "pdf": "../downloads/september-28-limits-class-notes.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+  },
+  {
+    "section": "4.4",
+    "level": 3,
+    "topic": "endbehavior",
+    "prompt": "Which graph represents \\(f(x)=(x^2-1)/x\\)? The dashed diagonal in each graph is its slant asymptote.",
+    "choices": [
+      "Two increasing branches approach x = 0 and y = x. Both cross the x-axis.",
+      "Two branches separated at x = 0 approach y = x and never cross the x-axis.",
+      "An increasing curve through the origin with a flat tangent there and tails approaching y = x.",
+      "A decreasing curve through the origin with a flat tangent there and tails approaching y = −x."
+    ],
+    "graphChoices": [
+      "slant-pole",
+      "slant-pole-plus",
+      "slant-smooth",
+      "slant-negative"
+    ],
+    "why": "Write \\(f(x)=x-1/x\\). The vertical asymptote is \\(x=0\\), and the graph crosses the horizontal axis at \\(x=-1\\) and \\(x=1\\).",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "pdfPage": 72,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.5",
+    "level": 2,
+    "topic": "sketch",
+    "prompt": "Which graph has equation \\(y=x/(x+1)\\)?",
+    "choices": [
+      "Increasing branches approach x = −1 and y = 1. The right branch passes through the origin.",
+      "Decreasing branches approach x = −1 and y = 1. The right branch passes through (0, 2).",
+      "Branches approach x = 1 and y = 1. The left branch passes through the origin.",
+      "Decreasing branches approach x = −1 and y = −1, crossing at the origin."
+    ],
+    "graphChoices": [
+      "up-saturate",
+      "down-saturate",
+      "right-pole",
+      "negative-tail"
+    ],
+    "why": "The graph goes through \\((0,0)\\). Writing \\(y=1-1/(x+1)\\) gives asymptotes \\(x=-1\\) and \\(y=1\\), with the left branch above 1.",
+    "source": "../lectures/curve-sketching.html#example-1",
+    "pdfPage": 74,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.5",
+    "level": 3,
+    "topic": "sketch",
+    "prompt": "The picture shows the two branches of \\(f(x)=x/(x+1)\\). Which picture shows \\(f'\\)?",
+    "choices": [
+      "Both branches rise above the axis toward positive infinity at −1.",
+      "Both branches fall below the axis toward negative infinity at −1.",
+      "At x = −1 the left branch approaches negative infinity and the right branch approaches positive infinity.",
+      "Branches approach positive infinity on the left of −1 and negative infinity on its right."
+    ],
+    "graphChoices": [
+      "inverse-square",
+      "inverse-neg-square",
+      "inverse",
+      "inverse-neg"
+    ],
+    "why": "Both branches rise, and their slopes become very steep near \\(-1\\). Indeed, \\(f'(x)=1/(x+1)^2\\) is positive on both sides.",
+    "source": "../lectures/curve-sketching.html#example-1",
+    "graphPrompt": "up-saturate",
+    "pdfPage": 74,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.5",
+    "level": 3,
+    "topic": "sketch",
+    "prompt": "Which picture shows \\(f(x)=2x^2/(x^2-1)\\)?",
+    "choices": [
+      "Two outer branches sit above y = 2. Between the poles the middle branch peaks at the origin.",
+      "A smooth even valley touches the origin; its two tails approach y = 2 from below.",
+      "Outer branches approach y = 2 from below. The central branch has its minimum at (0, 4).",
+      "Two outer branches sit below y = −2. The central branch bottoms at the origin."
+    ],
+    "graphChoices": [
+      "even-three",
+      "even-no-pole",
+      "even-swap",
+      "even-mirror"
+    ],
+    "why": "The denominator vanishes at \\(-1\\) and \\(1\\). Between them, the values are nonpositive and \\(f(0)=0\\). The outer branches approach \\(y=2\\) from above.",
+    "source": "../lectures/curve-sketching.html#example-8",
+    "pdfPage": 75,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.5",
+    "level": 3,
+    "topic": "sketch",
+    "prompt": "Which curve represents \\(g(x)=x^3/(x^2+1)\\)?",
+    "choices": [
+      "An increasing curve through the origin with a flat tangent there and tails approaching y = x.",
+      "A decreasing curve through the origin with a flat tangent there and tails approaching y = −x.",
+      "Two increasing branches approach x = 0 and y = x. Both cross the x-axis.",
+      "Two branches separated at x = 0 approach y = x and never cross the x-axis."
+    ],
+    "graphChoices": [
+      "slant-smooth",
+      "slant-negative",
+      "slant-pole",
+      "slant-pole-plus"
+    ],
+    "why": "The denominator is always positive, so the graph has no gaps. It passes through the origin with a horizontal tangent. Writing \\(g(x)=x-x/(x^2+1)\\) gives its slant asymptote \\(y=x\\).",
+    "source": "../lectures/curve-sketching.html#example-9",
+    "pdfPage": 76,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.5",
+    "level": 3,
+    "topic": "sketch",
+    "prompt": "This graph shows \\(f(x)=4/(x^2+3)\\). Choose the graph of its derivative.",
+    "choices": [
+      "One positive lobe on the left followed by a negative lobe on the right, crossing the origin.",
+      "One negative lobe on the left followed by a positive lobe on the right, crossing the origin.",
+      "Single positive, symmetric hump centered on the y-axis; both tails approach zero.",
+      "Single negative, symmetric trough centered on the y-axis; both tails approach zero."
+    ],
+    "graphChoices": [
+      "bell-slope",
+      "bell-neg-slope",
+      "bell",
+      "bell-low"
+    ],
+    "why": "The original rises on the left, peaks at zero, and falls on the right. Its derivative \\(-8x/(x^2+3)^2\\) is therefore positive to the left and negative to the right.",
+    "source": "../lectures/curve-sketching.html#practice",
+    "graphPrompt": "bell",
+    "pdfPage": 77,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "level": 4,
+    "prompt": "Let \\(g=P/Q\\), where the two leading terms of \\(P\\) are \\(x^{2026}+x^{2025}\\) and those of \\(Q\\) are \\(2026x^{2026}-2025x^{2025}\\). Find \\(\\lim_{x\\to\\infty}x(2026g(x)-1)\\).",
+    "answer": "4051/2026",
+    "why": "In \\(2026P-Q\\) the degree-2026 terms cancel. The next coefficient is \\(2026+2025=4051\\). Multiplying by \\(x\\) restores degree 2026, so the limit is \\(4051/2026\\).",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#end-behaviour-of-a-rational-function",
+    "pdfPage": 71,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "level": 4,
+    "prompt": "For the lecture PDF’s \\(h(x)=(e^{2x}-1)/(e^{x^2}+x+1)\\), find \\(\\lim_{x\\to-\\infty}e^{x^2}h(x)\\).",
+    "answer": "-1",
+    "why": "Dividing the denominator by \\(e^{x^2}\\) leaves \\((e^{2x}-1)/(1+(x+1)e^{-x^2})\\). The numerator tends to \\(-1\\) and the denominator tends to 1.",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
+    "pdfPage": 72,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "level": 4,
+    "prompt": "For the lecture PDF’s \\(f(x)=(x^2-4)/(x^2-x+1)\\), evaluate \\(\\lim_{x\\to\\infty}x^2(f(x)-1-1/x)\\).",
+    "answer": "-4",
+    "why": "First \\(f-1=(x-5)/(x^2-x+1)\\). Subtracting \\(1/x\\) and multiplying by \\(x^2\\) produces \\(x(-4x-1)/(x^2-x+1)\\), which tends to \\(-4\\).",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes",
+    "pdfPage": 70,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "level": 4,
+    "prompt": "For \\(f(x)=\\sqrt{4x^2+1}/x\\) at the positive end, evaluate \\(\\lim_{x\\to\\infty}x^4(f(x)-2-1/(4x^2))\\).",
+    "answer": "-1/64",
+    "why": "\\(f^2=4+1/x^2\\) gives \\(f-2=1/[x^2(f+2)]\\). Using that identity twice, the scaled difference becomes \\(-1/[4(f+2)^2]\\). Now \\(f\\to2\\).",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
+    "pdfPage": 71,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "level": 4,
+    "prompt": "With \\(g(x)=(2x^2+4)/\\sqrt{x^4+1}\\), evaluate \\(\\lim_{x\\to\\infty}(g(x)-2)/(g(2x)-2)\\).",
+    "answer": "4",
+    "why": "Divide by \\(x^2\\) inside \\(g\\). Rationalizing the difference shows \\(x^2(g(x)-2)\\to4\\). Substituting \\(2x\\) gives \\((2x)^2(g(2x)-2)\\to4\\), so the quotient tends to 4.",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
+    "pdfPage": 71,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "level": 4,
+    "prompt": "Let \\(f(x)=x^2/(x-1)\\) and \\(g(x)=x^3/(x^2+1)\\). Compute \\(\\lim_{x\\to\\infty}x^2(f(x)-g(x)-1-2/x)\\).",
+    "answer": "1",
+    "why": "Division gives \\(f-g-1=1/(x-1)+x/(x^2+1)\\). Subtract \\(1/x\\) from each summand and scale by \\(x^2\\) to get \\(x/(x-1)-x/(x^2+1)\\to1\\).",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+    "pdfPage": 73,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "level": 4,
+    "prompt": "Compute \\(\\lim_{x\\to-\\infty}x(\\sqrt{4x^2+8x+9}+2x+2)\\).",
+    "answer": "-5/4",
+    "why": "The radical equals \\(\\sqrt{(2x+2)^2+5}\\). Rationalizing gives \\(5x/(\\sqrt{4x^2+8x+9}-2x-2)\\). Divide the denominator and numerator by \\(-x\\), getting \\(-5/(2+2)\\) in the limit.",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#nonrational-examples",
+    "pdfPage": 71,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "level": 4,
+    "prompt": "For \\(g(x)=x^3/(x^2+1)\\), find the smallest \\(M\\ge0\\) such that the vertical gap to its slant line is less than \\(5/26\\) for all \\(x>M\\).",
+    "answer": "5",
+    "why": "At positive \\(x\\) the gap is \\(x/(x^2+1)\\). It is smaller than \\(5/26\\) when \\(5x^2-26x+5=(5x-1)(x-5)>0\\). The last input where equality holds is 5.",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptote",
+    "pdfPage": 72,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.4",
+    "topic": "endbehavior",
+    "level": 4,
+    "prompt": "A rational curve \\(g(x)=(x^3+ax^2+bx+c)/(x^2+1)\\) has slant line \\(y=x+2\\), crosses it at \\(x=3\\), and satisfies \\(\\lim_{x\\to\\infty}x(g(x)-x-2)=-2\\). Find \\(c\\).",
+    "answer": "8",
+    "why": "Division forces \\(a=2\\) and leaves \\(((b-1)x+c-2)/(x^2+1)\\). Its scaled limit forces \\(b-1=-2\\). Crossing at 3 then gives \\(-6+c-2=0\\).",
+    "source": "../lectures/19-end-behaviour-and-curve-sketching.html#slant-by-division",
+    "capstone": true,
+    "pdfPage": 73,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "level": 4,
+    "prompt": "The tangent to \\(f(x)=2x^2/(x^2-1)\\) at \\(x=2\\) crosses the horizontal asymptote at which horizontal coordinate?",
+    "answer": "11/4",
+    "why": "The point is \\((2,8/3)\\) and the slope from \\(f^{\\prime}=-4x/(x^2-1)^2\\) is \\(-8/9\\). Solve \\(2=8/3-(8/9)(x-2)\\).",
+    "source": "../lectures/curve-sketching.html#example-8",
+    "pdfPage": 75,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "level": 4,
+    "prompt": "Across the entire graph of \\(g(x)=x^3/(x^2+1)\\), what is the greatest tangent slope?",
+    "answer": "9/8",
+    "why": "\\(g^{\\prime}=x^2(x^2+3)/(x^2+1)^2\\) tends to 1 at both ends. Its critical inputs from \\(g^{\\prime\\prime}=2x(3-x^2)/(x^2+1)^3\\) are zero and \\(\\pm\\sqrt3\\). The slopes there are 0 and \\(9/8\\).",
+    "source": "../lectures/curve-sketching.html#example-9",
+    "pdfPage": 76,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "level": 4,
+    "prompt": "At both inflection points of \\(f(x)=4/(x^2+3)\\), draw tangent lines. At what height do those lines intersect?",
+    "answer": "3/2",
+    "why": "Inflections occur at \\((\\pm1,1)\\). The slopes from \\(-8x/(x^2+3)^2\\) are \\(\\mp1/2\\). Symmetry gives an intersection on the vertical axis at height \\(1+1/2\\).",
+    "source": "../lectures/curve-sketching.html#practice",
+    "pdfPage": 77,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "level": 4,
+    "prompt": "A tangent to \\(g(x)=x^2/(x-1)\\) meets the slant asymptote at horizontal coordinate 7. Find the input where that tangent touches the curve.",
+    "answer": "4",
+    "why": "Write \\(g=x+1+1/(x-1)\\). At a tangent input \\(t\\), the signed gap between tangent and slant line at \\(x=7\\) is \\(1/(t-1)-(7-t)/(t-1)^2\\). Setting it to zero gives \\(t-1=7-t\\).",
+    "source": "../lectures/curve-sketching.html#practice",
+    "pdfPage": 78,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "level": 4,
+    "prompt": "For \\(f(x)=x/(x+1)\\), two tangent lines pass through \\((0,9)\\). Find the sum of their slopes.",
+    "answer": "20",
+    "why": "The tangent at \\(t\\) has vertical intercept \\(f(t)-tf^{\\prime}(t)=t^2/(t+1)^2\\). Setting it to 9 gives \\(t=-3/2,-3/4\\). Their slopes \\(1/(t+1)^2\\) are 4 and 16.",
+    "source": "../lectures/curve-sketching.html#example-1",
+    "pdfPage": 74,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "level": 4,
+    "prompt": "Find the squared Euclidean distance between the two nonzero inflection points of \\(g(x)=x^3/(x^2+1)\\).",
+    "answer": "75/4",
+    "why": "The second derivative changes sign at \\(\\pm\\sqrt3\\), with heights \\(\\pm3\\sqrt3/4\\). The squared distance is \\((2\\sqrt3)^2+(3\\sqrt3/2)^2=75/4\\).",
+    "source": "../lectures/curve-sketching.html#example-9",
+    "pdfPage": 76,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "level": 4,
+    "prompt": "On the right branch of \\(f(x)=4/(x^2+3)\\), the curve reaches height \\(1/3\\). Where does its tangent there cross the horizontal axis? Give the horizontal coordinate.",
+    "answer": "5",
+    "why": "The positive input solving \\(4/(x^2+3)=1/3\\) is 3. Its tangent slope is \\(-24/144=-1/6\\). The tangent must move 2 units right to drop from \\(1/3\\) to zero.",
+    "source": "../lectures/curve-sketching.html#practice",
+    "pdfPage": 77,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "level": 4,
+    "prompt": "At the positive input where \\(f(x)=2x^2/(x^2-1)\\) has height \\(-2\\), find the square of its tangent slope.",
+    "answer": "128",
+    "why": "Solving the height equation gives \\(x^2=1/2\\). Since \\(f^{\\prime}=-4x/(x^2-1)^2\\), its square is \\(16(1/2)/(1/2)^4=128\\).",
+    "source": "../lectures/curve-sketching.html#example-8",
+    "pdfPage": 75,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
+  },
+  {
+    "section": "4.5",
+    "topic": "sketch",
+    "level": 4,
+    "prompt": "For all tangents to \\(g(x)=x^3/(x^2+1)\\), consider their vertical intercepts. What is the largest possible squared intercept?",
+    "answer": "27/64",
+    "why": "At input \\(t\\) the intercept is \\(g(t)-tg^{\\prime}(t)=-2t^3/(t^2+1)^2\\). Its square is \\(4u^3/(u+1)^4\\) with \\(u=t^2\\ge0\\). The derivative has sign \\(3-u\\) for \\(u>0\\), giving maximum \\(4(27)/4^4=27/64\\).",
+    "source": "../lectures/curve-sketching.html#example-9",
+    "capstone": true,
+    "pdfPage": 76,
+    "pdf": "../downloads/november-9-end-behavior-and-curve-sketching.pdf"
   }
 ]

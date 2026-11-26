@@ -11,7 +11,8 @@
     ],
     "why": "With width \\(x\\) along the longer leg, the height is \\(8-2x/3\\). Thus \\(A(x)=8x-2x^2/3\\) has its unique maximum at \\(x=6\\).",
     "source": "../lectures/optimization.html#primer",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -25,7 +26,8 @@
     ],
     "why": "\\(V=x(12-2x)^2\\) has derivative \\(12(x-2)(x-6)\\), so the optimal cut is 2 inches. Four squares remove \\(4(2^2)=16\\) of the original 144 square inches.",
     "source": "../lectures/optimization.html#optimization-problems",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -39,7 +41,8 @@
     ],
     "why": "The errors give \\(E(m)=4+(m+1)^2+(2m-3)^2=5(m-1)^2+9\\). Its global minimum occurs at \\(m=1\\).",
     "source": "../lectures/optimization.html#optimization-problems",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -53,7 +56,8 @@
     ],
     "why": "\\(h=54/r^2\\) gives \\(S=2\\pi r^2+108\\pi/r\\). Its derivative changes from negative to positive at \\(r^3=27\\). Substitute \\(r=3\\) to get \\(h=6\\) and \\(S=54\\pi\\).",
     "source": "../lectures/optimization.html#optimization-problems",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -67,7 +71,8 @@
     ],
     "why": "\\(x^2+4xy=300\\) gives \\(V=(300x-x^3)/4\\). The derivative changes from positive to negative at \\(x=10\\), and then \\(y=5\\).",
     "source": "../lectures/optimization.html#optimization-problems",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -81,7 +86,8 @@
     ],
     "why": "For depth \\(x\\), the full river length is \\(72/x\\). Minimize \\(3x+72/x\\): \\(x^2=24\\). Each pen has river length \\(36/x=3\\sqrt6\\).",
     "source": "../lectures/optimization.html#optimization-problems",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -95,7 +101,9 @@
     ],
     "why": "Printed width \\(x\\) gives \\(A=(x+4)(96/x+6)=120+6x+384/x\\). Its minimum is at \\(x=8\\), with printed height 12. Adding both margins in each direction gives \\(12\\times18\\).",
     "source": "../lectures/exam-3-review.html#optimization-a-printed-flyer",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -109,7 +117,8 @@
     ],
     "why": "\\(\\theta=\\arctan(4/x)-\\arctan(1/x)\\) has derivative with sign \\(4-x^2\\). At \\(x=2\\), the tangent subtraction formula gives \\((2-1/2)/(1+2(1/2))=3/4\\).",
     "source": "../lectures/optimization.html#harder-problems",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -123,7 +132,8 @@
     ],
     "why": "For \\(k\\) dollar increases, \\(R=(10+k)(120-5k)\\) has vertex \\(k=7\\). Profit \\(P=(7+k)(120-5k)-450\\) has vertex \\(k=8.5\\), so \\(k=8,9\\) tie.",
     "source": "../lectures/optimization.html#harder-problems",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -137,7 +147,8 @@
     ],
     "why": "For circle circumference \\(c\\), minimize \\(c^2/(4\\pi)+(24-c)^2/16\\). Setting its derivative to zero gives \\(4c=\\pi(24-c)\\); the second derivative is positive.",
     "source": "../lectures/optimization.html#harder-problems",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -151,7 +162,8 @@
     ],
     "why": "One pen minimizes \\(2x+72/x\\) at \\(x=6\\), using 24 m. With the divider, minimize \\(3x+72/x\\) at \\(x=2\\sqrt6\\), using \\(12\\sqrt6\\) m. Subtract the minima.",
     "source": "../lectures/optimization.html#optimization-problems",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -165,105 +177,8 @@
     ],
     "why": "For remaining shore distance \\(x\\), minimize \\((80-x)/100+\\sqrt{x^2+1600}/60\\). Its critical equation is \\(x/\\sqrt{x^2+1600}=3/5\\). Hence \\(x=30\\), so each leg of the trip is 50 m.",
     "source": "../lectures/optimization.html#harder-problems",
-    "section": "4.6"
-  },
-  {
-    "topic": "optimization",
-    "level": 4,
-    "prompt": "A lifeguard runs at 100 m/min and swims at 60 m/min. A swimmer is 40 m offshore, but the nearest point on shore is only 20 m down the beach. Entry must be between that point and the start. What is the fastest route and time?",
-    "choices": [
-      "Enter immediately; \\(20\\sqrt5\\) seconds",
-      "Run 20 m; \\(52\\) seconds",
-      "Run 10 m; \\(6+10\\sqrt{17}\\) seconds",
-      "Enter immediately; \\(40\\sqrt5\\) seconds"
-    ],
-    "why": "Let \\(x\\) be the shore distance remaining. On \\([0,20]\\), \\(x/\\sqrt{x^2+1600}<3/5\\), so \\(T\\) decreases as \\(x\\) increases. At \\(x=20\\) the swim length is \\(20\\sqrt5\\) m; the swimming speed is 1 m/s.",
-    "source": "../lectures/optimization.html#harder-problems",
-    "section": "4.6"
-  },
-  {
-    "topic": "optimization",
-    "level": 4,
-    "prompt": "A 24-cm wire makes a circle and a square, both with positive perimeter. What are the minimum combined area and the supremum of the combined area?",
-    "choices": [
-      "\\(144/(\\pi+4)\\) cm² and \\(144/\\pi\\) cm², with the supremum unattained",
-      "\\(144/(\\pi+4)\\) cm² and \\(36\\) cm², both attained",
-      "\\(144/\\pi\\) cm² and \\(36\\) cm², with the supremum unattained",
-      "\\(36\\) cm² and \\(144/\\pi\\) cm², both attained"
-    ],
-    "why": "At the minimum the circle gets \\(24\\pi/(\\pi+4)\\) cm and the square \\(96/(\\pi+4)\\) cm. Substitution gives \\(144/(\\pi+4)\\). The strictly convex objective has limiting endpoint areas \\(36\\) and \\(144/\\pi\\); neither endpoint is feasible.",
-    "source": "../lectures/optimization.html#harder-problems",
-    "section": "4.6"
-  },
-  {
-    "topic": "optimization",
-    "level": 4,
-    "prompt": "The lower and upper edges of a painting are \\(a,b\\) feet above eye level, where \\(0<a<b\\). Which pair gives the optimal distance \\(x\\) and the tangent of the resulting viewing angle?",
-    "choices": [
-      "\\(x=\\sqrt{ab}\\), \\(\\tan\\theta=(b-a)/(2\\sqrt{ab})\\)",
-      "\\(x=(a+b)/2\\), \\(\\tan\\theta=(b-a)/(a+b)\\)",
-      "\\(x=\\sqrt{ab}\\), \\(\\tan\\theta=(a+b)/(2\\sqrt{ab})\\)",
-      "\\(x=b-a\\), \\(\\tan\\theta=(b-a)/\\sqrt{ab}\\)"
-    ],
-    "why": "Angle subtraction gives \\(\\tan\\theta=(b-a)x/(x^2+ab)\\). Since \\(0<\\theta<\\pi/2\\), maximize this quotient. Its derivative has sign \\(ab-x^2\\); substitute \\(x=\\sqrt{ab}\\).",
-    "source": "../lectures/optimization.html#harder-problems",
-    "section": "4.6"
-  },
-  {
-    "topic": "optimization",
-    "level": 4,
-    "prompt": "A band sells 120 tickets at 10 dollars. Each whole-dollar increase reduces sales by five. The venue takes 450 dollars plus 3 dollars per ticket. If it can now hold only 74 people, what price maximizes profit and what profit does it yield? Actual sales equal the smaller of demand and 74.",
-    "choices": [
-      "20 dollars, profit 740 dollars",
-      "18 dollars, profit 750 dollars",
-      "19 dollars, profit 734 dollars",
-      "19 dollars, profit 750 dollars"
-    ],
-    "why": "With the cap, profit rises through 19 dollars, where it is \\(16(74)-450=734\\). From 20 dollars onward the uncapped profit decreases, since its vertex is at 18.5 dollars. At 20 dollars it is \\(17(70)-450=740\\).",
-    "source": "../lectures/optimization.html#harder-problems",
-    "section": "4.6"
-  },
-  {
-    "topic": "optimization",
-    "level": 4,
-    "prompt": "For an open square-based tank, a square centimeter of base costs twice as much as a square centimeter of wall. The budget covers 300 cm² at the wall rate. Find the dimensions that maximize capacity and the maximum volume.",
-    "choices": [
-      "Base \\(5\\sqrt2\\) cm square, height \\(5\\sqrt2\\) cm, volume \\(250\\sqrt2\\) cm³",
-      "Base \\(10\\) cm square, height \\(5\\) cm, volume \\(500\\) cm³",
-      "Base \\(5\\sqrt2\\) cm square, height \\(5/\\sqrt2\\) cm, volume \\(125\\sqrt2\\) cm³",
-      "Base \\(5\\) cm square, height \\(25/2\\) cm, volume \\(625/2\\) cm³"
-    ],
-    "why": "\\(2x^2+4xh=300\\), so \\(V=(300x-2x^3)/4\\). Its derivative changes sign at \\(x^2=50\\). Then \\(h=50/x=x\\), giving \\(250\\sqrt2\\) cm³.",
-    "source": "../lectures/optimization.html#optimization-problems",
-    "section": "4.6"
-  },
-  {
-    "topic": "optimization",
-    "level": 4,
-    "prompt": "Fit \\(y=mx+2\\) to \\((0,0),(1,1),(2,5)\\) as in lecture, but count the squared error of the last point twice. Which slope and minimum weighted squared error result?",
-    "choices": [
-      "\\(m=11/9\\), error \\(86/9\\)",
-      "\\(m=1\\), error \\(10\\)",
-      "\\(m=11/9\\), error \\(50/9\\)",
-      "\\(m=5/4\\), error \\(9\\)"
-    ],
-    "why": "\\(E=4+(m+1)^2+2(2m-3)^2=9m^2-22m+23\\). Its vertex occurs at \\(11/9\\) and \\(E(11/9)=23-121/9=86/9\\).",
-    "source": "../lectures/optimization.html#optimization-problems",
-    "section": "4.6"
-  },
-  {
-    "topic": "optimization",
-    "level": 4,
-    "prompt": "Cut identical squares from a \\(12\\times18\\) inch sheet and fold an open box. Which cut maximizes volume, and why is the other root of the critical-point equation discarded?",
-    "choices": [
-      "\\(5-\\sqrt7\\) in; the other root exceeds 6 in",
-      "\\(5+\\sqrt7\\) in; the other root is negative",
-      "\\(3\\) in; the other root exceeds 9 in",
-      "\\(5-\\sqrt7\\) in; the other root is a feasible local minimum"
-    ],
-    "why": "\\(V=x(12-2x)(18-2x)\\) for \\(0<x<6\\). Its derivative is \\(12(x^2-10x+18)\\); the roots are \\(5\\pm\\sqrt7\\). Only the smaller is feasible, and the derivative there changes from positive to negative.",
-    "source": "../lectures/optimization.html#optimization-problems",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -277,7 +192,8 @@
     ],
     "why": "\\(xy=x(6-x)=9-(x-3)^2\\). Requiring a loss of at most \\(1/4\\) means \\((x-3)^2\\le1/4\\), giving the interval centered at 3 with radius \\(1/2\\).",
     "source": "../lectures/optimization.html#primer",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -291,7 +207,8 @@
     ],
     "why": "The perimeter becomes \\(2(6+d)+72/(6+d)\\). Subtract the optimal perimeter 24 and combine over \\(6+d\\) to obtain \\(2d^2/(6+d)\\).",
     "source": "../lectures/optimization.html#primer",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -305,35 +222,8 @@
     ],
     "why": "In side-material cost units, \\(C=4\\pi r^2+2\\pi rh=4\\pi r^2+108\\pi/r\\). Setting \\(C^{\\prime}=0\\) gives \\(r^3=13.5\\), so \\(h/r=54/r^3=4\\). Cost rises at both ends of the positive domain.",
     "source": "../lectures/optimization.html#optimization-problems",
-    "section": "4.6"
-  },
-  {
-    "topic": "optimization",
-    "level": 4,
-    "prompt": "A 216-cm² flyer uses 2-cm margins on the sides and 3-cm margins at top and bottom. The printer caps page width at 11 cm. What width maximizes printed area, and how much printed area does the cap cost?",
-    "choices": [
-      "11 cm, loss \\(6/11\\) cm²",
-      "11 cm, loss \\(12/11\\) cm²",
-      "10 cm, loss \\(6/11\\) cm²",
-      "11 cm, no loss"
-    ],
-    "why": "At width \\(w\\), printed area is \\((w-4)(216/w-6)=240-6w-864/w\\). It increases until \\(w=12\\), where it equals 96. The cap forces \\(w=11\\), giving \\(1050/11\\) cm² and a loss of \\(6/11\\).",
-    "source": "../lectures/exam-3-review.html#optimization-a-printed-flyer",
-    "section": "4.6"
-  },
-  {
-    "topic": "optimization",
-    "level": 4,
-    "prompt": "Fit \\(y=mx+b\\) to \\((0,0),(1,1),(2,5)\\) by minimizing squared errors. This time the intercept is free. Using the fact that the optimal line passes through the centroid \\((1,2)\\), find the line and the minimum squared-error sum.",
-    "choices": [
-      "\\(y=(5/2)x-1/2\\), error \\(3/2\\)",
-      "\\(y=2x\\), error \\(2\\)",
-      "\\(y=(5/2)x-1/2\\), error \\(1/2\\)",
-      "\\(y=x+2\\), error \\(3/2\\)"
-    ],
-    "why": "The centroid forces \\(b=2-m\\). The residuals (predicted minus actual) are \\(2-m,1,m-3\\). Their squared sum has derivative \\(4m-10\\) and positive second derivative. At \\(m=5/2\\) the residuals are \\(-1/2,1,-1/2\\).",
-    "source": "../lectures/optimization.html#optimization-problems",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -347,7 +237,8 @@
     ],
     "why": "Use the constraint \\(y=6-x\\) in \\(xy\\).",
     "source": "../lectures/optimization.html#primer",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -361,7 +252,8 @@
     ],
     "why": "The fixed quantity is volume, the base area \\(\\pi r^2\\) times height \\(h\\).",
     "source": "../lectures/optimization.html#optimization-problems",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
@@ -375,39 +267,44 @@
     ],
     "why": "Add each leg’s distance divided by its own speed to get the rescue time.",
     "source": "../lectures/optimization.html#harder-problems",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
     "level": 2,
-    "prompt": "A rectangle has area 36 cm². When the perimeter is minimized, what is the perimeter?",
+    "prompt": "The lecture shows that the rectangle of area 36 cm² with least perimeter is a square. What is that perimeter?",
     "choices": [
-      "\\(24\\) cm",
-      "\\(12\\) cm",
-      "\\(36\\) cm",
-      "\\(18\\) cm"
+      "24 cm",
+      "12 cm",
+      "36 cm",
+      "18 cm"
     ],
-    "why": "With sides \\(x,36/x\\), the perimeter \\(2x+72/x\\) decreases until \\(x=6\\) then increases. The minimizing square has perimeter 24.",
+    "why": "The side of a square with area 36 is 6 cm. Four such sides total 24 cm.",
     "source": "../lectures/optimization.html#primer",
-    "section": "4.6"
+    "section": "4.6",
+    "pdfPage": 79,
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
     "level": 2,
-    "prompt": "A rectangle fits inside a right triangle with legs 12 and 8 cm, with its outer corner on the hypotenuse. At width 6 cm along the longer leg, what is its area?",
+    "prompt": "A rectangle under the hypotenuse of the lecture triangle has width \\(x\\) and height \\(8-2x/3\\). What is its height at \\(x=6\\) cm?",
     "choices": [
-      "\\(24\\) cm²",
-      "\\(48\\) cm²",
-      "\\(12\\) cm²",
-      "\\(36\\) cm²"
+      "4 cm",
+      "2 cm",
+      "6 cm",
+      "8 cm"
     ],
-    "why": "The hypotenuse has height \\(8-(2/3)x\\). At \\(x=6\\), that height is 4 and the rectangle has area \\(6(4)=24\\).",
+    "why": "At width 6 cm the height is \\(8-(2/3)(6)=8-4=4\\) cm.",
     "source": "../lectures/optimization.html#primer",
-    "section": "4.6"
+    "section": "4.6",
+    "pdfPage": 79,
+    "pdf": "../downloads/optimization-worksheet.pdf"
   },
   {
     "topic": "optimization",
-    "level": 2,
+    "level": 3,
     "prompt": "A square-based tank with no lid uses 300 cm² of metal. With base side \\(x\\), which expression gives its volume solely in terms of \\(x\\)?",
     "choices": [
       "\\(x(300-x^2)/4\\)",
@@ -417,6 +314,143 @@
     ],
     "why": "The material constraint is \\(x^2+4xh=300\\), so \\(h=(300-x^2)/(4x)\\). Multiply by \\(x^2\\) for volume.",
     "source": "../lectures/optimization.html#optimization-problems",
-    "section": "4.6"
+    "section": "4.6",
+    "pdf": "../downloads/optimization-worksheet.pdf"
+  },
+  {
+    "topic": "optimization",
+    "section": "4.6",
+    "level": 2,
+    "prompt": "A flyer has \\(96\\,\\mathrm{cm}^2\\) of print, printed width \\(x\\), 2 cm side margins and 3 cm top and bottom margins. What is the paper area?",
+    "choices": [
+      "\\((x+4)(96/x+6)\\)",
+      "\\((x+2)(96/x+3)\\)",
+      "\\((x+6)(96/x+4)\\)",
+      "\\(96+4+6\\)"
+    ],
+    "why": "The printed height is \\(96/x\\). Add both side margins to the width and both vertical margins to the height before multiplying.",
+    "source": "../lectures/optimization.html#primer",
+    "reference": "Exam 3 review worksheet · 7(a)",
+    "pdfPage": 79,
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+  },
+  {
+    "topic": "optimization",
+    "section": "4.6",
+    "level": 2,
+    "prompt": "An open box comes from cutting squares of side \\(x\\) from the corners of a 12 cm square. What is the feasible interval for a box with positive volume?",
+    "choices": [
+      "\\(0<x<6\\)",
+      "\\(0<x<12\\)",
+      "\\(0\\le x\\le6\\)",
+      "\\(0<x<3\\)"
+    ],
+    "why": "The height is \\(x\\) and the base side is \\(12-2x\\). Both must be positive for a three-dimensional box.",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "reference": "Exam 3 review worksheet · 8(a)",
+    "pdfPage": 80,
+    "pdf": "../downloads/optimization-worksheet.pdf",
+    "reviewPdf": "../downloads/exam-3-review-worksheet.pdf"
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "level": 4,
+    "prompt": "A swimmer is 40 m offshore from a point 80 m down the beach. A lifeguard runs at 100 m/min and swims at 60 m/min. How many minutes does the optimum route save over running the entire 80 m and swimming straight out?",
+    "answer": "2/15",
+    "why": "Let \\(u\\) be the remaining distance along shore on starting the swim. Minimize \\((80-u)/100+\\sqrt{u^2+1600}/60\\). The derivative gives \\(u=30\\), so the minimum is \\(50/100+50/60=4/3\\). The other route takes \\(80/100+40/60=22/15\\).",
+    "source": "../lectures/optimization.html#harder-problems",
+    "pdfPage": 82,
+    "pdf": "../downloads/optimization-worksheet.pdf"
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "level": 4,
+    "prompt": "The band sells 120 tickets at 10 dollars and loses five sales per whole-dollar increase. Its costs are 450 dollars plus 3 dollars per sale. How many extra dollars of profit does the best profit price earn over the price that maximizes revenue?",
+    "answer": "10",
+    "why": "Revenue \\((10+k)(120-5k)\\) peaks at \\(k=7\\). Profit \\((7+k)(120-5k)-450\\) has vertex \\(k=8.5\\), so \\(k=8,9\\) tie. Profit is 750 dollars there and 740 dollars at \\(k=7\\).",
+    "source": "../lectures/optimization.html#harder-problems",
+    "pdfPage": 83,
+    "pdf": "../downloads/optimization-worksheet.pdf"
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "level": 4,
+    "prompt": "A painting’s bottom and top edges sit 1 and 4 ft above eye level. Two positive viewing distances give the same angle whose tangent is \\(3/5\\). What is the ratio of the larger distance to the smaller?",
+    "answer": "4",
+    "why": "With distance \\(x\\), tangent subtraction gives \\(\\tan\\theta=(4/x-1/x)/(1+4/x^2)=3x/(x^2+4)\\). Equating this to \\(3/5\\) yields \\((x-1)(x-4)=0\\).",
+    "source": "../lectures/optimization.html#harder-problems",
+    "pdfPage": 83,
+    "pdf": "../downloads/optimization-worksheet.pdf"
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "level": 4,
+    "prompt": "A 24-cm wire forms a circle and a square. Choose the cut minimizing three times the circle’s area plus twice the square’s area. At the optimum, divide the circle’s diameter by the square’s side length.",
+    "answer": "2/3",
+    "why": "For circle circumference \\(c\\) minimize \\(3c^2/(4\\pi)+2(24-c)^2/16\\). Its derivative vanishes when \\(3c/(2\\pi)=(24-c)/4\\). Thus \\(c/\\pi\\) is \\(2/3\\) of the square’s side. The second derivative is positive.",
+    "source": "../lectures/optimization.html#harder-problems",
+    "pdfPage": 83,
+    "pdf": "../downloads/optimization-worksheet.pdf"
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "level": 4,
+    "prompt": "For the lecture’s open square-based tank, suppose a unit of base costs \\(3/2\\) as much as a unit of side. With a fixed material budget, maximize capacity. Find height divided by base side at the optimum.",
+    "answer": "3/4",
+    "why": "In side-cost units the constraint is \\(B=3x^2/2+4xh\\). Capacity is \\(V=(Bx-3x^3/2)/4\\). At the maximum \\(B=9x^2/2\\). Substitution gives \\(4xh=3x^2\\).",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdfPage": 81,
+    "pdf": "../downloads/optimization-worksheet.pdf"
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "level": 4,
+    "prompt": "Fold an open box from a 12-in square, cutting the same square from each corner. Compared with the exact best cut, how many cubic inches are lost if the cut is \\(3/2\\) in wide?",
+    "answer": "13/2",
+    "why": "\\(V=x(12-2x)^2\\) has its interior maximum at \\(x=2\\), with volume 128. At \\(x=3/2\\) it gives \\((3/2)9^2=243/2\\). Their difference is \\(13/2\\).",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdfPage": 80,
+    "pdf": "../downloads/optimization-worksheet.pdf"
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "level": 4,
+    "prompt": "Fit \\(y=mx+2\\) by least squares to \\((0,0),(1,1),(2,k)\\). The minimizing slope is \\(3/2\\). Determine the observed height \\(k\\).",
+    "answer": "25/4",
+    "why": "The error sum is \\(4+(m+1)^2+(2m+2-k)^2\\). Its derivative \\(10m+10-4k\\) vanishes at \\(m=3/2\\), giving \\(k=25/4\\). The second derivative is 10.",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdfPage": 80,
+    "pdf": "../downloads/optimization-worksheet.pdf"
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "level": 4,
+    "prompt": "A 72-m² riverside pasture has a divider perpendicular to the river. Each of its three perpendicular fences must have the same positive integer length, while the parallel side may be any length. Find the minimum total fence length in meters.",
+    "answer": "147/5",
+    "why": "Minimize \\(3x+72/x\\). The derivative changes sign at \\(\\sqrt{24}\\), between 4 and 5. Check those integers: \\(30\\) m and \\(15+72/5=147/5\\) m. Monotonicity eliminates all others.",
+    "source": "../lectures/optimization.html#optimization-problems",
+    "pdfPage": 82,
+    "pdf": "../downloads/optimization-worksheet.pdf"
+  },
+  {
+    "section": "4.6",
+    "topic": "optimization",
+    "level": 4,
+    "prompt": "A lifeguard can run at 100 m/min. The swimmer is 40 m offshore, opposite a point 80 m down the beach. The fastest achievable rescue takes \\(11/10\\) minutes, and the optimum enters the water strictly between the two shore points. Determine the swimming speed in m/min.",
+    "answer": "80",
+    "why": "For swim speed \\(v\\), minimize \\(T=(80-u)/100+\\sqrt{u^2+1600}/v\\). The interior critical equation gives \\(u/\\sqrt{u^2+1600}=v/100\\). Substitution yields \\(T_{\\min}=4/5+40\\sqrt{1/v^2-1/100^2}\\). Setting this to \\(11/10\\) gives \\(1/v^2=1/6400\\).",
+    "source": "../lectures/optimization.html#harder-problems",
+    "capstone": true,
+    "pdfPage": 82,
+    "pdf": "../downloads/optimization-worksheet.pdf"
   }
 ]
