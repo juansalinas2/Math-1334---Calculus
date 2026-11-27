@@ -178,6 +178,15 @@ class PilotTests(unittest.TestCase):
             {"content": [{"text": "The units describe volume per second."}]}}}
         self.assertTrue(app.generate("Which rate?", "cube", ["cube"])["sources"][0]["href"].endswith("#cube"))
 
+    def test_first_hint_and_unmarked_secondary_source(self):
+        self.cloud.converse.return_value = {"stopReason": "end_turn", "output": {"message":
+            {"content": [{"text": "Which two dimensions determine the area?"}]}}}
+        result = app.generate("Just a hint, please", "rectangle", ["rectangle", "cube"])
+        self.assertEqual([s["href"] for s in result["sources"]], [app.PAGE + "#rectangle"])
+        self.assertEqual(self.cloud.converse.call_args.kwargs["system"][0]["text"], app.HINT_INSTRUCTIONS)
+        app.generate("No hints please. Is my rate right?", "rectangle", ["rectangle"])
+        self.assertIn("Directly confirm", self.cloud.converse.call_args.kwargs["system"][0]["text"])
+
     def test_failure_and_unknown_context(self):
         self.cloud.converse.side_effect = RuntimeError("offline")
         self.assertEqual(self.ask("What does this mean?", section="unlisted")["statusCode"], 503)
