@@ -5,19 +5,16 @@ import gzip
 import hashlib
 import importlib.util
 import json
-import math
 import random
 import statistics
-import subprocess
 import sys
 import time
-from collections import Counter, defaultdict
+from collections import defaultdict
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 APP = HERE.parent
 sys.path.insert(0, str(APP))
-BASELINE = "b0b50fe7cc5560ea8d681d8579dadee1be2b30a4"
 
 
 def sha(data):
@@ -41,7 +38,8 @@ def read_corpus():
 
 def run_score(args):
     book = read_corpus()
-    module = importlib.util.module_from_spec(spec := importlib.util.spec_from_file_location("evaluated_index", args.retriever))
+    spec = importlib.util.spec_from_file_location("evaluated_index", args.retriever)
+    module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     index = module.Index(book)
     results = []
@@ -85,8 +83,10 @@ def compare(args):
     for old, new in zip(a, b):
         d = int(new["success"]) - int(old["success"])
         differences[old["family"]].append(d)
-        if d == 1: wins.append(old["id"])
-        if d == -1: losses.append(old["id"])
+        if d == 1:
+            wins.append(old["id"])
+        elif d == -1:
+            losses.append(old["id"])
     rng = random.Random(1334)
     families = list(differences.values())
     bootstrap = []
@@ -125,18 +125,51 @@ def live(args):
     return audit
 
 
+def dialogues(args):
+    from deploy import post
+    code = args.class_code_file.read_text().strip()
+    endpoint = (APP / "pilot-endpoint.txt").read_text().strip()
+    tests = json.loads((HERE / "dialogues.json").read_text())
+    if sum(len(test["questions"]) for test in tests) > 8 or not endpoint.startswith("https://"):
+        raise ValueError("Expected a bounded run against the configured course endpoint.")
+    rows = []
+    for test in tests:
+        history = []
+        for turn, question in enumerate(test["questions"], start=1):
+            payload = dict(mode="course", page=test["page"], section=test["anchor"], question=question, history=history)
+            try:
+                result = post(endpoint, code, payload)
+            except Exception as exc:
+                rows.append(dict(id=test["id"], turn=turn, error=type(exc).__name__))
+                break
+            rows.append(dict(id=test["id"], turn=turn, answer=result["answer"], section=result["section"],
+                             hrefs=[s["href"] for s in result["sources"]]))
+            if result["sources"]:
+                history.append(dict(question=question, answer=result["answer"][:1600], section=result["section"]))
+            args.output.write_text(json.dumps(rows, ensure_ascii=False, indent=2) + "\n")
+    return rows
+
+
 def main():
-    cli=argparse.ArgumentParser(description=__doc__)
-    modes=cli.add_subparsers(dest="mode",required=True)
-    s=modes.add_parser("score");s.add_argument("--split",choices=["dev","test"],required=True)
-    s.add_argument("--retriever",type=Path,default=APP/"course_index.py")
-    c=modes.add_parser("compare");c.add_argument("before",type=Path);c.add_argument("after",type=Path)
-    l=modes.add_parser("live");l.add_argument("--class-code-file",type=Path,required=True)
-    for mode in (s,c,l): mode.add_argument("--output",type=Path,required=True)
-    args=cli.parse_args()
-    data={"score":run_score,"compare":compare,"live":live}[args.mode](args)
-    args.output.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n")
-    print(data.get("metrics",data) if args.mode=="score" else f"Wrote {args.output}")
+    cli = argparse.ArgumentParser(description=__doc__)
+    modes = cli.add_subparsers(dest="mode", required=True)
+    score_parser = modes.add_parser("score")
+    score_parser.add_argument("--split", choices=["dev", "test"], required=True)
+    score_parser.add_argument("--retriever", type=Path, default=APP / "course_index.py")
+    comparison_parser = modes.add_parser("compare")
+    comparison_parser.add_argument("before", type=Path)
+    comparison_parser.add_argument("after", type=Path)
+    live_parser = modes.add_parser("live")
+    live_parser.add_argument("--class-code-file", type=Path, required=True)
+    dialog_parser = modes.add_parser("dialogues")
+    dialog_parser.add_argument("--class-code-file", type=Path, required=True)
+    for parser in (score_parser, comparison_parser, live_parser, dialog_parser):
+        parser.add_argument("--output", type=Path, required=True)
+    args = cli.parse_args()
+    operation = {"score": run_score, "compare": compare, "live": live, "dialogues": dialogues}[args.mode]
+    data = operation(args)
+    args.output.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+    print(data["metrics"] if args.mode == "score" else f"Wrote {args.output}")
 
 
 if __name__ == "__main__":

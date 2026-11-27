@@ -22,3 +22,7 @@ python3 ask-notes/benchmark/run.py compare /tmp/baseline.json /tmp/candidate.jso
 ```sh
 python3 ask-notes/benchmark/run.py live --class-code-file ~/.math1334-class-code --output /tmp/live-ask.json
 ```
+
+## Additional conversation check
+
+After the first comparison, four new scripted dialogues were fixed before revising the follow-up behavior. Each second turn sends the first actual reply and its returned passage ID back to Ask, as the website does. One switches to a different lecture. Each turn has a prewritten rubric. Run the paired check with the same arguments as the live audit, replacing `live` with `dialogues`. Treat these four scenarios as a separate prospective check. The 35 previously revealed cases serve as regressions.
