@@ -70,6 +70,9 @@ class CourseBenchmark(unittest.TestCase):
                 self.assertEqual(section, problem)
                 self.assertEqual(reply["sources"][0]["href"], problem)
                 self.assertIn(r"\cos x", prompt()["requested_part"])
+                self.assertIn("Practice 3", prompt()["passages"][1]["title"])
+                self.assertIn(r"0^+", prompt()["passages"][1]["text"])
+                self.assertIn(r"\to0}", prompt()["requested_part"])
                 self.assertEqual(prompt()["recent_exchange"], payload["history"])
         for question in ("What about a tangent line?", "What about (x) + 1?", "a = 5"):
             self.assertEqual(requested_part(question, None), "")

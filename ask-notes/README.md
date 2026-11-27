@@ -22,6 +22,8 @@ After a successful request, the browser can keep the shared class code and an ex
 
 Calculations lead with the argument and a short LaTeX computation. Students can follow “Show the computation for 12(a)” with “What about (b)? Give me just one hint.” Ask selects part (b) of the same problem and uses it to suggest a single move. When a solution compresses a nonobvious step, the model can include a question about that step and its explanation in the same answer. Opening it uses no additional inference.
 
+For a lettered exercise without a published solution on that page, the index also looks for a worked exercise containing the same formula. A one-sided example can supply the method for a two-sided limit. The tutor receives the original problem and both directions as printed. This lookup uses the existing index and model call.
+
 ## Evaluate the course-wide tutor
 
 Run the ordinary unit tests to check the offline benchmark floor. The benchmark folder contains a frozen public corpus, relevance labels, raw retrieval decisions, and scored synthetic answers. Its README gives the exact commands for a before-and-after comparison. The offline tests do not call AWS. The optional answer audit and two-turn conversations use the live class allowance.

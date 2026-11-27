@@ -80,6 +80,22 @@ def part_labels(text):
     return labels
 
 
+def part_text(text, letter):
+    labels = part_labels(text)
+    if letter not in labels:
+        return ""
+    start = labels[letter]
+    end = next((pos for pos in labels.values() if pos > start), len(text))
+    return text[start:end].strip()
+
+
+def formulas(text):
+    for inline, display in re.findall(r"\\\((.*?)\\\)|\\\[(.*?)\\\]", text, re.S):
+        formula = re.sub(r"\\(?:displaystyle|left|right)\b|\s+", "", inline or display)
+        if len(formula) >= 12:
+            yield formula
+
+
 def build(rows):
     book = {}
     for row in rows:
@@ -119,6 +135,7 @@ class Index:
         self.book = book
         self.docs = {}
         self.numbered = defaultdict(list)
+        self.worked = defaultdict(list)
         counts = Counter()
         for key, row in book.items():
             label = NUMBERED_HEADING.match(row["title"])
@@ -126,6 +143,10 @@ class Index:
                 page = row["href"].split("#")[0]
                 number = int(label[2] or label[3])
                 self.numbered[page, number].append(((label[1] or "").lower(), key))
+                statement, marker, _ = row["text"].partition("Show solution")
+                if marker:
+                    for formula in formulas(statement):
+                        self.worked[formula].append(key)
             if not row["text"]:
                 continue
             words = Counter(tokens(row["text"]))
@@ -134,6 +155,23 @@ class Index:
             self.docs[key] = (words, sum(words.values()), title, page)
             counts.update(set(words) | title | page)
         self.idf = {w: math.log1p((len(self.docs) - n + .5) / (n + .5)) for w, n in counts.items()}
+
+    def worked_example(self, section, statement):
+        """Find a published worked exercise with the same displayed expression."""
+        for formula in formulas(statement):
+            variants = [formula]
+            # A one-sided example can demonstrate a method for a two-sided limit.
+            # Preserve the actual directions in the passages sent to the tutor.
+            limit = re.match(r"\\lim_\{\w+\\to-?\d+\}", formula)
+            if limit:
+                end = limit.end() - 1
+                variants.extend(formula[:end] + side + formula[end:] for side in ("^+", "^-"))
+            for variant in variants:
+                matches = [k for k in self.worked.get(variant, ())
+                           if self.book[k]["href"] != self.book[section]["href"]]
+                if matches:
+                    return min(matches, key=lambda k: len(self.book[k]["text"]))
+        return ""
 
     def search(self, question, page, section, *, followup=False):
         """Return trusted passage keys or a clarification before using any model tokens."""

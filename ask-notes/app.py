@@ -197,13 +197,12 @@ def generate(question, section, keys, history=(), book=None, part=""):
     prompt = {"reading": book[section]["title"] if section else None,
               "recent_exchange": list(history), "question": question, "passages": excerpts}
     if part:
-        # Point to the actual subquestion while preserving givens and earlier parts.
-        text = excerpts[0]["text"]
-        labels = course_index.part_labels(text)
-        if part in labels:
-            start = labels[part]
-            end = next((i for i in labels.values() if i > start), len(text))
-            prompt["requested_part"] = text[start:end].strip()
+        statement = course_index.part_text(excerpts[0]["text"], part)
+        if statement:
+            prompt["requested_part"] = statement
+            if len(excerpts) > 1:
+                prompt["method_note"] = ("Passage 1 is the student's exercise. Follow the worked method "
+                                         "in passage 2, checking the original givens and limit direction.")
     instructions = INSTRUCTIONS
     wants_hint = re.search(r"\b(?:hint|first step|how (?:do|should) I start)\b", question, re.I)
     if wants_hint and not re.search(r"\b(?:no|without|not (?:just )?a) hints?\b", question, re.I):
@@ -235,6 +234,8 @@ def generate(question, section, keys, history=(), book=None, part=""):
     if result.get("stopReason") != "end_turn" or not answer or not ids <= valid or answer.startswith(("NO_EVIDENCE", "CLARIFY")):
         return {"answer": NO_EVIDENCE, "sources": [], "related": sources}
     cited = [s for s in sources if str(s["id"]) in ids] if ids else sources[:1]
+    if part and sources[0] not in cited:
+        cited.insert(0, sources[0])
     main, marker, extra = answer.partition("\nDETAIL:")
     reply = {"answer": main.strip() or NO_EVIDENCE, "sources": cited if main.strip() else []}
     if marker and main.strip() and instructions != HINT_INSTRUCTIONS:
@@ -267,12 +268,17 @@ def course_reply(question, payload):
         for entry in checks().get(local, {}).get("reviewed_answers", []):
             if re.search(entry["match"], question, re.I):
                 return preceding, {"answer": entry["answer"], "sources": source_links([preceding], book), "reviewed": True}
-    keys, clarification = course_index.index().search(question, page, preceding, followup=bool(history))
+    index = course_index.index()
+    keys, clarification = index.search(question, page, preceding, followup=bool(history))
     if not keys:
         return section, {"answer": clarification, "sources": []}
     primary = keys[0]
     if ref or part:
         history = [turn for turn in history if turn["section"] == primary]
+    if part and len(keys) == 1 and "Show solution" not in book[primary]["text"]:
+        example = index.worked_example(primary, course_index.part_text(book[primary]["text"], part))
+        if example:
+            keys = [primary, example]
     return primary, generate(question, primary, keys, history, book, part)
 
 
