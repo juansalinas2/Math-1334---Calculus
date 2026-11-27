@@ -633,6 +633,17 @@
 
     function currentReading() {
       const line = Math.min(170, innerHeight / 3);
+      // Near the end of a page, the browser cannot scroll a linked heading to the top.
+      const atBottom = Math.ceil(scrollY + innerHeight) >= document.scrollingElement.scrollHeight - 1;
+      if (atBottom && location.hash) {
+        const anchor = location.hash.slice(1);
+        const key = relatedRates ? anchor : page + "#" + anchor;
+        const target = topics.get(key)?.node;
+        if (target) {
+          const bounds = target.getBoundingClientRect();
+          if (bounds.top < innerHeight && bounds.bottom > line) return key;
+        }
+      }
       let current = firstTopic;
       for (const [key, topic] of topics) {
         const r = topic.node.getBoundingClientRect();
