@@ -7,7 +7,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import NamedTuple
 
-from practice import REFERENCE, SHORT_REQUEST, WORDS
+from practice import REFERENCE, SHORT_REQUEST, WALKTHROUGH, WORDS
 
 PUBLIC_PAGE = re.compile(r"^(?:(?:lectures|supplements)/[\w.-]+|index|lecture-pdfs)\.html(?:#[^\s]*)?$")
 LABEL = re.compile(r"\b(Example|Practice(?: problem)?|Problem|Exercise)\s+(\d+)[.:](?=\s)")
@@ -70,6 +70,20 @@ def requested_part(question, reference):
     if match:
         return next(letter.lower() for letter in match.groups() if letter)
     return ""
+
+
+def wants_exercise_start(question):
+    """A reference and courtesy words alone ask for a way into the exercise."""
+    if re.search(r"\b(?:solve|solution|answer|walk|walkthrough|explain|calculate|compute|all parts|step.by.step)\b", question, re.I):
+        return False
+    remainder = question
+    for pattern in (REFERENCE, SHORT_REQUEST, SHORTHAND):
+        match = re.search(pattern, question, re.I)
+        if match:
+            remainder = question[:match.start()] + " " + question[match.end():]
+            break
+    remainder = re.sub(r"\b(?:stuck|lost|confused)\b", " ", remainder.replace("’", "'"), flags=re.I).strip(" \t\n.,?!:;")
+    return not remainder or remainder.isdigit() or bool(re.fullmatch(WALKTHROUGH, remainder, re.I))
 
 
 def part_labels(text):

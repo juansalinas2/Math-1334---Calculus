@@ -190,7 +190,7 @@ def route_question(question, section):
     return section, None
 
 
-def generate(question, section, keys, history=(), book=None, part="", open_reading=None):
+def generate(question, section, keys, history=(), book=None, part="", open_reading=None, starter=False):
     if not keys:
         return {"answer": NO_EVIDENCE, "sources": []}
     book = passages() if book is None else book
@@ -209,8 +209,10 @@ def generate(question, section, keys, history=(), book=None, part="", open_readi
                                          "in passage 2, checking the original givens and limit direction.")
     instructions = INSTRUCTIONS
     wants_hint = re.search(r"\b(?:hint|first step|how (?:do|should) I start)\b", question, re.I)
-    if wants_hint and not re.search(r"\b(?:no|without|not (?:just )?a) hints?\b", question, re.I):
+    if (starter or wants_hint) and not re.search(r"\b(?:no|without|not (?:just )?a) hints?\b", question, re.I):
         instructions = HINT_INSTRUCTIONS
+        if starter:
+            prompt["task"] = "The exercise reference is resolved. Give a concrete first move using the givens in passage 1."
     elif re.search(r"\b(?:i got|is (?:my|that|this)|would that|am i right|is it right)\b", question, re.I):
         instructions += " Directly confirm or correct the student's proposed result. Compute the value and give its units when the passage supplies the givens."
     teaching_key = section.removeprefix(PAGE + "#")
@@ -285,7 +287,9 @@ def course_reply(question, payload):
         if example:
             keys = [primary, example]
     location = {"page": book[page]["title"], "heading": book[section]["title"]}
-    result = generate(question, primary, keys, history, book, part, open_reading=location)
+    starter = bool(ref and course_index.wants_exercise_start(question))
+    focus = part or ("a" if starter and "a" in course_index.part_labels(book[primary]["text"]) else "")
+    result = generate(question, primary, keys, history, book, focus, open_reading=location, starter=starter)
     if ref and result["answer"] in (NO_EVIDENCE, ASK_FOR_EXAMPLE):
         # The verified location survives even when the model cannot finish an answer.
         source = source_links([primary], book)

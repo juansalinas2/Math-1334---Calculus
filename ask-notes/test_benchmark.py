@@ -52,8 +52,12 @@ class CourseBenchmark(unittest.TestCase):
             generate.return_value = {"answer":unavailable, "sources":[]}
             section, result = app.course_reply("Can you help me on 8?", data)
             self.assertEqual(section, box)
+            self.assertTrue(generate.call_args.kwargs["starter"])
+            self.assertEqual(generate.call_args.args[5], "a")
             self.assertIn("folding a box", result["answer"])
             self.assertEqual(result["sources"][0]["href"], box)
+        app.course_reply("Show the full solution for problem 8", data)
+        self.assertFalse(generate.call_args.kwargs["starter"])
 
     def test_numbered_reviews_use_the_open_page(self):
         book = read_corpus()
