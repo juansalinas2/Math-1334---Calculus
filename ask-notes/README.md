@@ -4,6 +4,8 @@ On a course notes page, open **Ask**, start typing and use Tab to accept a match
 
 ## Build
 
+The [instructor's practical guide](System-Guide.tex) follows one student question through the system and includes a local retrieval lab, release steps, troubleshooting, and an interview example. The instructor bundle includes the compiled PDF.
+
 From the course checkout, run `quarto render`, then `python3 -m unittest discover -s ask-notes -p 'test_*.py'`. Use `python3 ask-notes/preview.py` for the offline page. Run `python3 ask-notes/bundle.py` to package the Lambda function, public passages and illustrated LaTeX guide.
 
 ## AWS in Oregon
