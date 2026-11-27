@@ -16,6 +16,14 @@ NUMBER = r"(\d+|" + "|".join(WORDS) + r")"
 REFERENCE = (r"(?:\b(example|ex\.?|practice(?:\s+problem)?|exercise|problem|question)"
              r"\s*(?:(?:number|no\.)\s*)?#?\s*|#\s*)" + NUMBER +
              r"(?:\s*\(([a-z])\)|([a-z])\b)?(?![a-z0-9])")
+# Informal requests still name an exercise. A unit or arithmetic operator after
+# the number makes it part of the mathematics instead.
+SHORT_REQUEST = (r"\b(?:number|help(?: me)? (?:on|with)|(?:stuck|working) on|"
+                 r"(?:walk|work|talk)(?: me| us)? through|go over|"
+                 r"how (?:do|can|should) (?:i|we) (?:do|start|solve|approach)|"
+                 r"(?:can we|let['’]?s) (?:do|try|solve))\s+" + NUMBER +
+                 r"(?:\s*\(([a-z])\)|\s*([a-z])\b)?"
+                 r"(?=\s*(?:$|[?!,:;.](?:$|\s)|please\b|(?:in|from|on) (?:this page|(?:the )?exam \d+ review|section \d|§)))")
 START = (r"\b(?:stuck|lost|confused|hint|start(?:ed|ing)?|begin|first step|"
          r"help|don't (?:get|understand)|"
          r"do not (?:get|understand))\b")
@@ -105,7 +113,7 @@ def browser_script():
     for (key, field, _), paragraph in zip(fields, rendered, strict=True):
         catalog[key][field] = paragraph
     data = json.dumps(catalog, ensure_ascii=False).replace("<", r"\u003c")
-    routing = json.dumps({"ref": REFERENCE, "words": WORDS, "start": START, "part": PART,
+    routing = json.dumps({"ref": REFERENCE, "shortRef": SHORT_REQUEST, "words": WORDS, "start": START, "part": PART,
                           "walk": WALKTHROUGH, "walkVerb": WALK_VERB, "aliases": ALIASES})
     return (HERE / "practice.js").read_text().replace("/* COURSE_CHECKS */ null", data).replace(
         "/* COURSE_ROUTING */ null", routing)

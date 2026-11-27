@@ -97,7 +97,7 @@ def make_preview(site, destination, *, metered=False):
     if metered:
         append_script((HERE / "widget.js").read_text(),
                       **{"data-mode":"aws", "data-lecture":"yes", "data-endpoint":"/ask", "data-root":PUBLIC})
-    append_script(browser_script(), **{"data-endpoint":"/ask" if metered else ""})
+    append_script(browser_script(), **{"data-endpoint":"/ask" if metered else "", "data-page":PAGE})
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(str(document))
     return destination

@@ -21,6 +21,8 @@ MODEL = "us.amazon.nova-2-lite-v1:0"
 ASK_FOR_EXAMPLE = "Which example or step do you mean? Give its heading or paste the line you're working on."
 NO_EVIDENCE = "I couldn’t find enough in the course notes to answer that. Try naming the topic or including the problem."
 INSTRUCTIONS = r"""Tutor beginning calculus from the supplied course passages. Answer the newest question.
+student_view names the open page and heading. When a numbered exercise has been located,
+use its statement in passage 1. For general help, start with its setup and one useful move.
 For a computation, give the key idea in one short sentence and show the calculation to its result.
 Use the course's Calculus I methods. For an indeterminate limit, show the change of form and
 use l'Hospital's rule when appropriate. Use Taylor series or little-o notation only if the
@@ -188,7 +190,7 @@ def route_question(question, section):
     return section, None
 
 
-def generate(question, section, keys, history=(), book=None, part=""):
+def generate(question, section, keys, history=(), book=None, part="", open_reading=None):
     if not keys:
         return {"answer": NO_EVIDENCE, "sources": []}
     book = passages() if book is None else book
@@ -196,6 +198,8 @@ def generate(question, section, keys, history=(), book=None, part=""):
                 for i, k in enumerate(keys, start=1)]
     prompt = {"reading": book[section]["title"] if section else None,
               "recent_exchange": list(history), "question": question, "passages": excerpts}
+    if open_reading:
+        prompt["student_view"] = open_reading
     if part:
         statement = course_index.part_text(excerpts[0]["text"], part)
         if statement:
@@ -258,9 +262,10 @@ def course_reply(question, payload):
         section = page
     history = recent_turns(payload, book)
     preceding = history[-1]["section"] if history else section
-    ref = course_index.problem_reference(question)
+    ref = course_index.problem_reference(question, first_turn=not history)
     part = course_index.requested_part(question, ref)
-    if ref or (part and book[preceding]["href"].split("#")[0] != page):
+    viewing = course_index.ON_SCREEN.search(question)
+    if ref or viewing or (part and book[preceding]["href"].split("#")[0] != page):
         preceding = section
     # Keep instructor-checked explanations for known misconceptions within their reading.
     if not ref and not part:
@@ -273,13 +278,26 @@ def course_reply(question, payload):
     if not keys:
         return section, {"answer": clarification, "sources": []}
     primary = keys[0]
-    if ref or part:
+    if ref or part or viewing:
         history = [turn for turn in history if turn["section"] == primary]
     if part and len(keys) == 1 and "Show solution" not in book[primary]["text"]:
         example = index.worked_example(primary, course_index.part_text(book[primary]["text"], part))
         if example:
             keys = [primary, example]
-    return primary, generate(question, primary, keys, history, book, part)
+    location = {"page": book[page]["title"], "heading": book[section]["title"]}
+    result = generate(question, primary, keys, history, book, part, open_reading=location)
+    if ref and result["answer"] in (NO_EVIDENCE, ASK_FOR_EXAMPLE):
+        # The verified location survives even when the model cannot finish an answer.
+        source = source_links([primary], book)
+        statement = book[primary]["text"].partition("Show solution")[0].strip()
+        first = part or "a"
+        start = course_index.part_text(statement, first)
+        excerpt = start or statement
+        message = "I found " + source[0]["title"] + "."
+        if 0 < len(excerpt) <= 360:
+            message += "\n\n" + excerpt
+        result = {"answer": message + "\n\nWhich step would you like to work through?", "sources": source}
+    return primary, result
 
 
 def reply(status, data):

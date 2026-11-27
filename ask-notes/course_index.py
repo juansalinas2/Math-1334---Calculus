@@ -7,7 +7,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import NamedTuple
 
-from practice import REFERENCE, WORDS
+from practice import REFERENCE, SHORT_REQUEST, WORDS
 
 PUBLIC_PAGE = re.compile(r"^(?:(?:lectures|supplements)/[\w.-]+|index|lecture-pdfs)\.html(?:#[^\s]*)?$")
 LABEL = re.compile(r"\b(Example|Practice(?: problem)?|Problem|Exercise)\s+(\d+)[.:](?=\s)")
@@ -27,9 +27,7 @@ SHORTHAND = re.compile(
     r"(?:^\s*|\b(?:with|on|for|about|through|explain|solve|try|do)\s+)"
     r"(\d+)\s*(?:\(([a-z])\)|([a-z])\b)"
     r"(?=\s*(?:$|[?!,:;.](?:$|\s)|(?:from|in|on|please)\b))", re.I)
-BARE_PROBLEM = re.compile(
-    r"\b(?:number|help(?: me)? with|stuck on|walk (?:me |us )?through)\s+(\d+)"
-    r"(?=\s*(?:$|[?!,:;.](?:$|\s)|please\b))", re.I)
+ON_SCREEN = re.compile(r"\b(?:this (?:problem|exercise|example|section|page|reading)|on (?:my|the) screen)\b", re.I)
 PART_ONLY = re.compile(
     r"\bpart\s+\(?([a-z])\b|"
     r"(?:(?:^|\b(?:about|with|for|on|through|try|do)\s+)\(([a-z])\)|"
@@ -43,7 +41,7 @@ class ProblemRef(NamedTuple):
     part: str
 
 
-def problem_reference(question):
+def problem_reference(question, *, first_turn=False):
     match = re.search(REFERENCE, question, re.I)
     if match:
         kind, number, suffix, packed = match.groups()
@@ -55,8 +53,12 @@ def problem_reference(question):
     match = SHORTHAND.search(question)
     if match:
         return ProblemRef("", int(match[1]), (match[2] or match[3]).lower())
-    match = BARE_PROBLEM.search(question)
+    match = re.search(SHORT_REQUEST, question, re.I)
     if match:
+        number = match[1].lower()
+        return ProblemRef("", WORDS.index(number) if number in WORDS else int(number),
+                          (match[2] or match[3] or "").lower())
+    if first_turn and (match := re.fullmatch(r"\s*(\d+)\s*[?.!]?\s*", question)):
         return ProblemRef("", int(match[1]), "")
     return None
 
@@ -178,7 +180,7 @@ class Index:
         book = self.book
         page = page if page in book and "#" not in page else ""
         section = section if section in book else page
-        ref = problem_reference(question)
+        ref = problem_reference(question, first_turn=not followup)
         part = requested_part(question, ref)
         words = set(tokens(question))
         selected = re.search(r"(?:§|\bsection\s*)\s*(\d+\.\d+)\b", question, re.I)
@@ -222,6 +224,10 @@ class Index:
             return [section], ""
         if part and not selected:
             return [], "Which problem number or heading has the part you’re asking about?"
+        if section in book and "#" in section and not selected and ON_SCREEN.search(question):
+            return [section], ""
+        if followup and section in book and re.fullmatch(r"\s*\d+\s*[?.!]?\s*", question):
+            return [section], ""
         known = section in self.docs
         local = known and "#" in section
         recognized = words & self.idf.keys()

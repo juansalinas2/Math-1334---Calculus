@@ -10,6 +10,51 @@ from course_index import Index, problem_reference, requested_part
 
 
 class CourseBenchmark(unittest.TestCase):
+    def test_same_help_request_follows_the_open_page(self):
+        book = read_corpus()
+        index = Index(book)
+        for page, anchor in (("exam-3-review", "optimization-folding-a-box"),
+                             ("exam-2-review", "implicit-differentiation"),
+                             ("08-exam-practice", "problem-8")):
+            page = "lectures/" + page + ".html"
+            for question in ("Help with problem 8", "Can you help me on 8?", "Help on eight",
+                             "How do I start 8?", "Can we try 8?", "8"):
+                with self.subTest(page=page, question=question):
+                    self.assertEqual(index.search(question, page, page), ([page + "#" + anchor], ""))
+        page = "lectures/exam-3-review.html"
+        current = page + "#products-and-powers"
+        self.assertEqual(index.search("Help me on 8 in Exam 2 review", page, current),
+                         (["lectures/exam-2-review.html#implicit-differentiation"], ""))
+        self.assertEqual(index.search("8", page, current, followup=True), ([current], ""))
+        for math in ("I got 8", "help with 8 + 2", "help with 8 cm", "help with 8.5"):
+            self.assertIsNone(problem_reference(math, first_turn=True))
+        missing = "lectures/related-rates.html"
+        keys, message = index.search("Can you help me on 8?", missing, missing)
+        self.assertFalse(keys)
+        self.assertIn(book[missing]["title"], message)
+
+    def test_visible_exercise_and_fallback_survive_old_conversation(self):
+        book = read_corpus()
+        index = Index(book)
+        self.enterContext(patch("course_index.corpus", return_value=book))
+        self.enterContext(patch("course_index.index", return_value=index))
+        generate = self.enterContext(patch("app.generate", return_value={"answer":app.NO_EVIDENCE, "sources":[]}))
+        page = "lectures/exam-3-review.html"
+        box = page + "#optimization-folding-a-box"
+        old = page + "#products-and-powers"
+        data = {"page":page, "section":box, "history":[{"question":"Help with 12(a)", "answer":"Use a limit.", "section":old}]}
+        section, _ = app.course_reply("How do I start this problem?", data)
+        self.assertEqual(section, box)
+        self.assertEqual(generate.call_args.args[3], [])
+        self.assertEqual(generate.call_args.kwargs["open_reading"], {"page":"Exam 3 review", "heading":book[box]["title"]})
+        data["section"] = page
+        for unavailable in (app.NO_EVIDENCE, app.ASK_FOR_EXAMPLE):
+            generate.return_value = {"answer":unavailable, "sources":[]}
+            section, result = app.course_reply("Can you help me on 8?", data)
+            self.assertEqual(section, box)
+            self.assertIn("folding a box", result["answer"])
+            self.assertEqual(result["sources"][0]["href"], box)
+
     def test_numbered_reviews_use_the_open_page(self):
         book = read_corpus()
         index = Index(book)

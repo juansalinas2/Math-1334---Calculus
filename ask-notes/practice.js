@@ -2,13 +2,16 @@
   const checks = /* COURSE_CHECKS */ null;
   const routing = /* COURSE_ROUTING */ null;
   const refPattern = new RegExp(routing.ref, "i");
+  const shortRefPattern = new RegExp(routing.shortRef, "i");
   const partPattern = new RegExp(routing.part, "i");
   const startPattern = new RegExp(routing.start, "i");
   const walkPattern = new RegExp(routing.walk, "i");
   const walkVerb = new RegExp(routing.walkVerb, "i");
   const script = document.currentScript;
   const endpoint = script.dataset.endpoint;
-  const page = script.dataset.page || "lectures/related-rates.html";
+  const address = location.pathname.match(/(?:^|\/)((?:lectures|supplements)\/[\w.-]+\.html)$/);
+  const page = address?.[1] || script.dataset.page;
+  if (!page) return;
   const relatedRates = page === "lectures/related-rates.html";
 
   function element(tag, text) {
@@ -259,10 +262,12 @@
         name.querySelectorAll("a.anchorjs-link, a.anchor-section, .anchorjs-link").forEach(a => a.remove());
         const title = name.textContent.trim();
         const key = node === main ? page : page + "#" + node.id;
-        topics.set(key, {node, title, numbered:/^(example|practice|problem)\s+(\d+)/i.exec(title)});
+        const numbered = /^(?:(example|practice(?: problem)?|exercise|problem|question)\s+(\d+)\b|(\d+)[.)]\s+)/i.exec(title);
+        topics.set(key, {node, title, numbered});
       }
     }
     if (!topics.has(firstTopic)) return;
+    const pageTitle = document.querySelector("main h1")?.textContent.trim() || topics.get(firstTopic).title;
 
     const trigger = element("button", "Ask");
     trigger.type = "button";
@@ -469,7 +474,7 @@
     }
 
     function questionForm() {
-      const getReading = () => activeTopic || currentReading();
+      const getReading = () => chat ? currentReading() : activeTopic || currentReading();
       let queued = null;
       const form = element("form");
       form.className = "rr-question-form";
@@ -605,8 +610,8 @@
         reading = ref?.candidates.length === 1 ? ref.candidates[0] : getReading();
         const term = ref ? raw.replace(ref.match[0], "").trim() : raw;
         const topic = topics.get(reading);
-        readingLabel.textContent = topic.numbered?.[0] || topic.title;
-        readingLabel.title = topic.title;
+        readingLabel.textContent = reading === page ? pageTitle : pageTitle + " · " + topic.title;
+        readingLabel.title = readingLabel.textContent;
         const samples = relatedRates ? prompts(checks[reading]).map(a => a.question) :
           (topic.numbered || /example|practice|problem|sketch/i.test(topic.title)
             ? ["What is the first step in this problem?", "Which rule applies here, and why?"]
@@ -625,7 +630,8 @@
         field.setAttribute("aria-describedby", row.hidden ? instructions.id : instructions.id + " " + sample.id);
       }
       function accept() {
-        field.value = suggestion;
+        const ref = numbered(normalized(field.value));
+        field.value = ref && !relatedRates ? ref.label + ". " + suggestion : suggestion;
         filledReading = reading;
         dismissed = true;
         update();
@@ -750,16 +756,25 @@
     }
 
     function numbered(q) {
-      const match = refPattern.exec(q);
+      let match = refPattern.exec(q);
+      let kindText = "", numberText, suffix, packed;
+      if (match) {
+        [, kindText = "", numberText, suffix, packed] = match;
+      } else {
+        match = shortRefPattern.exec(q) || (!history.length && /^(\d+)$/.exec(q));
+        if (match) [, numberText, suffix, packed] = match;
+      }
       if (!match) return null;
-      const [, rawKind = "", rawNumber, suffix, packed] = match;
-      const number = /^\d+$/.test(rawNumber) ? Number(rawNumber) : routing.words.indexOf(rawNumber);
-      const kind = /^(practice|exercise)/.test(rawKind) ? "practice" : rawKind.startsWith("ex") ? "example" : "";
+      const number = /^\d+$/.test(numberText) ? Number(numberText) : routing.words.indexOf(numberText);
+      const kind = /^(practice|exercise)/.test(kindText) ? "practice" : kindText.startsWith("ex") ? "example" : "";
       const candidates = [...topics.keys()].filter(k => {
         const h = topics.get(k).numbered;
-        return h && Number(h[2]) === number && (!kind || h[1].toLowerCase() === kind);
+        return h && Number(h[2] || h[3]) === number && (!kind || !h[1] || h[1].toLowerCase().startsWith(kind) ||
+          (kind === "practice" && h[1].toLowerCase() === "exercise"));
       });
-      return {match, candidates, part: suffix || packed || ""};
+      const part = suffix || packed || "";
+      const label = (kindText || "Problem") + " " + number + (part ? "(" + part + ")" : "");
+      return {match, candidates, part, label};
     }
 
     function action(text, fn) {
@@ -950,7 +965,7 @@
     });
     let pendingScroll = false;
     window.addEventListener("scroll", () => {
-      if (pendingScroll || !popup.open || activeTopic) return;
+      if (pendingScroll || !popup.open || (!chat && activeTopic)) return;
       pendingScroll = true;
       requestAnimationFrame(() => { pendingScroll = false; composer.update(); });
     }, {passive:true});
