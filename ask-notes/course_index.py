@@ -12,6 +12,8 @@ PUBLIC_PAGE = re.compile(r"^(?:(?:lectures|supplements)/[\w.-]+|index|lecture-pd
 LABEL = re.compile(r"\b(Example|Practice(?: problem)?|Problem|Exercise)\s+(\d+)[.:](?=\s)")
 STOP = set("a an and are as at be by can could did do does explain for from get give go how i in into is it its me my of on or our should show so that the their these this those through to us use walk we what when where which with would you why".split())
 CONTEXT = re.compile(r"\b(this|that|they|them|those|here|previous|above|next|my answer|the first term|the second term)\b", re.I)
+FOLLOWUP = re.compile(r"^(?:and |so )?(?:why|how come|does|but|then|which|what if)\b", re.I)
+HELP = re.compile(r"\b(?:stuck|confused|hint|start|next step|walk me through|explain this|why)\b", re.I)
 
 
 def build(rows):
@@ -42,7 +44,8 @@ def tokens(text):
     text = text.casefold().replace("’", "'").replace("l'hôpital", "lhospital").replace("l'hospital", "lhospital")
     for short, name in (("ivt", "intermediate value theorem"), ("mvt", "mean value theorem"),
                         ("evt", "extreme value theorem"), ("derivatives", "derivative"),
-                        ("limits", "limit"), ("differentiating", "differentiate")):
+                        ("limits", "limit"), ("differentiating", "derivative"), ("differentiate", "derivative"),
+                        ("differentiation", "derivative"), ("functions", "function")):
         text = re.sub(r"\b" + short + r"\b", name, text)
     return [w for w in re.findall(r"[a-z]{2,}|\d+", text) if w not in STOP]
 
@@ -104,20 +107,33 @@ class Index:
             if matches:
                 return [], "Which one in " + where + "? " + " or ".join(dict.fromkeys(book[k]["title"] for k in matches[:4])) + ". Open its heading and ask again."
             return [], f"I couldn’t find that numbered problem in {where}. What is its heading or first line?"
+        known = section in self.docs
+        local = known and "#" in section
+        recognized = words & self.idf.keys()
+        # An unrelated query can share one incidental word with hundreds of course passages.
+        # Preserve short requests for help as well as expressions such as dy/dt or x².
+        if (words and len(recognized) / len(words) < .45 and
+                not (local and (HELP.search(question) or re.search(r"[=^/²³]", question)))):
+            return [], "I couldn’t connect that question to the course notes. Which calculus topic or problem do you mean?"
         ranked = []
+        query_terms = sorted(words)
         for key, (counts, length, title, page_words) in self.docs.items():
             score = 0
-            for w in words:
+            for w in query_terms:
                 n = counts[w]
                 score += self.idf.get(w, 0) * (2.2*n/(n+1.2*(.35+.65*length/80)) + 2.5*(w in title) + .45*(w in page_words))
             if score:
+                if len(words) >= 2 and words == title:
+                    score += sum(self.idf[w] for w in query_terms)
                 if book[key]["href"].split("#")[0] == page:
                     score *= 1.15
                 if key == section:
                     score *= 1.25
+                # A lecture or reference entry is more useful for explanation than a review checklist.
+                if book[key]["href"].startswith(("supplements/limits-map.html", "supplements/self-checks.html")):
+                    score *= .72
                 ranked.append((score, key))
         ranked.sort(reverse=True)
-        known = section in self.docs
         if known and (not ranked or (CONTEXT.search(question) and ranked[0][0] < 13) or
                       len(words) <= 2 and ranked[0][0] < 7):
             return [section], ""
@@ -128,6 +144,10 @@ class Index:
             if book[first]["href"] == book[section]["href"]:
                 return [section], ""
             return [section, first], ""
+        if local and FOLLOWUP.search(question) and first != section:
+            counts, _, title, _ = self.docs[section]
+            if len(words.intersection(counts.keys() | title)) >= 2:
+                return [section, first] if book[section]["href"] != book[first]["href"] else [section], ""
         keys = [first]
         for score, key in ranked[1:]:
             if score < .64 * top:
