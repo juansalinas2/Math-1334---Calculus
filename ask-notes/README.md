@@ -20,7 +20,7 @@ API Gateway accepts the question and Lambda checks the shared class code. Number
 
 After a successful request, the browser can keep the shared class code and an expiry timestamp in local storage for 90 days. With remembering off or storage blocked, access lasts for the open page. **Options → About Ask → Forget class code** removes access from this browser. Each request still checks the code on the server. A rejected code prompts for a replacement. This convenience uses no student ID or IP lookup. Questions and replies stay out of local storage. **New question** clears the thread and hint progress while retaining class access. The backend keeps a feedback receipt for two hours. Sharing an exchange with Juan saves it for 90 days. Use **Comment or report** under a reply to send Juan a note. The default category is a comment or correction. An earlier reply keeps its form during the conversation. An expired form explains how to save the draft. Run `python3 review.py` privately to see shared responses.
 
-Calculations lead with the argument and a short LaTeX computation. A hint stops at one move. When a solution compresses a nonobvious step, the model can include a question about that step and its explanation in the same answer. Opening it uses no additional inference.
+Calculations lead with the argument and a short LaTeX computation. Students can follow “Show the computation for 12(a)” with “What about (b)? Give me just one hint.” Ask selects part (b) of the same problem and uses it to suggest a single move. When a solution compresses a nonobvious step, the model can include a question about that step and its explanation in the same answer. Opening it uses no additional inference.
 
 ## Evaluate the course-wide tutor
 

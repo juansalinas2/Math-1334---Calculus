@@ -30,7 +30,11 @@ SHORTHAND = re.compile(
 BARE_PROBLEM = re.compile(
     r"\b(?:number|help(?: me)? with|stuck on|walk (?:me |us )?through)\s+(\d+)"
     r"(?=\s*(?:$|[?!,:;.](?:$|\s)|please\b))", re.I)
-PART_ONLY = re.compile(r"\bpart\s+\(?([a-z])\b|^(?:what about\s+)?\(?([a-z])\)?[?.!]?$", re.I)
+PART_ONLY = re.compile(
+    r"\bpart\s+\(?([a-z])\b|"
+    r"(?:(?:^|\b(?:about|with|for|on|through|try|do)\s+)\(([a-z])\)|"
+    r"\b(?:what about|how about)\s+([a-z])\b)(?=\s*(?:$|[?!,;:]|\.(?:\s|$)|please\b))|"
+    r"^([a-z])[?.!]?$", re.I)
 
 
 class ProblemRef(NamedTuple):
@@ -61,7 +65,9 @@ def requested_part(question, reference):
     if reference and reference.part:
         return reference.part
     match = PART_ONLY.search(question.strip())
-    return (match[1] or match[2]).lower() if match else ""
+    if match:
+        return next(letter.lower() for letter in match.groups() if letter)
+    return ""
 
 
 def part_labels(text):

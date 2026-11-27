@@ -6,7 +6,7 @@ import json
 import re
 import app
 from benchmark.run import APP, read_corpus, run_score
-from course_index import Index, problem_reference
+from course_index import Index, problem_reference, requested_part
 
 
 class CourseBenchmark(unittest.TestCase):
@@ -63,10 +63,16 @@ class CourseBenchmark(unittest.TestCase):
         self.assertIn(r"x\ln", prompt()["requested_part"])
         self.assertNotIn("(b)", prompt()["requested_part"])
         payload["history"] = [{"section": section, "question": "help with 12 a", "answer": reply["answer"]}]
-        section, _ = app.course_reply("What about b?", payload)
-        self.assertEqual(section, problem)
-        self.assertIn(r"\cos x", prompt()["requested_part"])
-        self.assertEqual(prompt()["recent_exchange"], payload["history"])
+        for question in ("What about b?", "What about (b)? Give me just one hint.",
+                         "(b), please show the computation.", "Can I get a hint for (b)?"):
+            with self.subTest(question=question):
+                section, reply = app.course_reply(question, payload)
+                self.assertEqual(section, problem)
+                self.assertEqual(reply["sources"][0]["href"], problem)
+                self.assertIn(r"\cos x", prompt()["requested_part"])
+                self.assertEqual(prompt()["recent_exchange"], payload["history"])
+        for question in ("What about a tangent line?", "What about (x) + 1?", "a = 5"):
+            self.assertEqual(requested_part(question, None), "")
         cloud.converse.reset_mock()
         _, reply = app.course_reply("help with 15 a", payload)
         self.assertEqual(reply["sources"], [])
