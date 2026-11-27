@@ -355,8 +355,11 @@
 
     function typesetReply(body, text) {
       const macros = text.match(/\\[a-zA-Z]+/g) || [];
-      const safe = /^\\(?:frac|dfrac|tfrac|sqrt|left|right|bigl|bigr|mathrm|text|cdot|times|pi|theta|sin|cos|tan|infty|approx|leq?|geq?|neq|pm|quad|qquad|boxed|begin|end|aligned|displaystyle|partial)$/;
-      if (macros.every(m => safe.test(m))) window.MathJax?.typesetPromise?.([body]).catch(() => {});
+      const common = "frac dfrac tfrac sqrt left right bigl bigr Bigl Bigr mathrm mathbb mathbf mathcal mathit operatorname text cdot times pi theta ell Delta delta epsilon varepsilon alpha beta phi lambda mu sigma";
+      const calculus = "sin cos tan sec csc cot arcsin arccos arctan log ln exp lim limsup liminf max min inf sup sum prod int partial nabla prime infty to mapsto longmapsto rightarrow longrightarrow implies iff Rightarrow Longrightarrow Leftrightarrow Longleftrightarrow";
+      const notation = "approx le leq ge geq ne neq equiv sim simeq pm mp in notin cup cap setminus subset subseteq forall exists mid vert Vert lvert rvert ldots cdots quad qquad boxed begin end aligned displaystyle textstyle overset underbrace overbrace underline overline hline deg";
+      const allowed = new Set((common + " " + calculus + " " + notation).split(" "));
+      if (macros.every(m => allowed.has(m.slice(1)))) window.MathJax?.typesetPromise?.([body]).catch(() => {});
     }
 
     async function askTutor(question, section, code, rememberOnSuccess) {
