@@ -278,7 +278,9 @@ class PilotTests(unittest.TestCase):
         self.cloud.converse.return_value = {"stopReason": "end_turn", "output": {"message":
             {"content": [{"text": "A worked answer. [1]"}]}}}
         for question, part, limit in (("Full solution please", "", app.MAX_WORKED_OUTPUT),
-                                      ("Full solution for part (a)", "a", app.MAX_OUTPUT),
+                                      ("Full solution for part (a)", "a", app.MAX_WORKED_OUTPUT),
+                                      ("Walk me through 12(a) to the answer now.", "a", app.MAX_WORKED_OUTPUT),
+                                      ("Walk me through it, just one hint", "a", app.MAX_OUTPUT),
                                       ("Just a hint", "", app.MAX_OUTPUT)):
             app.generate(question, "ex", ["ex"], book=book, part=part)
             call = self.cloud.converse.call_args.kwargs

@@ -253,8 +253,7 @@ def generate(question, section, keys, history=(), book=None, part="", open_readi
         prompt["teaching_note"] = teaching_note
     text = json.dumps(prompt, ensure_ascii=False)
     # Reserve the exact output allowance used for this invocation.
-    whole_exercise = wants_worked and not part and len(course_index.part_labels(excerpts[0]["text"])) > 1
-    output_limit = MAX_WORKED_OUTPUT if whole_exercise else MAX_OUTPUT
+    output_limit = MAX_WORKED_OUTPUT if wants_worked else MAX_OUTPUT
     reserved = cost_bound(1024 + len(instructions.encode()) + len(text.encode()), output_limit)
     month = reserve_request(reserved)
     if not month:
