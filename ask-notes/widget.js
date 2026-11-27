@@ -32,11 +32,11 @@
       }
     }
   };
-  async function ask(question, section, history, code, page) {
+  async function ask(question, section, history, code, page, view, previousView) {
     const response = await fetch(endpoint, {
       method: "POST", credentials: "omit", signal: AbortSignal.timeout(29000),
       headers: {"Content-Type": "application/json", "X-Class-Code": code},
-      body: JSON.stringify({mode: "course", question, section, history, page})
+      body: JSON.stringify({mode: "course", question, section, history, page, view, previousView})
     });
     const data = await response.json();
     if (!response.ok) {

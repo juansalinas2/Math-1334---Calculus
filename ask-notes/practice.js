@@ -324,12 +324,14 @@
 
     const chat = endpoint && window.courseTutor;
     const history = [];
+    let previousView = "";
     const feedbackForms = new WeakMap();
     let pending = null;
 
     function newQuestion() {
       pending = null;
       history.length = 0;
+      previousView = "";
       attempts.clear();
       activeTopic = ""; activePart = ""; activeStep = 0;
       pendingReply = null; hintLevel = 0;
@@ -384,7 +386,7 @@
       if (nodes.length) window.MathJax?.typesetPromise?.(nodes).catch(() => {});
     }
 
-    async function askTutor(question, section, code, rememberOnSuccess) {
+    async function askTutor(question, section, code, rememberOnSuccess, view) {
       if (pending) return;
       const request = {};
       pending = request;
@@ -393,7 +395,7 @@
       answer.replaceChildren(element("p", "Reading your question…"));
       present();
       try {
-        const data = await chat.ask(question, section, history, code, page);
+        const data = await chat.ask(question, section, history, code, page, view, previousView);
         if (pending !== request) return;
         if (rememberOnSuccess !== undefined) chat.access.accept(code, rememberOnSuccess);
         answer.replaceChildren();
@@ -447,6 +449,7 @@
         const feedback = chat.offerFeedback(answer, data);
         if (data.sources?.length) {
           const turn = remember(question, data.exchange?.answer || data.answer, data.section);
+          if (turn) previousView = view;
           if (turn && feedback) feedbackForms.set(turn, feedback);
         }
         typesetReply(body);
@@ -456,7 +459,7 @@
         answer.replaceChildren(element("p", error.status ? error.message : "Couldn’t get a reply. Try again or open the notes below."));
         if (error.status === 403) {
           chat.access.forget(code);
-          composer.requestCode(question, section);
+          composer.requestCode(question, section, view);
         } else {
           composer.field.value = question;
         }
@@ -566,8 +569,8 @@
       }
 
       let suggestion = "", reading = "", dismissed = false, filledReading = "";
-      function requestCode(question, section) {
-        queued = {question, section};
+      function requestCode(question, section, view) {
+        queued = {question, section, view};
         field.value = "";
         field.type = "password";
         field.maxLength = 120;
@@ -656,18 +659,19 @@
         const value = field.value.trim();
         if (!value) { field.focus(); return; }
         if (queued) {
-          const {question, section} = queued;
-          askTutor(question, section, value, remember.input.checked);
+          const {question, section, view} = queued;
+          askTutor(question, section, value, remember.input.checked, view);
           return;
         }
-        const section = filledReading || getReading();
+        const view = currentReading();
+        const section = filledReading || (chat ? view : getReading());
         const code = chat?.access?.get();
         if (!chat) {
           if (relatedRates) show(value, section);
           else readPassage(section);
         }
-        else if (code) askTutor(value, section, code);
-        else requestCode(value, section);
+        else if (code) askTutor(value, section, code, undefined, view);
+        else requestCode(value, section, view);
       });
       return {form, field, update, reset, requestCode, setBusy(busy) {
         send.disabled = hint.disabled = busy;
@@ -684,7 +688,8 @@
         const target = topics.get(key)?.node;
         if (target) {
           const bounds = target.getBoundingClientRect();
-          if (bounds.top >= 0 && bounds.top < innerHeight) return key;
+          const atEnd = window.scrollY + innerHeight >= document.documentElement.scrollHeight - 2;
+          if (bounds.top >= 0 && bounds.top < (atEnd ? innerHeight : line + 1)) return key;
         }
       }
       let current = firstTopic;

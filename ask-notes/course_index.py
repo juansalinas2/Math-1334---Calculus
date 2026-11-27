@@ -10,7 +10,8 @@ from typing import NamedTuple
 from practice import REFERENCE, SHORT_REQUEST, WALKTHROUGH, WORDS
 
 PUBLIC_PAGE = re.compile(r"^(?:(?:lectures|supplements)/[\w.-]+|index|lecture-pdfs)\.html(?:#[^\s]*)?$")
-LABEL = re.compile(r"\b(Example|Practice(?: problem)?|Problem|Exercise)\s+(\d+)[.:](?=\s)")
+LABEL = re.compile(r"\b(Example|Practice(?: problem)?|Problem|Exercise)\s+(\d+)"
+                   r"(?:([.:])(?=\s)|(?= \(.{1,100}?\)[.:]\s))")
 STOP = set("a an and are as at be by can could did do does explain for from get give go how i in into is it its me my of on or our should show so that the their these this those through to us use walk we what when where which with would you why".split())
 CONTEXT = re.compile(r"\b(this|that|they|them|those|here|previous|above|next|my answer|the first term|the second term)\b", re.I)
 FOLLOWUP = re.compile(r"^(?:and |so )?(?:why|how come|does|but|then|which|what if)\b", re.I)
@@ -27,7 +28,16 @@ SHORTHAND = re.compile(
     r"(?:^\s*|\b(?:with|on|for|about|through|explain|solve|try|do)\s+)"
     r"(\d+)\s*(?:\(([a-z])\)|([a-z])\b)"
     r"(?=\s*(?:$|[?!,:;.](?:$|\s)|(?:from|in|on|please)\b))", re.I)
-ON_SCREEN = re.compile(r"\b(?:this (?:problem|exercise|example|section|page|reading)|on (?:my|the) screen)\b", re.I)
+ON_SCREEN = re.compile(r"\b(?:(?:this|current) (?:problem|exercise|example|section|page|reading|one)|on (?:my|the) screen)\b", re.I)
+EARLIER_REPLY = re.compile(r"\b(?:your (?:last |previous |earlier )?(?:answer|reply|calculation)|"
+                           r"(?:you|we) (?:just |previously )?(?:said|wrote|used)|the previous step)\b", re.I)
+START_HERE = re.compile(
+    r"(?:please[ ,]+)?(?:how (?:do|can|should) (?:i|we) (?:get started|start|begin)|"
+    r"where (?:do|should) (?:i|we) (?:start|begin)|(?:what(?:'s| is) (?:the|my) (?:first|next) step)|"
+    r"(?:can (?:you help me|i get a hint)|give me (?:a|one) hint|i(?:'m| am) (?:stuck|lost)|help(?: me)?))"
+    r"(?: (?:here|with this|please))?[?.! ]*", re.I)
+LOCATION = re.compile(r"(?:what|which) (?:page|section|exercise|problem|lecture) "
+                      r"(?:(?:am i|are we) (?:on|reading|looking at)|is (?:this|open))[?.! ]*", re.I)
 PART_ONLY = re.compile(
     r"\bpart\s+\(?([a-z])\b|"
     r"(?:(?:^|\b(?:about|with|for|on|through|try|do)\s+)\(([a-z])\)|"
@@ -124,10 +134,17 @@ def build(rows):
         if re.match(r"^(Example|Practice|Problem|Exercise)\s+\d+\b", row["title"], re.I):
             continue
         marks = list(LABEL.finditer(body))
+        plain_count = 0
         for n, mark in enumerate(marks):
-            label = mark[0].rstrip(".:")
+            label = f"{mark[1]} {mark[2]}"
+            # Preserve existing passage keys for old conversations and benchmark labels.
+            if mark[3]:
+                plain_count += 1
+                suffix = plain_count
+            else:
+                suffix = f"caption-{n + 1}"
             chunk = body[mark.start():marks[n + 1].start() if n + 1 < len(marks) else None].strip()
-            book[f"{href}::{n + 1}"] = dict(base, title=f"{label} · {row['title']}", text=chunk)
+            book[f"{href}::{suffix}"] = dict(base, title=f"{label} · {row['title']}", text=chunk)
     return book
 
 
@@ -219,6 +236,8 @@ class Index:
             for kind, key in self.numbered.get((page, number), ()):
                 if not kind or not family or kind.startswith(family) or (family == "practice" and kind == "exercise"):
                     matches.append(key)
+            if not matches and name == "exercise":
+                matches = [key for _, key in self.numbered.get((page, number), ())]
             close = [k for k in matches if section and book[k]["href"] == book[section]["href"]]
             matches = close or matches
             if len(matches) == 1:
@@ -238,8 +257,12 @@ class Index:
             return [section], ""
         if part and not selected:
             return [], "Which problem number or heading has the part you’re asking about?"
-        if section in book and "#" in section and not selected and ON_SCREEN.search(question):
-            return [section], ""
+        if not selected and (ON_SCREEN.search(question) or EARLIER_REPLY.search(question)
+                             or START_HERE.fullmatch(question.replace("’", "'"))):
+            if section in book and "#" in section and book[section]["text"]:
+                return [section], ""
+            where = book[page]["title"] if page else "the notes"
+            return [], f"You’re on {where}. Which exercise number or heading would you like help with?"
         if followup and section in book and re.fullmatch(r"\s*\d+\s*[?.!]?\s*", question):
             return [section], ""
         known = section in self.docs

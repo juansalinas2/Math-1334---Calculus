@@ -251,24 +251,39 @@ def generate(question, section, keys, history=(), book=None, part="", open_readi
     return reply
 
 
+def page_heading(book, page, key, default):
+    if not isinstance(key, str):
+        return default
+    if page == PAGE and key in checks():
+        key = PAGE + "#" + key
+    return key if key in book and book[key]["href"].split("#")[0] == page else default
+
+
 def course_reply(question, payload):
     book = course_index.corpus()
     page, section = payload.get("page"), payload.get("section")
     if not isinstance(page, str) or page not in book or "#" in page:
         return "", {"answer": "Reload the course page or name the lecture you are reading.", "sources": []}
-    if not isinstance(section, str):
-        section = ""
-    if page == PAGE and section in checks():
-        section = PAGE + "#" + section
-    if section not in book or book[section]["href"].split("#")[0] != page:
-        section = page
+    section = page_heading(book, page, section, page)
+    visible = page_heading(book, page, payload.get("view", section), page)
+    if course_index.LOCATION.fullmatch(question):
+        title = book[page]["title"]
+        if visible != page:
+            title += " · " + book[visible]["title"]
+        return visible, {"answer": "You’re on " + title + ".", "sources": source_links([visible], book)}
     history = recent_turns(payload, book)
     preceding = history[-1]["section"] if history else section
     ref = course_index.problem_reference(question, first_turn=not history)
     part = course_index.requested_part(question, ref)
-    viewing = course_index.ON_SCREEN.search(question)
-    if ref or viewing or (part and book[preceding]["href"].split("#")[0] != page):
+    viewing = bool(course_index.ON_SCREEN.search(question))
+    simple_help = bool(course_index.START_HERE.fullmatch(question.replace("’", "'")))
+    prior_view = page_heading(book, page, payload.get("previousView"), None)
+    moved = prior_view is not None and prior_view != visible
+    use_new_view = moved and not course_index.EARLIER_REPLY.search(question)
+    if ref:
         preceding = section
+    elif viewing or use_new_view or ((part or simple_help) and not prior_view and book[preceding]["href"].split("#")[0] != page):
+        preceding = visible
     # Keep instructor-checked explanations for known misconceptions within their reading.
     if not ref and not part:
         local = preceding.removeprefix(PAGE + "#") if preceding.startswith(PAGE + "#") else ""
@@ -280,17 +295,17 @@ def course_reply(question, payload):
     if not keys:
         return section, {"answer": clarification, "sources": []}
     primary = keys[0]
-    if ref or part or viewing:
+    if ref or part or viewing or simple_help or use_new_view:
         history = [turn for turn in history if turn["section"] == primary]
     if part and len(keys) == 1 and "Show solution" not in book[primary]["text"]:
         example = index.worked_example(primary, course_index.part_text(book[primary]["text"], part))
         if example:
             keys = [primary, example]
-    location = {"page": book[page]["title"], "heading": book[section]["title"]}
-    starter = bool(ref and course_index.wants_exercise_start(question))
+    location = {"page": book[page]["title"], "heading": book[visible]["title"]}
+    starter = simple_help or bool(ref and course_index.wants_exercise_start(question))
     focus = part or ("a" if starter and "a" in course_index.part_labels(book[primary]["text"]) else "")
     result = generate(question, primary, keys, history, book, focus, open_reading=location, starter=starter)
-    if ref and result["answer"] in (NO_EVIDENCE, ASK_FOR_EXAMPLE):
+    if (ref or starter) and result["answer"] in (NO_EVIDENCE, ASK_FOR_EXAMPLE):
         # The verified location survives even when the model cannot finish an answer.
         source = source_links([primary], book)
         statement = book[primary]["text"].partition("Show solution")[0].strip()
