@@ -22,6 +22,11 @@ SWITCH = re.compile(r"\b(?:different|new|another) (?:topic|question|lecture)\b|\
 # Worksheet headings can be "12. Products and powers" or "Problem 12".
 NUMBERED_HEADING = re.compile(r"^(?:(example|practice(?: problem)?|exercise|problem|question)\s+(\d+)\b|(\d+)[.)]\s+)", re.I)
 PART_LABEL = re.compile(r"(?<!\S)\(([a-z])\)(?=\s|$)", re.I)
+CHECK_WORK = re.compile(r"\b(?:is my .{1,35}?(?:right|correct|wrong)|am i (?:right|correct)|"
+                        r"is (?:that|this) (?:right|correct)|where did i go wrong)\b", re.I)
+# A stand-alone formula is often the student's reply to a tutor's question.
+MATH_REPLY = re.compile(r"(?:(?:[a-z]{1,2}|sin|cos|tan|exp|sqrt)(?![a-z])|"
+                        r"[\d\s+*/=()^?!.−×÷²³π∞-])+", re.I)
 # Require a reference-shaped phrase. In particular, "I got 12", "12 cm",
 # "is 12 a critical number?" and "12a + 1" are mathematical content.
 SHORTHAND = re.compile(
@@ -87,8 +92,8 @@ def wants_exercise_start(question):
     if re.search(r"\b(?:solve|solution|answer|walk|walkthrough|explain|calculate|compute|all parts|step.by.step)\b", question, re.I):
         return False
     remainder = question
-    for pattern in (REFERENCE, SHORT_REQUEST, SHORTHAND):
-        match = re.search(pattern, question, re.I)
+    for pattern in (re.compile(REFERENCE, re.I), re.compile(SHORT_REQUEST, re.I), SHORTHAND):
+        match = pattern.search(question)
         if match:
             remainder = question[:match.start()] + " " + question[match.end():]
             break
@@ -171,6 +176,12 @@ class Index:
         self.worked = defaultdict(list)
         counts = Counter()
         for key, row in book.items():
+            # Some lectures put a worked equation in the heading and show the algebra
+            # directly below it, without a collapsible solution.
+            if (re.match(r"^(?:Example|Practice)\b", row["title"], re.I)
+                    and r"\[" in row["text"]):
+                for formula in formulas(row["title"]):
+                    self.worked[formula].append(key)
             label = NUMBERED_HEADING.match(row["title"])
             if label:
                 page = row["href"].split("#")[0]
@@ -263,8 +274,14 @@ class Index:
                 return [section], ""
             where = book[page]["title"] if page else "the notes"
             return [], f"You’re on {where}. Which exercise number or heading would you like help with?"
-        if followup and section in book and re.fullmatch(r"\s*\d+\s*[?.!]?\s*", question):
-            return [section], ""
+        if not selected and section in book:
+            current_exercise = NUMBERED_HEADING.match(book[section]["title"])
+            if current_exercise and CHECK_WORK.search(question) and not SWITCH.search(question):
+                return [section], ""
+            if followup and (re.fullmatch(r"\s*\d+\s*[?.!]?\s*", question) or
+                             (current_exercise and re.search(r"[\d=+*/^−²³-]", question)
+                              and MATH_REPLY.fullmatch(question))):
+                return [section], ""
         known = section in self.docs
         local = known and "#" in section
         recognized = words & self.idf.keys()

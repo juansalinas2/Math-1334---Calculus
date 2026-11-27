@@ -198,7 +198,79 @@ class PilotTests(unittest.TestCase):
         self.assertEqual([s["href"] for s in result["sources"]], [app.PAGE + "#rectangle"])
         self.assertEqual(self.cloud.converse.call_args.kwargs["system"][0]["text"], app.HINT_INSTRUCTIONS)
         app.generate("No hints please. Is my rate right?", "rectangle", ["rectangle"])
-        self.assertIn("Directly confirm", self.cloud.converse.call_args.kwargs["system"][0]["text"])
+        self.assertEqual(self.cloud.converse.call_args.kwargs["system"][0]["text"], app.INSTRUCTIONS)
+
+    def test_single_worked_passage_keeps_the_problem_separate_from_its_solution(self):
+        book = {"limit": {"title": "Example 1", "text": "Evaluate the limit. Show solution Take logs."},
+                "notes": {"title": "Worked examples", "text": "A Show solution B C Show solution D"}}
+        self.cloud.converse.return_value = {"stopReason": "end_turn", "output": {"message":
+            {"content": [{"text": "Try the first step. [1]"}]}}}
+        for question, expected in (("One hint please", app.HINT_INSTRUCTIONS),
+                                   ("Show me how to solve it", app.INSTRUCTIONS)):
+            self.cloud.converse.reset_mock()
+            app.generate(question, "limit", ["limit", "notes"], book=book)
+            self.cloud.converse.assert_called_once()
+            call = self.cloud.converse.call_args.kwargs
+            self.assertEqual(call["system"][0]["text"], expected)
+            self.assertTrue(expected.startswith(app.TEACHING))
+            first, second = json.loads(call["messages"][0]["content"][0]["text"])["passages"]
+            self.assertEqual((first["text"], first["worked_solution"]), ("Evaluate the limit.", "Take logs."))
+            self.assertEqual(second["text"], book["notes"]["text"])
+            self.assertNotIn("worked_solution", second)
+
+    def test_symbolic_attempt_and_check_use_the_current_exercise(self):
+        book = course_passages(ROOT / "_site")
+        index = course_index.Index(book)
+        page = "lectures/exam-3-review.html"
+        box = page + "#optimization-folding-a-box"
+        self.assertEqual(index.search("12-x?", page, box, followup=True), ([box], ""))
+        page = "lectures/exam-2-review.html"
+        implicit = page + "#implicit-differentiation"
+        self.assertEqual(index.search("I got 2y. Is my derivative right?", page, implicit), ([implicit], ""))
+        self.assertEqual(index.worked_example(implicit, book[implicit]["text"].partition("(a)")[0]),
+                         "lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23")
+        self.assertFalse(course_index.MATH_REPLY.fullmatch("differentiate x^2"))
+
+    def test_hint_with_a_bare_number_and_parenthesized_part(self):
+        book = course_passages(ROOT / "_site")
+        page = "lectures/exam-3-review.html"
+        section = page + "#products-and-powers"
+        self.enterContext(patch.object(course_index, "corpus", return_value=book))
+        self.enterContext(patch.object(course_index, "index", return_value=course_index.Index(book)))
+        generate = self.enterContext(patch("app.generate", return_value={"answer": "A hint", "sources": []}))
+        key, _ = app.course_reply("Just a hint for 12(c).", {"page": page, "view": section, "section": section})
+        self.assertEqual(key, section)
+        self.assertEqual(generate.call_args.args[5], "c")
+
+    def test_a_later_request_can_change_the_amount_of_help(self):
+        self.cloud.converse.return_value = {"stopReason": "end_turn", "output": {"message":
+            {"content": [{"text": "A response grounded in the exercise. [1]"}]}}}
+        history = [{"question": "Give me a hint.", "answer": "Look at the edges.", "section": "cube"}]
+        cases = [("After your hint, show the full solution.", app.INSTRUCTIONS, "complete worked answer"),
+                 ("I still don’t get it.", app.INSTRUCTIONS, "different representation"),
+                 ("I got zero. Does that make the rate zero?", app.INSTRUCTIONS, "corrected value"),
+                 ("Just a hint, without the full solution.", app.HINT_INSTRUCTIONS, "")]
+        for question, expected, task in cases:
+            with self.subTest(question=question):
+                app.generate(question, "cube", ["cube"], history)
+                call = self.cloud.converse.call_args.kwargs
+                self.assertEqual(call["system"][0]["text"], expected)
+                self.assertIn(task, json.loads(call["messages"][0]["content"][0]["text"]).get("task", ""))
+
+    def test_explicit_multipart_walkthrough_reserves_its_actual_output_allowance(self):
+        reserve = self.enterContext(patch("app.reserve_request", return_value="month"))
+        book = {"ex": {"title": "Exercise 1", "text": "(a) Find the limit. (b) Justify it."}}
+        self.cloud.converse.return_value = {"stopReason": "end_turn", "output": {"message":
+            {"content": [{"text": "A worked answer. [1]"}]}}}
+        for question, part, limit in (("Full solution please", "", app.MAX_WORKED_OUTPUT),
+                                      ("Full solution for part (a)", "a", app.MAX_OUTPUT),
+                                      ("Just a hint", "", app.MAX_OUTPUT)):
+            app.generate(question, "ex", ["ex"], book=book, part=part)
+            call = self.cloud.converse.call_args.kwargs
+            self.assertEqual(call["inferenceConfig"]["maxTokens"], limit)
+            size = sum(len(s.encode()) for s in (call["system"][0]["text"],
+                       call["messages"][0]["content"][0]["text"]))
+            reserve.assert_called_with(app.cost_bound(1024 + size, limit))
 
     def test_failure_and_unknown_context(self):
         self.cloud.converse.side_effect = RuntimeError("offline")
