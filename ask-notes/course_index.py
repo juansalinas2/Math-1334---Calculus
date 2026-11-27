@@ -2,9 +2,10 @@
 import json
 import math
 import re
-from collections import Counter
+from collections import Counter, defaultdict
 from functools import lru_cache
 from pathlib import Path
+from typing import NamedTuple
 
 from practice import REFERENCE, WORDS
 
@@ -16,6 +17,61 @@ FOLLOWUP = re.compile(r"^(?:and |so )?(?:why|how come|does|but|then|which|what i
 HELP = re.compile(r"\b(?:stuck|confused|hint|start|next step|walk me through|explain this|why)\b", re.I)
 DETAIL = re.compile(r"^(?:so\b|why\b|how (?:come|did)\b|where (?:did|does)\b|what stays\b|if (?:only|the|we)\b|would that\b|which of\b)", re.I)
 SWITCH = re.compile(r"\b(?:different|new|another) (?:topic|question|lecture)\b|\b(?:instead|switch to)\b", re.I)
+
+# Worksheet headings can be "12. Products and powers" or "Problem 12".
+NUMBERED_HEADING = re.compile(r"^(?:(example|practice(?: problem)?|exercise|problem|question)\s+(\d+)\b|(\d+)[.)]\s+)", re.I)
+PART_LABEL = re.compile(r"(?<!\S)\(([a-z])\)(?=\s|$)", re.I)
+# Require a reference-shaped phrase. In particular, "I got 12", "12 cm",
+# "is 12 a critical number?" and "12a + 1" are mathematical content.
+SHORTHAND = re.compile(
+    r"(?:^\s*|\b(?:with|on|for|about|through|explain|solve|try|do)\s+)"
+    r"(\d+)\s*(?:\(([a-z])\)|([a-z])\b)"
+    r"(?=\s*(?:$|[?!,:;.](?:$|\s)|(?:from|in|on|please)\b))", re.I)
+BARE_PROBLEM = re.compile(
+    r"\b(?:number|help(?: me)? with|stuck on|walk (?:me |us )?through)\s+(\d+)"
+    r"(?=\s*(?:$|[?!,:;.](?:$|\s)|please\b))", re.I)
+PART_ONLY = re.compile(r"\bpart\s+\(?([a-z])\b|^(?:what about\s+)?\(?([a-z])\)?[?.!]?$", re.I)
+
+
+class ProblemRef(NamedTuple):
+    kind: str
+    number: int
+    part: str
+
+
+def problem_reference(question):
+    match = re.search(REFERENCE, question, re.I)
+    if match:
+        kind, number, suffix, packed = match.groups()
+        number = number.lower()
+        # The shared parser also accepts "problem twelve", "#12" and "ex. 12".
+        spaced = re.match(r"\s+([a-z])\b(?=\s*(?:$|[?!,:;.]|(?:from|in|on)\s))", question[match.end():], re.I)
+        part = suffix or packed or (spaced[1] if spaced else "")
+        return ProblemRef((kind or "").lower(), WORDS.index(number) if number in WORDS else int(number), part.lower())
+    match = SHORTHAND.search(question)
+    if match:
+        return ProblemRef("", int(match[1]), (match[2] or match[3]).lower())
+    match = BARE_PROBLEM.search(question)
+    if match:
+        return ProblemRef("", int(match[1]), "")
+    return None
+
+
+def requested_part(question, reference):
+    if reference and reference.part:
+        return reference.part
+    match = PART_ONLY.search(question.strip())
+    return (match[1] or match[2]).lower() if match else ""
+
+
+def part_labels(text):
+    """Only treat a sequence starting at (a) as worksheet labels."""
+    labels = {}
+    for match in PART_LABEL.finditer(text):
+        letter = match[1].lower()
+        if ord(letter) == ord("a") + len(labels):
+            labels[letter] = match.start()
+    return labels
 
 
 def build(rows):
@@ -56,8 +112,14 @@ class Index:
     def __init__(self, book):
         self.book = book
         self.docs = {}
+        self.numbered = defaultdict(list)
         counts = Counter()
         for key, row in book.items():
+            label = NUMBERED_HEADING.match(row["title"])
+            if label:
+                page = row["href"].split("#")[0]
+                number = int(label[2] or label[3])
+                self.numbered[page, number].append(((label[1] or "").lower(), key))
             if not row["text"]:
                 continue
             words = Counter(tokens(row["text"]))
@@ -72,7 +134,8 @@ class Index:
         book = self.book
         page = page if page in book and "#" not in page else ""
         section = section if section in book else page
-        ref = re.search(REFERENCE, question, re.I)
+        ref = problem_reference(question)
+        part = requested_part(question, ref)
         words = set(tokens(question))
         selected = re.search(r"(?:§|\bsection\s*)\s*(\d+\.\d+)\b", question, re.I)
         if selected:
@@ -90,25 +153,31 @@ class Index:
                     if name and re.search(r"\b(?:from|in|on)\s+(?:the\s+)?" + re.escape(name) + r"\b", question, re.I):
                         page = candidate
                         break
-            name, number = (ref[1] or "").lower(), ref[2].lower()
-            number = str(WORDS.index(number)) if number in WORDS else str(int(number))
+            name, number = ref.kind, ref.number
             family = "example" if name.startswith("ex") and not name.startswith("exercise") else "practice" if name.startswith(("practice", "exercise")) else ""
-            pattern = re.compile(r"^(example|practice(?: problem)?|exercise|problem|question)\s+" + number + r"\b", re.I)
             matches = []
-            for key, row in book.items():
-                label = pattern.match(row["title"])
-                if row["href"].split("#")[0] != page or not label:
-                    continue
-                if not family or label[1].lower().startswith(family) or (family == "practice" and label[1].lower() == "exercise"):
+            for kind, key in self.numbered.get((page, number), ()):
+                if not kind or not family or kind.startswith(family) or (family == "practice" and kind == "exercise"):
                     matches.append(key)
             close = [k for k in matches if section and book[k]["href"] == book[section]["href"]]
             matches = close or matches
             if len(matches) == 1:
-                return matches, ""
-            where = book[page]["title"] if page else "this reading"
-            if matches:
-                return [], "Which one in " + where + "? " + " or ".join(dict.fromkeys(book[k]["title"] for k in matches[:4])) + ". Open its heading and ask again."
-            return [], f"I couldn’t find that numbered problem in {where}. What is its heading or first line?"
+                section = matches[0]
+            else:
+                where = book[page]["title"] if page else "this reading"
+                if matches:
+                    return [], "Which one in " + where + "? " + " or ".join(dict.fromkeys(book[k]["title"] for k in matches[:4])) + ". Open its heading and ask again."
+                return [], f"I couldn’t find that numbered problem in {where}. What is its heading or first line?"
+        if ref or (part and section in book and "#" in section and
+                   (NUMBERED_HEADING.match(book[section]["title"]) or part_labels(book[section]["text"]))):
+            if part:
+                labels = part_labels(book[section]["text"])
+                if labels and part not in labels:
+                    available = ", ".join(f"({letter})" for letter in labels)
+                    return [], f"{book[section]['page']} · {book[section]['title']} lists {available}. Which part do you mean?"
+            return [section], ""
+        if part and not selected:
+            return [], "Which problem number or heading has the part you’re asking about?"
         known = section in self.docs
         local = known and "#" in section
         recognized = words & self.idf.keys()

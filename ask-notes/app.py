@@ -183,7 +183,7 @@ def route_question(question, section):
     return section, None
 
 
-def generate(question, section, keys, history=(), book=None):
+def generate(question, section, keys, history=(), book=None, part=""):
     if not keys:
         return {"answer": NO_EVIDENCE, "sources": []}
     book = passages() if book is None else book
@@ -191,6 +191,14 @@ def generate(question, section, keys, history=(), book=None):
                 for i, k in enumerate(keys, start=1)]
     prompt = {"reading": book[section]["title"] if section else None,
               "recent_exchange": list(history), "question": question, "passages": excerpts}
+    if part:
+        # Point to the actual subquestion while preserving givens and earlier parts.
+        text = excerpts[0]["text"]
+        labels = course_index.part_labels(text)
+        if part in labels:
+            start = labels[part]
+            end = next((i for i in labels.values() if i > start), len(text))
+            prompt["requested_part"] = text[start:end].strip()
     instructions = INSTRUCTIONS
     wants_hint = re.search(r"\b(?:hint|first step|how (?:do|should) I start)\b", question, re.I)
     if wants_hint and not re.search(r"\b(?:no|without|not (?:just )?a) hints?\b", question, re.I):
@@ -234,12 +242,16 @@ def course_reply(question, payload):
         section = ""
     if page == PAGE and section in checks():
         section = PAGE + "#" + section
-    if section not in book:
+    if section not in book or book[section]["href"].split("#")[0] != page:
         section = page
     history = recent_turns(payload, book)
     preceding = history[-1]["section"] if history else section
+    ref = course_index.problem_reference(question)
+    part = course_index.requested_part(question, ref)
+    if ref or (part and book[preceding]["href"].split("#")[0] != page):
+        preceding = section
     # Keep instructor-checked explanations for known misconceptions within their reading.
-    if not re.search(course_index.REFERENCE, question, re.I):
+    if not ref and not part:
         local = preceding.removeprefix(PAGE + "#") if preceding.startswith(PAGE + "#") else ""
         for entry in checks().get(local, {}).get("reviewed_answers", []):
             if re.search(entry["match"], question, re.I):
@@ -248,7 +260,9 @@ def course_reply(question, payload):
     if not keys:
         return section, {"answer": clarification, "sources": []}
     primary = keys[0]
-    return primary, generate(question, primary, keys, history, book)
+    if ref or part:
+        history = [turn for turn in history if turn["section"] == primary]
+    return primary, generate(question, primary, keys, history, book, part)
 
 
 def reply(status, data):
