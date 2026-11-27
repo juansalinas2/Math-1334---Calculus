@@ -233,7 +233,8 @@ def generate(question, section, keys, history=(), book=None, part="", open_readi
     if wants_worked:
         prompt["task"] = ("Give the complete worked answer now, even if earlier turns were hints. "
                           "For a multi-part exercise write one short equation or line per part. "
-                          "Use the worked steps in the reference. Skip introductions and restatements. "
+                          "Use the worked steps in the reference. For a single part, combine successive "
+                          "equalities when clear. Skip step headings, introductions and repeated answers. "
                           "End with the results. Do not pause to assign a step or ask the student a question.")
     elif history and STILL_STUCK.search(question):
         prompt["task"] = ("The last explanation did not work. Show one concrete example with actual numbers or "
@@ -363,7 +364,11 @@ def course_reply(question, payload):
         message = "I found " + source[0]["title"] + "."
         if 0 < len(excerpt) <= 360:
             message += "\n\n" + excerpt
-        result = {"answer": message + "\n\nWhich step would you like to work through?", "sources": source}
+        if starter:
+            message += "\n\nWhich step would you like to work through?"
+        else:
+            message += "\n\nI couldn’t finish the explanation. You can send your question again."
+        result = {"answer": message, "sources": source}
     return primary, result
 
 

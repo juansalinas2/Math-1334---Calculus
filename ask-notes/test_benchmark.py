@@ -56,8 +56,10 @@ class CourseBenchmark(unittest.TestCase):
             self.assertEqual(generate.call_args.args[5], "a")
             self.assertIn("folding a box", result["answer"])
             self.assertEqual(result["sources"][0]["href"], box)
-        app.course_reply("Show the full solution for problem 8", data)
+        _, reply = app.course_reply("Show the full solution for problem 8", data)
         self.assertFalse(generate.call_args.kwargs["starter"])
+        self.assertIn("couldn’t finish the explanation", reply["answer"])
+        self.assertNotIn("Which step", reply["answer"])
 
     def test_numbered_reviews_use_the_open_page(self):
         book = read_corpus()
@@ -68,7 +70,9 @@ class CourseBenchmark(unittest.TestCase):
         for question in ("help with 12 a", "12a", "12(a)", "#12a", "Problem 12 a", "Exercise 12(a)",
                          "I’m stuck on 12", "Can you help with 12a please?",
                          "Walk me through 12(a) to the answer now.",
-                         "For 12(a) I tried substituting u=1/x. Is that okay?"):
+                         "For 12(a) I tried substituting u=1/x. Is that okay?",
+                         "Please show the full calculation for 12(a) using l’Hospital’s rule.",
+                         "Can you guide me through 12(a) without giving the last step?"):
             with self.subTest(question=question):
                 self.assertEqual(index.search(question, exam3, exam3), ([exam3 + "#products-and-powers"], ""))
         for page, anchor in ((exam2, "differentiation"), (exam3, "related-rates-a-sliding-ladder")):
@@ -88,7 +92,8 @@ class CourseBenchmark(unittest.TestCase):
         self.assertEqual(hits, [])
         self.assertIn("(a), (b), (c)", message)
         for question in ("I got 12", "is 12 a critical number?", "why is 12a + 1 positive?",
-                         "12 cm", "help with 12.5", "when is x equal to 12?", "For 12a + 3, what is a?"):
+                         "12 cm", "help with 12.5", "when is x equal to 12?", "For 12a + 3, what is a?",
+                         "For 12(x) + 3, can I factor?", "For 12(x) divided by 3, do I get 4x?"):
             self.assertIsNone(problem_reference(question), question)
 
     def test_equation_match_stays_within_the_visible_heading(self):

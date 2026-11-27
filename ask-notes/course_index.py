@@ -31,8 +31,11 @@ MATH_REPLY = re.compile(r"(?:(?:[a-z]{1,2}|sin|cos|tan|exp|sqrt)(?![a-z])|"
 # "is 12 a critical number?" and "12a + 1" are mathematical content.
 SHORTHAND = re.compile(
     r"(?:^\s*|\b(?:with|on|for|about|through|explain|solve|try|do)\s+)"
-    r"(\d+)\s*(?:\(([a-z])\)|([a-z])\b)"
-    r"(?=\s*(?:$|[?!,:;.](?:$|\s)|(?:from|in|on|please|I|we|my|our)\b|to (?:the |an? )?(?:end|answer|result)\b))", re.I)
+    r"(\d+)\s*(?:"
+    # A parenthesized part can be followed by a student's method or explanation.
+    r"\(([a-z])\)(?=\s*(?:$|[?!,:;.](?:$|\s))|\s+(?!plus\b|minus\b|times\b|squared\b|cubed\b|(?:multiplied|divided) by\b)[a-z]+\b)"
+    # A bare letter is also an algebraic variable, so require a stronger cue.
+    r"|([a-z])\b(?=\s*(?:$|[?!,:;.](?:$|\s)|(?:from|in|on|please|I|we|my|our)\b|to (?:the |an? )?(?:end|answer|result)\b)))", re.I)
 ON_SCREEN = re.compile(r"\b(?:(?:this|current) (?:problem|exercise|example|section|page|reading|one)|on (?:my|the) screen)\b", re.I)
 EARLIER_REPLY = re.compile(r"\b(?:your (?:last |previous |earlier )?(?:answer|reply|calculation)|"
                            r"(?:you|we) (?:just |previously )?(?:said|wrote|used)|the previous step)\b", re.I)
