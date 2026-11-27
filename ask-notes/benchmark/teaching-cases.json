@@ -1,0 +1,55 @@
+[
+  {
+    "id": "rotated-labels",
+    "section": "lectures/optimization.html#optimization-problems::5",
+    "question": "I'm calling the side ALONG the river x. I wrote x + 2y for the fence. My friend has 2x + y. Is mine wrong?",
+    "criterion": "Accept x+2y with this convention, account for one parallel and two perpendicular sides, and end before optimizing."
+  },
+  {
+    "id": "hint-without-spoiler",
+    "section": "lectures/exam-3-review.html#optimization-folding-a-box",
+    "part": "a",
+    "question": "Problem 8(a). One hint only. I can see the height, but where does the shorter base come from?",
+    "criterion": "Use an edge of the 12 cm sheet to cue the two cuts. Leave the volume and feasible interval for the student."
+  },
+  {
+    "id": "repair-first-error",
+    "section": "lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents::1",
+    "question": "My line is 2x + xy' + 2yy' = 0. Is the mistake in the last term?",
+    "criterion": "Explicitly validate the last term, identify the missing y in differentiating xy, and stop before computing the tangent slope."
+  },
+  {
+    "id": "failed-hint",
+    "section": "lectures/05-squeeze-theorem.html#the-squeeze-theorem::2",
+    "prior": ["Can you help me start Example 2?", "Use the fact that sine is bounded and multiply the bounds by x squared."],
+    "question": "That still sounds abstract. What would those bounds actually look like at one value close to zero?",
+    "criterion": "Choose a specific small nonzero x, give the corresponding numerical bounds for the product, and connect them to the original expression."
+  },
+  {
+    "id": "enough-evidence",
+    "section": "lectures/09-derivative-at-a-point.html#computing-derivatives-from-the-definition::2",
+    "question": "I checked h=0.01 and got 1 for |h|/h. Can I conclude the derivative at 0 is 1?",
+    "criterion": "Explain why one positive h is insufficient, show the negative-side quotient is -1, and state the two-sided derivative does not exist."
+  },
+  {
+    "id": "symbol-translation",
+    "section": "lectures/09-derivative-at-a-point.html#the-derivative-at-a-point",
+    "question": "I can read f(a+h), but what exactly is h here? Just the meaning, please.",
+    "criterion": "Identify h as the signed input change from a to a+h. Answer directly without turning this into a task."
+  },
+  {
+    "id": "worked-on-request",
+    "section": "lectures/exam-3-review.html#products-and-powers",
+    "part": "a",
+    "prior": ["A hint on 12(a)?", "Try writing the product as a quotient."],
+    "question": "Please walk me through 12(a) to the answer now.",
+    "criterion": "Stay on the Exam 3 product, show a valid change of form and calculation yielding 1, and complete the calculation in this turn."
+  },
+  {
+    "id": "different-valid-method",
+    "section": "lectures/exam-3-review.html#products-and-powers",
+    "part": "a",
+    "question": "For 12(a) I let u=1/x, so it becomes ln(1+u)/u. Could I use the definition of the derivative of ln at 1?",
+    "criterion": "Validate the alternative, identify u approaching 0 from the right and ln(1)=0, and identify the value as the derivative of ln at 1, which is 1."
+  }
+]
