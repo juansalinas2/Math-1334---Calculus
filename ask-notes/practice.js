@@ -377,7 +377,7 @@
     }
 
     function typesetReply(body) {
-      const common = "frac dfrac tfrac sqrt left right bigl bigr Bigl Bigr mathrm mathbb mathbf mathcal mathit operatorname text cdot times pi theta ell Delta delta epsilon varepsilon alpha beta phi lambda mu sigma";
+      const common = "frac dfrac tfrac sqrt left right big Big bigg Bigg bigl bigr Bigl Bigr biggl biggr Biggl Biggr mathrm mathbb mathbf mathcal mathit operatorname text cdot times pi theta ell Delta delta epsilon varepsilon alpha beta phi lambda mu sigma";
       const calculus = "sin cos tan sec csc cot arcsin arccos arctan log ln exp lim limsup liminf max min inf sup sum prod int partial nabla prime infty to mapsto longmapsto rightarrow longrightarrow implies iff Rightarrow Longrightarrow Leftrightarrow Longleftrightarrow";
       const notation = "approx le leq ge geq ne neq equiv sim simeq pm mp in notin cup cap setminus subset subseteq forall exists mid vert Vert lvert rvert ldots cdots quad qquad boxed begin end aligned displaystyle textstyle overset underbrace overbrace underline overline hline deg";
       const allowed = new Set((common + " " + calculus + " " + notation).split(" "));
