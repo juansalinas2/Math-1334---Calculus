@@ -52,44 +52,70 @@
     }
     return data;
   }
-    function offerFeedback(output, data) {
-      if (!data.receipt) return;
-      const box = document.createElement("details");
-      box.className = "ask-feedback";
-      box.innerHTML = `
-        <summary>Share with Juan</summary>
-        <form><label>After reading this answer
-          <select required><option value="">Choose one</option><option value="helped">I can continue</option>
-          <option value="stuck">I’m still stuck</option><option value="check">Please check the explanation</option></select></label>
-          <label>Your next step or what is still unclear (optional)
-          <textarea rows="2" maxlength="600" placeholder="I think my next step is…"></textarea></label>
-          <p>This question, its answer and sources, and your response will be available to Juan for 90 days.
-          Leave out names and student IDs.</p><button type="submit">Share with instructor</button>
-          <span role="status" aria-live="polite"></span></form>`;
-      output.append(box);
-      box.querySelector("form").addEventListener("submit", async e => {
-        e.preventDefault();
-        const send = box.querySelector("button"), message = box.querySelector('[role="status"]');
-        if (send.disabled) return;
-        send.disabled = true;
-        message.textContent = "Sending…";
-        try {
-          const code = access.get();
-          if (!code) throw new Error("Ask a question with your class code before sharing.");
-          const res = await fetch(new URL("feedback", new URL(endpoint, location.href)), {
-            method: "POST", credentials: "omit", signal: AbortSignal.timeout(12000),
-            headers: {"Content-Type": "application/json", "X-Class-Code": code},
-            body: JSON.stringify({share: true, receipt: data.receipt, exchange: data.exchange,
-              rating: box.querySelector("select").value, note: box.querySelector("textarea").value})
-          });
-          if (res.status === 403) access.forget(code);
-          if (!res.ok) throw new Error((await res.json()).error || "Please try sharing again.");
-          box.querySelector("form").replaceChildren(document.createTextNode("Your response was shared with Juan."));
-        } catch (err) {
-          message.textContent = err.message; send.disabled = false;
-        }
-      });
+  function offerFeedback(output, data) {
+    const box = document.createElement("details");
+    box.className = "ask-feedback";
+    box.innerHTML = `
+      <summary>Comment or report</summary>
+      <form>
+        <label>Comment for Juan <textarea rows="2" maxlength="600"></textarea></label>
+        <label>Feedback type <select>
+          <option value="check">Comment or correction</option>
+          <option value="stuck">I’m still stuck</option>
+          <option value="helped">I can continue</option>
+        </select></label>
+        <label hidden>Class code <input type="password" maxlength="120" autocomplete="off"></label>
+        <p>Sending shares this question, answer, sources and feedback with Juan for 90 days. Omit names and student IDs.</p>
+        <button type="submit">Send to Juan</button>
+        <span role="status" aria-live="polite"></span>
+      </form>`;
+    output.append(box);
+    const form = box.querySelector("form");
+    if (!data.receipt || !data.exchange) {
+      form.replaceChildren(document.createTextNode("Feedback is unavailable for this reply. Ask again to get a new form."));
+      return box;
     }
+    const send = form.querySelector("button"), status = form.querySelector('[role="status"]');
+    const password = form.querySelector("input"), note = form.querySelector("textarea");
+    const category = form.querySelector("select");
+    function requestCode() {
+      password.parentElement.hidden = false;
+      password.value = "";
+      password.focus();
+      status.textContent = "Re-enter your class code to send this feedback.";
+    }
+    form.addEventListener("submit", async event => {
+      event.preventDefault();
+      if (send.disabled) return;
+      const code = password.value.trim() || access.get();
+      if (!code) { requestCode(); return; }
+      send.disabled = true;
+      status.textContent = "Sending…";
+      try {
+        const response = await fetch(new URL("feedback", new URL(endpoint, location.href)), {
+          method: "POST", credentials: "omit", signal: AbortSignal.timeout(12000),
+          headers: {"Content-Type": "application/json", "X-Class-Code": code},
+          body: JSON.stringify({share: true, receipt: data.receipt, exchange: data.exchange,
+            rating: category.value, note: note.value})
+        });
+        if (response.status === 403) { access.forget(code); requestCode(); return; }
+        if (response.status === 409) {
+          status.textContent = "This form expired or was already sent. Copy your comment before starting a new question.";
+          return;
+        }
+        if (!response.ok || (await response.json()).saved !== true) throw new Error();
+        if (password.value) access.accept(code, false);
+        form.replaceChildren(status);
+        status.textContent = "Feedback sent to Juan.";
+      } catch {
+        status.textContent = "Couldn’t confirm delivery. Your comment is here. Try sending again.";
+      } finally {
+        password.value = "";
+        send.disabled = false;
+      }
+    });
+    return box;
+  }
 
   window.courseTutor = {ask, offerFeedback, access};
 })();

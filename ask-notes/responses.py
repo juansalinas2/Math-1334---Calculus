@@ -17,7 +17,10 @@ def fingerprint(receipt, value):
 
 
 def exchange(question, section, result):
-    return {"question": question, "section": section, "answer": result["answer"],
+    answer = result["answer"]
+    if detail := result.get("detail"):
+        answer += "\n\n" + detail["title"] + "\n" + detail["text"]
+    return {"question": question, "section": section, "answer": answer,
             "sources": [s["href"] for s in result["sources"]]}
 
 

@@ -20,14 +20,14 @@
 \newcommand{\stage}[1]{\fbox{\strut\hspace{4pt}#1\hspace{4pt}}}
 \begin{document}
 \pagehead{Ask the Notes}{1. What a student sees}
-On any \href{https://juansalinas2.github.io/Math-1334---Calculus/}{course notes page}, open \textbf{Ask}. Type a question or press \textbf{Tab} for a suggestion, then press Enter. Enter the class code on first use. On a shared computer, uncheck \emph{Remember on this browser}. Read the answer and follow its source. Type a follow-up to continue, or select \textbf{New question} to start fresh at the example on screen. The minus button keeps your place. Open the linked reading for free. Related rates also offers worked hints.
+On any \href{https://juansalinas2.github.io/Math-1334---Calculus/}{course notes page}, open \textbf{Ask}. Start typing and press \textbf{Tab} to accept a matching suggestion, then press Enter. Enter the class code on first use. On a shared computer, uncheck \emph{Remember on this browser}. Read the answer and follow its source. Type a follow-up to continue, or select \textbf{New question} to start fresh at the example on screen. The minus button keeps your place. Open \textbf{Options} for the linked reading. Related rates also offers worked hints.
 \subhead{A student checks Example 6}
 \emph{I wrote $r/h=6/2$. Is my proportion right?} A student can test the equation against the full tank, whose radius is 2 m and whose height is 6 m:
 \[
   r=3h \implies r=18\text{ m at }h=6\text{ m},\qquad
   \frac rh=\frac26 \implies r=2\text{ m at }h=6\text{ m}.
 \]
-The written hint asks what radius the repaired ratio predicts at a depth of 3 m. A student who types \emph{1 m} can then use $r=h/3$ in the volume formula.
+A calculation can offer one expandable explanation of a difficult step. A first hint leaves the calculation to the student. The written hint asks what radius the repaired ratio predicts at a depth of 3 m. A student who types \emph{1 m} can then use $r=h/3$ in the volume formula.
 \subhead{Where the answer comes from}
 \begin{center}
 \renewcommand{\arraystretch}{1.15}
@@ -52,7 +52,7 @@ python3 ask-notes/preview.py
 \end{verbatim}\end{small}
 Rendering builds the online book, its search index and the Ask panel. Publish the book, then rerun the CloudShell deploy command with \code{--published-notes} from the repository checkout to refresh the shared index.
  
-\textbf{3. Verify and publish.} In Example 6, use Tab to fill the suggested question. Press Enter and try \emph{It becomes 9}. Ask for a hint on part (c), then for another hint. Follow the cited step. Test the same exchange at phone width. Publish through the course's existing GitHub Pages workflow.
+\textbf{3. Verify and publish.} In Example 6, start typing and use Tab to fill a matching suggestion. Press Enter and try \emph{It becomes 9}. Ask for a hint on part (c), then for another hint. Follow the cited step. Test the same exchange at phone width. Publish through the course's existing GitHub Pages workflow.
 \subhead{When something goes wrong}
 \textbf{The answer cites the wrong example.} Reproduce it with the student's wording and note which example was on screen. Check the number against the lecture heading. Both routes use the reference patterns in \code{practice.py}. Verify the cited step in the catalog. For a recurring misconception, add a checked \code{teaching_note} to that reading and rerun the live trials.
  
@@ -60,7 +60,7 @@ Rendering builds the online book, its search index and the Ask panel. Publish th
  
 \textbf{The box is missing.} Check the latest Pages build. The file \code{site_assets.py} adds the script to the rendered lecture. A cache refresh should load its new version after publication.
 \subhead{Who sees student responses?}
-The browser can remember the shared code for 90 days. Select \textbf{About Ask} then \textbf{Forget class code} to remove it. No student ID or IP lookup is needed. Ask sends the question and recent turns to AWS. New question clears the thread. A shared reply stays available to Juan for 90 days. Unshared receipts expire after two hours.
+The browser can remember the shared code for 90 days. Under \textbf{Options}, select \textbf{About Ask} then \textbf{Forget class code} to remove it. No student ID or IP lookup is needed. Ask sends the question and recent turns to AWS. New question clears the thread. Use \textbf{Comment or report} to send Juan a note. Shared replies remain in the instructor report for 90 days. Unshared receipts expire after two hours.
 
 \newpage
 \pagehead{The conversational tutor}{3. Operations and interview notes}

@@ -297,7 +297,10 @@
     fresh.className = "rr-new-question";
     fresh.hidden = true;
     fresh.addEventListener("click", newQuestion);
-    bar.append(title, readingLabel, fresh, move, hide);
+    const heading = element("div");
+    heading.className = "rr-heading";
+    heading.append(title, readingLabel);
+    bar.append(heading, fresh, move, hide);
     movablePanel(popup, bar, move);
     const asked = element("p");
     asked.className = "rr-asked";
@@ -316,6 +319,7 @@
 
     const chat = endpoint && window.courseTutor;
     const history = [];
+    const feedbackForms = new WeakMap();
     let pending = null;
 
     function newQuestion() {
@@ -335,31 +339,44 @@
     function remember(question, text, section) {
       if (!section || !text) return;
       if (relatedRates && topics.has(section)) section = page + "#" + section;
-      history.push({question:question.slice(0,450), answer:text.slice(0,1600), section});
+      const turn = {question:question.slice(0,450), answer:text.slice(0,1600), section};
+      history.push(turn);
       if (history.length > 3) history.shift();
+      return turn;
     }
 
-    function replyText(text) {
+    function replyText(text, sources = []) {
       const body = element("div");
       body.className = "rr-generated-answer";
-      for (const paragraph of text.split(/\n\s*\n/)) {
-        const line = element("p");
-        for (const part of paragraph.split(/(\*\*[^*\n]+\*\*)/)) {
-          if (part.startsWith("**") && part.endsWith("**")) line.append(element("strong", part.slice(2, -2)));
-          else line.append(document.createTextNode(part));
+      const sourceIds = new Set(sources.map(source => String(source.id)));
+      for (const chunk of text.split(/(\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$)/)) {
+        if (chunk.startsWith("\\[") || chunk.startsWith("$$")) {
+          const block = element("div", "\\[" + chunk.slice(2, -2).trim() + "\\]");
+          block.className = "rr-equation";
+          body.append(block);
+          continue;
         }
-        body.append(line);
+        for (const paragraph of chunk.split(/\n\s*\n/)) {
+          const line = element("p");
+          for (const part of paragraph.trim().split(/(\\\([\s\S]*?\\\)|\*\*[^*\n]+\*\*)/)) {
+            if (part.startsWith("\\(")) line.append(element("span", part));
+            else if (part.startsWith("**") && part.endsWith("**")) line.append(element("strong", part.slice(2, -2)));
+            else line.append(document.createTextNode(part.replace(/\s*\[(\d+)\]/g, (mark, id) => sourceIds.has(id) ? "" : mark)));
+          }
+          if (line.textContent.trim()) body.append(line);
+        }
       }
       return body;
     }
 
-    function typesetReply(body, text) {
-      const macros = text.match(/\\[a-zA-Z]+/g) || [];
+    function typesetReply(body) {
       const common = "frac dfrac tfrac sqrt left right bigl bigr Bigl Bigr mathrm mathbb mathbf mathcal mathit operatorname text cdot times pi theta ell Delta delta epsilon varepsilon alpha beta phi lambda mu sigma";
       const calculus = "sin cos tan sec csc cot arcsin arccos arctan log ln exp lim limsup liminf max min inf sup sum prod int partial nabla prime infty to mapsto longmapsto rightarrow longrightarrow implies iff Rightarrow Longrightarrow Leftrightarrow Longleftrightarrow";
       const notation = "approx le leq ge geq ne neq equiv sim simeq pm mp in notin cup cap setminus subset subseteq forall exists mid vert Vert lvert rvert ldots cdots quad qquad boxed begin end aligned displaystyle textstyle overset underbrace overbrace underline overline hline deg";
       const allowed = new Set((common + " " + calculus + " " + notation).split(" "));
-      if (macros.every(m => allowed.has(m.slice(1)))) window.MathJax?.typesetPromise?.([body]).catch(() => {});
+      const nodes = [...body.querySelectorAll("span, .rr-equation")].filter(node =>
+        (node.textContent.match(/\\[a-zA-Z]+/g) || []).every(m => allowed.has(m.slice(1))));
+      if (nodes.length) window.MathJax?.typesetPromise?.(nodes).catch(() => {});
     }
 
     async function askTutor(question, section, code, rememberOnSuccess) {
@@ -375,9 +392,16 @@
         if (pending !== request) return;
         if (rememberOnSuccess !== undefined) chat.access.accept(code, rememberOnSuccess);
         answer.replaceChildren();
-        const body = replyText(data.answer);
-        if (data.reviewed) answer.append(element("small", "From the worked notes"));
+        const body = replyText(data.answer, data.sources);
         answer.append(body);
+        if (data.detail) {
+          const detail = element("details");
+          detail.className = "rr-detail";
+          const explanation = replyText(data.detail.text, data.sources);
+          detail.append(element("summary", data.detail.title), explanation);
+          detail.addEventListener("toggle", () => { if (detail.open) typesetReply(explanation); }, {once:true});
+          answer.append(detail);
+        }
         const sourceKey = relatedRates && data.section?.startsWith(page + "#")
           ? data.section.slice(page.length + 1) : data.section;
         activeTopic = topics.has(sourceKey) ? sourceKey : section;
@@ -406,16 +430,21 @@
           const replies = prior.map(turn => {
             const reply = replyText(turn.answer);
             earlier.append(element("strong", turn.question), reply);
+            const feedback = feedbackForms.get(turn);
+            if (feedback) earlier.append(feedback);
             return reply;
           });
           earlier.addEventListener("toggle", () => {
-            if (earlier.open) replies.forEach((reply, i) => typesetReply(reply, prior[i].answer));
+            if (earlier.open) replies.forEach(typesetReply);
           }, {once:true});
-          answer.append(earlier);
+          answer.prepend(earlier);
         }
-        if (data.sources?.length) remember(question, data.answer, data.section);
-        chat.offerFeedback(answer, data);
-        typesetReply(body, data.answer);
+        const feedback = chat.offerFeedback(answer, data);
+        if (data.sources?.length) {
+          const turn = remember(question, data.exchange?.answer || data.answer, data.section);
+          if (turn && feedback) feedbackForms.set(turn, feedback);
+        }
+        typesetReply(body);
       } catch (error) {
         if (pending !== request) return;
         activeTopic = section;
@@ -454,9 +483,11 @@
       field.autocomplete = "off";
       field.placeholder = "Ask a question…";
       label.append(caption, field);
-      const send = element("button", "Ask");
+      const send = element("button", "↑");
       send.type = "submit";
       send.className = "rr-submit";
+      send.setAttribute("aria-label", "Send question");
+      send.title = "Send question";
       const row = element("div");
       row.className = "rr-suggestion";
       const fill = element("button");
@@ -496,9 +527,12 @@
       savedQuestion.className = "rr-pending-question";
       savedQuestion.hidden = true;
       if (chat) {
-        tools.append(hint, edit, about);
+        const options = element("details");
+        options.className = "rr-options";
+        options.append(element("summary", "Options"), tools, notice);
+        tools.append(hint, about);
         form.prepend(savedQuestion);
-        form.append(remember.label, tools, notice);
+        form.append(remember.label, edit, options);
         about.addEventListener("click", () => {
           notice.hidden = !notice.hidden;
           forget.hidden = !chat.access.get();
@@ -534,6 +568,8 @@
         field.maxLength = 120;
         field.placeholder = "Enter your class code";
         caption.textContent = "Class code";
+        send.title = "Unlock and send";
+        send.setAttribute("aria-label", send.title);
         remember.label.hidden = false;
         fresh.hidden = false;
         savedQuestion.textContent = question;
@@ -549,6 +585,8 @@
         field.type = "text";
         field.maxLength = 450;
         field.placeholder = "Ask a question…";
+        send.title = "Send question";
+        send.setAttribute("aria-label", send.title);
         savedQuestion.hidden = true;
         savedQuestion.textContent = "";
         remember.label.hidden = true;
@@ -582,7 +620,7 @@
           if (text.startsWith(term)) return true;
           return /^[a-z]{3,}$/.test(term) && text.split(/[^a-z]+/).some(word => word.startsWith(term));
         });
-        row.hidden = pending || dismissed || !suggestion || (!!asked.textContent && !raw);
+        row.hidden = pending || dismissed || !suggestion || !raw;
         if (!row.hidden) sample.textContent = suggestion;
         field.setAttribute("aria-describedby", row.hidden ? instructions.id : instructions.id + " " + sample.id);
       }

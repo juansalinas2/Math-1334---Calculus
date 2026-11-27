@@ -34,3 +34,15 @@ The original revision was b0b50fe. The cases and corpus were committed at 0e0087
 The four dialogues were frozen at e01e037 before testing the context repair cc78140. The release fda0c50 uses the same retriever and additionally separates first hints from answer checks. Its score on the now-revealed cases was 31 of 35. The automated suite enforces 25 of 29 relevant passages and six of six clarifications on this snapshot.
 
 The results directory preserves every run. The files labeled **candidate** contain the initial candidate. **final** records the context repair, and **release** records the subsequent answer-formatting revision. Offline retrieval is identical for the last two versions. The first single-turn audit passed seven of eight on the original and five of eight on the initial candidate. The deployed release passed seven of eight on the repeat. Across the four dialogues, it cited appropriate material on all eight turns and fulfilled the entire rubric on four. All live results reflect one sample per prompt per revision. Missing rubric elements and extraneous citations count as failures even when the mathematics stated is true.
+
+## Testing retrieval changes on this book
+
+To repeat the contextual-retrieval experiment, run the following from the repository root.
+
+```sh
+python3 ask-notes/benchmark/context_trial.py _site/assets/course-search-index.js
+```
+
+The candidate adds instructor-written course-map terms to the ranking text for matching headings. The baseline and candidate use identical frozen passages, page context, questions, and labels. On the 83 enriched headings from the published search asset (SHA-256 `9ad87646a9f92ebe3432f655bf16484b79e9ba811f840d50c4d54ac4cdd76d5a`), both routed 22/22 development and 31/35 regression questions correctly. No individual outcome changed. Production keeps its existing ranker.
+
+For the next experiment, label fresh paraphrases by expected heading before running either system. Keep numbered exercise references page-local. For conceptual questions, compare lexical ranking alone with a fusion of lexical and pretrained semantic rankings. Precompute passage vectors once, score the small collection directly, and try reranking a short list only if retrieval still misses relevant passages. Measure top-two passage hits, correct clarifications, latency, and model cost per question. Grade mathematical correctness and whether the reply answers the student separately.

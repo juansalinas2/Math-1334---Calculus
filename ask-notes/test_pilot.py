@@ -178,6 +178,19 @@ class PilotTests(unittest.TestCase):
             {"content": [{"text": "The units describe volume per second."}]}}}
         self.assertTrue(app.generate("Which rate?", "cube", ["cube"])["sources"][0]["href"].endswith("#cube"))
 
+    def test_optional_detail_is_separate_signed_and_grounded(self):
+        main = r"The volume is \(V=s^3\). [1]"
+        explanation = r"Apply the chain rule to get \(3s^2\,ds/dt\). [1]"
+        self.cloud.converse.return_value = {"stopReason": "end_turn", "output": {"message": {"content": [
+            {"text": main + "\nDETAIL: Why does the side length rate appear?\n" + explanation}]}}}
+        result = app.generate("Show the calculation.", "cube", ["cube"])
+        self.assertEqual(result["answer"], main)
+        self.assertEqual(result["detail"]["text"], explanation)
+        self.assertIn(explanation, responses.exchange("Show the calculation.", "cube", result)["answer"])
+        self.assertNotIn("detail", app.generate("Just a hint.", "cube", ["cube"]))
+        self.cloud.converse.return_value["output"]["message"]["content"][0]["text"] += " [9]"
+        self.assertFalse(app.generate("Show the calculation.", "cube", ["cube"])["sources"])
+
     def test_first_hint_and_unmarked_secondary_source(self):
         self.cloud.converse.return_value = {"stopReason": "end_turn", "output": {"message":
             {"content": [{"text": "Which two dimensions determine the area?"}]}}}
