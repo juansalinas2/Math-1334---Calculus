@@ -27,7 +27,8 @@
   box-shadow: 0 3px 16px rgb(0 0 0 / .1);
 }
 .rr-help-trigger {
-  z-index: 10;
+  /* The course outline stays visible at 998 as the reader scrolls. */
+  z-index: 999;
   border-radius: 2em;
   min-height: 44px;
   padding: .35em 1.35em;
@@ -35,7 +36,7 @@
   cursor: pointer;
 }
 .rr-help-popup {
-  z-index: 110;
+  z-index: 1001;
   width: min(28rem,calc(100% - 16px));
   max-height: min(70dvh,40rem);
   padding: 0;
