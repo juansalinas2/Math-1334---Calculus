@@ -1,0 +1,33 @@
+case,masked,arm,correct,follows_rubric,citation,pass_all,reason
+box-1,A,baseline,1,1,1,1,Prompts the learner to construct V(x); leaves the optimum open.
+box-1,B,candidate,1,0,1,0,Gives the complete volume expression and a second differentiation instruction despite the request for just a first hint.
+box-3,A,baseline,0,0,0,0,Abstains on an answerable follow-up about the two cut corners.
+box-3,B,candidate,0,0,0,0,Abstains on an answerable follow-up about the two cut corners.
+hole-1,A,candidate,1,1,1,1,Correctly distinguishes the limit 4 from g(2)=7. The TeX escape in the subscript is untidy.
+hole-1,B,baseline,1,1,1,1,Uses the nearby branch x+2 to distinguish 4 from 7.
+extrema-2,A,baseline,1,1,1,1,States that the test is inconclusive; mentions higher derivatives. A first-derivative sign check would be closer to the lecture.
+extrema-2,B,candidate,1,1,1,1,States that the test is inconclusive; mentions higher derivatives. A first-derivative sign check would be closer to the lecture.
+hospital-1,A,candidate,1,0,1,0,Correct conclusion and second quotient; omits the intermediate e^x/(2x) step specified by the reference rubric.
+hospital-1,B,baseline,1,1,1,1,Shows both successive quotients and the infinite limit.
+ivt-1,A,baseline,1,1,1,1,"States continuity, intermediate target, and existence. Both linked readings support the answer."
+ivt-1,B,candidate,1,1,1,1,"States continuity, intermediate target, and existence. Both linked readings support the answer."
+ladder-2,A,candidate,1,1,1,1,"Supplies the signed rate, magnitude and downward direction."
+ladder-2,B,baseline,1,1,1,1,"Supplies the signed rate, magnitude and downward direction."
+outside-1,A,candidate,1,1,1,1,Appropriately asks for a calculus topic without inventing a source.
+outside-1,B,baseline,1,1,1,1,Appropriately asks for a calculus topic without inventing a source.
+box-1,,final,1,0,1,0,Gives the setup and derivative instruction after a request for one hint.
+box-3,,final,1,1,0,0,Correct 12−2x explanation; extra limit-laws citation does not support this exercise.
+hole-1,,final,1,1,1,1,Meets the predeclared mathematical and citation requirements.
+extrema-2,,final,1,1,1,1,Meets the predeclared mathematical and citation requirements.
+hospital-1,,final,1,1,1,1,Meets the predeclared mathematical and citation requirements.
+ivt-1,,final,1,1,1,1,Meets the predeclared mathematical and citation requirements.
+ladder-2,,final,1,0,1,0,Corrects the sign but omits the explicit corrected rate in the rubric.
+outside-1,,final,1,1,1,1,Meets the predeclared mathematical and citation requirements.
+box-1,,release,1,1,1,1,Matches reference and cites the appropriate source.
+box-3,,release,1,1,1,1,Matches reference and cites the appropriate source.
+hole-1,,release,1,1,1,1,Matches reference and cites the appropriate source.
+extrema-2,,release,1,1,1,1,Matches reference and cites the appropriate source.
+hospital-1,,release,1,1,1,1,Matches reference and cites the appropriate source.
+ivt-1,,release,1,1,1,1,Matches reference and cites the appropriate source.
+ladder-2,,release,1,0,1,0,Correct direction but fails to provide the corrected signed rate explicitly.
+outside-1,,release,1,1,1,1,Matches reference and cites the appropriate source.

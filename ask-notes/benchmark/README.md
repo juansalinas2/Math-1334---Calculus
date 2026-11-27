@@ -26,3 +26,11 @@ python3 ask-notes/benchmark/run.py live --class-code-file ~/.math1334-class-code
 ## Additional conversation check
 
 After the first comparison, four new scripted dialogues were fixed before revising the follow-up behavior. Each second turn sends the first actual reply and its returned passage ID back to Ask, as the website does. One switches to a different lecture. Each turn has a prewritten rubric. Run the paired check with the same arguments as the live audit, replacing `live` with `dialogues`. Treat these four scenarios as a separate prospective check. The 35 previously revealed cases serve as regressions.
+
+## Recorded outcome
+
+The original revision was b0b50fe. The cases and corpus were committed at 0e0087e. Candidate 9835952 was frozen before scoring the 35 test cases. Correct routing rose from 26 to 29, with all three gains in the unrelated-request family. The paired family bootstrap interval for the gain was 0.0 to 26.5 percentage points. Top-two hits on answerable cases stayed at 23 of 29.
+
+The four dialogues were frozen at e01e037 before testing the context repair cc78140. The release fda0c50 uses the same retriever and additionally separates first hints from answer checks. Its score on the now-revealed cases was 31 of 35. The automated suite enforces 25 of 29 relevant passages and six of six clarifications on this snapshot.
+
+The results directory preserves every run. The files labeled **candidate** contain the initial candidate. **final** records the context repair, and **release** records the subsequent answer-formatting revision. Offline retrieval is identical for the last two versions. The first single-turn audit passed seven of eight on the original and five of eight on the initial candidate. The deployed release passed seven of eight on the repeat. Across the four dialogues, it cited appropriate material on all eight turns and fulfilled the entire rubric on four. All live results reflect one sample per prompt per revision. Missing rubric elements and extraneous citations count as failures even when the mathematics stated is true.

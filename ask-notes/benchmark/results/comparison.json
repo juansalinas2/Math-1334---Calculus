@@ -1,0 +1,190 @@
+{
+  "before": {
+    "n": 35,
+    "routed": 26,
+    "answerable": 29,
+    "hit1": 23,
+    "hit2": 23,
+    "mrr2": 0.7931034482758621,
+    "must_clarify": 6,
+    "clarified": 3
+  },
+  "after": {
+    "n": 35,
+    "routed": 29,
+    "answerable": 29,
+    "hit1": 23,
+    "hit2": 23,
+    "mrr2": 0.7931034482758621,
+    "must_clarify": 6,
+    "clarified": 6
+  },
+  "wins": [
+    "outside-1",
+    "outside-2",
+    "outside-3"
+  ],
+  "losses": [],
+  "delta": 0.08571428571428572,
+  "families": 12,
+  "paired_family_bootstrap_95": [
+    0.0,
+    0.2647058823529412
+  ],
+  "slices": {
+    "ambiguous": [
+      {
+        "n": 1,
+        "routed": 1,
+        "answerable": 0,
+        "hit1": 0,
+        "hit2": 0,
+        "mrr2": null,
+        "must_clarify": 1,
+        "clarified": 1
+      },
+      {
+        "n": 1,
+        "routed": 1,
+        "answerable": 0,
+        "hit1": 0,
+        "hit2": 0,
+        "mrr2": null,
+        "must_clarify": 1,
+        "clarified": 1
+      }
+    ],
+    "concept": [
+      {
+        "n": 13,
+        "routed": 11,
+        "answerable": 13,
+        "hit1": 11,
+        "hit2": 11,
+        "mrr2": 0.8461538461538461,
+        "must_clarify": 0,
+        "clarified": 0
+      },
+      {
+        "n": 13,
+        "routed": 11,
+        "answerable": 13,
+        "hit1": 11,
+        "hit2": 11,
+        "mrr2": 0.8461538461538461,
+        "must_clarify": 0,
+        "clarified": 0
+      }
+    ],
+    "followup": [
+      {
+        "n": 5,
+        "routed": 3,
+        "answerable": 5,
+        "hit1": 3,
+        "hit2": 3,
+        "mrr2": 0.6,
+        "must_clarify": 0,
+        "clarified": 0
+      },
+      {
+        "n": 5,
+        "routed": 3,
+        "answerable": 5,
+        "hit1": 3,
+        "hit2": 3,
+        "mrr2": 0.6,
+        "must_clarify": 0,
+        "clarified": 0
+      }
+    ],
+    "missing": [
+      {
+        "n": 2,
+        "routed": 2,
+        "answerable": 0,
+        "hit1": 0,
+        "hit2": 0,
+        "mrr2": null,
+        "must_clarify": 2,
+        "clarified": 2
+      },
+      {
+        "n": 2,
+        "routed": 2,
+        "answerable": 0,
+        "hit1": 0,
+        "hit2": 0,
+        "mrr2": null,
+        "must_clarify": 2,
+        "clarified": 2
+      }
+    ],
+    "numbered": [
+      {
+        "n": 7,
+        "routed": 7,
+        "answerable": 7,
+        "hit1": 7,
+        "hit2": 7,
+        "mrr2": 1.0,
+        "must_clarify": 0,
+        "clarified": 0
+      },
+      {
+        "n": 7,
+        "routed": 7,
+        "answerable": 7,
+        "hit1": 7,
+        "hit2": 7,
+        "mrr2": 1.0,
+        "must_clarify": 0,
+        "clarified": 0
+      }
+    ],
+    "paraphrase": [
+      {
+        "n": 4,
+        "routed": 2,
+        "answerable": 4,
+        "hit1": 2,
+        "hit2": 2,
+        "mrr2": 0.5,
+        "must_clarify": 0,
+        "clarified": 0
+      },
+      {
+        "n": 4,
+        "routed": 2,
+        "answerable": 4,
+        "hit1": 2,
+        "hit2": 2,
+        "mrr2": 0.5,
+        "must_clarify": 0,
+        "clarified": 0
+      }
+    ],
+    "unsupported": [
+      {
+        "n": 3,
+        "routed": 0,
+        "answerable": 0,
+        "hit1": 0,
+        "hit2": 0,
+        "mrr2": null,
+        "must_clarify": 3,
+        "clarified": 0
+      },
+      {
+        "n": 3,
+        "routed": 3,
+        "answerable": 0,
+        "hit1": 0,
+        "hit2": 0,
+        "mrr2": null,
+        "must_clarify": 3,
+        "clarified": 3
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=.93in]{geometry}
+\usepackage{booktabs,amsmath,hyperref}
+\hypersetup{hidelinks,pdftitle={Evaluating Ask in Calculus I},pdfauthor={MATH 1334}}
+\pagestyle{plain}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{7pt}
+\raggedright
+\newcommand{\head}[1]{\par\medskip{\large\bfseries #1}\par}
+\begin{document}
+{\small MATH 1334 \hfill Evaluation note 1}\par
+{\LARGE\bfseries Evaluating Ask in Calculus I}\par
+A student asking for the next step needs two things. The tutor must find the right worked example, then use it to answer the actual question. We measured those separately.
+\head{The first comparison}
+We wrote 57 student-style questions and froze the acceptable passages before changing the search. We used 22 questions for development. The other 35, covering 12 different topic or scenario families, were scored once after the candidate was committed. Both versions searched the same 480 nonempty passages from the public notes.
+\begin{center}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+&Original&First candidate&Released revision\\
+\midrule
+Appropriate retrieval or clarification, all 35&26&29&31\\
+First result matched a label, 29 answerable&23&23&25\\
+Either result matched a label, 29 answerable&23&23&25\\
+Correct pre-model clarification, 6 cases&3&6&6\\
+\bottomrule
+\end{tabular}
+\end{center}
+Only the first two columns form a held-out comparison. The initial gain was 3 of 35 cases, or 8.6 percentage points. All three came from a single family of unrelated requests. There were no paired losses. A 95\% paired family-bootstrap interval for the gain was 0.0 to 26.5 percentage points. With only 12 hand-selected families, the interval is a sensitivity check.
+\head{Why another revision was necessary}
+The first candidate's retrieval score improved, but its live answers met the full rubric on only 5 of 8 prompts, down from 7 of 8. A student asking why two cuts come off each side of a cardboard box received no explanation. The released revision keeps the worked exercise available for a short follow-up. It explains that removing $x$ from each end of a 12-inch side leaves $12-2x$.
+\head{Production checks}
+The released tutor passed 7 of 8 repeated single-turn rubrics. All eight had suitable citations or justified abstention. It correctly explained the cardboard cuts, but in the ladder problem it corrected the sign without stating the requested numerical rate.
+\par On four two-turn conversations, the release cited the right source on all 8 turns and met the full rubric on 4. One reply correctly described a negative expression on both sides of an asymptote but omitted that it tends to $-\infty$. Another supplied $\tfrac12 b\,dh/dt$ without confirming the student's $12$ cm$^2$/min.
+\par A pass requires correct mathematics (or justified abstention), fulfillment of the stated student request, and appropriate citations. A mathematically correct answer can fail on either of the other criteria.
+\newpage
+{\small MATH 1334 \hfill Methods and reproducibility}\par
+{\LARGE\bfseries What the scores measure}\par
+\head{Retrieval}
+Each case specifies the open page, active passage, question and acceptable source IDs. For a numbered exercise, IDs distinguish problems under the same heading. For a general question, several sources can qualify. For an ambiguous, missing or unrelated request, a pass requires a clarification with no retrieved passage. The original system sometimes recovered downstream by declining to answer after a model call.
+\par Mean reciprocal rank at two was 0.793 for both arms in the held-out comparison. It is averaged over the 29 answerable questions, with a miss worth zero. Confidence limits resample complete families with replacement, keep the versions paired and recompute the case-weighted difference over 10,000 replicates.
+\head{Live answer review}
+The first audit used eight synthetic questions with rubrics written in advance. Version labels were masked for the initial paired review. After seeing the first audit, we fixed four additional two-turn conversations before the follow-up repair. The second API request carries the first actual answer and its passage ID. One student switches from a tangent-line problem to the Intermediate Value Theorem. Later repeats of these prompts are regression checks. One assistant scored the answers. There was no independent instructor rating or measurement of student learning.
+\head{What still needs work}
+Of the four remaining strict retrieval misses, two returned useful passages omitted from the frozen relevance labels. An IVT self-check explicitly explains nonuniqueness, and an implicit-circle example derives the tangent slope. The two genuine misses concerned the extra factor when differentiating $y^2$ and the derivative of tangent. The published scores retain the original labels.
+\head{Reproduce and inspect}
+The \href{https://github.com/juansalinas2/Math-1334---Calculus/tree/main/ask-notes/benchmark}{benchmark directory} contains the frozen corpus, questions, rubrics and Python commands. The \href{https://github.com/juansalinas2/Math-1334---Calculus/tree/main/ask-notes/benchmark/results}{results directory} includes each query's ranked passages, synthetic live answers and grading decisions. The standard test suite runs the retrieval check offline. Live audits use the existing class allowance.
+\end{document}

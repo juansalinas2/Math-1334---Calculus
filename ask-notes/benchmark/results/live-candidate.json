@@ -1,0 +1,71 @@
+[
+  {
+    "id": "box-1",
+    "answer": "To start, write the volume formula for the box: \\( V(x) = x(12 - 2x)^2 \\). Then find its derivative \\( V'(x) \\) and set it equal to zero to locate critical points. This will help you find the optimal size of the cut.",
+    "section": "lectures/optimization.html#optimization-problems::1",
+    "hrefs": [
+      "lectures/optimization.html#optimization-problems"
+    ],
+    "seconds": 1.57
+  },
+  {
+    "id": "box-3",
+    "answer": "I couldn’t find enough in the course notes to answer that. Try naming the topic or including the problem.",
+    "section": "lectures/04-limit-laws.html#recap",
+    "hrefs": [],
+    "seconds": 0.69
+  },
+  {
+    "id": "hole-1",
+    "answer": "Yes, the limit and the function value can be different. The limit depends on values near the point, not the value at the point itself [1]. For \\( g(x) \\), as \\( x \\) approaches 2, \\( g(x) \\) approaches 4, but \\( g(2) \\) is defined as 7. Thus, \\( \\lim_{{x\\\\to2}} g(x) = 4 \\) while \\( g(2) = 7 \\).",
+    "section": "lectures/02-limits.html#limits-and-function-values::2",
+    "hrefs": [
+      "lectures/02-limits.html#limits-and-function-values"
+    ],
+    "seconds": 0.66
+  },
+  {
+    "id": "extrema-2",
+    "answer": "If both the first and second derivatives vanish at \\( c \\), the second derivative test is inconclusive [1]. You would need to examine higher-order derivatives or use other methods to determine if there is a minimum. Simply having \\( f'(c) = 0 \\) and \\( f''(c) = 0 \\) does not guarantee a minimum.",
+    "section": "lectures/section-4-3.html#the-second-derivative-test",
+    "hrefs": [
+      "lectures/section-4-3.html#the-second-derivative-test"
+    ],
+    "seconds": 0.86
+  },
+  {
+    "id": "hospital-1",
+    "answer": "In Example 5, the limit \\(\\displaystyle\\lim_{x\\to\\infty}\\frac{e^x}{x^2}\\) is evaluated using L'Hôpital's Rule twice because it has the indeterminate form \\(\\infty/\\infty\\). After applying the rule, the limit simplifies to \\(\\displaystyle\\lim_{x\\to\\infty}\\frac{e^x}{2}\\), which clearly approaches \\(+\\infty\\). Thus, the limit diverges to positive infinity.",
+    "section": "lectures/lhopitals-rule.html#infinity-over-infinity::1",
+    "hrefs": [
+      "lectures/lhopitals-rule.html#infinity-over-infinity"
+    ],
+    "seconds": 0.82
+  },
+  {
+    "id": "ivt-1",
+    "answer": "For the Intermediate Value Theorem (IVT), you need two hypotheses:  \n\n1. The function \\( f \\) must be **continuous** on the closed interval \\([a, b]\\).  \n2. The value \\( N \\) you are looking for must lie **between** \\( f(a) \\) and \\( f(b) \\).  \n\nThese conditions ensure there is some \\( c \\) in \\([a, b]\\) such that \\( f(c) = N \\) [1][2].",
+    "section": "lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "hrefs": [
+      "lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+      "supplements/self-checks.html#chapter-7-intermediate-value-theorem"
+    ],
+    "seconds": 0.9
+  },
+  {
+    "id": "ladder-2",
+    "answer": "Your sign is not correct. Since the ladder’s top moves down as the bottom moves away, the rate \\(dy/dt\\) must be negative. The correct rate is \\(-\\frac{3}{2}\\) ft/s, meaning the top moves downward.",
+    "section": "lectures/related-rates.html#ladder",
+    "hrefs": [
+      "lectures/related-rates.html#ladder"
+    ],
+    "seconds": 0.94
+  },
+  {
+    "id": "outside-1",
+    "answer": "I couldn’t connect that question to the course notes. Which calculus topic or problem do you mean?",
+    "section": "lectures/optimization.html",
+    "hrefs": [],
+    "seconds": 0.04
+  }
+]

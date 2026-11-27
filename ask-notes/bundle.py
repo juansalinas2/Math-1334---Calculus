@@ -26,7 +26,11 @@ def bundle(site=ROOT / "_site"):
     files = [HERE / name for name in ("template.yaml", "deploy.py", "export.py", "review.py",
              "evaluate.py", "responses.py", "README.md", "System-Guide.tex", "preview-search.js",
              "practice.py", "practice.js", "checks.json", "app.py", "course_index.py", "widget.js", "widget.css",
-             "site_assets.py", "pilot-endpoint.txt", "preview.py", "bundle.py", "test_pilot.py", "test_walkthrough.py")]
+             "site_assets.py", "pilot-endpoint.txt", "preview.py", "bundle.py", "test_pilot.py", "test_walkthrough.py", "test_benchmark.py")]
+    benchmark = HERE / "benchmark"
+    files.extend(benchmark / name for name in ("README.md", "run.py", "cases.csv", "corpus.json.gz", "dialogues.json", "report.tex"))
+    files.extend(sorted((benchmark / "results").glob("*.json")))
+    files.extend(sorted((benchmark / "results").glob("*.csv")))
     files.append(build_guide())
     files.extend(BUILD / "function" / name for name in ("app.py", "responses.py", "practice.py",
                                                           "checks.json", "passages.json", "course_index.py", "course.json"))

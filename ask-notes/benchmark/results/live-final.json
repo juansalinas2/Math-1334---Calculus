@@ -1,0 +1,74 @@
+[
+  {
+    "id": "box-1",
+    "answer": "To start solving this optimization problem, first express the volume of the box as a function of the cut size \\( x \\). Use the given dimensions to write \\( V(x) = x(12 - 2x)^2 \\). Then, determine the critical points by finding where the derivative \\( V'(x) \\) is zero. What is \\( V'(x) \\)?",
+    "section": "lectures/optimization.html#optimization-problems::1",
+    "hrefs": [
+      "lectures/optimization.html#optimization-problems"
+    ],
+    "seconds": 0.86
+  },
+  {
+    "id": "box-3",
+    "answer": "The two cuts come off each side to form the base of the box. When you cut a square of side \\( x \\) from each corner of the \\( 12 \\)-inch square cardboard, each side of the cardboard is reduced by \\( 2x \\) (since \\( x \\) is removed from both ends). This results in a base of side length \\( 12 - 2x \\).",
+    "section": "lectures/optimization.html#optimization-problems::1",
+    "hrefs": [
+      "lectures/optimization.html#optimization-problems",
+      "lectures/04-limit-laws.html#recap"
+    ],
+    "seconds": 0.82
+  },
+  {
+    "id": "hole-1",
+    "answer": "Yes, the limit and the function value can be different. The limit \\(\\lim_{x \\to 2} g(x)\\) depends on values near \\(x = 2\\), which follow the rule \\(x + 2\\), giving \\(4\\). However, \\(g(2)\\) is defined separately as \\(7\\). Thus, the limit is \\(4\\), but the function value at \\(2\\) is \\(7\\).",
+    "section": "lectures/02-limits.html#limits-and-function-values::2",
+    "hrefs": [
+      "lectures/02-limits.html#limits-and-function-values"
+    ],
+    "seconds": 0.81
+  },
+  {
+    "id": "extrema-2",
+    "answer": "If both the first and second derivatives vanish at \\( c \\), the second derivative test is inconclusive. You would need to examine higher-order derivatives or use other methods, like analyzing nearby function values, to determine if there is a minimum. Simply having \\( f'(c) = 0 \\) and \\( f''(c) = 0 \\) does not guarantee a minimum.",
+    "section": "lectures/section-4-3.html#the-second-derivative-test",
+    "hrefs": [
+      "lectures/section-4-3.html#the-second-derivative-test"
+    ],
+    "seconds": 0.82
+  },
+  {
+    "id": "hospital-1",
+    "answer": "In Example 5, we evaluate \\(\\displaystyle\\lim_{x\\to\\infty}\\frac{e^x}{x^2}\\) using L'Hôpital's Rule twice because it is of the form \\(\\infty/\\infty\\). After the first application, it becomes \\(\\displaystyle\\lim_{x\\to\\infty}\\frac{e^x}{2x}\\), and after the second application, it simplifies to \\(\\displaystyle\\lim_{x\\to\\infty}\\frac{e^x}{2} = +\\infty\\). Thus, the limit diverges to positive infinity.",
+    "section": "lectures/lhopitals-rule.html#infinity-over-infinity::1",
+    "hrefs": [
+      "lectures/lhopitals-rule.html#infinity-over-infinity"
+    ],
+    "seconds": 0.88
+  },
+  {
+    "id": "ivt-1",
+    "answer": "To apply the Intermediate Value Theorem (IVT), you need two main hypotheses:  \n\n1. The function \\( f \\) must be **continuous** on the closed interval \\([a, b]\\).  \n2. The value \\( N \\) you are looking for must lie **between** \\( f(a) \\) and \\( f(b) \\).  \n\nThese conditions ensure that there is some \\( c \\) in \\([a, b]\\) where \\( f(c) = N \\).",
+    "section": "lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "hrefs": [
+      "lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+      "supplements/self-checks.html#chapter-7-intermediate-value-theorem"
+    ],
+    "seconds": 0.66
+  },
+  {
+    "id": "ladder-2",
+    "answer": "Your sign needs attention. The ladder’s top moves downward, so the rate should be negative. Review the relation \\( x \\frac{dx}{dt} + y \\frac{dy}{dt} = 0 \\) and plug in the known values to find the correct signed rate.",
+    "section": "lectures/related-rates.html#ladder",
+    "hrefs": [
+      "lectures/related-rates.html#ladder"
+    ],
+    "seconds": 0.71
+  },
+  {
+    "id": "outside-1",
+    "answer": "I couldn’t connect that question to the course notes. Which calculus topic or problem do you mean?",
+    "section": "lectures/optimization.html",
+    "hrefs": [],
+    "seconds": 0.03
+  }
+]

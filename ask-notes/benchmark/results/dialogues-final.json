@@ -1,0 +1,74 @@
+[
+  {
+    "id": "pasture",
+    "turn": 1,
+    "answer": "To start solving this optimization problem, express the fence length \\( F \\) solely in terms of one variable by using the area constraint \\( xy = 72 \\). Then differentiate \\( F \\) with respect to that variable and set the derivative equal to zero to find critical points.",
+    "section": "lectures/optimization.html#optimization-problems::5",
+    "hrefs": [
+      "lectures/optimization.html#optimization-problems"
+    ]
+  },
+  {
+    "id": "pasture",
+    "turn": 2,
+    "answer": "The fencing equation has only one \\( y \\) because the pasture runs along a river, so no fence is needed on that side. Using the area constraint \\( xy = 72 \\), you replace \\( y \\) with \\( \\frac{72}{x} \\). This reduces the fence length \\( F \\) to a function of a single variable, \\( x \\).",
+    "section": "lectures/optimization.html#optimization-problems::5",
+    "hrefs": [
+      "lectures/optimization.html#optimization-problems"
+    ]
+  },
+  {
+    "id": "trig-switch",
+    "turn": 1,
+    "answer": "From the passage, we have the function \\( f(x) = -2\\sin x \\) and we need the tangent line at \\( x = 0 \\).\n\nWe find:\n- \\( f(0) = 0 \\)\n- The derivative \\( f'(x) = -2\\cos x \\), so \\( f'(0) = -2 \\).\n\nUsing the point-slope form of a line, \\( y - y_1 = m(x - x_1) \\), with the point \\( (0, 0) \\) and slope \\( -2 \\), the tangent line is:\n\n\\( y = -2x \\).\n\nThis matches the result given in the passage.",
+    "section": "lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes::2",
+    "hrefs": [
+      "lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes"
+    ]
+  },
+  {
+    "id": "trig-switch",
+    "turn": 2,
+    "answer": "The Intermediate Value Theorem guarantees that if a function \\( f \\) is continuous on \\([a, b]\\) and \\( N \\) lies between \\( f(a) \\) and \\( f(b) \\), then there exists some \\( c \\) in \\([a, b]\\) such that \\( f(c) = N \\) [1].",
+    "section": "lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "hrefs": [
+      "lectures/07-intermediate-value.html#the-intermediate-value-theorem"
+    ]
+  },
+  {
+    "id": "asymptote-sign",
+    "turn": 1,
+    "answer": "For \\( x \\) approaching 1 from the left, \\( (x-1)^2 \\) stays positive, but \\( x+2 \\) becomes slightly less than 3, so the whole denominator is positive and the numerator is negative, giving a large negative value. From the right, \\( x+2 \\) is still positive, so the denominator stays positive, and the overall fraction remains large and negative. Thus, both sides approach \\( -\\infty \\).",
+    "section": "lectures/08-exam-practice.html#problem-2",
+    "hrefs": [
+      "lectures/08-exam-practice.html#problem-2"
+    ]
+  },
+  {
+    "id": "asymptote-sign",
+    "turn": 2,
+    "answer": "The sign stays the same on both sides of \\( x = 1 \\) because \\( (x-1)^2 \\) is always positive, and \\( x+2 \\) remains positive near \\( x = 1 \\). This makes the denominator always positive, so the negative numerator determines the sign of the whole expression [1].",
+    "section": "lectures/08-exam-practice.html#problem-2",
+    "hrefs": [
+      "lectures/08-exam-practice.html#problem-2"
+    ]
+  },
+  {
+    "id": "triangle",
+    "turn": 1,
+    "answer": "To start, write the formula for the area of a triangle using base \\( b \\) and height \\( h \\), then differentiate it with respect to time \\( t \\) using the product rule.",
+    "section": "lectures/related-rates.html#triangle",
+    "hrefs": [
+      "lectures/related-rates.html#triangle"
+    ]
+  },
+  {
+    "id": "triangle",
+    "turn": 2,
+    "answer": "To see if only the height changing would add 12 cm²/min, compute \\(\\frac{dA}{dt}\\) using only the height term in the derivative: \\(\\frac12 b \\frac{dh}{dt}\\). Plug in \\(b = 8\\) cm and \\(\\frac{dh}{dt} = 3\\) cm/min and evaluate.",
+    "section": "lectures/related-rates.html#triangle",
+    "hrefs": [
+      "lectures/related-rates.html#triangle"
+    ]
+  }
+]

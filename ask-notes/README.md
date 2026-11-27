@@ -20,7 +20,11 @@ API Gateway accepts the question and Lambda checks the shared class code. An exp
 
 After a successful request, the browser can keep the shared class code and an expiry timestamp in local storage for 90 days. With remembering off or storage blocked, access lasts for the open page. **About Ask → Forget class code** removes access from this browser. Each request still checks the code on the server. A rejected code prompts for a replacement. This convenience uses no student ID or IP lookup. Questions and replies stay out of local storage. **New question** clears the thread and hint progress while retaining class access. The backend keeps a feedback receipt for two hours. Sharing an exchange with Juan saves it for 90 days. Run `python3 review.py` privately to see shared responses.
 
-## Test a real discussion
+## Evaluate the course-wide tutor
+
+Run the ordinary unit tests to check the offline benchmark floor. The benchmark folder contains a frozen public corpus, relevance labels, raw retrieval decisions, and scored synthetic answers. Its README gives the exact commands for a before-and-after comparison. The offline tests do not call AWS. The optional answer audit and two-turn conversations use the live class allowance.
+
+## Related-rates pilot diagnostics
 
 Run `python3 evaluate.py --endpoint https://YOUR-API/ask --class-code-file ~/.math1334-class-code`. This spends up to 20 short replies from the same allowance. Read both turns in pilot-evaluation.json against each mathematical rubric. A citation alone does not establish that the explanation was correct.
 

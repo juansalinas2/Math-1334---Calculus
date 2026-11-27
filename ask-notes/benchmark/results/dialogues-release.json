@@ -1,0 +1,74 @@
+[
+  {
+    "id": "pasture",
+    "turn": 1,
+    "answer": "What is the relationship between the depth \\( x \\) and the length \\( y \\) along the river given the area constraint \\( xy = 72 \\)?",
+    "section": "lectures/optimization.html#optimization-problems::5",
+    "hrefs": [
+      "lectures/optimization.html#optimization-problems"
+    ]
+  },
+  {
+    "id": "pasture",
+    "turn": 2,
+    "answer": "The fencing equation only includes one \\( y \\) because the side along the river doesn’t need fencing. The relationship \\( xy = 72 \\) lets you express \\( y \\) as \\( \\frac{72}{x} \\), so the fence length depends solely on \\( x \\).",
+    "section": "lectures/optimization.html#optimization-problems::5",
+    "hrefs": [
+      "lectures/optimization.html#optimization-problems"
+    ]
+  },
+  {
+    "id": "trig-switch",
+    "turn": 1,
+    "answer": "From the passage, we have the function \\( f(x) = -2\\sin x \\) and we need the tangent line at \\( x = 0 \\).\n\nWe find:\n- \\( f(0) = 0 \\)\n- The derivative \\( f'(x) = -2\\cos x \\), so \\( f'(0) = -2 \\).\n\nUsing the point-slope form of a line, \\( y - y_1 = m(x - x_1) \\), where \\( m \\) is the slope and \\( (x_1, y_1) \\) is the point of tangency:\n\\[ y - 0 = -2(x - 0) \\]\n\nThus, the tangent line is:\n\\[ y = -2x \\]",
+    "section": "lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes::2",
+    "hrefs": [
+      "lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes"
+    ]
+  },
+  {
+    "id": "trig-switch",
+    "turn": 2,
+    "answer": "The Intermediate Value Theorem guarantees that if a function \\( f \\) is continuous on \\([a, b]\\) and \\( N \\) lies between \\( f(a) \\) and \\( f(b) \\), then there exists some \\( c \\) in \\([a, b]\\) such that \\( f(c) = N \\) [1].",
+    "section": "lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "hrefs": [
+      "lectures/07-intermediate-value.html#the-intermediate-value-theorem"
+    ]
+  },
+  {
+    "id": "asymptote-sign",
+    "turn": 1,
+    "answer": "For \\( x \\) approaching 1 from the left, \\( (x-1)^2 \\) stays positive, but \\( x+2 \\) becomes slightly less than 3, keeping the overall fraction negative. From the right, \\( x+2 \\) is still positive, and \\( (x-1)^2 \\) remains positive, so the whole expression stays negative on both sides [1].",
+    "section": "lectures/08-exam-practice.html#problem-2",
+    "hrefs": [
+      "lectures/08-exam-practice.html#problem-2"
+    ]
+  },
+  {
+    "id": "asymptote-sign",
+    "turn": 2,
+    "answer": "The sign stays the same on both sides of \\( x = 1 \\) because \\( (x-1)^2 \\) is always positive, and \\( x+2 \\) remains positive for values of \\( x \\) near 1. Thus, the denominator is always positive, and the negative numerator keeps the whole expression negative [1].",
+    "section": "lectures/08-exam-practice.html#problem-2",
+    "hrefs": [
+      "lectures/08-exam-practice.html#problem-2"
+    ]
+  },
+  {
+    "id": "triangle",
+    "turn": 1,
+    "answer": "What is the formula that relates the area of the triangle to its base and height, and how would you differentiate it with respect to time?",
+    "section": "lectures/related-rates.html#triangle",
+    "hrefs": [
+      "lectures/related-rates.html#triangle"
+    ]
+  },
+  {
+    "id": "triangle",
+    "turn": 2,
+    "answer": "To see if only the height changing would add \\(12\\) square centimeters per minute, compute the term involving \\(dh/dt\\) alone in the area-rate formula:\n\n\\[\n\\frac12 b \\frac{dh}{dt}.\n\\]\n\nPlug in the given values for \\(b\\) and \\(dh/dt\\) and evaluate.",
+    "section": "lectures/related-rates.html#triangle",
+    "hrefs": [
+      "lectures/related-rates.html#triangle"
+    ]
+  }
+]

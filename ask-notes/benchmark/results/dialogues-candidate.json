@@ -1,0 +1,74 @@
+[
+  {
+    "id": "pasture",
+    "turn": 1,
+    "answer": "To start, express the fence length \\( F \\) in terms of one variable by using the area constraint \\( xy = 72 \\). Then differentiate \\( F \\) with respect to that variable and set the derivative equal to zero to find the critical point.",
+    "section": "lectures/optimization.html#optimization-problems::5",
+    "hrefs": [
+      "lectures/optimization.html#optimization-problems"
+    ]
+  },
+  {
+    "id": "pasture",
+    "turn": 2,
+    "answer": "The fencing equation has only one \\( y \\) because the side along the river does not need fencing. The area constraint \\( xy = 72 \\) lets us express \\( y \\) as \\( \\frac{72}{x} \\), reducing the problem to one variable [1].",
+    "section": "lectures/optimization.html#optimization-problems::5",
+    "hrefs": [
+      "lectures/optimization.html#optimization-problems"
+    ]
+  },
+  {
+    "id": "trig-switch",
+    "turn": 1,
+    "answer": "The tangent line to the function \\( f(x) = -2\\sin x \\) at \\( x = 0 \\) is \\( y = -2x \\). This comes from evaluating the function and its derivative at \\( x = 0 \\), giving a slope of \\(-2\\) and passing through the point \\((0, 0)\\).",
+    "section": "lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes::2",
+    "hrefs": [
+      "lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes"
+    ]
+  },
+  {
+    "id": "trig-switch",
+    "turn": 2,
+    "answer": "The Intermediate Value Theorem guarantees that if a function \\( f \\) is continuous on \\([a, b]\\) and \\( N \\) lies between \\( f(a) \\) and \\( f(b) \\), then there exists some \\( c \\) in \\([a, b]\\) such that \\( f(c) = N \\) [1]. It ensures the existence of at least one such point, but not necessarily only one.",
+    "section": "lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "hrefs": [
+      "lectures/07-intermediate-value.html#the-intermediate-value-theorem"
+    ]
+  },
+  {
+    "id": "asymptote-sign",
+    "turn": 1,
+    "answer": "For \\( H(x) = \\frac{-2}{(x+2)(x-1)^2} \\), as \\( x \\) approaches 1 from the left and right, the denominator \\((x-1)^2\\) is always positive, but the sign of \\( x+2 \\) changes at \\( x = -2 \\), not at \\( x = 1 \\). Thus, both sides approach \\( -\\infty \\) because the numerator is negative and the squared term ensures a positive denominator near \\( x = 1 \\). [1]",
+    "section": "lectures/08-exam-practice.html#problem-2",
+    "hrefs": [
+      "lectures/08-exam-practice.html#problem-2"
+    ]
+  },
+  {
+    "id": "asymptote-sign",
+    "turn": 2,
+    "answer": "The sign stays the same on both sides of \\( x = 1 \\) because the factor \\((x-1)^2\\) is squared, making it always positive near \\( x = 1 \\). The sign of the whole expression depends only on the constant \\(-2\\) and the always-positive denominator, so both sides approach \\(-\\infty\\). [1]",
+    "section": "lectures/07-intermediate-value.html#the-intermediate-value-theorem::2",
+    "hrefs": [
+      "lectures/07-intermediate-value.html#the-intermediate-value-theorem"
+    ]
+  },
+  {
+    "id": "triangle",
+    "turn": 1,
+    "answer": "To start, write the formula for the area of a triangle using base \\( b \\) and height \\( h \\), then differentiate it with respect to time \\( t \\) using the product rule. This will relate \\( \\frac{dA}{dt} \\) to \\( \\frac{db}{dt} \\) and \\( \\frac{dh}{dt} \\).",
+    "section": "lectures/related-rates.html#triangle",
+    "hrefs": [
+      "lectures/related-rates.html#triangle"
+    ]
+  },
+  {
+    "id": "triangle",
+    "turn": 2,
+    "answer": "If only the height were changing, use \\( \\frac{dA}{dt} = \\frac12 b \\frac{dh}{dt} \\). Plug in \\( b = 8 \\, \\text{cm} \\) and \\( \\frac{dh}{dt} = 3 \\, \\text{cm/min} \\) to find the rate.",
+    "section": "lectures/related-rates.html#triangle",
+    "hrefs": [
+      "lectures/related-rates.html#triangle"
+    ]
+  }
+]

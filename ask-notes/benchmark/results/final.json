@@ -1,0 +1,525 @@
+{
+  "split": "test",
+  "cases_sha": "1888d3d424f723f1bd39bc4989d5c54ca110163e152968910bbdf6c18d0ff7b0",
+  "corpus_sha": "0aff6177bc5ba62a9a704ec64fc38b1de80ea3fcab6dab93c6e936f1723f2c2d",
+  "retriever_sha": "204ae88120dba8d83214472e65661d8027f549a36381d8443d9dd0df9bbfcf9c",
+  "metrics": {
+    "n": 35,
+    "routed": 31,
+    "answerable": 29,
+    "hit1": 25,
+    "hit2": 25,
+    "mrr2": 0.8620689655172413,
+    "must_clarify": 6,
+    "clarified": 6
+  },
+  "rows": [
+    {
+      "id": "box-1",
+      "family": "box",
+      "slice": "numbered",
+      "targets": [
+        "lectures/optimization.html#optimization-problems::1"
+      ],
+      "retrieved": [
+        "lectures/optimization.html#optimization-problems::1"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "box-2",
+      "family": "box",
+      "slice": "numbered",
+      "targets": [
+        "lectures/optimization.html#optimization-problems::2"
+      ],
+      "retrieved": [
+        "lectures/optimization.html#optimization-problems::2"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "box-3",
+      "family": "box",
+      "slice": "followup",
+      "targets": [
+        "lectures/optimization.html#optimization-problems::1",
+        "lectures/optimization.html#optimization-problems"
+      ],
+      "retrieved": [
+        "lectures/optimization.html#optimization-problems::1",
+        "lectures/04-limit-laws.html#recap"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "hole-1",
+      "family": "hole",
+      "slice": "numbered",
+      "targets": [
+        "lectures/02-limits.html#limits-and-function-values::2"
+      ],
+      "retrieved": [
+        "lectures/02-limits.html#limits-and-function-values::2"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "hole-2",
+      "family": "hole",
+      "slice": "ambiguous",
+      "targets": [],
+      "retrieved": [],
+      "message": "Which one in 2.1 Limits? Example 1 · Limits and function values or Example 1 · One-sided limits. Open its heading and ask again.",
+      "rank": 0,
+      "success": true
+    },
+    {
+      "id": "hole-3",
+      "family": "hole",
+      "slice": "concept",
+      "targets": [
+        "supplements/definitions.html#removable-discontinuity",
+        "lectures/06-continuity.html#types-of-discontinuities"
+      ],
+      "retrieved": [
+        "supplements/definitions.html#removable-discontinuity"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "extrema-1",
+      "family": "extrema",
+      "slice": "concept",
+      "targets": [
+        "supplements/theorems.html#second-derivative-test",
+        "lectures/section-4-3.html#the-second-derivative-test"
+      ],
+      "retrieved": [
+        "lectures/section-4-3.html#the-second-derivative-test",
+        "supplements/theorems.html#second-derivative-test"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "extrema-2",
+      "family": "extrema",
+      "slice": "paraphrase",
+      "targets": [
+        "lectures/section-4-3.html#the-second-derivative-test",
+        "supplements/theorems.html#second-derivative-test"
+      ],
+      "retrieved": [
+        "lectures/section-4-3.html#the-second-derivative-test"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "extrema-3",
+      "family": "extrema",
+      "slice": "concept",
+      "targets": [
+        "lectures/18-maxima-and-minima.html#closed-interval-method",
+        "lectures/18-maxima-and-minima.html#finding-global-extrema",
+        "supplements/theorems.html#closed-interval-method"
+      ],
+      "retrieved": [
+        "lectures/18-maxima-and-minima.html#closed-interval-method",
+        "lectures/18-maxima-and-minima.html#global-and-local-extrema"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "hospital-1",
+      "family": "hospital",
+      "slice": "numbered",
+      "targets": [
+        "lectures/lhopitals-rule.html#infinity-over-infinity::1"
+      ],
+      "retrieved": [
+        "lectures/lhopitals-rule.html#infinity-over-infinity::1"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "hospital-2",
+      "family": "hospital",
+      "slice": "concept",
+      "targets": [
+        "lectures/lhopitals-rule.html#lhospitals-rule",
+        "lectures/lhopitals-rule.html#check-the-form",
+        "supplements/theorems.html#lhospitals-rule"
+      ],
+      "retrieved": [
+        "lectures/lhopitals-rule.html#lhospitals-rule",
+        "lectures/lhopitals-rule.html"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "hospital-3",
+      "family": "hospital",
+      "slice": "followup",
+      "targets": [
+        "lectures/lhopitals-rule.html#products::1",
+        "lectures/lhopitals-rule.html#products"
+      ],
+      "retrieved": [
+        "lectures/lhopitals-rule.html#products::1"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "ivt-1",
+      "family": "ivt",
+      "slice": "concept",
+      "targets": [
+        "lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+        "supplements/theorems.html#intermediate-value-theorem"
+      ],
+      "retrieved": [
+        "lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+        "supplements/self-checks.html#chapter-7-intermediate-value-theorem"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "ivt-2",
+      "family": "ivt",
+      "slice": "paraphrase",
+      "targets": [
+        "lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+        "supplements/theorems.html#intermediate-value-theorem"
+      ],
+      "retrieved": [
+        "supplements/self-checks.html#chapter-7-intermediate-value-theorem",
+        "supplements/explore.html#approaching-a-hole"
+      ],
+      "message": "",
+      "rank": 0,
+      "success": false
+    },
+    {
+      "id": "ivt-3",
+      "family": "ivt",
+      "slice": "concept",
+      "targets": [
+        "lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+        "supplements/theorems.html#intermediate-value-theorem"
+      ],
+      "retrieved": [
+        "lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+        "supplements/self-checks.html#chapter-7-intermediate-value-theorem"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "ladder-1",
+      "family": "ladder",
+      "slice": "numbered",
+      "targets": [
+        "lectures/related-rates.html#ladder"
+      ],
+      "retrieved": [
+        "lectures/related-rates.html#ladder"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "ladder-2",
+      "family": "ladder",
+      "slice": "followup",
+      "targets": [
+        "lectures/related-rates.html#ladder"
+      ],
+      "retrieved": [
+        "lectures/related-rates.html#ladder"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "ladder-3",
+      "family": "ladder",
+      "slice": "paraphrase",
+      "targets": [
+        "lectures/related-rates.html#ladder"
+      ],
+      "retrieved": [
+        "lectures/related-rates.html#ladder",
+        "lectures/related-rates.html#constant-product"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "asymptote-1",
+      "family": "asymptote",
+      "slice": "concept",
+      "targets": [
+        "lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+        "supplements/theorems.html#slant-asymptote-by-division",
+        "supplements/theorems.html#polynomial-division"
+      ],
+      "retrieved": [
+        "supplements/theorems.html#slant-asymptote-by-division"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "asymptote-2",
+      "family": "asymptote",
+      "slice": "concept",
+      "targets": [
+        "supplements/definitions.html#limit-at-infinity-and-horizontal-asymptote",
+        "lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes"
+      ],
+      "retrieved": [
+        "supplements/definitions.html#limit-at-infinity-and-horizontal-asymptote",
+        "lectures/19-end-behaviour-and-curve-sketching.html#limits-at-infinity-and-horizontal-asymptotes"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "asymptote-3",
+      "family": "asymptote",
+      "slice": "paraphrase",
+      "targets": [
+        "lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+        "supplements/theorems.html#slant-asymptote-by-division"
+      ],
+      "retrieved": [
+        "lectures/19-end-behaviour-and-curve-sketching.html#slant-asymptotes",
+        "supplements/theorems.html#slant-asymptote-by-division"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "implicit-1",
+      "family": "implicit",
+      "slice": "concept",
+      "targets": [
+        "lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+        "lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
+        "lectures/exam-2-review.html#implicit-differentiation"
+      ],
+      "retrieved": [
+        "lectures/16-implicit-differentiation.html::1"
+      ],
+      "message": "",
+      "rank": 0,
+      "success": false
+    },
+    {
+      "id": "implicit-2",
+      "family": "implicit",
+      "slice": "followup",
+      "targets": [
+        "lectures/16-implicit-differentiation.html#example-the-curve-x2xyy23",
+        "lectures/16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents"
+      ],
+      "retrieved": [
+        "lectures/optimization.html#optimization-problems::2",
+        "supplements/limits-map.html#differentiate-a-variable-power"
+      ],
+      "message": "",
+      "rank": 0,
+      "success": false
+    },
+    {
+      "id": "implicit-3",
+      "family": "implicit",
+      "slice": "concept",
+      "targets": [
+        "supplements/definitions.html#explicit-and-implicit-equations"
+      ],
+      "retrieved": [
+        "supplements/definitions.html#explicit-and-implicit-equations"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "logarithm-1",
+      "family": "logarithm",
+      "slice": "concept",
+      "targets": [
+        "supplements/theorems.html#logarithmic-differentiation-of-a-variable-power",
+        "lectures/17-exponential-logarithmic.html#the-general-calculation",
+        "lectures/17-exponential-logarithmic.html#logarithmic-differentiation"
+      ],
+      "retrieved": [
+        "supplements/theorems.html#logarithmic-differentiation-of-a-variable-power",
+        "lectures/17-exponential-logarithmic.html#the-power-rule-for-real-exponents"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "logarithm-2",
+      "family": "logarithm",
+      "slice": "concept",
+      "targets": [
+        "lectures/17-exponential-logarithmic.html#relative-growth",
+        "supplements/definitions.html#relative-growth-rate"
+      ],
+      "retrieved": [
+        "supplements/definitions.html#relative-growth-rate",
+        "lectures/17-exponential-logarithmic.html#relative-growth"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "logarithm-3",
+      "family": "logarithm",
+      "slice": "followup",
+      "targets": [
+        "lectures/17-exponential-logarithmic.html#the-general-calculation",
+        "lectures/17-exponential-logarithmic.html#logarithmic-differentiation",
+        "supplements/theorems.html#logarithmic-differentiation-of-a-variable-power"
+      ],
+      "retrieved": [
+        "lectures/17-exponential-logarithmic.html#the-general-calculation",
+        "supplements/definitions.html#natural-logarithm"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "trig-1",
+      "family": "trig",
+      "slice": "numbered",
+      "targets": [
+        "lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure::2"
+      ],
+      "retrieved": [
+        "lectures/13-trigonometric-derivatives.html#choose-the-rule-from-the-structure::2"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "trig-2",
+      "family": "trig",
+      "slice": "numbered",
+      "targets": [
+        "lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes::2"
+      ],
+      "retrieved": [
+        "lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes::2"
+      ],
+      "message": "",
+      "rank": 1,
+      "success": true
+    },
+    {
+      "id": "trig-3",
+      "family": "trig",
+      "slice": "concept",
+      "targets": [
+        "supplements/theorems.html#trigonometric-derivatives",
+        "lectures/13-trigonometric-derivatives.html#derivatives-of-trigonometric-functions",
+        "lectures/13-trigonometric-derivatives.html#using-quotients-to-explain-the-new-formulas::1"
+      ],
+      "retrieved": [
+        "lectures/13-trigonometric-derivatives.html#second-derivatives-and-tangent-slopes::2",
+        "lectures/11-differentiation-rules.html#tangent-lines-and-prescribed-slopes"
+      ],
+      "message": "",
+      "rank": 0,
+      "success": false
+    },
+    {
+      "id": "missing-reading-1",
+      "family": "missing-reading",
+      "slice": "missing",
+      "targets": [],
+      "retrieved": [],
+      "message": "I couldn’t find that numbered problem in 4.6 Optimization. What is its heading or first line?",
+      "rank": 0,
+      "success": true
+    },
+    {
+      "id": "missing-reading-2",
+      "family": "missing-reading",
+      "slice": "missing",
+      "targets": [],
+      "retrieved": [],
+      "message": "I couldn’t find section 99.7 in the published notes.",
+      "rank": 0,
+      "success": true
+    },
+    {
+      "id": "outside-1",
+      "family": "outside",
+      "slice": "unsupported",
+      "targets": [],
+      "retrieved": [],
+      "message": "I couldn’t connect that question to the course notes. Which calculus topic or problem do you mean?",
+      "rank": 0,
+      "success": true
+    },
+    {
+      "id": "outside-2",
+      "family": "outside",
+      "slice": "unsupported",
+      "targets": [],
+      "retrieved": [],
+      "message": "I couldn’t connect that question to the course notes. Which calculus topic or problem do you mean?",
+      "rank": 0,
+      "success": true
+    },
+    {
+      "id": "outside-3",
+      "family": "outside",
+      "slice": "unsupported",
+      "targets": [],
+      "retrieved": [],
+      "message": "I couldn’t connect that question to the course notes. Which calculus topic or problem do you mean?",
+      "rank": 0,
+      "success": true
+    }
+  ]
+}

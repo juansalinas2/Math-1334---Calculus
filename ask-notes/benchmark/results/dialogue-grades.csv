@@ -1,0 +1,25 @@
+case,turn,masked,arm,correct,follows_rubric,citation,pass_all,reason
+pasture,1,A,candidate,1,0,1,0,Offers both a modeling step and differentiation after a request for one hint.
+pasture,1,B,final,1,0,1,0,Offers both a modeling step and differentiation after a request for one hint.
+pasture,2,A,final,1,0,1,0,"Explains the unfenced river side, but omits the two depths in the prewritten fence-count rubric."
+pasture,2,B,candidate,1,0,1,0,"Explains the unfenced river side, but omits the two depths in the prewritten fence-count rubric."
+trig-switch,1,A,final,1,1,1,1,Answers the requested mathematics and links to an appropriate reading.
+trig-switch,1,B,candidate,1,1,1,1,Answers the requested mathematics and links to an appropriate reading.
+trig-switch,2,A,final,1,1,1,1,Answers the requested mathematics and links to an appropriate reading.
+trig-switch,2,B,candidate,1,1,1,1,Answers the requested mathematics and links to an appropriate reading.
+asymptote-sign,1,A,candidate,1,1,1,1,Answers the requested mathematics and links to an appropriate reading.
+asymptote-sign,1,B,final,1,1,1,1,Answers the requested mathematics and links to an appropriate reading.
+asymptote-sign,2,A,candidate,1,1,0,0,Gets the sign right but cites the IVT instead of the open sign-analysis problem.
+asymptote-sign,2,B,final,1,1,1,1,Answers the requested mathematics and links to an appropriate reading.
+triangle,1,A,candidate,1,0,1,0,Offers both a modeling step and differentiation after a request for one hint.
+triangle,1,B,final,1,0,1,0,Offers both a modeling step and differentiation after a request for one hint.
+triangle,2,A,candidate,1,0,1,0,Gives the correct height contribution formula and inputs but leaves the student's yes/no arithmetic check unanswered.
+triangle,2,B,final,1,0,1,0,Gives the correct height contribution formula and inputs but leaves the student's yes/no arithmetic check unanswered.
+pasture,1,,release,1,1,1,1,"Meets the predeclared mathematics, student request and citation rubric."
+pasture,2,,release,1,0,1,0,Explains the river side but omits the two depths in the fence expression.
+trig-switch,1,,release,1,1,1,1,"Meets the predeclared mathematics, student request and citation rubric."
+trig-switch,2,,release,1,1,1,1,"Meets the predeclared mathematics, student request and citation rubric."
+asymptote-sign,1,,release,1,0,1,0,States the sign on both sides but omits the limiting value of negative infinity.
+asymptote-sign,2,,release,1,1,1,1,"Meets the predeclared mathematics, student request and citation rubric."
+triangle,1,,release,1,0,1,0,Asks for the area formula and differentiation in one compound hint.
+triangle,2,,release,1,0,1,0,Provides the formula but leaves the proposed numeric answer unconfirmed.

@@ -1,0 +1,71 @@
+[
+  {
+    "id": "box-1",
+    "answer": "To start, determine how the volume of the box depends on the size of the cut \\( x \\). Write the expression for the volume \\( V(x) \\) using the box's height and base side length. Then, think about how to find the value of \\( x \\) that maximizes this volume.",
+    "section": "lectures/optimization.html#optimization-problems::1",
+    "hrefs": [
+      "lectures/optimization.html#optimization-problems"
+    ],
+    "seconds": 5.13
+  },
+  {
+    "id": "box-3",
+    "answer": "I couldn’t find enough in the course notes to answer that. Try naming the topic or including the problem.",
+    "section": "lectures/04-limit-laws.html#recap",
+    "hrefs": [],
+    "seconds": 0.81
+  },
+  {
+    "id": "hole-1",
+    "answer": "Yes, the limit and the function value can be different. The limit \\(\\lim_{x \\to 2} g(x)\\) depends on values near \\(x = 2\\), which follow the rule \\(x + 2\\), giving \\(4\\). However, \\(g(2)\\) is defined separately as \\(7\\), so the function value at \\(x = 2\\) differs from the limit [1].",
+    "section": "lectures/02-limits.html#limits-and-function-values::2",
+    "hrefs": [
+      "lectures/02-limits.html#limits-and-function-values"
+    ],
+    "seconds": 0.83
+  },
+  {
+    "id": "extrema-2",
+    "answer": "If both the first and second derivatives vanish at \\( c \\), the second derivative test is inconclusive [1]. You would need to examine higher-order derivatives or use another method to determine if \\( f(c) \\) is a minimum. Simply having \\( f'(c) = 0 \\) and \\( f''(c) = 0 \\) does not guarantee a minimum.",
+    "section": "lectures/section-4-3.html#the-second-derivative-test",
+    "hrefs": [
+      "lectures/section-4-3.html#the-second-derivative-test"
+    ],
+    "seconds": 0.74
+  },
+  {
+    "id": "hospital-1",
+    "answer": "In Example 5, we evaluate \\(\\displaystyle\\lim_{x\\to\\infty}\\frac{e^x}{x^2}\\). Applying L'Hôpital's Rule twice, we get \\(\\lim_{x\\to\\infty}\\frac{e^x}{2x} = \\lim_{x\\to\\infty}\\frac{e^x}{2} = +\\infty\\). Thus, the limit ends at \\(+\\infty\\).",
+    "section": "lectures/lhopitals-rule.html#infinity-over-infinity::1",
+    "hrefs": [
+      "lectures/lhopitals-rule.html#infinity-over-infinity"
+    ],
+    "seconds": 0.8
+  },
+  {
+    "id": "ivt-1",
+    "answer": "To apply the Intermediate Value Theorem (IVT), you need two hypotheses:  \n\n1. The function \\( f \\) must be **continuous** on the closed interval \\([a, b]\\).  \n2. The value \\( N \\) you are looking for must lie **between** \\( f(a) \\) and \\( f(b) \\).  \n\nIf both conditions hold, the IVT guarantees a point \\( c \\) in \\([a, b]\\) where \\( f(c) = N \\) [1][2].",
+    "section": "lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+    "hrefs": [
+      "lectures/07-intermediate-value.html#the-intermediate-value-theorem",
+      "supplements/self-checks.html#chapter-7-intermediate-value-theorem"
+    ],
+    "seconds": 0.82
+  },
+  {
+    "id": "ladder-2",
+    "answer": "Your sign is not correct. Since the ladder’s length is fixed, as the bottom moves away, the top must move downward. The correct rate is \\(-\\frac{3}{2}\\) ft/s, indicating downward motion. The negative sign shows the direction.",
+    "section": "lectures/related-rates.html#ladder",
+    "hrefs": [
+      "lectures/related-rates.html#ladder"
+    ],
+    "seconds": 0.74
+  },
+  {
+    "id": "outside-1",
+    "answer": "I couldn’t find enough in the course notes to answer that. Try naming the topic or including the problem.",
+    "section": "lectures/optimization.html",
+    "hrefs": [],
+    "seconds": 0.68
+  }
+]
