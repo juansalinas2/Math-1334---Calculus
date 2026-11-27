@@ -32,7 +32,7 @@ MATH_REPLY = re.compile(r"(?:(?:[a-z]{1,2}|sin|cos|tan|exp|sqrt)(?![a-z])|"
 SHORTHAND = re.compile(
     r"(?:^\s*|\b(?:with|on|for|about|through|explain|solve|try|do)\s+)"
     r"(\d+)\s*(?:\(([a-z])\)|([a-z])\b)"
-    r"(?=\s*(?:$|[?!,:;.](?:$|\s)|(?:from|in|on|please)\b))", re.I)
+    r"(?=\s*(?:$|[?!,:;.](?:$|\s)|(?:from|in|on|please|I|we|my|our)\b|to (?:the |an? )?(?:end|answer|result)\b))", re.I)
 ON_SCREEN = re.compile(r"\b(?:(?:this|current) (?:problem|exercise|example|section|page|reading|one)|on (?:my|the) screen)\b", re.I)
 EARLIER_REPLY = re.compile(r"\b(?:your (?:last |previous |earlier )?(?:answer|reply|calculation)|"
                            r"(?:you|we) (?:just |previously )?(?:said|wrote|used)|the previous step)\b", re.I)
@@ -127,6 +127,16 @@ def formulas(text):
             yield formula
 
 
+_OPERAND = r"(?:\|[a-z]\||\d+(?:\.\d+)?[a-z]{0,2}|[a-z]{1,2})['′]?"
+_TYPED_FORMULA = re.compile(r"(?<![\w.])" + _OPERAND + r"(?:\s*[+*/=^-]\s*" + _OPERAND + r")+(?!\w)", re.I)
+
+
+def written_math(text):
+    # Linearize only atomic fractions. Removing braces around sums changes their meaning.
+    text = re.sub(r"\\(?:t?frac)\{(\|?[a-z0-9]+\|?)\}\{([a-z0-9]+)\}", r"\1/\2", text)
+    return re.sub(r"\s+|\\(?:left|right)\b", "", text).replace("′", "'").replace("−", "-")
+
+
 def build(rows):
     book = {}
     for row in rows:
@@ -173,6 +183,7 @@ class Index:
         self.book = book
         self.docs = {}
         self.numbered = defaultdict(list)
+        self.examples_by_heading = defaultdict(list)
         self.worked = defaultdict(list)
         counts = Counter()
         for key, row in book.items():
@@ -185,6 +196,8 @@ class Index:
             label = NUMBERED_HEADING.match(row["title"])
             if label:
                 page = row["href"].split("#")[0]
+                if key != row["href"]:
+                    self.examples_by_heading[row["href"]].append(key)
                 number = int(label[2] or label[3])
                 self.numbered[page, number].append(((label[1] or "").lower(), key))
                 statement, marker, _ = row["text"].partition("Show solution")
@@ -216,6 +229,38 @@ class Index:
                 if matches:
                     return min(matches, key=lambda k: len(self.book[k]["text"]))
         return ""
+
+    def quoted_example(self, question, section):
+        """Resolve a student's literal expression inside a multi-example heading."""
+        neighbors = self.examples_by_heading.get(section, ())
+        if len(neighbors) < 2:
+            return ""
+        expressions = {written_math(m[0]) for m in _TYPED_FORMULA.finditer(question.replace("−", "-"))}
+        # Ignore standalone values and short arithmetic that could fit many exercises.
+        expressions = {s for s in expressions if len(s) >= 4 and re.search(r"[a-z]", s, re.I)}
+        if not expressions:
+            return ""
+        submitted = [s for s in expressions if "=" in s]
+        # A line submitted for correction may have one missing or mistaken term.
+        # Two intact nontrivial terms in the same formula can still identify it.
+        terms = ({term for term in re.split(r"[+=-]", submitted[0])
+                  if len(term) >= 3 and re.search(r"[a-z]", term, re.I)}
+                 if len(submitted) == 1 else set())
+        def literal(piece):
+            return re.compile(r"(?<![\w'])" + re.escape(piece) + r"(?![\w'])")
+        full = [literal(s) for s in expressions]
+        partial = [literal(t) for t in terms] if len(terms) >= 2 else []
+        exact, repairs = set(), set()
+        for key in neighbors:
+            for inline, display in re.findall(r"\\\((.*?)\\\)|\\\[(.*?)\\\]", self.book[key]["text"], re.S):
+                equation = written_math(inline or display)
+                if any(pattern.search(equation) for pattern in full):
+                    exact.add(key)
+                    break
+                if sum(bool(pattern.search(equation)) for pattern in partial) >= 2:
+                    repairs.add(key)
+        hits = exact or repairs
+        return hits.pop() if len(hits) == 1 else ""
 
     def search(self, question, page, section, *, followup=False):
         """Return trusted passage keys or a clarification before using any model tokens."""
@@ -275,6 +320,10 @@ class Index:
             where = book[page]["title"] if page else "the notes"
             return [], f"You’re on {where}. Which exercise number or heading would you like help with?"
         if not selected and section in book:
+            if not SWITCH.search(question):
+                example = self.quoted_example(question, section)
+                if example:
+                    return [example], ""
             current_exercise = NUMBERED_HEADING.match(book[section]["title"])
             if current_exercise and CHECK_WORK.search(question) and not SWITCH.search(question):
                 return [section], ""

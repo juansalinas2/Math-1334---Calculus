@@ -66,7 +66,9 @@ class CourseBenchmark(unittest.TestCase):
         exam2 = "lectures/exam-2-review.html"
         implicit = "lectures/16-implicit-differentiation.html"
         for question in ("help with 12 a", "12a", "12(a)", "#12a", "Problem 12 a", "Exercise 12(a)",
-                         "I’m stuck on 12", "Can you help with 12a please?"):
+                         "I’m stuck on 12", "Can you help with 12a please?",
+                         "Walk me through 12(a) to the answer now.",
+                         "For 12(a) I tried substituting u=1/x. Is that okay?"):
             with self.subTest(question=question):
                 self.assertEqual(index.search(question, exam3, exam3), ([exam3 + "#products-and-powers"], ""))
         for page, anchor in ((exam2, "differentiation"), (exam3, "related-rates-a-sliding-ladder")):
@@ -86,8 +88,26 @@ class CourseBenchmark(unittest.TestCase):
         self.assertEqual(hits, [])
         self.assertIn("(a), (b), (c)", message)
         for question in ("I got 12", "is 12 a critical number?", "why is 12a + 1 positive?",
-                         "12 cm", "help with 12.5", "when is x equal to 12?"):
+                         "12 cm", "help with 12.5", "when is x equal to 12?", "For 12a + 3, what is a?"):
             self.assertIsNone(problem_reference(question), question)
+
+    def test_equation_match_stays_within_the_visible_heading(self):
+        book = read_corpus()
+        index = Index(book)
+        cases = (("optimization.html#optimization-problems", "I wrote x + 2y but the key says 2x + y.", "5"),
+                 ("09-derivative-at-a-point.html#computing-derivatives-from-the-definition",
+                  "Does |h|/h work for both signs?", "2"),
+                 ("16-implicit-differentiation.html#tangent-slopes-and-vertical-tangents",
+                  "My line is 2x + xy' + 2yy' = 0. Which term is wrong?", "1"))
+        for heading, question, suffix in cases:
+            section = "lectures/" + heading
+            with self.subTest(question=question):
+                self.assertEqual(index.search(question, section.split("#")[0], section),
+                                 ([section + "::" + suffix], ""))
+        section = "lectures/optimization.html#optimization-problems"
+        self.assertEqual(index.quoted_example("I got 72", section), "")
+        self.assertEqual(index.quoted_example("I'm comparing 2x+y and 3x+72/x.", section), "")
+        self.assertEqual(index.quoted_example("Could 12x+y work?", section), "")
 
     def test_exam_reference_reaches_the_model_and_citation(self):
         book = read_corpus()

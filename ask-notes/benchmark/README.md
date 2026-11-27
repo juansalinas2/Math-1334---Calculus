@@ -46,3 +46,7 @@ python3 ask-notes/benchmark/context_trial.py _site/assets/course-search-index.js
 The candidate adds instructor-written course-map terms to the ranking text for matching headings. The baseline and candidate use identical frozen passages, page context, questions, and labels. On the 83 enriched headings from the published search asset (SHA-256 `9ad87646a9f92ebe3432f655bf16484b79e9ba811f840d50c4d54ac4cdd76d5a`), both routed 22/22 development and 31/35 regression questions correctly. No individual outcome changed. Production keeps its existing ranker.
 
 For the next experiment, label fresh paraphrases by expected heading before running either system. Keep numbered exercise references page-local. For conceptual questions, compare lexical ranking alone with a fusion of lexical and pretrained semantic rankings. Precompute passage vectors once, score the small collection directly, and try reranking a short list only if retrieval still misses relevant passages. Measure top-two passage hits, correct clarifications, latency, and model cost per question. Grade mathematical correctness and whether the reply answers the student separately.
+
+## Choosing a teaching strategy
+
+The [paired teaching experiment](teaching-trial.md) compares the current prompt with four reusable demonstrations, records the blinded grades, and checks which exercise the course handler supplies.

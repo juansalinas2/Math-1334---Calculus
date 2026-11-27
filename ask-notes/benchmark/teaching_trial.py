@@ -42,6 +42,26 @@ def cases_and_book():
     return cases, book
 
 
+def check_routing(cases, book):
+    index = app.course_index.Index(book)
+    hits = 0
+    with patch.object(app.course_index, "corpus", return_value=book), \
+         patch.object(app.course_index, "index", return_value=index), \
+         patch.object(app, "generate", return_value={"answer": "fixture", "sources": []}):
+        for c in cases:
+            expected = c["section"]
+            heading = book[expected]["href"]
+            payload = {"page": heading.split("#")[0], "section": heading, "view": heading}
+            if "prior" in c:
+                q, a = c["prior"]
+                payload.update(history=[dict(question=q, answer=a, section=expected)], previousView=heading)
+            actual, _ = app.course_reply(c["question"], payload)
+            hits += actual == expected
+            print(f"{c['id']:<24} {actual}")
+    print(f"{hits}/{len(cases)} exact primary passages from the browser context.")
+    return hits
+
+
 def trial(cases, book, directory):
     # Creating a new directory protects earlier blinded assignments and samples.
     directory.mkdir(parents=True, exist_ok=False)
@@ -99,10 +119,14 @@ def trial(cases, book, directory):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--run", type=Path, help="New output directory. Omitting this runs free input checks.")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--run", type=Path, help="Sample the two prompts and save to a new output directory.")
+    mode.add_argument("--routing", action="store_true", help="Check the browser-to-passage route without inference.")
     args = parser.parse_args()
     cases, book = cases_and_book()
-    if args.run:
+    if args.routing:
+        check_routing(cases, book)
+    elif args.run:
         if not os.environ.get("QUOTA_TABLE"):
             parser.error("Set QUOTA_TABLE to the existing Oregon Ask quota table for a metered run.")
         trial(cases, book, args.run)
