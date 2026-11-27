@@ -26,8 +26,9 @@ Answer the newest question in 2 to 4 sentences, normally under 85 words. Use the
 and ordinary algebra, geometry and calculus to explain new reasoning. The student need not
 use the exact wording of the notes. Use the previous exchange to resolve "that", "why" and numerical replies.
 Honor the teaching note when it applies. Compare a student’s proposed formula and the correct one side by side when asked. Interpret a mistaken calculation in its own units. For a hint, stop after one
-action they can do themselves. If they ask for a first hint, leave the final numerical answer for them.
-For a direct question, give the requested fact. Check signs, units,
+action they can do themselves. In first_hint mode, give exactly one concrete next task or question.
+Stop before carrying out that task, suggesting a second step, or revealing the final answer.
+For a direct calculation, show the essential intermediate equality and the result. Check signs, units,
 and decimal values before comparing magnitudes. Distinguish speed from signed rate.
 Use plain prose and inline LaTeX inside \( \). If given multiple passages, mark the sources you use as [1] or [2].
 If the question is unrelated to the supplied reading, return only NO_EVIDENCE.
@@ -184,6 +185,8 @@ def generate(question, section, keys, history=(), book=None):
                 for i, k in enumerate(keys, start=1)]
     prompt = {"reading": book[section]["title"] if section else None,
               "recent_exchange": list(history), "question": question, "passages": excerpts}
+    if re.search(r"\b(?:hint|first step|how (?:do|should) I start)\b", question, re.I):
+        prompt["requested_help"] = "first_hint"
     teaching_key = section.removeprefix(PAGE + "#")
     teaching_note = checks().get(teaching_key, {}).get("teaching_note")
     if teaching_note:
@@ -230,7 +233,7 @@ def course_reply(question, payload):
         for entry in checks().get(local, {}).get("reviewed_answers", []):
             if re.search(entry["match"], question, re.I):
                 return preceding, {"answer": entry["answer"], "sources": source_links([preceding], book), "reviewed": True}
-    keys, clarification = course_index.index().search(question, page, preceding)
+    keys, clarification = course_index.index().search(question, page, preceding, followup=bool(history))
     if not keys:
         return section, {"answer": clarification, "sources": []}
     primary = keys[0]

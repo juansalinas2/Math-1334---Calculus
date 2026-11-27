@@ -14,6 +14,8 @@ STOP = set("a an and are as at be by can could did do does explain for from get 
 CONTEXT = re.compile(r"\b(this|that|they|them|those|here|previous|above|next|my answer|the first term|the second term)\b", re.I)
 FOLLOWUP = re.compile(r"^(?:and |so )?(?:why|how come|does|but|then|which|what if)\b", re.I)
 HELP = re.compile(r"\b(?:stuck|confused|hint|start|next step|walk me through|explain this|why)\b", re.I)
+DETAIL = re.compile(r"^(?:so\b|why\b|how (?:come|did)\b|where (?:did|does)\b|what stays\b|if (?:only|the|we)\b|would that\b|which of\b)", re.I)
+SWITCH = re.compile(r"\b(?:different|new|another) (?:topic|question|lecture)\b|\b(?:instead|switch to)\b", re.I)
 
 
 def build(rows):
@@ -65,7 +67,7 @@ class Index:
             counts.update(set(words) | title | page)
         self.idf = {w: math.log1p((len(self.docs) - n + .5) / (n + .5)) for w, n in counts.items()}
 
-    def search(self, question, page, section):
+    def search(self, question, page, section, *, followup=False):
         """Return trusted passage keys or a clarification before using any model tokens."""
         book = self.book
         page = page if page in book and "#" not in page else ""
@@ -140,6 +142,11 @@ class Index:
         if not ranked:
             return [], "Which topic or example in the notes are you asking about?"
         top, first = ranked[0]
+        # An elliptical question about a worked exercise needs its givens, even when a
+        # rare word also appears in a different lecture. Keep a second source for comparison.
+        focused = local and (followup or re.match(r"^(?:Example|Problem|Practice|Exercise)\s+\d+", book[section]["title"], re.I))
+        if focused and not selected and not SWITCH.search(question) and DETAIL.search(question):
+            return [section] if book[first]["href"] == book[section]["href"] else [section, first], ""
         if known and CONTEXT.search(question) and first != section:
             if book[first]["href"] == book[section]["href"]:
                 return [section], ""
