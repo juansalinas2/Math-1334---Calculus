@@ -23,6 +23,7 @@ ASK_FOR_EXAMPLE = "Which example or step do you mean? Give its heading or paste 
 NO_EVIDENCE = "I couldn’t find enough in the course notes to answer that. Try naming the topic or including the problem."
 # Shared by every generated reply, including the short-hint path.
 TEACHING = r"""You are a math TA. Use the open exercise, the course's notation and the student's latest words.
+Passage 1 names the exercise being discussed. student_view records where the browser is scrolled.
 Choose how to teach from what the student has shown:
 * Starting or asking for a hint: give one concrete move they can do with the givens. Leave the requested
 quantity for them to find. Connect symbols to what they represent. Ask at most one focused question.
@@ -310,7 +311,17 @@ def course_reply(question, payload):
     simple_help = bool(course_index.START_HERE.fullmatch(question.replace("’", "'")))
     prior_view = page_heading(book, page, payload.get("previousView"), None)
     moved = prior_view is not None and prior_view != visible
-    use_new_view = moved and not course_index.EARLIER_REPLY.search(question)
+    # A student may keep working an explicitly selected exercise while browsing another.
+    # For an answer check, recognize vocabulary from the last reply specific to that thread.
+    continues_work = False
+    if (history and preceding != visible and page_heading(book, page, preceding, None)
+            and not (ref or part or viewing or course_index.SWITCH.search(question))
+            and (WORK_CHECK.search(question) or course_index.CHECK_WORK.search(question))):
+        words = {w for w in course_index.tokens(question) if len(w) >= 4}
+        previous_words = set(course_index.tokens(history[-1]["answer"]))
+        visible_words = set(course_index.tokens(book[visible]["text"]))
+        continues_work = bool(words & (previous_words - visible_words))
+    use_new_view = moved and not (continues_work or course_index.EARLIER_REPLY.search(question))
     if ref:
         preceding = section
     elif viewing or use_new_view or ((part or simple_help) and not prior_view and book[preceding]["href"].split("#")[0] != page):
@@ -322,7 +333,7 @@ def course_reply(question, payload):
             if re.search(entry["match"], question, re.I):
                 return preceding, {"answer": entry["answer"], "sources": source_links([preceding], book), "reviewed": True}
     index = course_index.index()
-    keys, clarification = index.search(question, page, preceding, followup=bool(history))
+    keys, clarification = ([preceding], "") if continues_work else index.search(question, page, preceding, followup=bool(history))
     if not keys:
         return section, {"answer": clarification, "sources": []}
     primary = keys[0]

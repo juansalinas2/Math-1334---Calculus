@@ -242,6 +242,21 @@ class PilotTests(unittest.TestCase):
         self.assertEqual(key, section)
         self.assertEqual(generate.call_args.args[5], "c")
 
+    def test_checking_a_previous_hint_while_browsing_another_heading(self):
+        book = course_passages(ROOT / "_site")
+        page = "lectures/exam-3-review.html"
+        powers = page + "#products-and-powers"
+        graph = page + "#from-a-formula-to-a-graph"
+        self.enterContext(patch.object(course_index, "corpus", return_value=book))
+        self.enterContext(patch.object(course_index, "index", return_value=course_index.Index(book)))
+        generate = self.enterContext(patch("app.generate", return_value={"answer": "A correction", "sources": []}))
+        history = [{"question": "Just a hint for 12(c).", "answer": "Take the natural logarithm.", "section": powers}]
+        data = dict(page=page, view=graph, previousView=powers, section=graph, history=history)
+        key, _ = app.course_reply("I got zero for the logarithm. Does that make the original limit zero?", data)
+        self.assertEqual(key, powers)
+        self.assertEqual(generate.call_args.args[3], history)
+        self.assertEqual(app.course_reply("Help with this problem", data)[0], graph)
+
     def test_a_later_request_can_change_the_amount_of_help(self):
         self.cloud.converse.return_value = {"stopReason": "end_turn", "output": {"message":
             {"content": [{"text": "A response grounded in the exercise. [1]"}]}}}
